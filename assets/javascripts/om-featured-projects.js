@@ -73,7 +73,7 @@
                 '<path d="M12.2 3.8 3.5 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' +
               '</svg>' +
             '</span>' +
-            '<span class="om-reveal-card__action-title">Voir<br>la fiche</span>' +
+            '<span class="om-reveal-card__action-title">Voir la fiche</span>' +
           '</a>' +
         '</div>' +
         '<div class="om-reveal-card__media">' +

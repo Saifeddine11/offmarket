@@ -1429,4 +1429,22 @@ body.menu-open {
   .mv-chrome.is-mounted.navbar--hidden-after-hero .om-header__bar {
     transform: translate3d(-50%, -0.5rem, 0);
   }
+
+  .mv-chrome {
+    z-index: 1000;
+  }
+
+  .om-header__phone-placeholder,
+  .om-header__phone-placeholder[hidden] {
+    display: none !important;
+  }
+
+  .mav-hero,
+  #accueil.mav-hero,
+  #featured-projects.om-featured-projects,
+  .om-featured-projects,
+  #simulateur,
+  #territories {
+    scroll-margin-top: 7rem;
+  }
 }

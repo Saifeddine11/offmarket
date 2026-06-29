@@ -368,14 +368,20 @@ summary:focus-visible {
     will-change: auto !important;
   }
 
-  /* Old mobile template fork — hidden in om-mobile-desktop-parity.css */
-
-  /* Collapse legacy sticky spacers that still reserve 100svh on mobile */
-  #legacy-editorial .sticky__spacer {
+  /* Hide legacy editorial between Territories and Testimonials on mobile */
+  #legacy-editorial {
     display: none !important;
+    visibility: hidden !important;
     height: 0 !important;
     min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    border: 0 !important;
   }
+
+  /* Old mobile template fork — kept inside hidden #legacy-editorial */
 
   /* OFF MARKET lower sections — always reachable and visible */
   #lectures-privees,

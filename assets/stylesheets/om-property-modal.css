@@ -1107,6 +1107,40 @@ body.om-modal-open {
   .om-property-modal__tabs button.is-active span {
     color: #f5f4f2;
   }
+
+  .om-property-modal__bottom {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  .om-property-modal__bottom-price {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .om-property-modal__bottom-price strong {
+    font-size: clamp(1.65rem, 6.5vw, 2.15rem);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .om-property-modal__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.65rem;
+  }
+
+  .om-property-modal__actions .om-cta,
+  .om-property-modal__actions .om-button {
+    width: 100%;
+    min-height: 54px;
+    justify-content: center;
+    box-sizing: border-box;
+  }
 }
 
 @media (max-width: 900px) and (min-width: 768px) {

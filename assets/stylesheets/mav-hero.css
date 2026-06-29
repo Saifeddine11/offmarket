@@ -42,19 +42,23 @@
 
 .mav-hero__video::-webkit-media-controls,
 .mav-hero__video::-webkit-media-controls-start-playback-button,
-.mav-hero__video::-webkit-media-controls-panel {
+.mav-hero__video::-webkit-media-controls-panel,
+.mav-hero video::-webkit-media-controls,
+.mav-hero video::-webkit-media-controls-start-playback-button,
+.mav-hero video::-webkit-media-controls-panel {
   display: none !important;
   -webkit-appearance: none;
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 html.hero-video-autoplay-blocked .mav-hero__video {
-  opacity: 1;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 html.hero-video-autoplay-blocked .mav-hero__background {
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .mav-hero__overlay {

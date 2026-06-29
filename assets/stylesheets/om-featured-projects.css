@@ -741,6 +741,24 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
 }
 
 @media (max-width: 767px) {
+  .om-featured-projects,
+  #featured-projects {
+    padding-inline: 1rem;
+    scroll-margin-top: 7rem;
+  }
+
+  .om-featured-projects__container {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .om-featured-projects__grid {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
   .om-featured-projects .om-reveal-card,
   .om-featured-projects .om-reveal-card:not(:hover):not(.is-active):not(:focus-within),
   .om-featured-projects .om-reveal-card:hover,
@@ -752,7 +770,10 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     gap: 0;
     aspect-ratio: auto;
     min-height: auto;
-    padding: 1.35rem;
+    width: 100%;
+    max-width: min(100%, calc(100vw - 2rem));
+    box-sizing: border-box;
+    padding: clamp(1rem, 4vw, 1.35rem);
     border-radius: 32px;
     background: rgba(245, 244, 242, 0.98);
     border: 1px solid rgba(39, 7, 7, 0.08);
@@ -772,9 +793,12 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: auto auto auto 1fr;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "number price"
+      "location type";
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.75rem;
     width: 100%;
     height: auto;
     overflow: visible;
@@ -792,7 +816,9 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
   }
 
   .om-reveal-card__index {
-    grid-column: 1;
+    grid-area: number;
+    grid-column: auto;
+    min-width: 0;
     font-size: clamp(2.35rem, 12vw, 3.25rem);
     line-height: 1;
     font-weight: 400;
@@ -801,37 +827,49 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
   }
 
   .om-reveal-card__pill {
-    min-height: 42px;
-    padding: 0 1rem;
-    font-size: 0.88rem;
+    min-height: 38px;
+    padding: 0 0.9rem;
+    font-size: 0.82rem;
     font-weight: 700;
     white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .om-reveal-card__pill--primary {
-    grid-column: 2;
+    grid-area: location;
+    grid-column: auto;
+    justify-self: start;
     background: #270707;
     color: #f5f4f2;
     border-color: #270707;
   }
 
   .om-reveal-card__pill:not(.om-reveal-card__pill--primary) {
-    grid-column: 3;
+    grid-area: type;
+    grid-column: auto;
+    justify-self: start;
     background: rgba(39, 7, 7, 0.04);
     color: rgba(39, 7, 7, 0.64);
     border: 1px solid rgba(39, 7, 7, 0.1);
   }
 
   .om-reveal-card__status {
-    grid-column: 4;
+    grid-area: price;
+    grid-column: auto;
     justify-self: end;
+    align-self: center;
     margin-left: 0;
-    font-size: clamp(1.65rem, 7vw, 2.35rem);
+    max-width: 100%;
+    font-size: clamp(1.55rem, 6.5vw, 2.15rem);
     line-height: 1;
     font-weight: 750;
     letter-spacing: 0.02em;
     color: #660810;
     white-space: nowrap;
+    overflow: visible;
+    text-align: right;
   }
 
   .om-reveal-card__info,
@@ -864,10 +902,10 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
 
   .om-reveal-card__title {
     margin: 0.75rem 0 0;
-    max-width: none;
-    font-size: clamp(2.45rem, 11vw, 3.8rem);
-    line-height: 0.98;
-    letter-spacing: -0.07em;
+    max-width: 100%;
+    font-size: clamp(2.15rem, 9.6vw, 3.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.06em;
     font-weight: 500;
     color: #270707;
     text-wrap: balance;
@@ -875,11 +913,11 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
 
   .om-reveal-card__meta {
     margin: 1.15rem 0 0;
-    max-width: none;
-    font-size: clamp(1.15rem, 4.8vw, 1.45rem);
-    line-height: 1.42;
-    letter-spacing: -0.03em;
-    color: rgba(39, 7, 7, 0.52);
+    max-width: 100%;
+    font-size: clamp(1rem, 4.2vw, 1.25rem);
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    color: rgba(39, 7, 7, 0.55);
   }
 
   .om-reveal-card__media,
@@ -900,7 +938,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     min-height: 0;
     margin: 1.5rem 0 0;
     aspect-ratio: 4 / 5;
-    border-radius: 28px;
+    border-radius: 26px;
     overflow: hidden;
     background: rgba(39, 7, 7, 0.04);
     transform: none;
@@ -989,10 +1027,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     letter-spacing: -0.01em;
     color: #f5f4f2;
     text-align: center;
-  }
-
-  .om-reveal-card__action-title br {
-    display: none;
+    white-space: nowrap;
   }
 }
 

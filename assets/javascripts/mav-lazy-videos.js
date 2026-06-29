@@ -5,6 +5,8 @@
 (function () {
   'use strict';
 
+  var BLOCKED_CLASS = 'hero-video-autoplay-blocked';
+
   function initHeroVideo() {
     var video = document.querySelector('.mav-hero__video, [data-hero-video]');
     if (!video || video.dataset.heroVideoBound === 'true') return;
@@ -12,19 +14,41 @@
     video.dataset.heroVideoBound = 'true';
     video.muted = true;
     video.defaultMuted = true;
+    video.loop = true;
     video.playsInline = true;
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
     video.removeAttribute('controls');
-    video.preload = 'auto';
+    if (!video.getAttribute('preload') || video.getAttribute('preload') === 'auto') {
+      video.preload = 'metadata';
+    }
+
+    function markAutoplayBlocked() {
+      document.documentElement.classList.add(BLOCKED_CLASS);
+    }
+
+    function markAutoplayPlaying() {
+      document.documentElement.classList.remove(BLOCKED_CLASS);
+    }
 
     function tryPlay() {
       var promise = video.play();
-      if (promise && typeof promise.catch === 'function') {
-        promise.catch(function () {
-          /* Keep video visible; poster/background remain as fallback */
-        });
+      if (promise && typeof promise.then === 'function') {
+        promise
+          .then(function () {
+            markAutoplayPlaying();
+          })
+          .catch(function () {
+            markAutoplayBlocked();
+          });
+        return;
+      }
+
+      if (video.paused) {
+        markAutoplayBlocked();
+      } else {
+        markAutoplayPlaying();
       }
     }
 
@@ -36,9 +60,8 @@
     document.addEventListener('touchstart', retryOnGesture, { once: true, passive: true, capture: true });
     document.addEventListener('scroll', retryOnGesture, { once: true, passive: true, capture: true });
 
-    if (video.readyState < 2) {
-      video.addEventListener('loadeddata', tryPlay, { once: true });
-    }
+    video.addEventListener('loadeddata', tryPlay, { once: true });
+    video.addEventListener('canplay', tryPlay, { once: true });
 
     tryPlay();
 

@@ -1,0 +1,80 @@
+/**
+ * Homepage simulator — spacing only (formulas/layout unchanged)
+ */
+
+.om-simulator--home {
+  padding-block: clamp(5rem, 8vw, 8rem);
+  padding-inline: clamp(1rem, 4vw, 1.25rem);
+  background: #f5f4f2;
+  scroll-margin-top: 6rem;
+}
+
+.om-simulator--home .om-simulator-home__header {
+  width: min(100%, 1280px);
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  text-align: center;
+}
+
+.om-simulator--home .om-simulator-home__eyebrow {
+  display: block;
+  margin: 0 0 1rem;
+  font-family: var(--om-font-body);
+  font-size: var(--om-label);
+  line-height: 1;
+  font-weight: 650;
+  letter-spacing: var(--om-letter-label);
+  text-transform: uppercase;
+  color: rgba(102, 8, 16, 0.58);
+}
+
+.om-simulator--home .om-simulator-home__title {
+  margin: 0 auto;
+  max-width: 18ch;
+  font-family: var(--font-main, 'Inter', system-ui, sans-serif);
+  font-size: clamp(2.5rem, 8vw, 4.25rem);
+  line-height: 0.98;
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  color: #270707;
+  text-wrap: balance;
+}
+
+.om-simulator--home .om-simulator-home__text {
+  margin: 1.15rem auto 0;
+  max-width: 42rem;
+  font-size: clamp(1rem, 3.8vw, 1.15rem);
+  line-height: 1.55;
+  color: rgba(39, 7, 7, 0.64);
+  text-wrap: pretty;
+}
+
+.om-simulator--home .om-simulator {
+  width: min(100%, 1280px);
+  margin-inline: auto;
+}
+
+.om-simulator--home .om-simulator__grid,
+.om-simulator--home .om-simulator__layout {
+  width: 100%;
+  margin-inline: auto;
+}
+
+@media (max-width: 767px) {
+  .om-simulator--home {
+    padding-block: clamp(4rem, 10vw, 5.5rem);
+  }
+
+  .om-simulator--home .om-simulator-home__title {
+    max-width: 100%;
+  }
+
+  .om-simulator--home .om-simulator__tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .om-simulator--home .om-simulator__tabs::-webkit-scrollbar {
+    display: none;
+  }
+}
