@@ -282,41 +282,96 @@ summary:focus-visible {
  * #lectures-privees, #final-cta, #contact are SIBLINGS after #legacy-editorial (not inside it).
  */
 @media (max-width: 979px) {
-  /* Locomotive smooth scroll traps scroll before lower sections on mobile */
+  /**
+   * Native document scroll on touch — legacy stack locks scroll via:
+   * html.no-hover { overflow: hidden }, html.no-hover.is-ios { position: fixed }
+   * html.has-scroll-smooth { position: fixed; overflow: hidden }
+   * .no-scroll-smooth .page-content-wrapper { position: fixed; height: 100svh }
+   */
+  html,
+  html.no-hover,
+  html.no-hover.is-ios,
   html.has-scroll-smooth,
-  html.has-scroll-smooth body {
-    position: relative !important;
-    overflow: auto !important;
+  html.no-scroll-smooth,
+  html.is-preloader-active,
+  html.is-preloader-disabled {
+    position: static !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
     height: auto !important;
+    min-height: 100% !important;
+    max-height: none !important;
     width: 100% !important;
     inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    -webkit-overflow-scrolling: touch;
   }
 
+  body,
+  html.no-hover body,
+  html.has-scroll-smooth body,
+  html.no-scroll-smooth body {
+    position: static !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    height: auto !important;
+    min-height: 100% !important;
+    max-height: none !important;
+    width: 100% !important;
+    touch-action: pan-y !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.menu-open {
+    overflow: hidden !important;
+    touch-action: none !important;
+    position: fixed !important;
+    width: 100% !important;
+  }
+
+  .page-content-wrapper,
+  .page-content-wrapper__inner,
+  .js-page-content-wrapper,
   .has-scroll-smooth .page-content-wrapper,
   .has-scroll-smooth .page-content-wrapper__inner,
   .no-scroll-smooth .page-content-wrapper,
   .no-scroll-smooth .page-content-wrapper__inner {
     position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
     overflow: visible !important;
     transform: none !important;
+    overscroll-behavior: auto !important;
+    scroll-behavior: auto !important;
   }
 
+  [data-scroll-container],
   .has-scroll-smooth [data-scroll-container],
+  [data-scroll-section],
+  [data-scroll-section][data-scroll-section-id],
+  [data-scroll-section][data-scroll-section-id]:not([data-scroll-section-inview]),
   .has-scroll-smooth [data-scroll-section],
   .has-scroll-smooth [data-scroll-section][data-scroll-section-id],
   .has-scroll-smooth [data-scroll-section][data-scroll-section-id]:not([data-scroll-section-inview]) {
+    min-height: 0 !important;
+    height: auto !important;
     transform: none !important;
     opacity: 1 !important;
     pointer-events: auto !important;
+    will-change: auto !important;
   }
 
-  /* Hide mobile legacy/template fork only */
+  /* Hide mobile legacy/template fork only — never hide OFF MARKET lower sections */
   #nature-mobile,
   #place-mobile-block,
-  #legacy-editorial .l-place-description,
+  .l-place-description,
   #l-place-sticky-mobile-1,
   #l-place-sticky-mobile-2,
   #l-place-sticky-mobile-3,
@@ -338,19 +393,14 @@ summary:focus-visible {
     min-height: 0 !important;
   }
 
-  #legacy-editorial {
-    min-height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: hidden;
-    border: 0 !important;
-  }
-
   /* OFF MARKET lower sections — always reachable and visible */
   #lectures-privees,
   #final-cta,
   #contact,
-  footer#contact {
+  footer#contact,
+  .om-testimonials,
+  .om-final-cta,
+  .om-footer {
     display: block !important;
     visibility: visible !important;
     height: auto !important;
@@ -364,9 +414,17 @@ summary:focus-visible {
   }
 
   /* Final CTA must not stay at opacity:0 waiting for scroll reveal */
-  .om-final-cta .om-final-cta__reveal {
+  .om-final-cta .om-final-cta__reveal,
+  .om-final-cta.is-visible .om-final-cta__reveal {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+  }
+
+  .om-testimonials,
+  .om-testimonials__inner,
+  .om-testimonial-card {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }

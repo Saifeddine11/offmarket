@@ -25,19 +25,19 @@
 
             <link rel="stylesheet" href="/assets/stylesheets/global.css?v=1765268659">
             <link rel="stylesheet" href="/assets/stylesheets/offmarket-tokens.css?v=1765297300">
-            <link rel="stylesheet" href="/assets/stylesheets/offmarket-overrides.css?v=1765302400">
+            <link rel="stylesheet" href="/assets/stylesheets/offmarket-overrides.css?v=1765304800">
             <link rel="stylesheet" href="/assets/stylesheets/offmarket-logo.css?v=1765268661">
             <link rel="stylesheet" href="/assets/stylesheets/mavericks-chrome.css?v=1765297300">
             <link rel="stylesheet" href="/assets/stylesheets/om-territories.css?v=1765297300">
             <link rel="stylesheet" href="/assets/stylesheets/om-footer.css?v=1765297300">
             <link rel="stylesheet" href="/assets/stylesheets/om-final-cta.css?v=1765297300">
             <link rel="stylesheet" href="/assets/stylesheets/om-testimonials.css?v=1765297300">
-            <link rel="stylesheet" href="/assets/stylesheets/mav-who.css?v=1765297300">
-            <link rel="stylesheet" href="/assets/stylesheets/om-featured-projects.css?v=1765297300">
-            <link rel="stylesheet" href="/assets/stylesheets/om-property-modal.css?v=1765297300">
+            <link rel="stylesheet" href="/assets/stylesheets/mav-who.css?v=1765304800">
+            <link rel="stylesheet" href="/assets/stylesheets/om-featured-projects.css?v=1765303200">
+            <link rel="stylesheet" href="/assets/stylesheets/om-property-modal.css?v=1765303200">
             <link rel="stylesheet" href="/assets/stylesheets/landing.css?v=1765268659" />
             <link rel="stylesheet" href="/assets/stylesheets/om-typography.css?v=1765297300" />
-            <link rel="stylesheet" href="/assets/stylesheets/mav-hero.css?v=1765292600">
+            <link rel="stylesheet" href="/assets/stylesheets/mav-hero.css?v=1765303200">
             <link rel="stylesheet" href="/assets/stylesheets/om-buttons.css?v=1765297300">
 
             <script>
@@ -501,10 +501,12 @@
 <div class="mav-hero__background" aria-hidden="true"></div>
   <video
     class="mav-hero__video"
+    data-hero-video
     autoplay
     muted
     loop
     playsinline
+    webkit-playsinline
     preload="metadata"
     poster="/assets/images/hero/mavericks-hero-poster.webp"
     aria-hidden="true"
@@ -577,7 +579,7 @@
 <div class="mav-who__inner">
     <p class="mav-who__eyebrow mav-reveal-item">Qui sommes-nous</p>
 
-    <h2 class="mav-who__title mav-text-reveal" id="mav-who-title">
+    <h2 class="mav-who__title mav-text-reveal is-hidden--md-down" id="mav-who-title">
       <span class="mav-who__phrase mav-reveal-item">
         OFF MARKET est une maison privée d'immobilier à Marrakech,
       </span>
@@ -588,6 +590,15 @@
         vers des biens rares, cohérents et sélectionnés avec exigence.
       </span>
     </h2>
+
+    <div class="mav-who__mobile-copy is-hidden--lg-up">
+      <p class="mav-who__lead mav-reveal-item">
+        OFF MARKET est une maison privée d'immobilier à Marrakech.
+      </p>
+      <p class="mav-who__body mav-reveal-item">
+        Nous accompagnons acheteurs, investisseurs et propriétaires vers des biens rares, cohérents et sélectionnés avec exigence.
+      </p>
+    </div>
 
     <a class="om-cta om-button om-button--dark mav-reveal-item" href="#featured-projects">
       Découvrir notre approche
@@ -7419,16 +7430,16 @@ if ('serviceWorker' in navigator) {
 }
 </script>
             <script src="/assets/javascripts/gsap.min.js?v=1765268700" defer></script>
-            <script src="/assets/javascripts/om-featured-projects.js?v=1765291500" defer></script>
+            <script src="/assets/javascripts/om-featured-projects.js?v=1765303200" defer></script>
             <script src="/assets/javascripts/om-property-modal.js?v=1765289000" defer></script>
-            <script src="/assets/javascripts/om-territories.js?v=1765292100" defer></script>
+            <script src="/assets/javascripts/om-territories.js?v=1765303200" defer></script>
             <script src="/assets/javascripts/mavericks-chrome.js?v=1765297300" defer></script>
             <script src="/assets/javascripts/mav-navbar-hero-visibility.js?v=1765287000" defer></script>
             <script src="/assets/javascripts/mav-hero-blur-text.js?v=1765284600" defer></script>
             <script src="/assets/javascripts/mav-hero-counter.js?v=1765292000" defer></script>
-            <script src="/assets/javascripts/mav-who-reveal.js?v=1765295600" defer></script>
+            <script src="/assets/javascripts/mav-who-reveal.js?v=1765303200" defer></script>
             <script src="/assets/javascripts/om-testimonials.js?v=1765295700" defer></script>
-            <script src="/assets/javascripts/mav-lazy-videos.js?v=1765289000" defer></script>
+            <script src="/assets/javascripts/mav-lazy-videos.js?v=1765303200" defer></script>
 
 <div class="om-property-modal" data-property-modal aria-hidden="true">
     <div class="om-property-modal__backdrop" data-property-modal-close></div>

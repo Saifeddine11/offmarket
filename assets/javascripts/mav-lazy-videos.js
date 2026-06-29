@@ -1,8 +1,48 @@
 /**
  * Mavericks — defer non-hero autoplay videos until near viewport
+ * + hero inline autoplay fallback for mobile Safari
  */
 (function () {
   'use strict';
+
+  function initHeroVideo() {
+    var video = document.querySelector('.mav-hero__video, [data-hero-video]');
+    if (!video || video.dataset.heroVideoBound === 'true') return;
+
+    video.dataset.heroVideoBound = 'true';
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.removeAttribute('controls');
+
+    function tryPlay() {
+      var promise = video.play();
+      if (promise && typeof promise.catch === 'function') {
+        promise.catch(function () {
+          document.documentElement.classList.add('hero-video-autoplay-blocked');
+        });
+      }
+    }
+
+    if (video.readyState < 2) {
+      video.addEventListener('loadeddata', tryPlay, { once: true });
+    }
+
+    tryPlay();
+
+    document.addEventListener(
+      'visibilitychange',
+      function () {
+        if (!document.hidden && video.paused) {
+          tryPlay();
+        }
+      },
+      { passive: true }
+    );
+  }
 
   function initLazyVideos() {
     var videos = document.querySelectorAll('video:not(.mav-hero__video)');
@@ -56,6 +96,7 @@
   }
 
   function boot() {
+    initHeroVideo();
     initLazyVideos();
   }
 

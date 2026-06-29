@@ -107,32 +107,93 @@
   transition-delay: 400ms;
 }
 
-@media (max-width: 768px) {
-  .mav-who {
-    padding:
-      clamp(5.5rem, 16vw, 6.5rem)
-      1.1rem
-      clamp(5.5rem, 16vw, 6.5rem);
+@media (max-width: 767px) {
+  #qui-sommes-nous {
+    padding: 4.5rem 1.25rem 5rem;
   }
 
   .mav-who__eyebrow {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.35rem;
+    text-align: center;
   }
 
-  .mav-who__title {
-    font-size: clamp(2.2rem, 10vw, 3.65rem);
+  #qui-sommes-nous .mav-who__mobile-copy {
+    max-width: 21rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  #qui-sommes-nous .mav-who__lead {
+    margin: 0;
+    font-family: var(--font-main, 'Inter', system-ui, sans-serif);
+    font-size: clamp(2.25rem, 10vw, 3.45rem);
+    line-height: 1.02;
+    letter-spacing: -0.06em;
+    font-weight: 500;
+    color: #270707;
+    text-wrap: balance;
+  }
+
+  #qui-sommes-nous .mav-who__body {
+    margin: 1.35rem 0 0;
+    font-family: var(--font-main, 'Inter', system-ui, sans-serif);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: rgba(39, 7, 7, 0.64);
+    text-wrap: pretty;
+  }
+
+  #qui-sommes-nous .mav-who__title,
+  #qui-sommes-nous .mav-who__headline,
+  #qui-sommes-nous h2 {
+    max-width: 100%;
+    margin-inline: auto;
+    font-size: clamp(2.15rem, 9vw, 3.25rem);
     line-height: 1.04;
     letter-spacing: -0.055em;
+    text-align: center;
+    text-wrap: balance;
   }
 
-  .mav-who__phrase {
-    text-wrap: balance;
+  .mav-who .om-cta {
+    margin-top: 2.25rem;
+  }
+
+  .mav-who.is-visible .mav-who__eyebrow {
+    transition-delay: 40ms;
+  }
+
+  .mav-who.is-visible .mav-who__lead {
+    transition-delay: 120ms;
+  }
+
+  .mav-who.is-visible .mav-who__body {
+    transition-delay: 200ms;
+  }
+
+  .mav-who.is-visible .mav-who__phrase:nth-child(1) {
+    transition-delay: 120ms;
+  }
+
+  .mav-who.is-visible .mav-who__phrase:nth-child(2) {
+    transition-delay: 200ms;
+  }
+
+  .mav-who.is-visible .mav-who__phrase:nth-child(3) {
+    transition-delay: 280ms;
+  }
+
+  .mav-who.is-visible .om-cta {
+    transition-delay: 420ms;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mav-who .mav-reveal-item,
-  .mav-who .mav-text-reveal .mav-who__phrase {
+  .mav-who .mav-text-reveal .mav-who__phrase,
+  .mav-who .mav-who__mobile-copy .mav-reveal-item {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;

@@ -204,20 +204,27 @@
       cards.forEach(function (card, i) {
         var isActive = index === i;
         card.classList.toggle('is-active', isActive);
+        card.classList.toggle('is-expanded', isActive);
         card.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        card.setAttribute('aria-expanded', isActive ? 'true' : 'false');
       });
     }
 
     cards.forEach(function (card, index) {
       card.addEventListener('click', function () {
-        var willActivate = activeIndex !== index;
+        if (!window.matchMedia('(max-width: 767px)').matches) return;
+
+        if (activeIndex === index) return;
+
         clearPendingScroll();
-        setActive(willActivate ? index : null);
-        if (willActivate) {
-          scheduleScrollToCard(index);
-        }
+        setActive(index);
+        scheduleScrollToCard(index);
       });
     });
+
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      setActive(0);
+    }
 
     window.addEventListener('pagehide', clearPendingScroll, { once: true });
   }

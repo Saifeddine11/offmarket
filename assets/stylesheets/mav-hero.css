@@ -37,6 +37,20 @@
   object-position: center;
   opacity: 1;
   pointer-events: none;
+  -webkit-appearance: none;
+}
+
+.mav-hero__video::-webkit-media-controls,
+.mav-hero__video::-webkit-media-controls-start-playback-button,
+.mav-hero__video::-webkit-media-controls-panel {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+html.hero-video-autoplay-blocked .mav-hero__video {
+  opacity: 0;
 }
 
 .mav-hero__overlay {
