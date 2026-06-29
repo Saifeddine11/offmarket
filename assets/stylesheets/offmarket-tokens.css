@@ -1,0 +1,163 @@
+/**
+ * OffMarket — Global design tokens
+ * Source: docs/offmarket-brand-audit/04-mavericks-color-source.md
+ * Loaded after global.css — remaps legacy --c-* primitives to Mavericks palette.
+ *
+ * OFF MARKET DESIGN SYSTEM
+ * All new sections, pages, buttons, forms, cards and simulator UI must use these tokens.
+ * Do not create random one-off sizes.
+ * Do not create tiny isolated buttons.
+ * Preserve existing animations and JS hooks.
+ */
+
+:root {
+  /* ── Fonts ── */
+  --om-font-heading: var(--font-heading, var(--font-main, Inter, system-ui, sans-serif));
+  --om-font-body: var(--font-body, var(--font-main, Inter, sans-serif));
+
+  /* ── Brand colors ── */
+  --om-ruby-950: #270707;
+  --om-ruby-800: #660810;
+  --om-ivory: #f5f4f2;
+  --om-cream: #f1ebeb;
+  --om-champagne: #b88a5a;
+  --om-sand: #d6c0b1;
+  --om-graphite: #2e3430;
+
+  /* Simulator / positive result accent */
+  --om-green: #4fd08a;
+  --om-green-soft: rgba(79, 208, 138, 0.16);
+  --om-green-border: rgba(79, 208, 138, 0.28);
+  --om-focus-ring: rgba(79, 208, 138, 0.55);
+
+  /* ── Semantic Mavericks tokens (legacy aliases) ── */
+  --color-bg-primary: var(--om-ruby-950);
+  --color-bg-secondary: var(--om-cream);
+  --color-text-primary: var(--om-cream);
+  --color-text-muted: var(--om-sand);
+  --color-accent: var(--om-champagne);
+  --color-accent-light: #c49a6c;
+  --color-graphite: var(--om-graphite);
+  --color-border-soft: rgba(241, 235, 235, 0.14);
+  --color-border-accent: rgba(184, 138, 90, 0.42);
+  --color-glass-dark: rgba(39, 7, 7, 0.56);
+  --color-glass-dark-strong: rgba(39, 7, 7, 0.72);
+  --color-overlay-dark: rgba(39, 7, 7, 0.45);
+
+  /* RGB channels */
+  --om-dark-red-rgb: 39, 7, 7;
+  --om-deep-red-rgb: 102, 8, 16;
+  --om-stone-rgb: 241, 235, 235;
+  --om-grey-orange-rgb: 214, 192, 177;
+  --om-champagne-rgb: 184, 138, 90;
+  --om-champagne-light-rgb: 196, 154, 108;
+  --om-graphite-rgb: 46, 52, 48;
+
+  /* ── Global typography scale ── */
+  --om-title-xl: clamp(4.2rem, 7vw, 8.5rem);
+  --om-title-lg: clamp(3.4rem, 5.6vw, 6.6rem);
+  --om-title-md: clamp(2.6rem, 4.2vw, 5rem);
+  --om-title-sm: clamp(1.8rem, 2.4vw, 2.8rem);
+  --om-h2: clamp(3rem, 9vw, 5rem);
+  --om-nav: 17px;
+  --om-nav-lang: 15px;
+  --om-body-lg: clamp(1.1rem, 1.22vw, 1.3rem);
+  --om-body-md: clamp(1.0625rem, 1.08vw, 1.15rem);
+  --om-body-sm: clamp(0.9375rem, 0.98vw, 1.0625rem);
+  --om-support-text: clamp(1.0625rem, 1.05vw, 1.15rem);
+  --om-small-readable: clamp(0.9375rem, 0.98vw, 1.0625rem);
+  --om-meta-readable: clamp(0.90625rem, 0.92vw, 0.96rem);
+  --om-label: var(--om-meta-readable);
+  --om-letter-tight: -0.075em;
+  --om-letter-soft: -0.025em;
+  --om-letter-label: 0.13em;
+
+  /* ── Layout ── */
+  --om-container: 1280px;
+  --om-section-padding: clamp(6rem, 10vw, 10rem);
+  --om-section-padding-sm: clamp(4rem, 7vw, 7rem);
+  --om-grid-gap: clamp(1rem, 1.8vw, 1.6rem);
+
+  /* ── Radius ── */
+  --om-radius-sm: 1rem;
+  --om-radius-md: 1.5rem;
+  --om-radius-lg: clamp(2rem, 2.8vw, 3.25rem);
+  --om-radius-pill: 999px;
+
+  /* ── Motion ── */
+  --om-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --om-duration: 0.28s;
+
+  /* ── Buttons (referenced by om-buttons.css) ── */
+  --om-btn-ink: var(--om-ruby-950);
+  --om-btn-cream: var(--om-ivory);
+  --om-btn-height: 56px;
+  --om-btn-padding-x: 30px;
+  --om-btn-font-size: 17px;
+
+  /* ── Remap legacy template --c-* (previous brand: Springs) → Mavericks (names kept for compatibility) ── */
+  --c-beige-background: #f1ebeb;
+  --c-beige-background-rgb: 241, 235, 235;
+  --c-beige: #f1ebeb;
+  --c-beige-rgb: 241, 235, 235;
+  --c-dark-green: #270707;
+  --c-dark-green-rgb: 39, 7, 7;
+  --c-green: #660810;
+  --c-green-rgb: 102, 8, 16;
+  --c-light-green: #b88a5a;
+  --c-light-green-rgb: 184, 138, 90;
+  --c-olive: #c49a6c;
+  --c-olive-rgb: 196, 154, 108;
+  --c-dark-blue: #2e3430;
+  --c-dark-blue-rgb: 46, 52, 48;
+  --c-blue: #660810;
+  --c-blue-rgb: 102, 8, 16;
+  --c-light-blue: #d6c0b1;
+  --c-light-blue-rgb: 214, 192, 177;
+  --c-sky: #f1ebeb;
+  --c-sky-rgb: 241, 235, 235;
+  --c-error: #c49a6c;
+  --c-error-rgb: 196, 154, 108;
+
+  /* Button hover gradients — Mavericks warm accents */
+  --c-button-hover-gradient-light: linear-gradient(
+    101.51deg,
+    rgba(102, 8, 16, 0) 37.02%,
+    #660810 308.4%
+  );
+  --c-button-hover-gradient-dark: linear-gradient(
+    91.82deg,
+    rgba(184, 138, 90, 0) 20.31%,
+    rgba(184, 138, 90, 0.15) 90.77%
+  );
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --om-support-text: clamp(1rem, 1.02vw, 1.0625rem);
+    --om-small-readable: clamp(0.90625rem, 0.96vw, 1rem);
+    --om-meta-readable: clamp(0.90625rem, 0.9vw, 0.9375rem);
+    --om-body-md: clamp(1rem, 1.05vw, 1.1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --om-support-text: clamp(0.9375rem, 1vw, 1rem);
+    --om-small-readable: clamp(0.875rem, 0.96vw, 0.9375rem);
+    --om-meta-readable: clamp(0.875rem, 0.9vw, 0.90625rem);
+    --om-body-md: clamp(0.9375rem, 1vw, 1rem);
+  }
+}
+
+/* Muted text readability on dark immersive sections */
+.ui-dark {
+  --t-small: rgba(214, 192, 177, 0.72);
+  --t-line: rgba(241, 235, 235, 0.14);
+}
+
+/* Muted text on light sections */
+.ui-light,
+:root {
+  --t-small: rgba(46, 52, 48, 0.65);
+}

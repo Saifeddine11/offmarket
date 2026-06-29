@@ -1,0 +1,452 @@
+/**
+ * OffMarket — Global button system (hero-aligned)
+ * Loads last — overrides legacy global.css .btn sizing tokens
+ *
+ * OFF MARKET DESIGN SYSTEM RULE:
+ * All buttons and new UI elements must reuse global tokens from offmarket-tokens.css.
+ * Do not create one-off tiny buttons or isolated typography scales.
+ */
+
+/* ── Shared CTA selector (pill buttons only) ── */
+
+.om-button,
+.mav-button,
+.mav-hero__button,
+.om-btn,
+.om-cta,
+.om-noise-btn,
+.om-hero-video__btn--ghost,
+body .btn.btn--primary:not(.btn--square):not(.btn--link),
+body a.btn.btn--primary:not(.btn--square):not(.btn--link),
+body button.btn.btn--primary:not(.btn--square):not(.btn--link),
+body input[type="submit"].btn.btn--primary:not(.btn--square):not(.btn--link),
+body .btn.btn--outline:not(.btn--square):not(.btn--link),
+body a.btn.btn--outline:not(.btn--square):not(.btn--link),
+body button.btn.btn--outline:not(.btn--square):not(.btn--link),
+body input[type="submit"].btn.btn--outline:not(.btn--square):not(.btn--link) {
+  --btn-height: var(--om-btn-height) !important;
+  --btn-rx: 999px !important;
+  --btn-ry: 999px !important;
+
+  box-sizing: border-box;
+  min-height: var(--om-btn-height);
+  height: auto !important;
+  padding: 0 var(--om-btn-padding-x) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: var(--om-radius-pill) !important;
+
+  font-family: var(--om-font-body, var(--font-body, var(--font-main, Inter, sans-serif))) !important;
+  font-size: var(--om-btn-font-size) !important;
+  line-height: 1 !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.01em !important;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none !important;
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition:
+    transform var(--om-duration) var(--om-ease),
+    background-color var(--om-duration) var(--om-ease),
+    color var(--om-duration) var(--om-ease),
+    border-color var(--om-duration) var(--om-ease),
+    opacity var(--om-duration) var(--om-ease);
+}
+
+/* Nested label text must inherit computed button typography */
+
+.om-button span,
+.mav-button span,
+.mav-hero__button span,
+.om-btn span,
+.om-cta span,
+.om-noise-btn span,
+.om-noise-btn__inner,
+body .btn:not(.btn--square):not(.btn--link) .btn__content,
+body .btn:not(.btn--square):not(.btn--link) .btn__text,
+body .btn:not(.btn--square):not(.btn--link) .btn__text span {
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  line-height: inherit !important;
+  text-transform: inherit !important;
+}
+
+body .btn:not(.btn--square):not(.btn--link) > .btn__content {
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: inherit;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}
+
+/* ── Hover / active / focus ── */
+
+.om-button:hover,
+.mav-button:hover,
+.mav-hero__button:hover,
+.om-btn:hover,
+.om-cta:hover,
+.om-noise-btn:hover,
+body .btn.btn--primary:not(.btn--square):not(.btn--link):hover,
+body .btn.btn--outline:not(.btn--square):not(.btn--link):hover:not(.is-disabled):not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.om-button:active,
+.mav-button:active,
+.mav-hero__button:active,
+.om-btn:active,
+.om-cta:active,
+.om-noise-btn:active,
+body .btn.btn--primary:not(.btn--square):not(.btn--link):active,
+body .btn.btn--outline:not(.btn--square):not(.btn--link):active {
+  transform: translateY(0);
+}
+
+.om-button:focus-visible,
+.mav-button:focus-visible,
+.mav-hero__button:focus-visible,
+.om-btn:focus-visible,
+.om-cta:focus-visible,
+.om-noise-btn:focus-visible,
+body .btn.btn--primary:not(.btn--square):not(.btn--link):focus-visible,
+body .btn.btn--outline:not(.btn--square):not(.btn--link):focus-visible {
+  outline: 2px solid var(--om-focus-ring);
+  outline-offset: 4px;
+}
+
+/* ── Variants ── */
+
+.om-button--primary,
+.mav-button--primary,
+.mav-hero__button--primary,
+.om-btn--primary,
+.om-cta--white,
+.om-btn--white,
+.om-button--white,
+.om-hero-video__btn--primary.om-noise-btn {
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--om-btn-ink);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.om-button--primary:hover,
+.mav-button--primary:hover,
+.mav-hero__button--primary:hover,
+.om-btn--primary:hover,
+.om-cta--white:hover,
+.om-btn--white:hover,
+.om-button--white:hover,
+.om-hero-video__btn--primary.om-noise-btn:hover {
+  background: #ffffff;
+}
+
+.om-button--secondary,
+.mav-button--secondary,
+.mav-hero__button--secondary,
+.om-btn--secondary,
+.om-cta--dark,
+.om-hero-video__btn--ghost,
+.om-noise-btn:not(.om-hero-video__btn--primary):not(.om-featured-projects__cta) {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.om-button--secondary:hover,
+.mav-button--secondary:hover,
+.mav-hero__button--secondary:hover,
+.om-btn--secondary:hover,
+.om-cta--dark:hover,
+.om-hero-video__btn--ghost:hover,
+.om-noise-btn:not(.om-hero-video__btn--primary):not(.om-featured-projects__cta):hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.om-button--dark,
+.mav-button--dark,
+.om-btn--dark,
+.om-featured-projects__cta.om-noise-btn,
+body .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--primary):not(.om-button--dark) {
+  background: var(--om-btn-ink);
+  color: var(--om-btn-cream);
+  border: 1px solid rgba(39, 7, 7, 0.16);
+}
+
+body .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--primary):not(.om-button--dark):hover {
+  background: #3a0c0c;
+  border-color: rgba(39, 7, 7, 0.22);
+}
+
+.ui-dark .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--dark),
+.modal.ui-dark .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--dark),
+.l-callback__form-container .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--dark) {
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: var(--om-btn-ink) !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+}
+
+.ui-dark .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--dark):hover,
+.modal.ui-dark .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--dark):hover,
+.l-callback__form-container .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--dark):hover {
+  background: #ffffff !important;
+}
+
+body .btn.om-button--primary:not(.btn--square):not(.btn--link),
+body a.btn.om-button--primary:not(.btn--square):not(.btn--link) {
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: var(--om-btn-ink) !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+}
+
+body .btn.om-button--primary:not(.btn--square):not(.btn--link):hover,
+body a.btn.om-button--primary:not(.btn--square):not(.btn--link):hover {
+  background: #ffffff !important;
+}
+
+.om-button--outline,
+.mav-button--outline,
+.om-btn--outline,
+.om-cta--outline {
+  background: transparent;
+  color: var(--om-btn-ink);
+  border: 1px solid rgba(39, 7, 7, 0.22);
+}
+
+.om-button--outline:hover,
+.mav-button--outline:hover,
+.om-btn--outline:hover,
+.om-cta--outline:hover {
+  background: rgba(39, 7, 7, 0.04);
+  border-color: rgba(39, 7, 7, 0.32);
+}
+
+.om-button--dark:hover,
+.mav-button--dark:hover,
+.om-btn--dark:hover,
+.om-property-modal__actions .om-cta.om-button--dark:hover {
+  background: #3a0c0c;
+  border-color: rgba(39, 7, 7, 0.22);
+}
+
+/* Light / cream sections */
+
+.mav-who .om-cta,
+.om-featured-projects .om-cta:not(.om-cta--dark):not(.om-cta--white),
+.light-section .om-cta:not(.om-cta--dark):not(.om-cta--white) {
+  background: var(--om-btn-ink);
+  color: var(--om-btn-cream);
+  border: 1px solid rgba(39, 7, 7, 0.16);
+}
+
+.mav-who .om-cta:hover,
+.om-featured-projects .om-cta:not(.om-cta--dark):not(.om-cta--white):hover,
+.light-section .om-cta:not(.om-cta--dark):not(.om-cta--white):hover {
+  background: #3a0c0c;
+}
+
+/* Dark UI — legacy outline pills */
+
+.ui-dark .btn.btn--outline:not(.btn--square):not(.btn--link),
+.modal.ui-dark .btn.btn--outline:not(.btn--square):not(.btn--link) {
+  color: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.ui-dark .btn.btn--outline:not(.btn--square):not(.btn--link):hover:not(.is-disabled):not(:disabled),
+.modal.ui-dark .btn.btn--outline:not(.btn--square):not(.btn--link):hover:not(.is-disabled):not(:disabled) {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.96) !important;
+}
+
+.ui-light .btn.btn--outline:not(.btn--square):not(.btn--link),
+.om-featured-projects .btn.btn--outline:not(.btn--square):not(.btn--link),
+.l-callback__tablist .btn.btn--outline:not(.btn--square):not(.btn--link) {
+  color: var(--om-btn-ink) !important;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(39, 7, 7, 0.12);
+}
+
+.ui-light .btn.btn--outline:not(.btn--square):not(.btn--link):hover,
+.om-featured-projects .btn.btn--outline:not(.btn--square):not(.btn--link):hover,
+.l-callback__tablist .btn.btn--outline:not(.btn--square):not(.btn--link):hover {
+  background: #ffffff;
+  border-color: rgba(39, 7, 7, 0.2);
+}
+
+.l-callback__tablist .btn.btn--outline.is-active:not(.btn--square):not(.btn--link) {
+  background: var(--om-btn-ink);
+  color: var(--om-btn-cream) !important;
+  border-color: rgba(39, 7, 7, 0.16);
+}
+
+/* Legacy primary — strip decorative pseudo-elements */
+
+body .btn.btn--primary:not(.btn--square):not(.btn--link)::before,
+body .btn.btn--primary:not(.btn--square):not(.btn--link)::after {
+  display: none !important;
+  content: none !important;
+  animation: none !important;
+}
+
+body .btn.btn--primary:not(.btn--square):not(.btn--link) .btn__text {
+  color: inherit !important;
+}
+
+/* Ruby property-type card — scoped CTA (no legacy .btn bleed) */
+
+.l-residences__caption__button .om-button,
+.l-residences__caption__top .om-button,
+.l-residences__caption__card .om-button {
+  width: 100%;
+  max-width: 100%;
+  min-height: 52px;
+  padding: 0 28px;
+  font-family: var(--font-body, var(--font-main, Inter, sans-serif));
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-transform: none;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.l-residences__caption__button .om-button::before,
+.l-residences__caption__button .om-button::after,
+.l-residences__caption__top .om-button::before,
+.l-residences__caption__top .om-button::after,
+.l-residences__caption__card .om-button::before,
+.l-residences__caption__card .om-button::after {
+  content: none !important;
+  display: none !important;
+}
+
+.l-residences__caption__button .om-button span,
+.l-residences__caption__top .om-button span,
+.l-residences__caption__card .om-button span {
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-transform: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.l-residences__caption__description {
+  margin-top: 0.65rem;
+  max-width: 28ch;
+}
+
+@media (max-width: 768px) {
+  .l-residences__caption__button .om-button,
+  .l-residences__caption__top .om-button,
+  .l-residences__caption__card .om-button {
+    min-height: 48px;
+    padding: 0 22px;
+    font-size: 15px;
+  }
+}
+
+/* Property modal — light background variants */
+
+.om-property-modal__actions .om-cta.om-button--outline {
+  background: transparent;
+  color: var(--om-btn-ink);
+  border: 1px solid rgba(39, 7, 7, 0.22);
+}
+
+.om-property-modal__actions .om-cta.om-button--dark {
+  background: var(--om-btn-ink);
+  color: var(--om-btn-cream);
+  border-color: rgba(39, 7, 7, 0.16);
+}
+
+/* Hero — layout-only extras (preserve arrow animation) */
+
+.mav-hero__button--primary {
+  min-width: 184px;
+}
+
+.mav-hero__button--secondary {
+  min-width: 156px;
+}
+
+.mav-hero__button--primary span[aria-hidden="true"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mav-hero__button--primary span {
+  transition: transform 260ms ease;
+}
+
+.mav-hero__button--primary:hover span {
+  transform: translateX(3px);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1024px) {
+  :root {
+    --om-btn-height: 52px;
+    --om-btn-padding-x: 26px;
+    --om-btn-font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --om-btn-height: 48px;
+    --om-btn-padding-x: 22px;
+    --om-btn-font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .om-button,
+  .mav-button,
+  .mav-hero__button,
+  .om-btn,
+  .om-cta,
+  .om-noise-btn,
+  body .btn.btn--primary:not(.btn--square):not(.btn--link),
+  body .btn.btn--outline:not(.btn--square):not(.btn--link) {
+    transition: none;
+  }
+
+  .om-button:hover,
+  .mav-button:hover,
+  .mav-hero__button:hover,
+  .om-btn:hover,
+  .om-cta:hover,
+  .om-noise-btn:hover,
+  body .btn.btn--primary:not(.btn--square):not(.btn--link):hover,
+  body .btn.btn--outline:not(.btn--square):not(.btn--link):hover,
+  .mav-hero__button--primary:hover span {
+    transform: none;
+  }
+}

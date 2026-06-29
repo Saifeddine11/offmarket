@@ -1,0 +1,675 @@
+/**
+ * Mavericks / OffMarket — Glassmorphism trust hero
+ * Scoped to .mav-hero only
+ */
+
+.mav-hero {
+  --mav-hero-font-heading: var(--font-main, 'Inter', system-ui, sans-serif);
+  --mav-hero-font-body: var(--font-main, 'Inter', system-ui, sans-serif);
+
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  background: #070505;
+  color: #ffffff;
+  display: flex;
+  align-items: flex-end;
+}
+
+.mav-hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/assets/mavericks/hero/mavericks-hero-villa.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mav-hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.mav-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(5, 3, 3, 0.52) 0%, rgba(5, 3, 3, 0.34) 44%, rgba(5, 3, 3, 0.16) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.28) 100%);
+}
+
+.mav-hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100svh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding:
+    clamp(7rem, 12vh, 9rem)
+    clamp(1.25rem, 4vw, 4rem)
+    clamp(3.2rem, 5.5vh, 4.6rem);
+}
+
+.mav-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+}
+
+.mav-hero__content {
+  max-width: 780px;
+  align-self: end;
+  transform: translateY(-1.4rem);
+}
+
+.mav-hero__title {
+  max-width: 760px;
+  margin: 0;
+  font-family: var(--mav-hero-font-heading);
+  font-size: clamp(50px, 5.2vw, 82px);
+  line-height: 0.96;
+  font-weight: 400;
+  letter-spacing: -0.058em;
+  color: #ffffff;
+  text-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
+}
+
+.mav-hero__text {
+  max-width: 610px;
+  margin: clamp(1rem, 1.8vh, 1.35rem) 0 0;
+  font-family: var(--mav-hero-font-body);
+  font-size: clamp(15.5px, 1vw, 17.5px);
+  line-height: 1.55;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.72);
+  text-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
+}
+
+.mav-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.mav-hero__button {
+  min-height: 56px;
+  padding: 0 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 999px;
+  font-family: var(--mav-hero-font-body);
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-align: center;
+  vertical-align: middle;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    transform 260ms ease,
+    background 260ms ease,
+    border-color 260ms ease,
+    color 260ms ease;
+}
+
+.mav-hero .mav-hero__actions a.mav-hero__button,
+.mav-hero .mav-hero__actions a.mav-hero__button span {
+  font-family: var(--mav-hero-font-body);
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.mav-hero__button--primary {
+  min-width: 184px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #080808;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mav-hero__button--primary span[aria-hidden="true"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.mav-hero__button--primary span {
+  transition: transform 260ms ease;
+}
+
+.mav-hero__button--primary:hover {
+  transform: translateY(-1px);
+  background: #ffffff;
+}
+
+.mav-hero__button--primary:hover span {
+  transform: translateX(3px);
+}
+
+.mav-hero__button--secondary {
+  min-width: 156px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+}
+
+.mav-hero__button--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.mav-hero__button svg {
+  width: 15px;
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mav-hero__side {
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  max-width: 520px;
+  transform: translateY(-0.8rem);
+  padding-bottom: 0.35rem;
+}
+
+.mav-hero__stats-card {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.mav-hero__stats-card::before,
+.mav-hero__stats-card::after {
+  display: none !important;
+}
+
+.mav-hero__counter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 0.25rem;
+  width: max-content;
+  max-width: 100%;
+  text-align: center;
+}
+
+.mav-hero__counter-number {
+  position: relative;
+  display: inline-block;
+  width: max-content;
+  margin-inline: auto;
+  max-width: 100%;
+  text-align: center;
+  font-family: var(--mav-hero-font-heading);
+  font-size: clamp(88px, 8.2vw, 142px);
+  line-height: 0.82;
+  font-weight: 700;
+  letter-spacing: -0.085em;
+  font-variant-numeric: tabular-nums;
+
+  color: rgba(255, 255, 255, 0.42);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.42);
+
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+
+  opacity: 1;
+
+  filter: blur(0.12px) saturate(1.02) contrast(1.04);
+  mix-blend-mode: screen;
+
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 -1px 0 rgba(0, 0, 0, 0.14);
+}
+
+.mav-hero__counter-number::before,
+.mav-hero__counter-number::after {
+  content: none;
+  display: none;
+}
+
+.mav-hero__counter-label {
+  display: block;
+  width: 100%;
+  margin-top: clamp(0.25rem, 0.45vw, 0.45rem);
+  font-family: var(--mav-hero-font-body);
+  font-size: clamp(0.68rem, 0.78vw, 0.9rem);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.095em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: none;
+}
+
+.mav-hero__marquee-card {
+  width: 100%;
+  max-width: 520px;
+  margin-top: 0.35rem;
+  padding: 0;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  overflow: hidden;
+}
+
+.mav-hero__marquee-card h2 {
+  margin: 0 0 0.55rem;
+  padding: 0;
+  font-family: var(--om-font-body);
+  font-size: var(--om-meta-readable);
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: var(--om-letter-label);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.54);
+}
+
+.mav-hero__marquee {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 78%, transparent 100%);
+}
+
+.mav-hero__marquee-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.15rem, 2vw, 2rem);
+  min-width: max-content;
+  padding: 0 0 0.15rem;
+  animation: mavHeroMarquee 42s linear infinite;
+}
+
+.mav-hero__marquee-track span {
+  white-space: nowrap;
+  font-family: var(--mav-hero-font-body);
+  font-size: clamp(15px, 1vw, 18px);
+  line-height: 1;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+@keyframes mavHeroMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.mav-hero [data-blur-text] {
+  visibility: visible;
+}
+
+.mav-hero [data-blur-text].is-blur-ready .mav-blur-word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translate3d(0, 28px, 0);
+  will-change: transform, filter, opacity;
+}
+
+.mav-hero [data-blur-text].is-blur-visible .mav-blur-word {
+  animation: mavHeroBlurWordIn 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--blur-word-index) * 90ms);
+}
+
+@keyframes mavHeroBlurWordIn {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(0, 28px, 0);
+  }
+
+  55% {
+    opacity: 0.62;
+    filter: blur(4px);
+    transform: translate3d(0, -2px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.mav-hero [data-blur-fade] {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translate3d(0, 18px, 0);
+  will-change: transform, filter, opacity;
+}
+
+.mav-hero [data-blur-fade].is-blur-fade-visible {
+  animation: mavHeroBlurFadeIn 780ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.mav-hero .mav-hero__text[data-blur-fade].is-blur-fade-visible {
+  animation-delay: 280ms;
+}
+
+.mav-hero .mav-hero__actions[data-blur-fade].is-blur-fade-visible {
+  animation-delay: 420ms;
+}
+
+@keyframes mavHeroBlurFadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translate3d(0, 18px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.mav-hero__stats-card,
+.mav-hero__marquee-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: mavHeroFadeIn 820ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.mav-hero__stats-card {
+  animation-delay: 320ms;
+}
+
+.mav-hero__marquee-card {
+  animation-delay: 400ms;
+}
+
+@keyframes mavHeroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Spacing handoff to featured projects (was first section before hero) */
+.mav-hero + .om-featured-projects {
+  padding-top: clamp(3rem, 6vh, 5rem);
+}
+
+@media (min-width: 981px) {
+  .mav-hero__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.75fr);
+    column-gap: clamp(3rem, 7vw, 8rem);
+    align-items: stretch;
+  }
+
+  .mav-hero__content {
+    align-self: end;
+  }
+
+  .mav-hero__side {
+    align-self: stretch;
+    justify-self: end;
+    width: min(100%, 520px);
+    max-width: 520px;
+    justify-content: space-between;
+    gap: clamp(1rem, 2vh, 1.6rem);
+    transform: translateY(clamp(-0.55rem, -1vw, -1rem));
+    padding-bottom: 0;
+    padding-top: clamp(0.2rem, 0.5vw, 0.65rem);
+  }
+
+  .mav-hero__marquee-card {
+    margin-top: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 899px) {
+  .mav-hero__side {
+    transform: none;
+    justify-self: start;
+    width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+    padding-top: 0;
+    padding-bottom: 0.35rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .mav-hero__side {
+    max-width: 100%;
+    transform: none;
+    gap: 1rem;
+  }
+
+  .mav-hero__counter {
+    align-items: center;
+    text-align: center;
+  }
+
+  .mav-hero__counter-label {
+    white-space: normal;
+    max-width: 18rem;
+    line-height: 1.15;
+  }
+
+  .mav-hero__counter-number {
+    font-size: clamp(64px, 19vw, 96px);
+  }
+
+  .mav-hero__marquee-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 980px) {
+  .mav-hero__inner {
+    padding-top: 7.5rem;
+  }
+
+  .mav-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    align-items: end;
+  }
+
+  .mav-hero__content {
+    max-width: 100%;
+    transform: translateY(-1.2rem);
+  }
+
+  .mav-hero__side {
+    max-width: 100%;
+    transform: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mav-hero__actions {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .mav-hero__button {
+    min-height: 54px;
+    padding: 0 28px;
+    font-size: 16px;
+  }
+
+  .mav-hero .mav-hero__actions a.mav-hero__button,
+  .mav-hero .mav-hero__actions a.mav-hero__button span {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mav-hero__actions {
+    gap: 10px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+
+  .mav-hero__button {
+    min-height: 50px;
+    padding: 0 24px;
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  .mav-hero .mav-hero__actions a.mav-hero__button,
+  .mav-hero .mav-hero__actions a.mav-hero__button span {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .mav-hero__actions {
+    width: 100%;
+  }
+
+  .mav-hero__button {
+    min-height: 50px;
+    padding: 0 24px;
+    font-size: 15px;
+  }
+
+  .mav-hero .mav-hero__actions a.mav-hero__button,
+  .mav-hero .mav-hero__actions a.mav-hero__button span {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mav-hero {
+    min-height: 100svh;
+    align-items: flex-end;
+  }
+
+  .mav-hero__inner {
+    padding: 6.5rem 1rem 2.4rem;
+  }
+
+  .mav-hero__content {
+    transform: translateY(-1.2rem);
+  }
+
+  .mav-hero__grid {
+    gap: 1.8rem;
+  }
+
+  .mav-hero__title {
+    font-size: clamp(40px, 11vw, 56px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    max-width: 100%;
+  }
+
+  .mav-hero__text {
+    font-size: var(--om-body-md);
+    max-width: 100%;
+    line-height: 1.5;
+  }
+
+  .mav-hero__side {
+    transform: none;
+  }
+
+  .mav-hero__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    flex-wrap: wrap;
+  }
+
+  .mav-hero__button {
+    width: 100%;
+  }
+
+  .mav-hero__counter-number {
+    font-size: clamp(64px, 19vw, 96px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mav-hero [data-blur-text].is-blur-ready .mav-blur-word,
+  .mav-hero [data-blur-text].is-blur-visible .mav-blur-word,
+  .mav-hero [data-blur-fade],
+  .mav-hero [data-blur-fade].is-blur-fade-visible {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    animation: none;
+  }
+
+  .mav-hero__stats-card,
+  .mav-hero__marquee-card {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .mav-hero__marquee-track {
+    animation: none;
+  }
+}

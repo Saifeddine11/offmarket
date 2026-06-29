@@ -1,0 +1,149 @@
+/**
+ * Mavericks — Qui sommes-nous static editorial section
+ * Scoped to .mav-who only — tokens aligned with hero + om-featured-projects
+ */
+
+.mav-who {
+  position: relative;
+  overflow: hidden;
+  background: var(--om-ivory);
+  color: var(--om-graphite);
+  padding:
+    var(--om-section-padding)
+    clamp(1.25rem, 4vw, 4rem)
+    var(--om-section-padding);
+}
+
+.mav-who__inner {
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.mav-who__eyebrow {
+  margin: 0 0 clamp(2rem, 3vw, 3rem);
+  font-family: var(--om-font-body);
+  font-size: var(--om-label);
+  line-height: 1;
+  font-weight: 650;
+  letter-spacing: var(--om-letter-label);
+  text-transform: uppercase;
+  color: var(--om-ruby-800);
+}
+
+.mav-who__title {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-main, 'Inter', system-ui, sans-serif);
+  font-size: clamp(2.75rem, 4.8vw, 5.125rem);
+  line-height: 1.06;
+  font-weight: 400;
+  letter-spacing: -0.058em;
+  color: #252222;
+  text-align: center;
+}
+
+.mav-who__phrase {
+  display: block;
+  max-width: 100%;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.mav-who .om-cta {
+  margin-top: clamp(2.25rem, 3.4vw, 3.25rem);
+}
+
+.mav-who + .om-featured-projects {
+  padding-top: clamp(4rem, 8vh, 6rem);
+}
+
+.mav-who .mav-text-reveal .mav-who__phrase {
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+.mav-who .mav-reveal-item {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  filter: blur(5px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.mav-who.is-visible .mav-reveal-item {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+
+.mav-who.is-visible .mav-who__eyebrow {
+  transition-delay: 80ms;
+}
+
+.mav-who.is-visible .mav-who__phrase:nth-child(1) {
+  transition-delay: 80ms;
+}
+
+.mav-who.is-visible .mav-who__phrase:nth-child(2) {
+  transition-delay: 160ms;
+}
+
+.mav-who.is-visible .mav-who__phrase:nth-child(3) {
+  transition-delay: 240ms;
+}
+
+.mav-who.is-visible .om-cta {
+  transition-delay: 400ms;
+}
+
+@media (max-width: 768px) {
+  .mav-who {
+    padding:
+      clamp(5.5rem, 16vw, 6.5rem)
+      1.1rem
+      clamp(5.5rem, 16vw, 6.5rem);
+  }
+
+  .mav-who__eyebrow {
+    margin-bottom: 1.75rem;
+  }
+
+  .mav-who__title {
+    font-size: clamp(2.2rem, 10vw, 3.65rem);
+    line-height: 1.04;
+    letter-spacing: -0.055em;
+  }
+
+  .mav-who__phrase {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mav-who .mav-reveal-item,
+  .mav-who .mav-text-reveal .mav-who__phrase {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  .mav-who .om-cta {
+    transition: none;
+  }
+
+  .mav-who .om-cta:hover {
+    transform: none;
+  }
+}

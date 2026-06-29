@@ -1,0 +1,67 @@
+/**
+ * OffMarket text logo — replaces legacy SVG wordmarks.
+ * Preserves header/preloader layout dimensions and animation hooks.
+ */
+
+.offmarket-logo {
+  display: block;
+  font-family: "TT Commons Pro", system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: currentColor;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.offmarket-logo--desktop {
+  font-size: calc(var(--scale-px) * 13.5);
+  letter-spacing: 0.2em;
+}
+
+.offmarket-logo--mobile {
+  font-size: calc(var(--scale-px) * 10.5);
+  letter-spacing: 0.16em;
+}
+
+.offmarket-logo--footer {
+  font-size: calc(var(--scale-px) * 26);
+  letter-spacing: 0.24em;
+  color: var(--t-text, #f1ebeb);
+}
+
+/* Single-word logo: disable legacy split-logo right segment */
+.header__logo__right:empty {
+  display: none !important;
+}
+
+.header__logo__left {
+  clip-path: none !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100% !important;
+  left: 0 !important;
+  position: relative !important;
+}
+
+.header--sticky.header--collapsed .header__content .header__logo__left {
+  clip-path: none !important;
+}
+
+.header--sticky.header--collapsed .header__content .header__logo__right {
+  display: none !important;
+}
+
+.header--sticky.header--collapsed .header__content .header__logo {
+  width: auto;
+  min-width: calc(var(--scale-px) * 120);
+}
+
+.footer__logo .offmarket-logo--footer {
+  display: inline-block;
+}
+
+.turn-message__logo.offmarket-logo--mobile {
+  margin: 0 auto;
+}

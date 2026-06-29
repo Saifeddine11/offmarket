@@ -1,0 +1,121 @@
+<!--
+  Archived old homepage hero — OffMarket
+  Original location: index.html
+  - Head: arc-reveal pending script + CSS links (see README)
+  - Body start: #offmarket-arc-reveal
+  - Main: first <section> with .l-gallery-container / .om-hero-video (lines ~731–811 before removal)
+-->
+
+<!-- Head inline script (was in <head> before removal) -->
+<script>
+(function () {
+    var key = 'offmarket-arc-reveal';
+    var skip = window.OFFMARKET_ARC_REVEAL_DISABLED === true;
+    if (!skip) {
+        try { skip = sessionStorage.getItem(key) === '1'; } catch (e) {}
+    }
+    if (!skip && window.matchMedia('(prefers-reduced-motion: reduce)').matches) skip = true;
+    if (!skip) document.documentElement.classList.add('is-arc-reveal-pending');
+})();
+</script>
+
+<!-- Arc reveal intro overlay -->
+<div
+    id="offmarket-arc-reveal"
+    class="om-arc-reveal"
+    role="region"
+    aria-label="Hero"
+    lang="fr"
+    data-arc-reveal
+    data-storage-key="offmarket-arc-reveal"
+    hidden
+>
+    <div class="om-arc-reveal__intro">
+        <p class="om-arc-reveal__greeting" aria-live="polite">
+            <span class="om-arc-reveal__word" data-arc-greeting></span>
+        </p>
+    </div>
+    <svg class="om-arc-reveal__curtain" preserveAspectRatio="none" aria-hidden="true">
+        <path class="om-arc-reveal__path" />
+    </svg>
+</div>
+
+<!-- Main hero section -->
+<section
+    class=" section ui-dark ui-background"
+    data-scroll-section
+>
+<div class="l-gallery-container ui-dark ui-background sticky sticky--full-height sticky--under-next" id="l-gallery-sticky" data-plugin="reveal" data-reveal-enable-mq="null">
+    <div class="sticky__layer sticky__layer--sticky" data-scroll data-scroll-sticky data-scroll-target="#l-gallery-sticky" data-reveal="gallery">
+
+        <div class="om-hero-video" aria-label="Hero">
+            <div class="om-hero-video__frame">
+                <div class="om-hero-video__media">
+                    <video
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                        poster="/assets/mavericks/hero/mavericks-hero-poster.jpg"
+                    >
+                        <source src="/assets/mavericks/hero/mavericks-hero-offmarket-hero-video2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="om-hero-video__overlay" aria-hidden="true"></div>
+
+                <p class="om-hero-video__vlabel" aria-hidden="true">OFFMARKET / MARRAKECH</p>
+
+                <div class="om-hero-video__body">
+                    <div class="om-hero-video__main">
+                        <p class="om-hero-video__eyebrow">OFFMARKET 01 · IMMOBILIER PRIVÉ</p>
+                        <h1 class="om-hero-video__title" data-reveal="title" data-reveal-delay="400">
+                            <span class="om-hero-video__title-line">L'immobilier</span>
+                            <span class="om-hero-video__title-line om-hero-video__title-line--serif">privé à Marrakech</span>
+                        </h1>
+                        <p class="om-hero-video__subtitle" data-reveal="text" data-reveal-delay="600">
+                            Une sélection confidentielle de villas, riads, appartements et opportunités d'investissement à Marrakech.
+                        </p>
+                        <div class="om-hero-video__ctas">
+                            <a class="om-hero-video__btn om-hero-video__btn--primary om-noise-btn" href="/gallery"><span class="om-noise-btn__inner">Accéder aux biens privés</span></a>
+                            <a class="om-hero-video__btn om-hero-video__btn--ghost" href="#callback-modal">Parler de mon projet</a>
+                        </div>
+                    </div>
+                    <aside class="om-hero-video__aside" aria-label="Sélection OffMarket">
+                        <h2 class="om-hero-video__aside-title">SÉLECTION 01</h2>
+                        <p class="om-hero-video__aside-text">
+                            Villas privées, riads de caractère et appartements premium, sélectionnés avec discrétion.
+                        </p>
+                        <div class="om-hero-video__stats">
+                            <div>
+                                <span class="om-hero-video__stat-value">04</span>
+                                <span class="om-hero-video__stat-label">types de biens</span>
+                            </div>
+                            <div>
+                                <span class="om-hero-video__stat-value">01</span>
+                                <span class="om-hero-video__stat-label">accès privé</span>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+
+                <a
+                    class="om-hero-video__scroll l-gallery-next is-hidden--lg-up"
+                    href="#l-intro-mobile"
+                    aria-label="Défiler vers la section suivante"
+                >
+                    <svg class="icon icon-arrow-down" width="14" height="16" aria-hidden="true" viewBox="0 0 14 16"><use href="/assets/images/icons.svg?v=1765268659#arrow-down" xlink:href="/assets/images/icons.svg?v=1765268659#arrow-down"></use></svg>
+                </a>
+                <a
+                    class="om-hero-video__scroll l-gallery-next is-hidden--md-down"
+                    href="#l-intro"
+                    aria-label="Défiler vers la section suivante"
+                >
+                    <svg class="icon icon-arrow-down" width="14" height="16" aria-hidden="true" viewBox="0 0 14 16"><use href="/assets/images/icons.svg?v=1765268659#arrow-down" xlink:href="/assets/images/icons.svg?v=1765268659#arrow-down"></use></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>

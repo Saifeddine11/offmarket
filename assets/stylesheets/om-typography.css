@@ -1,0 +1,502 @@
+/**
+ * OffMarket — Controlled Inter typography hierarchy
+ * Reference scale applied selectively — not blindly everywhere.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --font-main: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: var(--font-main);
+  --font-body: var(--font-main);
+  --font-display: var(--font-main);
+  --mav-font-heading: var(--font-heading);
+  --mav-font-body: var(--font-body);
+  --om-font-ui: var(--font-main);
+  --om-font-display: var(--font-main);
+  --mv-font-label: var(--font-main);
+  --mv-font-body: var(--font-main);
+  --mv-font-editorial: var(--font-main);
+  --mav-title-xl: clamp(3.1rem, 5.8vw, 7rem);
+  --mav-title-lg: clamp(2.7rem, 5vw, 5.8rem);
+  --mav-title-md: clamp(2.1rem, 3.6vw, 4.2rem);
+  --mav-title-sm: clamp(1.55rem, 2.4vw, 2.6rem);
+  --mav-body-lg: clamp(1.02rem, 1.15vw, 1.22rem);
+  --mav-body-md: clamp(0.95rem, 1vw, 1.05rem);
+  --mav-body-sm: clamp(0.82rem, 0.9vw, 0.92rem);
+  --mav-letter-tight: -0.06em;
+  --mav-letter-soft: -0.025em;
+  --mav-letter-eyebrow: 0.11em;
+  --type-hero: clamp(56px, 6.2vw, 88px);
+  --type-section-xl: clamp(48px, 4.4vw, 62px);
+  --type-section: clamp(38px, 3.6vw, 56px);
+  --type-lead-lg: clamp(20px, 1.8vw, 26px);
+  --type-lead: clamp(18px, 1.35vw, 22px);
+  --type-card-title: clamp(20px, 1.5vw, 24px);
+  --type-body: clamp(1.0625rem, 1.08vw, 1.125rem);
+  --type-small: clamp(0.9375rem, 0.98vw, 1.0625rem);
+  --type-eyebrow: clamp(0.90625rem, 0.92vw, 0.96rem);
+  --type-button: 17px;
+  --leading-hero: 0.92;
+  --leading-section: 0.96;
+  --leading-lead: 1.22;
+  --leading-body: 1.45;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --type-hero: clamp(44px, 12vw, 62px);
+    --type-section: clamp(34px, 9vw, 46px);
+    --type-lead-lg: 20px;
+    --type-lead: 18px;
+    --type-body: 17px;
+    --type-button: 17px;
+  }
+}
+
+/* ── Global base ── */
+
+body {
+  font-family: var(--font-main);
+}
+
+/* Hero only — generic h1 (not .om-hero-video; see om-hero-video.css) */
+h1,
+.text-h1,
+.hero-title,
+.om-hero__title {
+  font-family: var(--font-main);
+  font-size: var(--type-hero);
+  font-weight: 400;
+  line-height: var(--leading-hero);
+  letter-spacing: -0.065em;
+}
+
+/* Major section titles */
+h2,
+.text-h2,
+.section-title,
+.om-section__title,
+.om-private-selection__title,
+.om-private-estates__title {
+  font-family: var(--font-main);
+  font-size: var(--type-section);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.om-featured-projects__title,
+.om-territories__title {
+  font-family: var(--font-main);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+
+/* Large leads — key section intros (hero subtitle: om-hero-video.css) */
+.text-body-1,
+.section-lead,
+.om-section__lead,
+.om-featured-projects__lead,
+.om-private-selection__text {
+  font-family: var(--font-main);
+  font-size: var(--type-lead);
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: -0.02em;
+}
+
+/* Card titles */
+.text-body-2,
+.card-title,
+.feature-title,
+.om-card__title,
+.om-featured-projects__card-title,
+.om-private-selection__card-title,
+.om-private-estates__card-title,
+.om-territories__card-label,
+.om-territories__card-title {
+  font-family: var(--font-main);
+  font-size: var(--type-card-title);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+/* Body copy */
+.text-body-3,
+.card-description,
+.om-card__description,
+.om-meta,
+.om-featured-projects__card-meta,
+.om-featured-projects__status,
+.om-private-selection__card-subtitle,
+.om-territories__card-subtitle,
+.om-territories p:not([class]),
+.om-footer p:not([class]),
+.om-footer__body,
+.om-footer__links a,
+.om-footer__link,
+.om-footer__bar,
+.om-footer__bar p {
+  font-family: var(--font-main);
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: var(--leading-body);
+}
+
+/* Buttons */
+button,
+.btn:not(.btn--square):not(.btn--link),
+.om-btn,
+.om-button,
+.om-cta,
+.om-noise-btn,
+.om-moving-btn,
+.om-noise-btn__inner {
+  font-family: var(--font-main);
+  font-size: var(--type-button);
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Navbar */
+.om-header__nav a,
+.mav-nav__link,
+.header-nav a,
+.nav-links a {
+  font-family: var(--font-main);
+  font-size: var(--om-nav, 17px);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.mv-lang-switcher--glass,
+.mv-lang-switcher--glass .mv-lang-switcher__btn,
+.mv-lang-switcher--glass .mv-lang-switcher__sep,
+.mv-chrome .mv-lang-switcher__btn,
+.mav-lang a {
+  font-family: var(--font-main);
+  font-size: var(--om-nav-lang, 15px);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+/* Eyebrows */
+.eyebrow,
+.kicker,
+.om-eyebrow,
+.om-featured-projects__eyebrow,
+.om-private-selection__label,
+.om-territories__eyebrow,
+.om-featured-projects__badge,
+.om-private-estates__label,
+.om-territories__card-tag {
+  font-family: var(--font-main);
+  font-size: var(--type-eyebrow);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Chrome menu */
+.mv-chrome .cinematic-menu-link {
+  font-family: var(--font-main);
+  font-size: clamp(2.4rem, 11vw, 4.4rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  text-transform: none;
+}
+
+.mv-chrome .cinematic-menu-sublink {
+  font-family: var(--font-main);
+  font-size: var(--type-small);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: 0.04em;
+}
+
+.mv-chrome__menu-brand {
+  font-family: var(--font-main);
+  font-size: var(--type-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.mv-chrome__menu-tagline {
+  font-family: var(--font-main);
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: var(--leading-body);
+}
+
+@media (max-width: 768px) {
+  .om-reveal-card__title {
+    font-size: clamp(28px, 8vw, 38px);
+    line-height: 1.05;
+  }
+
+  .om-section__title,
+  .section-title {
+    font-size: clamp(34px, 9vw, 46px);
+  }
+
+  .om-hero__title,
+  .hero-title {
+    font-size: clamp(44px, 12vw, 62px);
+  }
+}
+
+/* ── Mavericks section titles (font only — sizes stay in section CSS) ── */
+
+.mav-hero__title,
+.mav-who__title,
+.om-featured-projects__title,
+.om-territories__title,
+.mav-territories__title,
+.om-reveal-card__title,
+.om-property-modal__title,
+.om-property-card__title {
+  font-family: var(--mav-font-heading);
+  font-weight: 400;
+  letter-spacing: var(--mav-letter-tight);
+}
+
+/* ── Eyebrows / small labels ── */
+
+.mav-who__eyebrow,
+.mav-hero__eyebrow,
+.om-section-eyebrow,
+.om-featured-projects__eyebrow,
+.om-territories__eyebrow,
+.mav-territories__eyebrow,
+.om-property-card__eyebrow,
+.mav-contact-modal__eyebrow,
+.om-footer__label,
+.om-hero-video__eyebrow,
+.om-simulator-hero__eyebrow,
+.om-final-cta__eyebrow {
+  font-family: var(--om-font-body);
+  font-size: var(--om-label);
+  line-height: 1;
+  font-weight: 650;
+  letter-spacing: var(--om-letter-label);
+  text-transform: uppercase;
+}
+
+/* ── Body copy ── */
+
+.mav-hero__text,
+.mav-who__copy,
+.om-section-copy,
+.om-property-card__meta,
+.om-reveal-card__meta,
+.om-reveal-card__developer,
+.om-property-modal__copy,
+#legacy-editorial .text-t1,
+#legacy-editorial p:not([class]) {
+  font-family: var(--mav-font-body);
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.ui-dark .mav-hero__text,
+.ui-dark .text-t1,
+#legacy-editorial .ui-dark .text-t1,
+#legacy-editorial .ui-dark p:not([class]) {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.ui-light .text-t1,
+#legacy-editorial .ui-light .text-t1,
+#legacy-editorial .ui-background.ui-light .text-t1 {
+  color: rgba(39, 7, 7, 0.68);
+}
+
+/* Buttons — typography only (sizes live in om-buttons.css) */
+
+.mav-nav,
+.mav-nav a,
+.mav-navbar,
+.mav-navbar a,
+.mv-chrome button,
+.mv-chrome .mv-lang-switcher__btn {
+  font-family: var(--mav-font-body);
+  letter-spacing: -0.01em;
+}
+
+/* ── Legacy template typography (Victor Serif / TT Commons Pro) ── */
+
+body .g1,
+body .h0,
+body .h0-sm,
+body .h1,
+body .h2,
+body .h3,
+body .h4,
+body .h5,
+body .text-h0,
+body .text-h1,
+body .text-h2,
+body .text-h3,
+#legacy-editorial .g1,
+#legacy-editorial .h0,
+#legacy-editorial .h0-sm,
+#legacy-editorial .h1,
+#legacy-editorial .h2,
+#legacy-editorial .h3,
+#legacy-editorial .h4,
+#legacy-editorial .h5,
+#legacy-editorial .text-h0,
+#legacy-editorial .text-h1,
+#legacy-editorial .text-h2,
+#legacy-editorial .text-h3 {
+  font-family: var(--mav-font-heading);
+  letter-spacing: var(--mav-letter-tight);
+}
+
+body .text-t1,
+body .text-c2,
+body .text-body-3,
+#legacy-editorial .text-t1,
+#legacy-editorial .text-c2,
+#legacy-editorial p:not([class]),
+#legacy-editorial .flats-subscribe,
+#legacy-editorial .modal,
+.modal .text-t1,
+.modal .text-c2 {
+  font-family: var(--mav-font-body);
+  letter-spacing: -0.01em;
+}
+
+body .text-c1,
+body .text-c2.leading-trim,
+#legacy-editorial .text-c1,
+#legacy-editorial .caption,
+#legacy-editorial .l-caption,
+.cookie-consent__description .text-c2 {
+  font-family: var(--mav-font-body);
+  font-size: var(--om-meta-readable);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: var(--mav-letter-eyebrow);
+  text-transform: uppercase;
+}
+
+body .btn,
+body .btn__text,
+body .news-modal__title,
+#legacy-editorial .btn,
+#legacy-editorial .btn__text {
+  font-family: var(--mav-font-body);
+}
+
+/* Preserve icon fonts */
+svg,
+svg *,
+[class*="icon"]:not([class*="btn"]):not([class*="Icon"]),
+.material-icons,
+.fa,
+[class^="fa-"] {
+  font-family: initial;
+}
+
+/* ── OFF MARKET reusable typography utilities ── */
+
+.om-title-xl {
+  font-family: var(--om-font-heading);
+  font-size: var(--om-title-xl);
+  line-height: 0.94;
+  font-weight: 500;
+  letter-spacing: var(--om-letter-tight);
+  text-wrap: balance;
+}
+
+.om-title-lg {
+  font-family: var(--om-font-heading);
+  font-size: var(--om-title-lg);
+  line-height: 0.96;
+  font-weight: 500;
+  letter-spacing: var(--om-letter-tight);
+  text-wrap: balance;
+}
+
+.om-title-md {
+  font-family: var(--om-font-heading);
+  font-size: var(--om-title-md);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  text-wrap: balance;
+}
+
+.om-body-lg {
+  font-family: var(--om-font-body);
+  font-size: var(--om-body-lg);
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+}
+
+.om-body-md {
+  font-family: var(--om-font-body);
+  font-size: var(--om-body-md);
+  line-height: 1.55;
+}
+
+.om-eyebrow,
+.om-label {
+  font-family: var(--om-font-body);
+  font-size: var(--om-label);
+  line-height: 1;
+  font-weight: 650;
+  letter-spacing: var(--om-letter-label);
+  text-transform: uppercase;
+}
+
+/* ── OFF MARKET form field system ── */
+
+.om-field-label,
+.om-simulator__label {
+  font-family: var(--om-font-body);
+  font-size: var(--om-support-text);
+  line-height: 1.25;
+  font-weight: 650;
+  color: var(--om-ruby-950);
+}
+
+.om-field-value,
+.om-simulator__value {
+  font-family: var(--om-font-body);
+  font-size: var(--om-support-text);
+  line-height: 1.2;
+  font-weight: 650;
+  color: var(--om-ruby-950);
+}
+
+.om-field-help,
+.om-simulator__field-help {
+  font-family: var(--om-font-body);
+  font-size: var(--om-meta-readable);
+  line-height: 1.45;
+  color: rgba(39, 7, 7, 0.52);
+}
+
+.om-support-text {
+  font-family: var(--om-font-body);
+  font-size: var(--om-support-text);
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+/* Legal pages — page title scale */
+.om-legal-page h1,
+.privacy-page h1 {
+  font-size: var(--om-h2, clamp(3rem, 9vw, 5rem));
+  line-height: 0.98;
+}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="fr" class="has-hover no-js not-ready">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Simulateur investissement immobilier Marrakech | OFF MARKET</title>
+  <meta name="description" content="Simulez le rendement potentiel d'un appartement, d'une villa ou d'un riad à Marrakech. OFF MARKET affine votre analyse avec des comparables réels et une sélection privée.">
+  <link rel="canonical" href="https://offmarket.ma/simulateur/">
+
+  <style>
+    body { background: #F5F4F2; color: #270707; }
+    .js.not-ready, .js.not-ready * { transition: none !important; }
+  </style>
+
+  <link rel="stylesheet" href="/assets/stylesheets/global.css?v=1765268659">
+  <link rel="stylesheet" href="/assets/stylesheets/offmarket-tokens.css?v=1765297300">
+  <link rel="stylesheet" href="/assets/stylesheets/offmarket-overrides.css?v=1765297300">
+  <link rel="stylesheet" href="/assets/stylesheets/offmarket-logo.css?v=1765268661">
+  <link rel="stylesheet" href="/assets/stylesheets/mavericks-chrome.css?v=1765297300">
+  <link rel="stylesheet" href="/assets/stylesheets/om-typography.css?v=1765297300">
+  <link rel="stylesheet" href="/assets/stylesheets/om-footer.css?v=1765297300">
+  <link rel="stylesheet" href="/assets/stylesheets/om-simulator.css?v=1765297300">
+  <link rel="stylesheet" href="/assets/stylesheets/om-buttons.css?v=1765297300">
+
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+    if (navigator.platform.toUpperCase().indexOf('WIN') >= 0) {
+      document.documentElement.classList.add('is-win');
+    }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/manifest/favicon-offmarket.svg?v=1765268661">
+  <meta name="theme-color" content="#270707">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://offmarket.ma/simulateur/">
+  <meta property="og:title" content="Simulateur investissement immobilier Marrakech | OFF MARKET">
+  <meta property="og:description" content="Simulez le rendement potentiel d'un appartement, d'une villa ou d'un riad à Marrakech. OFF MARKET affine votre analyse avec des comparables réels et une sélection privée.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://offmarket.ma/assets/mavericks/hero/mavericks-hero-poster.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simulateur investissement immobilier Marrakech | OFF MARKET">
+  <meta name="twitter:description" content="Simulez le rendement potentiel d'un appartement, d'une villa ou d'un riad à Marrakech. OFF MARKET affine votre analyse avec des comparables réels et une sélection privée.">
+  <meta name="twitter:image" content="https://offmarket.ma/assets/mavericks/hero/mavericks-hero-poster.jpg">
+</head>
+<body>
+  <a href="#main" class="sr-only sr-only--focusable">Aller au contenu principal</a>
+
+  <div class="mv-chrome mv-chrome--page-light" id="mv-chrome" data-mv-chrome>
+    <div class="cinematic-menu-backdrop" data-mv-backdrop aria-hidden="true"></div>
+
+    <nav class="mv-chrome__nav-mobile om-header" aria-label="Menu">
+      <div class="om-header__bar">
+        <a href="/" class="mv-chrome__logo-link om-header__logo" aria-label="OffMarket">
+          <img src="/assets/logos/mavericks-outline.svg" alt="" class="mv-chrome__logo mv-chrome__logo--light" width="120" height="36" decoding="async">
+        </a>
+        <div class="om-header__actions">
+          <button type="button" class="om-header__icon-btn om-header__icon-btn--ghost om-header__icon-btn--menu" data-mv-menu-toggle aria-expanded="false" aria-label="Menu">
+            <span class="mv-menu-toggle-icon" data-mv-toggle-icon aria-hidden="true">
+              <span class="mv-menu-toggle-icon__bar mv-menu-toggle-icon__bar--top"></span>
+              <span class="mv-menu-toggle-icon__bar mv-menu-toggle-icon__bar--bottom"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="mv-chrome__nav-desktop om-header" aria-label="Menu">
+      <div class="om-header__bar">
+        <a href="/" class="mv-chrome__logo-link om-header__logo" aria-label="OffMarket">
+          <img src="/assets/logos/mavericks-outline.svg" alt="" class="mv-chrome__logo mv-chrome__logo--light" width="140" height="42" decoding="async">
+        </a>
+        <nav class="om-header__nav" aria-label="Navigation principale">
+          <a href="/">Accueil</a>
+          <a href="/sur-plan">Sur plan</a>
+          <a href="/simulateur" class="is-active" aria-current="page">Simulateur</a>
+          <a href="#callback-modal">Contact</a>
+        </nav>
+        <div class="om-header__actions">
+          <div class="om-language-dropdown" data-language-dropdown>
+            <button class="om-language-dropdown__trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Choisir la langue">
+              <span class="om-language-dropdown__current">EN</span>
+              <span class="om-language-dropdown__chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="om-language-dropdown__menu" role="listbox" aria-label="Choisir la langue">
+              <a href="#" class="om-language-dropdown__option is-active" role="option" aria-selected="true" data-lang="EN">EN</a>
+              <a href="#" class="om-language-dropdown__option" role="option" aria-selected="false" data-lang="FR">FR</a>
+              <a href="#" class="om-language-dropdown__option" role="option" aria-selected="false" data-lang="IT">IT</a>
+              <a href="#" class="om-language-dropdown__option" role="option" aria-selected="false" data-lang="NL">NL</a>
+            </div>
+          </div>
+          <a class="om-header__access-btn" href="#callback-modal">Demander l'accès</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="cinematic-menu-panel" data-mv-menu-panel role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+      <div class="mv-chrome__menu-mobile-spacer" aria-hidden="true"></div>
+      <div class="mv-chrome__menu-desktop-spacer" aria-hidden="true"></div>
+      <nav class="cinematic-menu-scroll">
+        <ul class="mv-chrome__menu-list" data-mv-menu-items>
+          <li class="cinematic-menu-item mv-chrome__menu-item"><a href="/" class="cinematic-menu-link">Accueil</a></li>
+          <li class="cinematic-menu-item mv-chrome__menu-item"><a href="/sur-plan" class="cinematic-menu-link">Sur plan</a></li>
+          <li class="cinematic-menu-item mv-chrome__menu-item"><a href="/simulateur" class="cinematic-menu-link">Simulateur</a></li>
+          <li class="cinematic-menu-item mv-chrome__menu-item"><a href="#callback-modal" class="cinematic-menu-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mv-chrome__menu-footer">
+        <a class="om-header__access-btn om-header__access-btn--menu" href="#callback-modal">Demander l'accès</a>
+        <nav class="mv-lang-switcher mv-lang-switcher--on-dark mv-lang-switcher--mobile-only" aria-label="Langue">
+          <button type="button" class="mv-lang-switcher__btn is-active" aria-current="true">EN</button>
+          <span class="mv-lang-switcher__sep" aria-hidden="true">/</span>
+          <button type="button" class="mv-lang-switcher__btn">FR</button>
+          <span class="mv-lang-switcher__sep" aria-hidden="true">/</span>
+          <button type="button" class="mv-lang-switcher__btn">IT</button>
+          <span class="mv-lang-switcher__sep" aria-hidden="true">/</span>
+          <button type="button" class="mv-lang-switcher__btn">NL</button>
+        </nav>
+        <p class="mv-chrome__menu-brand">OFF MARKET</p>
+        <p class="mv-chrome__menu-tagline">Immobilier privé à Marrakech</p>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" class="om-simulator-page">
+    <header class="om-simulator-hero">
+      <span class="om-simulator-hero__eyebrow">SIMULATEUR PRIVÉ</span>
+      <h1 class="om-simulator-hero__title">Simuler avant d'investir</h1>
+      <p class="om-simulator-hero__subtitle om-simulator-hero__text">
+        Estimez le potentiel d'un bien à Marrakech selon son usage, son adresse et votre stratégie.
+        <span class="om-brand-inline">OFF MARKET</span> affine ensuite les chiffres avec des comparables réels et des opportunités sélectionnées.
+      </p>
+    </header>
+
+    <div class="om-simulator" data-simulator>
+      <div class="om-simulator__grid om-simulator__layout">
+        <section class="om-simulator__inputs" aria-label="Paramètres de simulation">
+          <header class="om-simulator__panel-intro">
+            <span class="om-simulator__panel-eyebrow">PARAMÈTRES</span>
+            <h2 class="om-simulator__panel-title">Ajustez vos hypothèses. Le résultat se recalcule en direct.</h2>
+            <p class="om-simulator__note" data-simulator-note>Estimation indicative. OFF MARKET affine cette simulation avec l'adresse exacte, les charges réelles et les biens disponibles.</p>
+          </header>
+
+          <div class="om-simulator__tabs" role="tablist" aria-label="Modes de simulation">
+            <button type="button" class="om-simulator__tab is-active" data-simulator-tab="short" role="tab" aria-selected="true">Location courte durée</button>
+            <button type="button" class="om-simulator__tab" data-simulator-tab="long" role="tab" aria-selected="false">Location longue durée</button>
+            <button type="button" class="om-simulator__tab" data-simulator-tab="resale" role="tab" aria-selected="false">Achat-revente</button>
+          </div>
+
+          <div class="om-simulator__panel" data-simulator-panel="short" role="tabpanel">
+            <div class="om-simulator__field" data-field data-field-type="range" data-field-key="budget">
+              <div class="om-simulator__field-header">
+                <div>
+                  <span class="om-simulator__label">Budget d'acquisition</span>
+                  <p class="om-simulator__field-help">Prix estimé du bien, hors frais.</p>
+                </div>
+                <span class="om-simulator__value"><span data-field-value></span><span class="om-simulator__value-eur" data-field-eur></span></span>
+              </div>
+              <input class="om-simulator__range" type="range" min="750000" max="12000000" step="50000" value="1500000">
+            </div>
+            <div class="om-simulator__field" data-field data-field-type="range" data-field-key="nightlyRate">
+              <div class="om-simulator__field-header">
+                <div>
+                  <span class="om-simulator__label">Prix nuitée moyen</span>
+                </div>
+                <span class="om-simulator__value"><span data-field-value></span></span>
+              </div>
+              <input class="om-simulator__range" type="range" min="600" max="3500" step="50" value="1200">
+            </div>
+            <div class="om-simulator__field" data-field data-field-type="range" data-field-key="personalWeeks" data-field-weeks="true">
+              <div class="om-simulator__field-header">
+                <div>
+                  <span class="om-simulator__label">Semaines d'usage personnel</span>
+                </div>
+                <span class="om-simulator__value"><span data-field-value></span></span>
+              </div>
+              <input class="om-simulator__range" type="range" min="0" max="20" step="1" value="0">
+            </div>
+            <div class="om-simulator__field" data-field data-field-type="range" data-field-key="occupancy" data-field-percent="true">
+              <div class="om-simulator__field-header">
+                <div>
+                  <span class="om-simulator__label">Taux d'occupation</span>
+                </div>
+                <span class="om-simulator__value"><span data-field-value></span></span>
+              </div>
+              <input class="om-simulator__range" type="range" min="30" max="85" step="1" value="70">
+            </div>
+          </div>
+
+          <div class="om-simulator__panel" data-simulator-panel="long" role="tabpanel" hidden>
+            <div class="om-simulator__field" data-field data-field-type="range" data-field-key="budget">
+              <div class="om-simulator__field-header">
+                <div>
+                  <span class="om-simulator__label">Budget d'acquisition</span>
+                  <p class="om-simulator__field-help">Prix estimé du bien, hors frais.</p>
+                </div>
+                <span class="om-simulator__value"><span data-field-value></span><span class="om-simulator__value-eur" data-field-eur></span></span>
+              </div>
+              <input class="om-simulator__range" type="range" min="750000" max="12000000" step="50000" value="1500000">
+            </div>
+            <div class="om-simulator__field" data-field data-field-type="range" data-field-key="monthlyRent">
+              <div class="om-simulator__field-header">
+                <div>
+                  <span class="om-simulator__label">Loyer mensuel estimé</span>
+                </div>
+                <span class="om-simulator__value"><span data-field-value></span></span>
+              </div>
+              <input class="om-simulator__range" type="range" min="6000" max="60000" step="500" value="18000">
+            </div>
+          </div>
+
+          <div class="om-simulator__panel" data-simulator-panel="resale" role="tabpanel" hidden>
+            <div class="om-simulator__field" data-field data-field-type="range" data-field-key="budget">
+              <div class="om-simulator__field-header">
+                <div>
+                  <span class="om-simulator__label">Budget d'acquisition</span>
+                  <p class="om-simulator__field-help">Prix estimé du bien, hors frais.</p>
+                </div>
+                <span class="om-simulator__value"><span data-field-value></span><span class="om-simulator__value-eur" data-field-eur></span></span>
+              </div>
+              <input class="om-simulator__range" type="range" min="750000" max="12000000" step="50000" value="1500000">
+            </div>
+            <div class="om-simulator__field" data-field data-field-type="range" data-field-key="resaleHorizonYears" data-field-years="true">
+              <div class="om-simulator__field-header">
+                <div>
+                  <span class="om-simulator__label">Horizon de revente</span>
+                </div>
+                <span class="om-simulator__value"><span data-field-value></span></span>
+              </div>
+              <input class="om-simulator__range" type="range" min="3" max="15" step="1" value="8">
+            </div>
+            <div class="om-simulator__field" data-field data-field-type="range" data-field-key="annualAppreciationRate" data-field-percent="true" data-field-decimals="1">
+              <div class="om-simulator__field-header">
+                <div>
+                  <span class="om-simulator__label">Hypothèse de valorisation annuelle</span>
+                </div>
+                <span class="om-simulator__value"><span data-field-value></span></span>
+              </div>
+              <input class="om-simulator__range" type="range" min="8" max="15" step="0.5" value="10">
+            </div>
+
+            <details class="om-simulator__advanced">
+              <summary class="om-simulator__advanced-toggle">Afficher les hypothèses avancées</summary>
+              <div class="om-simulator__advanced-inner">
+                <div class="om-simulator__field" data-field data-field-type="range" data-field-key="taxRate" data-field-percent="true">
+                  <div class="om-simulator__field-header">
+                    <div>
+                      <span class="om-simulator__label">Taux d'imposition</span>
+                    </div>
+                    <span class="om-simulator__value"><span data-field-value></span></span>
+                  </div>
+                  <input class="om-simulator__range" type="range" min="0" max="30" step="1" value="15">
+                </div>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <aside class="om-simulator__results om-simulator__result" data-simulator-results aria-live="polite">
+          <span class="om-simulator__results-section om-simulator__result-section" data-result-section-label>RÉSULTAT</span>
+          <span class="om-simulator__results-label om-simulator__result-label" data-result-label>RENDEMENT NET ANNUEL</span>
+          <p class="om-simulator__results-main om-simulator__result-value" data-result-main>0,0 %</p>
+          <p class="om-simulator__results-sub om-simulator__result-sub" data-result-sub hidden></p>
+          <p class="om-simulator__results-caption" data-result-caption>après charges, commission et fiscalité</p>
+
+          <div class="om-simulator__metrics om-simulator__metrics--primary" data-result-metrics></div>
+
+          <p class="om-simulator__cta-note" data-simulator-note>Estimation indicative. OFF MARKET affine cette simulation avec l'adresse exacte, les charges réelles et les biens disponibles.</p>
+          <div class="om-simulator__actions">
+            <a href="#callback-modal" class="om-button om-button--primary">Recevoir une analyse privée</a>
+            <a href="/#featured-projects" class="om-button om-button--secondary">Voir les biens compatibles</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer id="contact" class="om-footer">
+    <div class="om-footer__transition" aria-hidden="true"></div>
+    <div class="om-footer__inner">
+      <div class="om-footer__container om-footer__content">
+        <div class="om-footer__grid">
+          <div class="om-footer__brand">
+            <p class="om-footer__label">Maison OffMarket</p>
+            <p class="om-footer__tagline">Sélection privée d'opportunités immobilières à Marrakech.</p>
+          </div>
+          <div class="om-footer__column om-footer__column--nav">
+            <p class="om-footer__label">Navigation</p>
+            <ul class="om-footer__links">
+              <li><a href="/">Accueil</a></li>
+              <li><a href="/sur-plan">Sur plan</a></li>
+              <li><a href="/simulateur">Simulateur</a></li>
+              <li><a href="#callback-modal">Contact</a></li>
+            </ul>
+          </div>
+          <div class="om-footer__column om-footer__column--contact">
+            <p class="om-footer__label">Contact</p>
+            <ul class="om-footer__links">
+              <li>Marrakech, Maroc</li>
+              <li><a href="mailto:contact@offmarket.ma">contact@offmarket.ma</a></li>
+              <li><span class="om-footer__phone">+212 (0) 000 000 000</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="om-footer__watermark" aria-hidden="true">
+        <span>OFFMARKET</span>
+      </div>
+      <div class="om-footer__container om-footer__bottom">
+        <div class="om-footer__bar">
+          <p>© <span data-mv-year></span> OFFMARKET. Tous droits réservés.</p>
+          <a href="/privacy-policy/">Mentions légales</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="js-modal">
+    <div class="modal modal--full ui-dark is-hidden" id="callback-modal" data-plugin="modal" data-modal-one-per-page="true" role="dialog" aria-hidden="true" aria-label="Contact">
+      <div class="modal__background"></div>
+      <div class="modal__animation">
+        <div class="modal__scroller">
+          <div class="modal__scroller__scrollable">
+            <div class="modal__content-wrapper">
+              <div class="modal__content ui-background js-modal-ignore-auto-close">
+                <button type="button" class="btn btn--primary btn--square modal__close js-modal-close" aria-label="Fermer">×</button>
+                <div class="l-callback row ui-dark px-layout py-layout">
+                  <div class="col col--md-12">
+                    <p class="h2 leading-trim">Recevoir une analyse privée</p>
+                    <p class="mt-1">Partagez votre projet. OFF MARKET vous répond avec une lecture ciblée et des comparables réels.</p>
+                    <div class="mt-2">
+                      <a href="mailto:contact@offmarket.ma" class="om-button om-button--primary">contact@offmarket.ma</a>
+                    </div>
+                    <div class="mt-1">
+                      <a href="tel:+212000000000" class="om-button om-button--secondary">+212 (0) 000 000 000</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/javascripts/gsap.min.js?v=1765268700" defer></script>
+  <script src="/assets/javascripts/mavericks-chrome.js?v=1765297300" defer></script>
+  <script src="/assets/javascripts/om-simulator.js?v=1765297300" defer></script>
+</body>
+</html>

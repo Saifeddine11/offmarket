@@ -1,0 +1,113 @@
+/**
+ * OffMarket — Arc Reveal hero intro (homepage)
+ * Premium curved curtain reveal over the existing gallery hero.
+ */
+
+:root {
+  --om-arc-dark-red: #270707;
+  --om-arc-stone: #f1ebeb;
+  --om-arc-champagne: #b88a5a;
+  --om-arc-reveal-bg: #f1ebeb;
+  --om-arc-ease: cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+html.is-arc-reveal-pending body {
+  overflow: hidden;
+}
+
+html.is-arc-reveal-pending .preloader--landing {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html.is-arc-reveal-pending [data-mv-chrome] {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.om-arc-reveal {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  width: 100%;
+  height: 100%;
+  height: 100svh;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overflow: hidden;
+  touch-action: none;
+  background: transparent;
+  color: var(--om-arc-stone);
+}
+
+.om-arc-reveal.is-complete {
+  pointer-events: none;
+}
+
+.om-arc-reveal__intro {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background: var(--om-arc-dark-red);
+  z-index: 1;
+}
+
+.om-arc-reveal__greeting {
+  margin: 0;
+  text-align: center;
+  font-family: "TT Commons Pro", system-ui, -apple-system, sans-serif;
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  color: var(--om-arc-stone);
+}
+
+.om-arc-reveal__word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.om-arc-reveal__word.is-accent {
+  color: var(--om-arc-champagne);
+}
+
+.om-arc-reveal__curtain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100svh;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.om-arc-reveal.is-revealing .om-arc-reveal__curtain {
+  opacity: 1;
+  visibility: visible;
+}
+
+.om-arc-reveal__path {
+  fill: var(--om-arc-dark-red);
+}
+
+.om-arc-reveal.is-revealing .om-arc-reveal__intro {
+  opacity: 0;
+  transition: opacity 0.2s var(--om-arc-ease);
+}
+
+.om-arc-reveal.is-fading {
+  opacity: 0;
+  transition: opacity 0.14s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .om-arc-reveal {
+    display: none !important;
+  }
+}

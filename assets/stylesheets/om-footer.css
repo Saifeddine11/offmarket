@@ -1,0 +1,302 @@
+/**
+ * OffMarket — Mavericks editorial footer (static)
+ * Source: mavericks/src/components/layout/Footer.jsx
+ * Scoped to .om-footer only.
+ */
+
+.om-footer {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  width: 100%;
+  background: #270707;
+  background: var(--om-ruby-950);
+  color: rgba(245, 244, 242, 0.86);
+  font-family: var(--om-font-body);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-inline: 0;
+  border-radius: 0;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.om-footer a {
+  color: rgba(245, 244, 242, 0.72);
+  text-decoration: none;
+  transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.om-footer a:hover {
+  color: #f5f4f2;
+}
+
+/* Connected handoff from homepage final CTA — seamless merge */
+.om-final-cta + .om-footer,
+.om-final-cta + footer.om-footer,
+.om-final-cta + footer {
+  z-index: 1;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 0;
+  border: 0;
+  border-radius: 0;
+  padding-top: 0;
+  padding-inline: 0;
+  background-color: var(--om-ruby-950);
+}
+
+.om-final-cta + .om-footer .om-footer__transition,
+.om-final-cta + footer .om-footer__transition {
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.has-scroll-smooth .om-footer[data-scroll-section] {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.om-footer__transition {
+  pointer-events: none;
+  height: 10vh;
+  min-height: 64px;
+  background: linear-gradient(
+    180deg,
+    rgba(39, 7, 7, 0) 0%,
+    rgba(39, 7, 7, 0.52) 44%,
+    #270707 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .om-footer__transition {
+    height: 12vh;
+    min-height: 88px;
+  }
+}
+
+@media (max-width: 768px) {
+  footer.om-footer,
+  .om-final-cta + footer.om-footer,
+  .om-final-cta + .om-footer {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    padding-top: 0;
+    padding-inline: 0;
+  }
+
+  .om-final-cta + .om-footer .om-footer__inner,
+  .om-final-cta + footer.om-footer .om-footer__inner {
+    border-radius: 0;
+  }
+}
+
+.om-footer__inner {
+  position: relative;
+  width: min(100%, 1280px);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+
+.om-footer__container {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+.om-footer__content {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.om-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .om-footer__grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(2rem, 4vh, 2.5rem);
+  }
+
+  .om-footer__brand {
+    grid-column: span 5;
+  }
+
+  .om-footer__column--nav {
+    grid-column: span 3;
+  }
+
+  .om-footer__column--contact,
+  .om-footer__column--social,
+  .om-footer__column--lang {
+    grid-column: span 4;
+  }
+}
+
+.om-footer__label {
+  margin: 0;
+  font-family: var(--om-font-body);
+  font-size: var(--om-label);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: var(--om-letter-label);
+  font-weight: 650;
+  color: rgba(184, 138, 90, 0.8);
+}
+
+.om-footer__brand .om-footer__label {
+  letter-spacing: 0.18em;
+  color: rgba(184, 138, 90, 0.85);
+}
+
+.om-footer__tagline {
+  margin: 1rem 0 0;
+  max-width: 22rem;
+  font-size: var(--om-body-md);
+  line-height: 1.6;
+  font-weight: 400;
+  color: rgba(241, 235, 235, 0.9);
+}
+
+.om-footer__links {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  color: rgba(245, 244, 242, 0.86);
+}
+
+.om-footer__links li + li {
+  margin-top: 0.5rem;
+}
+
+.om-footer__links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.om-footer__phone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 15px;
+  color: rgba(245, 244, 242, 0.72);
+}
+
+.om-footer__lang {
+  margin-top: 1rem;
+}
+
+.om-footer__watermark {
+  pointer-events: none;
+  user-select: none;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  padding: 0 clamp(1rem, 4vw, 2rem) 1.5rem;
+  text-align: center;
+}
+
+.om-footer__watermark span {
+  display: block;
+  font-family: var(--font-main, var(--om-font-display, Inter, Helvetica, Arial, sans-serif));
+  text-transform: uppercase;
+  color: #b88a5a;
+  font-size: clamp(3.5rem, 20vw, 18rem);
+  letter-spacing: 0.12em;
+  line-height: 0.85;
+  font-weight: 500;
+  opacity: 0.16;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.om-footer__bottom {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(184, 138, 90, 0.15);
+}
+
+.om-footer__bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.25rem 0;
+  font-family: var(--om-font-ui, Inter, Helvetica, Arial, sans-serif);
+  font-size: var(--om-body-md);
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgba(241, 235, 235, 0.75);
+}
+
+@media (min-width: 768px) {
+  .om-footer__bar {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.om-footer__bar p {
+  margin: 0;
+}
+
+.om-footer__bar a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.om-footer__bar a:hover {
+  color: #f5f4f2;
+}
+
+@media (max-width: 767px) {
+  .om-footer__inner {
+    padding: 0 1.25rem 2.5rem;
+  }
+
+  .om-footer__content {
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .om-footer__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .om-footer__links,
+  .om-footer__links a,
+  .om-footer__phone {
+    font-size: 14.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .om-footer *,
+  .om-footer *::before,
+  .om-footer *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

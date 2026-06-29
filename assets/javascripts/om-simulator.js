@@ -1,0 +1,473 @@
+/**
+ * OFF MARKET — Investment simulator (internal calculation model)
+ */
+(function () {
+  'use strict';
+
+  var EUR_RATE = 10.8;
+  var SHORT_TERM_NET_FACTOR = 0.5676;
+  var LONG_TERM_NET_FACTOR = 0.6854;
+  var LONG_TERM_VACANCY_LABEL = '~1 mois / an';
+  var LONG_TERM_MANAGEMENT_INCLUDED = 'Oui';
+
+  var NOTE_TEXT =
+    'Estimation indicative. OFF MARKET affine cette simulation avec l\u2019adresse exacte, les charges réelles et les biens disponibles.';
+
+  var MODES = {
+    short: {
+      resultSection: 'RÉSULTAT',
+      resultLabel: 'RENDEMENT NET ANNUEL',
+      resultCaption: 'après charges, commission et fiscalité',
+      mainIsPercent: true,
+    },
+    long: {
+      resultSection: 'RÉSULTAT',
+      resultLabel: 'RENDEMENT NET ANNUEL',
+      resultCaption: 'après charges, gestion et fiscalité',
+      mainIsPercent: true,
+    },
+    resale: {
+      resultSection: 'RÉSULTAT',
+      resultLabel: 'PLUS-VALUE NETTE',
+      resultCaption: '',
+      mainIsPercent: false,
+    },
+  };
+
+  var DEFAULTS = {
+    short: {
+      budget: 1500000,
+      nightlyRate: 1200,
+      personalWeeks: 0,
+      occupancy: 70,
+    },
+    long: {
+      budget: 1500000,
+      monthlyRent: 18000,
+    },
+    resale: {
+      budget: 1500000,
+      resaleHorizonYears: 8,
+      annualAppreciationRate: 10,
+      taxRate: 15,
+    },
+  };
+
+  var state = {
+    mode: 'short',
+    short: Object.assign({}, DEFAULTS.short),
+    long: Object.assign({}, DEFAULTS.long),
+    resale: Object.assign({}, DEFAULTS.resale),
+  };
+
+  function formatNumber(value) {
+    return Math.round(value)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+
+  function formatDH(value) {
+    return formatNumber(value) + ' DH';
+  }
+
+  function formatEUR(mad) {
+    return '\u2248 ' + formatNumber(mad / EUR_RATE) + ' \u20ac';
+  }
+
+  function formatPct(value, decimals) {
+    var d = typeof decimals === 'number' ? decimals : 1;
+    return value.toFixed(d).replace('.', ',') + ' %';
+  }
+
+  function formatApproxPct(value, decimals) {
+    return '~' + formatPct(value, decimals);
+  }
+
+  function getActiveState() {
+    return state[state.mode];
+  }
+
+  function calcShort(data) {
+    var availableDays = 365 - data.personalWeeks * 7;
+    var nightsRented = Math.round(availableDays * (data.occupancy / 100));
+    var grossAnnualRevenue = Math.round(data.nightlyRate * nightsRented);
+    var netAnnualRevenue = Math.round(grossAnnualRevenue * SHORT_TERM_NET_FACTOR);
+    var monthlyNet = Math.round(netAnnualRevenue / 12);
+    var netYield = data.budget > 0 ? (netAnnualRevenue / data.budget) * 100 : 0;
+
+    return {
+      nightsRented: nightsRented,
+      grossAnnualRevenue: grossAnnualRevenue,
+      netAnnualRevenue: netAnnualRevenue,
+      monthlyNet: monthlyNet,
+      netYield: netYield,
+      effectiveOccupancy: data.occupancy,
+    };
+  }
+
+  function calcLong(data) {
+    var grossAnnualRent = Math.round(data.monthlyRent * 12);
+    var netAnnualRent = Math.round(grossAnnualRent * LONG_TERM_NET_FACTOR);
+    var monthlyNet = Math.round(netAnnualRent / 12);
+    var netYield = data.budget > 0 ? (netAnnualRent / data.budget) * 100 : 0;
+
+    return {
+      grossAnnualRent: grossAnnualRent,
+      netAnnualRent: netAnnualRent,
+      monthlyNet: monthlyNet,
+      netYield: netYield,
+    };
+  }
+
+  function calcResale(data) {
+    var rate = data.annualAppreciationRate / 100;
+    var exitValue = Math.round(data.budget * Math.pow(1 + rate, data.resaleHorizonYears));
+    var grossCapitalGain = Math.round(exitValue - data.budget);
+    var taxAmount = Math.round(grossCapitalGain * (data.taxRate / 100));
+    var netCapitalGain = Math.round(grossCapitalGain - taxAmount);
+    var annualizedReturn = data.annualAppreciationRate;
+
+    return {
+      exitValue: exitValue,
+      grossCapitalGain: grossCapitalGain,
+      taxAmount: taxAmount,
+      netCapitalGain: netCapitalGain,
+      annualizedReturn: annualizedReturn,
+      taxRate: data.taxRate,
+      horizonYears: data.resaleHorizonYears,
+    };
+  }
+
+  function computeResults() {
+    var data = getActiveState();
+    if (state.mode === 'short') return calcShort(data);
+    if (state.mode === 'long') return calcLong(data);
+    return calcResale(data);
+  }
+
+  function getFieldOptions(fieldEl) {
+    return {
+      isPercent: fieldEl.getAttribute('data-field-percent') === 'true',
+      isYears: fieldEl.getAttribute('data-field-years') === 'true',
+      isWeeks: fieldEl.getAttribute('data-field-weeks') === 'true',
+      decimals: fieldEl.getAttribute('data-field-decimals')
+        ? Number(fieldEl.getAttribute('data-field-decimals'))
+        : 0,
+    };
+  }
+
+  function updateValueDisplay(fieldEl, value, options) {
+    var valueEl = fieldEl.querySelector('[data-field-value]');
+    var eurEl = fieldEl.querySelector('[data-field-eur]');
+    if (!valueEl) return;
+
+    if (options && options.isPercent) {
+      valueEl.textContent = formatPct(value, options.decimals || 0);
+    } else if (options && options.isYears) {
+      valueEl.textContent = value + ' ans';
+    } else if (options && options.isWeeks) {
+      valueEl.textContent = value + ' sem.';
+    } else {
+      valueEl.textContent = formatDH(value);
+      if (eurEl) eurEl.textContent = formatEUR(value);
+    }
+  }
+
+  function syncPanelFields(mode) {
+    var panel = document.querySelector('[data-simulator-panel="' + mode + '"]');
+    if (!panel) return;
+
+    panel.querySelectorAll('[data-field]').forEach(function (fieldEl) {
+      var key = fieldEl.getAttribute('data-field-key');
+      var type = fieldEl.getAttribute('data-field-type');
+      var value = state[mode][key];
+
+      if (type === 'range') {
+        var input = fieldEl.querySelector('input[type="range"]');
+        if (input && value !== undefined) {
+          input.value = value;
+          updateValueDisplay(fieldEl, Number(value), getFieldOptions(fieldEl));
+        }
+      }
+    });
+  }
+
+  function syncBudget(fromMode) {
+    if (fromMode === 'short') {
+      state.long.budget = state.short.budget;
+      state.resale.budget = state.short.budget;
+    } else if (fromMode === 'long') {
+      state.short.budget = state.long.budget;
+      state.resale.budget = state.long.budget;
+    } else {
+      state.short.budget = state.resale.budget;
+      state.long.budget = state.resale.budget;
+    }
+    syncPanelFields('short');
+    syncPanelFields('long');
+    syncPanelFields('resale');
+  }
+
+  function bindRange(fieldEl, mode, key, options) {
+    var input = fieldEl.querySelector('input[type="range"]');
+    if (!input) return;
+
+    input.value = state[mode][key];
+    updateValueDisplay(fieldEl, Number(input.value), options);
+
+    input.addEventListener('input', function () {
+      var value = Number(input.value);
+      state[mode][key] = value;
+      updateValueDisplay(fieldEl, value, options);
+      if (key === 'budget') syncBudget(mode);
+      renderResults();
+    });
+  }
+
+  function bindPanel(panel) {
+    var mode = panel.getAttribute('data-simulator-panel');
+    if (!mode || !state[mode]) return;
+
+    panel.querySelectorAll('[data-field]').forEach(function (fieldEl) {
+      var type = fieldEl.getAttribute('data-field-type');
+      var key = fieldEl.getAttribute('data-field-key');
+
+      if (type === 'range') {
+        bindRange(fieldEl, mode, key, getFieldOptions(fieldEl));
+      }
+    });
+  }
+
+  function appendMetric(container, label, value, opts) {
+    opts = opts || {};
+    var card = document.createElement('div');
+    card.className = 'om-simulator__metric';
+
+    var labelEl = document.createElement('span');
+    labelEl.className = 'om-simulator__metric-label';
+    labelEl.textContent = label;
+
+    var valueEl = document.createElement('span');
+    valueEl.className =
+      'om-simulator__metric-value' + (opts.positive ? ' is-positive' : '');
+
+    if (typeof value === 'string') {
+      valueEl.textContent = value;
+    } else if (opts.isMoney) {
+      valueEl.textContent = formatDH(value);
+      var sub = document.createElement('span');
+      sub.className = 'om-simulator__metric-sub';
+      sub.textContent = formatEUR(value);
+      card.appendChild(labelEl);
+      card.appendChild(valueEl);
+      if (opts.showEur) card.appendChild(sub);
+      container.appendChild(card);
+      return;
+    } else {
+      valueEl.textContent = String(value);
+    }
+
+    card.appendChild(labelEl);
+    card.appendChild(valueEl);
+    container.appendChild(card);
+  }
+
+  function renderResults() {
+    var results = computeResults();
+    var modeConfig = MODES[state.mode];
+    var root = document.querySelector('[data-simulator-results]');
+    if (!root) return;
+
+    var sectionEl = root.querySelector('[data-result-section-label]');
+    var labelEl = root.querySelector('[data-result-label]');
+    var mainEl = root.querySelector('[data-result-main]');
+    var captionEl = root.querySelector('[data-result-caption]');
+    var subEl = root.querySelector('[data-result-sub]');
+    var metricsEl = root.querySelector('[data-result-metrics]');
+
+    if (sectionEl) sectionEl.textContent = modeConfig.resultSection;
+    if (labelEl) labelEl.textContent = modeConfig.resultLabel;
+
+    if (state.mode === 'resale') {
+      if (mainEl) {
+        mainEl.textContent = formatDH(results.netCapitalGain);
+        mainEl.classList.add('is-money');
+      }
+      if (subEl) {
+        subEl.hidden = false;
+        subEl.textContent =
+          formatEUR(results.netCapitalGain) +
+          '\nRendement annualisé ' +
+          formatApproxPct(results.annualizedReturn, 1);
+      }
+      if (captionEl) {
+        captionEl.textContent = '';
+        captionEl.hidden = true;
+      }
+    } else {
+      if (mainEl) {
+        mainEl.textContent = formatPct(results.netYield, 1);
+        mainEl.classList.remove('is-money');
+      }
+      if (subEl) subEl.hidden = true;
+      if (captionEl) {
+        captionEl.textContent = modeConfig.resultCaption;
+        captionEl.hidden = false;
+      }
+    }
+
+    if (metricsEl) {
+      metricsEl.innerHTML = '';
+
+      if (state.mode === 'short') {
+        appendMetric(metricsEl, 'Revenu brut / an', results.grossAnnualRevenue, {
+          isMoney: true,
+          positive: true,
+        });
+        appendMetric(metricsEl, 'Revenu net / an', results.netAnnualRevenue, {
+          isMoney: true,
+          positive: true,
+        });
+        appendMetric(
+          metricsEl,
+          'Nuitées louées',
+          formatNumber(results.nightsRented) + ' / an',
+        );
+        appendMetric(
+          metricsEl,
+          'Taux d\u2019occupation effectif',
+          formatPct(results.effectiveOccupancy, 0),
+        );
+      } else if (state.mode === 'long') {
+        appendMetric(metricsEl, 'Loyer brut / an', results.grossAnnualRent, {
+          isMoney: true,
+          positive: true,
+        });
+        appendMetric(metricsEl, 'Loyer net / an', results.netAnnualRent, {
+          isMoney: true,
+          positive: true,
+        });
+        appendMetric(
+          metricsEl,
+          'Vacance locative estimée',
+          LONG_TERM_VACANCY_LABEL,
+        );
+        appendMetric(
+          metricsEl,
+          'Gestion OFF MARKET incluse',
+          LONG_TERM_MANAGEMENT_INCLUDED,
+        );
+      } else {
+        appendMetric(metricsEl, 'Valeur estimée à la sortie', results.exitValue, {
+          isMoney: true,
+          positive: true,
+        });
+        appendMetric(metricsEl, 'Plus-value brute', results.grossCapitalGain, {
+          isMoney: true,
+          positive: true,
+        });
+        appendMetric(
+          metricsEl,
+          'Taux d\u2019imposition applicable',
+          formatPct(results.taxRate, 0),
+        );
+        appendMetric(
+          metricsEl,
+          'Horizon',
+          results.horizonYears + ' ans',
+        );
+      }
+    }
+  }
+
+  function switchMode(nextMode) {
+    state.mode = nextMode;
+
+    document.querySelectorAll('[data-simulator-tab]').forEach(function (tab) {
+      var active = tab.getAttribute('data-simulator-tab') === nextMode;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('[data-simulator-panel]').forEach(function (panel) {
+      var active = panel.getAttribute('data-simulator-panel') === nextMode;
+      panel.hidden = !active;
+    });
+
+    renderResults();
+  }
+
+  function initTabs() {
+    document.querySelectorAll('[data-simulator-tab]').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        switchMode(tab.getAttribute('data-simulator-tab'));
+        tab.blur();
+      });
+    });
+  }
+
+  function initCallbackModal() {
+    var modal = document.getElementById('callback-modal');
+    if (!modal) return;
+
+    function openModal(event) {
+      if (event) event.preventDefault();
+      modal.classList.remove('is-hidden');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.add('is-hidden');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('a[href="#callback-modal"]').forEach(function (link) {
+      link.addEventListener('click', openModal);
+    });
+
+    modal.querySelectorAll('.js-modal-close, .modal__background').forEach(function (el) {
+      el.addEventListener('click', function (event) {
+        event.preventDefault();
+        closeModal();
+      });
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !modal.classList.contains('is-hidden')) {
+        closeModal();
+      }
+    });
+
+    if (window.location.hash === '#callback-modal') {
+      openModal();
+    }
+  }
+
+  function initNotes() {
+    document.querySelectorAll('[data-simulator-note]').forEach(function (el) {
+      el.textContent = NOTE_TEXT;
+    });
+  }
+
+  function init() {
+    var root = document.querySelector('[data-simulator]');
+    if (!root) return;
+
+    document.querySelectorAll('[data-simulator-panel]').forEach(bindPanel);
+    syncPanelFields('short');
+    syncPanelFields('long');
+    syncPanelFields('resale');
+    initNotes();
+    initTabs();
+    switchMode('short');
+    initCallbackModal();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
