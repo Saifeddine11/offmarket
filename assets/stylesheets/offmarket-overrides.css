@@ -368,23 +368,7 @@ summary:focus-visible {
     will-change: auto !important;
   }
 
-  /* Hide mobile legacy/template fork only — never hide OFF MARKET lower sections */
-  #nature-mobile,
-  #place-mobile-block,
-  .l-place-description,
-  #l-place-sticky-mobile-1,
-  #l-place-sticky-mobile-2,
-  #l-place-sticky-mobile-3,
-  #design-mobile,
-  #design-mobile-slide-2,
-  #l-design-mobile-sticky-2,
-  #design-mobile-slide-4,
-  #l-residences-sticky-2,
-  #residences-slider-mobile,
-  #interiors-2,
-  #interiors-slider-mobile {
-    display: none !important;
-  }
+  /* Old mobile template fork — hidden in om-mobile-desktop-parity.css */
 
   /* Collapse legacy sticky spacers that still reserve 100svh on mobile */
   #legacy-editorial .sticky__spacer {

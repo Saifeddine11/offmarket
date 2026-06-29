@@ -50,7 +50,11 @@
 }
 
 html.hero-video-autoplay-blocked .mav-hero__video {
-  opacity: 0;
+  opacity: 1;
+}
+
+html.hero-video-autoplay-blocked .mav-hero__background {
+  opacity: 0.4;
 }
 
 .mav-hero__overlay {
@@ -662,6 +666,23 @@ html.hero-video-autoplay-blocked .mav-hero__video {
 
   .mav-hero__counter-number {
     font-size: clamp(64px, 19vw, 96px);
+  }
+}
+
+@media (max-width: 979px) {
+  .mav-hero__video {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    z-index: 0;
+  }
+
+  .mav-hero__background {
+    z-index: 0;
+  }
+
+  .mav-hero__overlay {
+    z-index: 1;
   }
 }
 

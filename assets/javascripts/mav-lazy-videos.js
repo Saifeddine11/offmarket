@@ -17,15 +17,24 @@
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
     video.removeAttribute('controls');
+    video.preload = 'auto';
 
     function tryPlay() {
       var promise = video.play();
       if (promise && typeof promise.catch === 'function') {
         promise.catch(function () {
-          document.documentElement.classList.add('hero-video-autoplay-blocked');
+          /* Keep video visible; poster/background remain as fallback */
         });
       }
     }
+
+    function retryOnGesture() {
+      if (!video.paused) return;
+      tryPlay();
+    }
+
+    document.addEventListener('touchstart', retryOnGesture, { once: true, passive: true, capture: true });
+    document.addEventListener('scroll', retryOnGesture, { once: true, passive: true, capture: true });
 
     if (video.readyState < 2) {
       video.addEventListener('loadeddata', tryPlay, { once: true });

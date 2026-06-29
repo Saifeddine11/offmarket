@@ -6,7 +6,7 @@
   'use strict';
 
   var PHRASE_SELECTOR =
-    '#l-design-sticky-3 [data-text-reveal], #design-mobile-slide-4 [data-text-reveal]';
+    '#l-design-sticky-3 [data-text-reveal], #design-mobile-slide-4 [data-text-reveal], #legacy-editorial [data-text-reveal]';
 
   var VISIBILITY_THRESHOLD = 0.35;
 

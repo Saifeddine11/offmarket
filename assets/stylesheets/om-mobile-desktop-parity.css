@@ -1,0 +1,153 @@
+/**
+ * Mobile — show desktop editorial blocks (responsive stack, not sticky traps)
+ * Hide the old English mobile template fork.
+ */
+
+@media (max-width: 979px) {
+  /* Desktop editorial blocks inside legacy — override is-hidden--md-down */
+  #legacy-editorial .is-hidden--md-down {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  #legacy-editorial .row.is-hidden--md-down,
+  #legacy-editorial [class*="row--"].is-hidden--md-down {
+    display: flex !important;
+    flex-wrap: wrap;
+  }
+
+  #legacy-editorial .group.is-hidden--md-down {
+    display: flex !important;
+    flex-wrap: wrap;
+  }
+
+  #legacy-editorial picture.is-hidden--md-down,
+  #legacy-editorial .img-full.is-hidden--md-down {
+    display: block !important;
+  }
+
+  /* Old mobile template fork — keep hidden */
+  #nature-mobile,
+  #place-mobile-block,
+  .l-place-description,
+  #l-place-sticky-mobile-1,
+  #l-place-sticky-mobile-2,
+  #l-place-sticky-mobile-3,
+  #design-mobile,
+  #design-mobile-slide-2,
+  #l-design-mobile-sticky-2,
+  #design-mobile-slide-4,
+  #l-residences-sticky-2,
+  #residences-slider-mobile,
+  #interiors-2,
+  #interiors-slider-mobile {
+    display: none !important;
+  }
+
+  /* Convert sticky 100svh traps → natural scroll sections */
+  #legacy-editorial .sticky,
+  #legacy-editorial .sticky--full-height,
+  #legacy-editorial .sticky__layer,
+  #legacy-editorial .sticky__layer--sticky,
+  #legacy-editorial [data-scroll-sticky] {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    transform: none !important;
+  }
+
+  #legacy-editorial .sticky__spacer {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+  }
+
+  #legacy-editorial .l-nature-bg,
+  #legacy-editorial .l-place-video-container,
+  #legacy-editorial .l-design__slide,
+  #legacy-editorial .l-residences,
+  #legacy-editorial .l-interiors {
+    min-height: clamp(20rem, 58svh, 34rem);
+  }
+
+  #legacy-editorial .px-layout {
+    padding-inline: clamp(1rem, 4vw, 1.5rem) !important;
+  }
+
+  #legacy-editorial .h1,
+  #legacy-editorial .h3,
+  #legacy-editorial .l-design__title h3 {
+    font-size: clamp(1.85rem, 7.8vw, 2.85rem) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+  }
+
+  #legacy-editorial .text-t1 {
+    font-size: clamp(1rem, 3.8vw, 1.15rem);
+    line-height: 1.55;
+    padding-inline: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  #legacy-editorial picture img,
+  #legacy-editorial .img-full img,
+  #legacy-editorial .background img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 72svh;
+    object-fit: cover;
+  }
+
+  #legacy-editorial .mobile-scrollable {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    padding-inline: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  #legacy-editorial .l-residences__caption,
+  #legacy-editorial .l-design__title {
+    padding-inline: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  /* Mobile scroll reveal */
+  [data-om-mobile-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    filter: blur(5px);
+    transition:
+      opacity 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.82s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--om-m-reveal-delay, 0ms);
+    will-change: opacity, transform, filter;
+  }
+
+  [data-om-mobile-reveal].om-m-inview {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+
+  #legacy-editorial [data-om-mobile-reveal].om-m-inview .mav-text-reveal span {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @media (max-width: 979px) {
+    [data-om-mobile-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+  }
+}

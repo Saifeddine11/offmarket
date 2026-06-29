@@ -55,7 +55,7 @@
         '<div class="om-reveal-card__top">' +
           '<div class="om-reveal-card__top-left">' +
             '<span class="om-reveal-card__index">' + escapeHtml(card.index) + '</span>' +
-            '<span class="om-reveal-card__pill om-reveal-card__pill--primary">MARRAKECH</span>' +
+            '<span class="om-reveal-card__pill om-reveal-card__pill--primary">' + escapeHtml(card.location) + '</span>' +
             '<span class="om-reveal-card__pill">' + escapeHtml(card.type) + '</span>' +
           '</div>' +
           '<span class="om-reveal-card__status">' + escapeHtml(card.price) + '</span>' +
@@ -78,8 +78,8 @@
         '</div>' +
         '<div class="om-reveal-card__media">' +
           '<img src="' + escapeHtml(card.image) + '" alt="' + escapeHtml(card.alt) + '" loading="lazy" decoding="async">' +
-          '<div class="om-reveal-card__image-badge">' +
-            '<span class="om-reveal-card__pin" aria-hidden="true"></span>' +
+          '<div class="om-reveal-card__image-badge" aria-hidden="true">' +
+            '<span class="om-reveal-card__pin"></span>' +
             '<span>Marrakech</span>' +
           '</div>' +
           '<span class="om-reveal-card__image-arrow" aria-hidden="true">' +
@@ -88,7 +88,7 @@
               '<path d="M12.2 3.8 3.5 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' +
             '</svg>' +
           '</span>' +
-          '<div class="om-reveal-card__image-overlay">' +
+          '<div class="om-reveal-card__image-overlay" aria-hidden="true">' +
             '<span class="om-reveal-card__overlay-index">' + escapeHtml(card.index) + '</span>' +
             '<div class="om-reveal-card__overlay-copy">' +
               '<p>' + escapeHtml(overlayLine) + '</p>' +
@@ -108,26 +108,6 @@
     document.dispatchEvent(new CustomEvent('om-property-cards-rendered'));
   }
 
-  function initMobileCardInteraction(card) {
-    var mobileMq = window.matchMedia('(max-width: 767px)');
-    if (!mobileMq.matches) return;
-
-    card.addEventListener('click', function (event) {
-      if (!mobileMq.matches) return;
-      if (event.target.closest('[data-property-modal-trigger]')) return;
-
-      var trigger = card.querySelector('[data-property-modal-trigger]');
-      if (!trigger) return;
-
-      card.classList.add('is-pressed');
-      window.setTimeout(function () {
-        card.classList.remove('is-pressed');
-      }, 220);
-
-      trigger.click();
-    });
-  }
-
   function initPropertyCards(section) {
     var cards = section.querySelectorAll('.om-reveal-card');
     if (!cards.length) return;
@@ -136,7 +116,6 @@
 
     cards.forEach(function (card) {
       card.setAttribute('tabindex', '0');
-      initMobileCardInteraction(card);
 
       card.addEventListener('mouseenter', function () {
         if (desktopMq.matches) {

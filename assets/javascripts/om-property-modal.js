@@ -273,7 +273,21 @@
     var closeBtn = modal.querySelector('.om-property-modal__close');
     var tabButtons = modal.querySelectorAll('[data-modal-tab]');
     var layoutTabButtons = modal.querySelectorAll('[data-modal-layout-tabs] button');
-    var mobileMq = window.matchMedia('(max-width: 900px)');
+    var mobileMq = window.matchMedia('(max-width: 767px)');
+    var bodyScrollLockY = 0;
+
+    function lockBodyScroll() {
+      if (!mobileMq.matches) return;
+      bodyScrollLockY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.top = '-' + bodyScrollLockY + 'px';
+    }
+
+    function unlockBodyScroll() {
+      if (!mobileMq.matches) return;
+      document.body.style.top = '';
+      window.scrollTo(0, bodyScrollLockY);
+      bodyScrollLockY = 0;
+    }
 
     var image = modal.querySelector('[data-modal-image]');
     var indexEl = modal.querySelector('[data-modal-index]');
@@ -593,6 +607,7 @@
       modal.setAttribute('aria-hidden', 'false');
       document.documentElement.classList.add('om-modal-open');
       document.body.classList.add('om-modal-open');
+      lockBodyScroll();
 
       requestAnimationFrame(function () {
         resetModalCarousel();
@@ -606,6 +621,7 @@
       modal.setAttribute('aria-hidden', 'true');
       document.documentElement.classList.remove('om-modal-open');
       document.body.classList.remove('om-modal-open');
+      unlockBodyScroll();
       activeProperty = null;
       activeSlide = 'general';
       modalActiveSlideIndex = 0;
