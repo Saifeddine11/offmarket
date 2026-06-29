@@ -278,39 +278,95 @@ summary:focus-visible {
 }
 
 /**
- * Homepage — suppress legacy editorial fork on mobile/tablet.
- * Keeps #legacy-editorial in the DOM for desktop; OFF MARKET flow only below 980px.
+ * Homepage — mobile legacy fork + scroll fixes.
+ * #lectures-privees, #final-cta, #contact are SIBLINGS after #legacy-editorial (not inside it).
  */
 @media (max-width: 979px) {
-  #legacy-editorial {
-    display: none !important;
-    visibility: hidden !important;
+  /* Locomotive smooth scroll traps scroll before lower sections on mobile */
+  html.has-scroll-smooth,
+  html.has-scroll-smooth body {
+    position: relative !important;
+    overflow: auto !important;
+    height: auto !important;
+    width: 100% !important;
+    inset: auto !important;
+  }
+
+  .has-scroll-smooth .page-content-wrapper,
+  .has-scroll-smooth .page-content-wrapper__inner,
+  .no-scroll-smooth .page-content-wrapper,
+  .no-scroll-smooth .page-content-wrapper__inner {
+    position: relative !important;
+    height: auto !important;
     min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  .has-scroll-smooth [data-scroll-container],
+  .has-scroll-smooth [data-scroll-section],
+  .has-scroll-smooth [data-scroll-section][data-scroll-section-id],
+  .has-scroll-smooth [data-scroll-section][data-scroll-section-id]:not([data-scroll-section-inview]) {
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Hide mobile legacy/template fork only */
+  #nature-mobile,
+  #place-mobile-block,
+  #legacy-editorial .l-place-description,
+  #l-place-sticky-mobile-1,
+  #l-place-sticky-mobile-2,
+  #l-place-sticky-mobile-3,
+  #design-mobile,
+  #design-mobile-slide-2,
+  #l-design-mobile-sticky-2,
+  #design-mobile-slide-4,
+  #l-residences-sticky-2,
+  #residences-slider-mobile,
+  #interiors-2,
+  #interiors-slider-mobile {
+    display: none !important;
+  }
+
+  /* Collapse legacy sticky spacers that still reserve 100svh on mobile */
+  #legacy-editorial .sticky__spacer {
+    display: none !important;
     height: 0 !important;
-    max-height: 0 !important;
-    margin: 0 !important;
+    min-height: 0 !important;
+  }
+
+  #legacy-editorial {
+    min-height: 0 !important;
     padding: 0 !important;
-    overflow: hidden !important;
-    pointer-events: none !important;
+    margin: 0 !important;
+    overflow: hidden;
     border: 0 !important;
   }
 
-  /* Explicit mobile-only legacy blocks (backup if wrapper visibility changes) */
-  #legacy-editorial .is-hidden--lg-up,
-  #legacy-editorial #nature-mobile,
-  #legacy-editorial #place-mobile-block,
-  #legacy-editorial .l-place-description,
-  #legacy-editorial #l-place-sticky-mobile-1,
-  #legacy-editorial #l-place-sticky-mobile-2,
-  #legacy-editorial #l-place-sticky-mobile-3,
-  #legacy-editorial #design-mobile,
-  #legacy-editorial #design-mobile-slide-2,
-  #legacy-editorial #l-design-sticky-mobile-2,
-  #legacy-editorial #design-mobile-slide-4,
-  #legacy-editorial #l-residences-sticky-2,
-  #legacy-editorial #residences-slider-mobile,
-  #legacy-editorial #interiors-2,
-  #legacy-editorial #interiors-slider-mobile {
-    display: none !important;
+  /* OFF MARKET lower sections — always reachable and visible */
+  #lectures-privees,
+  #final-cta,
+  #contact,
+  footer#contact {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 3;
+  }
+
+  /* Final CTA must not stay at opacity:0 waiting for scroll reveal */
+  .om-final-cta .om-final-cta__reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
   }
 }

@@ -154,6 +154,10 @@
   }
 
   function boot() {
+    if (window.__OM_MOBILE_LEGACY_DISABLED__) {
+      return;
+    }
+
     initEditorialReveal();
   }
 
