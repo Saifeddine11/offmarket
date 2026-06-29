@@ -169,19 +169,24 @@
     var sections = document.querySelectorAll(SECTION_SELECTOR);
     if (!sections.length) return;
 
-    sections.forEach(function (section) {
-      if (section.dataset.revealObserverBound === 'true') return;
-      section.dataset.revealObserverBound = 'true';
+    try {
+      sections.forEach(function (section) {
+        if (section.dataset.revealObserverBound === 'true') return;
+        section.dataset.revealObserverBound = 'true';
 
-      if (prefersReducedMotion()) {
-        revealSection(section);
-        return;
-      }
+        if (prefersReducedMotion() || window.matchMedia('(min-width: 980px)').matches) {
+          revealSection(section);
+          return;
+        }
 
-      watchElement(section, function () {
-        revealSectionAnimated(section);
+        watchElement(section, function () {
+          revealSectionAnimated(section);
+        });
       });
-    });
+    } catch (error) {
+      document.documentElement.classList.add('om-reveal-fallback');
+      sections.forEach(revealSection);
+    }
   }
 
   function boot() {

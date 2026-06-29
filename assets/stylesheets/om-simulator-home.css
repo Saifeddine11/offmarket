@@ -3,10 +3,14 @@
  */
 
 .om-simulator--home {
+  position: relative;
+  z-index: 11;
+  isolation: isolate;
   padding-block: clamp(5rem, 8vw, 8rem);
   padding-inline: clamp(1rem, 4vw, 1.25rem);
   background: #f5f4f2;
   scroll-margin-top: 6rem;
+  overflow: visible;
 }
 
 .om-simulator--home .om-simulator-home__header {
@@ -51,12 +55,29 @@
 .om-simulator--home .om-simulator {
   width: min(100%, 1280px);
   margin-inline: auto;
+  overflow: visible;
 }
 
 .om-simulator--home .om-simulator__grid,
 .om-simulator--home .om-simulator__layout {
   width: 100%;
   margin-inline: auto;
+  overflow: visible;
+  align-items: start;
+}
+
+.om-simulator--home .om-simulator__inputs {
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1025px) {
+  .om-simulator--home .om-simulator__results,
+  .om-simulator--home .om-simulator__result {
+    position: sticky;
+    top: 7rem;
+    align-self: start;
+  }
 }
 
 @media (max-width: 767px) {

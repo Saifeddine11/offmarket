@@ -192,6 +192,14 @@
     container.appendChild(card);
   }
 
+  function updateRangeProgress(input) {
+    var min = Number(input.min || 0);
+    var max = Number(input.max || 100);
+    var value = Number(input.value || 0);
+    var progress = max === min ? 0 : ((value - min) / (max - min)) * 100;
+    input.style.setProperty('--om-range-progress', progress + '%');
+  }
+
   function initSimulator(root) {
     if (!root || root.getAttribute('data-simulator-init') === 'true') return;
     root.setAttribute('data-simulator-init', 'true');
@@ -227,6 +235,7 @@
           var input = fieldEl.querySelector('input[type="range"]');
           if (input && value !== undefined) {
             input.value = value;
+            updateRangeProgress(input);
             updateValueDisplay(fieldEl, Number(value), getFieldOptions(fieldEl));
           }
         }
@@ -376,11 +385,13 @@
 
       input.value = state[mode][key];
       updateValueDisplay(fieldEl, Number(input.value), options);
+      updateRangeProgress(input);
 
       input.addEventListener('input', function () {
         var value = Number(input.value);
         state[mode][key] = value;
         updateValueDisplay(fieldEl, value, options);
+        updateRangeProgress(input);
         if (key === 'budget') syncBudget(mode);
         renderResults();
       });
@@ -404,6 +415,10 @@
     syncPanelFields('short');
     syncPanelFields('long');
     syncPanelFields('resale');
+
+    root.querySelectorAll('input[type="range"]').forEach(function (input) {
+      updateRangeProgress(input);
+    });
 
     root.querySelectorAll('[data-simulator-note]').forEach(function (el) {
       el.textContent = NOTE_TEXT;

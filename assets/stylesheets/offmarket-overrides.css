@@ -278,6 +278,178 @@ summary:focus-visible {
 }
 
 /**
+ * Homepage simulator — prevent locomotive scroll clipping / legacy sticky bleed on desktop.
+ */
+#simulateur,
+#simulateur.om-simulator--home {
+  position: relative;
+  z-index: 11;
+  isolation: isolate;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.has-scroll-smooth #simulateur,
+.has-scroll-smooth #simulateur[data-scroll-section] {
+  transform: none !important;
+}
+
+#simulateur ~ #territories {
+  position: relative;
+  z-index: 10;
+  background: var(--om-ivory);
+}
+
+/**
+ * Legacy editorial archive — collapsed on all viewports (DOM preserved).
+ * Contains locomotive sticky--full-height blocks that create huge empty dark gaps on desktop.
+ */
+#legacy-editorial {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  border: 0 !important;
+}
+
+/* OFF MARKET lower sections — always reachable and visible */
+#lectures-privees,
+#final-cta,
+#contact,
+footer#contact,
+.om-testimonials,
+.om-final-cta,
+.om-footer {
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+  position: relative !important;
+}
+
+.om-final-cta .om-final-cta__reveal,
+.om-final-cta.is-visible .om-final-cta__reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.om-testimonials,
+.om-testimonials__inner,
+.om-testimonial-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+@media (min-width: 980px) {
+  /**
+   * Desktop — native document flow (Locomotive virtual scroll leaves huge blank ivory gaps
+   * and hides sections with translate(-200vw) / opacity:0 when not inview).
+   */
+  html.has-scroll-smooth,
+  html.no-scroll-smooth,
+  html.no-hover.is-ios {
+    position: static !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100% !important;
+    max-height: none !important;
+    width: 100% !important;
+    inset: auto !important;
+  }
+
+  body,
+  html.has-scroll-smooth body,
+  html.no-scroll-smooth body {
+    position: static !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    height: auto !important;
+    min-height: 100% !important;
+    max-height: none !important;
+    width: 100% !important;
+  }
+
+  .page-content-wrapper,
+  .page-content-wrapper__inner,
+  .js-page-content-wrapper,
+  .has-scroll-smooth .page-content-wrapper,
+  .has-scroll-smooth .page-content-wrapper__inner,
+  .no-scroll-smooth .page-content-wrapper,
+  .no-scroll-smooth .page-content-wrapper__inner {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  [data-scroll-container],
+  .has-scroll-smooth [data-scroll-container],
+  [data-scroll-section],
+  [data-scroll-section][data-scroll-section-id],
+  [data-scroll-section][data-scroll-section-id]:not([data-scroll-section-inview]),
+  .has-scroll-smooth [data-scroll-section],
+  .has-scroll-smooth [data-scroll-section][data-scroll-section-id],
+  .has-scroll-smooth [data-scroll-section][data-scroll-section-id]:not([data-scroll-section-inview]) {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
+    will-change: auto !important;
+  }
+
+  #qui-sommes-nous,
+  #featured-projects,
+  #simulateur,
+  #territories,
+  #lectures-privees,
+  #final-cta,
+  #contact,
+  footer#contact {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
+  }
+
+  #qui-sommes-nous .mav-reveal-item,
+  #qui-sommes-nous .mav-who__phrase,
+  #qui-sommes-nous .mav-who__eyebrow,
+  #qui-sommes-nous .om-cta {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/**
  * Homepage — mobile legacy fork + scroll fixes.
  * #lectures-privees, #final-cta, #contact are SIBLINGS after #legacy-editorial (not inside it).
  */
@@ -368,53 +540,5 @@ summary:focus-visible {
     will-change: auto !important;
   }
 
-  /* Hide legacy editorial between Territories and Testimonials on mobile */
-  #legacy-editorial {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    pointer-events: none !important;
-    border: 0 !important;
-  }
-
   /* Old mobile template fork — kept inside hidden #legacy-editorial */
-
-  /* OFF MARKET lower sections — always reachable and visible */
-  #lectures-privees,
-  #final-cta,
-  #contact,
-  footer#contact,
-  .om-testimonials,
-  .om-final-cta,
-  .om-footer {
-    display: block !important;
-    visibility: visible !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    pointer-events: auto !important;
-    position: relative !important;
-    z-index: 3;
-  }
-
-  /* Final CTA must not stay at opacity:0 waiting for scroll reveal */
-  .om-final-cta .om-final-cta__reveal,
-  .om-final-cta.is-visible .om-final-cta__reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-  }
-
-  .om-testimonials,
-  .om-testimonials__inner,
-  .om-testimonial-card {
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
 }

@@ -208,3 +208,11 @@
     transform: none;
   }
 }
+
+html.om-reveal-fallback #qui-sommes-nous .mav-reveal-item,
+html.om-reveal-fallback #qui-sommes-nous .mav-who__phrase {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+}
