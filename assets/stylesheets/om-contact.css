@@ -6,7 +6,7 @@
 :root {
   --contact-left-bg:
     radial-gradient(circle at 22% 18%, rgba(184, 138, 90, 0.34), transparent 34%),
-    radial-gradient(circle at 72% 62%, rgba(102, 8, 16, 0.22), transparent 42%),
+    radial-gradient(circle at 72% 62%, rgba(112, 0, 21, 0.22), transparent 42%),
     linear-gradient(135deg, #f5f4f2 0%, #f1ebeb 44%, #d6c0b1 100%);
   --contact-right-bg: #270707;
   --contact-text: #f5f4f2;
@@ -90,7 +90,7 @@ html {
       from 210deg at 48% 46%,
       rgba(245, 244, 242, 0.16),
       rgba(184, 138, 90, 0.32),
-      rgba(102, 8, 16, 0.24),
+      rgba(112, 0, 21, 0.24),
       rgba(245, 244, 242, 0.1)
     );
   filter: blur(28px);
@@ -114,7 +114,7 @@ html {
   pointer-events: none;
   border: 1px solid rgba(245, 244, 242, 0.28);
   background:
-    linear-gradient(135deg, rgba(245, 244, 242, 0.44), rgba(184, 138, 90, 0.18) 48%, rgba(102, 8, 16, 0.12)),
+    linear-gradient(135deg, rgba(245, 244, 242, 0.44), rgba(184, 138, 90, 0.18) 48%, rgba(112, 0, 21, 0.12)),
     linear-gradient(45deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0));
   box-shadow:
     inset 0 0 84px rgba(255, 255, 255, 0.16),
@@ -188,7 +188,7 @@ html {
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: 0;
-  color: rgba(102, 8, 16, 0.58);
+  color: rgba(112, 0, 21, 0.58);
 }
 
 .om-contact-visual__title {
@@ -213,7 +213,7 @@ html {
   min-height: 100svh;
   padding: clamp(3rem, 5vw, 5rem);
   background:
-    radial-gradient(circle at 84% 14%, rgba(102, 8, 16, 0.36), transparent 30%),
+    radial-gradient(circle at 84% 14%, rgba(112, 0, 21, 0.36), transparent 30%),
     linear-gradient(135deg, #270707 0%, #1b0505 100%);
   color: var(--contact-text);
   display: flex;

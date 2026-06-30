@@ -6,6 +6,9 @@
   'use strict';
 
   var VILLA_JAZ_IMAGE_BASE = '/assets/images/properties/villa-sur-plan-marrakech/';
+  // Internal project name: Hyper — public title remains Appartement premium à Guéliz
+  var HYPER_IMAGE_BASE =
+    '/assets/images/properties/appartement-sur-plan-gueliz/';
 
   var VILLA_CHARACTERISTIC_ICON_MAP = {
     'Projet sur plan': 'blueprint',
@@ -22,6 +25,26 @@
     'Disponibilités actualisées': 'refresh',
     'Plans sur formulaire': 'document',
     'Réservation sur formulaire': 'calendar',
+    'Appartement sur plan': 'blueprint',
+    'Guéliz hyper-centre': 'location',
+    'Surfaces de 39 m² à 140 m²': 'grid',
+    'Adresse hyper-centre': 'location',
+    'Secteur recherché': 'location',
+    'Fort potentiel locatif': 'euro',
+    'Accès rapide aux services': 'location',
+    "Projet adapté à l'habitation ou à l'investissement": 'blueprint',
+    'Disponibilités sur demande': 'refresh',
+    'Conditions actualisées sur demande': 'refresh',
+    '30% à chaque avancement': 'calendar',
+    '10% à la livraison': 'calendar',
+    '30% à la réservation': 'calendar',
+    'Programme neuf sur plan': 'blueprint',
+    '39–140 m²': 'grid',
+    'À partir de 1,05 M MAD': 'euro',
+    '2028 — 1ère livraison': 'calendar',
+    'Disponibilités sur demande': 'refresh',
+    'Conditions actualisées sur demande': 'refresh',
+    'Recevoir la fiche privée': 'document',
   };
 
   function villaCharacteristicIcon(name) {
@@ -55,6 +78,18 @@
         '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/><path d="M9 15l2 2 4-4"/>',
       alert:
         '<path d="M12 3l9 16H3z"/><path d="M12 9v4"/><circle cx="12" cy="17" r="0.75"/>',
+      spa:
+        '<path d="M8 14c1.2-2.4 2.8-3.6 4-3.6s2.8 1.2 4 3.6"/><path d="M6 18c2-3 4.5-4.5 6-4.5s4 1.5 6 4.5"/><path d="M12 4v3"/><path d="M9 6l1.5 2M15 6l-1.5 2"/>',
+      jacuzzi:
+        '<circle cx="8" cy="14" r="1.1"/><circle cx="12" cy="11" r="1.1"/><circle cx="16" cy="14" r="1.1"/><circle cx="10" cy="17" r="0.9"/><circle cx="14" cy="17" r="0.9"/><path d="M5 19c2.2-1.2 4.4-1.8 7-1.8s4.8.6 7 1.8"/>',
+      dumbbell:
+        '<path d="M6 9v6"/><path d="M18 9v6"/><path d="M8 10h8"/><path d="M4 10.5v3"/><path d="M4 10.5h2v3H4z"/><path d="M18 10.5v3"/><path d="M18 10.5h2v3h-2z"/>',
+      vestiaires:
+        '<circle cx="9" cy="8" r="2.2"/><circle cx="15" cy="8" r="2.2"/><path d="M6.5 20v-4.5c0-1.4 1.1-2.5 2.5-2.5H11"/><path d="M17.5 20v-4.5c0-1.4-1.1-2.5-2.5-2.5H13"/><path d="M12 11v9"/>',
+      parking:
+        '<path d="M6 6h7l5 5v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/><path d="M9 11h3.2a2 2 0 1 1 0 4H9v-4Z"/>',
+      tag:
+        '<path d="M20 12l-8 8-8-8V4h8l8 8Z"/><circle cx="8.5" cy="8.5" r="1.2"/>',
     };
 
     var body = paths[name];
@@ -62,6 +97,43 @@
 
     return (
       '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+      body +
+      '</svg>'
+    );
+  }
+
+  function hyperFeatureIcon(name) {
+    var body = {
+      pool:
+        '<path d="M4 16c1.4 0 1.4-1 2.8-1s1.4 1 2.8 1 1.4-1 2.8-1 1.4 1 2.8 1 1.4-1 2.8-1 1.4 1 2.8 1"/><path d="M4 20c1.4 0 1.4-1 2.8-1s1.4 1 2.8 1 1.4-1 2.8-1 1.4 1 2.8 1 1.4-1 2.8-1 1.4 1 2.8 1"/>',
+      spa:
+        '<path d="M8 14c1.2-2.4 2.8-3.6 4-3.6s2.8 1.2 4 3.6"/><path d="M6 18c2-3 4.5-4.5 6-4.5s4 1.5 6 4.5"/><path d="M12 4v3"/><path d="M9 6l1.5 2M15 6l-1.5 2"/>',
+      jacuzzi:
+        '<circle cx="8" cy="14" r="1.1"/><circle cx="12" cy="11" r="1.1"/><circle cx="16" cy="14" r="1.1"/><circle cx="10" cy="17" r="0.9"/><circle cx="14" cy="17" r="0.9"/><path d="M5 19c2.2-1.2 4.4-1.8 7-1.8s4.8.6 7 1.8"/>',
+      dumbbell:
+        '<path d="M6 9v6"/><path d="M18 9v6"/><path d="M8 10h8"/><path d="M4 10.5v3"/><path d="M4 10.5h2v3H4z"/><path d="M18 10.5v3"/><path d="M18 10.5h2v3h-2z"/>',
+      vestiaires:
+        '<circle cx="9" cy="8" r="2.2"/><circle cx="15" cy="8" r="2.2"/><path d="M6.5 20v-4.5c0-1.4 1.1-2.5 2.5-2.5H11"/><path d="M17.5 20v-4.5c0-1.4-1.1-2.5-2.5-2.5H13"/><path d="M12 11v9"/>',
+      parking:
+        '<path d="M6 6h7l5 5v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/><path d="M9 11h3.2a2 2 0 1 1 0 4H9v-4Z"/>',
+      location:
+        '<path d="M12 21s5-4.2 5-9.5a5 5 0 1 0-10 0C7 16.8 12 21 12 21z"/><circle cx="12" cy="11.5" r="1.75"/>',
+      calendar:
+        '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/>',
+      euro:
+        '<path d="M17 5.5A7 7 0 1 0 17 18.5"/><path d="M4 10h10M4 14h9"/>',
+      document:
+        '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/>',
+      grid:
+        '<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>',
+      blueprint:
+        '<path d="M4 5h16v14H4z"/><path d="M8 5v14M4 10h8M12 14h8M16 14v5"/>',
+    }[name];
+
+    if (!body) return '';
+
+    return (
+      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' +
       body +
       '</svg>'
     );
@@ -85,6 +157,23 @@
       VILLA_JAZ_IMAGE_BASE + 'O_Villa-B-Ch.1_Cam04.webp',
       VILLA_JAZ_IMAGE_BASE + 'Oasis-interieur-hall.webp',
       VILLA_JAZ_IMAGE_BASE + 'Atlas-salon.webp',
+    ],
+  };
+
+  var HYPER_GALLERY = {
+    exterior: [
+      HYPER_IMAGE_BASE + 'b666e486-f6f8-4f32-b709-b89099173502.JPG',
+      HYPER_IMAGE_BASE + 'f5fc7b32-9646-431c-a7be-087caed5a47c.JPG',
+      HYPER_IMAGE_BASE + 'daffa3df-bb0e-4084-9076-dae373f40911.JPG',
+      HYPER_IMAGE_BASE + 'c194d969-39fb-4722-b5bc-b3cc0cf3ee47.JPG',
+      HYPER_IMAGE_BASE + '27848bce-5065-4653-8b17-cdadaf3633f4.JPG',
+    ],
+    interior: [
+      HYPER_IMAGE_BASE + '035d9afc-41c4-4b90-afae-7126864ef247.JPG',
+      HYPER_IMAGE_BASE + '6cf39a95-9f7b-46a5-9d27-e4890db0cf8a.JPG',
+      HYPER_IMAGE_BASE + '1025f6be-dfdb-4ff2-8a74-178a9e52520d.JPG',
+      HYPER_IMAGE_BASE + '5422bad2-aeda-4c93-b9c0-5dce469e54dc.JPG',
+      HYPER_IMAGE_BASE + '5fbc84d1-d8eb-40cc-ab87-337e326c70ff.JPG',
     ],
   };
 
@@ -249,61 +338,137 @@
       },
     },
     'appartement-gueliz': {
+      theme: 'hyper',
       index: '02',
       location: 'MARRAKECH',
       type: 'Appartement',
-      price: '96 000 €',
-      selection: 'Appartement sur plan',
-      title: 'Appartement sur plan à Guéliz',
-      subtitle: '39–140 m² · Guéliz hyper-centre · livraison 2028',
-      image: '/assets/mavericks/villa/mavericks-image00006-scaled.webp',
-      alt: 'Appartement sur plan à Guéliz',
+      price: 'À partir de 1,05 M MAD',
+      selection: 'Programme neuf sur plan',
+      title: 'Appartement premium à Guéliz',
+      subtitle:
+        'Studios, appartements, duplex et commerces en hyper-centre de Marrakech.',
+      image: HYPER_IMAGE_BASE + 'b666e486-f6f8-4f32-b709-b89099173502.JPG',
+      alt: 'Appartement premium à Guéliz — Guéliz hyper-centre, Marrakech',
+      formHref: '/contact/?intent=appartement-gueliz',
+      ctaPrimary: 'Réserver ton appartement',
+      ctaOutline: 'Recevoir la fiche privée',
+      typologies: [
+        'Studio',
+        'Appartement',
+        'Duplex',
+        'Magasin commercial',
+      ],
       facts: [
-        { label: 'Surface', value: '39–140 m²' },
-        { label: 'Livraison', value: '2028' },
-        { label: 'Réservation', value: '30%' },
-        { label: 'Disponibilité', value: '40 appartements restants' },
+        { label: 'Type', value: 'Programme neuf haut standing' },
+        { label: 'Localisation', value: 'Guéliz hyper-centre, Marrakech' },
+        { label: 'Surfaces', value: '39–140 m²' },
+        { label: 'Statut', value: 'Programme neuf sur plan' },
+        { label: 'Prix', value: 'À partir de 1,05 M MAD' },
+        { label: 'Livraison', value: '2028 — 1ère livraison' },
+        { label: 'Paiement', value: '30% à la réservation' },
+      ],
+      generalFacts: [
+        { label: 'Surfaces', value: '39–140 m²' },
+        { label: 'Prix', value: 'À partir de 1,05 M MAD' },
+        { label: 'Paiement', value: '30% à la réservation' },
+        { label: 'Livraison', value: '2028 — 1ère livraison' },
       ],
       description:
-        'Un programme situé au cœur de Guéliz, pensé pour un achat résidentiel ou un investissement locatif dans un secteur central de Marrakech.',
+        'Programme immobilier neuf haut standing à Guéliz, avec studios, appartements, duplex et commerces. Une adresse sélectionnée pour acheter un bien neuf en hyper-centre de Marrakech.',
       about: {
-        project: 'Appartement sur plan',
-        title: 'Appartement sur plan à Guéliz',
-        primary:
-          'Un programme situé au cœur de Guéliz, pensé pour un achat résidentiel ou un investissement locatif.',
-        secondary:
-          'Surfaces variées, emplacement urbain recherché et livraison prévue en 2028 dans un cadre premium.',
-      },
-      amenities: [
-        'Balcon',
-        'Parking',
-        'Sécurité',
-        'Climatisation',
-        'Commerces à proximité',
-        'Ascenseur',
-        'Espaces verts',
-        'Terrasse',
-        'Smart home',
-        'Livraison 2028',
-        'Réservation 30%',
-        'Hyper-centre',
-      ],
-      galleries: {
-        exterior: [
-          '/assets/mavericks/villa/mavericks-image00006-scaled.webp',
-          '/assets/mavericks/gallery/mavericks-collection-estates.jpg',
-          '/assets/mavericks/hero/mavericks-hero-villa.webp',
-          '/assets/mavericks/gallery/mavericks-the-passage.webp',
-          '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+        blocks: [
+          {
+            title: 'Positionnement',
+            text:
+              'Hyper-centre, à proximité immédiate des commerces, restaurants et services.',
+          },
+          {
+            title: 'Conception',
+            text:
+              'Une esthétique sobre, raffinée et intemporelle, inspirée des codes hôteliers haut de gamme.',
+          },
+          {
+            title: 'Projet patrimonial',
+            text:
+              'Un actif pensé pour habiter, préparer un pied-à-terre ou étudier une stratégie patrimoniale à Guéliz.',
+          },
         ],
-        interior: GALLERY_POOL.interior,
+        highlight: {
+          value: '39–140 m²',
+          text:
+            'Studios, appartements, duplex et commerces à Guéliz hyper-centre',
+        },
+        image: HYPER_IMAGE_BASE + 'ef83c70c-c6c2-43cc-b94b-7ec6ad42e4cc.JPG',
       },
+      characteristicsLayout: 'hyper',
+      characteristicsTitle: 'Un confort pensé comme une expérience',
+      characteristicsIntro:
+        'Chaque détail vise à créer une expérience résidentielle plus sereine, plus élégante et plus cohérente dans le temps.',
+      characteristicFeatures: [
+        {
+          icon: 'pool',
+          title: 'Piscines au rez-de-chaussée',
+          text:
+            'Deux bassins pensés pour des usages complémentaires, avec une piscine chauffée et une piscine classique intégrées dès le rez-de-chaussée.',
+        },
+        {
+          icon: 'spa',
+          title: 'Spa résidentiel',
+          text:
+            'Un espace spa dédié au relâchement et au bien-être, conçu pour prolonger l’atmosphère calme et confidentielle de la résidence.',
+        },
+        {
+          icon: 'jacuzzi',
+          title: 'Jacuzzi',
+          text:
+            'Un jacuzzi intégré aux espaces détente pour offrir un supplément de confort recherché dans une adresse de haut standing.',
+        },
+        {
+          icon: 'dumbbell',
+          title: 'Salle de sport',
+          text:
+            'Une salle de sport réservée aux résidents, pensée pour un usage quotidien confortable au sein même du projet.',
+        },
+        {
+          icon: 'vestiaires',
+          title: 'Vestiaires séparés hommes / femmes',
+          text:
+            'Des vestiaires distincts pour hommes et femmes, conçus pour offrir plus d’intimité, de confort et de praticité au quotidien.',
+        },
+        {
+          icon: 'parking',
+          title: 'Parking titré & box privatifs',
+          text:
+            'Des stationnements titrés et des box privatifs qui renforcent la valeur patrimoniale et la qualité d’usage de l’ensemble.',
+        },
+      ],
+      characteristicFacts: [
+        { label: 'Programme neuf sur plan', icon: 'blueprint' },
+        { label: 'Guéliz hyper-centre', icon: 'location' },
+        { label: '39–140 m²', icon: 'grid' },
+        { label: 'À partir de 1,05 M MAD', icon: 'euro' },
+        { label: '30% à la réservation', icon: 'calendar' },
+        { label: '2028 — 1ère livraison', icon: 'calendar' },
+      ],
+      characteristicsPayment: {
+        title: 'Modalités de paiement',
+        text:
+          '30% à la réservation — ≈ 39 000 € d’apport. Disponibilités et conditions actualisées communiquées sur demande.',
+      },
+      characteristicsImage:
+        HYPER_IMAGE_BASE + 'f5fc7b32-9646-431c-a7be-087caed5a47c.JPG',
+      galleries: HYPER_GALLERY,
       layout: {
         surface: '39–140 m²',
-        rooms: '1–3',
-        baths: '1–2',
-        description: 'Plans et disponibilités transmis sur demande.',
+        rooms: 'Studio · Appartement · Duplex',
+        baths: 'Détails sur demande',
+        description:
+          'Plans, surfaces disponibles et disponibilités actualisées communiqués après demande via le formulaire.',
         image: '',
+        hideFloorTabs: true,
+        placeholderTitle: 'Plans sur demande',
+        placeholderText:
+          'Remplissez le formulaire pour recevoir les plans, les surfaces disponibles et les disponibilités actualisées.',
       },
     },
     'riad-medina': {
@@ -435,6 +600,7 @@
     var closeBtn = modal.querySelector('.om-property-modal__close');
     var tabButtons = modal.querySelectorAll('[data-modal-tab]');
     var layoutTabButtons = modal.querySelectorAll('[data-modal-layout-tabs] button');
+    var layoutTabs = modal.querySelector('[data-modal-layout-tabs]');
     var mobileMq = window.matchMedia('(max-width: 767px)');
     var bodyScrollLockY = 0;
 
@@ -462,9 +628,14 @@
     var descriptionEl = modal.querySelector('[data-modal-description]');
     var aboutThumb = modal.querySelector('[data-modal-about-thumb]');
     var aboutProject = modal.querySelector('[data-modal-about-project]');
+    var aboutCopy = modal.querySelector('.om-property-modal__about-copy');
     var aboutTitle = modal.querySelector('[data-modal-about-title]');
     var aboutPrimary = modal.querySelector('[data-modal-about-description-primary]');
     var aboutSecondary = modal.querySelector('[data-modal-about-description-secondary]');
+    var aboutEditorial = modal.querySelector('[data-modal-about-editorial]');
+    var aboutKicker = modal.querySelector('.om-property-modal__about-kicker');
+    var subtitleEl = modal.querySelector('[data-modal-subtitle]');
+    var typologiesEl = modal.querySelector('[data-modal-typologies]');
     var aboutImage = modal.querySelector('[data-modal-about-image]');
     var amenitiesEl = modal.querySelector('[data-modal-amenities]');
     var exteriorGalleryEl = modal.querySelector('[data-modal-exterior-gallery]');
@@ -574,8 +745,218 @@
       return block;
     }
 
+    function renderTypologies(property) {
+      if (!typologiesEl) return;
+      typologiesEl.innerHTML = '';
+
+      var items = property && property.typologies;
+      if (!items || !items.length) {
+        typologiesEl.hidden = true;
+        return;
+      }
+
+      items.forEach(function (label) {
+        var chip = document.createElement('span');
+        chip.className = 'om-property-modal__typology';
+        chip.textContent = label;
+        typologiesEl.appendChild(chip);
+      });
+      typologiesEl.hidden = false;
+    }
+
+    function renderSubtitle(property) {
+      if (!subtitleEl) return;
+      var text = property && property.subtitle;
+      if (!text) {
+        subtitleEl.hidden = true;
+        subtitleEl.textContent = '';
+        return;
+      }
+      subtitleEl.textContent = text;
+      subtitleEl.hidden = false;
+    }
+
+    function renderHyperAbout(property) {
+      var about = (property && property.about) || {};
+      var blocks = about.blocks || [];
+      var useEditorial = blocks.length > 0 && aboutEditorial;
+
+      if (aboutKicker) aboutKicker.hidden = useEditorial;
+      if (aboutTitle) aboutTitle.hidden = useEditorial;
+      if (aboutPrimary) {
+        aboutPrimary.hidden = useEditorial;
+        if (!useEditorial) {
+          aboutPrimary.textContent = about.primary || property.description || '';
+        }
+      }
+      if (aboutCopy) {
+        aboutCopy.classList.toggle('is-editorial', useEditorial);
+      }
+      if (aboutSecondary) {
+        aboutSecondary.hidden = useEditorial;
+        if (!useEditorial) {
+          aboutSecondary.textContent = about.secondary || '';
+        }
+      }
+
+      if (!useEditorial) {
+        if (aboutEditorial) {
+          aboutEditorial.hidden = true;
+          aboutEditorial.innerHTML = '';
+        }
+        if (aboutThumb) {
+          aboutThumb.src = property.image;
+          aboutThumb.alt = property.title;
+        }
+        if (aboutProject) aboutProject.textContent = about.project || property.selection;
+        if (aboutTitle) aboutTitle.textContent = about.title || property.title;
+        if (aboutImage) {
+          aboutImage.src =
+            about.image ||
+            (property.galleries && property.galleries.exterior
+              ? property.galleries.exterior[0]
+              : property.image);
+          aboutImage.alt = property.title;
+        }
+        return;
+      }
+
+      aboutEditorial.innerHTML = '';
+      aboutEditorial.hidden = false;
+
+      blocks.forEach(function (block) {
+        var article = document.createElement('article');
+        article.className = 'om-property-modal__about-block';
+        article.innerHTML =
+          '<h4>' + block.title + '</h4><p>' + block.text + '</p>';
+        aboutEditorial.appendChild(article);
+      });
+
+      if (about.highlight) {
+        var highlight = document.createElement('div');
+        highlight.className = 'om-property-modal__about-highlight';
+        highlight.innerHTML =
+          '<strong>' +
+          about.highlight.value +
+          '</strong><span>' +
+          about.highlight.text +
+          '</span>';
+        aboutEditorial.appendChild(highlight);
+      }
+
+      if (aboutImage) {
+        aboutImage.src =
+          about.image ||
+          (property.galleries && property.galleries.exterior
+            ? property.galleries.exterior[0]
+            : property.image);
+        aboutImage.alt = property.title;
+      }
+    }
+
+    function renderHyperCharacteristics(property) {
+      if (!amenitiesEl) return;
+      amenitiesEl.innerHTML = '';
+      amenitiesEl.className =
+        'om-property-modal__amenities om-property-modal__amenities--hyper';
+
+      var layout = document.createElement('div');
+      layout.className = 'om-property-modal__hyper-layout';
+
+      var body = document.createElement('div');
+      body.className = 'om-property-modal__hyper-body';
+
+      if (property.characteristicsTitle) {
+        var heading = document.createElement('h3');
+        heading.className = 'om-property-modal__hyper-title';
+        heading.textContent = property.characteristicsTitle;
+        body.appendChild(heading);
+      }
+
+      if (property.characteristicsIntro) {
+        var intro = document.createElement('p');
+        intro.className = 'om-property-modal__hyper-intro';
+        intro.textContent = property.characteristicsIntro;
+        body.appendChild(intro);
+      }
+
+      var imageSrc = property.characteristicsImage || property.image;
+      if (imageSrc) {
+        var imageWrap = document.createElement('figure');
+        imageWrap.className = 'om-property-modal__hyper-media';
+        var img = document.createElement('img');
+        img.src = imageSrc;
+        img.alt = property.title + ' — espaces et équipements';
+        img.loading = 'lazy';
+        imageWrap.appendChild(img);
+        body.appendChild(imageWrap);
+      }
+
+      var features = document.createElement('div');
+      features.className = 'om-property-modal__hyper-features';
+
+      (property.characteristicFeatures || []).forEach(function (feature) {
+        var card = document.createElement('article');
+        card.className = 'om-property-modal__hyper-feature';
+        card.innerHTML =
+          '<span class="om-property-modal__hyper-feature-icon" aria-hidden="true">' +
+          hyperFeatureIcon(feature.icon) +
+          '</span>' +
+          '<div><h4>' +
+          feature.title +
+          '</h4><p>' +
+          feature.text +
+          '</p></div>';
+        features.appendChild(card);
+      });
+
+      body.appendChild(features);
+
+      var factsBlock = document.createElement('div');
+      factsBlock.className = 'om-property-modal__hyper-facts';
+      var factsHeading = document.createElement('h4');
+      factsHeading.textContent = 'Informations clés';
+      factsBlock.appendChild(factsHeading);
+
+      var factsList = document.createElement('div');
+      factsList.className = 'om-property-modal__hyper-facts-list';
+
+      (property.characteristicFacts || []).forEach(function (fact) {
+        var row = document.createElement('div');
+        row.className = 'om-property-modal__hyper-fact';
+        row.innerHTML =
+          '<span class="om-property-modal__hyper-fact-icon" aria-hidden="true">' +
+          hyperFeatureIcon(fact.icon) +
+          '</span><span>' +
+          fact.label +
+          '</span>';
+        factsList.appendChild(row);
+      });
+
+      factsBlock.appendChild(factsList);
+      body.appendChild(factsBlock);
+
+      var payment = property.characteristicsPayment;
+      if (payment) {
+        var paymentBlock = document.createElement('div');
+        paymentBlock.className = 'om-property-modal__hyper-payment';
+        paymentBlock.innerHTML =
+          '<h4>' + payment.title + '</h4><p>' + payment.text + '</p>';
+        body.appendChild(paymentBlock);
+      }
+
+      layout.appendChild(body);
+
+      amenitiesEl.appendChild(layout);
+    }
+
     function renderAmenities(property) {
       if (!amenitiesEl) return;
+
+      if (property && property.characteristicsLayout === 'hyper') {
+        renderHyperCharacteristics(property);
+        return;
+      }
       amenitiesEl.innerHTML = '';
       amenitiesEl.className = 'om-property-modal__amenities';
 
@@ -619,6 +1000,10 @@
             block.classList.add('om-property-modal__characteristic-block--comfort');
           } else if (group.title === 'Confidentialité & réservation') {
             block.classList.add('om-property-modal__characteristic-block--privacy');
+          } else if (group.title === 'Réservation & confidentialité') {
+            block.classList.add('om-property-modal__characteristic-block--privacy');
+          } else if (group.title === 'Investissement & localisation') {
+            block.classList.add('om-property-modal__characteristic-block--comfort');
           }
 
           var heading = document.createElement('h4');
@@ -717,6 +1102,10 @@
           ? images.first || images.ground || layout.image || ''
           : images.ground || layout.image || '';
 
+      if (layoutTabs) {
+        layoutTabs.hidden = Boolean(layout.hideFloorTabs);
+      }
+
       if (src) {
         layoutImage.src = src;
         layoutImage.alt =
@@ -726,12 +1115,35 @@
           ((activeProperty && activeProperty.title) || 'Villa Jaz');
         layoutImage.hidden = false;
         layoutPlaceholder.hidden = true;
+        layoutPlaceholder.classList.remove(
+          'om-property-modal__plan-placeholder--premium'
+        );
         return;
       }
 
       layoutImage.hidden = true;
       layoutImage.removeAttribute('src');
       layoutPlaceholder.hidden = false;
+
+      if (layout.placeholderTitle || layout.placeholderText) {
+        layoutPlaceholder.classList.add(
+          'om-property-modal__plan-placeholder--premium'
+        );
+        layoutPlaceholder.innerHTML =
+          '<strong class="om-property-modal__plan-placeholder-title">' +
+          (layout.placeholderTitle || 'Plans sur demande') +
+          '</strong>' +
+          (layout.placeholderText
+            ? '<span class="om-property-modal__plan-placeholder-copy">' +
+              layout.placeholderText +
+              '</span>'
+            : '');
+      } else {
+        layoutPlaceholder.classList.remove(
+          'om-property-modal__plan-placeholder--premium'
+        );
+        layoutPlaceholder.textContent = 'Plans transmis sur demande.';
+      }
     }
 
     function updateModalActions(property) {
@@ -758,6 +1170,38 @@
     function renderProperty(property) {
       activeProperty = property;
 
+      modal.classList.toggle('is-hyper-theme', property.theme === 'hyper');
+
+      if (subtitleEl) {
+        if (!property.subtitle) {
+          subtitleEl.hidden = true;
+          subtitleEl.textContent = '';
+        }
+      }
+      if (typologiesEl && (!property.typologies || !property.typologies.length)) {
+        typologiesEl.hidden = true;
+        typologiesEl.innerHTML = '';
+      }
+      if (aboutEditorial && property.theme !== 'hyper') {
+        aboutEditorial.hidden = true;
+        aboutEditorial.innerHTML = '';
+      }
+      if (aboutCopy) {
+        aboutCopy.classList.toggle('is-editorial', property.theme === 'hyper');
+      }
+      if (aboutKicker && property.theme !== 'hyper') {
+        aboutKicker.hidden = false;
+      }
+      if (aboutTitle && property.theme !== 'hyper') {
+        aboutTitle.hidden = false;
+      }
+      if (aboutPrimary && property.theme !== 'hyper') {
+        aboutPrimary.hidden = false;
+      }
+      if (aboutSecondary && property.theme !== 'hyper') {
+        aboutSecondary.hidden = false;
+      }
+
       if (image) {
         image.src = property.image;
         image.alt = property.alt || property.title;
@@ -771,6 +1215,8 @@
           '<span>Sélection :</span> ' + property.selection;
       }
       if (titleEl) titleEl.textContent = property.title;
+      renderSubtitle(property);
+      renderTypologies(property);
       if (descriptionEl) {
         descriptionEl.textContent = property.description || '';
         descriptionEl.hidden = false;
@@ -780,21 +1226,7 @@
         compact: Boolean(property.generalFacts && property.generalFacts.length),
       });
 
-      var about = property.about || {};
-      if (aboutThumb) {
-        aboutThumb.src = property.image;
-        aboutThumb.alt = property.title;
-      }
-      if (aboutProject) aboutProject.textContent = about.project || property.selection;
-      if (aboutTitle) aboutTitle.textContent = about.title || property.title;
-      if (aboutPrimary) aboutPrimary.textContent = about.primary || property.description || '';
-      if (aboutSecondary) aboutSecondary.textContent = about.secondary || '';
-      if (aboutImage) {
-        aboutImage.src = property.galleries && property.galleries.exterior
-          ? property.galleries.exterior[0]
-          : property.image;
-        aboutImage.alt = property.title;
-      }
+      renderHyperAbout(property);
 
       renderAmenities(property);
 

@@ -29,15 +29,19 @@
       index: '02',
       location: 'MARRAKECH',
       type: 'Appartement',
-      price: '96 000 €',
-      selection: 'Appartement sur plan',
-      title: 'Appartement sur plan à Guéliz',
-      meta: '39–140 m² · Guéliz hyper-centre · livraison 2028',
-      image: '/assets/mavericks/villa/mavericks-image00006-scaled.webp',
-      alt: 'Appartement sur plan à Guéliz',
-      href: '#contact',
+      price: 'À partir de 1,05 M MAD',
+      priceCase: 'normal',
+      selection: 'Programme neuf sur plan',
+      title: 'Appartement premium à Guéliz',
+      meta: '39–140 m² · Guéliz hyper-centre · Livraison 2028',
+      image:
+        '/assets/images/properties/appartement-sur-plan-gueliz/b666e486-f6f8-4f32-b709-b89099173502.JPG',
+      alt: 'Appartement premium à Guéliz — Guéliz hyper-centre, Marrakech',
+      href: '/contact/?intent=appartement-gueliz',
       overlayLine: 'Appartement',
       overlayTitle: 'Appartement premium à Guéliz',
+      actionLabel: 'Voir la fiche',
+      imageBadge: 'Sur plan',
     },
     {
       id: 'restaurant-jemaa-el-fna',
@@ -73,35 +77,10 @@
       .replace(/"/g, '&quot;');
   }
 
-  function renderLockedCard() {
-    return (
-      '<div class="om-private-opportunities-shell">' +
-        '<article class="om-private-opportunities" aria-label="Opportunités privées OFF MARKET">' +
-          '<div class="om-project-card__locked-content">' +
-            '<span class="om-project-card__locked-badge">ACCÈS PRIVÉ</span>' +
-            '<h3 class="om-project-card__locked-title">Terrains, maisons, hôtels et restaurants vous attendent en off-market.</h3>' +
-            '<p class="om-project-card__locked-text">Inscrivez-vous pour avoir accès à la sélection privée.</p>' +
-            '<a href="#callback-modal" class="om-button om-button--dark om-project-card__locked-cta">' +
-              '<span class="om-button__icon" aria-hidden="true">' +
-                '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
-                  '<circle cx="8" cy="8" r="4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>' +
-                  '<path d="M11 11 19.5 19.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>' +
-                  '<path d="M17.5 17.5H20.5V20.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>' +
-                '</svg>' +
-              '</span>' +
-              '<span>Débloquer l\u2019accès</span>' +
-            '</a>' +
-          '</div>' +
-        '</article>' +
-      '</div>'
-    );
-  }
-
   function renderPrivateRow() {
     return (
       '<div class="om-featured-projects__private-row">' +
         renderPropertyCard(restaurantPropertyCard) +
-        renderLockedCard() +
       '</div>'
     );
   }

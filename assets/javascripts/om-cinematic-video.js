@@ -1,14 +1,13 @@
 /**
  * OffMarket — Cinematic scroll-motion video (GSAP ScrollTrigger)
- * GPU transform scroll — scale/opacity/y only, linear scrub mapping.
+ * GPU transform + opacity scroll — soft Framer-like entrance and exit.
  */
 (function () {
   'use strict';
 
-  var EXPAND_PROGRESS = 0.15;
-  var TIMELINE_DURATION = 1;
   var MOBILE_BREAKPOINT = 767;
-  var SCRUB_SMOOTHING = 0.7;
+  var SCRUB_SMOOTHING = 0.9;
+  var EXPAND_PROGRESS = 0.18;
 
   function prefersReducedMotion() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -42,68 +41,83 @@
       height: '100vh',
       scaleX: metrics.scaleX,
       scaleY: metrics.scaleY,
-      y: 14,
       transformOrigin: 'center center',
       force3D: true,
     });
+  }
+
+  function setInitialState(section, frame, media, caption) {
+    setFrameRestState(frame);
+
+    gsap.set(frame, {
+      opacity: 0,
+      y: 42,
+      force3D: true,
+    });
+
+    gsap.set(media, {
+      scale: 1.04,
+      opacity: 1,
+      transformOrigin: 'center center',
+      force3D: true,
+    });
+
+    gsap.set(caption, {
+      opacity: 0,
+      y: 24,
+      force3D: true,
+    });
+
+    section.classList.remove('is-expanded', 'is-exiting');
   }
 
   function initCinematicVideo() {
     var section = document.querySelector('.om-cinematic-video');
     if (!section) return;
 
+    var frame = section.querySelector('.om-cinematic-video__frame');
+    var media = section.querySelector('.om-cinematic-video__media');
     var caption = section.querySelector('.om-cinematic-video__caption');
-    if (!caption) return;
+
+    if (!frame || !media || !caption) return;
 
     if (prefersReducedMotion()) {
       section.classList.add('is-reduced-motion');
-      caption.classList.add('is-visible');
+      gsap.set([frame, media, caption], {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        scaleX: 1,
+        scaleY: 1,
+        clearProps: 'transform,filter',
+      });
       return;
     }
 
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      caption.classList.add('is-visible');
+      caption.style.opacity = '1';
       return;
     }
 
     gsap.registerPlugin(ScrollTrigger);
 
-    var frame = section.querySelector('.om-cinematic-video__frame');
-    var media = section.querySelector('.om-cinematic-video__media');
-
-    if (!frame || !media) return;
-
-    setFrameRestState(frame);
-
-    gsap.set(media, {
-      scale: 1,
-      transformOrigin: 'center center',
-      force3D: true,
-    });
-
-    var holdDuration = TIMELINE_DURATION - EXPAND_PROGRESS;
+    setInitialState(section, frame, media, caption);
 
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top bottom',
-        end: 'bottom bottom',
+        start: 'top 72%',
+        end: 'bottom top',
         scrub: SCRUB_SMOOTHING,
         pin: false,
         invalidateOnRefresh: true,
         fastScrollEnd: true,
-        anticipatePin: 1,
         onRefresh: function () {
           setFrameRestState(frame);
-          gsap.set(media, { scale: 1, force3D: true });
         },
         onUpdate: function (self) {
-          var expanded = self.progress >= EXPAND_PROGRESS;
-          section.classList.toggle('is-expanded', expanded);
-
-          if (expanded) {
-            caption.classList.add('is-visible');
-          }
+          section.classList.toggle('is-expanded', self.progress >= EXPAND_PROGRESS);
+          section.classList.toggle('is-exiting', self.progress >= 0.75);
         },
       },
     });
@@ -111,36 +125,64 @@
     tl.to(
       frame,
       {
+        opacity: 1,
+        y: 0,
         scaleX: 1,
         scaleY: 1,
+        duration: 0.22,
+        ease: 'power3.out',
+        force3D: true,
+      },
+      0
+    );
+
+    tl.to(
+      media,
+      {
+        scale: 1.11,
+        duration: 0.75,
+        ease: 'none',
+        force3D: true,
+      },
+      0.08
+    );
+
+    tl.to(
+      caption,
+      {
+        opacity: 1,
         y: 0,
-        ease: 'none',
-        duration: EXPAND_PROGRESS,
+        duration: 0.22,
+        ease: 'power3.out',
         force3D: true,
       },
-      0
+      0.28
+    );
+
+    tl.to({}, { duration: 0.26 });
+
+    tl.to(
+      caption,
+      {
+        opacity: 0,
+        y: -18,
+        duration: 0.18,
+        ease: 'power2.inOut',
+        force3D: true,
+      },
+      0.78
     );
 
     tl.to(
-      media,
+      frame,
       {
-        scale: 1.08,
-        ease: 'none',
-        duration: EXPAND_PROGRESS,
+        opacity: 0,
+        y: -36,
+        duration: 0.22,
+        ease: 'power2.inOut',
         force3D: true,
       },
-      0
-    );
-
-    tl.to(
-      media,
-      {
-        scale: 1.12,
-        ease: 'none',
-        duration: holdDuration,
-        force3D: true,
-      },
-      EXPAND_PROGRESS
+      0.82
     );
 
     window.addEventListener(

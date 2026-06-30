@@ -5,12 +5,12 @@
 .om-cinematic-video {
   position: relative;
   z-index: 10;
-  /* 100vh sticky + 45vh scroll track — negative margin collapses empty tail */
-  height: 145vh;
-  margin-bottom: -45vh;
+  min-height: 170vh;
+  height: auto;
+  margin-bottom: -70vh;
   padding-bottom: 0;
   background: #f5f4f2;
-  overflow-x: clip;
+  overflow: clip;
   isolation: isolate;
   contain: layout paint;
 }
@@ -18,6 +18,7 @@
 .om-cinematic-video__sticky {
   position: sticky;
   top: 0;
+  min-height: 100vh;
   height: 100vh;
   display: grid;
   place-items: center;
@@ -33,9 +34,10 @@
   border-radius: 36px;
   overflow: hidden;
   transform-origin: center center;
-  will-change: transform;
+  will-change: transform, opacity;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
+  opacity: 0;
   box-shadow:
     0 34px 110px rgba(39, 7, 7, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.28);
@@ -52,7 +54,7 @@
   object-fit: cover;
   display: block;
   transform-origin: center center;
-  will-change: transform;
+  will-change: transform, opacity;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }
@@ -64,6 +66,7 @@
   z-index: 1;
   pointer-events: none;
   opacity: 0;
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1);
   background: linear-gradient(
     180deg,
     rgba(39, 7, 7, 0.12) 0%,
@@ -87,13 +90,9 @@
   color: #ffffff;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s ease;
-  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  transform: translate3d(0, 24px, 0);
   backface-visibility: hidden;
-}
-
-.om-cinematic-video__caption.is-visible {
-  opacity: 1;
 }
 
 .om-cinematic-video__caption,
@@ -125,8 +124,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.72);
-  opacity: 0;
-  transition: opacity 0.45s ease;
+  opacity: 1;
 }
 
 .om-cinematic-video__headline {
@@ -154,10 +152,6 @@
   color: rgba(255, 255, 255, 0.78);
 }
 
-.om-cinematic-video__caption.is-visible .om-cinematic-video__eyebrow {
-  opacity: 1;
-}
-
 .om-cinematic-video.is-reduced-motion {
   height: auto;
   margin-bottom: 0;
@@ -174,6 +168,7 @@
   height: min(62vh, 620px);
   margin-inline: auto;
   transform: none;
+  opacity: 1;
 }
 
 .om-cinematic-video.is-reduced-motion .om-cinematic-video__frame::after {
@@ -191,24 +186,28 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .om-cinematic-video__frame {
+    opacity: 1;
+  }
+
   .om-cinematic-video__frame::after {
     opacity: 1;
   }
 
   .om-cinematic-video__eyebrow {
     opacity: 1;
-    transition: none;
   }
 
   .om-cinematic-video__caption {
     opacity: 1;
+    transform: none;
   }
 }
 
 @media (max-width: 767px) {
   .om-cinematic-video {
-    height: 140vh;
-    margin-bottom: -40vh;
+    min-height: 165vh;
+    margin-bottom: -65vh;
   }
 
   .om-cinematic-video__frame {

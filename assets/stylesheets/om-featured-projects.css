@@ -8,7 +8,7 @@
   --om-fp-text: var(--om-graphite);
   --om-fp-muted: rgba(46, 52, 48, 0.62);
   --om-fp-accent: var(--om-ruby-800);
-  --om-fp-btn: var(--om-ruby-950);
+  --om-fp-btn: var(--om-red);
   --om-fp-btn-text: var(--om-ivory);
   --om-fp-line: rgba(44, 41, 41, 0.12);
   --om-fp-card-ease: cubic-bezier(0.19, 1, 0.22, 1);
@@ -216,8 +216,8 @@
 
 .om-reveal-card__pill--primary {
   color: #f5f4f2;
-  background: #270707;
-  border-color: #270707;
+  background: var(--om-red);
+  border-color: var(--om-red);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -231,7 +231,7 @@
   font-weight: 600;
   letter-spacing: 0.025em;
   text-transform: uppercase;
-  color: #70000e;
+  color: #700015;
   text-align: right;
   white-space: nowrap;
 }
@@ -891,9 +891,9 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     grid-area: location;
     grid-column: auto;
     justify-self: start;
-    background: #270707;
+    background: var(--om-red);
     color: #f5f4f2;
-    border-color: #270707;
+    border-color: var(--om-red);
   }
 
   .om-reveal-card__pill:not(.om-reveal-card__pill--primary) {
@@ -916,7 +916,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     line-height: 1;
     font-weight: 750;
     letter-spacing: 0.02em;
-    color: #660810;
+    color: var(--om-red);
     white-space: nowrap;
     overflow: visible;
     text-align: right;
@@ -1060,7 +1060,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     align-items: center;
     justify-content: center;
     gap: 0;
-    background: #270707;
+    background: var(--om-red);
     border: 1px solid rgba(39, 7, 7, 0.2);
     color: #f5f4f2;
     box-shadow: none;
@@ -1139,10 +1139,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
   grid-column: 1 / -1;
   width: 100%;
   margin: 36px 0 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
-  gap: 28px;
-  align-items: stretch;
+  display: block;
 }
 
 .om-featured-projects__private-row .om-project-card--restaurant {
@@ -1360,7 +1357,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #ffffff;
-  background: #270707;
+  background: var(--om-red);
   border: 1px solid rgba(39, 7, 7, 0.12);
 }
 
@@ -1395,9 +1392,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .om-featured-projects__private-row {
-    grid-template-columns: 1fr;
     width: 100%;
-    gap: 24px;
   }
 
   .om-featured-projects__private-row .om-project-card--restaurant {
@@ -1418,8 +1413,6 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
   .om-featured-projects__private-row {
     width: 100%;
     margin-top: 24px;
-    grid-template-columns: 1fr;
-    gap: 24px;
   }
 
   .om-featured-projects__private-row .om-project-card--restaurant {

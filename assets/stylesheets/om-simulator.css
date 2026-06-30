@@ -102,7 +102,7 @@
   font-weight: 600;
   letter-spacing: var(--om-letter-label);
   text-transform: uppercase;
-  color: rgba(102, 8, 16, 0.58);
+  color: rgba(112, 0, 21, 0.58);
 }
 
 .om-simulator-hero__title {
@@ -187,7 +187,7 @@
   font-weight: 650;
   letter-spacing: var(--om-letter-label);
   text-transform: uppercase;
-  color: rgba(102, 8, 16, 0.58);
+  color: rgba(112, 0, 21, 0.58);
 }
 
 .om-simulator__panel-title {
@@ -242,8 +242,8 @@
 
 .om-simulator__tab.is-active,
 .om-simulator__tab[aria-selected="true"] {
-  background: var(--om-ruby-950);
-  border-color: rgba(39, 7, 7, 0.18);
+  background: var(--om-red);
+  border-color: rgba(var(--om-red-rgb), 0.18);
   color: var(--om-ivory);
 }
 
@@ -461,8 +461,8 @@
 }
 
 .om-simulator__segment.is-active {
-  background: #270707;
-  border-color: rgba(39, 7, 7, 0.18);
+  background: var(--om-red);
+  border-color: rgba(var(--om-red-rgb), 0.18);
   color: #f5f4f2;
 }
 
@@ -726,6 +726,10 @@
 .om-simulator__metrics--detail {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 1rem;
+}
+
+.om-simulator__metrics--primary .om-simulator__metric:last-child:nth-child(3) {
+  grid-column: 1 / -1;
 }
 
 .om-simulator__metric,

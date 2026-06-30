@@ -24,27 +24,29 @@
         </style>
 
             <link rel="stylesheet" href="/assets/stylesheets/global.css?v=1765268659">
-            <link rel="stylesheet" href="/assets/stylesheets/offmarket-tokens.css?v=1765311000">
-            <link rel="stylesheet" href="/assets/stylesheets/offmarket-overrides.css?v=1765311000">
+            <link rel="stylesheet" href="/assets/stylesheets/offmarket-tokens.css?v=1765338000">
+            <link rel="stylesheet" href="/assets/stylesheets/offmarket-overrides.css?v=1765338000">
             <link rel="stylesheet" href="/assets/stylesheets/offmarket-logo.css?v=1765317600">
-            <link rel="stylesheet" href="/assets/stylesheets/mavericks-chrome.css?v=1765317900">
-            <link rel="stylesheet" href="/assets/stylesheets/om-territories.css?v=1765297300">
+            <link rel="stylesheet" href="/assets/stylesheets/mavericks-chrome.css?v=1765344000">
+            <link rel="stylesheet" href="/assets/stylesheets/om-nav-menu.css?v=1765344000">
+            <link rel="stylesheet" href="/assets/stylesheets/om-territories.css?v=1765338000">
             <link rel="stylesheet" href="/assets/stylesheets/om-footer.css?v=1765311000">
             <link rel="stylesheet" href="/assets/stylesheets/om-final-cta.css?v=1765297300">
-            <link rel="stylesheet" href="/assets/stylesheets/om-testimonials.css?v=1765297300">
-            <link rel="stylesheet" href="/assets/stylesheets/mav-who.css?v=1765317800">
-            <link rel="stylesheet" href="/assets/stylesheets/om-featured-projects.css?v=1765316100">
+            <link rel="stylesheet" href="/assets/stylesheets/om-testimonials.css?v=1765342000">
+            <link rel="stylesheet" href="/assets/stylesheets/mav-who.css?v=1765338000">
+            <link rel="stylesheet" href="/assets/stylesheets/om-featured-projects.css?v=1765338000">
+            <link rel="stylesheet" href="/assets/stylesheets/om-private-access-popup.css?v=1765340000">
             <link rel="stylesheet" href="/assets/stylesheets/om-text-reveal.css?v=1765317800">
-            <link rel="stylesheet" href="/assets/stylesheets/om-cinematic-video.css?v=1765317800">
-            <link rel="stylesheet" href="/assets/stylesheets/om-simulator.css?v=1765311000">
-            <link rel="stylesheet" href="/assets/stylesheets/om-simulator-home.css?v=1765314500">
-            <link rel="stylesheet" href="/assets/stylesheets/om-property-modal.css?v=1765334000">
-            <link rel="stylesheet" href="/assets/stylesheets/om-blog.css?v=1765336000">
+            <link rel="stylesheet" href="/assets/stylesheets/om-cinematic-video.css?v=1765341000">
+            <link rel="stylesheet" href="/assets/stylesheets/om-simulator.css?v=1765338000">
+            <link rel="stylesheet" href="/assets/stylesheets/om-simulator-home.css?v=1765338000">
+            <link rel="stylesheet" href="/assets/stylesheets/om-property-modal.css?v=1765338000">
+            <link rel="stylesheet" href="/assets/stylesheets/om-blog.css?v=1765338000">
             <link rel="stylesheet" href="/assets/stylesheets/landing.css?v=1765268659" />
             <link rel="stylesheet" href="/assets/stylesheets/om-mobile-desktop-parity.css?v=1765307200" />
             <link rel="stylesheet" href="/assets/stylesheets/om-typography.css?v=1765314500" />
             <link rel="stylesheet" href="/assets/stylesheets/mav-hero.css?v=1765314900">
-            <link rel="stylesheet" href="/assets/stylesheets/om-buttons.css?v=1765314800">
+            <link rel="stylesheet" href="/assets/stylesheets/om-buttons.css?v=1765338000">
 
             <script>
             document.documentElement.classList.remove('no-js');
@@ -629,6 +631,14 @@
         </header>
 
         <div class="om-featured-projects__grid" data-om-property-cards></div>
+
+        <div class="om-private-access-popup" aria-hidden="true">
+            <button class="om-private-access-popup__close" type="button" aria-label="Fermer">&times;</button>
+            <span class="om-private-access-popup__badge">ACCÈS PRIVÉ</span>
+            <h3>Terrains, maisons, hôtels et restaurants vous attendent en off-market.</h3>
+            <p>Inscrivez-vous pour avoir accès à la sélection privée.</p>
+            <a class="om-private-access-popup__button" href="#callback-modal">Débloquer l&rsquo;accès</a>
+        </div>
                     </div>
 </section>
 
@@ -738,7 +748,6 @@
             <div class="om-simulator__field-header">
               <div>
                 <span class="om-simulator__label"><span class="om-simulator__field-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 2v4M16 2v4M3 9h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Semaines d'usage personnel</span></span>
-                <p class="om-simulator__field-help">Chaque semaine d'usage personnel retire 7 nuitées du potentiel locatif annuel.</p>
               </div>
               <span class="om-simulator__value"><span data-field-value></span></span>
             </div>
@@ -7647,13 +7656,15 @@ if ('serviceWorker' in navigator) {
 </script>
             <script src="/assets/javascripts/gsap.min.js?v=1765268700" defer></script>
             <script src="/assets/javascripts/scrolltrigger.min.js?v=1765268700" defer></script>
-            <script src="/assets/javascripts/om-cinematic-video.js?v=1765317800" defer></script>
+            <script src="/assets/javascripts/om-cinematic-video.js?v=1765341000" defer></script>
             <script src="/assets/javascripts/om-text-reveal.js?v=1765317800" defer></script>
             <script src="/assets/javascripts/om-simulator.js?v=1765315000" defer></script>
-            <script src="/assets/javascripts/om-featured-projects.js?v=1765321000" defer></script>
+            <script src="/assets/javascripts/om-featured-projects.js?v=1765337000" defer></script>
+            <script src="/assets/javascripts/om-private-access-popup.js?v=1765340000" defer></script>
             <script src="/assets/javascripts/om-property-modal.js?v=1765334000" defer></script>
             <script src="/assets/javascripts/om-territories.js?v=1765303200" defer></script>
-            <script src="/assets/javascripts/mavericks-chrome.js?v=1765317900" defer></script>
+            <script src="/assets/javascripts/om-nav-menu.js?v=1765344000" defer></script>
+            <script src="/assets/javascripts/mavericks-chrome.js?v=1765344000" defer></script>
             <script src="/assets/javascripts/om-nav-scroll.js?v=1765317900" defer></script>
             <script src="/assets/javascripts/mav-navbar-hero-visibility.js?v=1765287000" defer></script>
             <script src="/assets/javascripts/mav-hero-blur-text.js?v=1765284600" defer></script>
@@ -7701,6 +7712,8 @@ if ('serviceWorker' in navigator) {
                         <h3 class="om-property-modal__title" id="om-property-modal-title" data-modal-title>
                             Villa Jaz
                         </h3>
+                        <p class="om-property-modal__subtitle" data-modal-subtitle hidden></p>
+                        <div class="om-property-modal__typologies" data-modal-typologies hidden></div>
                         <div class="om-property-modal__facts" data-modal-facts></div>
                         <p class="om-property-modal__description" data-modal-description></p>
                         <div class="om-property-modal__bottom">
@@ -7728,6 +7741,7 @@ if ('serviceWorker' in navigator) {
                             </div>
                         </div>
                         <h3 data-modal-about-title>Villa Jaz</h3>
+                        <div class="om-property-modal__about-editorial" data-modal-about-editorial hidden></div>
                         <p data-modal-about-description-primary></p>
                         <p data-modal-about-description-secondary></p>
                     </div>

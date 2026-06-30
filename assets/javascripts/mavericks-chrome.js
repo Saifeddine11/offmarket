@@ -144,12 +144,25 @@
   });
 
   chrome.querySelectorAll('.cinematic-menu-link, .cinematic-menu-sublink').forEach(function (link) {
+    if (link.getAttribute('data-om-nav-close-bound') === 'true') return;
+    link.setAttribute('data-om-nav-close-bound', 'true');
     link.addEventListener('click', function () {
       closeMenu();
     });
   });
 
+  document.addEventListener('om-nav-rendered', function () {
+    chrome.querySelectorAll('.cinematic-menu-link, .cinematic-menu-sublink').forEach(function (link) {
+      if (link.getAttribute('data-om-nav-close-bound') === 'true') return;
+      link.setAttribute('data-om-nav-close-bound', 'true');
+      link.addEventListener('click', function () {
+        closeMenu();
+      });
+    });
+  });
+
   chrome.querySelectorAll('.mv-chrome__expand-btn').forEach(function (btn) {
+    if (btn.getAttribute('data-om-expand-init') === 'true') return;
     btn.addEventListener('click', function () {
       var item = btn.closest('.mv-chrome__menu-item');
       var sub = item && item.querySelector('.mv-chrome__submenu');

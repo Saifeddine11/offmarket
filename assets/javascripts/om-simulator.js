@@ -58,11 +58,9 @@
 
   var HOME_METRIC_ICONS = {
     'Revenu brut / an': 'wallet',
-    'Revenu net / an': 'check',
     'Nuitées louées': 'calendar',
     'Taux d\u2019occupation choisi': 'gauge',
     'Loyer brut / an': 'wallet',
-    'Loyer net / an': 'check',
     'Vacance locative estimée': 'calendar',
     'Gestion OFF MARKET incluse': 'check',
     'Valeur estimée à la sortie': 'trend',
@@ -370,10 +368,6 @@
             isMoney: true,
             positive: true,
           });
-          appendMetric(metricsEl, 'Revenu net / an', results.netAnnualRevenue, {
-            isMoney: true,
-            positive: true,
-          });
           appendMetric(
             metricsEl,
             'Nuitées louées',
@@ -386,10 +380,6 @@
           );
         } else if (state.mode === 'long') {
           appendMetric(metricsEl, 'Loyer brut / an', results.grossAnnualRent, {
-            isMoney: true,
-            positive: true,
-          });
-          appendMetric(metricsEl, 'Loyer net / an', results.netAnnualRent, {
             isMoney: true,
             positive: true,
           });

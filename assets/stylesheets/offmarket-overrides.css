@@ -63,15 +63,15 @@ body .leading-trim,
 /* Primary CTA — solid ruby (visuals in om-buttons.css) */
 .btn--primary:not(.is-disabled):not(:disabled),
 .btn--primary .btn-container:not(.is-disabled) {
-  --t-button-primary-background: #270707;
-  --t-button-primary-background-rgb: 39, 7, 7;
+  --t-button-primary-background: #700015;
+  --t-button-primary-background-rgb: 112, 0, 21;
   --t-button-primary-text: #f5f4f2;
   --t-button-primary-text-rgb: 245, 244, 242;
-  --t-button-primary-hover-background: #1a1a1a;
-  --t-button-primary-hover-background-rgb: 26, 26, 26;
+  --t-button-primary-hover-background: #5a0011;
+  --t-button-primary-hover-background-rgb: 90, 0, 17;
   --t-button-primary-hover-text: #f5f4f2;
   --t-button-primary-hover-text-rgb: 245, 244, 242;
-  --t-button-primary-active-background: #111111;
+  --t-button-primary-active-background: #4a000e;
   --t-button-primary-active-text: #f5f4f2;
 }
 
@@ -187,8 +187,8 @@ body .leading-trim,
 #l-design-sticky-2 .om-brand-inline .char,
 #design-mobile-slide-2 .om-brand-inline,
 #design-mobile-slide-2 .om-brand-inline .char {
-  color: #70000e;
-  -webkit-text-fill-color: #70000e;
+  color: #700015;
+  -webkit-text-fill-color: #700015;
   opacity: 1;
   text-shadow: none;
 }

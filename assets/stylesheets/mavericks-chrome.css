@@ -9,12 +9,12 @@
   --mv-font-editorial: 'Cormorant Garamond', Georgia, serif;
   --mv-stone: #f1ebeb;
   --mv-dark-red: #270707;
-  --mv-deep-red: #660810;
+  --mv-deep-red: #700015;
   --mv-champagne: #b88a5a;
   --mv-champagne-light: #c49a6c;
   --mv-graphite: #2e3430;
   --mv-dark-red-rgb: 39, 7, 7;
-  --mv-deep-red-rgb: 102, 8, 16;
+  --mv-deep-red-rgb: 112, 0, 21;
   --mv-stone-rgb: 241, 235, 235;
   --mv-champagne-rgb: 184, 138, 90;
   --mv-border-soft: rgba(var(--mv-stone-rgb), 0.14);
@@ -1058,6 +1058,7 @@ body.menu-open {
 }
 
 .om-header__nav a,
+.om-header__nav .om-nav-dropdown__trigger,
 .mav-nav__link {
   display: inline-flex;
   align-items: center;
@@ -1083,22 +1084,27 @@ body.menu-open {
 }
 
 .mv-chrome .om-header__nav a:hover,
+.mv-chrome .om-header__nav .om-nav-dropdown__trigger:hover,
+.mv-chrome .om-header__nav .om-nav-dropdown.is-open .om-nav-dropdown__trigger,
 .mv-chrome .mav-nav__link:hover {
   color: #270707;
   background: rgba(39, 7, 7, 0.06);
 }
 
 .om-header__nav a:focus,
+.om-header__nav .om-nav-dropdown__trigger:focus,
 .mav-nav__link:focus {
   outline: none;
 }
 
 .om-header__nav a:focus:not(:focus-visible),
+.om-header__nav .om-nav-dropdown__trigger:focus:not(:focus-visible),
 .mav-nav__link:focus:not(:focus-visible) {
   outline: none;
 }
 
 .om-header__nav a:focus-visible,
+.om-header__nav .om-nav-dropdown__trigger:focus-visible,
 .mav-nav__link:focus-visible {
   outline: 2px solid rgba(79, 208, 138, 0.55);
   outline-offset: 4px;
@@ -1107,6 +1113,7 @@ body.menu-open {
 /* Active nav — unified */
 .mv-chrome .om-header__nav a.is-active,
 .mv-chrome .om-header__nav a[aria-current='page'],
+.mv-chrome .om-header__nav .om-nav-dropdown.is-active .om-nav-dropdown__trigger,
 .mv-chrome .mav-nav__link.is-active,
 .mv-chrome .mav-nav__link[aria-current='page'] {
   min-width: 64px;
@@ -1119,7 +1126,8 @@ body.menu-open {
 }
 
 .om-header__nav a.is-active:focus:not(:focus-visible),
-.om-header__nav a[aria-current='page']:focus:not(:focus-visible) {
+.om-header__nav a[aria-current='page']:focus:not(:focus-visible),
+.om-header__nav .om-nav-dropdown__trigger:focus:not(:focus-visible) {
   outline: none;
 }
 
@@ -1368,6 +1376,7 @@ body.menu-open {
   }
 
   .om-header__nav a,
+  .om-header__nav .om-nav-dropdown__trigger,
   .mav-nav__link {
     padding-inline: 12px;
     font-size: 15px;

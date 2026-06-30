@@ -181,14 +181,14 @@ body .btn.btn--outline:not(.btn--square):not(.btn--link):focus-visible {
 .om-btn--dark,
 .om-featured-projects__cta.om-noise-btn,
 body .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--primary):not(.om-button--dark) {
-  background: var(--om-btn-ink);
+  background: var(--om-red);
   color: var(--om-btn-cream);
-  border: 1px solid rgba(39, 7, 7, 0.16);
+  border: 1px solid rgba(var(--om-red-rgb), 0.16);
 }
 
 body .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--primary):not(.om-button--dark):hover {
-  background: #3a0c0c;
-  border-color: rgba(39, 7, 7, 0.22);
+  background: var(--om-red-hover);
+  border-color: rgba(var(--om-red-rgb), 0.22);
 }
 
 .ui-dark .btn.btn--primary:not(.btn--square):not(.btn--link):not(.om-button--dark),
@@ -238,8 +238,8 @@ body a.btn.om-button--primary:not(.btn--square):not(.btn--link):hover {
 .mav-button--dark:hover,
 .om-btn--dark:hover,
 .om-property-modal__actions .om-cta.om-button--dark:hover {
-  background: #3a0c0c;
-  border-color: rgba(39, 7, 7, 0.22);
+  background: var(--om-red-hover);
+  border-color: rgba(var(--om-red-rgb), 0.22);
 }
 
 /* Light / cream sections */
@@ -247,15 +247,15 @@ body a.btn.om-button--primary:not(.btn--square):not(.btn--link):hover {
 .mav-who .om-cta,
 .om-featured-projects .om-cta:not(.om-cta--dark):not(.om-cta--white),
 .light-section .om-cta:not(.om-cta--dark):not(.om-cta--white) {
-  background: var(--om-btn-ink);
+  background: var(--om-red);
   color: var(--om-btn-cream);
-  border: 1px solid rgba(39, 7, 7, 0.16);
+  border: 1px solid rgba(var(--om-red-rgb), 0.16);
 }
 
 .mav-who .om-cta:hover,
 .om-featured-projects .om-cta:not(.om-cta--dark):not(.om-cta--white):hover,
 .light-section .om-cta:not(.om-cta--dark):not(.om-cta--white):hover {
-  background: #3a0c0c;
+  background: var(--om-red-hover);
 }
 
 /* Dark UI — legacy outline pills */
@@ -292,9 +292,9 @@ body a.btn.om-button--primary:not(.btn--square):not(.btn--link):hover {
 }
 
 .l-callback__tablist .btn.btn--outline.is-active:not(.btn--square):not(.btn--link) {
-  background: var(--om-btn-ink);
+  background: var(--om-red);
   color: var(--om-btn-cream) !important;
-  border-color: rgba(39, 7, 7, 0.16);
+  border-color: rgba(var(--om-red-rgb), 0.16);
 }
 
 /* Legacy primary — strip decorative pseudo-elements */
@@ -378,9 +378,9 @@ body .btn.btn--primary:not(.btn--square):not(.btn--link) .btn__text {
 }
 
 .om-property-modal__actions .om-cta.om-button--dark {
-  background: var(--om-btn-ink);
+  background: var(--om-red);
   color: var(--om-btn-cream);
-  border-color: rgba(39, 7, 7, 0.16);
+  border-color: rgba(var(--om-red-rgb), 0.16);
 }
 
 /* Hero — layout-only extras (preserve arrow animation) */
