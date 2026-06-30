@@ -205,7 +205,7 @@
 .om-simulator__disclaimer {
   margin: 1rem 0 0;
   font-family: var(--om-font-body);
-  font-size: clamp(0.92rem, 0.95vw, 1.02rem);
+  font-size: 15px;
   line-height: 1.55;
   color: rgba(39, 7, 7, 0.52);
 }
@@ -227,7 +227,7 @@
   min-height: var(--om-btn-height);
   padding: 0 28px;
   font-family: var(--om-font-body);
-  font-size: clamp(0.98rem, 1vw, 1.08rem);
+  font-size: 16px;
   line-height: 1;
   font-weight: 750;
   letter-spacing: -0.015em;
@@ -308,7 +308,7 @@
 .om-simulator__label {
   display: block;
   font-family: var(--om-font-body);
-  font-size: clamp(1.05rem, 1.15vw, 1.22rem);
+  font-size: 17px;
   line-height: 1.25;
   font-weight: 750;
   letter-spacing: -0.025em;
@@ -319,8 +319,8 @@
 .om-simulator__help {
   margin: 0.35rem 0 0;
   font-family: var(--om-font-body);
-  font-size: clamp(0.95rem, 1vw, 1.08rem);
-  line-height: 1.45;
+  font-size: 15px;
+  line-height: 1.55;
   font-weight: 400;
   color: rgba(39, 7, 7, 0.54);
 }
@@ -331,7 +331,7 @@
   text-align: right;
   white-space: nowrap;
   font-family: var(--om-font-body);
-  font-size: clamp(1.05rem, 1.15vw, 1.22rem);
+  font-size: 17px;
   line-height: 1.2;
   font-weight: 750;
   color: #270707;
@@ -644,7 +644,7 @@
 .om-simulator-metric__label {
   display: block;
   font-family: var(--om-font-body);
-  font-size: clamp(0.78rem, 0.85vw, 0.92rem);
+  font-size: 13px;
   line-height: 1.2;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -1076,17 +1076,20 @@
 
   .om-simulator__field-label,
   .om-simulator__label {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   .om-simulator__field-help,
-  .om-simulator__help {
-    font-size: 0.95rem;
+  .om-simulator__help,
+  .om-simulator__note,
+  .om-simulator__disclaimer,
+  .om-simulator__cta-note {
+    font-size: 15px;
   }
 
   .om-simulator__field-value,
   .om-simulator__value {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   .om-simulator__field-conversion,
@@ -1116,13 +1119,13 @@
     flex: 0 0 auto;
     min-height: 48px;
     padding-inline: 22px;
-    font-size: 0.95rem;
+    font-size: 15px;
   }
 
   .om-simulator__note,
   .om-simulator__disclaimer,
   .om-simulator__cta-note {
-    font-size: 0.92rem;
+    font-size: 15px;
   }
 
   .om-simulator__segment {

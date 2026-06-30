@@ -153,6 +153,15 @@ body.menu-open {
   filter: brightness(0) invert(1) drop-shadow(0 2px 16px rgba(39, 7, 7, 0.55));
 }
 
+.mv-chrome__logo--rouge {
+  filter: drop-shadow(0 2px 10px rgba(39, 7, 7, 0.14));
+  opacity: 1;
+}
+
+.mv-chrome--hero .mv-chrome__logo--rouge {
+  filter: drop-shadow(0 2px 14px rgba(39, 7, 7, 0.18));
+}
+
 .mv-chrome--page-light .mv-chrome__logo,
 .mv-chrome:not(.mv-chrome--hero):not(.mv-chrome--light) .mv-chrome__logo {
   filter: brightness(0) drop-shadow(0 2px 12px rgba(241, 235, 235, 0.45));
@@ -1009,12 +1018,24 @@ body.menu-open {
   transform: translateY(0);
 }
 
-.om-header__logo .mv-chrome__logo--light {
+.om-header__logo .mv-chrome__logo--rouge {
+  width: auto;
+  height: clamp(1.65rem, 2.8vw, 2.35rem);
+  max-width: min(46vw, 220px);
+}
+
+.om-header__logo .mv-chrome__logo--light,
+.om-header__logo .mv-chrome__logo--rouge {
   opacity: 1;
 }
 
 .mv-chrome .om-header__logo .mv-chrome__logo--light {
   filter: brightness(0) drop-shadow(0 2px 12px rgba(39, 7, 7, 0.12));
+  opacity: 1;
+}
+
+.mv-chrome .om-header__logo .mv-chrome__logo--rouge {
+  filter: drop-shadow(0 2px 10px rgba(39, 7, 7, 0.12));
   opacity: 1;
 }
 
@@ -1142,7 +1163,7 @@ body.menu-open {
   background: rgba(255, 255, 255, 0.46);
   color: #270707;
   font-family: var(--om-font-body, sans-serif);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -1248,7 +1269,7 @@ body.menu-open {
   background: rgba(255, 255, 255, 0.92);
   color: #270707;
   font-family: var(--om-font-body, var(--font-main, sans-serif));
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1;
   font-weight: 700;
   letter-spacing: -0.012em;
@@ -1410,11 +1431,39 @@ body.menu-open {
 /* ── Navbar always visible (no hide-after-hero) ── */
 .mv-chrome .om-header__bar {
   transition:
-    opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.24s ease,
+    transform 0.32s ease,
     backdrop-filter 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    -webkit-backdrop-filter 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    -webkit-backdrop-filter 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 520ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
+}
+
+.mv-chrome.is-mounted.is-nav-hidden:not(.is-menu-open) .om-header__bar {
+  transform: translate(-50%, calc(-100% - 56px));
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .mv-chrome.is-mounted.is-nav-hidden:not(.is-menu-open) .mv-chrome__nav-mobile .om-header__bar {
+    transform: translate(-50%, calc(-100% - 40px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-chrome .om-header__bar {
+    transition:
+      opacity 0.01ms linear,
+      transform 0.01ms linear,
+      backdrop-filter 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      -webkit-backdrop-filter 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      background 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 .mv-chrome.is-mounted.navbar--hidden-after-hero .om-header__bar {
@@ -1446,5 +1495,27 @@ body.menu-open {
   #simulateur,
   #territories {
     scroll-margin-top: 7rem;
+  }
+}
+
+/* ── Page arrival fade-in (replaces Barba.js page transition system) ── */
+@keyframes om-arrive {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+body {
+  animation: om-arrive 0.14s ease-out both;
+}
+
+@media (max-width: 767px) {
+  body {
+    animation-duration: 0.08s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
   }
 }

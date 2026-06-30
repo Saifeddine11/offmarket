@@ -6,6 +6,36 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://offmarket.ma/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://offmarket.ma/blog/acheter-villa-sur-plan-marrakech/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offmarket.ma/blog/investir-immobilier-luxe-marrakech/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offmarket.ma/blog/adresses-immobilier-marrakech/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offmarket.ma/blog/off-market-marrakech-biens-confidentiels/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offmarket.ma/blog/appartement-hypercentre-gueliz-marrakech/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://offmarket.ma/simulateur/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

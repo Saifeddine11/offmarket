@@ -184,7 +184,7 @@ html {
 }
 
 .om-contact-visual__brand small {
-  font-size: 0.75rem;
+  font-size: 13px;
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: 0;
@@ -199,8 +199,8 @@ html {
   margin: 0;
   max-width: min(88%, 760px);
   font-family: var(--om-font-heading, Inter, system-ui, sans-serif);
-  font-size: clamp(4.8rem, 7vw, 8.8rem);
-  line-height: 0.92;
+  font-size: clamp(56px, 6vw, 84px);
+  line-height: 0.98;
   font-weight: 400;
   letter-spacing: 0;
   color: rgba(245, 244, 242, 0.92);
@@ -287,7 +287,7 @@ html {
   background: transparent;
   color: rgba(245, 244, 242, 0.58);
   font-family: var(--om-font-body, Inter, system-ui, sans-serif);
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1;
   font-weight: 800;
   letter-spacing: 0;
@@ -313,7 +313,7 @@ html {
 .om-contact-kicker {
   margin: 0 0 0.85rem;
   color: rgba(184, 138, 90, 0.92);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
   font-weight: 800;
   letter-spacing: 0;
@@ -409,6 +409,10 @@ html {
 }
 
 .om-contact-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   min-height: 60px;
   padding: 0 42px;
   border: 0;
@@ -416,7 +420,7 @@ html {
   background: #f5f0e8;
   color: var(--om-ruby-950, #270707);
   font-family: var(--om-font-body, Inter, system-ui, sans-serif);
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1;
   font-weight: 800;
   letter-spacing: 0;
@@ -436,7 +440,7 @@ html {
   max-width: 360px;
   margin: 0 0 0 auto;
   color: rgba(245, 244, 242, 0.46);
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.5;
   font-weight: 700;
   letter-spacing: 0;

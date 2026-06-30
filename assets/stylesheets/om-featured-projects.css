@@ -140,6 +140,7 @@
   margin-top: 0;
   justify-content: stretch;
   align-items: start;
+  position: relative;
 }
 
 /* ── Reveal property cards: immersive default · detailed hover ── */
@@ -235,6 +236,12 @@
   white-space: nowrap;
 }
 
+.om-reveal-card__status--sentence {
+  text-transform: none;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
 .om-reveal-card__info {
   position: relative;
   z-index: 4;
@@ -318,6 +325,9 @@
   align-items: flex-start;
   text-decoration: none;
   color: #270707;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
   background:
     linear-gradient(
       135deg,
@@ -357,6 +367,34 @@
 .om-featured-projects .om-reveal-card__action:focus-visible {
   outline: 2px solid var(--om-focus-ring);
   outline-offset: 3px;
+}
+
+.om-featured-projects .om-reveal-card__action--disabled,
+.om-featured-projects button.om-reveal-card__action--disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.om-featured-projects .om-reveal-card__action--disabled:hover,
+.om-featured-projects button.om-reveal-card__action--disabled:hover {
+  transform: none;
+  border-color: rgba(39, 7, 7, 0.08);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.46),
+      rgba(245, 244, 242, 0.2)
+    ),
+    rgba(245, 244, 242, 0.28);
+}
+
+.om-featured-projects .om-reveal-card--photo-pending .om-reveal-card__media {
+  background:
+    linear-gradient(135deg, rgba(39, 7, 7, 0.06), rgba(245, 244, 242, 0.92));
+}
+
+.om-featured-projects .om-reveal-card--photo-pending .om-reveal-card__media img {
+  opacity: 0;
 }
 
 .om-reveal-card__action-icon {
@@ -484,6 +522,18 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.88);
   flex-shrink: 0;
+}
+
+.om-reveal-card__image-badge--sale {
+  color: #f4fff8;
+  background: rgba(24, 94, 58, 0.78);
+  border: 1px solid rgba(79, 208, 138, 0.48);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.om-reveal-card__image-badge--sale .om-reveal-card__pin {
+  background: var(--om-green, #4fd08a);
 }
 
 .om-reveal-card__image-arrow {
@@ -872,6 +922,14 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     text-align: right;
   }
 
+  .om-reveal-card__status--sentence {
+    font-size: clamp(1rem, 4.2vw, 1.35rem);
+    letter-spacing: -0.02em;
+    white-space: normal;
+    text-transform: none;
+    line-height: 1.15;
+  }
+
   .om-reveal-card__info,
   .om-reveal-card:hover .om-reveal-card__info,
   .om-reveal-card.is-active .om-reveal-card__info,
@@ -983,6 +1041,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
   }
 
   .om-featured-projects .om-reveal-card__action,
+  .om-featured-projects button.om-reveal-card__action,
   .om-reveal-card:hover .om-reveal-card__action,
   .om-reveal-card.is-active .om-reveal-card__action,
   .om-reveal-card:focus-within .om-reveal-card__action {
@@ -1071,5 +1130,372 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
   .om-reveal-card * {
     transition: none !important;
     animation: none !important;
+  }
+}
+
+/* ── Private row: restaurant + accès privé ── */
+
+.om-featured-projects__private-row {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 36px 0 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.om-featured-projects__private-row .om-project-card--restaurant {
+  min-height: 430px;
+  width: 100%;
+  border-radius: 36px;
+  overflow: hidden;
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+.om-featured-projects__private-row .om-project-card--restaurant:not(:hover):not(.is-active):not(:focus-within) .om-reveal-card__media {
+  min-height: 430px;
+}
+
+.om-featured-projects__private-row .om-project-card--restaurant .om-reveal-card__media img {
+  filter: blur(5px) saturate(1.04);
+  transform: scale(1.08);
+}
+
+.om-featured-projects__private-row .om-project-card--restaurant .om-reveal-card__unlock-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.om-featured-projects__private-row .om-project-card--restaurant .om-reveal-card__unlock-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.96);
+  background: rgba(17, 17, 17, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.om-featured-projects__private-row .om-project-card--restaurant .om-reveal-card__unlock-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+@media (min-width: 901px) {
+  .om-featured-projects__private-row .om-project-card--restaurant:hover,
+  .om-featured-projects__private-row .om-project-card--restaurant.is-active,
+  .om-featured-projects__private-row .om-project-card--restaurant:focus-within {
+    min-height: 430px;
+    max-height: 430px;
+    height: 430px;
+    aspect-ratio: auto;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant:hover .om-reveal-card__top,
+  .om-featured-projects__private-row .om-project-card--restaurant.is-active .om-reveal-card__top,
+  .om-featured-projects__private-row .om-project-card--restaurant:focus-within .om-reveal-card__top {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant:hover .om-reveal-card__info,
+  .om-featured-projects__private-row .om-project-card--restaurant.is-active .om-reveal-card__info,
+  .om-featured-projects__private-row .om-project-card--restaurant:focus-within .om-reveal-card__info {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    pointer-events: none;
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant:hover .om-reveal-card__media,
+  .om-featured-projects__private-row .om-project-card--restaurant.is-active .om-reveal-card__media,
+  .om-featured-projects__private-row .om-project-card--restaurant:focus-within .om-reveal-card__media {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    min-height: 430px;
+    border-radius: 36px;
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant:hover .om-reveal-card__media img,
+  .om-featured-projects__private-row .om-project-card--restaurant.is-active .om-reveal-card__media img,
+  .om-featured-projects__private-row .om-project-card--restaurant:focus-within .om-reveal-card__media img {
+    transform: scale(1.1);
+    filter: blur(4px) saturate(1.06);
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant:hover .om-reveal-card__image-overlay,
+  .om-featured-projects__private-row .om-project-card--restaurant.is-active .om-reveal-card__image-overlay,
+  .om-featured-projects__private-row .om-project-card--restaurant:focus-within .om-reveal-card__image-overlay,
+  .om-featured-projects__private-row .om-project-card--restaurant:hover .om-reveal-card__image-badge,
+  .om-featured-projects__private-row .om-project-card--restaurant.is-active .om-reveal-card__image-badge,
+  .om-featured-projects__private-row .om-project-card--restaurant:focus-within .om-reveal-card__image-badge,
+  .om-featured-projects__private-row .om-project-card--restaurant:hover .om-reveal-card__image-arrow,
+  .om-featured-projects__private-row .om-project-card--restaurant.is-active .om-reveal-card__image-arrow,
+  .om-featured-projects__private-row .om-project-card--restaurant:focus-within .om-reveal-card__image-arrow {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.om-private-opportunities-shell {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 36px;
+  min-height: 430px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.om-featured-projects .om-private-opportunities-shell .om-private-opportunities {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  min-height: 430px;
+  margin: 0;
+  border-radius: 36px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 28px 22px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.34) 0%,
+      rgba(255, 255, 255, 0.1) 46%,
+      rgba(255, 255, 255, 0.03) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(245, 244, 242, 0.05) 100%
+    );
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow:
+    0 24px 64px rgba(39, 7, 7, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(32px) saturate(175%);
+  -webkit-backdrop-filter: blur(32px) saturate(175%);
+}
+
+.om-featured-projects .om-private-opportunities::before {
+  content: '';
+  position: absolute;
+  inset: -50px -40px auto;
+  height: 180px;
+  border-radius: 28px;
+  background: radial-gradient(
+    circle at 50% 18%,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.12) 38%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  filter: blur(20px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.om-featured-projects .om-private-opportunities::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(245, 244, 242, 0.08) 100%);
+}
+
+.om-featured-projects .om-private-opportunities .om-project-card__locked-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 100%);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  text-align: center;
+  padding: 0;
+}
+
+.om-project-card__locked-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 18px;
+  margin-bottom: 20px;
+  border-radius: 10000px;
+  font-family: var(--om-font-body);
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #270707;
+  border: 1px solid rgba(39, 7, 7, 0.12);
+}
+
+.om-featured-projects .om-private-opportunities h3,
+.om-project-card__locked-title {
+  max-width: 100%;
+  margin: 0;
+  font-family: var(--font-main, Inter, Helvetica, Arial, sans-serif);
+  font-size: clamp(30px, 2.8vw, 44px);
+  line-height: 1.04;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  color: #18181b;
+  text-wrap: balance;
+}
+
+.om-featured-projects .om-private-opportunities p,
+.om-project-card__locked-text {
+  max-width: 100%;
+  margin: 16px auto 0;
+  font-family: var(--font-main, Inter, Helvetica, Arial, sans-serif);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: rgba(39, 7, 7, 0.62);
+}
+
+.om-featured-projects .om-private-opportunities .om-project-card__locked-cta {
+  margin-top: 24px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .om-featured-projects__private-row {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 24px;
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant {
+    min-height: 400px;
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant:not(:hover):not(.is-active):not(:focus-within) .om-reveal-card__media {
+    min-height: 400px;
+  }
+
+  .om-private-opportunities-shell,
+  .om-featured-projects .om-private-opportunities-shell .om-private-opportunities {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 767px) {
+  .om-featured-projects__private-row {
+    width: 100%;
+    margin-top: 24px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant {
+    min-height: 360px;
+    border-radius: 28px;
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant:not(:hover):not(.is-active):not(:focus-within) .om-reveal-card__media {
+    min-height: 0;
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant .om-reveal-card__media img {
+    transform: scale(1.08) !important;
+    filter: blur(5px) saturate(1.04) !important;
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant .om-reveal-card__unlock-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .om-featured-projects__private-row .om-project-card--restaurant .om-reveal-card__unlock-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .om-private-opportunities-shell {
+    min-height: auto;
+    padding: 0;
+    border-radius: 28px;
+  }
+
+  .om-featured-projects .om-private-opportunities-shell .om-private-opportunities {
+    min-height: 300px;
+    border-radius: 28px;
+    padding: 32px 18px;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.02) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.16) 0%,
+        rgba(245, 244, 242, 0.06) 100%
+      );
+    backdrop-filter: blur(28px) saturate(170%);
+    -webkit-backdrop-filter: blur(28px) saturate(170%);
+  }
+
+  .om-featured-projects .om-private-opportunities .om-project-card__locked-content {
+    width: min(100% - 36px, 640px);
+  }
+
+  .om-project-card__locked-badge {
+    min-height: 32px;
+    padding-inline: 14px;
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+
+  .om-featured-projects .om-private-opportunities h3,
+  .om-project-card__locked-title {
+    font-size: clamp(32px, 9vw, 42px);
+    line-height: 1.04;
+  }
+
+  .om-featured-projects .om-private-opportunities p,
+  .om-project-card__locked-text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .om-featured-projects .om-private-opportunities .om-project-card__locked-cta {
+    margin-top: 24px;
   }
 }

@@ -192,7 +192,7 @@ html.hero-video-autoplay-blocked .mav-hero__background {
   background: #ffffff;
 }
 
-.mav-hero__button--primary:hover span {
+.mav-hero__button--primary:hover span:not(.om-button__icon) {
   transform: translateX(3px);
 }
 
@@ -219,6 +219,20 @@ html.hero-video-autoplay-blocked .mav-hero__background {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.mav-hero__button .om-button__icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.mav-hero__button .om-button__icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
 }
 
 .mav-hero__side {
@@ -306,7 +320,7 @@ html.hero-video-autoplay-blocked .mav-hero__background {
   width: 100%;
   margin-top: clamp(0.25rem, 0.45vw, 0.45rem);
   font-family: var(--mav-hero-font-body);
-  font-size: clamp(0.68rem, 0.78vw, 0.9rem);
+  font-size: clamp(0.8125rem, 0.78vw, 0.9rem);
   line-height: 1;
   font-weight: 600;
   letter-spacing: 0.095em;
@@ -603,6 +617,13 @@ html.hero-video-autoplay-blocked .mav-hero__background {
   .mav-hero .mav-hero__actions a.mav-hero__button,
   .mav-hero .mav-hero__actions a.mav-hero__button span {
     font-size: 15px;
+  }
+
+  .mav-hero__button .om-button__icon,
+  .mav-hero__button .om-button__icon svg {
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
   }
 }
 

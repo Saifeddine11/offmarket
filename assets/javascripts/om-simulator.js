@@ -56,6 +56,50 @@
 
   var callbackModalBound = false;
 
+  var HOME_METRIC_ICONS = {
+    'Revenu brut / an': 'wallet',
+    'Revenu net / an': 'check',
+    'Nuitées louées': 'calendar',
+    'Taux d\u2019occupation choisi': 'gauge',
+    'Loyer brut / an': 'wallet',
+    'Loyer net / an': 'check',
+    'Vacance locative estimée': 'calendar',
+    'Gestion OFF MARKET incluse': 'check',
+    'Valeur estimée à la sortie': 'trend',
+    'Plus-value brute': 'trend',
+    'Taux d\u2019imposition applicable': 'receipt',
+    'Horizon': 'clock',
+  };
+
+  var HOME_ICON_SVG = {
+    wallet:
+      '<svg viewBox="0 0 24 24" fill="none"><path d="M3 7h15a3 3 0 0 1 3 3v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7Z M17 12h4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    check:
+      '<svg viewBox="0 0 24 24" fill="none"><path d="m5 12.5 4 4 10-9" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    calendar:
+      '<svg viewBox="0 0 24 24" fill="none"><path d="M8 2v4M16 2v4M3 9h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    gauge:
+      '<svg viewBox="0 0 24 24" fill="none"><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z M12 4v2M4.9 7.1l1.4 1.4M4 14h2M19 14h2M17.7 8.5l1.4-1.4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>',
+    trend:
+      '<svg viewBox="0 0 24 24" fill="none"><path d="M4 17 10 11l4 4 6-8M14 7h6v6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    receipt:
+      '<svg viewBox="0 0 24 24" fill="none"><path d="M6 2h12v20l-2-1.5L14 22l-2-1.5L10 22l-2-1.5L6 22V2Z M9 7h6M9 11h6M9 15h4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>',
+    clock:
+      '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.75"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>',
+  };
+
+  function isHomeSimulator(root) {
+    return !!(root && root.closest('.om-simulator--home'));
+  }
+
+  function createHomeIcon(className, iconKey) {
+    var icon = document.createElement('span');
+    icon.className = className;
+    icon.setAttribute('aria-hidden', 'true');
+    icon.innerHTML = HOME_ICON_SVG[iconKey] || '';
+    return icon;
+  }
+
   function formatNumber(value) {
     return Math.round(value)
       .toString()
@@ -80,8 +124,9 @@
   }
 
   function calcShort(data) {
-    var availableDays = 365 - data.personalWeeks * 7;
-    var nightsRented = Math.round(availableDays * (data.occupancy / 100));
+    var baseRentedNights = Math.round(365 * (data.occupancy / 100));
+    var personalUseNights = data.personalWeeks * 7;
+    var nightsRented = Math.max(0, baseRentedNights - personalUseNights);
     var grossAnnualRevenue = Math.round(data.nightlyRate * nightsRented);
     var netAnnualRevenue = Math.round(grossAnnualRevenue * SHORT_TERM_NET_FACTOR);
     var monthlyNet = Math.round(netAnnualRevenue / 12);
@@ -165,7 +210,17 @@
 
     var labelEl = document.createElement('span');
     labelEl.className = 'om-simulator__metric-label';
-    labelEl.textContent = label;
+
+    var simRoot = container.closest('[data-simulator]');
+    if (isHomeSimulator(simRoot) && HOME_METRIC_ICONS[label]) {
+      labelEl.classList.add('om-simulator__metric-label--with-icon');
+      labelEl.appendChild(createHomeIcon('om-simulator__metric-icon', HOME_METRIC_ICONS[label]));
+      var labelText = document.createElement('span');
+      labelText.textContent = label;
+      labelEl.appendChild(labelText);
+    } else {
+      labelEl.textContent = label;
+    }
 
     var valueEl = document.createElement('span');
     valueEl.className =
@@ -265,14 +320,19 @@
       if (!resultsRoot) return;
 
       var sectionEl = resultsRoot.querySelector('[data-result-section-label]');
+      var sectionText = resultsRoot.querySelector('[data-result-section-text]');
       var labelEl = resultsRoot.querySelector('[data-result-label]');
+      var labelText = resultsRoot.querySelector('[data-result-label-text]');
       var mainEl = resultsRoot.querySelector('[data-result-main]');
       var captionEl = resultsRoot.querySelector('[data-result-caption]');
       var subEl = resultsRoot.querySelector('[data-result-sub]');
       var metricsEl = resultsRoot.querySelector('[data-result-metrics]');
 
-      if (sectionEl) sectionEl.textContent = modeConfig.resultSection;
-      if (labelEl) labelEl.textContent = modeConfig.resultLabel;
+      if (sectionText) sectionText.textContent = modeConfig.resultSection;
+      else if (sectionEl) sectionEl.textContent = modeConfig.resultSection;
+
+      if (labelText) labelText.textContent = modeConfig.resultLabel;
+      else if (labelEl) labelEl.textContent = modeConfig.resultLabel;
 
       if (state.mode === 'resale') {
         if (mainEl) {
@@ -321,7 +381,7 @@
           );
           appendMetric(
             metricsEl,
-            'Taux d\u2019occupation effectif',
+            'Taux d\u2019occupation choisi',
             formatPct(results.effectiveOccupancy, 0),
           );
         } else if (state.mode === 'long') {

@@ -5,11 +5,34 @@
 
 /* Safe-area / root — match dark red, no white gaps on mobile */
 html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   background-color: var(--color-bg-primary);
 }
 
 body {
+  font-size: var(--om-text-body, 17px);
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
   background-color: var(--color-bg-secondary);
+}
+
+/* Preserve legacy template body/spacing math (designed for 10px root) */
+.page-content-wrapper,
+.page-content-wrapper__inner {
+  --scale-text-rem: 0.625rem;
+}
+
+/* Active UI — Inter only (override Victor Serif / template fonts) */
+body .leading-trim,
+.page-content-wrapper a.leading-trim,
+.page-content-wrapper .text-t1,
+.page-content-wrapper .text-c1,
+.page-content-wrapper .text-c2,
+.page-content-wrapper .text-body-1,
+.page-content-wrapper .text-body-2,
+.page-content-wrapper .text-body-3 {
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
 }
 
 .ui-dark.ui-background,
@@ -278,25 +301,13 @@ summary:focus-visible {
 }
 
 /**
- * Homepage simulator — prevent locomotive scroll clipping / legacy sticky bleed on desktop.
+ * Homepage simulator — stacking context only (no section hiding).
  */
 #simulateur,
 #simulateur.om-simulator--home {
   position: relative;
   z-index: 11;
   isolation: isolate;
-  overflow: visible !important;
-  height: auto !important;
-  min-height: 0 !important;
-  max-height: none !important;
-  transform: none !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-
-.has-scroll-smooth #simulateur,
-.has-scroll-smooth #simulateur[data-scroll-section] {
-  transform: none !important;
 }
 
 #simulateur ~ #territories {
@@ -306,23 +317,14 @@ summary:focus-visible {
 }
 
 /**
- * Legacy editorial archive — collapsed on all viewports (DOM preserved).
- * Contains locomotive sticky--full-height blocks that create huge empty dark gaps on desktop.
+ * Legacy archive — kept in DOM after footer, excluded from homepage flow.
  */
 #legacy-editorial {
   display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  min-height: 0 !important;
-  max-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-  border: 0 !important;
 }
 
-/* OFF MARKET lower sections — always reachable and visible */
+/* Lower sections — always in document flow and fully visible */
+#territories,
 #lectures-privees,
 #final-cta,
 #contact,
@@ -332,15 +334,17 @@ footer#contact,
 .om-footer {
   display: block !important;
   visibility: visible !important;
+  opacity: 1 !important;
   height: auto !important;
   min-height: 0 !important;
   max-height: none !important;
-  opacity: 1 !important;
   transform: none !important;
   pointer-events: auto !important;
   position: relative !important;
 }
 
+/* om-final-cta__reveal starts at opacity 0 in om-final-cta.css;
+   no om-final-cta.js exists to add .is-visible → force it permanently on */
 .om-final-cta .om-final-cta__reveal,
 .om-final-cta.is-visible .om-final-cta__reveal {
   opacity: 1 !important;
@@ -348,6 +352,7 @@ footer#contact,
   filter: none !important;
 }
 
+/* Testimonial card and its inner elements */
 .om-testimonials,
 .om-testimonials__inner,
 .om-testimonial-card {
@@ -357,8 +362,7 @@ footer#contact,
 
 @media (min-width: 980px) {
   /**
-   * Desktop — native document flow (Locomotive virtual scroll leaves huge blank ivory gaps
-   * and hides sections with translate(-200vw) / opacity:0 when not inview).
+   * Desktop — native document scroll (Locomotive virtual scroll breaks section flow).
    */
   html.has-scroll-smooth,
   html.no-scroll-smooth,
@@ -421,23 +425,7 @@ footer#contact,
     will-change: auto !important;
   }
 
-  #qui-sommes-nous,
-  #featured-projects,
-  #simulateur,
-  #territories,
-  #lectures-privees,
-  #final-cta,
-  #contact,
-  footer#contact {
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    transform: none !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    overflow: visible !important;
-  }
-
+  /* Mavericks reveal items that stay hidden when Locomotive Scroll in-view never fires */
   #qui-sommes-nous .mav-reveal-item,
   #qui-sommes-nous .mav-who__phrase,
   #qui-sommes-nous .mav-who__eyebrow,
@@ -451,15 +439,8 @@ footer#contact,
 
 /**
  * Homepage — mobile legacy fork + scroll fixes.
- * #lectures-privees, #final-cta, #contact are SIBLINGS after #legacy-editorial (not inside it).
  */
 @media (max-width: 979px) {
-  /**
-   * Native document scroll on touch — legacy stack locks scroll via:
-   * html.no-hover { overflow: hidden }, html.no-hover.is-ios { position: fixed }
-   * html.has-scroll-smooth { position: fixed; overflow: hidden }
-   * .no-scroll-smooth .page-content-wrapper { position: fixed; height: 100svh }
-   */
   html,
   html.no-hover,
   html.no-hover.is-ios,
@@ -540,5 +521,55 @@ footer#contact,
     will-change: auto !important;
   }
 
-  /* Old mobile template fork — kept inside hidden #legacy-editorial */
+  #nature-mobile,
+  #place-mobile-block,
+  .l-place-description,
+  #l-place-sticky-mobile-1,
+  #l-place-sticky-mobile-2,
+  #l-place-sticky-mobile-3,
+  #design-mobile,
+  #design-mobile-slide-2,
+  #l-design-mobile-sticky-2,
+  #design-mobile-slide-4,
+  #l-residences-sticky-2,
+  #residences-slider-mobile,
+  #interiors-2,
+  #interiors-slider-mobile {
+    display: none !important;
+  }
+}
+
+/**
+ * Site-wide — disable legacy preloader overlay and reveal gates (om-no-preloader.js).
+ */
+html.is-preloader-disabled .js-preloader,
+html.is-preloader-disabled .preloader {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+html.is-preloader-disabled .mv-chrome.is-preloader-hidden {
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+html.js-no-reveal [data-reveal],
+html.is-preloader-disabled [data-reveal] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+html.is-preloader-disabled .is-invisible--js {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html.is-preloader-disabled.not-ready body,
+html.is-preloader-disabled.not-ready body * {
+  transition: none !important;
 }

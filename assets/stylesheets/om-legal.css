@@ -1,0 +1,52 @@
+/**
+ * OFF MARKET — Legal / privacy policy typography
+ * px-based — independent of legacy rem root.
+ */
+
+.om-legal-page {
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
+  color: var(--om-ruby-950, #270707);
+}
+
+.om-legal-page h1 {
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: 1.04;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+}
+
+.om-legal-page section h2 {
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.om-legal-page section p,
+.om-legal-page li {
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
+  font-size: 17px;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+}
+
+.om-legal-page .om-eyebrow {
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .om-legal-page section h2 {
+    font-size: 24px;
+  }
+
+  .om-legal-page section p,
+  .om-legal-page li {
+    font-size: 17px;
+  }
+}

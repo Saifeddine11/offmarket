@@ -12,8 +12,32 @@
 
 :root {
   /* ── Fonts ── */
-  --om-font-heading: var(--font-heading, var(--font-main, Inter, system-ui, sans-serif));
-  --om-font-body: var(--font-body, var(--font-main, Inter, sans-serif));
+  --om-font-main: Inter, "DM Sans", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --om-font-heading: var(--font-heading, var(--font-main, var(--om-font-main)));
+  --om-font-body: var(--font-body, var(--font-main, var(--om-font-main)));
+
+  /* ── Final OFF MARKET type scale (px — not rem) ── */
+  --om-text-caption: 13px;
+  --om-text-small: 15px;
+  --om-text-body: 17px;
+  --om-text-body-lg: 20px;
+  --om-text-card-title: 22px;
+  --om-text-heading-sm: 28px;
+  --om-text-heading: 40px;
+  --om-text-heading-lg: 56px;
+  --om-text-display: clamp(64px, 6vw, 88px);
+
+  --om-leading-caption: 1.25;
+  --om-leading-small: 1.45;
+  --om-leading-body: 1.55;
+  --om-leading-body-lg: 1.45;
+  --om-leading-heading: 1.08;
+  --om-leading-display: 0.98;
+
+  --om-tracking-display: -0.065em;
+  --om-tracking-heading: -0.055em;
+  --om-tracking-body: -0.01em;
+  --om-tracking-label: 0.12em;
 
   /* ── Brand colors ── */
   --om-ruby-950: #270707;
@@ -53,24 +77,26 @@
   --om-champagne-light-rgb: 196, 154, 108;
   --om-graphite-rgb: 46, 52, 48;
 
-  /* ── Global typography scale ── */
-  --om-title-xl: clamp(4.2rem, 7vw, 8.5rem);
-  --om-title-lg: clamp(3.4rem, 5.6vw, 6.6rem);
-  --om-title-md: clamp(2.6rem, 4.2vw, 5rem);
-  --om-title-sm: clamp(1.8rem, 2.4vw, 2.8rem);
-  --om-h2: clamp(3rem, 9vw, 5rem);
+  /* ── Active aliases (consume final scale) ── */
   --om-nav: 17px;
   --om-nav-lang: 15px;
-  --om-body-lg: clamp(1.1rem, 1.22vw, 1.3rem);
-  --om-body-md: clamp(1.0625rem, 1.08vw, 1.15rem);
-  --om-body-sm: clamp(0.9375rem, 0.98vw, 1.0625rem);
-  --om-support-text: clamp(1.0625rem, 1.05vw, 1.15rem);
-  --om-small-readable: clamp(0.9375rem, 0.98vw, 1.0625rem);
-  --om-meta-readable: clamp(0.90625rem, 0.92vw, 0.96rem);
-  --om-label: var(--om-meta-readable);
-  --om-letter-tight: -0.075em;
-  --om-letter-soft: -0.025em;
-  --om-letter-label: 0.13em;
+  --om-label: var(--om-text-caption);
+  --om-body-lg: var(--om-text-body-lg);
+  --om-body-md: var(--om-text-body);
+  --om-body-sm: var(--om-text-small);
+  --om-support-text: var(--om-text-small);
+  --om-small-readable: var(--om-text-small);
+  --om-meta-readable: var(--om-text-caption);
+  --om-letter-tight: var(--om-tracking-display);
+  --om-letter-soft: var(--om-tracking-body);
+  --om-letter-label: var(--om-tracking-label);
+
+  /* ── Deprecated legacy tokens (aliased — do not use in new CSS) ── */
+  --om-title-xl: var(--om-text-display);
+  --om-title-lg: var(--om-text-heading-lg);
+  --om-title-md: var(--om-text-heading);
+  --om-title-sm: var(--om-text-heading-sm);
+  --om-h2: var(--om-text-heading-lg);
 
   /* ── Layout ── */
   --om-container: 1280px;
@@ -132,21 +158,18 @@
   );
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 767px) {
   :root {
-    --om-support-text: clamp(1rem, 1.02vw, 1.0625rem);
-    --om-small-readable: clamp(0.90625rem, 0.96vw, 1rem);
-    --om-meta-readable: clamp(0.90625rem, 0.9vw, 0.9375rem);
-    --om-body-md: clamp(1rem, 1.05vw, 1.1rem);
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --om-support-text: clamp(0.9375rem, 1vw, 1rem);
-    --om-small-readable: clamp(0.875rem, 0.96vw, 0.9375rem);
-    --om-meta-readable: clamp(0.875rem, 0.9vw, 0.90625rem);
-    --om-body-md: clamp(0.9375rem, 1vw, 1rem);
+    --om-text-caption: 13px;
+    --om-text-small: 15px;
+    --om-text-body: 17px;
+    --om-text-body-lg: 18px;
+    --om-text-card-title: 20px;
+    --om-text-heading-sm: 24px;
+    --om-text-heading: 34px;
+    --om-text-heading-lg: 42px;
+    --om-text-display: clamp(44px, 13vw, 56px);
+    --om-btn-font-size: 16px;
   }
 }
 

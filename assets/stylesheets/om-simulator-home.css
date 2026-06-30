@@ -1,27 +1,38 @@
 /**
- * Homepage simulator — spacing only (formulas/layout unchanged)
+ * Homepage simulator — layout and spacing only (formulas unchanged)
  */
+
+.om-simulator--home,
+.om-simulator--home * {
+  box-sizing: border-box;
+}
 
 .om-simulator--home {
   position: relative;
   z-index: 11;
   isolation: isolate;
-  padding-block: clamp(5rem, 8vw, 8rem);
-  padding-inline: clamp(1rem, 4vw, 1.25rem);
+  padding-top: clamp(150px, 14vh, 190px);
+  padding-bottom: clamp(72px, 8vh, 110px);
+  padding-inline: clamp(1rem, 3vw, 1.5rem);
   background: #f5f4f2;
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 130px;
   overflow: visible;
+  height: auto;
+  min-height: auto;
 }
 
+/* ── Header ── */
+
 .om-simulator--home .om-simulator-home__header {
-  width: min(100%, 1280px);
-  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  width: min(100% - 32px, 920px);
+  margin-inline: auto;
+  margin-bottom: 36px;
   text-align: center;
 }
 
 .om-simulator--home .om-simulator-home__eyebrow {
   display: block;
-  margin: 0 0 1rem;
+  margin: 0 0 0.75rem;
   font-family: var(--om-font-body);
   font-size: var(--om-label);
   line-height: 1;
@@ -32,70 +43,425 @@
 }
 
 .om-simulator--home .om-simulator-home__title {
-  margin: 0 auto;
-  max-width: 18ch;
+  max-width: 860px;
+  margin-inline: auto;
   font-family: var(--font-main, 'Inter', system-ui, sans-serif);
-  font-size: clamp(2.5rem, 8vw, 4.25rem);
+  font-size: clamp(42px, 4.6vw, 64px);
   line-height: 0.98;
   font-weight: 500;
-  letter-spacing: -0.065em;
+  letter-spacing: -0.06em;
   color: #270707;
   text-wrap: balance;
 }
 
 .om-simulator--home .om-simulator-home__text {
-  margin: 1.15rem auto 0;
-  max-width: 42rem;
-  font-size: clamp(1rem, 3.8vw, 1.15rem);
-  line-height: 1.55;
+  max-width: 720px;
+  margin: 16px auto 0;
+  font-size: 18px;
+  line-height: 1.45;
   color: rgba(39, 7, 7, 0.64);
   text-wrap: pretty;
 }
 
-.om-simulator--home .om-simulator {
-  width: min(100%, 1280px);
+/* ── Container + grid ── */
+
+.om-simulator--home .om-simulator,
+.om-simulator--home .om-simulator-home__container {
+  width: min(100% - 48px, 1360px);
   margin-inline: auto;
+  padding: 0;
   overflow: visible;
+  height: auto;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .om-simulator--home .om-simulator__grid,
-.om-simulator--home .om-simulator__layout {
-  width: 100%;
+.om-simulator--home .om-simulator__layout,
+.om-simulator--home .om-simulator-home__grid {
+  width: min(100% - 48px, 1360px);
   margin-inline: auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(620px, 1.28fr) minmax(420px, 0.82fr);
+  gap: clamp(28px, 3vw, 44px);
+  align-items: stretch;
   overflow: visible;
-  align-items: start;
+  height: auto;
+  min-height: auto;
 }
+
+/* ── Tabs above both cards ── */
+
+.om-simulator--home .om-simulator-home__tabs,
+.om-simulator--home .om-simulator__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: min(100% - 48px, 1360px);
+  margin: 0 auto 24px;
+}
+
+.om-simulator--home .om-simulator__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 10000px;
+  font-size: 15px;
+}
+
+.om-simulator--home .om-simulator__tab-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.om-simulator--home .om-simulator__tab-icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  stroke: currentColor;
+}
+
+.om-simulator--home .om-simulator__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.om-simulator--home .om-simulator__field-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  color: rgba(102, 8, 16, 0.68);
+}
+
+.om-simulator--home .om-simulator__field-icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  stroke: currentColor;
+}
+
+.om-simulator--home .om-simulator__results-section,
+.om-simulator--home .om-simulator__results-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.om-simulator--home .om-simulator__result-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(79, 208, 138, 0.86);
+}
+
+.om-simulator--home .om-simulator__result-icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  stroke: currentColor;
+}
+
+.om-simulator--home .om-simulator__metric-label--with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.om-simulator--home .om-simulator__metric-label,
+.om-simulator--home .om-simulator__metric-label span:not(.om-simulator__metric-icon) {
+  font-family: var(--om-font-body, var(--om-font-main, Inter, system-ui, sans-serif));
+}
+
+.om-simulator--home .om-simulator__metric-icon {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(245, 244, 242, 0.72);
+}
+
+.om-simulator--home .om-simulator__metric-icon svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+  stroke: currentColor;
+}
+
+/* ── Parameters card ── */
 
 .om-simulator--home .om-simulator__inputs {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: clamp(28px, 3vw, 40px);
+  border-radius: 36px;
+  height: auto;
+  min-height: auto;
 }
 
-@media (min-width: 1025px) {
-  .om-simulator--home .om-simulator__results,
-  .om-simulator--home .om-simulator__result {
-    position: sticky;
-    top: 7rem;
-    align-self: start;
+.om-simulator--home .om-simulator__panel-intro {
+  margin-bottom: 0;
+}
+
+.om-simulator--home .om-simulator__panel-eyebrow {
+  margin-bottom: 12px;
+}
+
+.om-simulator--home .om-simulator__panel-title {
+  max-width: 520px;
+  margin: 0 0 16px;
+  font-size: clamp(24px, 2vw, 32px);
+  line-height: 1.08;
+}
+
+.om-simulator--home .om-simulator__panel-intro .om-simulator__note,
+.om-simulator--home .om-simulator__panel-copy {
+  display: none;
+}
+
+.om-simulator--home .om-simulator__panel {
+  padding: 0;
+}
+
+.om-simulator--home .om-simulator__field {
+  padding-block: 18px;
+}
+
+.om-simulator--home .om-simulator__panel > .om-simulator__field:first-of-type {
+  padding-top: 0;
+}
+
+.om-simulator--home .om-simulator__field + .om-simulator__field {
+  margin-top: 0;
+}
+
+.om-simulator--home .om-simulator__range {
+  margin-top: 14px;
+}
+
+.om-simulator--home .om-simulator__advanced {
+  margin-top: 0;
+}
+
+.om-simulator--home .om-simulator__advanced summary {
+  min-height: 48px;
+  margin-top: 0;
+}
+
+/* ── Result card ── */
+
+.om-simulator--home .om-simulator__results,
+.om-simulator--home .om-simulator__result {
+  max-width: none;
+  justify-self: stretch;
+  align-self: stretch;
+  position: relative;
+  top: auto;
+  border-radius: 36px;
+  padding: clamp(32px, 3vw, 44px);
+  min-height: auto;
+  height: auto;
+  overflow: visible;
+}
+
+.om-simulator--home .om-simulator__results-main,
+.om-simulator--home .om-simulator__result-value {
+  font-size: clamp(72px, 6vw, 100px);
+  line-height: 0.88;
+  margin-block: 14px 16px;
+}
+
+.om-simulator--home .om-simulator__results-main.is-money,
+.om-simulator--home .om-simulator__result-value.is-money {
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: 0.9;
+}
+
+.om-simulator--home .om-simulator__results-caption {
+  margin-top: 0.5rem;
+}
+
+.om-simulator--home .om-simulator__metrics,
+.om-simulator--home .om-simulator__metrics--primary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 1.25rem;
+}
+
+.om-simulator--home .om-simulator__metric,
+.om-simulator--home .om-simulator-metric {
+  padding: 18px;
+  border-radius: 20px;
+}
+
+.om-simulator--home .om-simulator__metric-value,
+.om-simulator--home .om-simulator-metric__value {
+  margin-top: 0.5rem;
+  font-size: clamp(1.15rem, 1.4vw, 1.5rem);
+}
+
+.om-simulator--home .om-simulator__cta-note {
+  margin: 1.25rem 0 0.85rem;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.om-simulator--home .om-simulator__actions {
+  gap: 0.65rem;
+}
+
+.om-simulator--home .om-simulator__actions .om-button {
+  min-height: 48px;
+  font-size: 15px;
+}
+
+/* ── Breakpoints ── */
+
+@media (max-width: 1100px) {
+  .om-simulator--home .om-simulator__grid,
+  .om-simulator--home .om-simulator__layout,
+  .om-simulator--home .om-simulator-home__grid {
+    grid-template-columns: 1fr;
+    width: min(100% - 32px, 860px);
+  }
+
+  .om-simulator--home .om-simulator,
+  .om-simulator--home .om-simulator-home__container {
+    width: min(100% - 32px, 860px);
   }
 }
 
 @media (max-width: 767px) {
   .om-simulator--home {
-    padding-block: clamp(4rem, 10vw, 5.5rem);
+    padding-top: clamp(120px, 24vw, 150px);
+    padding-bottom: 64px;
+    scroll-margin-top: 100px;
+    overflow-x: clip;
   }
 
-  .om-simulator--home .om-simulator-home__title {
+  .om-simulator--home .om-simulator,
+  .om-simulator--home .om-simulator-home__container,
+  .om-simulator--home .om-simulator__grid,
+  .om-simulator--home .om-simulator__layout,
+  .om-simulator--home .om-simulator-home__grid {
+    width: min(100% - 24px, 860px);
     max-width: 100%;
   }
 
+  .om-simulator--home .om-simulator-home__header {
+    width: min(100% - 24px, 920px);
+    margin-bottom: 28px;
+  }
+
+  .om-simulator--home .om-simulator-home__title {
+    font-size: clamp(34px, 10vw, 44px);
+    line-height: 1.04;
+  }
+
+  .om-simulator--home .om-simulator-home__text {
+    font-size: 17px;
+  }
+
+  .om-simulator--home .om-simulator-home__tabs-wrap,
+  .om-simulator--home .om-simulator__tabs-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin-inline: 0;
+  }
+
+  .om-simulator--home .om-simulator-home__tabs-wrap::after,
+  .om-simulator--home .om-simulator__tabs-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 34px;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(245, 244, 242, 0), #f5f4f2 82%);
+  }
+
+  .om-simulator--home .om-simulator-home__tabs,
   .om-simulator--home .om-simulator__tabs {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
     overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 0 8px;
+    margin: 0 0 24px;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
 
   .om-simulator--home .om-simulator__tabs::-webkit-scrollbar {
     display: none;
+  }
+
+  .om-simulator--home .om-simulator__tab {
+    flex: 0 0 auto;
+    min-width: max-content;
+    min-height: 44px;
+    padding: 0 16px;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+
+  .om-simulator--home .om-simulator__field-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .om-simulator--home .om-simulator__label {
+    min-width: 0;
+    max-width: 100%;
+    line-height: 1.18;
+  }
+
+  .om-simulator--home .om-simulator__value {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .om-simulator--home .om-simulator__field-help {
+    max-width: 100%;
+    line-height: 1.45;
+  }
+
+  .om-simulator--home .om-simulator__metrics,
+  .om-simulator--home .om-simulator__metrics--primary {
+    grid-template-columns: 1fr;
+  }
+
+  .om-simulator--home .om-simulator__results-main,
+  .om-simulator--home .om-simulator__result-value {
+    font-size: clamp(56px, 16vw, 72px);
   }
 }

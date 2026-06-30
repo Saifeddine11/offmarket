@@ -15,8 +15,8 @@
 }
 
 .mav-who__inner {
-  width: min(100%, 1320px);
-  margin: 0 auto;
+  width: min(100% - 32px, 1120px);
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@
 }
 
 .mav-who__eyebrow {
-  margin: 0 0 clamp(2rem, 3vw, 3rem);
+  margin: 0 0 clamp(1.75rem, 2.8vw, 2.5rem);
   font-family: var(--om-font-body);
   font-size: var(--om-label);
   line-height: 1;
@@ -35,25 +35,52 @@
 }
 
 .mav-who__title {
-  max-width: 1180px;
+  max-width: 980px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-family: var(--font-main, 'Inter', system-ui, sans-serif);
-  font-size: clamp(2.75rem, 4.8vw, 5.125rem);
-  line-height: 1.06;
+  font-size: clamp(56px, 5.6vw, 82px);
+  line-height: 0.98;
   font-weight: 400;
-  letter-spacing: -0.058em;
+  letter-spacing: -0.065em;
   color: #252222;
   text-align: center;
+  text-wrap: balance;
 }
 
-.mav-who__phrase {
-  display: block;
-  max-width: 100%;
-  text-align: center;
-  text-wrap: balance;
+.mav-who__lead {
+  max-width: 760px;
+  margin: 28px auto 0;
+  font-family: var(--font-main, 'Inter', system-ui, sans-serif);
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  color: rgba(39, 7, 7, 0.62);
+  text-wrap: pretty;
+}
+
+.mav-who__points {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.mav-who__points span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 10000px;
+  background: rgba(102, 8, 16, 0.07);
+  border: 1px solid rgba(102, 8, 16, 0.14);
+  color: #660810;
+  font-family: var(--font-main, 'Inter', system-ui, sans-serif);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 650;
+  letter-spacing: -0.01em;
 }
 
 .mav-who .om-cta {
@@ -62,12 +89,6 @@
 
 .mav-who + .om-featured-projects {
   padding-top: clamp(4rem, 8vh, 6rem);
-}
-
-.mav-who .mav-text-reveal .mav-who__phrase {
-  font: inherit;
-  letter-spacing: inherit;
-  line-height: inherit;
 }
 
 .mav-who .mav-reveal-item {
@@ -91,20 +112,12 @@
   transition-delay: 80ms;
 }
 
-.mav-who.is-visible .mav-who__phrase:nth-child(1) {
-  transition-delay: 80ms;
-}
-
-.mav-who.is-visible .mav-who__phrase:nth-child(2) {
-  transition-delay: 160ms;
-}
-
-.mav-who.is-visible .mav-who__phrase:nth-child(3) {
-  transition-delay: 240ms;
+.mav-who.is-visible .mav-who__points {
+  transition-delay: 200ms;
 }
 
 .mav-who.is-visible .om-cta {
-  transition-delay: 400ms;
+  transition-delay: 280ms;
 }
 
 @media (max-width: 767px) {
@@ -114,47 +127,24 @@
 
   .mav-who__eyebrow {
     margin-bottom: 1.35rem;
-    text-align: center;
   }
 
-  #qui-sommes-nous .mav-who__mobile-copy {
-    max-width: 21rem;
-    margin-inline: auto;
-    text-align: center;
-  }
-
-  #qui-sommes-nous .mav-who__lead {
-    margin: 0;
-    font-family: var(--font-main, 'Inter', system-ui, sans-serif);
-    font-size: clamp(2.25rem, 10vw, 3.45rem);
-    line-height: 1.02;
-    letter-spacing: -0.06em;
-    font-weight: 500;
-    color: #270707;
-    text-wrap: balance;
-  }
-
-  #qui-sommes-nous .mav-who__body {
-    margin: 1.35rem 0 0;
-    font-family: var(--font-main, 'Inter', system-ui, sans-serif);
-    font-size: 1.05rem;
-    line-height: 1.55;
-    letter-spacing: -0.015em;
-    font-weight: 400;
-    color: rgba(39, 7, 7, 0.64);
-    text-wrap: pretty;
-  }
-
-  #qui-sommes-nous .mav-who__title,
-  #qui-sommes-nous .mav-who__headline,
-  #qui-sommes-nous h2 {
+  .mav-who__title {
     max-width: 100%;
-    margin-inline: auto;
-    font-size: clamp(2.15rem, 9vw, 3.25rem);
-    line-height: 1.04;
+    font-size: clamp(38px, 11vw, 52px);
+    line-height: 1.02;
     letter-spacing: -0.055em;
-    text-align: center;
-    text-wrap: balance;
+  }
+
+  .mav-who__lead {
+    margin-top: 1.25rem;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .mav-who__points {
+    margin-top: 1.5rem;
+    gap: 8px;
   }
 
   .mav-who .om-cta {
@@ -165,35 +155,25 @@
     transition-delay: 40ms;
   }
 
+  .mav-who.is-visible .mav-who__title {
+    transition-delay: 120ms;
+  }
+
   .mav-who.is-visible .mav-who__lead {
-    transition-delay: 120ms;
-  }
-
-  .mav-who.is-visible .mav-who__body {
     transition-delay: 200ms;
   }
 
-  .mav-who.is-visible .mav-who__phrase:nth-child(1) {
-    transition-delay: 120ms;
-  }
-
-  .mav-who.is-visible .mav-who__phrase:nth-child(2) {
-    transition-delay: 200ms;
-  }
-
-  .mav-who.is-visible .mav-who__phrase:nth-child(3) {
+  .mav-who.is-visible .mav-who__points {
     transition-delay: 280ms;
   }
 
   .mav-who.is-visible .om-cta {
-    transition-delay: 420ms;
+    transition-delay: 360ms;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mav-who .mav-reveal-item,
-  .mav-who .mav-text-reveal .mav-who__phrase,
-  .mav-who .mav-who__mobile-copy .mav-reveal-item {
+  .mav-who .mav-reveal-item {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
@@ -209,8 +189,7 @@
   }
 }
 
-html.om-reveal-fallback #qui-sommes-nous .mav-reveal-item,
-html.om-reveal-fallback #qui-sommes-nous .mav-who__phrase {
+html.om-reveal-fallback #qui-sommes-nous .mav-reveal-item {
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;

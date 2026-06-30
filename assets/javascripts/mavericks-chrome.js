@@ -34,6 +34,10 @@
     document.body.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
 
+    if (open) {
+      chrome.classList.remove('is-nav-hidden');
+    }
+
     toggles.forEach(function (btn) {
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.setAttribute('aria-label', open ? 'Close' : 'Menu');

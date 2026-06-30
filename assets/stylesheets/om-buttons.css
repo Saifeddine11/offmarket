@@ -35,7 +35,7 @@ body input[type="submit"].btn.btn--outline:not(.btn--square):not(.btn--link) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   border-radius: var(--om-radius-pill) !important;
 
   font-family: var(--om-font-body, var(--font-body, var(--font-main, Inter, sans-serif))) !important;
@@ -59,16 +59,16 @@ body input[type="submit"].btn.btn--outline:not(.btn--square):not(.btn--link) {
 
 /* Nested label text must inherit computed button typography */
 
-.om-button span,
-.mav-button span,
-.mav-hero__button span,
-.om-btn span,
-.om-cta span,
-.om-noise-btn span,
+.om-button span:not(.om-button__icon):not(.om-btn-icon),
+.mav-button span:not(.om-button__icon):not(.om-btn-icon),
+.mav-hero__button span:not(.om-button__icon):not(.om-btn-icon),
+.om-btn span:not(.om-button__icon):not(.om-btn-icon),
+.om-cta span:not(.om-button__icon):not(.om-btn-icon):not(.om-cta__icon),
+.om-noise-btn span:not(.om-button__icon):not(.om-btn-icon),
 .om-noise-btn__inner,
 body .btn:not(.btn--square):not(.btn--link) .btn__content,
 body .btn:not(.btn--square):not(.btn--link) .btn__text,
-body .btn:not(.btn--square):not(.btn--link) .btn__text span {
+body .btn:not(.btn--square):not(.btn--link) .btn__text span:not(.om-button__icon):not(.om-btn-icon) {
   font: inherit !important;
   letter-spacing: inherit !important;
   line-height: inherit !important;
@@ -393,18 +393,11 @@ body .btn.btn--primary:not(.btn--square):not(.btn--link) .btn__text {
   min-width: 156px;
 }
 
-.mav-hero__button--primary span[aria-hidden="true"] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.mav-hero__button--primary span {
+.mav-hero__button--primary span:not(.om-button__icon) {
   transition: transform 260ms ease;
 }
 
-.mav-hero__button--primary:hover span {
+.mav-hero__button--primary:hover span:not(.om-button__icon) {
   transform: translateX(3px);
 }
 
@@ -446,7 +439,57 @@ body .btn.btn--primary:not(.btn--square):not(.btn--link) .btn__text {
   .om-noise-btn:hover,
   body .btn.btn--primary:not(.btn--square):not(.btn--link):hover,
   body .btn.btn--outline:not(.btn--square):not(.btn--link):hover,
-  .mav-hero__button--primary:hover span {
+  .mav-hero__button--primary:hover span:not(.om-button__icon) {
     transform: none;
+  }
+}
+
+/* ── Inline button icons ── */
+
+.om-button,
+.om-btn-primary,
+.om-btn-secondary,
+.mav-hero__button,
+.om-contact-submit,
+.om-final-cta a,
+.om-final-cta button,
+.om-header__access-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.om-button__icon,
+.om-btn-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.om-button__icon svg,
+.om-btn-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+}
+
+@media (max-width: 767px) {
+  .om-button__icon,
+  .om-btn-icon {
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
+  }
+
+  .om-button__icon svg,
+  .om-btn-icon svg {
+    width: 18px;
+    height: 18px;
   }
 }

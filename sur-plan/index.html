@@ -23,17 +23,18 @@
 
             <link rel="stylesheet" href="/assets/stylesheets/global.css?v=1765268659">
             <link rel="stylesheet" href="/assets/stylesheets/offmarket-tokens.css?v=1765268660">
-            <link rel="stylesheet" href="/assets/stylesheets/offmarket-overrides.css?v=1765272600">
-            <link rel="stylesheet" href="/assets/stylesheets/offmarket-logo.css?v=1765268661">
-            <link rel="stylesheet" href="/assets/stylesheets/mavericks-chrome.css?v=1765278200">
-            <link rel="stylesheet" href="/assets/stylesheets/om-typography.css?v=1765278000">
+            <link rel="stylesheet" href="/assets/stylesheets/offmarket-overrides.css?v=1765311000">
+            <link rel="stylesheet" href="/assets/stylesheets/offmarket-logo.css?v=1765317600">
+            <link rel="stylesheet" href="/assets/stylesheets/mavericks-chrome.css?v=1765317900">
+            <link rel="stylesheet" href="/assets/stylesheets/om-typography.css?v=1765311000">
 
-            <link rel="stylesheet" href="/assets/stylesheets/om-footer.css?v=1765297300">
+            <link rel="stylesheet" href="/assets/stylesheets/om-footer.css?v=1765309000">
             <link rel="stylesheet" href="/assets/stylesheets/sur-plan.css?v=1765297300">
-            <link rel="stylesheet" href="/assets/stylesheets/om-buttons.css?v=1765297300">
+            <link rel="stylesheet" href="/assets/stylesheets/om-legacy-type.css?v=1765311000">
+            <link rel="stylesheet" href="/assets/stylesheets/om-buttons.css?v=1765314800">
 <script>
-            document.documentElement.classList.remove('no-js');
-            document.documentElement.classList.add('js');
+            document.documentElement.classList.remove('no-js', 'not-ready');
+            document.documentElement.classList.add('js', 'is-preloader-disabled', 'js-no-reveal');
 
             if (navigator.platform.toUpperCase().indexOf('WIN') >= 0) {
                 document.documentElement.classList.add('is-win');
@@ -73,7 +74,7 @@
         <meta name="twitter:image" content="https://offmarket.ma/assets/mavericks/hero/mavericks-hero-poster.jpg">
 
                             </head>
-<body>
+<body class="om-sur-plan-route">
         <a href="#top" class="sr-only sr-only--focusable">
                     Skip to main content
             </a>
@@ -83,45 +84,15 @@
 
 
 
-<div
-    class="
-        preloader
-        
-        js-preloader            "
-    
-                            data-plugin="preloader"                        data-preloader-visible="true"
->
-    <div class="preloader__content ui-dark ui-background">
-        <div class="preloader__content ui-dark ui-background">
-            <div class="background background--cover preloader__gradient-animation">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
-
-                                        <p class="preloader__content__cover h1">
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                </p>
-            
-        </div>
-    </div>
-</div>
-
-<!-- OffMarket CinematicChrome + Footer (static integration) -->
+<!-- OFF MARKET CinematicChrome + Footer (static integration) -->
 <div class="mv-chrome mv-chrome--page-light" id="mv-chrome" data-mv-chrome>
   <div class="cinematic-menu-backdrop" data-mv-backdrop aria-hidden="true"></div>
 
   <!-- Mobile header -->
   <nav class="mv-chrome__nav-mobile om-header" aria-label="Menu">
     <div class="om-header__bar">
-      <a href="/" class="mv-chrome__logo-link om-header__logo" aria-label="OffMarket">
-        <img src="/assets/logos/mavericks-outline.svg" alt="" class="mv-chrome__logo mv-chrome__logo--light" width="120" height="36" decoding="async">
+      <a href="/" class="mv-chrome__logo-link om-header__logo" aria-label="OFF MARKET">
+        <img src="/assets/logos/logo-rouge.png" alt="" class="mv-chrome__logo mv-chrome__logo--rouge" width="120" height="36" decoding="async">
       </a>
       <div class="om-header__actions">
         <a href="" class="om-header__icon-btn om-header__icon-btn--ghost" aria-label="+212 (0) 000 000 000">
@@ -142,8 +113,8 @@
   <!-- Desktop header -->
   <nav class="mv-chrome__nav-desktop om-header" aria-label="Menu">
     <div class="om-header__bar">
-      <a href="/" class="mv-chrome__logo-link om-header__logo" aria-label="OffMarket">
-        <img src="/assets/logos/mavericks-outline.svg" alt="" class="mv-chrome__logo mv-chrome__logo--light" width="140" height="42" decoding="async">
+      <a href="/" class="mv-chrome__logo-link om-header__logo" aria-label="OFF MARKET">
+        <img src="/assets/logos/logo-rouge.png" alt="" class="mv-chrome__logo mv-chrome__logo--rouge" width="140" height="42" decoding="async">
       </a>
       <nav class="om-header__nav" aria-label="Navigation principale">
         <a href="">Accueil</a>
@@ -164,7 +135,7 @@
             <a href="" class="om-language-dropdown__option" role="option" aria-selected="false" data-lang="NL">NL</a>
           </div>
         </div>
-        <a class="om-header__access-btn" href="">Demander l'accès</a>
+        <a class="om-header__access-btn" href=""><span class="om-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Demander l'accès</span></a>
       </div>
     </div>
   </nav>
@@ -190,7 +161,7 @@
       </ul>
     </nav>
     <div class="mv-chrome__menu-footer">
-      <a class="om-header__access-btn om-header__access-btn--menu" href="">Demander l'accès</a>
+      <a class="om-header__access-btn om-header__access-btn--menu" href=""><span class="om-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Demander l'accès</span></a>
       <nav class="mv-lang-switcher mv-lang-switcher--on-dark mv-lang-switcher--mobile-only" aria-label="Langue">
         <button type="button" class="mv-lang-switcher__btn is-active" aria-current="true">EN</button>
         <span class="mv-lang-switcher__sep" aria-hidden="true">/</span>
@@ -238,8 +209,8 @@
     <div class="header__background"></div>
     <div class="header__content px-layout">
                 <div class="header__left header-animation-logo is-hidden--md-up" data-custom-scroll-theme-target="left">
-            <a class="header__logo--mobile" href="/" aria-label="OffMarket — page d&amp;rsquo;accueil">
-                <span class="offmarket-logo offmarket-logo--mobile" aria-hidden="true">OffMarket</span>
+            <a class="header__logo--mobile" href="/" aria-label="OFF MARKET — page d&amp;rsquo;accueil">
+                <img src="/assets/logos/logo-rouge.png" alt="OFF MARKET" class="offmarket-logo-img offmarket-logo-img--mobile" decoding="async">
             </a>
         </div>
 
@@ -357,10 +328,10 @@
                     </div>
 
                 <div class="header__center is-hidden--sm-down" data-custom-scroll-theme-target="right">
-                                        <a class="header__logo" href="/" aria-label="OffMarket — page d&amp;rsquo;accueil">
+                                        <a class="header__logo" href="/" aria-label="OFF MARKET — page d&amp;rsquo;accueil">
                     <span class="header__logo__inner header-animation-logo">
                         <span class="header__logo__left">
-                            <span class="offmarket-logo offmarket-logo--desktop" aria-hidden="true">OffMarket</span>
+                            <img src="/assets/logos/logo-rouge.png" alt="OFF MARKET" class="offmarket-logo-img offmarket-logo-img--desktop" decoding="async">
                         </span>
                         <span class="header__logo__right">
                             
@@ -531,7 +502,7 @@
     
     <picture class=" img-cover"                        data-parallax-enable-mq="lg-up"                        data-parallax-measure-selector=".sticky"                        data-parallax-clamp="true"                        data-parallax-0-0="{&quot;transform&quot;: &quot;translateX(0%) scale(1.2)&quot;}"                        data-parallax--200-0="{&quot;transform&quot;: &quot;translateX(-36%) scale(1.0)&quot;}"            data-plugin=" parallax"        draggable="false"    >                    <source srcset="/assets/mavericks/villa/mavericks-image00002-scaled.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/villa/mavericks-Villa-J-Salon_Cam06.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/villa/mavericks-image00004-scaled.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
-            src="/assets/mavericks/villa/mavericks-image00003-scaled.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="840"                                        decoding="async"                        fetchpriority="high"                        data-reveal="image-zoom"            draggable="false"
+            src="/assets/mavericks/villa/mavericks-image00003-scaled.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="840"                                        decoding="async"                        fetchpriority="high"                        data-reveal="image-zoom"            draggable="false"
         >
     </picture>
 
@@ -659,7 +630,7 @@
             data-parallax--100-0='{"clip-path": "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"}'
         >
             <h3 class="h3 leading-trim">
-                OffMarket sécurise chaque parcours jusqu&amp;rsquo;à la décision finale, avec un accompagnement clair et discret.
+                OFF MARKET sécurise chaque parcours jusqu&amp;rsquo;à la décision finale, avec un accompagnement clair et discret.
             </h3>
         </div>
     </div>
@@ -670,7 +641,7 @@
 <div class="i-intro__text ui-light ui-background  is-hidden--lg-up" data-themed-class="ui-light" id="i-next-mobile">
     <div class="ui-light-background col col--md-7 col--xl-6 mr-0 ml-auto ui-light px-layout py-5">
         <h3 class="h3 leading-trim">
-            OffMarket sécurise chaque parcours jusqu&amp;rsquo;à la décision finale, avec un accompagnement clair et discret.
+            OFF MARKET sécurise chaque parcours jusqu&amp;rsquo;à la décision finale, avec un accompagnement clair et discret.
         </h3>
     </div>
 </div>
@@ -718,7 +689,7 @@
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
             data-src="/assets/mavericks/villa/mavericks-image00002-scaled.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"            draggable="false"
         >
     </picture>
 
@@ -730,7 +701,7 @@
     
     <picture class=" img-cover"        draggable="false"    >                    <source srcset="/assets/mavericks/villa/mavericks-image00006-scaled.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/villa/mavericks-image00013-scaled.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/villa/mavericks-Villa-J-Salon_Cam04.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
-            src="/assets/mavericks/villa/mavericks-image00002-scaled.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"            draggable="false"
+            src="/assets/mavericks/villa/mavericks-image00002-scaled.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"            draggable="false"
         >
     </picture>
 
@@ -761,7 +732,7 @@
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">
         <img
             data-src="/assets/mavericks/villa/mavericks-image00003-scaled.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"            draggable="false"
         >
     </picture>
 
@@ -773,7 +744,7 @@
     
     <picture class=" img-cover"        draggable="false"    >                    <source srcset="/assets/mavericks/villa/mavericks-Villa-J-Salon_Cam06.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/villa/mavericks-image00004-scaled.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">
         <img
-            src="/assets/mavericks/villa/mavericks-image00003-scaled.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"            draggable="false"
+            src="/assets/mavericks/villa/mavericks-image00003-scaled.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"            draggable="false"
         >
     </picture>
 
@@ -790,7 +761,7 @@
     <picture class="is-invisible--js is-hidden--no-js img-cover"            data-plugin="appear "        draggable="false"    >
         <img
             data-src="/assets/mavericks/villa/mavericks-image00006-scaled.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%221280%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%201280%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="1280"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%221280%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%201280%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="1280"            draggable="false"
         >
     </picture>
 
@@ -802,7 +773,7 @@
     
     <picture class=" img-cover"        draggable="false"    >
         <img
-            src="/assets/mavericks/villa/mavericks-image00006-scaled.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="1280"            draggable="false"
+            src="/assets/mavericks/villa/mavericks-image00006-scaled.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="1280"            draggable="false"
         >
     </picture>
 
@@ -875,7 +846,7 @@ devient signature
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
             data-src="/assets/mavericks/villa/mavericks-Villa-J-Salon_Cam06.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax-0-100="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax-0-100="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
         >
     </picture>
 
@@ -887,7 +858,7 @@ devient signature
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/villa/mavericks-image00013-scaled.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/villa/mavericks-Villa-J-Salon_Cam04.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/villa/mavericks-image00002-scaled.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
-            src="/assets/mavericks/villa/mavericks-Villa-J-Salon_Cam06.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax-0-100="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
+            src="/assets/mavericks/villa/mavericks-Villa-J-Salon_Cam06.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax-0-100="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
         >
     </picture>
 
@@ -1101,7 +1072,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-silent-room.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -1113,7 +1084,7 @@ Stone Hammam
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-silent-room.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-silent-room.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -1147,7 +1118,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-passage.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -1159,7 +1130,7 @@ Stone Hammam
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-vault.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-passage.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-passage.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -1193,7 +1164,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-vault.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -1205,7 +1176,7 @@ Stone Hammam
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-vault.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-vault.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -1239,7 +1210,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-threshold.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -1251,7 +1222,7 @@ Stone Hammam
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-threshold.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-threshold.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -1284,7 +1255,7 @@ Stone Hammam
                         
                 
     
-    <img class="img-cover is-invisible--js is-hidden--no-js" alt="Bien immobilier de prestige OffMarket à Marrakech"
+    <img class="img-cover is-invisible--js is-hidden--no-js" alt="Bien immobilier de prestige OFF MARKET à Marrakech"
         draggable="false"
                                     width="720"                        height="900"            img="&#x7B;&quot;decoding&quot;&#x3A;&quot;async&quot;&#x7D;"                data-plugin="appear "
              data-src="/assets/mavericks/gallery/mavericks-silent-room.webp"
@@ -1294,7 +1265,7 @@ Stone Hammam
             
     
     
-    <img class="img-cover " alt="Bien immobilier de prestige OffMarket à Marrakech"
+    <img class="img-cover " alt="Bien immobilier de prestige OFF MARKET à Marrakech"
         draggable="false"                                    width="720"                        height="900"            img="&#x7B;&quot;decoding&quot;&#x3A;&quot;async&quot;&#x7D;"
                 src="/assets/mavericks/gallery/mavericks-silent-room.webp"    >
 
@@ -1305,7 +1276,7 @@ Stone Hammam
                         
                 
     
-    <img class="img-cover is-invisible--js is-hidden--no-js" alt="Bien immobilier de prestige OffMarket à Marrakech"
+    <img class="img-cover is-invisible--js is-hidden--no-js" alt="Bien immobilier de prestige OFF MARKET à Marrakech"
         draggable="false"
                                     width="720"                        height="900"            img="&#x7B;&quot;decoding&quot;&#x3A;&quot;async&quot;&#x7D;"                data-plugin="appear "
              data-src="/assets/mavericks/gallery/mavericks-the-passage.webp"
@@ -1315,7 +1286,7 @@ Stone Hammam
             
     
     
-    <img class="img-cover " alt="Bien immobilier de prestige OffMarket à Marrakech"
+    <img class="img-cover " alt="Bien immobilier de prestige OFF MARKET à Marrakech"
         draggable="false"                                    width="720"                        height="900"            img="&#x7B;&quot;decoding&quot;&#x3A;&quot;async&quot;&#x7D;"
                 src="/assets/mavericks/gallery/mavericks-the-passage.webp"    >
 
@@ -1326,7 +1297,7 @@ Stone Hammam
                         
                 
     
-    <img class="img-cover is-invisible--js is-hidden--no-js" alt="Bien immobilier de prestige OffMarket à Marrakech"
+    <img class="img-cover is-invisible--js is-hidden--no-js" alt="Bien immobilier de prestige OFF MARKET à Marrakech"
         draggable="false"
                                     width="720"                        height="900"            img="&#x7B;&quot;decoding&quot;&#x3A;&quot;async&quot;&#x7D;"                data-plugin="appear "
              data-src="/assets/mavericks/gallery/mavericks-the-vault.webp"
@@ -1336,7 +1307,7 @@ Stone Hammam
             
     
     
-    <img class="img-cover " alt="Bien immobilier de prestige OffMarket à Marrakech"
+    <img class="img-cover " alt="Bien immobilier de prestige OFF MARKET à Marrakech"
         draggable="false"                                    width="720"                        height="900"            img="&#x7B;&quot;decoding&quot;&#x3A;&quot;async&quot;&#x7D;"
                 src="/assets/mavericks/gallery/mavericks-the-vault.webp"    >
 
@@ -1347,7 +1318,7 @@ Stone Hammam
                         
                 
     
-    <img class="img-cover is-invisible--js is-hidden--no-js" alt="Bien immobilier de prestige OffMarket à Marrakech"
+    <img class="img-cover is-invisible--js is-hidden--no-js" alt="Bien immobilier de prestige OFF MARKET à Marrakech"
         draggable="false"
                                     width="720"                        height="900"            img="&#x7B;&quot;decoding&quot;&#x3A;&quot;async&quot;&#x7D;"                data-plugin="appear "
              data-src="/assets/mavericks/gallery/mavericks-the-threshold.webp"
@@ -1357,7 +1328,7 @@ Stone Hammam
             
     
     
-    <img class="img-cover " alt="Bien immobilier de prestige OffMarket à Marrakech"
+    <img class="img-cover " alt="Bien immobilier de prestige OFF MARKET à Marrakech"
         draggable="false"                                    width="720"                        height="900"            img="&#x7B;&quot;decoding&quot;&#x3A;&quot;async&quot;&#x7D;"
                 src="/assets/mavericks/gallery/mavericks-the-threshold.webp"    >
 
@@ -1530,7 +1501,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-lower-hall.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-measure-selector=".sticky"                        data-parallax-0-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--300-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-measure-selector=".sticky"                        data-parallax-0-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--300-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
         >
     </picture>
 
@@ -1542,7 +1513,7 @@ Stone Hammam
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-the-vault.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-lower-hall.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-measure-selector=".sticky"                        data-parallax-0-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--300-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-lower-hall.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-measure-selector=".sticky"                        data-parallax-0-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--300-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
         >
     </picture>
 
@@ -1609,7 +1580,7 @@ Stone Hammam
     
             <div class="text-t1 leading-trim pl-0.5 i-opening__caption__text" data-reveal="text">
                 <p>
-                    Winding paths, paved with&nbsp;gray granite, resemble creeks and riverbeds that flow gently around&nbsp;OffMarket. White froth of&nbsp;hydrangeas and slender torsos of&nbsp;shadberries, suspended above&nbsp;invisible water, become a&nbsp;picturesque backdrop for&nbsp;a&nbsp;riverside walk.
+                    Winding paths, paved with&nbsp;gray granite, resemble creeks and riverbeds that flow gently around&nbsp;OFF MARKET. White froth of&nbsp;hydrangeas and slender torsos of&nbsp;shadberries, suspended above&nbsp;invisible water, become a&nbsp;picturesque backdrop for&nbsp;a&nbsp;riverside walk.
                 </p>
             </div>
 
@@ -1631,7 +1602,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22210%22%20height=%22257%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20210%20257%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="210" height="257">
         <img
             data-src="/assets/mavericks/gallery/mavericks-back-space.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22210%22%20height=%22257%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20210%20257%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="210" height="257"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22210%22%20height=%22257%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20210%20257%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="210" height="257"            draggable="false"
         >
     </picture>
 
@@ -1643,7 +1614,7 @@ Stone Hammam
     
     <picture class=" img-full"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 1920px) and (min-height: 700px)" width="210" height="257">                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 1440px) and (min-height: 700px)" width="210" height="257">                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="210" height="257">
         <img
-            src="/assets/mavericks/gallery/mavericks-back-space.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="210" height="257"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-back-space.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="210" height="257"            draggable="false"
         >
     </picture>
 
@@ -1671,7 +1642,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22210%22%20height=%22257%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20210%20257%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="210" height="257">
         <img
             data-src="/assets/mavericks/gallery/mavericks-inner-chamber.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22210%22%20height=%22257%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20210%20257%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="210" height="257"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22210%22%20height=%22257%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20210%20257%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="210" height="257"            draggable="false"
         >
     </picture>
 
@@ -1683,7 +1654,7 @@ Stone Hammam
     
     <picture class=" img-full"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 1920px) and (min-height: 700px)" width="210" height="257">                    <source srcset="/assets/mavericks/gallery/mavericks-the-vault.webp" media="(min-width: 1440px) and (min-height: 700px)" width="210" height="257">                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="210" height="257">
         <img
-            src="/assets/mavericks/gallery/mavericks-inner-chamber.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="210" height="257"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-inner-chamber.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="210" height="257"            draggable="false"
         >
     </picture>
 
@@ -1711,7 +1682,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22210%22%20height=%22257%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20210%20257%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="210" height="257">
         <img
             data-src="/assets/mavericks/gallery/mavericks-silent-room.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22210%22%20height=%22257%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20210%20257%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="210" height="257"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22210%22%20height=%22257%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20210%20257%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="210" height="257"            draggable="false"
         >
     </picture>
 
@@ -1723,7 +1694,7 @@ Stone Hammam
     
     <picture class=" img-full"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 1920px) and (min-height: 700px)" width="210" height="257">                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 1440px) and (min-height: 700px)" width="210" height="257">                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="210" height="257">
         <img
-            src="/assets/mavericks/gallery/mavericks-silent-room.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="210" height="257"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-silent-room.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="210" height="257"            draggable="false"
         >
     </picture>
 
@@ -1744,7 +1715,7 @@ Stone Hammam
     <div class="pt-1">
         <div class="px-layout text-t1 leading-trim i-opening__caption__text">
             <p>
-                Winding paths, paved with&nbsp;gray granite, resemble creeks and riverbeds that flow gently around&nbsp;OffMarket. White froth of&nbsp;hydrangeas and slender torsos of&nbsp;shadberries, suspended above&nbsp;invisible water, become a&nbsp;picturesque backdrop for&nbsp;a&nbsp;riverside walk.
+                Winding paths, paved with&nbsp;gray granite, resemble creeks and riverbeds that flow gently around&nbsp;OFF MARKET. White froth of&nbsp;hydrangeas and slender torsos of&nbsp;shadberries, suspended above&nbsp;invisible water, become a&nbsp;picturesque backdrop for&nbsp;a&nbsp;riverside walk.
             </p>
         </div>
 
@@ -1765,7 +1736,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-back-space.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
         >
     </picture>
 
@@ -1777,7 +1748,7 @@ Stone Hammam
     
     <picture class=" img-cover"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-back-space.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-back-space.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
         >
     </picture>
 
@@ -1806,7 +1777,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-inner-chamber.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
         >
     </picture>
 
@@ -1818,7 +1789,7 @@ Stone Hammam
     
     <picture class=" img-cover"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-the-vault.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-inner-chamber.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-inner-chamber.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
         >
     </picture>
 
@@ -1847,7 +1818,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-silent-room.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
         >
     </picture>
 
@@ -1859,7 +1830,7 @@ Stone Hammam
     
     <picture class=" img-cover"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-silent-room.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-silent-room.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"                                        decoding="async"            draggable="false"
         >
     </picture>
 
@@ -1915,7 +1886,7 @@ Stone Hammam
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-passage.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-measure-selector=".sticky"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--200-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-measure-selector=".sticky"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--200-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
         >
     </picture>
 
@@ -1927,7 +1898,7 @@ Stone Hammam
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-vault.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-passage.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-measure-selector=".sticky"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--200-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-passage.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-measure-selector=".sticky"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--200-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
         >
     </picture>
 
@@ -2043,7 +2014,7 @@ Stone Hammam
                                 >
                                     <div class="i-interiors__caption__title i-interiors__caption__title--last col col--md-6 mx-0 mx-auto:lg pb-1:lg px-1 px-0.5:lg">
                                         <h3 class="h3 leading-trim text-center is-hidden--lg-up">
-                                            OffMarket compose une sélection<br>
+                                            OFF MARKET compose une sélection<br>
 of&nbsp;beautiful reality.
                                         </h3>
                                     </div>
@@ -2059,7 +2030,7 @@ of&nbsp;beautiful reality.
                     >
                         <div class="col col--md-6 mx-0 mx-auto:lg pb-2:lg px-1 px-0.5:lg">
                             <h3 class="h3 leading-trim text-center">
-                                OffMarket compose une sélection<br>
+                                OFF MARKET compose une sélection<br>
 of&nbsp;beautiful reality.
                             </h3>
                         </div>
@@ -2088,7 +2059,7 @@ of&nbsp;beautiful reality.
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-vault.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2100,7 +2071,7 @@ of&nbsp;beautiful reality.
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-vault.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-vault.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2150,7 +2121,7 @@ of&nbsp;beautiful reality.
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-threshold.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2162,7 +2133,7 @@ of&nbsp;beautiful reality.
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-threshold.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-threshold.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2213,7 +2184,7 @@ playgrounds
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
             data-src="/assets/mavericks/gallery/mavericks-lower-hall.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2225,7 +2196,7 @@ playgrounds
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-the-vault.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
-            src="/assets/mavericks/gallery/mavericks-lower-hall.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-lower-hall.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2283,7 +2254,7 @@ outdoor furniture
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-vault.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2295,7 +2266,7 @@ outdoor furniture
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-vault.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-vault.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2358,7 +2329,7 @@ outdoor furniture
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-threshold.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2370,7 +2341,7 @@ outdoor furniture
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-threshold.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-threshold.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2434,7 +2405,7 @@ playgrounds
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
             data-src="/assets/mavericks/gallery/mavericks-lower-hall.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22420%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20420%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2446,7 +2417,7 @@ playgrounds
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="420">                    <source srcset="/assets/mavericks/gallery/mavericks-the-vault.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="720" height="420">
         <img
-            src="/assets/mavericks/gallery/mavericks-lower-hall.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="420"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-lower-hall.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="420"            draggable="false"
         >
     </picture>
 
@@ -2518,7 +2489,7 @@ outdoor furniture
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">
         <img
             data-src="/assets/mavericks/villa/mavericks-image00006-scaled.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"            draggable="false"
         >
     </picture>
 
@@ -2530,7 +2501,7 @@ outdoor furniture
     
     <picture class=" img-cover"        draggable="false"    >                    <source srcset="/assets/mavericks/villa/mavericks-image00004-scaled.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/villa/mavericks-image00003-scaled.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">
         <img
-            src="/assets/mavericks/villa/mavericks-image00006-scaled.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"            draggable="false"
+            src="/assets/mavericks/villa/mavericks-image00006-scaled.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"            draggable="false"
         >
     </picture>
 
@@ -2547,7 +2518,7 @@ outdoor furniture
     <picture class="is-invisible--js is-hidden--no-js img-cover"            data-plugin="appear "        draggable="false"    >
         <img
             data-src="/assets/mavericks/villa/mavericks-image00013-scaled.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%221280%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%201280%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="1280"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%221280%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%201280%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="1280"            draggable="false"
         >
     </picture>
 
@@ -2559,7 +2530,7 @@ outdoor furniture
     
     <picture class=" img-cover"        draggable="false"    >
         <img
-            src="/assets/mavericks/villa/mavericks-image00013-scaled.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="1280"            draggable="false"
+            src="/assets/mavericks/villa/mavericks-image00013-scaled.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="1280"            draggable="false"
         >
     </picture>
 
@@ -2651,7 +2622,7 @@ Palmeraie
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
             data-src="/assets/mavericks/gallery/mavericks-back-space.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -2663,7 +2634,7 @@ Palmeraie
     
     <picture class=" img-full"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 1920px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 1440px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
-            src="/assets/mavericks/gallery/mavericks-back-space.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-back-space.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -2690,7 +2661,7 @@ Palmeraie
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
             data-src="/assets/mavericks/gallery/mavericks-inner-chamber.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -2702,7 +2673,7 @@ Palmeraie
     
     <picture class=" img-full"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 1920px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-the-vault.webp" media="(min-width: 1440px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
-            src="/assets/mavericks/gallery/mavericks-inner-chamber.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-inner-chamber.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -2729,7 +2700,7 @@ Palmeraie
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
             data-src="/assets/mavericks/gallery/mavericks-silent-room.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -2741,7 +2712,7 @@ Palmeraie
     
     <picture class=" img-full"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 1920px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 1440px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
-            src="/assets/mavericks/gallery/mavericks-silent-room.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-silent-room.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -2911,7 +2882,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
             data-src="/assets/mavericks/gallery/mavericks-back-space.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -2923,7 +2894,7 @@ forest layers
     
     <picture class=" img-full"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 1920px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 1440px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
-            src="/assets/mavericks/gallery/mavericks-back-space.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-back-space.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -2950,7 +2921,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
             data-src="/assets/mavericks/gallery/mavericks-inner-chamber.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -2962,7 +2933,7 @@ forest layers
     
     <picture class=" img-full"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 1920px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-the-vault.webp" media="(min-width: 1440px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
-            src="/assets/mavericks/gallery/mavericks-inner-chamber.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-inner-chamber.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -2989,7 +2960,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
             data-src="/assets/mavericks/gallery/mavericks-silent-room.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22340%22%20height=%22400%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20340%20400%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -3001,7 +2972,7 @@ forest layers
     
     <picture class=" img-full"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 1920px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 1440px) and (min-height: 700px)" width="340" height="400">                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="340" height="400">
         <img
-            src="/assets/mavericks/gallery/mavericks-silent-room.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="340" height="400"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-silent-room.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="340" height="400"            draggable="false"
         >
     </picture>
 
@@ -3153,7 +3124,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-passage.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%221280%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%201280%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="1280"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%221280%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%201280%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="1280"            draggable="false"
         >
     </picture>
 
@@ -3165,7 +3136,7 @@ forest layers
     
     <picture class=" img-cover"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-vault.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-passage.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="1280"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-passage.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="1280"            draggable="false"
         >
     </picture>
 
@@ -3336,7 +3307,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-vault.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="lg-up"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax-0-300="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="lg-up"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax-0-300="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
         >
     </picture>
 
@@ -3348,7 +3319,7 @@ forest layers
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-the-threshold.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-back-space.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-silent-room.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-vault.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="lg-up"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax-0-300="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-vault.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1440" height="900"                                        data-plugin="parallax"                        data-parallax-enable-mq="lg-up"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax-0-300="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
         >
     </picture>
 
@@ -3460,7 +3431,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
             data-src="/assets/mavericks/gallery/mavericks-the-threshold.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22840%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20840%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="840"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--100-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22840%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20840%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="840"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--100-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
         >
     </picture>
 
@@ -3472,7 +3443,7 @@ forest layers
     
     <picture class=" img-cover parallax-image-move"        draggable="false"    >                    <source srcset="/assets/mavericks/gallery/mavericks-lower-hall.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-inner-chamber.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/gallery/mavericks-the-passage.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
-            src="/assets/mavericks/gallery/mavericks-the-threshold.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="840"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--100-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
+            src="/assets/mavericks/gallery/mavericks-the-threshold.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="840"                                        data-plugin="parallax"                        data-parallax-enable-mq="null"                        data-parallax-clamp="true"                        data-parallax-100-0="{&quot;transform&quot;: &quot;scale(1.2)&quot;}"                        data-parallax--100-0="{&quot;transform&quot;: &quot;scale(1.0)&quot;}"            draggable="false"
         >
     </picture>
 
@@ -3534,7 +3505,7 @@ forest layers
     <div class="om-footer__container om-footer__content">
       <div class="om-footer__grid">
         <div class="om-footer__brand">
-          <p class="om-footer__label">Maison OffMarket</p>
+          <p class="om-footer__label">Maison OFF MARKET</p>
           <p class="om-footer__tagline">Sélection privée d'opportunités immobilières à Marrakech.</p>
         </div>
         <div class="om-footer__column om-footer__column--nav">
@@ -3557,11 +3528,11 @@ forest layers
       </div>
     </div>
     <div class="om-footer__watermark" aria-hidden="true">
-      <span>OFFMARKET</span>
+      <span>OFF MARKET</span>
     </div>
     <div class="om-footer__container om-footer__bottom">
       <div class="om-footer__bar">
-        <p>© <span data-mv-year></span> OFFMARKET. Tous droits réservés.</p>
+        <p>© <span data-mv-year></span> OFF MARKET. Tous droits réservés.</p>
         <a href="/privacy-policy/">Mentions légales</a>
       </div>
     </div>
@@ -3654,7 +3625,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221080%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201080%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="1080" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-stone-2.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221080%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201080%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1080" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221080%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201080%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1080" height="900"            draggable="false"
         >
     </picture>
 
@@ -3666,7 +3637,7 @@ forest layers
     
     <picture class=" "        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1080" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1080" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1080" height="900"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1080" height="900"            draggable="false"
         >
     </picture>
 
@@ -3957,7 +3928,7 @@ forest layers
                                                     <span
                     class="btn__text  "
                                      >
-                                            Envoyer la demande
+                                            <span class="om-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3v4M16 3v4M4.5 9.5h15" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M6.5 5.5h11a2 2 0 0 1 2 2v10.5a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2V7.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Envoyer la demande</span>
                     
                                     </span>
             
@@ -3981,7 +3952,7 @@ forest layers
                                                     <span
                     class="btn__text  "
                                      >
-                                            Envoyer la demande
+                                            <span class="om-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3v4M16 3v4M4.5 9.5h15" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M6.5 5.5h11a2 2 0 0 1 2 2v10.5a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2V7.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Envoyer la demande</span>
                     
                                     </span>
             
@@ -4221,7 +4192,7 @@ forest layers
                                                     <span
                     class="btn__text  "
                                      >
-                                            Envoyer la demande
+                                            <span class="om-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3v4M16 3v4M4.5 9.5h15" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M6.5 5.5h11a2 2 0 0 1 2 2v10.5a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2V7.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Envoyer la demande</span>
                     
                                     </span>
             
@@ -4245,7 +4216,7 @@ forest layers
                                                     <span
                     class="btn__text  "
                                      >
-                                            Envoyer la demande
+                                            <span class="om-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3v4M16 3v4M4.5 9.5h15" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M6.5 5.5h11a2 2 0 0 1 2 2v10.5a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2V7.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Envoyer la demande</span>
                     
                                     </span>
             
@@ -4326,7 +4297,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221080%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201080%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="1080" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-stone-2.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221080%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201080%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1080" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221080%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201080%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1080" height="900"            draggable="false"
         >
     </picture>
 
@@ -4338,7 +4309,7 @@ forest layers
     
     <picture class=" "        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1080" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1080" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="1080" height="900"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="1080" height="900"            draggable="false"
         >
     </picture>
 
@@ -5610,8 +5581,8 @@ forest layers
 >
     <div class="header__content px-layout">
                 <div class="header__left header-animation-logo is-hidden--md-up">
-            <a class="header__logo--mobile" href="/" aria-label="OffMarket — page d&amp;rsquo;accueil">
-                <span class="offmarket-logo offmarket-logo--mobile" aria-hidden="true">OffMarket</span>
+            <a class="header__logo--mobile" href="/" aria-label="OFF MARKET — page d&amp;rsquo;accueil">
+                <img src="/assets/logos/logo-rouge.png" alt="OFF MARKET" class="offmarket-logo-img offmarket-logo-img--mobile" decoding="async">
             </a>
         </div>
 
@@ -5646,10 +5617,10 @@ forest layers
                     </div>
 
                 <div class="header__center is-hidden--sm-down">
-                                        <a class="header__logo" href="/" aria-label="OffMarket — page d&amp;rsquo;accueil">
+                                        <a class="header__logo" href="/" aria-label="OFF MARKET — page d&amp;rsquo;accueil">
                     <span class="header__logo__inner header-animation-logo">
                         <span class="header__logo__left">
-                            <span class="offmarket-logo offmarket-logo--desktop" aria-hidden="true">OffMarket</span>
+                            <img src="/assets/logos/logo-rouge.png" alt="OFF MARKET" class="offmarket-logo-img offmarket-logo-img--desktop" decoding="async">
                         </span>
                         <span class="header__logo__right">
                             
@@ -5776,7 +5747,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-stone-2.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -5788,7 +5759,7 @@ forest layers
     
     <picture class=" background background--cover"        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -5860,7 +5831,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-stone-2.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -5872,7 +5843,7 @@ forest layers
     
     <picture class=" background background--cover"        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -5897,7 +5868,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-stone-2.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -5909,7 +5880,7 @@ forest layers
     
     <picture class=" background background--cover"        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -5934,7 +5905,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-stone-2.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -5946,7 +5917,7 @@ forest layers
     
     <picture class=" background background--cover"        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -5971,7 +5942,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-stone-2.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -5983,7 +5954,7 @@ forest layers
     
     <picture class=" background background--cover"        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -6008,7 +5979,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-stone-2.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -6020,7 +5991,7 @@ forest layers
     
     <picture class=" background background--cover"        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -6045,7 +6016,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-stone-2.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -6057,7 +6028,7 @@ forest layers
     
     <picture class=" background background--cover"        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -6083,7 +6054,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-stone-2.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20900%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -6095,7 +6066,7 @@ forest layers
     
     <picture class=" img-cover"        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="900"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-stone-2.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="900"            draggable="false"
         >
     </picture>
 
@@ -6122,7 +6093,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%221440%22%20height=%22900%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%201440%20900%22%3E%3C/svg%3E" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-figure-map.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22838%22%20height=%221280%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20838%201280%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="838" height="1280"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22838%22%20height=%221280%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20838%201280%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="838" height="1280"            draggable="false"
         >
     </picture>
 
@@ -6134,7 +6105,7 @@ forest layers
     
     <picture class=" background background--cover"        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-figure-map.webp" media="(min-width: 1920px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1440px) and (min-height: 700px)" width="1440" height="900">                    <source srcset="/assets/mavericks/lifestyle/mavericks-stone-2.webp" media="(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)" width="1440" height="900">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-figure-map.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="838" height="1280"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-figure-map.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="838" height="1280"            draggable="false"
         >
     </picture>
 
@@ -6240,7 +6211,7 @@ forest layers
         srcset="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22450%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20450%22%3E%3C/svg%3E" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="450">
         <img
             data-src="/assets/mavericks/lifestyle/mavericks-figure-map.webp"
-                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22450%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20450%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="450"            draggable="false"
+                src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22720%22%20height=%22450%22%20preserveAspectRatio=%22xMinYMax%20meet%22%20viewBox=%220%200%20720%20450%22%3E%3C/svg%3E"                    alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="450"            draggable="false"
         >
     </picture>
 
@@ -6252,7 +6223,7 @@ forest layers
     
     <picture class=" img-cover"        draggable="false"    >                    <source srcset="/assets/mavericks/lifestyle/mavericks-ship.webp" media="(min-width: 1920px) and (min-height: 700px)" width="720" height="450">                    <source srcset="/assets/mavericks/lifestyle/mavericks-stone-2.webp" media="(min-width: 1440px) and (min-height: 700px)" width="720" height="450">
         <img
-            src="/assets/mavericks/lifestyle/mavericks-figure-map.webp" alt="Bien immobilier de prestige OffMarket à Marrakech"                            width="720" height="450"            draggable="false"
+            src="/assets/mavericks/lifestyle/mavericks-figure-map.webp" alt="Bien immobilier de prestige OFF MARKET à Marrakech"                            width="720" height="450"            draggable="false"
         >
     </picture>
 
@@ -6451,7 +6422,7 @@ forest layers
     </div>
 
     <div class="turn-message__content">
-        <span class="offmarket-logo offmarket-logo--mobile" aria-hidden="true">OffMarket</span>
+        <img src="/assets/logos/logo-rouge.png" alt="OFF MARKET" class="offmarket-logo-img offmarket-logo-img--mobile" decoding="async">
         <svg class="icon icon-rotate turn-message__icon&#x20;mt-3&#x20;turn-message__icon--mobile" width="120" height="120" aria-hidden="true"            viewBox="0 0 120 120"
             style="--icon-width: 120; --icon-height: 120;"
         
@@ -6473,6 +6444,7 @@ forest layers
 
         <script fetchpriority="low" async src="/assets/javascripts/browser-message/browser-message.js?v=1765268659"></script>
 
+            <script src="/assets/javascripts/om-no-preloader.js?v=1765312000"></script>
             <script fetchpriority="low" src="/assets/javascripts/shared.js?v=1765268659"></script>
     
     
@@ -6486,6 +6458,7 @@ if ('serviceWorker' in navigator) {
 }
 </script>
             <script src="/assets/javascripts/gsap.min.js?v=1765268700"></script>
-            <script src="/assets/javascripts/mavericks-chrome.js?v=1765268700"></script>
+            <script src="/assets/javascripts/mavericks-chrome.js?v=1765317900"></script>
+            <script src="/assets/javascripts/om-nav-scroll.js?v=1765317900"></script>
 </body>
 </html>

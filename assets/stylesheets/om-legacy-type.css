@@ -1,0 +1,65 @@
+/**
+ * OFF MARKET — Legacy template typography overrides
+ * Sur-plan and location pages only — replaces Victor Serif / rem-based .h0/.h1/.h2/.text-t1.
+ */
+
+body.om-sur-plan-route .page-content-wrapper .h0,
+body.om-sur-plan-route .page-content-wrapper h1.h0,
+body.om-sur-plan-route .page-content-wrapper h2.h0,
+body.om-location-route .page-content-wrapper .h0,
+body.om-location-route .page-content-wrapper h1.h0,
+body.om-location-route .page-content-wrapper h2.h0,
+body.om-location-route .location-page .h0,
+body.om-location-route .location-page h1.h0 {
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
+  font-size: clamp(56px, 6vw, 88px);
+  line-height: 0.98;
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  text-transform: none;
+}
+
+body.om-sur-plan-route .page-content-wrapper h2.h2,
+body.om-sur-plan-route .page-content-wrapper .h2,
+body.om-location-route .page-content-wrapper h2.h2,
+body.om-location-route .page-content-wrapper .h2,
+body.om-location-route .location-page h2.h2 {
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
+  font-size: clamp(40px, 4vw, 56px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  text-transform: none;
+}
+
+body.om-sur-plan-route .page-content-wrapper h3.h1,
+body.om-sur-plan-route .page-content-wrapper .h1:not(.om-header *),
+body.om-location-route .page-content-wrapper h3.h1,
+body.om-location-route .page-content-wrapper .h1:not(.om-header *),
+body.om-location-route .location-page h3.h1 {
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  text-transform: none;
+}
+
+body.om-sur-plan-route .page-content-wrapper .text-t1,
+body.om-sur-plan-route .page-content-wrapper p,
+body.om-location-route .page-content-wrapper .text-t1,
+body.om-location-route .page-content-wrapper p,
+body.om-location-route .location-page .text-t1,
+body.om-location-route .location-page p {
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+
+body.om-sur-plan-route .page-content-wrapper a.leading-trim,
+body.om-sur-plan-route .page-content-wrapper .leading-trim,
+body.om-location-route .page-content-wrapper a.leading-trim,
+body.om-location-route .page-content-wrapper .leading-trim {
+  font-family: var(--om-font-main, Inter, system-ui, sans-serif);
+}

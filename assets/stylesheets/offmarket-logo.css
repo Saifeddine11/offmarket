@@ -1,8 +1,27 @@
 /**
- * OffMarket text logo — replaces legacy SVG wordmarks.
- * Preserves header/preloader layout dimensions and animation hooks.
+ * OffMarket brand logo image — replaces legacy text/SVG wordmarks.
  */
 
+.offmarket-logo-img {
+  display: block;
+  width: auto;
+  height: calc(var(--scale-px) * 22);
+  max-width: min(42vw, 168px);
+  object-fit: contain;
+  object-position: left center;
+}
+
+.offmarket-logo-img--desktop {
+  height: calc(var(--scale-px) * 28);
+  max-width: min(36vw, 200px);
+}
+
+.offmarket-logo-img--footer {
+  height: calc(var(--scale-px) * 34);
+  max-width: min(72vw, 240px);
+}
+
+/* Legacy text logo fallback (unused when image is present) */
 .offmarket-logo {
   display: block;
   font-family: "TT Commons Pro", system-ui, sans-serif;
@@ -58,10 +77,12 @@
   min-width: calc(var(--scale-px) * 120);
 }
 
-.footer__logo .offmarket-logo--footer {
+.footer__logo .offmarket-logo--footer,
+.footer__logo .offmarket-logo-img--footer {
   display: inline-block;
 }
 
-.turn-message__logo.offmarket-logo--mobile {
+.turn-message__logo.offmarket-logo--mobile,
+.turn-message__logo.offmarket-logo-img--mobile {
   margin: 0 auto;
 }
