@@ -60,6 +60,7 @@
 
   function initElement(el) {
     if (el.dataset.wordRevealReady === 'true') return;
+    if (el.closest('.about-who') || el.closest('[data-no-word-reveal]')) return;
 
     var originalText = el.textContent.trim();
     if (!originalText) return;

@@ -46,7 +46,7 @@
 .offmarket-logo--footer {
   font-size: calc(var(--scale-px) * 26);
   letter-spacing: 0.24em;
-  color: var(--t-text, #f1ebeb);
+  color: var(--t-text, var(--om-white));
 }
 
 /* Single-word logo: disable legacy split-logo right segment */

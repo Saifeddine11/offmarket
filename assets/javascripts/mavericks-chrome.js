@@ -5,10 +5,56 @@
 (function () {
   'use strict';
 
-  if (typeof gsap === 'undefined') return;
-
   var chrome = document.querySelector('[data-mv-chrome]');
   if (!chrome) return;
+
+  function mountChrome() {
+    chrome.classList.add('is-mounted');
+  }
+
+  function syncHeaderTheme() {
+    if (chrome.classList.contains('mv-chrome--page-light')) {
+      chrome.classList.remove('mv-chrome--hero', 'mv-chrome--light');
+      return;
+    }
+
+    var firstSection = document.querySelector('[data-barba="container"] .ui-dark, [data-barba="container"] .ui-light');
+    var onHero = !!(firstSection && firstSection.classList.contains('ui-dark'));
+    chrome.classList.toggle('mv-chrome--hero', onHero);
+    chrome.classList.toggle('mv-chrome--light', onHero);
+  }
+
+  function updateHeaderScrollState() {
+    var scrollY = window.scrollY || window.pageYOffset || 0;
+
+    if (chrome.classList.contains('mv-chrome--page-light')) {
+      chrome.classList.toggle('is-scrolled', scrollY > 120);
+      chrome.classList.remove('is-on-light');
+      return;
+    }
+
+    var onLight = false;
+    var featured = document.getElementById('featured-projects');
+
+    if (featured) {
+      var rect = featured.getBoundingClientRect();
+      if (rect.top < 96 && rect.bottom > 0) {
+        onLight = true;
+      }
+    }
+
+    chrome.classList.toggle('is-scrolled', scrollY > 120);
+    chrome.classList.toggle('is-on-light', onLight);
+  }
+
+  mountChrome();
+  syncHeaderTheme();
+  updateHeaderScrollState();
+
+  window.addEventListener('scroll', updateHeaderScrollState, { passive: true });
+  window.addEventListener('resize', updateHeaderScrollState);
+
+  if (typeof gsap === 'undefined') return;
 
   var backdrop = chrome.querySelector('[data-mv-backdrop]');
   var panel = chrome.querySelector('[data-mv-menu-panel]');
@@ -19,20 +65,34 @@
   var yearEl = document.querySelector('[data-mv-year]');
 
   var menuOpen = false;
+  var menuScrollY = 0;
 
   if (yearEl) {
     yearEl.textContent = String(new Date().getFullYear());
   }
 
   function isMobile() {
-    return window.matchMedia('(max-width: 767px)').matches;
+    return window.matchMedia('(max-width: 979px)').matches;
   }
 
   function setMenuOpen(open) {
+    if (open) {
+      menuScrollY = window.scrollY || window.pageYOffset || 0;
+    }
+
     menuOpen = open;
     chrome.classList.toggle('is-menu-open', open);
     document.body.classList.toggle('menu-open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+
+    if (open) {
+      document.body.style.overflow = 'hidden';
+      if (isMobile()) {
+        document.body.style.top = '-' + menuScrollY + 'px';
+      }
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.top = '';
+    }
 
     if (open) {
       chrome.classList.remove('is-nav-hidden');
@@ -53,6 +113,13 @@
     }
 
     animateMenu(open);
+
+    if (!open && isMobile()) {
+      var restoreY = menuScrollY;
+      window.setTimeout(function () {
+        window.scrollTo(0, restoreY);
+      }, 420);
+    }
   }
 
   function toggleMenu() {
@@ -181,51 +248,6 @@
     });
   });
 
-  function mountChrome() {
-    chrome.classList.add('is-mounted');
-  }
-
-  function syncHeaderTheme() {
-    if (chrome.classList.contains('mv-chrome--page-light')) {
-      chrome.classList.remove('mv-chrome--hero', 'mv-chrome--light');
-      return;
-    }
-
-    var firstSection = document.querySelector('[data-barba="container"] .ui-dark, [data-barba="container"] .ui-light');
-    var onHero = !!(firstSection && firstSection.classList.contains('ui-dark'));
-    chrome.classList.toggle('mv-chrome--hero', onHero);
-    chrome.classList.toggle('mv-chrome--light', onHero);
-  }
-
-  function updateHeaderScrollState() {
-    var scrollY = window.scrollY || window.pageYOffset || 0;
-
-    if (chrome.classList.contains('mv-chrome--page-light')) {
-      chrome.classList.toggle('is-scrolled', scrollY > 120);
-      chrome.classList.remove('is-on-light');
-      return;
-    }
-
-    var onLight = false;
-    var featured = document.getElementById('featured-projects');
-
-    if (featured) {
-      var rect = featured.getBoundingClientRect();
-      if (rect.top < 96 && rect.bottom > 0) {
-        onLight = true;
-      }
-    }
-
-    chrome.classList.toggle('is-scrolled', scrollY > 120);
-    chrome.classList.toggle('is-on-light', onLight);
-  }
-
-  mountChrome();
-  syncHeaderTheme();
-  updateHeaderScrollState();
-
-  window.addEventListener('scroll', updateHeaderScrollState, { passive: true });
-  window.addEventListener('resize', updateHeaderScrollState);
 })();
 
 /**

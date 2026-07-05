@@ -1,0 +1,24 @@
+{
+    "name": "OFF MARKET",
+    "short_name": "OFF MARKET",
+    "description": "S\u00e9lection priv\u00e9e d'opportunit\u00e9s immobili\u00e8res \u00e0 Marrakech.",
+    "start_url": "/",
+    "display": "minimal-ui",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "/assets/manifest/favicon-offmarket.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "/assets/manifest/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "theme_color": "#270707",
+    "background_color": "#F1EBEB"
+}

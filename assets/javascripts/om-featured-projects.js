@@ -5,6 +5,23 @@
 (function () {
   'use strict';
 
+  function detectLocale() {
+    var path = window.location.pathname || '/';
+    if (path.indexOf('/en') === 0) return 'en';
+    if (path.indexOf('/it') === 0) return 'it';
+    return 'fr';
+  }
+
+  function getUiCopy() {
+    if (detectLocale() === 'en') {
+      return { selectionPrefix: 'Selection:', defaultAction: 'View property' };
+    }
+    if (detectLocale() === 'it') {
+      return { selectionPrefix: 'Selezione:', defaultAction: 'Vedi scheda' };
+    }
+    return { selectionPrefix: 'Sélection :', defaultAction: 'Voir la fiche' };
+  }
+
   var propertyCards = [
     {
       id: 'villa-jaz',
@@ -66,6 +83,135 @@
     },
   ];
 
+  var propertyCardsEn = [
+    {
+      id: 'villa-jaz',
+      index: '01',
+      location: 'MARRAKECH',
+      type: 'Off-plan villa',
+      price: 'From €351,000',
+      priceCase: 'normal',
+      selection: 'Off-plan',
+      title: 'Villa Jaz',
+      meta: '7 villas remaining · Marrakech · Off-plan project',
+      image: '/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp',
+      alt: 'Villa Jaz — off-plan villas in Marrakech',
+      href: '#callback-modal',
+      overlayLine: 'Off-plan',
+      overlayTitle: 'Villa Jaz',
+      actionLabel: 'View property',
+      imageBadge: 'Off-plan',
+    },
+    {
+      id: 'appartement-gueliz',
+      index: '02',
+      location: 'MARRAKECH',
+      type: 'Apartment',
+      price: 'From 1.05M MAD',
+      priceCase: 'normal',
+      selection: 'New off-plan programme',
+      title: 'Premium apartment in Guéliz',
+      meta: '39–140 m² · Guéliz city centre · Delivery 2028',
+      image:
+        '/assets/images/properties/appartement-sur-plan-gueliz/b666e486-f6f8-4f32-b709-b89099173502.JPG',
+      alt: 'Premium apartment in Guéliz — Guéliz city centre, Marrakech',
+      href: '/en/contact/?intent=appartement-gueliz',
+      overlayLine: 'Apartment',
+      overlayTitle: 'Premium apartment in Guéliz',
+      actionLabel: 'View property',
+      imageBadge: 'Off-plan',
+    },
+    {
+      id: 'restaurant-jemaa-el-fna',
+      index: '03',
+      location: 'MARRAKECH',
+      type: 'Restaurant',
+      price: 'Price on request',
+      selection: 'Confidential opportunity',
+      title: 'Restaurant in the heart of Jemaa el-Fna',
+      meta: 'Jemaa el-Fna square, Marrakech',
+      image: '/assets/mavericks/projects/jemaa-el-fna-restaurant.webp',
+      alt: 'Off-market restaurant in the heart of Jemaa el-Fna, Marrakech',
+      overlayLine: 'Restaurant',
+      overlayTitle: 'Restaurant in the heart of Jemaa el-Fna',
+      disabled: true,
+      actionLabel: 'View details',
+      priceCase: 'normal',
+      extraArticleClass: 'om-project-card om-project-card--restaurant',
+      lockedPreview: true,
+      imageBadge: 'For sale',
+      imageBadgeClass: 'om-reveal-card__image-badge--sale',
+    },
+  ];
+
+  var propertyCardsIt = [
+    {
+      id: 'villa-jaz',
+      index: '01',
+      location: 'MARRAKECH',
+      type: 'Villa su piano',
+      price: 'Da 351.000 €',
+      priceCase: 'normal',
+      selection: 'Su piano',
+      title: 'Villa Jaz',
+      meta: '7 ville rimanenti · Marrakech · Progetto su piano',
+      image: '/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp',
+      alt: 'Villa Jaz — ville su piano a Marrakech',
+      href: '#callback-modal',
+      overlayLine: 'Su piano',
+      overlayTitle: 'Villa Jaz',
+      actionLabel: 'Vedi scheda',
+      imageBadge: 'Su piano',
+    },
+    {
+      id: 'appartement-gueliz',
+      index: '02',
+      location: 'MARRAKECH',
+      type: 'Appartamento',
+      price: 'Da 1,05 M MAD',
+      priceCase: 'normal',
+      selection: 'Programma su piano',
+      title: 'Appartamento premium a Guéliz',
+      meta: '39–140 m² · Guéliz iper-centro · Consegna 2028',
+      image:
+        '/assets/images/properties/appartement-sur-plan-gueliz/b666e486-f6f8-4f32-b709-b89099173502.JPG',
+      alt: 'Appartamento premium a Guéliz — iper-centro Guéliz, Marrakech',
+      href: '/it/contatto/?intent=appartement-gueliz',
+      overlayLine: 'Appartamento',
+      overlayTitle: 'Appartamento premium a Guéliz',
+      actionLabel: 'Vedi scheda',
+      imageBadge: 'Su piano',
+    },
+    {
+      id: 'restaurant-jemaa-el-fna',
+      index: '03',
+      location: 'MARRAKECH',
+      type: 'Ristorante',
+      price: 'Prezzo su richiesta',
+      selection: 'Opportunità riservata',
+      title: 'Ristorante nel cuore di Jemaa el-Fna',
+      meta: 'Piazza Jemaa el-Fna, Marrakech',
+      image: '/assets/mavericks/projects/jemaa-el-fna-restaurant.webp',
+      alt: 'Ristorante off-market nel cuore di Jemaa el-Fna, Marrakech',
+      overlayLine: 'Ristorante',
+      overlayTitle: 'Ristorante nel cuore di Jemaa el-Fna',
+      disabled: true,
+      actionLabel: 'Vedi dettagli',
+      priceCase: 'normal',
+      extraArticleClass: 'om-project-card om-project-card--restaurant',
+      lockedPreview: true,
+      imageBadge: 'In vendita',
+      imageBadgeClass: 'om-reveal-card__image-badge--sale',
+    },
+  ];
+
+  function getPropertyCards() {
+    var locale = detectLocale();
+    if (locale === 'en') return propertyCardsEn;
+    if (locale === 'it') return propertyCardsIt;
+    return propertyCards;
+  }
+
   var topPropertyCards = propertyCards.slice(0, 2);
   var restaurantPropertyCard = propertyCards[2];
 
@@ -101,7 +247,8 @@
   }
 
   function renderPropertyAction(card) {
-    var actionLabel = card.actionLabel || 'Voir la fiche';
+    var ui = getUiCopy();
+    var actionLabel = card.actionLabel || ui.defaultAction;
     var actionIcon =
       '<span class="om-reveal-card__action-icon" aria-hidden="true">' +
         '<svg viewBox="0 0 16 16" width="15" height="15">' +
@@ -120,21 +267,28 @@
     }
 
     return (
-      '<a href="#" class="om-reveal-card__action" data-property-modal-trigger data-property-id="' + escapeHtml(card.id) + '">' +
+      '<button type="button" class="om-reveal-card__action" data-property-modal-trigger data-property-id="' + escapeHtml(card.id) + '">' +
         actionIcon +
         '<span class="om-reveal-card__action-title">' + escapeHtml(actionLabel) + '</span>' +
-      '</a>'
+      '</button>'
     );
   }
 
   function renderPropertyCard(card) {
+    var ui = getUiCopy();
     var overlayLine = card.overlayLine || card.selection;
     var overlayTitle = card.overlayTitle || card.title;
     var layoutClass = card.layoutClass ? ' ' + card.layoutClass : '';
     var extraArticleClass = card.extraArticleClass ? ' ' + card.extraArticleClass : '';
+    var modalCardAttrs = card.disabled
+      ? ''
+      : ' data-property-modal-card data-property-id="' + escapeHtml(card.id) + '"';
+    var arrowTriggerAttrs = card.disabled
+      ? ''
+      : ' data-property-modal-trigger data-property-id="' + escapeHtml(card.id) + '"';
 
     return (
-      '<article class="om-featured-projects__card om-reveal-card' + layoutClass + extraArticleClass + '">' +
+      '<article class="om-featured-projects__card om-reveal-card' + layoutClass + extraArticleClass + '"' + modalCardAttrs + '>' +
         '<div class="om-reveal-card__top">' +
           '<div class="om-reveal-card__top-left">' +
             '<span class="om-reveal-card__index">' + escapeHtml(card.index) + '</span>' +
@@ -145,7 +299,7 @@
         '</div>' +
         '<div class="om-reveal-card__info">' +
           '<div class="om-reveal-card__copy">' +
-            '<p class="om-reveal-card__developer"><span>Sélection :</span> ' + escapeHtml(card.selection) + '</p>' +
+            '<p class="om-reveal-card__developer"><span>' + escapeHtml(ui.selectionPrefix) + '</span> ' + escapeHtml(card.selection) + '</p>' +
             '<h3 class="om-reveal-card__title">' + escapeHtml(card.title) + '</h3>' +
             '<p class="om-reveal-card__meta">' + escapeHtml(card.meta) + '</p>' +
           '</div>' +
@@ -157,7 +311,7 @@
             '<span class="om-reveal-card__pin"></span>' +
             '<span>' + escapeHtml(card.imageBadge || 'Marrakech') + '</span>' +
           '</div>' +
-          '<span class="om-reveal-card__image-arrow" aria-hidden="true">' +
+          '<span class="om-reveal-card__image-arrow" aria-hidden="true"' + arrowTriggerAttrs + '>' +
             '<svg viewBox="0 0 16 16" width="16" height="16">' +
               '<path d="M5 3.5h7.5V11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
               '<path d="M12.2 3.8 3.5 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' +
@@ -180,7 +334,15 @@
     var grid = section.querySelector('[data-om-property-cards]');
     if (!grid) return;
 
-    grid.innerHTML = topPropertyCards.map(renderPropertyCard).join('') + renderPrivateRow();
+    var cards = getPropertyCards();
+    var topCards = cards.slice(0, 2);
+    var restaurantCard = cards[2];
+
+    grid.innerHTML =
+      topCards.map(renderPropertyCard).join('') +
+      '<div class="om-featured-projects__private-row">' +
+        renderPropertyCard(restaurantCard) +
+      '</div>';
     document.dispatchEvent(new CustomEvent('om-property-cards-rendered'));
   }
 

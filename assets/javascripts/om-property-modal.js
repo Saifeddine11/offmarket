@@ -5,6 +5,83 @@
 (function () {
   'use strict';
 
+  var modalController = {
+    ready: false,
+    pendingId: null,
+    open: null,
+    close: null,
+  };
+
+  var bootObserver = null;
+
+  function requestOpenPropertyModal(propertyId) {
+    if (!propertyId) return;
+    if (modalController.ready && typeof modalController.open === 'function') {
+      modalController.open(propertyId);
+      return;
+    }
+    modalController.pendingId = propertyId;
+    scheduleBoot();
+  }
+
+  function scheduleBoot() {
+    initPropertyDetailPage();
+    if (boot.didInit) return;
+    boot();
+    if (
+      boot.didInit &&
+      (initPropertyDetailPage.done ||
+        !document.querySelector('[data-property-detail-page]'))
+    ) {
+      return;
+    }
+    if (bootObserver || typeof MutationObserver === 'undefined') {
+      return;
+    }
+    bootObserver = new MutationObserver(function () {
+      if (
+        !document.querySelector('[data-property-modal]') &&
+        !document.querySelector('[data-property-detail-page]')
+      ) {
+        return;
+      }
+      bootObserver.disconnect();
+      bootObserver = null;
+      initPropertyDetailPage();
+      boot();
+    });
+    bootObserver.observe(document.documentElement, { childList: true, subtree: true });
+  }
+
+  document.addEventListener(
+    'click',
+    function (event) {
+      var trigger = event.target.closest('[data-property-modal-trigger]');
+      if (!trigger) return;
+      if (trigger.disabled || trigger.getAttribute('aria-disabled') === 'true') return;
+      event.preventDefault();
+      var propertyId = trigger.getAttribute('data-property-id');
+      if (propertyId) requestOpenPropertyModal(propertyId);
+    },
+    true
+  );
+
+  document.addEventListener(
+    'click',
+    function (event) {
+      var card = event.target.closest('[data-property-modal-card]');
+      if (!card) return;
+      if (event.target.closest('[data-property-modal-trigger]')) return;
+      var mediaHit = event.target.closest('.om-reveal-card__media');
+      var arrowHit = event.target.closest('.om-reveal-card__image-arrow');
+      if (!mediaHit && !arrowHit) return;
+      event.preventDefault();
+      var propertyId = card.getAttribute('data-property-id');
+      if (propertyId) requestOpenPropertyModal(propertyId);
+    },
+    true
+  );
+
   var VILLA_JAZ_IMAGE_BASE = '/assets/images/properties/villa-sur-plan-marrakech/';
   // Internal project name: Hyper — public title remains Appartement premium à Guéliz
   var HYPER_IMAGE_BASE =
@@ -230,7 +307,7 @@
         '32 villas sur plan à Marrakech, avec une disponibilité limitée à 7 villas restantes.',
       image: VILLA_JAZ_IMAGE_BASE + 'Oasis-exterieur-face.webp',
       alt: 'Villa Jaz — villas sur plan à Marrakech',
-      formHref: '#callback-modal',
+      formHref: '/contact/?intent=villa-jaz',
       ctaPrimary: 'Réserver ta villa',
       ctaOutline: 'Remplir le formulaire pour plus de détails',
       facts: [
@@ -590,8 +667,15 @@
   };
 
   function boot() {
+    initPropertyDetailPage();
+
     var modal = document.querySelector('[data-property-modal]');
-    if (!modal) return;
+    if (!modal) {
+      return;
+    }
+
+    if (boot.didInit) return;
+    boot.didInit = true;
 
     var track = modal.querySelector('[data-property-modal-track]');
     var stage = modal.querySelector('.om-property-modal__stage');
@@ -1666,11 +1750,407 @@
 
     bindTriggers();
     document.addEventListener('om-property-cards-rendered', bindTriggers);
+
+    modalController.open = openModal;
+    modalController.close = closeModal;
+    modalController.ready = true;
+
+    if (modalController.pendingId) {
+      var pendingId = modalController.pendingId;
+      modalController.pendingId = null;
+      openModal(pendingId);
+    }
+
+    window.omPropertyModal = {
+      open: openModal,
+      close: closeModal,
+      data: propertyModalData,
+    };
+  }
+
+  function initPropertyDetailPage() {
+    var page = document.querySelector('[data-property-detail-page]');
+    if (!page || page.dataset.propertyDetailInit === 'true') return;
+
+    var propertyId = page.getAttribute('data-property-id') || 'villa-jaz';
+    var property = propertyModalData[propertyId];
+    if (!property) return;
+
+    page.dataset.propertyDetailInit = 'true';
+    initPropertyDetailPage.done = true;
+
+    var image = page.querySelector('[data-modal-image]');
+    var indexEl = page.querySelector('[data-modal-index]');
+    var locationEl = page.querySelector('[data-modal-location]');
+    var typeEl = page.querySelector('[data-modal-type]');
+    var priceBottomEl = page.querySelector('[data-modal-price-bottom]');
+    var selectionEl = page.querySelector('[data-modal-selection]');
+    var titleEl = page.querySelector('[data-modal-title]');
+    var factsEl = page.querySelector('[data-modal-facts]');
+    var descriptionEl = page.querySelector('[data-modal-description]');
+    var aboutThumb = page.querySelector('[data-modal-about-thumb]');
+    var aboutProject = page.querySelector('[data-modal-about-project]');
+    var aboutTitle = page.querySelector('[data-modal-about-title]');
+    var aboutPrimary = page.querySelector('[data-modal-about-description-primary]');
+    var aboutSecondary = page.querySelector('[data-modal-about-description-secondary]');
+    var aboutImage = page.querySelector('[data-modal-about-image]');
+    var amenitiesEl = page.querySelector('[data-modal-amenities]');
+    var exteriorGalleryEl = page.querySelector('[data-modal-exterior-gallery]');
+    var interiorGalleryEl = page.querySelector('[data-modal-interior-gallery]');
+    var exteriorCountEl = page.querySelector('[data-modal-exterior-count]');
+    var interiorCountEl = page.querySelector('[data-modal-interior-count]');
+    var layoutSurface = page.querySelector('[data-modal-layout-surface]');
+    var layoutRooms = page.querySelector('[data-modal-layout-rooms]');
+    var layoutBaths = page.querySelector('[data-modal-layout-baths]');
+    var layoutDescription = page.querySelector('[data-modal-layout-description]');
+    var layoutImage = page.querySelector('[data-modal-layout-image]');
+    var layoutPlaceholder = page.querySelector('[data-modal-layout-placeholder]');
+    var layoutTabs = page.querySelector('[data-modal-layout-tabs]');
+    var layoutTabButtons = page.querySelectorAll('[data-modal-layout-tabs] button');
+    var activeProperty = property;
+
+    function renderFacts(items, options) {
+      if (!factsEl) return;
+      var list = items || [];
+      var compact = options && options.compact;
+      factsEl.classList.toggle('om-property-modal__facts--compact', compact);
+      factsEl.innerHTML = '';
+      list.forEach(function (item) {
+        var fact = document.createElement('div');
+        fact.className = 'om-property-modal__fact';
+        if (item.label && String(item.label).toLowerCase() === 'paiement') {
+          fact.classList.add('om-property-modal__fact--payment');
+        }
+        fact.innerHTML =
+          '<span>' + item.label + '</span><strong>' + item.value + '</strong>';
+        factsEl.appendChild(fact);
+      });
+    }
+
+    function renderGallery(container, images, countEl, imageAltBase) {
+      if (!container) return;
+      container.innerHTML = '';
+      (images || []).slice(0, 5).forEach(function (src, i) {
+        var figure = document.createElement('figure');
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = (imageAltBase || property.title || 'Villa Jaz') + ' — photo ' + (i + 1);
+        img.loading = 'lazy';
+        figure.appendChild(img);
+        container.appendChild(figure);
+      });
+      if (countEl) {
+        countEl.textContent = (images || []).length + ' photos';
+      }
+    }
+
+    function renderCharacteristicRow(item) {
+      var label = typeof item === 'string' ? item : item.label;
+      var tone = typeof item === 'object' && item.tone ? item.tone : '';
+      var row = document.createElement('div');
+      row.className = 'om-property-modal__characteristic-row';
+      if (tone === 'muted') {
+        row.classList.add('om-property-modal__characteristic-row--muted');
+      }
+      row.innerHTML =
+        '<span class="om-property-modal__characteristic-icon" aria-hidden="true">' +
+        villaCharacteristicIconForLabel(label) +
+        '</span>' +
+        '<span class="om-property-modal__characteristic-label">' +
+        label +
+        '</span>';
+      return row;
+    }
+
+    function renderFomoCharacteristicBlock(group) {
+      var block = document.createElement('div');
+      block.className =
+        'om-property-modal__characteristic-block om-property-modal__characteristic-block--fomo om-property-modal__villa-fomo-card';
+
+      var iconName = group.icon || 'alert';
+      block.innerHTML =
+        '<div class="om-property-modal__villa-fomo-card__icon" aria-hidden="true">' +
+        villaCharacteristicIcon(iconName) +
+        '</div>' +
+        '<span class="om-property-modal__villa-fomo-card__eyebrow">' +
+        (group.eyebrow || 'Disponibilité limitée') +
+        '</span>' +
+        '<strong class="om-property-modal__villa-fomo-card__value">' +
+        (group.value || '') +
+        '</strong>' +
+        (group.microcopy
+          ? '<small class="om-property-modal__villa-fomo-card__meta">' +
+            group.microcopy +
+            '</small>'
+          : '');
+
+      return block;
+    }
+
+    function renderAbout() {
+      var about = property.about || {};
+      if (aboutThumb) {
+        aboutThumb.src = property.image;
+        aboutThumb.alt = property.title;
+      }
+      if (aboutProject) aboutProject.textContent = about.project || property.selection;
+      if (aboutTitle) aboutTitle.textContent = about.title || property.title;
+      if (aboutPrimary) aboutPrimary.textContent = about.primary || property.description || '';
+      if (aboutSecondary) aboutSecondary.textContent = about.secondary || '';
+      if (aboutImage) {
+        aboutImage.src =
+          about.image ||
+          (property.galleries && property.galleries.exterior
+            ? property.galleries.exterior[0]
+            : property.image);
+        aboutImage.alt = property.title;
+      }
+    }
+
+    function renderAmenities() {
+      if (!amenitiesEl) return;
+      amenitiesEl.innerHTML = '';
+      amenitiesEl.className = 'om-property-modal__amenities';
+
+      var groups = property.characteristicGroups;
+      if (groups && groups.length) {
+        amenitiesEl.classList.add('om-property-modal__amenities--grouped');
+        amenitiesEl.classList.add('om-property-modal__amenities--villa');
+
+        var layout = document.createElement('div');
+        layout.className = 'om-property-modal__characteristics-layout';
+
+        var body = document.createElement('div');
+        body.className = 'om-property-modal__characteristics-body';
+
+        var grid = document.createElement('div');
+        grid.className =
+          'om-property-modal__characteristics-grid om-property-modal__characteristics-grid--villa';
+
+        groups.forEach(function (group) {
+          if (group.type === 'fomo') {
+            grid.appendChild(renderFomoCharacteristicBlock(group));
+            return;
+          }
+
+          var block = document.createElement('div');
+          block.className = 'om-property-modal__characteristic-block';
+          if (group.layout === 'wide') {
+            block.classList.add('om-property-modal__characteristic-block--wide');
+          }
+          if (group.title === 'Informations clés') {
+            block.classList.add('om-property-modal__characteristic-block--info');
+          } else if (group.title === 'Confort & équipements') {
+            block.classList.add('om-property-modal__characteristic-block--comfort');
+          } else if (group.title === 'Confidentialité & réservation') {
+            block.classList.add('om-property-modal__characteristic-block--privacy');
+          }
+
+          var heading = document.createElement('h4');
+          heading.textContent = group.title;
+          block.appendChild(heading);
+
+          var list = document.createElement('div');
+          list.className = 'om-property-modal__characteristic-list';
+
+          (group.items || []).forEach(function (item) {
+            list.appendChild(renderCharacteristicRow(item));
+          });
+
+          block.appendChild(list);
+          grid.appendChild(block);
+        });
+
+        body.appendChild(grid);
+
+        var payment = property.characteristicsPayment;
+        if (payment) {
+          var paymentBlock = document.createElement('div');
+          paymentBlock.className = 'om-property-modal__characteristics-payment';
+          paymentBlock.innerHTML =
+            '<h4>' +
+            payment.title +
+            '</h4><p>' +
+            payment.text +
+            '</p>';
+          body.appendChild(paymentBlock);
+        }
+
+        layout.appendChild(body);
+
+        var imageSrc = property.characteristicsImage || property.image;
+        if (imageSrc) {
+          var imageWrap = document.createElement('figure');
+          imageWrap.className = 'om-property-modal__characteristics-media';
+          var img = document.createElement('img');
+          img.src = imageSrc;
+          img.alt =
+            (property.title || 'Villa Jaz') + ' — extérieur et cadre résidentiel';
+          img.loading = 'lazy';
+          imageWrap.appendChild(img);
+          layout.appendChild(imageWrap);
+        }
+
+        amenitiesEl.appendChild(layout);
+      }
+    }
+
+    function updateActions() {
+      var href = property.formHref || '/contact/?intent=villa-jaz';
+      var outlineLabel = property.ctaOutline || 'Rappel';
+      var primaryLabel = property.ctaPrimary || 'Recevoir le dossier';
+
+      page.querySelectorAll('.om-property-modal__actions').forEach(function (group) {
+        var links = group.querySelectorAll('a.om-cta');
+        if (!links.length) return;
+
+        links[0].href = href;
+        var outlineText = links[0].querySelector('span:not(.om-button__icon)');
+        if (outlineText) outlineText.textContent = outlineLabel;
+
+        if (links[1]) {
+          links[1].href = href;
+          var primaryText = links[1].querySelector('span:not(.om-button__icon)');
+          if (primaryText) primaryText.textContent = primaryLabel;
+        }
+      });
+    }
+
+    function setLayoutPlanImage(floor) {
+      if (!layoutImage || !layoutPlaceholder) return;
+
+      var layout = property.layout || {};
+      var images = layout.images || {};
+      var src =
+        floor === 'first'
+          ? images.first || images.ground || layout.image || ''
+          : images.ground || layout.image || '';
+
+      if (layoutTabs) {
+        layoutTabs.hidden = Boolean(layout.hideFloorTabs);
+      }
+
+      if (src) {
+        layoutImage.src = src;
+        layoutImage.alt =
+          'Plan ' +
+          (floor === 'first' ? 'étage' : 'rez-de-chaussée') +
+          ' — ' +
+          (property.title || 'Villa Jaz');
+        layoutImage.hidden = false;
+        layoutPlaceholder.hidden = true;
+        layoutPlaceholder.classList.remove(
+          'om-property-modal__plan-placeholder--premium'
+        );
+        return;
+      }
+
+      layoutImage.hidden = true;
+      layoutImage.removeAttribute('src');
+      layoutPlaceholder.hidden = false;
+      layoutPlaceholder.classList.remove(
+        'om-property-modal__plan-placeholder--premium'
+      );
+      layoutPlaceholder.textContent = 'Plans transmis sur demande';
+    }
+
+    page.classList.toggle('is-hyper-theme', property.theme === 'hyper');
+
+    if (image) {
+      image.src = property.image;
+      image.alt = property.alt || property.title;
+    }
+    if (indexEl) indexEl.textContent = property.index;
+    if (locationEl) locationEl.textContent = property.location;
+    if (typeEl) typeEl.textContent = property.type;
+    if (priceBottomEl) priceBottomEl.textContent = property.price;
+    if (selectionEl) {
+      selectionEl.innerHTML = '<span>Sélection :</span> ' + property.selection;
+    }
+    if (titleEl) titleEl.textContent = property.title;
+    if (descriptionEl) {
+      descriptionEl.textContent = property.description || '';
+      descriptionEl.hidden = false;
+    }
+
+    renderFacts(property.generalFacts || property.facts, {
+      compact: Boolean(property.generalFacts && property.generalFacts.length),
+    });
+    renderAbout();
+    renderAmenities();
+
+    var galleries = property.galleries || {};
+    renderGallery(
+      exteriorGalleryEl,
+      galleries.exterior,
+      exteriorCountEl,
+      property.title + ' — extérieur'
+    );
+    renderGallery(
+      interiorGalleryEl,
+      galleries.interior,
+      interiorCountEl,
+      property.title + ' — intérieur'
+    );
+
+    updateActions();
+
+    var layout = property.layout || {};
+    if (layoutSurface) layoutSurface.textContent = layout.surface || '—';
+    if (layoutRooms) layoutRooms.textContent = layout.rooms || '—';
+    if (layoutBaths) layoutBaths.textContent = layout.baths || '—';
+    if (layoutDescription) {
+      layoutDescription.textContent =
+        layout.description || 'Plans transmis sur demande.';
+    }
+
+    layoutTabButtons.forEach(function (btn, index) {
+      btn.classList.toggle('is-active', index === 0);
+    });
+    setLayoutPlanImage('ground');
+
+    layoutTabButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        layoutTabButtons.forEach(function (btn) {
+          btn.classList.toggle('is-active', btn === button);
+        });
+        setLayoutPlanImage(button.dataset.layoutFloor || 'ground');
+      });
+    });
+
+    var navLinks = page.querySelectorAll('[data-property-detail-nav-link]');
+    var sections = page.querySelectorAll('[data-property-detail-track] .om-property-modal__slide[id]');
+
+    if (navLinks.length && sections.length && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var id = entry.target.id;
+            navLinks.forEach(function (link) {
+              var href = link.getAttribute('href') || '';
+              link.classList.toggle('is-active', href === '#' + id);
+            });
+          });
+        },
+        { rootMargin: '-40% 0px -45% 0px', threshold: 0.01 }
+      );
+
+      sections.forEach(function (section) {
+        observer.observe(section);
+      });
+    }
+  }
+
+  function startBoot() {
+    scheduleBoot();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
+    document.addEventListener('DOMContentLoaded', startBoot);
   } else {
-    boot();
+    startBoot();
   }
+
+  window.addEventListener('load', startBoot);
 })();

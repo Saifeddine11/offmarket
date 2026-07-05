@@ -1,0 +1,27 @@
+/**
+ * OFF MARKET — /nos-projets/ page spacing only.
+ * Featured projects reuse homepage markup/styles via FeaturedProjectsSection.
+ */
+
+/* Match homepage mav-who → featured-projects handoff */
+.om-nos-projets-page .inner-hero + .om-featured-projects {
+  margin-top: 0;
+  padding-top: clamp(4rem, 8vh, 6rem);
+  scroll-margin-top: calc(var(--om-header-height, 96px) + 1.5rem);
+}
+
+/* Keep section below fixed chrome while scrolling */
+.om-nos-projets-page .om-featured-projects {
+  z-index: 1;
+}
+
+.om-nos-projets-page .om-featured-projects + .om-home-private-access {
+  margin-top: 0;
+}
+
+@media (max-width: 767px) {
+  .om-nos-projets-page .inner-hero + .om-featured-projects {
+    padding-top: clamp(3rem, 8vw, 4rem);
+    scroll-margin-top: 7rem;
+  }
+}

@@ -41,6 +41,15 @@
     stripBarba(document.body);
     dismissPreloader(document);
     html.classList.remove('not-ready', 'is-preloader-active');
+
+    try {
+      var jq = window.jQuery || window.$;
+      if (jq && jq.fn && typeof jq.fn.scroller === 'function') {
+        jq('body').scroller('setDisabled', false);
+      }
+    } catch (err) {
+      /* legacy plugin optional */
+    }
   }
 
   if (document.body) {

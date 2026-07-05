@@ -1,0 +1,70 @@
+/**
+ * OffMarket — scroll-linked word reveal (ghost + fill)
+ */
+
+[data-word-reveal].om-word-reveal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.om-word-reveal__word {
+  position: relative;
+  display: inline-block;
+  margin-right: 0.24em;
+  white-space: nowrap;
+}
+
+.om-word-reveal__ghost {
+  opacity: 1;
+  color: inherit;
+}
+
+.om-word-reveal__fill {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  color: inherit;
+  will-change: opacity;
+}
+
+#qui-sommes-nous [data-word-reveal] .om-word-reveal__ghost {
+  color: rgba(39, 7, 7, 0.22);
+}
+
+#qui-sommes-nous .mav-who__title[data-word-reveal] {
+  justify-content: center;
+}
+
+#qui-sommes-nous .mav-who__lead[data-word-reveal] {
+  justify-content: center;
+}
+
+.om-cinematic-video [data-word-reveal] {
+  color: #ffffff;
+}
+
+.om-cinematic-video [data-word-reveal] .om-word-reveal__ghost {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.om-cinematic-video__headline[data-word-reveal] {
+  flex-wrap: nowrap;
+  justify-content: center;
+  max-width: calc(100vw - 48px);
+  margin-inline: auto;
+}
+
+.om-cinematic-video__lead[data-word-reveal] .om-word-reveal__fill {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.om-cinematic-video__lead[data-word-reveal].is-word-reveal-complete .om-word-reveal__fill {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.om-reduced-motion .om-word-reveal__fill,
+.is-word-reveal-complete .om-word-reveal__fill {
+  opacity: 1;
+}

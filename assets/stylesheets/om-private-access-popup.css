@@ -8,14 +8,14 @@
   width: min(420px, calc(100vw - 32px));
   padding: 26px;
   border-radius: 30px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(245, 244, 242, 0.42));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 251, 244, 0.42));
   border: 1px solid rgba(255, 255, 255, 0.58);
   box-shadow:
-    0 28px 80px rgba(39, 7, 7, 0.18),
+    0 28px 80px rgba(17, 18, 13, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(22px) saturate(1.25);
   -webkit-backdrop-filter: blur(22px) saturate(1.25);
-  color: #270707;
+  color: var(--om-black);
   opacity: 0;
   transform: translateY(18px) scale(0.965);
   filter: blur(4px);
@@ -40,9 +40,9 @@
   width: 34px;
   height: 34px;
   border-radius: 999px;
-  border: 1px solid rgba(39, 7, 7, 0.08);
+  border: 1px solid rgba(17, 18, 13, 0.08);
   background: rgba(255, 255, 255, 0.62);
-  color: #270707;
+  color: var(--om-black);
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
@@ -55,7 +55,7 @@
 .om-private-access-popup__close:focus-visible {
   background: rgba(255, 255, 255, 0.88);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(39, 7, 7, 0.12);
+  box-shadow: 0 0 0 2px rgba(17, 18, 13, 0.12);
 }
 
 .om-private-access-popup__badge {
@@ -77,7 +77,7 @@
 .om-private-access-popup h3 {
   margin: 0;
   padding-right: 28px;
-  color: #270707;
+  color: var(--om-black);
   font-family: var(--om-font-heading, Georgia, serif);
   font-size: clamp(26px, 2.4vw, 38px);
   line-height: 0.98;
@@ -87,7 +87,7 @@
 
 .om-private-access-popup p {
   margin: 14px 0 0;
-  color: rgba(39, 7, 7, 0.62);
+  color: rgba(17, 18, 13, 0.62);
   font-family: var(--om-font-body, system-ui, sans-serif);
   font-size: 15px;
   line-height: 1.45;
@@ -114,7 +114,7 @@
 .om-private-access-popup__button:focus-visible {
   background: var(--om-red-hover);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(39, 7, 7, 0.14);
+  box-shadow: 0 0 0 2px rgba(17, 18, 13, 0.14);
 }
 
 @supports not ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {

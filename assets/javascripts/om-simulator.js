@@ -5,35 +5,201 @@
 (function () {
   'use strict';
 
+  var global = typeof window !== 'undefined' ? window : {};
+
   var EUR_RATE = 10.8;
-  var SHORT_TERM_NET_FACTOR = 0.5676;
-  var LONG_TERM_NET_FACTOR = 0.6854;
-  var LONG_TERM_VACANCY_LABEL = '~1 mois / an';
-  var LONG_TERM_MANAGEMENT_INCLUDED = 'Oui';
 
-  var NOTE_TEXT =
-    'Estimation indicative. OFF MARKET affine cette simulation avec l\u2019adresse exacte, les charges réelles et les biens disponibles.';
+  function detectLocale() {
+    var path = window.location.pathname || '/';
+    if (path.indexOf('/en') === 0) return 'en';
+    if (path.indexOf('/it') === 0) return 'it';
+    return 'fr';
+  }
 
-  var MODES = {
-    short: {
-      resultSection: 'RÉSULTAT',
-      resultLabel: 'RENDEMENT NET ANNUEL',
-      resultCaption: 'après charges, commission et fiscalité',
-      mainIsPercent: true,
+  var LOCALE_COPY = {
+    fr: {
+      noteText:
+        'Estimation indicative. OFF MARKET affine cette simulation avec l\u2019adresse exacte, les charges réelles et les biens disponibles.',
+      modes: {
+        short: {
+          resultSection: 'RÉSULTAT',
+          resultLabel: 'RENDEMENT BRUT ANNUEL',
+          resultCaption: 'avant charges, fiscalité et frais réels',
+          mainIsPercent: true,
+        },
+        long: {
+          resultSection: 'RÉSULTAT',
+          resultLabel: 'RENDEMENT BRUT ANNUEL',
+          resultCaption: 'avant charges, fiscalité et frais réels',
+          mainIsPercent: true,
+        },
+        resale: {
+          resultSection: 'RÉSULTAT',
+          resultLabel: 'PLUS-VALUE BRUTE ESTIMÉE',
+          resultCaption: '',
+          mainIsPercent: false,
+        },
+      },
+      longTermVacancy: '~1 mois / an',
+      longTermManagement: 'Oui',
+      annualisedAppreciation: 'Valorisation annualisée ',
+      yearsSuffix: ' ans',
+      weeksSuffix: ' sem.',
+      perYearSuffix: ' / an',
+      metricIcons: {
+        'Revenu brut / an': 'wallet',
+        'Nuitées louées': 'calendar',
+        'Taux d\u2019occupation choisi': 'gauge',
+        'Loyer brut / an': 'wallet',
+        'Vacance locative estimée': 'calendar',
+        'Gestion OFF MARKET incluse': 'check',
+        'Valeur estimée à la sortie': 'trend',
+        'Plus-value brute': 'trend',
+        Horizon: 'clock',
+      },
+      metrics: {
+        short: {
+          grossRevenue: 'Revenu brut / an',
+          nightsRented: 'Nuitées louées',
+          occupancy: 'Taux d\u2019occupation choisi',
+        },
+        long: {
+          grossRent: 'Loyer brut / an',
+          vacancy: 'Vacance locative estimée',
+          management: 'Gestion OFF MARKET incluse',
+        },
+        resale: {
+          exitValue: 'Valeur estimée à la sortie',
+          capitalGain: 'Plus-value brute',
+          horizon: 'Horizon',
+        },
+      },
     },
-    long: {
-      resultSection: 'RÉSULTAT',
-      resultLabel: 'RENDEMENT NET ANNUEL',
-      resultCaption: 'après charges, gestion et fiscalité',
-      mainIsPercent: true,
+    en: {
+      noteText:
+        'Indicative estimate. OFF MARKET refines this simulation with the exact address, actual charges and available properties.',
+      modes: {
+        short: {
+          resultSection: 'RESULT',
+          resultLabel: 'GROSS ANNUAL YIELD',
+          resultCaption: 'before charges, taxes and real operating costs',
+          mainIsPercent: true,
+        },
+        long: {
+          resultSection: 'RESULT',
+          resultLabel: 'GROSS ANNUAL YIELD',
+          resultCaption: 'before charges, taxes and real operating costs',
+          mainIsPercent: true,
+        },
+        resale: {
+          resultSection: 'RESULT',
+          resultLabel: 'ESTIMATED GROSS CAPITAL GAIN',
+          resultCaption: '',
+          mainIsPercent: false,
+        },
+      },
+      longTermVacancy: '~1 month / year',
+      longTermManagement: 'Yes',
+      annualisedAppreciation: 'Annualised appreciation ',
+      yearsSuffix: ' yrs',
+      weeksSuffix: ' wks',
+      perYearSuffix: ' / yr',
+      metricIcons: {
+        'Annual gross revenue': 'wallet',
+        'Nights rented per year': 'calendar',
+        'Selected occupancy rate': 'gauge',
+        'Gross annual rent': 'wallet',
+        'Estimated rental vacancy': 'calendar',
+        'OFF MARKET management included': 'check',
+        'Estimated exit value': 'trend',
+        'Gross capital gain': 'trend',
+        Horizon: 'clock',
+      },
+      metrics: {
+        short: {
+          grossRevenue: 'Annual gross revenue',
+          nightsRented: 'Nights rented per year',
+          occupancy: 'Selected occupancy rate',
+        },
+        long: {
+          grossRent: 'Gross annual rent',
+          vacancy: 'Estimated rental vacancy',
+          management: 'OFF MARKET management included',
+        },
+        resale: {
+          exitValue: 'Estimated exit value',
+          capitalGain: 'Gross capital gain',
+          horizon: 'Horizon',
+        },
+      },
     },
-    resale: {
-      resultSection: 'RÉSULTAT',
-      resultLabel: 'PLUS-VALUE NETTE',
-      resultCaption: '',
-      mainIsPercent: false,
+    it: {
+      noteText:
+        'Stima indicativa. OFF MARKET affina questa simulazione con l\u2019indirizzo esatto, i costi reali e gli immobili disponibili.',
+      modes: {
+        short: {
+          resultSection: 'RISULTATO',
+          resultLabel: 'RENDIMENTO LORDO ANNUO',
+          resultCaption: 'prima di spese, fiscalità e costi operativi reali',
+          mainIsPercent: true,
+        },
+        long: {
+          resultSection: 'RISULTATO',
+          resultLabel: 'RENDIMENTO LORDO ANNUO',
+          resultCaption: 'prima di spese, fiscalità e costi operativi reali',
+          mainIsPercent: true,
+        },
+        resale: {
+          resultSection: 'RISULTATO',
+          resultLabel: 'PLUSVALENZA LORDA STIMATA',
+          resultCaption: '',
+          mainIsPercent: false,
+        },
+      },
+      longTermVacancy: '~1 mese / anno',
+      longTermManagement: 'Sì',
+      annualisedAppreciation: 'Plusvalenza annualizzata ',
+      yearsSuffix: ' anni',
+      weeksSuffix: ' sett.',
+      perYearSuffix: ' / anno',
+      metricIcons: {
+        'Ricavo lordo annuo': 'wallet',
+        'Notti affittate all\u2019anno': 'calendar',
+        'Tasso di occupazione scelto': 'gauge',
+        'Affitto lordo annuo': 'wallet',
+        'Vacanza locativa stimata': 'calendar',
+        'Gestione OFF MARKET inclusa': 'check',
+        'Valore stimato in uscita': 'trend',
+        'Plusvalenza lorda': 'trend',
+        Orizzonte: 'clock',
+      },
+      metrics: {
+        short: {
+          grossRevenue: 'Ricavo lordo annuo',
+          nightsRented: 'Notti affittate all\u2019anno',
+          occupancy: 'Tasso di occupazione scelto',
+        },
+        long: {
+          grossRent: 'Affitto lordo annuo',
+          vacancy: 'Vacanza locativa stimata',
+          management: 'Gestione OFF MARKET inclusa',
+        },
+        resale: {
+          exitValue: 'Valore stimato in uscita',
+          capitalGain: 'Plusvalenza lorda',
+          horizon: 'Orizzonte',
+        },
+      },
     },
   };
+
+  function getCopy() {
+    return LOCALE_COPY[detectLocale()] || LOCALE_COPY.fr;
+  }
+
+  var NOTE_TEXT = LOCALE_COPY.fr.noteText;
+
+  var MODES = LOCALE_COPY.fr.modes;
 
   var DEFAULTS = {
     short: {
@@ -50,24 +216,15 @@
       budget: 1500000,
       resaleHorizonYears: 8,
       annualAppreciationRate: 10,
-      taxRate: 15,
     },
   };
 
   var callbackModalBound = false;
 
-  var HOME_METRIC_ICONS = {
-    'Revenu brut / an': 'wallet',
-    'Nuitées louées': 'calendar',
-    'Taux d\u2019occupation choisi': 'gauge',
-    'Loyer brut / an': 'wallet',
-    'Vacance locative estimée': 'calendar',
-    'Gestion OFF MARKET incluse': 'check',
-    'Valeur estimée à la sortie': 'trend',
-    'Plus-value brute': 'trend',
-    'Taux d\u2019imposition applicable': 'receipt',
-    'Horizon': 'clock',
-  };
+  var LONG_TERM_VACANCY_LABEL = LOCALE_COPY.fr.longTermVacancy;
+  var LONG_TERM_MANAGEMENT_INCLUDED = LOCALE_COPY.fr.longTermManagement;
+
+  var HOME_METRIC_ICONS = LOCALE_COPY.fr.metricIcons;
 
   var HOME_ICON_SVG = {
     wallet:
@@ -114,62 +271,64 @@
 
   function formatPct(value, decimals) {
     var d = typeof decimals === 'number' ? decimals : 1;
-    return value.toFixed(d).replace('.', ',') + ' %';
+    var sep = detectLocale() === 'en' ? '.' : ',';
+    return value.toFixed(d).replace('.', sep) + ' %';
   }
 
   function formatApproxPct(value, decimals) {
     return '~' + formatPct(value, decimals);
   }
 
+  function toNumber(value) {
+    var numeric = Number(value);
+    return Number.isFinite(numeric) ? numeric : 0;
+  }
+
   function calcShort(data) {
-    var baseRentedNights = Math.round(365 * (data.occupancy / 100));
-    var personalUseNights = data.personalWeeks * 7;
-    var nightsRented = Math.max(0, baseRentedNights - personalUseNights);
-    var grossAnnualRevenue = Math.round(data.nightlyRate * nightsRented);
-    var netAnnualRevenue = Math.round(grossAnnualRevenue * SHORT_TERM_NET_FACTOR);
-    var monthlyNet = Math.round(netAnnualRevenue / 12);
-    var netYield = data.budget > 0 ? (netAnnualRevenue / data.budget) * 100 : 0;
+    var budget = toNumber(data.budget);
+    var nightlyRate = toNumber(data.nightlyRate);
+    var personalWeeks = toNumber(data.personalWeeks);
+    var occupancy = toNumber(data.occupancy);
+    var availableDays = Math.max(0, 365 - personalWeeks * 7);
+    var nightsRented = Math.floor(availableDays * occupancy / 100);
+    var grossAnnualRevenue = Math.round(nightsRented * nightlyRate);
+    var grossYield = budget > 0 ? (grossAnnualRevenue / budget) * 100 : 0;
 
     return {
       nightsRented: nightsRented,
       grossAnnualRevenue: grossAnnualRevenue,
-      netAnnualRevenue: netAnnualRevenue,
-      monthlyNet: monthlyNet,
-      netYield: netYield,
-      effectiveOccupancy: data.occupancy,
+      grossYield: grossYield,
+      effectiveOccupancy: occupancy,
     };
   }
 
   function calcLong(data) {
-    var grossAnnualRent = Math.round(data.monthlyRent * 12);
-    var netAnnualRent = Math.round(grossAnnualRent * LONG_TERM_NET_FACTOR);
-    var monthlyNet = Math.round(netAnnualRent / 12);
-    var netYield = data.budget > 0 ? (netAnnualRent / data.budget) * 100 : 0;
+    var budget = toNumber(data.budget);
+    var monthlyRent = toNumber(data.monthlyRent);
+    var grossAnnualRent = Math.round(monthlyRent * 12);
+    var grossYield = budget > 0 ? (grossAnnualRent / budget) * 100 : 0;
 
     return {
       grossAnnualRent: grossAnnualRent,
-      netAnnualRent: netAnnualRent,
-      monthlyNet: monthlyNet,
-      netYield: netYield,
+      grossYield: grossYield,
     };
   }
 
   function calcResale(data) {
-    var rate = data.annualAppreciationRate / 100;
-    var exitValue = Math.round(data.budget * Math.pow(1 + rate, data.resaleHorizonYears));
-    var grossCapitalGain = Math.round(exitValue - data.budget);
-    var taxAmount = Math.round(grossCapitalGain * (data.taxRate / 100));
-    var netCapitalGain = Math.round(grossCapitalGain - taxAmount);
-    var annualizedReturn = data.annualAppreciationRate;
+    var budget = toNumber(data.budget);
+    var holdingYears = Math.max(1, toNumber(data.resaleHorizonYears));
+    var appreciationRate = toNumber(data.annualAppreciationRate);
+    var exitValue = Math.round(
+      budget * Math.pow(1 + appreciationRate / 100, holdingYears)
+    );
+    var grossCapitalGain = Math.round(exitValue - budget);
+    var annualizedReturn = appreciationRate;
 
     return {
       exitValue: exitValue,
       grossCapitalGain: grossCapitalGain,
-      taxAmount: taxAmount,
-      netCapitalGain: netCapitalGain,
       annualizedReturn: annualizedReturn,
-      taxRate: data.taxRate,
-      horizonYears: data.resaleHorizonYears,
+      horizonYears: holdingYears,
     };
   }
 
@@ -188,13 +347,14 @@
     var valueEl = fieldEl.querySelector('[data-field-value]');
     var eurEl = fieldEl.querySelector('[data-field-eur]');
     if (!valueEl) return;
+    var copy = getCopy();
 
     if (options && options.isPercent) {
       valueEl.textContent = formatPct(value, options.decimals || 0);
     } else if (options && options.isYears) {
-      valueEl.textContent = value + ' ans';
+      valueEl.textContent = value + copy.yearsSuffix;
     } else if (options && options.isWeeks) {
-      valueEl.textContent = value + ' sem.';
+      valueEl.textContent = value + copy.weeksSuffix;
     } else {
       valueEl.textContent = formatDH(value);
       if (eurEl) eurEl.textContent = formatEUR(value);
@@ -210,9 +370,10 @@
     labelEl.className = 'om-simulator__metric-label';
 
     var simRoot = container.closest('[data-simulator]');
-    if (isHomeSimulator(simRoot) && HOME_METRIC_ICONS[label]) {
+    var metricIcons = getCopy().metricIcons;
+    if (isHomeSimulator(simRoot) && metricIcons[label]) {
       labelEl.classList.add('om-simulator__metric-label--with-icon');
-      labelEl.appendChild(createHomeIcon('om-simulator__metric-icon', HOME_METRIC_ICONS[label]));
+      labelEl.appendChild(createHomeIcon('om-simulator__metric-icon', metricIcons[label]));
       var labelText = document.createElement('span');
       labelText.textContent = label;
       labelEl.appendChild(labelText);
@@ -313,7 +474,9 @@
 
     function renderResults() {
       var results = computeResults();
-      var modeConfig = MODES[state.mode];
+      var copy = getCopy();
+      var modeConfig = copy.modes[state.mode];
+      var metrics = copy.metrics;
       var resultsRoot = root.querySelector('[data-simulator-results]');
       if (!resultsRoot) return;
 
@@ -334,14 +497,15 @@
 
       if (state.mode === 'resale') {
         if (mainEl) {
-          mainEl.textContent = formatDH(results.netCapitalGain);
+          mainEl.textContent = formatDH(results.grossCapitalGain);
           mainEl.classList.add('is-money');
         }
         if (subEl) {
           subEl.hidden = false;
           subEl.textContent =
-            formatEUR(results.netCapitalGain) +
-            '\nRendement annualisé ' +
+            formatEUR(results.grossCapitalGain) +
+            '\n' +
+            copy.annualisedAppreciation +
             formatApproxPct(results.annualizedReturn, 1);
         }
         if (captionEl) {
@@ -350,7 +514,7 @@
         }
       } else {
         if (mainEl) {
-          mainEl.textContent = formatPct(results.netYield, 1);
+          mainEl.textContent = formatPct(results.grossYield, 1);
           mainEl.classList.remove('is-money');
         }
         if (subEl) subEl.hidden = true;
@@ -364,50 +528,49 @@
         metricsEl.innerHTML = '';
 
         if (state.mode === 'short') {
-          appendMetric(metricsEl, 'Revenu brut / an', results.grossAnnualRevenue, {
+          appendMetric(metricsEl, metrics.short.grossRevenue, results.grossAnnualRevenue, {
             isMoney: true,
             positive: true,
           });
           appendMetric(
             metricsEl,
-            'Nuitées louées',
-            formatNumber(results.nightsRented) + ' / an',
+            metrics.short.nightsRented,
+            formatNumber(results.nightsRented) + copy.perYearSuffix,
           );
           appendMetric(
             metricsEl,
-            'Taux d\u2019occupation choisi',
+            metrics.short.occupancy,
             formatPct(results.effectiveOccupancy, 0),
           );
         } else if (state.mode === 'long') {
-          appendMetric(metricsEl, 'Loyer brut / an', results.grossAnnualRent, {
+          appendMetric(metricsEl, metrics.long.grossRent, results.grossAnnualRent, {
             isMoney: true,
             positive: true,
           });
           appendMetric(
             metricsEl,
-            'Vacance locative estimée',
-            LONG_TERM_VACANCY_LABEL,
+            metrics.long.vacancy,
+            copy.longTermVacancy,
           );
           appendMetric(
             metricsEl,
-            'Gestion OFF MARKET incluse',
-            LONG_TERM_MANAGEMENT_INCLUDED,
+            metrics.long.management,
+            copy.longTermManagement,
           );
         } else {
-          appendMetric(metricsEl, 'Valeur estimée à la sortie', results.exitValue, {
+          appendMetric(metricsEl, metrics.resale.exitValue, results.exitValue, {
             isMoney: true,
             positive: true,
           });
-          appendMetric(metricsEl, 'Plus-value brute', results.grossCapitalGain, {
+          appendMetric(metricsEl, metrics.resale.capitalGain, results.grossCapitalGain, {
             isMoney: true,
             positive: true,
           });
           appendMetric(
             metricsEl,
-            'Taux d\u2019imposition applicable',
-            formatPct(results.taxRate, 0),
+            metrics.resale.horizon,
+            results.horizonYears + copy.yearsSuffix,
           );
-          appendMetric(metricsEl, 'Horizon', results.horizonYears + ' ans');
         }
       }
     }
@@ -471,7 +634,7 @@
     });
 
     root.querySelectorAll('[data-simulator-note]').forEach(function (el) {
-      el.textContent = NOTE_TEXT;
+      el.textContent = getCopy().noteText;
     });
 
     root.querySelectorAll('[data-simulator-tab]').forEach(function (tab) {
@@ -537,9 +700,20 @@
     initCallbackModal();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
+  global.OM_SIMULATOR_boot = init;
+
+  function shouldDeferBoot() {
+    return (
+      document.body &&
+      document.body.getAttribute('data-om-defer-legacy-boot') === 'true'
+    );
+  }
+
+  if (!shouldDeferBoot()) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   }
 })();

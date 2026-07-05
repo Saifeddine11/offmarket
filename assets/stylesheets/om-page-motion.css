@@ -1,0 +1,84 @@
+/* Shared Framer Motion companion styles — new animated inner pages.
+ * /quartiers/ keeps om-quartiers-motion.css (approved reference + page-specific rules).
+ */
+
+.om-text-mask-reveal__line {
+  display: block;
+  overflow: hidden;
+}
+
+.om-text-mask-reveal__inner {
+  display: block;
+}
+
+.om-image-scroll-reveal__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.inner-hero[data-om-framer-hero] .inner-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.inner-hero[data-om-framer-hero] .inner-hero__media .om-image-scroll-reveal__inner,
+.inner-hero[data-om-framer-hero] .inner-hero__media img,
+.inner-hero[data-om-framer-hero] .inner-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.om-image-scroll-reveal__inner > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Disable legacy hidden states — Framer handles animated pages */
+.om-animated-page .om-final-cta:not(.is-visible) .om-final-cta__content .om-final-cta__eyebrow,
+.om-animated-page .om-final-cta:not(.is-visible) .om-final-cta__content .om-final-cta__title,
+.om-animated-page .om-final-cta:not(.is-visible) .om-final-cta__content .om-final-cta__text,
+.om-animated-page .om-final-cta:not(.is-visible) .om-final-cta__content .om-final-cta__trust,
+.om-animated-page .om-final-cta:not(.is-visible) .om-final-cta__content .om-final-cta__actions {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.om-animated-page .om-final-cta__bg-motion {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.om-animated-page .om-final-cta__overlay {
+  z-index: 1;
+}
+
+.om-animated-page .om-final-cta__content {
+  z-index: 2;
+}
+
+.inner-hero[data-om-framer-hero] [data-hero-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.om-final-cta__media .om-image-scroll-reveal__inner,
+.om-final-cta__media .om-final-cta__bg-motion {
+  position: absolute;
+  inset: 0;
+}
+
+.om-final-cta__media .om-final-cta__bg-motion > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -14,7 +14,26 @@
   }
 
   function isQuiSommesNous(section) {
-    return section.id === 'qui-sommes-nous';
+    return (
+      section.id === 'qui-sommes-nous' ||
+      section.id === 'about-qui-sommes-nous' ||
+      section.classList.contains('about-who')
+    );
+  }
+
+  function isVerifiedActors(section) {
+    return section.id === 'acteurs-verifies';
+  }
+
+  function isAnimatedRevealSection(section) {
+    return isQuiSommesNous(section) || isVerifiedActors(section);
+  }
+
+  function shouldWatchOnScroll(section) {
+    if (prefersReducedMotion()) return false;
+    if (isVerifiedActors(section)) return true;
+    if (window.matchMedia('(min-width: 980px)').matches) return false;
+    return true;
   }
 
   function revealSection(section) {
@@ -24,11 +43,57 @@
 
   function revealSectionAnimated(section) {
     if (
-      isQuiSommesNous(section) &&
-      isMobileViewport() &&
+      isAnimatedRevealSection(section) &&
       typeof gsap !== 'undefined' &&
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches
     ) {
+      if (isVerifiedActors(section)) {
+        var headerItems = section.querySelectorAll(
+          '.about-verified__header .about-verified__reveal'
+        );
+        var cards = section.querySelectorAll('.about-verified__card-reveal');
+
+        if (headerItems.length || cards.length) {
+          var timeline = gsap.timeline({
+            onComplete: function () {
+              revealSection(section);
+            },
+          });
+
+          if (headerItems.length) {
+            timeline.fromTo(
+              headerItems,
+              { opacity: 0, y: 24, filter: 'blur(4px)' },
+              {
+                opacity: 1,
+                y: 0,
+                filter: 'blur(0px)',
+                duration: 0.7,
+                stagger: 0.08,
+                ease: 'power3.out',
+              }
+            );
+          }
+
+          if (cards.length) {
+            timeline.fromTo(
+              cards,
+              { opacity: 0, y: 26 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: 'power3.out',
+              },
+              headerItems.length ? '-=0.25' : 0
+            );
+          }
+
+          return;
+        }
+      }
+
       var items = section.querySelectorAll('.mav-reveal-item');
       if (items.length) {
         gsap.fromTo(
@@ -174,7 +239,7 @@
         if (section.dataset.revealObserverBound === 'true') return;
         section.dataset.revealObserverBound = 'true';
 
-        if (prefersReducedMotion() || window.matchMedia('(min-width: 980px)').matches) {
+        if (!shouldWatchOnScroll(section)) {
           revealSection(section);
           return;
         }

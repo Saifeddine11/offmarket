@@ -37,7 +37,7 @@
   text-transform: uppercase;
   text-align: center;
   font-weight: 650;
-  color: rgba(112, 0, 21, 0.62);
+  color: rgba(86, 84, 73, 0.62);
   opacity: 1;
 }
 
@@ -60,7 +60,19 @@
   }
 }
 
+.om-territories__subtitle {
+  margin: clamp(1rem, 2.5vh, 1.5rem) auto 0;
+  max-width: 42rem;
+  font-family: var(--om-font-body);
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.55;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(46, 52, 48, 0.78);
+}
+
 .om-territories__gallery-wrap {
+  box-sizing: border-box;
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
@@ -265,9 +277,9 @@
       118deg,
       rgba(255, 244, 210, 0.18) 0%,
       rgba(216, 177, 115, 0.72) 28%,
-      rgba(184, 138, 90, 0.42) 48%,
+      rgba(86, 84, 73, 0.42) 48%,
       rgba(255, 255, 255, 0.22) 58%,
-      rgba(184, 138, 90, 0.56) 78%,
+      rgba(86, 84, 73, 0.56) 78%,
       rgba(255, 232, 185, 0.26) 100%
     );
 
@@ -285,9 +297,9 @@
 
   text-shadow:
     0 0 8px rgba(216, 177, 115, 0.22),
-    0 0 18px rgba(184, 138, 90, 0.16),
+    0 0 18px rgba(86, 84, 73, 0.16),
     0 1px 0 rgba(255, 255, 255, 0.16),
-    0 -1px 0 rgba(39, 7, 7, 0.16);
+    0 -1px 0 rgba(17, 18, 13, 0.16);
 }
 
 .om-territories__card-number--gold::before {
@@ -344,7 +356,7 @@
 
   text-shadow:
     0 0 4px rgba(216, 177, 115, 0.26),
-    0 0 10px rgba(184, 138, 90, 0.16),
+    0 0 10px rgba(86, 84, 73, 0.16),
     0 1px 0 rgba(255, 255, 255, 0.1);
 
   filter: saturate(1.08);
@@ -532,5 +544,208 @@
   .om-territories__mobile-card,
   .om-territories__mobile-media {
     transition: none !important;
+  }
+}
+
+/* ── Extended set (6 cards) — /quartiers/ ── */
+
+.om-territories--extended {
+  scroll-margin-top: 5rem;
+}
+
+.om-territories--extended .om-territories__gallery-wrap {
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.om-territories--extended .om-territories__gallery-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .om-territories--extended .om-territories__gallery-wrap {
+    display: block;
+    min-height: clamp(680px, 70vh, 800px);
+    padding: 0 0 clamp(3rem, 4vh, 5rem);
+  }
+
+  .om-territories--extended .om-territories__desktop {
+    display: flex;
+    justify-content: flex-start;
+    width: max-content;
+    min-width: 100%;
+    overflow: visible;
+  }
+
+  .om-territories--extended .om-territories__stage {
+    justify-content: flex-start;
+    max-width: none;
+    width: max-content;
+    margin: 0;
+    padding: 0 clamp(1.25rem, 4vw, 3rem);
+    scroll-snap-align: start;
+  }
+
+  .om-territories--extended .om-territories__card {
+    scroll-snap-align: center;
+  }
+}
+
+.om-inner-page .om-territories__header {
+  text-align: center;
+}
+
+.om-inner-page .om-territories__eyebrow,
+.om-inner-page .om-territories__title,
+.om-inner-page .om-territories__subtitle {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.om-inner-page .om-territories--extended .om-territories__header {
+  padding-top: clamp(3rem, 6vh, 4.5rem);
+}
+
+/* /quartiers/ — 3-card gallery: keep cluster centered in the viewport */
+@media (min-width: 768px) {
+  .om-inner-page
+    .om-territories:not(.om-territories--extended):not(.om-territories--quartiers-page)
+    .om-territories__gallery-wrap {
+    justify-content: center;
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .om-inner-page
+    .om-territories:not(.om-territories--extended):not(.om-territories--quartiers-page)
+    .om-territories__desktop {
+    width: max-content;
+    max-width: 100%;
+    margin-inline: auto;
+    justify-content: center;
+  }
+
+  .om-inner-page
+    .om-territories:not(.om-territories--extended):not(.om-territories--quartiers-page)
+    .om-territories__stage {
+    max-width: min(100%, 1120px);
+    margin-inline: auto;
+  }
+}
+
+/* ── /quartiers/ Top 3 — editorial grid layout (page-only) ── */
+
+.om-quartiers-page .om-territories--quartiers-page {
+  scroll-margin-top: clamp(5.5rem, 9vh, 7.5rem);
+}
+
+.om-quartiers-page .om-territories--quartiers-page .om-territories__header {
+  padding: clamp(5.5rem, 10vh, 8rem) clamp(1.5rem, 4vw, 2rem) 0;
+  margin: 0 auto clamp(2.5rem, 4vh, 3.5rem);
+  max-width: min(100%, 920px);
+}
+
+.om-quartiers-page .om-territories--quartiers-page .om-territories__title {
+  max-width: 100%;
+}
+
+.om-quartiers-page .om-territories--quartiers-page .om-territories__subtitle {
+  max-width: 44rem;
+}
+
+.om-quartiers-page .om-territories--quartiers-page .om-territories__gallery-wrap {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 clamp(1.25rem, 4vw, 2rem) clamp(3rem, 5vh, 4.5rem);
+}
+
+@media (min-width: 768px) {
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__gallery-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    min-height: 0;
+    overflow-x: clip;
+    padding: 0 clamp(2rem, 4vw, 2.5rem) clamp(3.5rem, 6vh, 5.5rem);
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__desktop {
+    display: flex;
+    width: min(calc(100vw - 64px), 1280px);
+    max-width: 1280px;
+    margin: 0 auto;
+    overflow: visible;
+    min-height: clamp(520px, 58vh, 680px);
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__stage {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(28px, 2.5vw, 32px);
+    align-items: stretch;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    perspective: none;
+    transform-style: flat;
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card {
+    width: 100%;
+    min-height: clamp(520px, 58vh, 680px);
+    height: auto;
+    margin: 0;
+    flex: initial;
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card-inner {
+    min-height: clamp(520px, 58vh, 680px);
+    height: 100%;
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-active {
+    z-index: 2;
+    box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.28);
+  }
+
+  /* Keep label stack anchored bottom-left on hover — no active copy swap */
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-active .om-territories__card-copy--idle,
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-focused .om-territories__card-copy--idle {
+    display: block;
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-active .om-territories__card-copy--active,
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-focused .om-territories__card-copy--active {
+    display: none;
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-active .om-territories__card-veil--bottom-idle,
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-focused .om-territories__card-veil--bottom-idle {
+    display: block;
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-active .om-territories__card-veil--side-active,
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-active .om-territories__card-veil--bottom-active,
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-focused .om-territories__card-veil--side-active,
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card.is-focused .om-territories__card-veil--bottom-active {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__header {
+    padding-top: clamp(4.5rem, 12vw, 6rem);
+    padding-inline: 1.25rem;
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__gallery-wrap {
+    padding-inline: 1rem;
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__mobile-card {
+    width: min(92vw, 100%);
   }
 }

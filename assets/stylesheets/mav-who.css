@@ -55,7 +55,7 @@
   line-height: 1.5;
   letter-spacing: -0.015em;
   font-weight: 400;
-  color: rgba(39, 7, 7, 0.62);
+  color: rgba(17, 18, 13, 0.62);
   text-wrap: pretty;
 }
 
@@ -73,8 +73,8 @@
   min-height: 38px;
   padding: 0 16px;
   border-radius: 10000px;
-  background: rgba(112, 0, 21, 0.07);
-  border: 1px solid rgba(112, 0, 21, 0.14);
+  background: rgba(86, 84, 73, 0.07);
+  border: 1px solid rgba(86, 84, 73, 0.14);
   color: var(--om-red);
   font-family: var(--font-main, 'Inter', system-ui, sans-serif);
   font-size: 14px;
@@ -189,7 +189,8 @@
   }
 }
 
-html.om-reveal-fallback #qui-sommes-nous .mav-reveal-item {
+html.om-reveal-fallback #qui-sommes-nous .mav-reveal-item,
+html.om-reveal-fallback #about-qui-sommes-nous .mav-reveal-item {
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;

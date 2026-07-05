@@ -6,8 +6,15 @@
 (function () {
   'use strict';
 
+  function detectLocale() {
+    var path = window.location.pathname || '/';
+    if (path.indexOf('/en') === 0) return 'en';
+    if (path.indexOf('/it') === 0) return 'it';
+    return 'fr';
+  }
+
   var IMG_BASE = '/assets/mavericks/territories/investment/';
-  var ITEMS = [
+  var ITEMS_HOME = [
     {
       number: '01',
       image: IMG_BASE + 'gueliz-hypercentre.webp',
@@ -33,6 +40,103 @@
     },
   ];
 
+  var ITEMS_HOME_EN = [
+    {
+      number: '01',
+      image: IMG_BASE + 'gueliz-hypercentre.webp',
+      label: 'Guéliz Hyper-Centre / Hivernage',
+      subtitle: 'Apartments · central location · strong demand',
+      tag: 'RENTAL LIQUIDITY',
+    },
+    {
+      number: '02',
+      image: IMG_BASE + 'triangle-or-hivernage.webp',
+      label: "Triangle d\u2019Or",
+      labelHtml: 'Triangle <span class="om-gold-word">d\u2019Or</span>',
+      subtitle: "Route de Tahnaout · Route de l'Ourika · Agdal",
+      tag: 'DEVELOPMENT CORRIDOR',
+      goldNumber: true,
+    },
+    {
+      number: '03',
+      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      label: 'Médina',
+      subtitle: 'Character riads · guest houses · heritage',
+      tag: 'TOURIST YIELD',
+    },
+  ];
+
+  var ITEMS_HOME_IT = [
+    {
+      number: '01',
+      image: IMG_BASE + 'gueliz-hypercentre.webp',
+      label: 'Guéliz Hyper-Centre / Hivernage',
+      subtitle: 'Appartamenti · centralità · forte domanda',
+      tag: 'LIQUIDITÀ LOCATIVA',
+    },
+    {
+      number: '02',
+      image: IMG_BASE + 'triangle-or-hivernage.webp',
+      label: "Triangle d\u2019Or",
+      labelHtml: 'Triangle <span class="om-gold-word">d\u2019Or</span>',
+      subtitle: "Route de Tahnaout · Route de l'Ourika · Agdal",
+      tag: 'ASSE IN SVILUPPO',
+      goldNumber: true,
+    },
+    {
+      number: '03',
+      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      label: 'Médina',
+      subtitle: 'Riad di carattere · case di ospitalità · patrimonio',
+      tag: 'RENDIMENTO TURISTICO',
+    },
+  ];
+
+  var ITEMS_PAGE = ITEMS_HOME.concat([
+    {
+      number: '04',
+      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      label: "Route de l\u2019Ourika",
+      subtitle: 'Villas · terrains · résidences privées',
+      tag: 'VILLAS & EXTÉRIEUR',
+    },
+    {
+      number: '05',
+      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      label: 'Palmeraie',
+      subtitle: 'Grandes propriétés · calme · confidentialité',
+      tag: 'GRANDES PROPRIÉTÉS',
+    },
+    {
+      number: '06',
+      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      label: "Route d\u2019Amizmiz",
+      subtitle: 'Villas sur plan · terrains · projets résidentiels',
+      tag: 'PROJETS RÉSIDENTIELS',
+    },
+  ]);
+
+  var QUARTIERS_DETAIL_TARGETS = [
+    'quartier-gueliz-hivernage',
+    'quartier-triangle-or',
+    'quartier-medina',
+  ];
+
+  function resolveItems(section) {
+    var isPage = section.getAttribute('data-om-territories-set') === 'page';
+    var locale = detectLocale();
+    if (locale === 'en') {
+      return isPage ? ITEMS_PAGE : ITEMS_HOME_EN;
+    }
+    if (locale === 'it') {
+      return isPage ? ITEMS_PAGE : ITEMS_HOME_IT;
+    }
+    if (isPage) {
+      return ITEMS_PAGE;
+    }
+    return ITEMS_HOME;
+  }
+
   var DESKTOP = {
     itemWidth: 14,
     itemHeight: 20,
@@ -57,7 +161,35 @@
     return 'calc(' + DESKTOP.itemHeight + 'vw + ' + DESKTOP.itemHeight + 'vh + 3rem)';
   }
 
-  function applyDesktopShell(card, isActive) {
+  function isQuartiersPageLayout(section) {
+    return !!(section && section.classList.contains('om-territories--quartiers-page'));
+  }
+
+  function scrollToQuartierDetail(index) {
+    var targetId = QUARTIERS_DETAIL_TARGETS[index];
+    if (!targetId) return;
+
+    var target = document.getElementById(targetId);
+    if (!target) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+      block: 'start',
+    });
+  }
+
+  function applyDesktopShell(card, isActive, section) {
+    if (isQuartiersPageLayout(section)) {
+      card.style.width = '';
+      card.style.height = '';
+      card.style.margin = '';
+      card.style.zIndex = isActive ? '2' : '';
+      card.style.transition =
+        'box-shadow ' + DESKTOP.transitionDuration + 's ' + EASING + ', transform ' + DESKTOP.transitionDuration + 's ' + EASING;
+      return;
+    }
+
     var baseWidthPx = 10;
     var duration = DESKTOP.transitionDuration + 's';
 
@@ -70,8 +202,15 @@
     card.style.transition = 'width ' + duration + ' ' + EASING + ', height ' + duration + ' ' + EASING;
   }
 
-  function applyDesktopTransform(inner, isActive) {
+  function applyDesktopTransform(inner, isActive, section) {
     var duration = DESKTOP.transitionDuration + 's';
+
+    if (isQuartiersPageLayout(section)) {
+      inner.style.transform = isActive ? 'scale(1.02)' : 'none';
+      inner.style.transition = 'transform ' + duration + ' ' + EASING;
+      return;
+    }
+
     var scale = DESKTOP.hoverScale;
 
     inner.style.transform = isActive
@@ -95,10 +234,10 @@
         var isFocused = card.classList.contains('is-focused');
         card.classList.toggle('is-active', isActive);
         card.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-        applyDesktopShell(card, isActive);
+        applyDesktopShell(card, isActive, root);
         var inner = card.querySelector('.om-territories__card-inner');
         if (inner) {
-          applyDesktopTransform(inner, isActive && !reduceMotion);
+          applyDesktopTransform(inner, isActive && !reduceMotion, root);
         }
         var media = card.querySelector('.om-territories__card-media');
         if (media && reduceMotion) {
@@ -108,9 +247,9 @@
     }
 
     cards.forEach(function (card, index) {
-      applyDesktopShell(card, false);
+      applyDesktopShell(card, false, root);
       var inner = card.querySelector('.om-territories__card-inner');
-      if (inner) applyDesktopTransform(inner, false);
+      if (inner) applyDesktopTransform(inner, false, root);
 
       card.addEventListener('mouseenter', function () {
         setActive(index);
@@ -119,6 +258,10 @@
         setActive(null);
       });
       card.addEventListener('click', function () {
+        if (isQuartiersPageLayout(root)) {
+          scrollToQuartierDetail(index);
+          return;
+        }
         setActive(activeIndex === index ? null : index);
       });
       card.addEventListener('focus', function () {
@@ -130,6 +273,10 @@
       card.addEventListener('keydown', function (event) {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
+          if (isQuartiersPageLayout(root)) {
+            scrollToQuartierDetail(index);
+            return;
+          }
           setActive(activeIndex === index ? null : index);
         } else if (event.key === 'ArrowLeft') {
           event.preventDefault();
@@ -150,7 +297,7 @@
           setActive(activeIndex);
         } else {
           cards.forEach(function (card) {
-            applyDesktopShell(card, false);
+            applyDesktopShell(card, false, root);
           });
         }
       },
@@ -212,6 +359,11 @@
 
     cards.forEach(function (card, index) {
       card.addEventListener('click', function () {
+        if (isQuartiersPageLayout(root)) {
+          scrollToQuartierDetail(index);
+          return;
+        }
+
         if (!window.matchMedia('(max-width: 767px)').matches) return;
 
         if (activeIndex === index) return;
@@ -285,10 +437,10 @@
     parent.appendChild(bottomActive);
   }
 
-  function mountDesktopCards(stage) {
+  function mountDesktopCards(stage, items) {
     var makeCopy = buildCardCopy('om-territories__card-copy');
 
-    ITEMS.forEach(function (item, index) {
+    items.forEach(function (item, index) {
       var card = document.createElement('div');
       card.className = 'om-territories__card';
       card.setAttribute('data-om-territory-card', '');
@@ -316,10 +468,10 @@
     });
   }
 
-  function mountMobileCards(mobileRoot) {
+  function mountMobileCards(mobileRoot, items) {
     var makeCopy = buildCardCopy('om-territories__card-copy');
 
-    ITEMS.forEach(function (item, index) {
+    items.forEach(function (item, index) {
       var card = document.createElement('button');
       card.type = 'button';
       card.className = 'om-territories__mobile-card';
@@ -342,27 +494,46 @@
     });
   }
 
-  function boot() {
-    var section = document.getElementById('territories');
-    if (!section) return;
+  function initSection(section) {
+    if (section.getAttribute('data-om-territories-init') === 'true') {
+      return;
+    }
 
+    var items = resolveItems(section);
     var stage = section.querySelector('[data-om-territories-stage]');
     var mobileRoot = section.querySelector('[data-om-territories-mobile]');
 
     if (stage && !stage.childElementCount) {
-      mountDesktopCards(stage);
+      mountDesktopCards(stage, items);
     }
     if (mobileRoot && !mobileRoot.childElementCount) {
-      mountMobileCards(mobileRoot);
+      mountMobileCards(mobileRoot, items);
     }
 
     initDesktop(section);
     initMobile(section);
+    section.setAttribute('data-om-territories-init', 'true');
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
+  function boot() {
+    var sections = document.querySelectorAll('#territories, [data-om-territories-set]');
+    sections.forEach(initSection);
   }
+
+  function shouldDeferBoot() {
+    return (
+      document.body &&
+      document.body.getAttribute('data-om-defer-legacy-boot') === 'true'
+    );
+  }
+
+  if (!shouldDeferBoot()) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', boot);
+    } else {
+      boot();
+    }
+  }
+
+  window.__omTerritoriesBoot = boot;
 })();

@@ -223,15 +223,15 @@ body a.btn.om-button--primary:not(.btn--square):not(.btn--link):hover {
 .om-cta--outline {
   background: transparent;
   color: var(--om-btn-ink);
-  border: 1px solid rgba(39, 7, 7, 0.22);
+  border: 1px solid rgba(17, 18, 13, 0.22);
 }
 
 .om-button--outline:hover,
 .mav-button--outline:hover,
 .om-btn--outline:hover,
 .om-cta--outline:hover {
-  background: rgba(39, 7, 7, 0.04);
-  border-color: rgba(39, 7, 7, 0.32);
+  background: rgba(17, 18, 13, 0.04);
+  border-color: rgba(17, 18, 13, 0.32);
 }
 
 .om-button--dark:hover,
@@ -281,14 +281,14 @@ body a.btn.om-button--primary:not(.btn--square):not(.btn--link):hover {
 .l-callback__tablist .btn.btn--outline:not(.btn--square):not(.btn--link) {
   color: var(--om-btn-ink) !important;
   background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(39, 7, 7, 0.12);
+  border: 1px solid rgba(17, 18, 13, 0.12);
 }
 
 .ui-light .btn.btn--outline:not(.btn--square):not(.btn--link):hover,
 .om-featured-projects .btn.btn--outline:not(.btn--square):not(.btn--link):hover,
 .l-callback__tablist .btn.btn--outline:not(.btn--square):not(.btn--link):hover {
   background: #ffffff;
-  border-color: rgba(39, 7, 7, 0.2);
+  border-color: rgba(17, 18, 13, 0.2);
 }
 
 .l-callback__tablist .btn.btn--outline.is-active:not(.btn--square):not(.btn--link) {
@@ -374,7 +374,7 @@ body .btn.btn--primary:not(.btn--square):not(.btn--link) .btn__text {
 .om-property-modal__actions .om-cta.om-button--outline {
   background: transparent;
   color: var(--om-btn-ink);
-  border: 1px solid rgba(39, 7, 7, 0.22);
+  border: 1px solid rgba(17, 18, 13, 0.22);
 }
 
 .om-property-modal__actions .om-cta.om-button--dark {

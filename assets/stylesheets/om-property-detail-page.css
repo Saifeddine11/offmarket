@@ -1,0 +1,204 @@
+/**
+ * OFF MARKET — Project detail page (modal slides as vertical sections)
+ */
+
+.om-property-detail-page {
+  position: relative;
+  padding:
+    calc(var(--om-header-height, 72px) + 1.25rem)
+    clamp(1rem, 2.5vw, 2rem)
+    clamp(2.5rem, 5vw, 4rem);
+  background: #f5f4f2;
+  color: #565449;
+  overflow-x: clip;
+}
+
+.om-property-detail-page__nav {
+  position: sticky;
+  top: calc(var(--om-header-height, 72px) + 0.35rem);
+  z-index: 30;
+  margin: 0 auto 1.75rem;
+  max-width: min(96vw, 1660px);
+}
+
+.om-property-detail-page__nav-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.35rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 0 18px 42px rgba(39, 7, 7, 0.08);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+}
+
+.om-property-detail-page__nav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.om-property-detail-page__nav-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.72rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: rgba(86, 84, 73, 0.82);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.om-property-detail-page__nav-link span {
+  opacity: 0.62;
+  font-size: 0.74rem;
+}
+
+.om-property-detail-page__nav-link:hover,
+.om-property-detail-page__nav-link.is-active {
+  color: #111111;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.om-property-detail-page__sections {
+  max-width: min(96vw, 1660px);
+  margin: 0 auto;
+}
+
+.om-property-detail-page__track {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  height: auto !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.om-property-detail-page .om-property-modal__slide {
+  position: relative;
+  flex: none;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  pointer-events: auto !important;
+  scroll-margin-top: calc(var(--om-header-height, 72px) + 5.5rem);
+  border-radius: 38px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px) saturate(115%);
+  -webkit-backdrop-filter: blur(18px) saturate(115%);
+  box-shadow: 0 22px 60px rgba(39, 7, 7, 0.08);
+}
+
+.om-property-detail-page .om-property-modal__slide.is-entering,
+.om-property-detail-page .om-property-modal__slide.is-leaving {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.om-property-detail-page .om-property-modal__slide--general,
+.om-property-detail-page .om-property-modal__slide--about,
+.om-property-detail-page .om-property-modal__slide--characteristics,
+.om-property-detail-page .om-property-modal__slide--layout {
+  display: grid;
+}
+
+/* Gallery slides: block layout + min-height so empty galleries don't collapse before JS hydrates */
+.om-property-detail-page .om-property-modal__slide--gallery {
+  display: block;
+  position: relative;
+  min-height: clamp(22rem, 52vh, 36rem);
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.995), rgba(248, 247, 245, 0.98)),
+    #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 22px 60px rgba(39, 7, 7, 0.08);
+}
+
+.om-property-detail-page .om-property-modal__gallery {
+  height: auto;
+  min-height: clamp(20rem, 48vh, 34rem);
+}
+
+.om-property-detail-page .om-property-modal__gallery figure {
+  min-height: clamp(7.5rem, 18vh, 11rem);
+}
+
+.om-property-detail-page .om-property-modal__gallery-card button {
+  pointer-events: none;
+}
+
+/* Layout slide: don't stretch the plan panel to the full copy column height */
+.om-property-detail-page .om-property-modal__slide--layout {
+  align-items: start;
+  grid-template-columns: minmax(260px, 38%) minmax(0, 1fr);
+}
+
+.om-property-detail-page .om-property-modal__plan,
+.om-property-detail-page .om-property-modal__plan-frame {
+  height: auto;
+  min-height: clamp(18rem, 42vh, 28rem);
+  align-self: start;
+}
+
+.om-property-detail-page .om-property-modal__plan-image,
+.om-property-detail-page .om-property-modal__plan img {
+  width: 100%;
+  max-height: min(72vh, 820px);
+}
+
+@media (max-width: 767px) {
+  .om-property-detail-page {
+    padding-top: calc(var(--om-header-height, 64px) + 0.75rem);
+  }
+
+  .om-property-detail-page__nav {
+    top: calc(var(--om-header-height, 64px) + 0.15rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .om-property-detail-page__nav-link {
+    padding: 0.62rem 0.85rem;
+    font-size: 0.78rem;
+  }
+
+  .om-property-detail-page .om-property-modal__slide {
+    border-radius: 28px;
+    scroll-margin-top: calc(var(--om-header-height, 64px) + 4.75rem);
+  }
+
+  .om-property-detail-page .om-property-modal__slide--layout {
+    grid-template-columns: 1fr;
+  }
+
+  .om-property-detail-page .om-property-modal__gallery {
+    min-height: auto;
+  }
+
+  .om-property-detail-page .om-property-modal__gallery figure {
+    min-height: 220px;
+  }
+
+  .om-property-detail-page .om-property-modal__gallery figure:first-child {
+    min-height: 260px;
+  }
+}

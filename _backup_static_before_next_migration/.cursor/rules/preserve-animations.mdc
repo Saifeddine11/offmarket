@@ -1,0 +1,22 @@
+---
+description: Preserve animations and interactive behavior when editing content
+alwaysApply: true
+---
+
+# Preserve Animations When Editing Content
+
+When updating text, images, colors, or content in this project:
+
+1. Inspect existing classes and `data-*` attributes before editing.
+2. Identify which ones control animations, scroll effects, reveals, transitions, and JS behavior.
+3. Replace only the inner content — preserve the animated structure around it.
+
+Never remove unless the user explicitly asks:
+
+- `data-text-reveal`, `data-reveal`, `data-reveal-section`, and related `data-reveal-*` attributes
+- `mav-text-reveal`, `mav-reveal-item`, `is-visible` logic, and reveal spans
+- Scroll animation hooks (`data-scroll`, `data-parallax`, locomotive listeners)
+- Hover/transition classes used for motion
+- IntersectionObserver / GSAP / ScrollTrigger hooks in JS
+
+After content edits, verify the section animation still triggers on scroll.

@@ -6,7 +6,7 @@
 .om-featured-projects {
   --om-fp-bg: var(--om-ivory);
   --om-fp-text: var(--om-graphite);
-  --om-fp-muted: rgba(46, 52, 48, 0.62);
+  --om-fp-muted: rgba(17, 18, 13, 0.62);
   --om-fp-accent: var(--om-ruby-800);
   --om-fp-btn: var(--om-red);
   --om-fp-btn-text: var(--om-ivory);
@@ -31,7 +31,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: rgba(39, 7, 7, 0.08);
+  background: rgba(17, 18, 13, 0.08);
   pointer-events: none;
 }
 
@@ -105,7 +105,7 @@
   font-size: var(--om-small-readable);
   line-height: 1.45;
   font-weight: 400;
-  color: rgba(46, 52, 48, 0.52);
+  color: rgba(17, 18, 13, 0.52);
 }
 
 .om-featured-projects__intro-action {
@@ -123,7 +123,7 @@
   line-height: 1.45;
   font-weight: 500;
   letter-spacing: -0.015em;
-  color: rgba(39, 7, 7, 0.58);
+  color: rgba(17, 18, 13, 0.58);
 }
 
 .om-featured-projects__intro-action .om-cta {
@@ -151,7 +151,9 @@
   --reveal-media-bottom: 24px;
   position: relative;
   isolation: isolate;
+  box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 0.92 / 1;
   min-height: 0;
   padding: 0;
@@ -209,13 +211,13 @@
   font-size: var(--om-small-readable);
   line-height: 1;
   font-weight: 500;
-  color: rgba(39, 7, 7, 0.78);
-  background: rgba(39, 7, 7, 0.055);
-  border: 1px solid rgba(39, 7, 7, 0.08);
+  color: rgba(17, 18, 13, 0.78);
+  background: rgba(17, 18, 13, 0.055);
+  border: 1px solid rgba(17, 18, 13, 0.08);
 }
 
 .om-reveal-card__pill--primary {
-  color: #f5f4f2;
+  color: var(--om-white);
   background: var(--om-red);
   border-color: var(--om-red);
   letter-spacing: 0.04em;
@@ -231,7 +233,7 @@
   font-weight: 600;
   letter-spacing: 0.025em;
   text-transform: uppercase;
-  color: #700015;
+  color: #565449;
   text-align: right;
   white-space: nowrap;
 }
@@ -324,18 +326,20 @@
   justify-content: space-between;
   align-items: flex-start;
   text-decoration: none;
-  color: #270707;
+  color: var(--om-black);
   font: inherit;
   appearance: none;
   -webkit-appearance: none;
+  cursor: pointer;
+  pointer-events: auto;
   background:
     linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.46),
-      rgba(245, 244, 242, 0.2)
+      rgba(255, 251, 244, 0.2)
     ),
-    rgba(245, 244, 242, 0.28);
-  border: 1px solid rgba(39, 7, 7, 0.08);
+    rgba(255, 251, 244, 0.28);
+  border: 1px solid rgba(17, 18, 13, 0.08);
   box-shadow: none;
   backdrop-filter: blur(14px) saturate(130%);
   -webkit-backdrop-filter: blur(14px) saturate(130%);
@@ -353,9 +357,9 @@
     linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.56),
-      rgba(245, 244, 242, 0.28)
+      rgba(255, 251, 244, 0.28)
     ),
-    rgba(245, 244, 242, 0.36);
+    rgba(255, 251, 244, 0.36);
   box-shadow: none;
 }
 
@@ -378,19 +382,19 @@
 .om-featured-projects .om-reveal-card__action--disabled:hover,
 .om-featured-projects button.om-reveal-card__action--disabled:hover {
   transform: none;
-  border-color: rgba(39, 7, 7, 0.08);
+  border-color: rgba(17, 18, 13, 0.08);
   background:
     linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.46),
-      rgba(245, 244, 242, 0.2)
+      rgba(255, 251, 244, 0.2)
     ),
-    rgba(245, 244, 242, 0.28);
+    rgba(255, 251, 244, 0.28);
 }
 
 .om-featured-projects .om-reveal-card--photo-pending .om-reveal-card__media {
   background:
-    linear-gradient(135deg, rgba(39, 7, 7, 0.06), rgba(245, 244, 242, 0.92));
+    linear-gradient(135deg, rgba(17, 18, 13, 0.06), rgba(255, 251, 244, 0.92));
 }
 
 .om-featured-projects .om-reveal-card--photo-pending .om-reveal-card__media img {
@@ -405,9 +409,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #270707;
+  color: var(--om-black);
   background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(39, 7, 7, 0.08);
+  border: 1px solid rgba(17, 18, 13, 0.08);
   box-shadow: none;
   backdrop-filter: blur(10px) saturate(120%);
   -webkit-backdrop-filter: blur(10px) saturate(120%);
@@ -424,7 +428,7 @@
   line-height: 0.98;
   font-weight: 400;
   letter-spacing: -0.045em;
-  color: #270707;
+  color: var(--om-black);
 }
 
 .om-reveal-card__media {
@@ -437,7 +441,7 @@
   bottom: 0;
   border-radius: 34px;
   overflow: hidden;
-  background: rgba(39, 7, 7, 0.05);
+  background: rgba(17, 18, 13, 0.05);
   transform: translate3d(0, 0, 0);
   will-change: top, bottom, left, right, transform, border-radius;
   transition:
@@ -560,6 +564,11 @@
     background 260ms ease;
 }
 
+.om-reveal-card__image-arrow[data-property-modal-trigger] {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
 .om-reveal-card:hover .om-reveal-card__image-arrow {
   transform: translate3d(2px, -2px, 0);
   background: rgba(255, 255, 255, 0.86);
@@ -637,10 +646,10 @@
     padding: var(--reveal-card-padding);
     border-radius: 42px;
     background: #f7f5f2;
-    border: 1px solid rgba(39, 7, 7, 0.08);
+    border: 1px solid rgba(17, 18, 13, 0.08);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.88),
-      0 18px 48px rgba(39, 7, 7, 0.08);
+      0 18px 48px rgba(17, 18, 13, 0.08);
   }
 
   .om-reveal-card:hover .om-reveal-card__top,
@@ -825,9 +834,9 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     box-sizing: border-box;
     padding: clamp(1rem, 4vw, 1.35rem);
     border-radius: 32px;
-    background: rgba(245, 244, 242, 0.98);
-    border: 1px solid rgba(39, 7, 7, 0.08);
-    box-shadow: 0 18px 48px rgba(39, 7, 7, 0.08);
+    background: rgba(255, 251, 244, 0.98);
+    border: 1px solid rgba(17, 18, 13, 0.08);
+    box-shadow: 0 18px 48px rgba(17, 18, 13, 0.08);
     overflow: hidden;
     isolation: auto;
     transform: none;
@@ -857,7 +866,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     pointer-events: auto;
     padding: 0 0 1rem;
     margin: 0 0 0.15rem;
-    border-bottom: 1px solid rgba(39, 7, 7, 0.1);
+    border-bottom: 1px solid rgba(17, 18, 13, 0.1);
     transform: none;
   }
 
@@ -873,7 +882,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     line-height: 1;
     font-weight: 400;
     letter-spacing: -0.06em;
-    color: rgba(39, 7, 7, 0.34);
+    color: rgba(17, 18, 13, 0.34);
   }
 
   .om-reveal-card__pill {
@@ -892,7 +901,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     grid-column: auto;
     justify-self: start;
     background: var(--om-red);
-    color: #f5f4f2;
+    color: var(--om-white);
     border-color: var(--om-red);
   }
 
@@ -900,9 +909,9 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     grid-area: type;
     grid-column: auto;
     justify-self: start;
-    background: rgba(39, 7, 7, 0.04);
-    color: rgba(39, 7, 7, 0.64);
-    border: 1px solid rgba(39, 7, 7, 0.1);
+    background: rgba(17, 18, 13, 0.04);
+    color: rgba(17, 18, 13, 0.64);
+    border: 1px solid rgba(17, 18, 13, 0.1);
   }
 
   .om-reveal-card__status {
@@ -955,7 +964,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     margin: 1.5rem 0 0;
     font-size: 0.95rem;
     line-height: 1.35;
-    color: rgba(39, 7, 7, 0.42);
+    color: rgba(17, 18, 13, 0.42);
   }
 
   .om-reveal-card__title {
@@ -965,7 +974,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     line-height: 1.02;
     letter-spacing: -0.06em;
     font-weight: 500;
-    color: #270707;
+    color: var(--om-black);
     text-wrap: balance;
   }
 
@@ -975,7 +984,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     font-size: clamp(1rem, 4.2vw, 1.25rem);
     line-height: 1.45;
     letter-spacing: -0.02em;
-    color: rgba(39, 7, 7, 0.55);
+    color: rgba(17, 18, 13, 0.55);
   }
 
   .om-reveal-card__media,
@@ -998,7 +1007,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     aspect-ratio: 4 / 5;
     border-radius: 26px;
     overflow: hidden;
-    background: rgba(39, 7, 7, 0.04);
+    background: rgba(17, 18, 13, 0.04);
     transform: none;
     will-change: auto;
     transition: none;
@@ -1061,8 +1070,8 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     justify-content: center;
     gap: 0;
     background: var(--om-red);
-    border: 1px solid rgba(39, 7, 7, 0.2);
-    color: #f5f4f2;
+    border: 1px solid rgba(17, 18, 13, 0.2);
+    color: var(--om-white);
     box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -1084,7 +1093,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     font-size: 1rem;
     font-weight: 750;
     letter-spacing: -0.01em;
-    color: #f5f4f2;
+    color: var(--om-white);
     text-align: center;
     white-space: nowrap;
   }
@@ -1292,11 +1301,11 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.14) 0%,
-      rgba(245, 244, 242, 0.05) 100%
+      rgba(255, 251, 244, 0.05) 100%
     );
   border: 1px solid rgba(255, 255, 255, 0.42);
   box-shadow:
-    0 24px 64px rgba(39, 7, 7, 0.07),
+    0 24px 64px rgba(17, 18, 13, 0.07),
     inset 0 1px 0 rgba(255, 255, 255, 0.58),
     inset 0 -1px 0 rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(32px) saturate(175%);
@@ -1326,7 +1335,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
   inset: auto 0 0;
   height: 42%;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(245, 244, 242, 0.08) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 251, 244, 0.08) 100%);
 }
 
 .om-featured-projects .om-private-opportunities .om-project-card__locked-content {
@@ -1358,7 +1367,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
   text-transform: uppercase;
   color: #ffffff;
   background: var(--om-red);
-  border: 1px solid rgba(39, 7, 7, 0.12);
+  border: 1px solid rgba(17, 18, 13, 0.12);
 }
 
 .om-featured-projects .om-private-opportunities h3,
@@ -1383,7 +1392,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
   line-height: 1.5;
   font-weight: 400;
   letter-spacing: -0.015em;
-  color: rgba(39, 7, 7, 0.62);
+  color: rgba(17, 18, 13, 0.62);
 }
 
 .om-featured-projects .om-private-opportunities .om-project-card__locked-cta {
@@ -1459,7 +1468,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
       linear-gradient(
         180deg,
         rgba(255, 255, 255, 0.16) 0%,
-        rgba(245, 244, 242, 0.06) 100%
+        rgba(255, 251, 244, 0.06) 100%
       );
     backdrop-filter: blur(28px) saturate(170%);
     -webkit-backdrop-filter: blur(28px) saturate(170%);

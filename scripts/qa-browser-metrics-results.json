@@ -1,0 +1,1514 @@
+{
+  "summary": {
+    "passed": 75,
+    "total": 81,
+    "failed": [
+      {
+        "route": "/about/",
+        "viewport": "desktop",
+        "pass": false,
+        "issues": [
+          "h1 fontSize: Next=76.8px Backup=89.6px"
+        ],
+        "nextUrl": "http://localhost:3000/about/",
+        "backupUrl": "http://localhost:8765/about/",
+        "nextMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "backupMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "jsInjectedOnlyInBackup": []
+      },
+      {
+        "route": "/about/",
+        "viewport": "tablet",
+        "pass": false,
+        "issues": [
+          "h1 fontSize: Next=56px Backup=58px"
+        ],
+        "nextUrl": "http://localhost:3000/about/",
+        "backupUrl": "http://localhost:8765/about/",
+        "nextMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "backupMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "jsInjectedOnlyInBackup": []
+      },
+      {
+        "route": "/about/",
+        "viewport": "mobile",
+        "pass": false,
+        "issues": [
+          "h1 fontSize: Next=50.7px Backup=58.5px"
+        ],
+        "nextUrl": "http://localhost:3000/about/",
+        "backupUrl": "http://localhost:8765/about/",
+        "nextMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "backupMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "jsInjectedOnlyInBackup": []
+      },
+      {
+        "route": "/fr/about/",
+        "viewport": "desktop",
+        "pass": false,
+        "issues": [
+          "h1 fontSize: Next=76.8px Backup=89.6px"
+        ],
+        "nextUrl": "http://localhost:3000/fr/about/",
+        "backupUrl": "http://localhost:8765/fr/about/",
+        "nextMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "backupMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "jsInjectedOnlyInBackup": []
+      },
+      {
+        "route": "/fr/about/",
+        "viewport": "tablet",
+        "pass": false,
+        "issues": [
+          "h1 fontSize: Next=56px Backup=58px"
+        ],
+        "nextUrl": "http://localhost:3000/fr/about/",
+        "backupUrl": "http://localhost:8765/fr/about/",
+        "nextMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "backupMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "jsInjectedOnlyInBackup": []
+      },
+      {
+        "route": "/fr/about/",
+        "viewport": "mobile",
+        "pass": false,
+        "issues": [
+          "h1 fontSize: Next=50.7px Backup=58.5px"
+        ],
+        "nextUrl": "http://localhost:3000/fr/about/",
+        "backupUrl": "http://localhost:8765/fr/about/",
+        "nextMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "backupMetrics": {
+          "assetImgCount": 2,
+          "pendingLazyCount": 0
+        },
+        "jsInjectedOnlyInBackup": []
+      }
+    ],
+    "runAt": "2026-06-30T22:44:00.748Z"
+  },
+  "results": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/",
+      "backupUrl": "http://localhost:8765/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 40
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 38
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/",
+      "backupUrl": "http://localhost:8765/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 45
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 43
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/",
+      "backupUrl": "http://localhost:8765/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 45
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 43
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/off-market/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/off-market/",
+      "backupUrl": "http://localhost:8765/off-market/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/off-market/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/off-market/",
+      "backupUrl": "http://localhost:8765/off-market/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/off-market/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/off-market/",
+      "backupUrl": "http://localhost:8765/off-market/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/about/",
+      "viewport": "desktop",
+      "pass": false,
+      "issues": [
+        "h1 fontSize: Next=76.8px Backup=89.6px"
+      ],
+      "nextUrl": "http://localhost:3000/about/",
+      "backupUrl": "http://localhost:8765/about/",
+      "nextMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/about/",
+      "viewport": "tablet",
+      "pass": false,
+      "issues": [
+        "h1 fontSize: Next=56px Backup=58px"
+      ],
+      "nextUrl": "http://localhost:3000/about/",
+      "backupUrl": "http://localhost:8765/about/",
+      "nextMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/about/",
+      "viewport": "mobile",
+      "pass": false,
+      "issues": [
+        "h1 fontSize: Next=50.7px Backup=58.5px"
+      ],
+      "nextUrl": "http://localhost:3000/about/",
+      "backupUrl": "http://localhost:8765/about/",
+      "nextMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/about/",
+      "viewport": "desktop",
+      "pass": false,
+      "issues": [
+        "h1 fontSize: Next=76.8px Backup=89.6px"
+      ],
+      "nextUrl": "http://localhost:3000/fr/about/",
+      "backupUrl": "http://localhost:8765/fr/about/",
+      "nextMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/about/",
+      "viewport": "tablet",
+      "pass": false,
+      "issues": [
+        "h1 fontSize: Next=56px Backup=58px"
+      ],
+      "nextUrl": "http://localhost:3000/fr/about/",
+      "backupUrl": "http://localhost:8765/fr/about/",
+      "nextMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/about/",
+      "viewport": "mobile",
+      "pass": false,
+      "issues": [
+        "h1 fontSize: Next=50.7px Backup=58.5px"
+      ],
+      "nextUrl": "http://localhost:3000/fr/about/",
+      "backupUrl": "http://localhost:8765/fr/about/",
+      "nextMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 2,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/privacy-policy/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/privacy-policy/",
+      "backupUrl": "http://localhost:8765/privacy-policy/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/privacy-policy/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/privacy-policy/",
+      "backupUrl": "http://localhost:8765/privacy-policy/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/privacy-policy/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/privacy-policy/",
+      "backupUrl": "http://localhost:8765/privacy-policy/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/contact/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/contact/",
+      "backupUrl": "http://localhost:8765/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/contact/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/contact/",
+      "backupUrl": "http://localhost:8765/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/contact/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/contact/",
+      "backupUrl": "http://localhost:8765/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/simulateur/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/simulateur/",
+      "backupUrl": "http://localhost:8765/simulateur/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/simulateur/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/simulateur/",
+      "backupUrl": "http://localhost:8765/simulateur/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/simulateur/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/simulateur/",
+      "backupUrl": "http://localhost:8765/simulateur/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/fr/",
+      "backupUrl": "http://localhost:8765/fr/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 40
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 38
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/fr/",
+      "backupUrl": "http://localhost:8765/fr/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 45
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 43
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/fr/",
+      "backupUrl": "http://localhost:8765/fr/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 45
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 43
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/en/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/en/",
+      "backupUrl": "http://localhost:8765/en/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 40
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 38
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/en/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/en/",
+      "backupUrl": "http://localhost:8765/en/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 45
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 43
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/en/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/en/",
+      "backupUrl": "http://localhost:8765/en/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 45
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 43
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/it/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/it/",
+      "backupUrl": "http://localhost:8765/it/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 40
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 38
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/it/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/it/",
+      "backupUrl": "http://localhost:8765/it/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 45
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 43
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/it/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/it/",
+      "backupUrl": "http://localhost:8765/it/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 45
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 43
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/nl/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/nl/",
+      "backupUrl": "http://localhost:8765/nl/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 40
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 38
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/nl/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/nl/",
+      "backupUrl": "http://localhost:8765/nl/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 45
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 43
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/nl/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/nl/",
+      "backupUrl": "http://localhost:8765/nl/",
+      "nextMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 45
+      },
+      "backupMetrics": {
+        "assetImgCount": 26,
+        "pendingLazyCount": 43
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/contact/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/fr/contact/",
+      "backupUrl": "http://localhost:8765/fr/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/contact/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/fr/contact/",
+      "backupUrl": "http://localhost:8765/fr/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/contact/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/fr/contact/",
+      "backupUrl": "http://localhost:8765/fr/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/en/contact/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/en/contact/",
+      "backupUrl": "http://localhost:8765/en/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/en/contact/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/en/contact/",
+      "backupUrl": "http://localhost:8765/en/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/en/contact/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/en/contact/",
+      "backupUrl": "http://localhost:8765/en/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/it/contatto/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/it/contatto/",
+      "backupUrl": "http://localhost:8765/it/contatto/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/it/contatto/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/it/contatto/",
+      "backupUrl": "http://localhost:8765/it/contatto/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/it/contatto/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/it/contatto/",
+      "backupUrl": "http://localhost:8765/it/contatto/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/nl/contact/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/nl/contact/",
+      "backupUrl": "http://localhost:8765/nl/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/nl/contact/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/nl/contact/",
+      "backupUrl": "http://localhost:8765/nl/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/nl/contact/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/nl/contact/",
+      "backupUrl": "http://localhost:8765/nl/contact/",
+      "nextMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 0,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/sur-plan/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/sur-plan/",
+      "backupUrl": "http://localhost:8765/sur-plan/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/sur-plan/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/sur-plan/",
+      "backupUrl": "http://localhost:8765/sur-plan/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/sur-plan/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/sur-plan/",
+      "backupUrl": "http://localhost:8765/sur-plan/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/sur-plan/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/fr/sur-plan/",
+      "backupUrl": "http://localhost:8765/fr/sur-plan/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/sur-plan/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/fr/sur-plan/",
+      "backupUrl": "http://localhost:8765/fr/sur-plan/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/fr/sur-plan/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/fr/sur-plan/",
+      "backupUrl": "http://localhost:8765/fr/sur-plan/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/en/off-plan/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/en/off-plan/",
+      "backupUrl": "http://localhost:8765/en/off-plan/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/en/off-plan/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/en/off-plan/",
+      "backupUrl": "http://localhost:8765/en/off-plan/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/en/off-plan/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/en/off-plan/",
+      "backupUrl": "http://localhost:8765/en/off-plan/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/it/progetti-su-piano/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/it/progetti-su-piano/",
+      "backupUrl": "http://localhost:8765/it/progetti-su-piano/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/it/progetti-su-piano/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/it/progetti-su-piano/",
+      "backupUrl": "http://localhost:8765/it/progetti-su-piano/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/it/progetti-su-piano/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/it/progetti-su-piano/",
+      "backupUrl": "http://localhost:8765/it/progetti-su-piano/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/nl/nieuwbouw/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/nl/nieuwbouw/",
+      "backupUrl": "http://localhost:8765/nl/nieuwbouw/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/nl/nieuwbouw/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/nl/nieuwbouw/",
+      "backupUrl": "http://localhost:8765/nl/nieuwbouw/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/nl/nieuwbouw/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/nl/nieuwbouw/",
+      "backupUrl": "http://localhost:8765/nl/nieuwbouw/",
+      "nextMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "backupMetrics": {
+        "assetImgCount": 18,
+        "pendingLazyCount": 52
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/location/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/location/",
+      "backupUrl": "http://localhost:8765/location/",
+      "nextMetrics": {
+        "assetImgCount": 14,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 14,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/location/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/location/",
+      "backupUrl": "http://localhost:8765/location/",
+      "nextMetrics": {
+        "assetImgCount": 14,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 14,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/location/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/location/",
+      "backupUrl": "http://localhost:8765/location/",
+      "nextMetrics": {
+        "assetImgCount": 14,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 14,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/",
+      "backupUrl": "http://localhost:8765/blog/",
+      "nextMetrics": {
+        "assetImgCount": 5,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 5,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/",
+      "backupUrl": "http://localhost:8765/blog/",
+      "nextMetrics": {
+        "assetImgCount": 5,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 5,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/",
+      "backupUrl": "http://localhost:8765/blog/",
+      "nextMetrics": {
+        "assetImgCount": 5,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 5,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/acheter-villa-sur-plan-marrakech/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/acheter-villa-sur-plan-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/acheter-villa-sur-plan-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/acheter-villa-sur-plan-marrakech/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/acheter-villa-sur-plan-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/acheter-villa-sur-plan-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/acheter-villa-sur-plan-marrakech/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/acheter-villa-sur-plan-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/acheter-villa-sur-plan-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/investir-immobilier-luxe-marrakech/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/investir-immobilier-luxe-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/investir-immobilier-luxe-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/investir-immobilier-luxe-marrakech/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/investir-immobilier-luxe-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/investir-immobilier-luxe-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/investir-immobilier-luxe-marrakech/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/investir-immobilier-luxe-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/investir-immobilier-luxe-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/adresses-immobilier-marrakech/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/adresses-immobilier-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/adresses-immobilier-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/adresses-immobilier-marrakech/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/adresses-immobilier-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/adresses-immobilier-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/adresses-immobilier-marrakech/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/adresses-immobilier-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/adresses-immobilier-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/off-market-marrakech-biens-confidentiels/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/off-market-marrakech-biens-confidentiels/",
+      "backupUrl": "http://localhost:8765/blog/off-market-marrakech-biens-confidentiels/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/off-market-marrakech-biens-confidentiels/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/off-market-marrakech-biens-confidentiels/",
+      "backupUrl": "http://localhost:8765/blog/off-market-marrakech-biens-confidentiels/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/off-market-marrakech-biens-confidentiels/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/off-market-marrakech-biens-confidentiels/",
+      "backupUrl": "http://localhost:8765/blog/off-market-marrakech-biens-confidentiels/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/appartement-hypercentre-gueliz-marrakech/",
+      "viewport": "desktop",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/appartement-hypercentre-gueliz-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/appartement-hypercentre-gueliz-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/appartement-hypercentre-gueliz-marrakech/",
+      "viewport": "tablet",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/appartement-hypercentre-gueliz-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/appartement-hypercentre-gueliz-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    },
+    {
+      "route": "/blog/appartement-hypercentre-gueliz-marrakech/",
+      "viewport": "mobile",
+      "pass": true,
+      "issues": [],
+      "nextUrl": "http://localhost:3000/blog/appartement-hypercentre-gueliz-marrakech/",
+      "backupUrl": "http://localhost:8765/blog/appartement-hypercentre-gueliz-marrakech/",
+      "nextMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "backupMetrics": {
+        "assetImgCount": 1,
+        "pendingLazyCount": 0
+      },
+      "jsInjectedOnlyInBackup": []
+    }
+  ]
+}

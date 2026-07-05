@@ -1,0 +1,146 @@
+import type { SiteLocale } from "@/lib/i18n/types";
+
+export type PrivateAccessFormCopy = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  success: string;
+  fullName: string;
+  fullNamePlaceholder: string;
+  email: string;
+  emailPlaceholder: string;
+  phoneLegend: string;
+  countryCodeAria: string;
+  phoneNumberAria: string;
+  phonePlaceholder: string;
+  budget: string;
+  budgetHint: string;
+  message: string;
+  messageOptional: string;
+  messagePlaceholder: string;
+  submit: string;
+  back: string;
+  searchSummaryPrefix: string;
+  privacyPrefix: string;
+  privacyLink: string;
+  contactHeaderEyebrow: string;
+  contactHeaderTitle: string;
+  contactHeaderSubtitle: string;
+  contactHeaderHelper: string;
+};
+
+const FR: PrivateAccessFormCopy = {
+  eyebrow: "ACCÈS PRIVÉ",
+  title: "Recevoir ma sélection privée",
+  subtitle:
+    "Laissez vos coordonnées. Nous vous répondons avec une sélection adaptée à votre budget, votre objectif et le type de bien recherché.",
+  success:
+    "Votre demande a bien été préparée. Nous vous répondrons avec une première lecture privée adaptée à votre projet.",
+  fullName: "Nom complet",
+  fullNamePlaceholder: "Votre nom complet",
+  email: "Email",
+  emailPlaceholder: "votre@email.com",
+  phoneLegend: "Numéro de téléphone",
+  countryCodeAria: "Indicatif pays",
+  phoneNumberAria: "Numéro",
+  phonePlaceholder: "6 00 00 00 00",
+  budget: "Budget",
+  budgetHint: "Sélectionnez votre budget",
+  message: "Message",
+  messageOptional: "(optionnel)",
+  messagePlaceholder:
+    "Votre message, votre projet ou vos critères spécifiques",
+  submit: "Envoyer ma demande",
+  back: "Retour",
+  searchSummaryPrefix: "Votre recherche",
+  privacyPrefix:
+    "En cliquant sur le bouton, vous acceptez qu'OFF MARKET vous contacte au sujet de votre demande.",
+  privacyLink: "Confidentialité",
+  contactHeaderEyebrow: "ACCÈS PRIVÉ",
+  contactHeaderTitle: "Accéder aux projets off-market",
+  contactHeaderSubtitle:
+    "Remplissez le formulaire pour recevoir une sélection privée adaptée à votre budget et à votre projet.",
+  contactHeaderHelper:
+    "Les projets confidentiels ne sont pas publiés en ligne. Notre équipe vous recontacte avec les opportunités disponibles.",
+};
+
+const EN: PrivateAccessFormCopy = {
+  eyebrow: "PRIVATE ACCESS",
+  title: "Receive my private selection",
+  subtitle:
+    "Leave your details. We will respond with a selection aligned with your budget, objective and property type.",
+  success:
+    "Your request has been prepared. We will respond with an initial private review tailored to your project.",
+  fullName: "Full name",
+  fullNamePlaceholder: "Your full name",
+  email: "Email",
+  emailPlaceholder: "your@email.com",
+  phoneLegend: "Phone number",
+  countryCodeAria: "Country code",
+  phoneNumberAria: "Number",
+  phonePlaceholder: "6 00 00 00 00",
+  budget: "Budget",
+  budgetHint: "Select your budget",
+  message: "Message",
+  messageOptional: "(optional)",
+  messagePlaceholder:
+    "Your message, project details or specific criteria",
+  submit: "Send my request",
+  back: "Back",
+  searchSummaryPrefix: "Your search",
+  privacyPrefix:
+    "By clicking the button, you agree that OFF MARKET may contact you about your request.",
+  privacyLink: "Privacy policy",
+  contactHeaderEyebrow: "PRIVATE ACCESS",
+  contactHeaderTitle: "Access off-market projects",
+  contactHeaderSubtitle:
+    "Complete the form to receive a private selection tailored to your budget and project.",
+  contactHeaderHelper:
+    "Confidential projects are not published online. Our team will contact you with available opportunities.",
+};
+
+const IT: PrivateAccessFormCopy = {
+  eyebrow: "ACCESSO PRIVATO",
+  title: "Ricevi la mia selezione privata",
+  subtitle:
+    "Lascia i tuoi dati. Ti rispondiamo con una selezione in linea con budget, obiettivo e tipo di immobile.",
+  success:
+    "La tua richiesta è stata preparata. Ti risponderemo con una prima lettura privata in linea con il tuo progetto.",
+  fullName: "Nome completo",
+  fullNamePlaceholder: "Il tuo nome completo",
+  email: "Indirizzo email",
+  emailPlaceholder: "tua@email.com",
+  phoneLegend: "Numero di telefono",
+  countryCodeAria: "Prefisso internazionale",
+  phoneNumberAria: "Numero",
+  phonePlaceholder: "6 00 00 00 00",
+  budget: "Budget",
+  budgetHint: "Seleziona il tuo budget",
+  message: "Messaggio",
+  messageOptional: "(facoltativo)",
+  messagePlaceholder:
+    "Il tuo messaggio, progetto o criteri specifici",
+  submit: "Invia la mia richiesta",
+  back: "Indietro",
+  searchSummaryPrefix: "La tua ricerca",
+  privacyPrefix:
+    "Cliccando sul pulsante, accetti che OFF MARKET ti contatti in merito alla tua richiesta.",
+  privacyLink: "Informativa privacy",
+  contactHeaderEyebrow: "ACCESSO PRIVATO",
+  contactHeaderTitle: "Accedi ai progetti off-market",
+  contactHeaderSubtitle:
+    "Compila il modulo per ricevere una selezione privata in linea con budget e progetto.",
+  contactHeaderHelper:
+    "I progetti riservati non sono pubblicati online. Il nostro team ti ricontatterà con le opportunità disponibili.",
+};
+
+const COPY: Record<SiteLocale, PrivateAccessFormCopy> = {
+  fr: FR,
+  en: EN,
+  it: IT,
+  nl: FR,
+};
+
+export function getFormCopy(locale?: SiteLocale): PrivateAccessFormCopy {
+  return COPY[locale ?? "fr"];
+}

@@ -4,38 +4,131 @@
 (function () {
   'use strict';
 
-  var MENU = [
+  var MENU_FR = [
     { id: 'home', label: 'Accueil', href: '/' },
-    { id: 'histoire', label: 'Notre Histoire', href: '/#qui-sommes-nous' },
+    { id: 'histoire', label: 'Notre Histoire', href: '/about/' },
     {
       id: 'localisations',
-      label: 'Localisations',
-      href: '/#territories',
+      label: 'Quartiers',
+      href: '/quartiers/',
       children: [
-        { label: 'Guéliz hyper-centre', href: '/#territories' },
-        { label: 'Triangle d\u2019Or', href: '/#territories' },
-        { label: 'Médina', href: '/#territories' },
+        { label: 'Guéliz hyper-centre', href: '/blog/appartement-hypercentre-gueliz-marrakech/' },
+        { label: 'Triangle d\u2019Or', href: '/quartiers/' },
+        { label: 'Médina', href: '/quartiers/' },
       ],
     },
     {
       id: 'projets',
       label: 'Nos Projets',
-      href: '/#featured-projects',
+      href: '/nos-projets/',
       children: [
-        { label: 'OFF MARKET', href: '/contact/?intent=off-market' },
+        { label: 'Tous les projets', href: '/nos-projets/' },
+        { label: 'OFF MARKET', href: '/off-market/' },
         {
           label: 'Sur Plan',
           href: '/sur-plan/',
           children: [
+            { label: 'Villa Jaz', href: '/sur-plan/villa-jaz/' },
             { label: 'Villas', href: '/sur-plan/#villas' },
             { label: 'Appartements', href: '/sur-plan/#appartements' },
           ],
         },
-        { label: 'Biens Existants', href: '/contact/?intent=biens-existants' },
+        { label: 'Biens Existants', href: '/off-market/?intent=biens-existants' },
       ],
     },
     { id: 'contact', label: 'Contact', href: '/contact/' },
   ];
+
+  var MENU_EN = [
+    { id: 'home', label: 'Home', href: '/en/' },
+    { id: 'histoire', label: 'Our story', href: '/en/' },
+    {
+      id: 'localisations',
+      label: 'Neighbourhoods',
+      href: '/en/',
+      children: [
+        { label: 'Guéliz city centre', href: '/blog/appartement-hypercentre-gueliz-marrakech/' },
+        { label: 'Triangle d\u2019Or', href: '/en/' },
+        { label: 'Medina', href: '/en/' },
+      ],
+    },
+    {
+      id: 'projets',
+      label: 'Projects',
+      href: '/en/',
+      children: [
+        { label: 'All projects', href: '/en/' },
+        { label: 'OFF MARKET', href: '/en/off-market/' },
+        {
+          label: 'Off-plan',
+          href: '/en/off-plan/',
+          children: [
+            { label: 'Villas', href: '/en/off-plan/#villas' },
+            { label: 'Apartments', href: '/en/off-plan/#appartements' },
+          ],
+        },
+        { label: 'Existing properties', href: '/en/off-market/?intent=biens-existants' },
+      ],
+    },
+    { id: 'contact', label: 'Contact', href: '/en/contact/' },
+  ];
+
+  var MENU_IT = [
+    { id: 'home', label: 'Home', href: '/it/' },
+    { id: 'histoire', label: 'La nostra storia', href: '/it/' },
+    {
+      id: 'localisations',
+      label: 'Quartieri',
+      href: '/it/',
+      children: [
+        { label: 'Guéliz centro', href: '/blog/appartement-hypercentre-gueliz-marrakech/' },
+        { label: 'Triangle d\u2019Or', href: '/it/' },
+        { label: 'Medina', href: '/it/' },
+      ],
+    },
+    {
+      id: 'projets',
+      label: 'Progetti',
+      href: '/it/',
+      children: [
+        { label: 'Tutti i progetti', href: '/it/' },
+        { label: 'OFF MARKET', href: '/it/off-market/' },
+        {
+          label: 'Progetti su piano',
+          href: '/it/progetti-su-piano/',
+          children: [
+            { label: 'Ville', href: '/it/progetti-su-piano/#villas' },
+            { label: 'Appartamenti', href: '/it/progetti-su-piano/#appartements' },
+          ],
+        },
+        { label: 'Proprietà esistenti', href: '/it/off-market/?intent=biens-existants' },
+      ],
+    },
+    { id: 'contact', label: 'Contatto', href: '/it/contatto/' },
+  ];
+
+  function detectMenuLocale() {
+    var path = window.location.pathname || '/';
+    if (path.indexOf('/en') === 0) return 'en';
+    if (path.indexOf('/it') === 0) return 'it';
+    return 'fr';
+  }
+
+  function getMenu() {
+    var locale = detectMenuLocale();
+    if (locale === 'en') return MENU_EN;
+    if (locale === 'it') return MENU_IT;
+    return MENU_FR;
+  }
+
+  function getUiLabels() {
+    var locale = detectMenuLocale();
+    if (locale === 'en') return { openMenu: 'Open menu ', show: 'Show ' };
+    if (locale === 'it') return { openMenu: 'Apri menu ', show: 'Mostra ' };
+    return { openMenu: 'Ouvrir le menu ', show: 'Afficher ' };
+  }
+
+  var MENU = MENU_FR;
 
   function escapeHtml(value) {
     return String(value)
@@ -60,26 +153,40 @@
   function isItemActive(item) {
     var current = normalizePath(window.location.pathname);
     var target = hrefPath(item.href);
+    var locale = detectMenuLocale();
 
     if (item.id === 'home') {
+      if (locale === 'en') {
+        return current === '/en' && !window.location.hash;
+      }
       return current === '/' && !window.location.hash;
     }
 
     if (item.id === 'contact') {
-      return current === '/contact';
+      return locale === 'en' ? current === '/en/contact' : current === '/contact';
     }
 
     if (item.id === 'histoire') {
-      return current === '/' && window.location.hash === '#qui-sommes-nous';
+      return locale === 'en'
+        ? current === '/en'
+        : current === '/about' || current === '/fr/about';
     }
 
     if (item.id === 'localisations') {
-      return current === '/' && window.location.hash === '#territories';
+      return locale === 'en' ? current === '/en' : current === '/quartiers';
     }
 
     if (item.id === 'projets') {
+      if (locale === 'en') {
+        return (
+          current === '/en/off-plan' ||
+          (current === '/en' && window.location.hash === '#featured-projects')
+        );
+      }
       return (
+        current === '/nos-projets' ||
         current === '/sur-plan' ||
+        current === '/sur-plan/villa-jaz' ||
         (current === '/' && window.location.hash === '#featured-projects')
       );
     }
@@ -129,6 +236,7 @@
   }
 
   function renderDesktopItem(item) {
+    var ui = getUiLabels();
     if (!item.children || !item.children.length) {
       return (
         '<a href="' +
@@ -145,10 +253,12 @@
       '<div class="om-nav-dropdown' +
       (isItemActive(item) ? ' is-active' : '') +
       '" data-om-nav-dropdown>' +
-        '<button type="button" class="om-nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">' +
-          escapeHtml(item.label) +
-          '<span class="om-nav-dropdown__chevron" aria-hidden="true">▾</span>' +
-        '</button>' +
+        '<div class="om-nav-dropdown__head">' +
+          '<a class="om-nav-dropdown__parent-link" href="' + escapeHtml(item.href) + '">' + escapeHtml(item.label) + '</a>' +
+          '<button type="button" class="om-nav-dropdown__trigger om-nav-dropdown__trigger--chevron" aria-haspopup="true" aria-expanded="false" aria-label="' + ui.openMenu + escapeHtml(item.label) + '">' +
+            '<span class="om-nav-dropdown__chevron" aria-hidden="true">▾</span>' +
+          '</button>' +
+        '</div>' +
         '<div class="om-nav-dropdown__menu" role="menu">' +
           item.children.map(function (child) {
             return renderDesktopChild(child, false);
@@ -165,6 +275,7 @@
   }
 
   function renderMobileChildren(children, nested) {
+    var ui = getUiLabels();
     return children
       .map(function (child) {
         if (child.children && child.children.length) {
@@ -176,7 +287,7 @@
                 '" class="cinematic-menu-sublink">' +
                 escapeHtml(child.label) +
                 '</a>' +
-                '<button type="button" class="mv-chrome__expand-btn mv-chrome__expand-btn--nested" aria-expanded="false" aria-label="Afficher ' +
+                '<button type="button" class="mv-chrome__expand-btn mv-chrome__expand-btn--nested" aria-expanded="false" aria-label="' + ui.show +
                 escapeHtml(child.label) +
                 '">' +
                 renderMobileExpandIcon() +
@@ -215,6 +326,7 @@
   }
 
   function renderMobileItem(item) {
+    var ui = getUiLabels();
     if (!item.children || !item.children.length) {
       return (
         '<li class="cinematic-menu-item mv-chrome__menu-item">' +
@@ -235,7 +347,7 @@
           '" class="cinematic-menu-link">' +
           escapeHtml(item.label) +
           '</a>' +
-          '<button type="button" class="mv-chrome__expand-btn" aria-expanded="false" aria-label="Afficher ' +
+          '<button type="button" class="mv-chrome__expand-btn" aria-expanded="false" aria-label="' + ui.show +
           escapeHtml(item.label) +
           '">' +
           renderMobileExpandIcon() +
@@ -251,10 +363,12 @@
   }
 
   function renderDesktopNav(nav) {
+    MENU = getMenu();
     nav.innerHTML = MENU.map(renderDesktopItem).join('');
   }
 
   function renderMobileNav(list) {
+    MENU = getMenu();
     list.innerHTML = MENU.map(renderMobileItem).join('');
   }
 
@@ -268,22 +382,43 @@
   }
 
   function initDesktopDropdowns() {
+    var closeTimers = new WeakMap();
+    var CLOSE_DELAY = 220;
+    var desktopHoverMq = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 768px)');
+
     document.querySelectorAll('[data-om-nav-dropdown]').forEach(function (dropdown) {
       if (dropdown.getAttribute('data-om-nav-init') === 'true') return;
       dropdown.setAttribute('data-om-nav-init', 'true');
 
       var trigger = dropdown.querySelector('.om-nav-dropdown__trigger');
+      var menu = dropdown.querySelector('.om-nav-dropdown__menu');
       if (!trigger) return;
 
       function open() {
+        clearTimeout(closeTimers.get(dropdown));
         closeDesktopDropdowns(dropdown);
         dropdown.classList.add('is-open');
         trigger.setAttribute('aria-expanded', 'true');
       }
 
       function close() {
+        clearTimeout(closeTimers.get(dropdown));
         dropdown.classList.remove('is-open');
         trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      function scheduleClose() {
+        clearTimeout(closeTimers.get(dropdown));
+        closeTimers.set(
+          dropdown,
+          window.setTimeout(function () {
+            close();
+          }, CLOSE_DELAY)
+        );
+      }
+
+      function cancelClose() {
+        clearTimeout(closeTimers.get(dropdown));
       }
 
       trigger.addEventListener('click', function (event) {
@@ -296,13 +431,21 @@
         }
       });
 
-      dropdown.addEventListener('mouseenter', function () {
-        if (window.matchMedia('(min-width: 768px)').matches) open();
-      });
+      function bindDesktopHover(target) {
+        if (!target) return;
+        target.addEventListener('mouseenter', function () {
+          if (!desktopHoverMq.matches) return;
+          cancelClose();
+          open();
+        });
+        target.addEventListener('mouseleave', function () {
+          if (!desktopHoverMq.matches) return;
+          scheduleClose();
+        });
+      }
 
-      dropdown.addEventListener('mouseleave', function () {
-        if (window.matchMedia('(min-width: 768px)').matches) close();
-      });
+      bindDesktopHover(dropdown);
+      bindDesktopHover(menu);
 
       trigger.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') close();
@@ -318,6 +461,14 @@
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') closeDesktopDropdowns();
     });
+
+    window.addEventListener(
+      'scroll',
+      function () {
+        closeDesktopDropdowns();
+      },
+      { passive: true, capture: true }
+    );
   }
 
   function animateSubmenu(sub, expanded) {
@@ -357,11 +508,23 @@
   }
 
   function fixAccessLinks() {
-    document.querySelectorAll('.om-header__access-btn').forEach(function (link) {
-      var href = link.getAttribute('href');
-      if (!href || href === '' || href === '#') {
-        link.setAttribute('href', '/contact/');
-      }
+    var locale = detectMenuLocale();
+    var accessHref =
+      locale === 'en' ? '/en/off-market/' : locale === 'it' ? '/it/off-market/' : '/off-market/';
+    var selectors = [
+      '.om-header__access-btn',
+      '.mav-hero__button--primary',
+      '.om-private-access-popup__button',
+      '.om-featured-projects__intro-action .om-button--dark',
+    ];
+
+    selectors.forEach(function (selector) {
+      document.querySelectorAll(selector).forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (!href || href === '' || href === '#' || href === '#callback-modal') {
+          link.setAttribute('href', accessHref);
+        }
+      });
     });
   }
 
@@ -382,9 +545,17 @@
     document.dispatchEvent(new CustomEvent('om-nav-rendered'));
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderNav);
-  } else {
+  window.__omNavMenuRender = renderNav;
+
+  function bootNav() {
     renderNav();
   }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootNav);
+  } else {
+    bootNav();
+  }
+
+  document.addEventListener('om-nav-boot', bootNav);
 })();

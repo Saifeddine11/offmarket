@@ -5,7 +5,7 @@
 
 .om-legal-page {
   font-family: var(--om-font-main, Inter, system-ui, sans-serif);
-  color: var(--om-ruby-950, #270707);
+  color: var(--om-ruby-950, var(--om-black));
 }
 
 .om-legal-page h1 {

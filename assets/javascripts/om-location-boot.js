@@ -50,12 +50,6 @@
 
     var chrome = document.getElementById('mv-chrome');
     if (chrome) chrome.classList.add('is-preloader-hidden');
-
-    var consent = document.getElementById('cookie-consent');
-    if (consent && document.cookie.indexOf('cookieConsentStatus=') === -1) {
-      consent.classList.add('is-hidden');
-      html.classList.remove('with-cookie-consent');
-    }
   }
 
   function flattenStickySections(root) {

@@ -63,11 +63,11 @@ body .leading-trim,
 /* Primary CTA — solid ruby (visuals in om-buttons.css) */
 .btn--primary:not(.is-disabled):not(:disabled),
 .btn--primary .btn-container:not(.is-disabled) {
-  --t-button-primary-background: #700015;
-  --t-button-primary-background-rgb: 112, 0, 21;
+  --t-button-primary-background: #565449;
+  --t-button-primary-background-rgb: 86, 84, 73;
   --t-button-primary-text: #f5f4f2;
   --t-button-primary-text-rgb: 245, 244, 242;
-  --t-button-primary-hover-background: #5a0011;
+  --t-button-primary-hover-background: #454238;
   --t-button-primary-hover-background-rgb: 90, 0, 17;
   --t-button-primary-hover-text: #f5f4f2;
   --t-button-primary-hover-text-rgb: 245, 244, 242;
@@ -94,8 +94,8 @@ body .leading-trim,
 .footer__gradient .interactive {
   background: radial-gradient(
       circle at center,
-      rgba(var(--om-deep-red-rgb), 0.45) 0,
-      rgba(var(--om-deep-red-rgb), 0) 50%
+      rgba(0, 0, 0, 0.45) 0,
+      rgba(0, 0, 0, 0) 50%
     )
     no-repeat;
 }
@@ -187,8 +187,8 @@ body .leading-trim,
 #l-design-sticky-2 .om-brand-inline .char,
 #design-mobile-slide-2 .om-brand-inline,
 #design-mobile-slide-2 .om-brand-inline .char {
-  color: #700015;
-  -webkit-text-fill-color: #700015;
+  color: #565449;
+  -webkit-text-fill-color: #565449;
   opacity: 1;
   text-shadow: none;
 }
@@ -323,6 +323,58 @@ summary:focus-visible {
   display: none !important;
 }
 
+/* Legacy favorites card template — clone source, must not reserve layout space */
+.js-favourite-list-single,
+.js-favourite-list-single * {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.l-favorites.is-hidden,
+.l-favorites__list.is-hidden,
+.js-favourite-list-list.is-hidden {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Document scroll — prevent dead zones from Locomotive leftovers */
+html,
+body {
+  height: auto !important;
+  max-height: none !important;
+}
+
+html.has-scroll-smooth,
+html.no-scroll-smooth,
+html.has-scroll-smooth body,
+html.no-scroll-smooth body,
+[data-scroll-container] {
+  position: static !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+.pin-spacer:empty {
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+}
+
 /* Lower sections — always in document flow and fully visible */
 #territories,
 #lectures-privees,
@@ -429,7 +481,10 @@ footer#contact,
   #qui-sommes-nous .mav-reveal-item,
   #qui-sommes-nous .mav-who__phrase,
   #qui-sommes-nous .mav-who__eyebrow,
-  #qui-sommes-nous .om-cta {
+  #qui-sommes-nous .om-cta,
+  #about-qui-sommes-nous .mav-reveal-item,
+  #about-qui-sommes-nous .about-who__eyebrow,
+  #about-qui-sommes-nous .om-cta {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;

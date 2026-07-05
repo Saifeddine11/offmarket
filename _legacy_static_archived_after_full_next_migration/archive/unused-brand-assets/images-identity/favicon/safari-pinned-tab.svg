@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="OffMarket">
+  <rect width="16" height="16" rx="2" fill="#270707"/>
+  <text
+    x="8"
+    y="11"
+    text-anchor="middle"
+    font-family="system-ui, sans-serif"
+    font-size="6.5"
+    font-weight="700"
+    fill="#F1EBEB"
+    letter-spacing="0.02em"
+  >OM</text>
+</svg>

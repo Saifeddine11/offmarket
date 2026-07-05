@@ -97,7 +97,6 @@ function replaceHomeSectionWithQuestionnaire(
       source={intentToSource(intent)}
       context="home_access"
       intent={intent}
-      showMessage
     />,
   );
 
@@ -119,7 +118,6 @@ function buildMountFromCallbackPanel(): LeadFormMountConfig | null {
     intent: "contact_page",
     intentMode: "fixed",
     showHeader: false,
-    showMessage: true,
     compact: true,
     variant: "bare",
   };

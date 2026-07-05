@@ -1,0 +1,54 @@
+<!-- Reusable fields block — copy into pages; no fixed IDs (labels wrap inputs). -->
+<form class="om-private-access-form" action="#" method="post" data-private-access-form data-form-intent="REPLACE_INTENT" novalidate>
+  <input type="hidden" name="intent" value="REPLACE_INTENT" data-private-intent>
+
+  <div class="om-private-access-form__grid om-private-access-form__grid--split">
+    <label class="om-private-access-form__field">
+      <span class="om-private-access-form__label">Nom complet</span>
+      <input class="om-private-access-form__input" type="text" name="fullName" autocomplete="name" required placeholder="Votre nom complet">
+    </label>
+    <label class="om-private-access-form__field">
+      <span class="om-private-access-form__label">Email</span>
+      <input class="om-private-access-form__input" type="email" name="email" autocomplete="email" required placeholder="votre@email.com">
+    </label>
+  </div>
+
+  <fieldset class="om-private-access-form__phone">
+    <legend class="om-private-access-form__label">Numéro de téléphone</legend>
+    <div class="om-private-access-form__phone-row">
+      <label class="om-private-access-form__field om-private-access-form__field--code">
+        <span class="om-private-access-form__label om-private-access-form__label--sr">Indicatif pays</span>
+        <span class="om-private-access-form__select-wrap">
+          <select class="om-private-access-form__select" name="countryCode" data-private-country required aria-label="Indicatif pays"></select>
+        </span>
+      </label>
+      <label class="om-private-access-form__field om-private-access-form__field--phone">
+        <span class="om-private-access-form__label om-private-access-form__label--sr">Numéro</span>
+        <input class="om-private-access-form__input" type="tel" name="phone" autocomplete="tel-national" inputmode="tel" required placeholder="6 00 00 00 00">
+      </label>
+    </div>
+  </fieldset>
+
+  <label class="om-private-access-form__field">
+    <span class="om-private-access-form__label">Budget</span>
+    <span class="om-private-access-form__select-wrap">
+      <select class="om-private-access-form__select" name="budget" data-private-budget required></select>
+    </span>
+    <span class="om-private-access-form__hint">Sélectionnez votre budget</span>
+  </label>
+
+  <label class="om-private-access-form__field">
+    <span class="om-private-access-form__label">Message <span class="om-private-access-form__optional">(optionnel)</span></span>
+    <textarea class="om-private-access-form__textarea" name="message" rows="4" placeholder="Votre message, votre projet ou vos critères spécifiques"></textarea>
+  </label>
+
+  <p class="om-private-access-form__status" data-private-status aria-live="polite"></p>
+
+  <div class="om-private-access-form__actions">
+    <button class="om-private-access-form__submit" type="submit">Demander l'accès</button>
+    <p class="om-private-access-form__privacy">
+      En cliquant sur le bouton, vous acceptez que OFF MARKET vous contacte au sujet de votre demande.
+      <a href="/privacy-policy/">Confidentialité</a>
+    </p>
+  </div>
+</form>

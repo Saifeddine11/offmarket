@@ -1,0 +1,240 @@
+/**
+ * About page — Acteurs vérifiés editorial section
+ */
+
+.about-verified {
+  position: relative;
+  overflow: hidden;
+  background: #f5f4f2;
+  padding: clamp(4.5rem, 9vw, 7rem) 0 clamp(4rem, 8vw, 6.5rem);
+}
+
+.about-who.mav-who + .about-verified {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.about-verified__inner {
+  position: relative;
+  width: min(100% - 32px, 1180px);
+  margin-inline: auto;
+}
+
+.about-verified__glow {
+  position: absolute;
+  inset: 8% -8% auto -8%;
+  height: min(52vw, 28rem);
+  background: radial-gradient(
+    circle at 70% 40%,
+    rgba(86, 84, 73, 0.06),
+    transparent 36%
+  );
+  pointer-events: none;
+}
+
+.about-verified__header {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.about-verified__eyebrow {
+  margin: 0 0 clamp(1rem, 1.8vw, 1.35rem);
+  font-family: var(--om-font-body);
+  font-size: var(--om-label, 11px);
+  line-height: 1;
+  font-weight: 650;
+  letter-spacing: var(--om-letter-label, 0.14em);
+  text-transform: uppercase;
+  color: #565449;
+}
+
+.about-verified__title {
+  margin: 0;
+  max-width: 14ch;
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: clamp(42px, 4.5vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.065em;
+  font-weight: 500;
+  color: #11120d;
+  text-wrap: balance;
+}
+
+/* S.A.F.E. — success-green accent */
+.about-verified__title-safe {
+  color: #4fd08a;
+}
+
+.about-verified__intro {
+  margin-top: clamp(1.35rem, 2.4vw, 1.85rem);
+}
+
+.about-verified__lead {
+  margin: 0;
+  max-width: 720px;
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: clamp(17px, 1.25vw, 21px);
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  color: rgba(17, 18, 13, 0.58);
+  text-wrap: pretty;
+}
+
+.about-verified__lead--secondary {
+  margin-top: clamp(0.85rem, 1.5vw, 1.1rem);
+}
+
+/* Process filter intro (S.A.F.E. lead-in) */
+.about-verified__process {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin-top: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.about-verified__process-title {
+  margin: 0;
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+  color: #11120d;
+  text-wrap: balance;
+}
+
+.about-verified__process-lead {
+  margin: clamp(0.85rem, 1.6vw, 1.15rem) 0 0;
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  color: rgba(17, 18, 13, 0.62);
+  text-wrap: pretty;
+}
+
+/* Closing statement — the selection starts before the visit */
+.about-verified__closing {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: clamp(2.75rem, 5vw, 4rem) 0 0;
+  padding-top: clamp(1.5rem, 2.6vw, 2rem);
+  border-top: 1px solid rgba(86, 84, 73, 0.16);
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: clamp(18px, 1.5vw, 24px);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  color: #11120d;
+  text-wrap: balance;
+}
+
+/* Final question + CTA — S.A.F.E. explainer */
+.about-verified__safe {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin-top: clamp(2.25rem, 4.5vw, 3.25rem);
+  padding-top: clamp(1.75rem, 3vw, 2rem);
+  border-top: 1px solid rgba(17, 18, 13, 0.1);
+}
+
+.about-verified__safe-title {
+  margin: 0;
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.16;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  color: #11120d;
+  text-wrap: balance;
+}
+
+.about-verified__safe-text {
+  margin: clamp(0.7rem, 1.4vw, 1rem) 0 clamp(1.35rem, 2.4vw, 1.75rem);
+  max-width: 620px;
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  color: rgba(17, 18, 13, 0.62);
+  text-wrap: pretty;
+}
+
+.about-verified__safe-btn {
+  align-self: flex-start;
+}
+
+/* Reveal */
+.about-verified .about-verified__reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  filter: blur(4px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--verified-reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.about-verified.is-visible .about-verified__reveal {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+
+.about-verified.is-visible .about-verified__eyebrow {
+  --verified-reveal-delay: 60ms;
+}
+
+.about-verified.is-visible .about-verified__title {
+  --verified-reveal-delay: 140ms;
+}
+
+.about-verified.is-visible .about-verified__intro .about-verified__lead:first-child {
+  --verified-reveal-delay: 220ms;
+}
+
+.about-verified.is-visible .about-verified__intro .about-verified__lead--secondary {
+  --verified-reveal-delay: 300ms;
+}
+
+.about-verified.is-visible .about-verified__intro .about-verified__lead:last-child {
+  --verified-reveal-delay: 340ms;
+}
+
+.about-verified.is-visible .about-verified__process-title {
+  --verified-reveal-delay: 360ms;
+}
+
+.about-verified.is-visible .about-verified__process-lead {
+  --verified-reveal-delay: 440ms;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1024px) {
+  .about-verified__title {
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-verified {
+    padding: 4rem 0 3.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-verified .about-verified__reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}

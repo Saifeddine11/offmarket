@@ -27,7 +27,7 @@
   font-weight: 650;
   letter-spacing: var(--om-letter-label);
   text-transform: uppercase;
-  color: rgba(112, 0, 21, 0.58);
+  color: rgba(86, 84, 73, 0.58);
 }
 
 .om-testimonials__title {
@@ -52,8 +52,8 @@
   justify-content: center;
   border-radius: var(--om-radius-md);
   background:
-    radial-gradient(circle at 80% 10%, rgba(184, 138, 90, 0.16), transparent 34%),
-    linear-gradient(135deg, rgba(39, 7, 7, 0.98), rgba(112, 0, 21, 0.92));
+    radial-gradient(circle at 80% 10%, rgba(86, 84, 73, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(17, 18, 13, 0.98), rgba(86, 84, 73, 0.92));
   color: var(--om-ivory);
   cursor: none;
   border: none;
@@ -78,7 +78,7 @@
   font-family: var(--om-font-body);
   font-size: var(--om-body-sm);
   letter-spacing: 0.08em;
-  color: rgba(245, 244, 242, 0.52);
+  color: rgba(255, 251, 244, 0.52);
   pointer-events: none;
 }
 
@@ -86,7 +86,7 @@
   font-family: var(--om-font-heading);
   font-size: clamp(1.5rem, 2.2vw, 2.25rem);
   letter-spacing: -0.06em;
-  color: rgba(245, 244, 242, 0.9);
+  color: rgba(255, 251, 244, 0.9);
 }
 
 .om-testimonial-card__dots {
@@ -102,14 +102,14 @@
   width: 0.55rem;
   height: 0.55rem;
   border-radius: var(--om-radius-pill);
-  background: rgba(245, 244, 242, 0.28);
+  background: rgba(255, 251, 244, 0.28);
   transition:
     background-color var(--om-duration) var(--om-ease),
     transform var(--om-duration) var(--om-ease);
 }
 
 .om-testimonial-card__dots span.is-active {
-  background: rgba(184, 138, 90, 0.9);
+  background: rgba(86, 84, 73, 0.9);
   transform: scale(1.12);
 }
 
@@ -123,12 +123,12 @@
   line-height: 1.12;
   font-weight: 500;
   letter-spacing: -0.065em;
-  color: rgba(245, 244, 242, 0.94);
+  color: rgba(255, 251, 244, 0.94);
   text-wrap: balance;
 }
 
 .om-testimonial-card__quote .om-brand-inline {
-  color: rgba(245, 244, 242, 0.98);
+  color: rgba(255, 251, 244, 0.98);
   font-weight: 500;
 }
 
@@ -154,7 +154,7 @@
 .om-testimonial-card__author {
   margin-top: clamp(1.25rem, 2vw, 1.75rem);
   padding-left: 1.25rem;
-  border-left: 1px solid rgba(184, 138, 90, 0.72);
+  border-left: 1px solid rgba(86, 84, 73, 0.72);
   transition: opacity 0.32s ease;
 }
 
@@ -167,7 +167,7 @@
   font-family: var(--om-font-body);
   font-size: var(--om-body-md);
   font-weight: 650;
-  color: rgba(245, 244, 242, 0.92);
+  color: rgba(255, 251, 244, 0.92);
 }
 
 .om-testimonial-card__author small {
@@ -178,7 +178,7 @@
   line-height: 1.35;
   letter-spacing: var(--om-letter-soft);
   text-transform: uppercase;
-  color: rgba(245, 244, 242, 0.54);
+  color: rgba(255, 251, 244, 0.54);
 }
 
 .om-testimonial-card__progress {
@@ -187,7 +187,7 @@
   right: clamp(2rem, 4vw, 4rem);
   bottom: clamp(1.7rem, 2.2vw, 2.2rem);
   height: 1px;
-  background: rgba(245, 244, 242, 0.16);
+  background: rgba(255, 251, 244, 0.16);
   overflow: hidden;
   pointer-events: none;
 }

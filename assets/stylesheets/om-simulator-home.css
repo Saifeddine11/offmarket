@@ -14,7 +14,7 @@
   padding-top: clamp(150px, 14vh, 190px);
   padding-bottom: clamp(72px, 8vh, 110px);
   padding-inline: clamp(1rem, 3vw, 1.5rem);
-  background: #f5f4f2;
+  background: var(--om-white);
   scroll-margin-top: 130px;
   overflow: visible;
   height: auto;
@@ -39,7 +39,7 @@
   font-weight: 650;
   letter-spacing: var(--om-letter-label);
   text-transform: uppercase;
-  color: rgba(112, 0, 21, 0.58);
+  color: rgba(86, 84, 73, 0.58);
 }
 
 .om-simulator--home .om-simulator-home__title {
@@ -50,7 +50,7 @@
   line-height: 0.98;
   font-weight: 500;
   letter-spacing: -0.06em;
-  color: #270707;
+  color: var(--om-black);
   text-wrap: balance;
 }
 
@@ -59,7 +59,7 @@
   margin: 16px auto 0;
   font-size: 18px;
   line-height: 1.45;
-  color: rgba(39, 7, 7, 0.64);
+  color: rgba(17, 18, 13, 0.64);
   text-wrap: pretty;
 }
 
@@ -142,7 +142,7 @@
   width: 16px;
   height: 16px;
   flex: 0 0 16px;
-  color: rgba(112, 0, 21, 0.68);
+  color: rgba(86, 84, 73, 0.68);
 }
 
 .om-simulator--home .om-simulator__field-icon svg {
@@ -194,7 +194,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: rgba(245, 244, 242, 0.72);
+  color: rgba(255, 251, 244, 0.72);
 }
 
 .om-simulator--home .om-simulator__metric-icon svg {
@@ -404,7 +404,7 @@
     width: 34px;
     height: 100%;
     pointer-events: none;
-    background: linear-gradient(90deg, rgba(245, 244, 242, 0), #f5f4f2 82%);
+    background: linear-gradient(90deg, rgba(255, 251, 244, 0), var(--om-white) 82%);
   }
 
   .om-simulator--home .om-simulator-home__tabs,
