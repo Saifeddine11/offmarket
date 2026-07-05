@@ -1,0 +1,8 @@
+node_modules/
+.next/
+.next-prod-qa/
+out/
+tsconfig.tsbuildinfo
+.DS_Store
+*.log
+.env*.local
