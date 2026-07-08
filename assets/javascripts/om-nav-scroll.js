@@ -4,20 +4,40 @@
 (function () {
   'use strict';
 
-  var THRESHOLD = 12;
+  var DESKTOP_THRESHOLD = 12;
+  var MOBILE_THRESHOLD = 6;
   var TOP_SAFE_ZONE = 40;
+  var MOBILE_TOP_SAFE_ZONE = 72;
+  var mobileMq = window.matchMedia('(max-width: 767px)');
 
   function getChrome() {
     return document.querySelector('[data-mv-chrome]');
   }
 
   function getScrollY() {
-    return window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+    return (
+      window.scrollY ||
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0
+    );
+  }
+
+  function getThreshold() {
+    return mobileMq.matches ? MOBILE_THRESHOLD : DESKTOP_THRESHOLD;
+  }
+
+  function getTopSafeZone() {
+    return mobileMq.matches ? MOBILE_TOP_SAFE_ZONE : TOP_SAFE_ZONE;
   }
 
   function isMenuOpen(chrome) {
     if (!chrome) return false;
-    return chrome.classList.contains('is-menu-open') || document.body.classList.contains('menu-open');
+    return (
+      chrome.classList.contains('is-menu-open') ||
+      document.body.classList.contains('menu-open')
+    );
   }
 
   function hookSmoothScroll(onScroll) {
@@ -36,6 +56,50 @@
     }
   }
 
+  function bindScrollSources(onScroll) {
+    var opts = { passive: true };
+
+    window.addEventListener('scroll', onScroll, opts);
+    document.addEventListener('scroll', onScroll, opts);
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('scroll', onScroll, opts);
+      window.visualViewport.addEventListener('resize', onScroll, opts);
+    }
+
+    hookSmoothScroll(onScroll);
+
+    // iOS Safari can delay window scroll events during touch momentum.
+    var touchActive = false;
+    var touchFrame = 0;
+
+    function touchLoop() {
+      if (!touchActive) return;
+      onScroll();
+      touchFrame = window.requestAnimationFrame(touchLoop);
+    }
+
+    function startTouch() {
+      if (touchActive) return;
+      touchActive = true;
+      onScroll();
+      touchFrame = window.requestAnimationFrame(touchLoop);
+    }
+
+    function stopTouch() {
+      touchActive = false;
+      if (touchFrame) {
+        window.cancelAnimationFrame(touchFrame);
+        touchFrame = 0;
+      }
+      onScroll();
+    }
+
+    window.addEventListener('touchstart', startTouch, opts);
+    window.addEventListener('touchend', stopTouch, opts);
+    window.addEventListener('touchcancel', stopTouch, opts);
+  }
+
   function initNavScrollHide() {
     var chrome = getChrome();
     if (!chrome || chrome.dataset.navScrollBound === 'true') return;
@@ -46,20 +110,27 @@
     var ticking = false;
 
     function update() {
+      if (!chrome.isConnected) {
+        ticking = false;
+        return;
+      }
+
       var currentY = getScrollY();
       var delta = currentY - lastY;
+      var threshold = getThreshold();
+      var topSafeZone = getTopSafeZone();
 
-      if (currentY <= TOP_SAFE_ZONE || isMenuOpen(chrome)) {
+      if (currentY <= topSafeZone || isMenuOpen(chrome)) {
         chrome.classList.remove('is-nav-hidden');
         lastY = currentY;
         ticking = false;
         return;
       }
 
-      if (delta > THRESHOLD) {
+      if (delta > threshold) {
         chrome.classList.add('is-nav-hidden');
         lastY = currentY;
-      } else if (delta < -THRESHOLD) {
+      } else if (delta < -threshold) {
         chrome.classList.remove('is-nav-hidden');
         lastY = currentY;
       }
@@ -74,8 +145,7 @@
       }
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    hookSmoothScroll(onScroll);
+    bindScrollSources(onScroll);
     update();
   }
 
@@ -88,6 +158,8 @@
   } else {
     boot();
   }
+
+  document.addEventListener('om-nav-boot', boot);
 
   if (
     typeof barba !== 'undefined' &&

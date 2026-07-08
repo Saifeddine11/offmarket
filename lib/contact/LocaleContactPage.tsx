@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { BodyClass } from "@/components/layout/BodyClass";
 import { HtmlInit } from "@/components/layout/HtmlInit";
 import { LegacyScripts } from "@/components/layout/LegacyScripts";
-import { MavericksChrome } from "@/components/layout/MavericksChrome";
 import { PageShell } from "@/components/layout/PageShell";
-import { SiteFooter } from "@/components/layout/SiteFooter";
 import { ContactPageContent } from "@/components/sections/ContactPageContent";
 import { SCRIPTS } from "@/lib/assets";
 import { LANG_LINKS } from "@/lib/routes";
@@ -79,14 +77,7 @@ export function LocaleContactPage({ localeKey }: { localeKey: LocaleContactKey }
       <BodyClass className="om-contact-lead-body om-inner-page" />
       <style>{`body { margin: 0; background: #f5f4f2; color: #11120d; }`}</style>
 
-      <MavericksChrome
-        variant="hero"
-        activeLang={cfg.activeLang}
-        langLinks={cfg.langLinks}
-        locale={cfg.locale}
-      />
       <ContactPageContent homeHref={cfg.homeHref} locale={cfg.locale} />
-      <SiteFooter currentPage="contact" locale={cfg.locale} />
       <LegacyScripts srcs={SCRIPTS.contact} />
     </PageShell>
   );

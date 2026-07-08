@@ -6,7 +6,6 @@ export const HERO_POSTER_PRELOAD =
 const HERO_SCRIPTS = [
   "mav-navbar-hero-visibility.js",
   "mav-hero-blur-text.js",
-  "mav-hero-counter.js",
   "mav-lazy-videos.js",
 ] as const;
 

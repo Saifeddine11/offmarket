@@ -3,6 +3,11 @@ import { BodyClass } from "@/components/layout/BodyClass";
 import { StaticHtmlBody } from "@/components/layout/StaticHtmlBody";
 import { StylesheetLinks } from "@/components/layout/StylesheetLinks";
 import type { PageContent } from "@/lib/content/types";
+import {
+  prepareStaticPageSegments,
+  withoutGlobalFooterStyles,
+  withoutGlobalNavStyles,
+} from "@/lib/nav/globalNav";
 import { buildMetadataFromParsed, buildPageViewport } from "@/lib/seo/metadata";
 import type { BodySegment } from "@/lib/static-html/parsePage";
 import type { ParsedStaticPage } from "@/lib/static-html/parsePage";
@@ -28,6 +33,11 @@ export function PageContentShell({
   content,
   bodySegments = content.bodySegments,
 }: PageContentShellProps) {
+  const stylesheets = withoutGlobalFooterStyles(
+    withoutGlobalNavStyles(content.stylesheets),
+  );
+  const segments = prepareStaticPageSegments(bodySegments);
+
   return (
     <div suppressHydrationWarning style={{ display: "contents" }}>
       {content.headInitScript ? (
@@ -40,7 +50,7 @@ export function PageContentShell({
       {content.preconnects.map((href) => (
         <link key={href} rel="preconnect" href={href} />
       ))}
-      <StylesheetLinks hrefs={content.stylesheets} />
+      <StylesheetLinks hrefs={stylesheets} />
       {content.manifestHref ? (
         <link rel="manifest" href={content.manifestHref} />
       ) : null}
@@ -57,7 +67,7 @@ export function PageContentShell({
           dangerouslySetInnerHTML={{ __html: json }}
         />
       ))}
-      <StaticHtmlBody segments={bodySegments} />
+      <StaticHtmlBody segments={segments} />
     </div>
   );
 }

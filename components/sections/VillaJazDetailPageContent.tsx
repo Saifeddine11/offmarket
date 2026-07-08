@@ -19,32 +19,34 @@ export function VillaJazDetailPageContent() {
             data-property-detail-page
             data-property-id="villa-jaz"
           >
-            <nav
-              className="om-property-detail-page__nav"
-              aria-label="Navigation fiche bien"
-              data-property-detail-nav
-            >
-              <div className="om-property-detail-page__nav-inner">
-                {PROPERTY_DETAIL_ANCHORS.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className="om-property-detail-page__nav-link"
-                    data-property-detail-nav-link
-                  >
-                    <span>{item.index}</span> {item.label}
-                  </a>
-                ))}
+            <div className="om-property-detail-page__layout">
+              <div className="om-property-detail-page__sections">
+                <div
+                  className="om-property-detail-page__track om-property-modal__track"
+                  data-property-detail-track
+                >
+                  <PropertyModalSlides pageMode />
+                </div>
               </div>
-            </nav>
 
-            <div className="om-property-detail-page__sections">
-              <div
-                className="om-property-detail-page__track om-property-modal__track"
-                data-property-detail-track
+              <nav
+                className="om-property-detail-page__nav"
+                aria-label="Navigation fiche bien"
+                data-property-detail-nav
               >
-                <PropertyModalSlides pageMode />
-              </div>
+                <div className="om-property-detail-page__nav-inner">
+                  {PROPERTY_DETAIL_ANCHORS.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="om-property-detail-page__nav-link"
+                      data-property-detail-nav-link
+                    >
+                      <span>{item.index}</span> {item.label}
+                    </a>
+                  ))}
+                </div>
+              </nav>
             </div>
           </div>
 

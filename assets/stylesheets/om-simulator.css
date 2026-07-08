@@ -73,6 +73,12 @@
   overflow-x: clip;
 }
 
+/* Dedicated /simulateur/ — reuse homepage calculator shell with inner-page spacing */
+.om-simulator-page #simulateur.om-simulator--home {
+  padding-top: clamp(5rem, 8vw, 7rem);
+  background: var(--om-ivory);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

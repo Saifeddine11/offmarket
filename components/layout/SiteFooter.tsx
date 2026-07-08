@@ -1,100 +1,149 @@
 import Link from "next/link";
 
+import { FooterNewsletter } from "@/components/layout/FooterNewsletter";
 import { getFooterCopy } from "@/lib/i18n/footerCopy";
 import type { SiteLocale } from "@/lib/i18n/types";
 
 type SiteFooterProps = {
   currentPage?: "about" | "contact" | "privacy-policy" | null;
-  aboutHref?: string;
-  surPlanHref?: string;
-  simulateurHref?: string;
-  showPhone?: boolean;
   locale?: SiteLocale;
 };
 
+function FooterEmailIcon() {
+  return (
+    <svg
+      className="om-footer__contact-icon"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M4 6.5h16a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H4A1.5 1.5 0 0 1 2.5 16V8A1.5 1.5 0 0 1 4 6.5Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+      <path
+        d="m4.5 8 7.2 5.1a1 1 0 0 0 1.1 0L20 8"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function SiteFooter({
   currentPage = null,
-  aboutHref,
-  surPlanHref,
-  simulateurHref,
-  showPhone = false,
   locale = "fr",
 }: SiteFooterProps) {
   const copy = getFooterCopy(locale);
-  const resolvedAboutHref = aboutHref ?? copy.aboutHref;
-  const resolvedSurPlanHref = surPlanHref ?? copy.offPlanHref;
-  const resolvedSimulateurHref = simulateurHref ?? copy.simulatorHref;
 
   return (
     <footer id="contact" className="om-footer">
       <div className="om-footer__transition" aria-hidden="true" />
       <div className="om-footer__inner">
-        <div className="om-footer__container om-footer__content">
-          <div className="om-footer__grid">
-            <div className="om-footer__brand">
-              <p className="om-footer__label">{copy.brandLabel}</p>
-              <p className="om-footer__tagline">{copy.tagline}</p>
-            </div>
-            <div className="om-footer__column om-footer__column--nav">
-              <p className="om-footer__label">{copy.navLabel}</p>
-              <ul className="om-footer__links">
-                <li>
-                  <Link href={copy.homeHref}>{copy.home}</Link>
-                </li>
-                {currentPage === "about" ? (
-                  <li>
-                    <Link href={resolvedAboutHref} aria-current="page">
-                      {copy.ourStory}
+        <div className="om-footer__grid">
+          <div className="om-footer__col om-footer__col--brand">
+            <Link href={copy.logoHref} className="om-footer__logo-link">
+              <img
+                src="/assets/logos/logoblanc.webp"
+                alt={copy.logoAlt}
+                className="om-footer__logo"
+                width={132}
+                height={36}
+                decoding="async"
+              />
+            </Link>
+            <p className="om-footer__headline">{copy.brandHeadline}</p>
+            <p className="om-footer__support">{copy.brandSupport}</p>
+            <FooterNewsletter
+              title={copy.newsletterTitle}
+              text={copy.newsletterText}
+              placeholder={copy.newsletterPlaceholder}
+              buttonLabel={copy.newsletterButton}
+              successMessage={copy.newsletterSuccess}
+            />
+          </div>
+
+          <div className="om-footer__col om-footer__col--nav">
+            <p className="om-footer__label">{copy.navTitle}</p>
+            <ul className="om-footer__links">
+              {copy.navLinks.map((link) => {
+                const active =
+                  (link.href === "/about/" && currentPage === "about") ||
+                  (link.href === "/contact/" && currentPage === "contact");
+
+                return (
+                  <li key={link.href + link.label}>
+                    <Link
+                      href={link.href}
+                      aria-current={active ? "page" : undefined}
+                    >
+                      {link.label}
                     </Link>
                   </li>
-                ) : null}
-                <li>
-                  <Link href={resolvedSurPlanHref}>{copy.offPlan}</Link>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div className="om-footer__col om-footer__col--immobilier">
+            <p className="om-footer__label">{copy.immobilierTitle}</p>
+            <ul className="om-footer__links">
+              {copy.immobilierLinks.map((link) => (
+                <li key={link.href + link.label}>
+                  <Link href={link.href}>{link.label}</Link>
                 </li>
-                <li>
-                  <Link href={resolvedSimulateurHref}>{copy.simulator}</Link>
-                </li>
-                <li>
-                  <Link
-                    href={copy.contactHref}
-                    aria-current={currentPage === "contact" ? "page" : undefined}
-                  >
-                    {copy.contact}
-                  </Link>
-                </li>
-              </ul>
+              ))}
+            </ul>
+          </div>
+
+          <div className="om-footer__col om-footer__col--cta">
+            <p className="om-footer__statement">{copy.ctaStatement}</p>
+            <Link href={copy.ctaHref} className="om-footer__cta">
+              {copy.ctaButton}
+            </Link>
+            <div className="om-footer__contact-actions">
+              <a
+                href={`mailto:${copy.email}`}
+                className="om-footer__contact-btn"
+                aria-label={copy.email}
+              >
+                <FooterEmailIcon />
+                <span>{copy.email}</span>
+              </a>
             </div>
-            <div className="om-footer__column om-footer__column--contact">
-              <p className="om-footer__label">{copy.contactLabel}</p>
-              <ul className="om-footer__links">
-                <li>{copy.location}</li>
-                <li>
-                  <a href="mailto:contact@offmarket.ma">contact@offmarket.ma</a>
-                </li>
-                {showPhone ? (
-                  <li>
-                    <span className="om-footer__phone">+212 (0) 000 000 000</span>
-                  </li>
-                ) : null}
-              </ul>
+            <div className="om-footer__address">
+              <p className="om-footer__address-title">{copy.addressTitle}</p>
+              <p>{copy.addressLine}</p>
+              <p>{copy.addressNote}</p>
             </div>
           </div>
         </div>
-        <div className="om-footer__container om-footer__bottom">
+
+        <div className="om-footer__bottom">
           <div className="om-footer__bar">
-            <p>
+            <p className="om-footer__copyright">
               ©{" "}
               <span data-mv-year suppressHydrationWarning>
                 {new Date().getFullYear()}
               </span>{" "}
               OFF MARKET. {copy.rights}
             </p>
-            <Link
-              href={copy.privacyHref}
-              aria-current={currentPage === "privacy-policy" ? "page" : undefined}
-            >
-              {copy.legal}
-            </Link>
+            <nav className="om-footer__legal" aria-label="Liens légaux">
+              <Link
+                href={copy.privacyHref}
+                aria-current={
+                  currentPage === "privacy-policy" ? "page" : undefined
+                }
+              >
+                {copy.privacy}
+              </Link>
+              <Link href={copy.termsHref}>{copy.terms}</Link>
+              <Link href={copy.legalHref}>{copy.legal}</Link>
+            </nav>
           </div>
         </div>
       </div>

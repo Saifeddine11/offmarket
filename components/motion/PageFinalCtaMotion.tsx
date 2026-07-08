@@ -44,42 +44,90 @@ const ADVISOR_ICON = (
   </span>
 );
 
-const DEFAULT_CTA_BUTTONS = [
-  {
-    href: "/off-market/",
-    className: "om-button om-button--primary",
-    icon: BUTTON_ICON,
-    label: "Demander un accès privé",
-  },
-  {
-    href: "/sur-plan/",
-    className: "om-button om-button--secondary",
-    icon: BUTTON_ICON,
-    label: "Voir la sélection",
-  },
-  {
-    href: "/contact/",
-    className: "om-button om-button--secondary",
-    icon: ADVISOR_ICON,
-    label: "Parler à un conseiller",
-  },
-] as const;
+const CALCULATOR_ICON = (
+  <span className="om-button__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect
+        x="5"
+        y="3"
+        width="14"
+        height="18"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.9"
+      />
+      <path
+        d="M8 7h8"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+      />
+      <path
+        d="M8 11h2M12 11h2M16 11h2M8 15h2M12 15h2M16 15h2"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+      />
+    </svg>
+  </span>
+);
 
 const DEFAULT_IMAGE_SRC = "/assets/mavericks/villa/mavericks-image00004-scaled.webp";
 
+export type PageFinalCtaSecondaryButton = {
+  href: string;
+  label: string;
+};
+
 export type PageFinalCtaMotionProps = {
   imageSrc?: string;
+  /** Override middle secondary CTA (e.g. on /simulateur/ use project selection instead). */
+  secondaryCta?: PageFinalCtaSecondaryButton;
 };
+
+function buildCtaButtons(secondaryCta?: PageFinalCtaSecondaryButton) {
+  const secondary = secondaryCta
+    ? {
+        href: secondaryCta.href,
+        className: "om-button om-button--secondary",
+        icon: BUTTON_ICON,
+        label: secondaryCta.label,
+      }
+    : {
+        href: "/simulateur/",
+        className: "om-button om-button--secondary",
+        icon: CALCULATOR_ICON,
+        label: "Simulateur",
+      };
+
+  return [
+    {
+      href: "/off-market/",
+      className: "om-button om-button--primary",
+      icon: BUTTON_ICON,
+      label: "Demander un accès privé",
+    },
+    secondary,
+    {
+      href: "/contact/",
+      className: "om-button om-button--secondary",
+      icon: ADVISOR_ICON,
+      label: "Parler à un conseiller",
+    },
+  ] as const;
+}
 
 /** Approved final CTA motion — background scale reveal, masked title, staggered actions. */
 export function PageFinalCtaMotion({
   imageSrc = DEFAULT_IMAGE_SRC,
+  secondaryCta,
 }: PageFinalCtaMotionProps = {}) {
   const reduced = useReducedMotion();
   const mobile = useMotionMobile();
+  const ctaButtons = buildCtaButtons(secondaryCta);
 
   if (reduced) {
-    return <PageFinalCtaSection />;
+    return <PageFinalCtaSection secondaryCta={secondaryCta} />;
   }
 
   return (
@@ -156,8 +204,8 @@ export function PageFinalCtaMotion({
             stagger={0.1}
             delayChildren={0.28}
           >
-            {DEFAULT_CTA_BUTTONS.map((button) => (
-              <StaggerItem key={button.href}>
+            {ctaButtons.map((button) => (
+              <StaggerItem key={button.label}>
                 <Link href={button.href} className={button.className}>
                   {button.icon}
                   <span>{button.label}</span>

@@ -3,8 +3,6 @@ import { BodyClass } from "@/components/layout/BodyClass";
 import { CallbackModal } from "@/components/layout/CallbackModal";
 import { HtmlInit } from "@/components/layout/HtmlInit";
 import { LegacyScripts } from "@/components/layout/LegacyScripts";
-import { MavericksChrome } from "@/components/layout/MavericksChrome";
-import { SiteFooter } from "@/components/layout/SiteFooter";
 import { StylesheetLinks } from "@/components/layout/StylesheetLinks";
 import { LegalPageContent } from "@/components/sections/LegalPageContent";
 import { SCRIPTS, STYLES } from "@/lib/assets";
@@ -34,18 +32,7 @@ export default function PrivacyPolicyPage() {
         Aller au contenu principal
       </a>
 
-      <MavericksChrome
-        variant="page-light"
-        activeLang="FR"
-        showMobileLangSwitcher
-      />
       <LegalPageContent />
-      <SiteFooter
-        currentPage="privacy-policy"
-        surPlanHref="/sur-plan"
-        simulateurHref="/simulateur"
-        showPhone
-      />
       <CallbackModal />
       <LegacyScripts srcs={SCRIPTS.privacyPolicy} />
     </>

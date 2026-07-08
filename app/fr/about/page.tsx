@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { BodyClass } from "@/components/layout/BodyClass";
 import { HtmlInit } from "@/components/layout/HtmlInit";
 import { LegacyScripts } from "@/components/layout/LegacyScripts";
-import { MavericksChrome } from "@/components/layout/MavericksChrome";
 import { PageShell } from "@/components/layout/PageShell";
-import { SiteFooter } from "@/components/layout/SiteFooter";
 import { AboutPageContent } from "@/components/sections/AboutPageContent";
 import { SCRIPTS } from "@/lib/assets";
 import { LANG_LINKS } from "@/lib/routes";
@@ -30,16 +28,10 @@ export default function FrAboutPage() {
       <HtmlInit preloaderDisabled />
       <BodyClass className="om-about-page om-inner-page" />
 
-      <MavericksChrome
-        variant="hero"
-        activeLang="FR"
-        langLinks={LANG_LINKS.frAbout}
-      />
       <AboutPageContent
         langLinks={LANG_LINKS.frAbout}
         aboutHref="/fr/about/"
       />
-      <SiteFooter currentPage="about" aboutHref="/fr/about/" />
       <LegacyScripts srcs={[...SCRIPTS.innerEditorial, ...SCRIPTS.aboutHomeSections]} />
     </PageShell>
   );

@@ -65,12 +65,6 @@ export default function EnOffMarketPage() {
         </section>
       </main>
 
-      <footer className="om-off-market-footer">
-        <p>
-          <Link href="/en/">OFF MARKET</Link> — Private real estate in Marrakech
-        </p>
-      </footer>
-
       <LegacyScripts srcs={SCRIPTS.offMarket} />
     </PageShell>
   );

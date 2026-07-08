@@ -24,13 +24,11 @@ export function HomeFaqBoot({ sectionId }: HomeFaqBootProps) {
       if (!button) return;
 
       const panel = document.getElementById(button.getAttribute("aria-controls") ?? "");
-      const toggle = button.querySelector<HTMLElement>(".om-home-faq__toggle");
       if (!panel) return;
 
       button.setAttribute("aria-expanded", open ? "true" : "false");
       item.setAttribute("data-open", open ? "true" : "false");
       panel.setAttribute("aria-hidden", open ? "false" : "true");
-      if (toggle) toggle.textContent = open ? "-" : "+";
 
       if (open) {
         panel.style.height = `${panel.scrollHeight}px`;

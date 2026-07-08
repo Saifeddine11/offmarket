@@ -18,7 +18,15 @@
       return;
     }
 
-    var firstSection = document.querySelector('[data-barba="container"] .ui-dark, [data-barba="container"] .ui-light');
+    var barbaRoot = document.querySelector('[data-barba="container"]');
+    if (!barbaRoot) {
+      if (chrome.classList.contains('is-mounted')) {
+        chrome.classList.add('mv-chrome--hero', 'mv-chrome--light');
+      }
+      return;
+    }
+
+    var firstSection = barbaRoot.querySelector('.ui-dark, .ui-light');
     var onHero = !!(firstSection && firstSection.classList.contains('ui-dark'));
     chrome.classList.toggle('mv-chrome--hero', onHero);
     chrome.classList.toggle('mv-chrome--light', onHero);

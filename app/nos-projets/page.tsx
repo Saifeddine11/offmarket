@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { BodyClass } from "@/components/layout/BodyClass";
 import { HtmlInit } from "@/components/layout/HtmlInit";
 import { LegacyScripts } from "@/components/layout/LegacyScripts";
-import { MavericksChrome } from "@/components/layout/MavericksChrome";
 import { PageShell } from "@/components/layout/PageShell";
-import { SiteFooter } from "@/components/layout/SiteFooter";
 import { NosProjetsPageContent } from "@/components/sections/NosProjetsPageContent";
 import { SCRIPTS } from "@/lib/assets";
-import { LANG_LINKS } from "@/lib/routes";
 import { buildPageMetadata, buildPageViewport } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -30,13 +27,7 @@ export default function NosProjetsPage() {
       <HtmlInit preloaderDisabled />
       <BodyClass className="om-nos-projets-page om-animated-page om-inner-page" />
 
-      <MavericksChrome
-        variant="hero"
-        activeLang="FR"
-        langLinks={LANG_LINKS.nosProjets}
-      />
       <NosProjetsPageContent />
-      <SiteFooter />
       <LegacyScripts srcs={SCRIPTS.nosProjets} />
     </PageShell>
   );

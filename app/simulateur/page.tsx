@@ -4,8 +4,6 @@ import { CallbackModal } from "@/components/layout/CallbackModal";
 import { DeferredSimulatorBoot } from "@/components/layout/DeferredSimulatorBoot";
 import { HtmlInit } from "@/components/layout/HtmlInit";
 import { LegacyScripts } from "@/components/layout/LegacyScripts";
-import { MavericksChrome } from "@/components/layout/MavericksChrome";
-import { SiteFooter } from "@/components/layout/SiteFooter";
 import { StylesheetLinks } from "@/components/layout/StylesheetLinks";
 import { SimulatorSection } from "@/components/sections/SimulatorSection";
 import { SCRIPTS, STYLES } from "@/lib/assets";
@@ -35,14 +33,7 @@ export default function SimulateurPage() {
         Aller au contenu principal
       </a>
 
-      <MavericksChrome
-        variant="page-light"
-        activeLang="FR"
-        activeDesktopNav="simulateur"
-        showMobileLangSwitcher
-      />
       <SimulatorSection />
-      <SiteFooter surPlanHref="/sur-plan" simulateurHref="/simulateur" showPhone />
       <CallbackModal />
       <LegacyScripts srcs={SCRIPTS.simulateur} />
       <DeferredSimulatorBoot />

@@ -167,11 +167,23 @@ export const HOME_FAQ_STYLES = `
 }
 
 .om-home-faq__list {
-  border-top: 1px solid rgba(17, 18, 13, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .om-home-faq__item {
-  border-bottom: 1px solid rgba(17, 18, 13, 0.14);
+  border: 0;
+  border-radius: 999px;
+  background: #f4f4f3;
+  overflow: hidden;
+  transition:
+    border-radius 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 220ms ease;
+}
+
+.om-home-faq__item[data-open="true"] {
+  border-radius: 28px;
 }
 
 .om-home-faq__heading {
@@ -181,10 +193,10 @@ export const HOME_FAQ_STYLES = `
 .om-home-faq__trigger {
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 22px 0;
+  padding: 18px clamp(20px, 2.2vw, 28px);
   border: 0;
   background: transparent;
   color: inherit;
@@ -195,28 +207,33 @@ export const HOME_FAQ_STYLES = `
 
 .om-home-faq__trigger:focus-visible {
   outline: 2px solid #565449;
-  outline-offset: 6px;
-  border-radius: 8px;
+  outline-offset: 4px;
+  border-radius: 999px;
 }
 
 .om-home-faq__question {
   flex: 1 1 auto;
   margin: 0;
   font-family: var(--om-font-body);
-  font-size: clamp(18px, 1.55vw, 24px);
+  font-size: clamp(16px, 1.2vw, 20px);
   line-height: 1.35;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.02em;
+  color: #11120d;
 }
 
 .om-home-faq__toggle {
   flex: 0 0 auto;
-  min-width: 32px;
-  padding-top: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
   font-family: var(--om-font-body);
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1;
-  color: #565449;
+  font-weight: 400;
+  color: rgba(17, 18, 13, 0.72);
   transition: transform 220ms ease, color 220ms ease;
 }
 
@@ -233,11 +250,11 @@ export const HOME_FAQ_STYLES = `
 
 .om-home-faq__panel-inner {
   max-width: 80ch;
-  padding: 0 0 22px;
+  padding: 0 clamp(20px, 2.2vw, 28px) 20px;
   color: rgba(17, 18, 13, 0.72);
   font-family: var(--om-font-body);
-  font-size: clamp(15px, 1.1vw, 18px);
-  line-height: 1.75;
+  font-size: clamp(15px, 1.05vw, 17px);
+  line-height: 1.7;
   letter-spacing: -0.012em;
 }
 
@@ -255,17 +272,22 @@ export const HOME_FAQ_STYLES = `
   }
 
   .om-home-faq__trigger {
-    padding: 18px 0;
+    padding: 16px 18px;
     gap: 16px;
   }
 
+  .om-home-faq__item[data-open="true"] {
+    border-radius: 22px;
+  }
+
   .om-home-faq__toggle {
-    min-width: 24px;
-    font-size: 17px;
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
   }
 
   .om-home-faq__panel-inner {
-    padding-bottom: 18px;
+    padding: 0 18px 16px;
   }
 }
 

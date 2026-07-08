@@ -5,6 +5,7 @@ import {
   reorderHomepageScripts,
   stripDuplicateHeadInit,
 } from "@/lib/homepage/optimizeHomepageLoad";
+import { withoutGlobalNavScripts } from "@/lib/nav/globalNav";
 import type { HomepageLocale } from "@/lib/homepage/homepagePages";
 import { getHomepagePageId } from "@/lib/homepage/homepagePages";
 
@@ -33,12 +34,14 @@ export function getHomeLegacyScriptUrls(pageId: PageId = "home-root"): string[] 
     reorderHomepageScripts(content.bodySegments),
   );
 
-  return segments
-    .filter(
-      (segment): segment is Extract<typeof segment, { kind: "script" }> =>
-        segment.kind === "script" && Boolean(segment.src),
-    )
-    .map((segment) => segment.src!);
+  return withoutGlobalNavScripts(
+    segments
+      .filter(
+        (segment): segment is Extract<typeof segment, { kind: "script" }> =>
+          segment.kind === "script" && Boolean(segment.src),
+      )
+      .map((segment) => segment.src!),
+  );
 }
 
 export function applyHomeDocumentState() {

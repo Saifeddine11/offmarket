@@ -66,12 +66,6 @@ export default function ItOffMarketPage() {
         </section>
       </main>
 
-      <footer className="om-off-market-footer">
-        <p>
-          <Link href="/it/">OFF MARKET</Link> — Immobiliare privato a Marrakech
-        </p>
-      </footer>
-
       <LegacyScripts srcs={SCRIPTS.offMarket} />
     </PageShell>
   );

@@ -3,6 +3,14 @@
  * No visual redesign; prevents dead scroll zones and orphaned spacers.
  */
 
+:root {
+  --om-floating-nav-top: 22px;
+  --om-floating-nav-bar-height: 70px;
+  --om-header-height: calc(
+    var(--om-floating-nav-top) + var(--om-floating-nav-bar-height) + 10px
+  );
+}
+
 html,
 body {
   min-height: 100%;

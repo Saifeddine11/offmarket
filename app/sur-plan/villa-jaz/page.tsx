@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { BodyClass } from "@/components/layout/BodyClass";
 import { DeferredLegacyScripts } from "@/components/layout/DeferredLegacyScripts";
 import { HtmlInit } from "@/components/layout/HtmlInit";
-import { MavericksChrome } from "@/components/layout/MavericksChrome";
 import { PageShell } from "@/components/layout/PageShell";
-import { SiteFooter } from "@/components/layout/SiteFooter";
 import { VillaJazDetailPageContent } from "@/components/sections/VillaJazDetailPageContent";
 import { SCRIPTS } from "@/lib/assets";
-import { LANG_LINKS } from "@/lib/routes";
 import { buildPageMetadata, buildPageViewport } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -32,13 +29,7 @@ export default function VillaJazDetailPage() {
       <HtmlInit preloaderDisabled />
       <BodyClass className="om-villa-jaz-page om-animated-page om-inner-page" />
 
-      <MavericksChrome
-        variant="hero"
-        activeLang="FR"
-        langLinks={LANG_LINKS.offPlan}
-      />
       <VillaJazDetailPageContent />
-      <SiteFooter />
       <DeferredLegacyScripts srcs={SCRIPTS.villaJazDetail} />
     </PageShell>
   );

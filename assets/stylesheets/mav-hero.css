@@ -468,6 +468,10 @@ html.hero-video-autoplay-blocked .mav-hero__background {
   animation-delay: 420ms;
 }
 
+.mav-hero .mav-hero__cert-wrap[data-blur-fade].is-blur-fade-visible {
+  animation-delay: 520ms;
+}
+
 @keyframes mavHeroBlurFadeIn {
   0% {
     opacity: 0;
@@ -806,6 +810,24 @@ html.hero-video-autoplay-blocked .mav-hero__background {
     animation: none !important;
   }
 
+  .mav-hero__cert-wrap,
+  .mav-hero [data-blur-fade].mav-hero__cert-wrap {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .mav-hero__cert-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mav-hero__cert {
+    width: 100%;
+    max-width: 100%;
+  }
+
   /* CTA row — visible labels, safe contrast, stacked */
   .mav-hero__actions,
   .mav-hero [data-blur-fade].mav-hero__actions {
@@ -949,5 +971,84 @@ html.hero-video-autoplay-blocked .mav-hero__background {
 
   .mav-hero__marquee-track {
     padding-inline: 2px 14px;
+  }
+}
+
+/* ── S.A.F.E. certification — hero verification card (below CTAs) ── */
+.mav-hero__cert-wrap {
+  margin-top: 16px;
+  width: max-content;
+  max-width: min(360px, 100%);
+}
+
+.mav-hero__cert {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.8rem 0.95rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.2);
+}
+
+.mav-hero__cert-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(127, 174, 143, 0.14);
+  color: #7fae8f;
+}
+
+.mav-hero__cert-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.mav-hero__cert-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.18rem;
+  min-width: 0;
+  text-align: left;
+}
+
+.mav-hero__cert-title {
+  margin: 0;
+  font-family: var(--mav-hero-font-body);
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.mav-hero__cert-text {
+  margin: 0;
+  font-family: var(--mav-hero-font-body);
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.62);
+  text-shadow: none;
+}
+
+@media (max-width: 980px) {
+  .mav-hero__cert-wrap {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 14px;
   }
 }

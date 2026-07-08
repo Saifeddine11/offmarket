@@ -1,12 +1,24 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import Script from "next/script";
+import { GlobalFooterAssets } from "@/components/layout/GlobalFooterAssets";
+import { GlobalNavAssets } from "@/components/layout/GlobalNavAssets";
+import { GlobalSiteFooter } from "@/components/layout/GlobalSiteFooter";
+import { GlobalSiteNavbar } from "@/components/layout/GlobalSiteNavbar";
 import { ScrollLockCleanup } from "@/components/layout/ScrollLockCleanup";
 import { DeferredNavBoot } from "@/components/layout/DeferredNavBoot";
+import type { SiteLocale } from "@/lib/i18n/types";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://offmarket.ma"),
 };
+
+function resolveSiteLocale(lang: string): SiteLocale {
+  if (lang === "en" || lang === "it" || lang === "nl" || lang === "fr") {
+    return lang;
+  }
+  return "fr";
+}
 
 export default async function RootLayout({
   children,
@@ -15,13 +27,14 @@ export default async function RootLayout({
 }>) {
   const hdrs = await headers();
   const lang = hdrs.get("x-site-lang") ?? "fr";
+  const locale = resolveSiteLocale(lang);
 
   return (
     <html lang={lang} dir="ltr" className="has-hover" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
-          href="/assets/stylesheets/om-scroll-layout.css?v=1767540000"
+          href="/assets/stylesheets/om-scroll-layout.css?v=1767557000"
         />
         <script
           dangerouslySetInnerHTML={{
@@ -47,7 +60,11 @@ export default async function RootLayout({
               ".js-favourite-list-single,.js-favourite-list-single *{display:none!important;height:0!important;overflow:hidden!important;visibility:hidden!important;pointer-events:none!important}",
           }}
         />
+        <GlobalNavAssets />
+        <GlobalFooterAssets />
+        <GlobalSiteNavbar locale={locale} />
         {children}
+        <GlobalSiteFooter locale={locale} />
         <ScrollLockCleanup />
         <DeferredNavBoot />
         <Script

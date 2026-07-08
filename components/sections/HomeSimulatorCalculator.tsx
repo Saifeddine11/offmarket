@@ -8,6 +8,9 @@ type HomeSimulatorCalculatorProps = {
   motion?: boolean;
 };
 
+const SIMULATOR_NOTE_TEXT =
+  "Estimation indicative. OFF MARKET affine cette simulation avec l\u2019adresse exacte, les charges réelles et les biens disponibles.";
+
 export function HomeSimulatorCalculator({
   primaryCtaHref = "#callback-modal",
   secondaryCtaHref = "#featured-projects",
@@ -42,7 +45,9 @@ export function HomeSimulatorCalculator({
         <header className="om-simulator__panel-intro">
           <span className="om-simulator__panel-eyebrow">PARAMÈTRES</span>
           <h3 className="om-simulator__panel-title">Ajustez vos hypothèses. Le résultat se recalcule en direct.</h3>
-          <p className="om-simulator__note om-simulator__panel-copy" data-simulator-note>Estimation indicative. OFF MARKET affine cette simulation avec l'adresse exacte, les charges réelles et les biens disponibles.</p>
+          <p className="om-simulator__note om-simulator__panel-copy" data-simulator-note suppressHydrationWarning>
+            {SIMULATOR_NOTE_TEXT}
+          </p>
         </header>
 
         <div className="om-simulator__panel" data-simulator-panel="short" role="tabpanel">
@@ -161,7 +166,9 @@ export function HomeSimulatorCalculator({
 
         <div className="om-simulator__metrics om-simulator__metrics--primary" data-result-metrics />
 
-        <p className="om-simulator__cta-note" data-simulator-note>Estimation indicative. OFF MARKET affine cette simulation avec l&apos;adresse exacte, les charges réelles et les biens disponibles.</p>
+        <p className="om-simulator__cta-note" data-simulator-note suppressHydrationWarning>
+          {SIMULATOR_NOTE_TEXT}
+        </p>
         <div className="om-simulator__actions">
           <a href={primaryCtaHref} className="om-button om-button--primary"><span className="om-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"/></svg></span><span>Recevoir une analyse privée</span></a>
           <a href={secondaryCtaHref} className="om-button om-button--secondary"><span className="om-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"/></svg></span><span>Voir les biens compatibles</span></a>

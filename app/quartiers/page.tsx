@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { BodyClass } from "@/components/layout/BodyClass";
 import { DeferredLegacyScripts } from "@/components/layout/DeferredLegacyScripts";
 import { HtmlInit } from "@/components/layout/HtmlInit";
-import { MavericksChrome } from "@/components/layout/MavericksChrome";
 import { PageShell } from "@/components/layout/PageShell";
-import { SiteFooter } from "@/components/layout/SiteFooter";
 import { QuartiersPageContent } from "@/components/sections/QuartiersPageContent";
 import { SCRIPTS } from "@/lib/assets";
-import { LANG_LINKS } from "@/lib/routes";
 import { buildPageMetadata, buildPageViewport } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -29,13 +26,7 @@ export default function QuartiersPage() {
       <HtmlInit preloaderDisabled />
       <BodyClass className="om-quartiers-page om-inner-page" deferLegacyBoot />
 
-      <MavericksChrome
-        variant="hero"
-        activeLang="FR"
-        langLinks={LANG_LINKS.quartiers}
-      />
       <QuartiersPageContent />
-      <SiteFooter />
       <DeferredLegacyScripts srcs={SCRIPTS.quartiers} />
     </PageShell>
   );

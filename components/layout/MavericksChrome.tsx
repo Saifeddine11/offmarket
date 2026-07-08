@@ -112,9 +112,9 @@ export function MavericksChrome({
             aria-label="OFF MARKET"
           >
             <img
-              src="/assets/logos/logo-rouge.png"
+              src="/assets/logos/logoblack.webp"
               alt=""
-              className="mv-chrome__logo mv-chrome__logo--rouge"
+              className="mv-chrome__logo mv-chrome__logo--dark"
               width={120}
               height={36}
               decoding="async"
@@ -150,9 +150,9 @@ export function MavericksChrome({
             aria-label="OFF MARKET"
           >
             <img
-              src="/assets/logos/logo-rouge.png"
+              src="/assets/logos/logoblack.webp"
               alt=""
-              className="mv-chrome__logo mv-chrome__logo--rouge"
+              className="mv-chrome__logo mv-chrome__logo--dark"
               width={140}
               height={42}
               decoding="async"

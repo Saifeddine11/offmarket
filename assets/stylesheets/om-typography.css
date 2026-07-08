@@ -161,10 +161,10 @@ button,
 }
 
 /* Navbar */
-.om-header__nav a,
+.om-header__nav > a,
 .mav-nav__link,
-.header-nav a,
-.nav-links a {
+.header-nav > a,
+.nav-links > a {
   font-family: var(--font-main);
   font-size: var(--om-nav, 17px);
   font-weight: 650;

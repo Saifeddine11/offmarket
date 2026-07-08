@@ -1358,14 +1358,15 @@ body.om-modal-open {
   }
 
   .om-property-modal__shell {
-    width: min(100%, calc(100vw - 12px));
-    max-height: calc(100svh - 12px);
-    height: calc(100svh - 12px);
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
     margin: 0;
     display: flex;
     flex-direction: column;
     grid-template-rows: unset;
-    border-radius: 34px 34px 0 0;
+    border-radius: 28px 28px 0 0;
     overflow: hidden;
     background: var(--om-white) !important;
     box-shadow: 0 -18px 60px rgba(17, 18, 13, 0.28);
@@ -1383,7 +1384,7 @@ body.om-modal-open {
 
   .om-property-modal__close {
     position: absolute;
-    top: 0.75rem;
+    top: calc(0.75rem + env(safe-area-inset-top, 0px));
     right: 0.75rem;
     z-index: 40;
     transform: none;
@@ -1405,7 +1406,7 @@ body.om-modal-open {
     min-height: 0;
     max-height: none;
     overflow: hidden;
-    padding: 3.5rem 0 0 !important;
+    padding: calc(3.35rem + env(safe-area-inset-top, 0px)) 0 0 !important;
     background: var(--om-white) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -1422,12 +1423,14 @@ body.om-modal-open {
     height: 100%;
     min-height: 0 !important;
     max-height: 100%;
+    contain: none;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     border-radius: 0;
     box-shadow: none;
-    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
   }
 
   .om-property-modal__slide--general,
@@ -1724,11 +1727,47 @@ body.om-modal-open {
   .om-property-modal__media,
   .om-property-modal__about-media {
     width: 100%;
-    height: auto;
+    height: clamp(220px, 30vh, 280px);
     min-height: 220px;
-    max-height: 42svh;
+    max-height: 280px;
     flex-shrink: 0;
-    border-radius: 24px;
+    border-radius: 20px;
+  }
+
+  .om-property-modal__media img,
+  .om-property-modal__about-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .om-property-modal__title,
+  .om-property-modal__about-copy h3 {
+    max-width: 100%;
+    font-size: clamp(28px, 8vw, 34px);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;
+  }
+
+  .om-property-modal__description,
+  .om-property-modal__about-copy p,
+  .om-property-modal__subtitle {
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .om-property-modal__fact span,
+  .om-property-modal__selection,
+  .om-property-modal__bottom-price span {
+    font-size: 12px;
+  }
+
+  .om-property-modal__fact strong {
+    font-size: 15px;
   }
 
   .om-property-modal__content {
@@ -1738,15 +1777,13 @@ body.om-modal-open {
     flex-direction: column;
     gap: 0.85rem;
     padding: 0;
+    flex: 1 1 auto;
   }
 
   .om-property-modal__facts,
+  .om-property-modal__facts.om-property-modal__facts--compact,
   .om-property-modal__amenities:not(.om-property-modal__amenities--grouped),
   .om-property-modal__layout-meta {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .om-property-modal__facts.om-property-modal__facts--compact {
     grid-template-columns: 1fr;
   }
 
@@ -1779,17 +1816,18 @@ body.om-modal-open {
     z-index: 30;
     display: flex;
     flex-wrap: nowrap;
-    gap: 0;
+    gap: 0.35rem;
     overflow-x: auto;
     overflow-y: hidden;
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
+    scroll-padding-inline: 1rem;
     scrollbar-width: none;
     height: auto;
-    min-height: 72px;
+    min-height: 76px;
     grid-template-columns: unset;
     align-items: stretch;
-    padding: 0.65rem 0 calc(0.65rem + env(safe-area-inset-bottom, 0px));
+    padding: 0.6rem 0 calc(0.6rem + env(safe-area-inset-bottom, 0px));
     background: rgba(17, 18, 13, 0.96) !important;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -1803,19 +1841,27 @@ body.om-modal-open {
 
   .om-property-modal__tabs button {
     flex: 0 0 auto;
-    min-width: 128px;
-    min-height: 44px;
+    min-width: 118px;
+    min-height: 46px;
     height: auto;
-    padding: 0 0.9rem 0.55rem;
+    padding: 0 0.8rem 0.5rem;
     display: inline-flex;
     align-items: flex-end;
     justify-content: flex-start;
     gap: 0.35rem;
-    font-size: 0.78rem;
-    line-height: 1.15;
+    font-size: 0.82rem;
+    line-height: 1.2;
     color: rgba(255, 251, 244, 0.62);
     white-space: nowrap;
     scroll-snap-align: start;
+  }
+
+  .om-property-modal__tabs button:first-child {
+    margin-left: 0.85rem;
+  }
+
+  .om-property-modal__tabs button:last-child {
+    margin-right: 0.85rem;
   }
 
   .om-property-modal__tabs button span {
@@ -1850,22 +1896,30 @@ body.om-modal-open {
   }
 
   .om-property-modal__bottom {
+    position: static;
+    align-self: stretch;
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
-    margin-top: auto;
-    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    background: transparent;
+    z-index: auto;
   }
 
   .om-property-modal__bottom-price {
     justify-content: space-between;
     width: 100%;
+    white-space: normal;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
   }
 
   .om-property-modal__bottom-price strong {
-    font-size: clamp(1.65rem, 6.5vw, 2.15rem);
-    text-align: right;
-    white-space: nowrap;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .om-property-modal__actions {
@@ -1878,7 +1932,7 @@ body.om-modal-open {
   .om-property-modal__actions .om-cta,
   .om-property-modal__actions .om-button {
     width: 100%;
-    min-height: 54px;
+    min-height: 52px;
     justify-content: center;
     box-sizing: border-box;
   }
@@ -2337,6 +2391,58 @@ body.om-modal-open {
   .om-property-modal__hyper-features,
   .om-property-modal__hyper-facts-list {
     grid-template-columns: 1fr;
+  }
+
+  .om-property-modal.is-hyper-theme .om-property-modal__slide--general {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .om-property-modal.is-hyper-theme .om-property-modal__slide--general .om-property-modal__content {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    gap: 0.85rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .om-property-modal.is-hyper-theme .om-property-modal__slide--general .om-property-modal__title {
+    font-size: clamp(28px, 8vw, 34px);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .om-property-modal.is-hyper-theme .om-property-modal__slide--general .om-property-modal__bottom {
+    position: static;
+    bottom: auto;
+    margin-top: 0.75rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    background: transparent;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .om-property-modal.is-hyper-theme .om-property-modal__slide--general .om-property-modal__bottom-price {
+    display: flex;
+    white-space: normal;
+  }
+
+  .om-property-modal.is-hyper-theme .om-property-modal__slide--general .om-property-modal__actions {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .om-property-modal.is-hyper-theme .om-property-modal__slide--general .om-property-modal__actions .om-cta,
+  .om-property-modal.is-hyper-theme .om-property-modal__slide--general .om-property-modal__actions .om-button {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    min-height: 52px;
+    justify-content: center;
+    box-sizing: border-box;
   }
 }
 

@@ -2140,6 +2140,47 @@
         observer.observe(section);
       });
     }
+
+    var detailNav = page.querySelector('[data-property-detail-nav]');
+    if (detailNav) {
+      var maskTargets = [];
+      var main = page.closest('main');
+      var finalCta =
+        (main && main.querySelector('.om-final-cta')) ||
+        document.querySelector('#final-cta');
+      var footer = document.querySelector('.om-footer');
+
+      if (finalCta) maskTargets.push(finalCta);
+      if (footer) maskTargets.push(footer);
+
+      if (maskTargets.length) {
+        var maskMargin = 64;
+        var maskTicking = false;
+
+        function isMaskZoneVisible(target) {
+          var rect = target.getBoundingClientRect();
+          return rect.top < window.innerHeight - maskMargin && rect.bottom > 0;
+        }
+
+        function refreshDetailNavMask() {
+          var hide = maskTargets.some(isMaskZoneVisible);
+          detailNav.classList.toggle('is-masked', hide);
+        }
+
+        function scheduleDetailNavMask() {
+          if (maskTicking) return;
+          maskTicking = true;
+          window.requestAnimationFrame(function () {
+            maskTicking = false;
+            refreshDetailNavMask();
+          });
+        }
+
+        refreshDetailNavMask();
+        window.addEventListener('scroll', scheduleDetailNavMask, { passive: true });
+        window.addEventListener('resize', scheduleDetailNavMask, { passive: true });
+      }
+    }
   }
 
   function startBoot() {

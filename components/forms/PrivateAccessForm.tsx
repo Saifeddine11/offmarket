@@ -28,12 +28,6 @@ const SUBMIT_ARROW_ICON = (
   </svg>
 );
 
-function buildSearchSummary(values?: LeadFormContextValues): string | null {
-  if (!values) return null;
-  const parts = [values.propertyType, values.budget, values.objective].filter(Boolean);
-  return parts.length ? parts.join(" · ") : null;
-}
-
 export function PrivateAccessForm({
   intent,
   intentMode = "fixed",
@@ -48,7 +42,6 @@ export function PrivateAccessForm({
   onBack,
 }: PrivateAccessFormProps) {
   const copy = getFormCopy(locale);
-  const searchSummary = buildSearchSummary(contextValues);
   const formClassName = [
     "om-private-access-form",
     variant === "embedded" ? "om-private-access-form--embedded" : "",
@@ -127,15 +120,6 @@ export function PrivateAccessForm({
           <p className="om-private-access-form__subtitle">{copy.contactHeaderSubtitle}</p>
           <p className="om-private-access-form__helper">{copy.contactHeaderHelper}</p>
         </header>
-      ) : null}
-
-      {searchSummary ? (
-        <p className="om-private-access-form__summary">
-          <span className="om-private-access-form__summary-label">
-            {copy.searchSummaryPrefix} :
-          </span>{" "}
-          {searchSummary}
-        </p>
       ) : null}
 
       <div className="om-private-access-form__grid om-private-access-form__grid--split">

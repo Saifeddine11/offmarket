@@ -17,7 +17,7 @@ export type ChromeCopy = {
 
 const FR: ChromeCopy = {
   homeHref: "/",
-  accessHref: "/off-market/",
+  accessHref: "/contact/",
   accessLabel: "Demander l'accès",
   menuAria: "Menu",
   mainNavAria: "Navigation principale",
@@ -35,7 +35,7 @@ const FR: ChromeCopy = {
 
 const EN: ChromeCopy = {
   homeHref: "/en/",
-  accessHref: "/en/off-market/",
+  accessHref: "/en/contact/",
   accessLabel: "Request access",
   menuAria: "Menu",
   mainNavAria: "Main navigation",
@@ -53,7 +53,7 @@ const EN: ChromeCopy = {
 
 const IT: ChromeCopy = {
   homeHref: "/it/",
-  accessHref: "/it/off-market/",
+  accessHref: "/it/contatto/",
   accessLabel: "Richiedi accesso",
   menuAria: "Menu",
   mainNavAria: "Navigazione principale",

@@ -46,8 +46,8 @@ export const quartierDetails: QuartierDetail[] = [
     seoDescription: "",
     image: "/assets/mavericks/territories/investment/gueliz-hypercentre.webp",
     imageAlt: "Appartement contemporain à Guéliz Marrakech",
-    ctaLabel: "Étudier Guéliz",
-    ctaHref: "/off-market/",
+    ctaLabel: "Voir les appartements",
+    ctaHref: "/nos-projets/",
     points: [
       { label: "Commerces & restaurants", icon: "restaurant" },
       { label: "Cafés & vie urbaine", icon: "cup" },
@@ -67,8 +67,8 @@ export const quartierDetails: QuartierDetail[] = [
     seoDescription: "",
     image: "/assets/mavericks/territories/investment/triangle-or-hivernage.webp",
     imageAlt: "Villa contemporaine dans un secteur résidentiel à Marrakech",
-    ctaLabel: "Étudier le Triangle d’Or",
-    ctaHref: "/off-market/",
+    ctaLabel: "Voir Villa Jaz",
+    ctaHref: "/sur-plan/villa-jaz/",
     points: [
       { label: "Villas & résidences privées", icon: "villa" },
       { label: "Jardin & piscine", icon: "pool" },
@@ -88,7 +88,7 @@ export const quartierDetails: QuartierDetail[] = [
     seoDescription: "",
     image: "/assets/mavericks/gallery/mavericks-collection-riads.webp",
     imageAlt: "Riad de caractère dans la Médina de Marrakech",
-    ctaLabel: "Étudier la Médina",
+    ctaLabel: "Accès privé",
     ctaHref: "/off-market/",
     points: [
       { label: "Riads de caractère", icon: "arch" },

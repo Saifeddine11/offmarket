@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { BodyClass } from "@/components/layout/BodyClass";
 import { HtmlInit } from "@/components/layout/HtmlInit";
 import { LegacyScripts } from "@/components/layout/LegacyScripts";
-import { MavericksChrome } from "@/components/layout/MavericksChrome";
 import { PageShell } from "@/components/layout/PageShell";
-import { SiteFooter } from "@/components/layout/SiteFooter";
 import { ContactPageContent } from "@/components/sections/ContactPageContent";
 import { SCRIPTS } from "@/lib/assets";
-import { LANG_LINKS } from "@/lib/routes";
 import { buildPageMetadata, buildPageViewport } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -31,13 +28,7 @@ export default function ContactPage() {
       <BodyClass className="om-contact-lead-body om-inner-page" />
       <style>{`body { margin: 0; background: #f5f4f2; color: #11120d; }`}</style>
 
-      <MavericksChrome
-        variant="hero"
-        activeLang="FR"
-        langLinks={LANG_LINKS.contact}
-      />
       <ContactPageContent />
-      <SiteFooter currentPage="contact" />
       <LegacyScripts srcs={SCRIPTS.contact} />
     </PageShell>
   );
