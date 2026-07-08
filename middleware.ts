@@ -8,16 +8,24 @@ function detectLang(pathname: string): string {
   return "fr";
 }
 
-export function middleware(request: NextRequest) {
-  const lang = detectLang(request.nextUrl.pathname);
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-site-lang", lang);
-
-  return NextResponse.next({
-    request: { headers: requestHeaders },
-  });
+/**
+ * Edge-safe locale hint for the root layout.
+ * Do not clone request.headers — Vercel rejects x-middleware-request-*
+ * headers that contain non-ASCII values (e.g. Cloudflare cf-ipcity).
+ */
+export default function middleware(request: NextRequest) {
+  try {
+    const pathname = request.nextUrl?.pathname ?? "/";
+    const response = NextResponse.next();
+    response.headers.set("x-site-lang", detectLang(pathname));
+    return response;
+  } catch {
+    return NextResponse.next();
+  }
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|assets|robots.txt|sitemap.xml).*)"],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|assets|robots.txt|sitemap.xml).*)",
+  ],
 };
