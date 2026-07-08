@@ -1,9 +1,6 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-type SiteLang = "fr" | "en" | "it" | "nl";
-
-function detectLangFromPath(pathname: string): SiteLang {
+function detectLangFromPath(pathname: string): "fr" | "en" | "it" | "nl" {
   if (pathname.startsWith("/en")) return "en";
   if (pathname.startsWith("/it")) return "it";
   if (pathname.startsWith("/nl")) return "nl";
@@ -32,6 +29,6 @@ export default function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|assets|images|.*\\..*).*)",
+    "/((?!_next/static|_next/image|favicon.ico|favicon.png|robots.txt|sitemap.xml|assets|images|.*\\..*).*)",
   ],
 };
