@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import { cookies } from "next/headers";
 import Script from "next/script";
 import { GlobalFooterAssets } from "@/components/layout/GlobalFooterAssets";
 import { GlobalNavAssets } from "@/components/layout/GlobalNavAssets";
@@ -7,27 +7,19 @@ import { GlobalSiteFooter } from "@/components/layout/GlobalSiteFooter";
 import { GlobalSiteNavbar } from "@/components/layout/GlobalSiteNavbar";
 import { ScrollLockCleanup } from "@/components/layout/ScrollLockCleanup";
 import { DeferredNavBoot } from "@/components/layout/DeferredNavBoot";
-import type { SiteLocale } from "@/lib/i18n/types";
+import { resolveSiteLocale } from "@/lib/i18n/detectLocale";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://offmarket.ma"),
 };
-
-function resolveSiteLocale(lang: string): SiteLocale {
-  if (lang === "en" || lang === "it" || lang === "nl" || lang === "fr") {
-    return lang;
-  }
-  return "fr";
-}
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const hdrs = await headers();
-  const lang = hdrs.get("x-site-lang") ?? "fr";
-  const locale = resolveSiteLocale(lang);
+  const cookieStore = await cookies();
+  const lang = resolveSiteLocale(cookieStore.get("site-lang")?.value);
 
   return (
     <html lang={lang} dir="ltr" className="has-hover" suppressHydrationWarning>
@@ -62,9 +54,9 @@ export default async function RootLayout({
         />
         <GlobalNavAssets />
         <GlobalFooterAssets />
-        <GlobalSiteNavbar locale={locale} />
+        <GlobalSiteNavbar locale={lang} />
         {children}
-        <GlobalSiteFooter locale={locale} />
+        <GlobalSiteFooter locale={lang} />
         <ScrollLockCleanup />
         <DeferredNavBoot />
         <Script
