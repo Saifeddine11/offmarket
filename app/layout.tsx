@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import Script from "next/script";
 import { GlobalFooterAssets } from "@/components/layout/GlobalFooterAssets";
 import { GlobalNavAssets } from "@/components/layout/GlobalNavAssets";
@@ -19,7 +19,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const lang = resolveSiteLocale(cookieStore.get("site-lang")?.value);
+  const hdrs = await headers();
+  const lang = resolveSiteLocale(
+    cookieStore.get("site-lang")?.value ?? hdrs.get("x-site-lang"),
+  );
 
   return (
     <html lang={lang} dir="ltr" className="has-hover" suppressHydrationWarning>
