@@ -1,0 +1,180 @@
+/* /quartiers/ — Framer Motion companion styles */
+
+.om-text-mask-reveal__line {
+  display: block;
+  overflow: hidden;
+}
+
+.om-text-mask-reveal__inner {
+  display: block;
+}
+
+.om-image-scroll-reveal__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.inner-hero[data-om-framer-hero] .inner-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.inner-hero[data-om-framer-hero] .inner-hero__media .om-image-scroll-reveal__inner,
+.inner-hero[data-om-framer-hero] .inner-hero__media img,
+.inner-hero[data-om-framer-hero] .inner-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.quartier-feature-card__media.om-image-scroll-reveal,
+.quartier-feature-card__media .om-image-scroll-reveal__inner {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.om-image-scroll-reveal__inner > img,
+.quartier-feature-card__media .om-image-scroll-reveal__inner > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Disable legacy hidden states — Framer handles /quartiers/ motion */
+.om-quartiers-page .om-final-cta:not(.is-visible) .om-final-cta__content .om-final-cta__eyebrow,
+.om-quartiers-page .om-final-cta:not(.is-visible) .om-final-cta__content .om-final-cta__title,
+.om-quartiers-page .om-final-cta:not(.is-visible) .om-final-cta__content .om-final-cta__text,
+.om-quartiers-page .om-final-cta:not(.is-visible) .om-final-cta__content .om-final-cta__trust,
+.om-quartiers-page .om-final-cta:not(.is-visible) .om-final-cta__content .om-final-cta__actions {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.om-quartiers-page .om-final-cta__bg-motion {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.om-quartiers-page .om-final-cta__overlay {
+  z-index: 1;
+}
+
+.om-quartiers-page .om-final-cta__content {
+  z-index: 2;
+}
+
+.inner-hero[data-om-framer-hero] [data-hero-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* Territory cards — subtle hover depth */
+@media (hover: hover) and (pointer: fine) {
+  .om-quartiers-page .om-territories--quartiers-page [data-om-territory-card],
+  .om-quartiers-page .om-territories--quartiers-page [data-om-territory-mobile-card] {
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page [data-om-territory-card]:hover,
+  .om-quartiers-page .om-territories--quartiers-page [data-om-territory-mobile-card]:hover {
+    transform: translateY(-8px) scale(1.01);
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__card-media,
+  .om-quartiers-page .om-territories--quartiers-page .om-territories__mobile-media {
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .om-quartiers-page .om-territories--quartiers-page [data-om-territory-card]:hover .om-territories__card-media,
+  .om-quartiers-page
+    .om-territories--quartiers-page
+    [data-om-territory-mobile-card]:hover
+    .om-territories__mobile-media {
+    transform: scale(1.04);
+  }
+}
+
+/* Blog card image hover */
+@media (hover: hover) and (pointer: fine) {
+  .om-quartiers-page .om-blog-card__media,
+  .om-quartiers-page .om-blog-card img {
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .om-quartiers-page .om-blog-card:hover img {
+    transform: scale(1.04);
+  }
+}
+
+/* Final CTA media fill */
+.om-final-cta__media .om-image-scroll-reveal__inner,
+.om-final-cta__media .om-final-cta__bg-motion {
+  position: absolute;
+  inset: 0;
+}
+
+.om-final-cta__media .om-final-cta__bg-motion > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .om-quartiers-page [data-om-territory-card],
+  .om-quartiers-page [data-om-territory-mobile-card],
+  .om-quartiers-page .om-blog-card {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+
+/* Inner-page simulator — tighter rhythm than homepage #simulateur */
+.om-quartiers-page .om-quartier-details {
+  padding-bottom: clamp(2rem, 4vh, 3rem);
+}
+
+.om-quartiers-page #quartiers-simulateur.om-simulator--home {
+  padding-top: clamp(2.5rem, 5vh, 3.5rem);
+  padding-bottom: clamp(3rem, 6vh, 4.5rem);
+}
+
+.om-quartiers-page #quartiers-simulateur .om-simulator-home__header {
+  margin-bottom: 28px;
+}
+
+/* Reset UA h2 vertical margin — tighten eyebrow → title → subtitle rhythm */
+.om-quartiers-page #quartiers-simulateur .om-simulator-home__title {
+  margin-top: clamp(0.4rem, 1vh, 0.6rem);
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .om-quartiers-page #quartiers-simulateur.om-simulator--home {
+    padding-top: clamp(2rem, 6vw, 2.75rem);
+    padding-bottom: 48px;
+  }
+
+  .om-quartiers-page #quartiers-simulateur .om-simulator-home__header {
+    margin-bottom: 22px;
+  }
+
+  .om-quartiers-page #quartiers-simulateur .om-simulator-home__title {
+    margin-top: 0.35rem;
+    margin-bottom: 0;
+  }
+}
+
+/* /quartiers/ hero — keep copy compact so the card never feels crowded */
+.om-quartiers-page .inner-hero__subtitle {
+  max-width: 620px;
+}

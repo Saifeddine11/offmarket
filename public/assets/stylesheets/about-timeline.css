@@ -1,0 +1,220 @@
+/**
+ * About page — Acteurs vérifiés premium scroll timeline
+ * Replaces the previous 3-card grid. Palette: Floral White / Smoky Black / Olive.
+ */
+
+/* Section background — Floral White for the timeline experience.
+ * overflow: clip (not hidden) still contains the decorative glow but does NOT
+ * create a scroll container, so the sticky timeline columns resolve against the
+ * page scroll instead of being trapped by the section. */
+.about-verified {
+  background: #fffbf4;
+  overflow: clip;
+}
+
+.about-timeline {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(2.75rem, 5vw, 4rem);
+}
+
+/* Continuous vertical rail */
+.about-timeline__line {
+  position: absolute;
+  left: 27px;
+  top: clamp(14px, 2.5vw, 28px);
+  bottom: clamp(56px, 9vw, 104px);
+  width: 2px;
+  border-radius: 2px;
+  background: rgba(17, 18, 13, 0.12);
+  overflow: hidden;
+}
+
+.about-timeline__line-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transform-origin: top center;
+  background: #4fd08a;
+}
+
+.about-timeline__line-fill--static {
+  transform: scaleY(1);
+}
+
+/* Entry */
+.about-timeline__entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(190px, 260px) minmax(0, 1fr);
+  grid-template-areas: "marker aside body";
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  padding-block: clamp(2.25rem, 4.5vw, 3.5rem);
+}
+
+.about-timeline__entry:first-child {
+  padding-top: 0;
+}
+
+.about-timeline__marker {
+  grid-area: marker;
+  position: sticky;
+  top: clamp(104px, 14vh, 150px);
+  align-self: start;
+  display: flex;
+  justify-content: center;
+  height: max-content;
+}
+
+.about-timeline__dot {
+  width: 16px;
+  height: 16px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: rgba(86, 84, 73, 0.55);
+  box-shadow:
+    0 0 0 5px #fffbf4,
+    0 0 0 8px rgba(86, 84, 73, 0.16);
+  transition:
+    background-color 550ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 550ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-timeline__dot[data-active="true"] {
+  background: #4fd08a;
+  transform: scale(1.08);
+  box-shadow:
+    0 0 0 5px #fffbf4,
+    0 0 0 9px rgba(79, 208, 138, 0.24);
+}
+
+.about-timeline__aside {
+  grid-area: aside;
+  position: sticky;
+  top: clamp(104px, 14vh, 150px);
+  align-self: start;
+}
+
+.about-timeline__index {
+  display: block;
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #565449;
+  transition: color 550ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-timeline__index[data-active="true"] {
+  color: #4fd08a;
+}
+
+.about-timeline__entry-title {
+  margin: clamp(0.5rem, 1vw, 0.75rem) 0 0;
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  color: #11120d;
+  text-wrap: balance;
+}
+
+.about-timeline__body {
+  grid-area: body;
+  max-width: 40rem;
+  padding-top: clamp(0.15rem, 0.5vw, 0.35rem);
+}
+
+.about-timeline__text {
+  margin: 0;
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: rgba(17, 18, 13, 0.64);
+  text-wrap: pretty;
+}
+
+.about-timeline__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: clamp(1.35rem, 2.4vw, 1.85rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-timeline__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(86, 84, 73, 0.22);
+  background: rgba(86, 84, 73, 0.04);
+  font-family: var(--font-main, "Inter", system-ui, sans-serif);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: #565449;
+}
+
+.about-timeline__pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #565449;
+  opacity: 0.7;
+}
+
+/* ── Tablet / mobile ── */
+@media (max-width: 860px) {
+  .about-timeline__line {
+    left: 21px;
+    bottom: clamp(36px, 10vw, 64px);
+  }
+
+  .about-timeline__entry {
+    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-areas:
+      "marker aside"
+      "marker body";
+    column-gap: clamp(1rem, 4vw, 1.5rem);
+    padding-block: clamp(1.85rem, 7vw, 2.75rem);
+  }
+
+  .about-timeline__marker {
+    position: static;
+    align-self: stretch;
+    height: auto;
+  }
+
+  .about-timeline__aside {
+    position: static;
+  }
+
+  .about-timeline__entry-title {
+    font-size: clamp(22px, 6vw, 30px);
+  }
+
+  .about-timeline__body {
+    max-width: none;
+    padding-top: clamp(0.85rem, 3vw, 1.1rem);
+  }
+}
+
+@media (max-width: 430px) {
+  .about-timeline__pill {
+    font-size: 12.5px;
+    padding: 0.45rem 0.75rem 0.45rem 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-timeline__dot,
+  .about-timeline__index {
+    transition: none;
+  }
+}
