@@ -38,6 +38,13 @@ function resolveCurrentPage(
 export function GlobalSiteFooter({ locale = "fr" }: GlobalSiteFooterProps) {
   const pathname = usePathname();
   const currentPage = resolveCurrentPage(pathname);
+  const resolvedLocale: SiteLocale = pathname.startsWith("/en")
+    ? "en"
+    : pathname.startsWith("/it")
+      ? "it"
+      : pathname.startsWith("/nl")
+        ? "nl"
+        : locale;
 
-  return <SiteFooter locale={locale} currentPage={currentPage} />;
+  return <SiteFooter locale={resolvedLocale} currentPage={currentPage} />;
 }

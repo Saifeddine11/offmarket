@@ -67,7 +67,7 @@ export function AboutVerifiedActorsSection() {
           </p>
           <a
             className="om-button om-button--outline about-verified__safe-btn"
-            href="#safe"
+            href="#acteurs-verifies"
           >
             <span>Lire plus sur la S.A.F.E.</span>
             {SAFE_CTA_ICON}

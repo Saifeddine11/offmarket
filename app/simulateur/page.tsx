@@ -35,6 +35,13 @@ export default function SimulateurPage() {
 
       <SimulatorSection />
       <CallbackModal />
+      <script
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html:
+            "document.body.setAttribute('data-om-defer-legacy-boot','true');",
+        }}
+      />
       <LegacyScripts srcs={SCRIPTS.simulateur} />
       <DeferredSimulatorBoot />
     </>

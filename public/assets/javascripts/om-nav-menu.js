@@ -55,10 +55,28 @@
     { id: 'contact', label: 'Contatto', href: '/it/contatto/' },
   ];
 
+  var MENU_NL = [
+    { id: 'home', label: 'Home', href: '/nl/' },
+    { id: 'histoire', label: 'Ons verhaal', href: '/about/' },
+    { id: 'localisations', label: 'Wijken', href: '/quartiers/' },
+    {
+      id: 'projets',
+      label: 'Projecten',
+      href: '/nos-projets/',
+      children: [
+        { label: 'Alle projecten', href: '/nos-projets/' },
+        { label: 'Nieuwbouw', href: '/nl/nieuwbouw/' },
+        { label: 'Off-market', href: '/off-market/' },
+      ],
+    },
+    { id: 'contact', label: 'Contact', href: '/nl/contact/' },
+  ];
+
   function detectMenuLocale() {
     var path = window.location.pathname || '/';
     if (path.indexOf('/en') === 0) return 'en';
     if (path.indexOf('/it') === 0) return 'it';
+    if (path.indexOf('/nl') === 0) return 'nl';
     return 'fr';
   }
 
@@ -66,6 +84,7 @@
     var locale = detectMenuLocale();
     if (locale === 'en') return MENU_EN;
     if (locale === 'it') return MENU_IT;
+    if (locale === 'nl') return MENU_NL;
     return MENU_FR;
   }
 
@@ -73,6 +92,7 @@
     var locale = detectMenuLocale();
     if (locale === 'en') return { openMenu: 'Open menu ', show: 'Show ' };
     if (locale === 'it') return { openMenu: 'Apri menu ', show: 'Mostra ' };
+    if (locale === 'nl') return { openMenu: 'Menu openen ', show: 'Toon ' };
     return { openMenu: 'Ouvrir le menu ', show: 'Afficher ' };
   }
 
@@ -107,21 +127,27 @@
       if (locale === 'en') {
         return current === '/en' && !window.location.hash;
       }
+      if (locale === 'it') {
+        return current === '/it' && !window.location.hash;
+      }
+      if (locale === 'nl') {
+        return current === '/nl' && !window.location.hash;
+      }
       return current === '/' && !window.location.hash;
     }
 
     if (item.id === 'contact') {
+      if (locale === 'nl') return current === '/nl/contact';
+      if (locale === 'it') return current === '/it/contatto';
       return locale === 'en' ? current === '/en/contact' : current === '/contact';
     }
 
     if (item.id === 'histoire') {
-      return locale === 'en'
-        ? current === '/en'
-        : current === '/about' || current === '/fr/about';
+      return current === '/about' || current === '/fr/about';
     }
 
     if (item.id === 'localisations') {
-      return locale === 'en' ? current === '/en' : current === '/quartiers';
+      return current === '/quartiers';
     }
 
     if (item.id === 'projets') {
@@ -140,6 +166,15 @@
         return (
           current === '/it/progetti-su-piano' ||
           current === '/it/off-market' ||
+          current === '/nos-projets' ||
+          current === '/sur-plan' ||
+          current === '/sur-plan/villa-jaz' ||
+          current === '/off-market'
+        );
+      }
+      if (locale === 'nl') {
+        return (
+          current === '/nl/nieuwbouw' ||
           current === '/nos-projets' ||
           current === '/sur-plan' ||
           current === '/sur-plan/villa-jaz' ||
@@ -487,7 +522,13 @@
   function fixAccessLinks() {
     var locale = detectMenuLocale();
     var accessHref =
-      locale === 'en' ? '/en/contact/' : locale === 'it' ? '/it/contatto/' : '/contact/';
+      locale === 'en'
+        ? '/en/contact/'
+        : locale === 'it'
+          ? '/it/contatto/'
+          : locale === 'nl'
+            ? '/nl/contact/'
+            : '/contact/';
     var selectors = [
       '.om-header__access-btn',
       '.mav-hero__button--primary',

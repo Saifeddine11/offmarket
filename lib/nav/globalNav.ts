@@ -18,6 +18,7 @@ export const GLOBAL_FOOTER_STYLES = [
 export const GLOBAL_NAV_SCRIPTS = [
   "/assets/javascripts/om-no-preloader.js?v=1765312000",
   "/assets/javascripts/gsap.min.js?v=1765268700",
+  "/assets/javascripts/om-gsap-config.js?v=1767582000",
   "/assets/javascripts/om-nav-menu.js?v=1767581000",
   "/assets/javascripts/mavericks-chrome.js?v=1765406000",
   "/assets/javascripts/om-nav-scroll.js?v=1767562700",
@@ -122,6 +123,103 @@ export function stripEmbeddedFooter(html: string): string {
   return html.slice(0, start) + html.slice(closeAt + closeTag.length);
 }
 
+/** Removes the older static header that can leave empty menu/favourite links active. */
+export function stripLegacyStaticHeader(html: string): string {
+  const headerMatch = html.match(/<header[^>]*class="[^"]*\bjs-header\b[^"]*"/i);
+  if (!headerMatch || headerMatch.index === undefined) {
+    return html;
+  }
+
+  const start = headerMatch.index;
+  const closeTag = "</header>";
+  const closeAt = html.indexOf(closeTag, start);
+
+  if (closeAt < 0) {
+    return html;
+  }
+
+  return html.slice(0, start) + html.slice(closeAt + closeTag.length);
+}
+
+/** Removes legacy static callback/favourites modals superseded by React routes/forms. */
+export function stripLegacyStaticModals(html: string): string {
+  return html.replace(
+    /<div\s+class="modal modal--full[\s\S]*?<\/div>\s*(?=<div\s+class="modal modal--full|<div\s+class="turn-message|$)/gi,
+    "",
+  );
+}
+
+/** Removes legacy property modal shells superseded by the shared React modal. */
+export function stripLegacyStaticPropertyModals(html: string): string {
+  let nextHtml = html;
+
+  while (true) {
+    const match = nextHtml.match(
+      /<div[^>]*class="[^"]*\bom-property-modal\b[^"]*"[^>]*>/i,
+    );
+
+    if (!match || match.index === undefined) {
+      return nextHtml;
+    }
+
+    const start = match.index;
+    let depth = 0;
+    let index = start;
+
+    while (index < nextHtml.length) {
+      const nextOpen = nextHtml.indexOf("<div", index);
+      const nextClose = nextHtml.indexOf("</div>", index);
+
+      if (nextClose < 0) {
+        return nextHtml.slice(0, start);
+      }
+
+      if (nextOpen >= 0 && nextOpen < nextClose) {
+        depth += 1;
+        index = nextOpen + 4;
+        continue;
+      }
+
+      depth -= 1;
+      index = nextClose + 6;
+
+      if (depth === 0) {
+        nextHtml = nextHtml.slice(0, start) + nextHtml.slice(index);
+        break;
+      }
+    }
+  }
+}
+
+/** Rewrites stale or placeholder interactive targets in migrated static chunks. */
+export function fixStaticInteractiveTargets(html: string): string {
+  return html
+    .replace(
+      /<section class="section ui-dark-background"/,
+      '<section id="sur-plan-details" class="section ui-dark-background"',
+    )
+    .replace(
+      /(class="[^"]*\bi-intro__next\b[^"]*"[\s\S]*?)href=(["'])\2/g,
+      '$1href="#sur-plan-details"',
+    )
+    .replace(
+      /(class="[^"]*\bmore-block__button\b[^"]*"[\s\S]*?)href=(["'])\2/g,
+      '$1href="/quartiers/"',
+    )
+    .replace(
+      /<a((?=[^>]*\brole="button")(?=[^>]*(?:\bcarousel__thumb__item\b|\bjs-content-animation-(?:prev|next)\b))(?![^>]*\bhref=)[^>]*)>/g,
+      '<a$1 href="#sur-plan-details">',
+    )
+    .replace(/href="#callback-modal"/g, 'href="/contact/"')
+    .replace(/href="#safe"/g, 'href="/about/#acteurs-verifies"')
+    .replace(/href="\/location\/?"/g, 'href="/quartiers/"')
+    .replace(/href="\/fr\/contact\/?"/g, 'href="/contact/"')
+    .replace(/href="\/fr\/sur-plan\/?"/g, 'href="/sur-plan/"')
+    .replace(/href="tel:\+212000000000"/g, 'href="/contact/"')
+    .replace(/href=(["'])\1/g, 'href="/contact/"')
+    .replace(/href=(["'])#\1/g, 'href="/contact/"');
+}
+
 export function stripEmbeddedFooterFromSegments(
   segments: BodySegment[],
 ): BodySegment[] {
@@ -164,8 +262,37 @@ export function stripGlobalNavScriptsFromSegments(
   });
 }
 
+export function stripStaleInlineFooterScriptsFromSegments(
+  segments: BodySegment[],
+): BodySegment[] {
+  return segments.filter((segment) => {
+    if (segment.kind !== "script" || !segment.inline) {
+      return true;
+    }
+
+    return !segment.inline.includes("data-mv-year");
+  });
+}
+
 export function prepareStaticPageSegments(segments: BodySegment[]): BodySegment[] {
-  return stripGlobalNavScriptsFromSegments(
-    stripEmbeddedFooterFromSegments(stripEmbeddedChromeFromSegments(segments)),
+  return stripStaleInlineFooterScriptsFromSegments(
+    stripGlobalNavScriptsFromSegments(
+      stripEmbeddedFooterFromSegments(
+        stripEmbeddedChromeFromSegments(segments).map((segment) => {
+          if (segment.kind !== "html") {
+            return segment;
+          }
+
+          return {
+            ...segment,
+            html: fixStaticInteractiveTargets(
+              stripLegacyStaticPropertyModals(
+                stripLegacyStaticModals(stripLegacyStaticHeader(segment.html)),
+              ),
+            ),
+          };
+        }),
+      ),
+    ),
   );
 }

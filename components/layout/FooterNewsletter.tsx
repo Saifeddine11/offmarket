@@ -21,7 +21,19 @@ export function FooterNewsletter({
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const email = String(formData.get("email") ?? "").trim();
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      form.reportValidity();
+      return;
+    }
+
     setSubmitted(true);
+    window.location.href = `mailto:contact@offmarket.ma?subject=${encodeURIComponent(
+      "Inscription newsletter OFF MARKET",
+    )}&body=${encodeURIComponent(`Bonjour,\n\nJe souhaite recevoir les opportunités privées OFF MARKET.\n\nEmail : ${email}`)}`;
   }
 
   return (

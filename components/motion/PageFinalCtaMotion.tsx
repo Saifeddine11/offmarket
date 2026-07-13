@@ -102,7 +102,7 @@ function buildCtaButtons(secondaryCta?: PageFinalCtaSecondaryButton) {
 
   return [
     {
-      href: "/off-market/",
+      href: "/contact/",
       className: "om-button om-button--primary",
       icon: BUTTON_ICON,
       label: "Demander un accès privé",

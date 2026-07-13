@@ -112,7 +112,7 @@ export function PageFinalCtaSection({
           </p>
 
           <div className="om-final-cta__actions om-final-cta__reveal">
-            <Link href="/off-market/" className="om-button om-button--primary">
+            <Link href="/contact/" className="om-button om-button--primary">
               {BUTTON_ICON}
               <span>Demander un accès privé</span>
             </Link>

@@ -3,13 +3,17 @@ import Link from "next/link";
 type CallbackModalProps = {
   primaryHref?: string;
   secondaryHref?: string;
+  primaryLabel?: string;
+  secondaryLabel?: string;
   primaryClassName?: string;
   secondaryClassName?: string;
 };
 
 export function CallbackModal({
   primaryHref = "mailto:contact@offmarket.ma",
-  secondaryHref = "tel:+212000000000",
+  secondaryHref = "/contact/",
+  primaryLabel = "contact@offmarket.ma",
+  secondaryLabel = "Formulaire de contact",
   primaryClassName = "om-button om-button--primary",
   secondaryClassName = "om-button om-button--secondary",
 }: CallbackModalProps) {
@@ -50,12 +54,12 @@ export function CallbackModal({
                       </p>
                       <div className="mt-2">
                         <Link href={primaryHref} className={primaryClassName}>
-                          contact@offmarket.ma
+                          {primaryLabel}
                         </Link>
                       </div>
                       <div className="mt-1">
                         <Link href={secondaryHref} className={secondaryClassName}>
-                          +212 (0) 000 000 000
+                          {secondaryLabel}
                         </Link>
                       </div>
                     </div>

@@ -35,7 +35,7 @@
       meta: '7 villas restantes · Marrakech · Projet sur plan',
       image: '/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp',
       alt: 'Villa Jaz — villas sur plan à Marrakech',
-      href: '#callback-modal',
+      href: '/contact/?intent=villa-jaz',
       overlayLine: 'Sur plan',
       overlayTitle: 'Villa Jaz',
       actionLabel: 'Voir la fiche',
@@ -73,7 +73,7 @@
       alt: 'Restaurant off-market au cœur de Jemaa el-Fna à Marrakech',
       overlayLine: 'Restaurant',
       overlayTitle: 'Restaurant au cœur de Jemaa el-Fna',
-      disabled: true,
+      directHref: '/off-market/?intent=restaurant-jemaa-el-fna',
       actionLabel: 'Voir les détails',
       priceCase: 'normal',
       extraArticleClass: 'om-project-card om-project-card--restaurant',
@@ -96,7 +96,7 @@
       meta: '7 villas remaining · Marrakech · Off-plan project',
       image: '/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp',
       alt: 'Villa Jaz — off-plan villas in Marrakech',
-      href: '#callback-modal',
+      href: '/en/contact/?intent=villa-jaz',
       overlayLine: 'Off-plan',
       overlayTitle: 'Villa Jaz',
       actionLabel: 'View property',
@@ -134,7 +134,7 @@
       alt: 'Off-market restaurant in the heart of Jemaa el-Fna, Marrakech',
       overlayLine: 'Restaurant',
       overlayTitle: 'Restaurant in the heart of Jemaa el-Fna',
-      disabled: true,
+      directHref: '/en/off-market/?intent=restaurant-jemaa-el-fna',
       actionLabel: 'View details',
       priceCase: 'normal',
       extraArticleClass: 'om-project-card om-project-card--restaurant',
@@ -157,7 +157,7 @@
       meta: '7 ville rimanenti · Marrakech · Progetto su piano',
       image: '/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp',
       alt: 'Villa Jaz — ville su piano a Marrakech',
-      href: '#callback-modal',
+      href: '/it/contatto/?intent=villa-jaz',
       overlayLine: 'Su piano',
       overlayTitle: 'Villa Jaz',
       actionLabel: 'Vedi scheda',
@@ -195,7 +195,7 @@
       alt: 'Ristorante off-market nel cuore di Jemaa el-Fna, Marrakech',
       overlayLine: 'Ristorante',
       overlayTitle: 'Ristorante nel cuore di Jemaa el-Fna',
-      disabled: true,
+      directHref: '/it/off-market/?intent=restaurant-jemaa-el-fna',
       actionLabel: 'Vedi dettagli',
       priceCase: 'normal',
       extraArticleClass: 'om-project-card om-project-card--restaurant',
@@ -257,12 +257,14 @@
         '</svg>' +
       '</span>';
 
-    if (card.disabled) {
+    if (card.disabled) return '';
+
+    if (card.directHref) {
       return (
-        '<button type="button" class="om-reveal-card__action om-reveal-card__action--disabled" aria-disabled="true" disabled>' +
+        '<a class="om-reveal-card__action" href="' + escapeHtml(card.directHref) + '">' +
           actionIcon +
           '<span class="om-reveal-card__action-title">' + escapeHtml(actionLabel) + '</span>' +
-        '</button>'
+        '</a>'
       );
     }
 
@@ -280,12 +282,13 @@
     var overlayTitle = card.overlayTitle || card.title;
     var layoutClass = card.layoutClass ? ' ' + card.layoutClass : '';
     var extraArticleClass = card.extraArticleClass ? ' ' + card.extraArticleClass : '';
-    var modalCardAttrs = card.disabled
-      ? ''
-      : ' data-property-modal-card data-property-id="' + escapeHtml(card.id) + '"';
-    var arrowTriggerAttrs = card.disabled
-      ? ''
-      : ' data-property-modal-trigger data-property-id="' + escapeHtml(card.id) + '"';
+    var opensModal = !card.disabled && !card.directHref;
+    var modalCardAttrs = opensModal
+      ? ' data-property-modal-card data-property-id="' + escapeHtml(card.id) + '"'
+      : '';
+    var arrowTriggerAttrs = opensModal
+      ? ' data-property-modal-trigger data-property-id="' + escapeHtml(card.id) + '"'
+      : '';
 
     return (
       '<article class="om-featured-projects__card om-reveal-card' + layoutClass + extraArticleClass + '"' + modalCardAttrs + '>' +
@@ -370,7 +373,11 @@
     var desktopMq = window.matchMedia('(min-width: 901px)');
 
     cards.forEach(function (card) {
-      card.setAttribute('tabindex', '0');
+      if (card.hasAttribute('data-property-modal-card')) {
+        card.setAttribute('tabindex', '0');
+      } else {
+        card.removeAttribute('tabindex');
+      }
 
       card.addEventListener('mouseenter', function () {
         if (desktopMq.matches) {
@@ -391,6 +398,20 @@
       card.addEventListener('focusout', function (event) {
         if (!card.contains(event.relatedTarget)) {
           card.classList.remove('is-active');
+        }
+      });
+
+      card.addEventListener('keydown', function (event) {
+        if (!card.hasAttribute('data-property-modal-card')) return;
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        if (event.target.closest('a, button')) return;
+        event.preventDefault();
+        var propertyId = card.getAttribute('data-property-id');
+        if (propertyId && window.omPropertyModal) {
+          window.omPropertyModal.open(propertyId);
+        } else if (propertyId) {
+          var trigger = card.querySelector('[data-property-modal-trigger]');
+          if (trigger) trigger.click();
         }
       });
     });

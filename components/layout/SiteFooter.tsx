@@ -133,16 +133,25 @@ export function SiteFooter({
               OFF MARKET. {copy.rights}
             </p>
             <nav className="om-footer__legal" aria-label="Liens légaux">
-              <Link
-                href={copy.privacyHref}
-                aria-current={
-                  currentPage === "privacy-policy" ? "page" : undefined
-                }
-              >
-                {copy.privacy}
-              </Link>
-              <Link href={copy.termsHref}>{copy.terms}</Link>
-              <Link href={copy.legalHref}>{copy.legal}</Link>
+              {[
+                {
+                  href: copy.privacyHref,
+                  label: copy.privacy,
+                  current: currentPage === "privacy-policy",
+                },
+                { href: copy.termsHref, label: copy.terms, current: false },
+                { href: copy.legalHref, label: copy.legal, current: false },
+              ]
+                .filter((link) => link.href && link.href !== "#")
+                .map((link) => (
+                  <Link
+                    key={link.href + link.label}
+                    href={link.href}
+                    aria-current={link.current ? "page" : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
             </nav>
           </div>
         </div>

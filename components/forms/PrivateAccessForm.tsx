@@ -57,7 +57,8 @@ export function PrivateAccessForm({
   return (
     <form
       className={formClassName}
-      action="#"
+      action="mailto:contact@offmarket.ma"
+      encType="text/plain"
       method="post"
       data-private-access-form
       data-form-intent={intentMode === "from-url" ? "from-url" : intent}

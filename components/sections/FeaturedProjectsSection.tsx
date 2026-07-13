@@ -171,7 +171,7 @@ function PropertyModalShell() {
             className="om-property-modal__arrow om-property-modal__arrow--prev"
             data-modal-prev
             aria-label="Slide précédente"
-            disabled
+            aria-disabled="true"
           >
             ←
           </button>

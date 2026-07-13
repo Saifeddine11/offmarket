@@ -179,7 +179,9 @@ export function PropertyModalSlides({
           <span>Galerie</span>
           <strong data-modal-exterior-count>5 photos</strong>
           <p>Extérieur</p>
-          <button type="button">Voir</button>
+          <button type="button" data-modal-gallery-focus="exterior">
+            Voir
+          </button>
         </div>
       </article>
 
@@ -197,7 +199,9 @@ export function PropertyModalSlides({
           <span>Galerie</span>
           <strong data-modal-interior-count>5 photos</strong>
           <p>Intérieur</p>
-          <button type="button">Voir</button>
+          <button type="button" data-modal-gallery-focus="interior">
+            Voir
+          </button>
         </div>
       </article>
 

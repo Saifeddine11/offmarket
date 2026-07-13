@@ -558,6 +558,7 @@
       subtitle: 'Médina · architecture · emplacement rare',
       image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
       alt: 'Riad de caractère à la Médina',
+      formHref: '/off-market/?intent=riad-medina',
       facts: [
         { label: 'Type', value: 'Riad' },
         { label: 'Secteur', value: 'Médina' },
@@ -622,6 +623,7 @@
       subtitle: 'Pré-lancement · investissement · disponibilité limitée',
       image: '/assets/mavericks/gallery/mavericks-collection-estates.jpg',
       alt: 'Opportunité sur plan à Marrakech',
+      formHref: '/contact/?intent=opportunite-sur-plan',
       facts: [
         { label: 'Statut', value: 'Pré-lancement' },
         { label: 'Accès', value: 'Prioritaire' },
@@ -734,6 +736,7 @@
     var layoutPlaceholder = modal.querySelector('[data-modal-layout-placeholder]');
     var prevButton = modal.querySelector('[data-modal-prev]');
     var nextButton = modal.querySelector('[data-modal-next]');
+    var galleryFocusButtons = modal.querySelectorAll('[data-modal-gallery-focus]');
 
     var activeProperty = null;
     var activeSlide = 'general';
@@ -750,6 +753,7 @@
     var modalSlideAnimTimer = null;
     var modalLeavingSlide = null;
     var MODAL_WHEEL_THRESHOLD = 70;
+    var lastFocusedElement = null;
 
     function renderFacts(items, options) {
       if (!factsEl) return;
@@ -1231,7 +1235,7 @@
     }
 
     function updateModalActions(property) {
-      var href = property.formHref || '#callback-modal';
+      var href = property.formHref || '/contact/';
       var outlineLabel = property.ctaOutline || 'Rappel';
       var primaryLabel = property.ctaPrimary || 'Recevoir le dossier';
 
@@ -1347,9 +1351,12 @@
 
     function updateModalArrowState() {
       if (!prevButton || !nextButton) return;
-      prevButton.disabled = modalActiveSlideIndex === 0;
-      nextButton.disabled =
-        modalActiveSlideIndex === MODAL_SLIDE_ORDER.length - 1;
+      var prevDisabled = modalActiveSlideIndex === 0;
+      var nextDisabled = modalActiveSlideIndex === MODAL_SLIDE_ORDER.length - 1;
+      prevButton.setAttribute('aria-disabled', prevDisabled ? 'true' : 'false');
+      nextButton.setAttribute('aria-disabled', nextDisabled ? 'true' : 'false');
+      prevButton.classList.toggle('is-disabled', prevDisabled);
+      nextButton.classList.toggle('is-disabled', nextDisabled);
     }
 
     function clampModalIndex(index) {
@@ -1582,6 +1589,10 @@
       var property = propertyModalData[propertyId];
       if (!property) return;
 
+      lastFocusedElement =
+        document.activeElement && document.activeElement !== document.body
+          ? document.activeElement
+          : null;
       renderProperty(property);
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
@@ -1609,6 +1620,10 @@
       modalWheelLocked = false;
       if (track) track.style.transform = '';
       updateModalArrowState();
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+      }
+      lastFocusedElement = null;
     }
 
     function bindTriggers() {
@@ -1711,6 +1726,22 @@
       });
     });
 
+    galleryFocusButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var target =
+          button.getAttribute('data-modal-gallery-focus') === 'interior'
+            ? interiorGalleryEl
+            : exteriorGalleryEl;
+        var firstImage = target && target.querySelector('img');
+        if (!firstImage) return;
+        firstImage.setAttribute('tabindex', '-1');
+        firstImage.focus({ preventScroll: true });
+        if (typeof firstImage.scrollIntoView === 'function') {
+          firstImage.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      });
+    });
+
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && modal.classList.contains('is-open')) {
         closeModal();
@@ -1726,12 +1757,8 @@
         return;
       }
 
-      var formCta = event.target.closest(
-        '.om-property-modal__actions a[href="#callback-modal"]'
-      );
-      if (formCta) {
-        closeModal();
-      }
+      var formCta = event.target.closest('.om-property-modal__actions a[href^="/contact/"], .om-property-modal__actions a[href^="/off-market/"]');
+      if (formCta) closeModal();
     });
 
     window.addEventListener('resize', function () {

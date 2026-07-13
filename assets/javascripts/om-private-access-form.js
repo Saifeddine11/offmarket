@@ -18,7 +18,7 @@
 
   var COPY_FR = {
     success:
-      'Votre demande a bien été préparée. Nous vous répondrons avec une première lecture privée adaptée à votre projet.',
+      'Votre demande est prête dans votre messagerie. Envoyez l’email pour transmettre votre projet à OFF MARKET.',
     error:
       'Merci de vérifier les champs obligatoires avant d’envoyer votre demande.',
     mailSubject: 'Demande accès OFF MARKET',
@@ -26,14 +26,14 @@
 
   var COPY_EN = {
     success:
-      'Your request has been prepared. We will respond with an initial private review tailored to your project.',
+      'Your request is ready in your email app. Send the email to share your project with OFF MARKET.',
     error: 'Please check the required fields before sending your request.',
     mailSubject: 'OFF MARKET access request',
   };
 
   var COPY_IT = {
     success:
-      'La tua richiesta è stata preparata. Ti risponderemo con una prima lettura privata in linea con il tuo progetto.',
+      'La tua richiesta è pronta nella tua email. Invia l’email per condividere il tuo progetto con OFF MARKET.',
     error:
       'Verifica i campi obbligatori prima di inviare la richiesta.',
     mailSubject: 'Richiesta accesso OFF MARKET',
@@ -309,9 +309,6 @@
       var subject = encodeURIComponent(copy.mailSubject);
 
       setStatus(statusEl, copy.success, false);
-      form.reset();
-      populateSelects(form);
-
       window.setTimeout(function () {
         window.location.href =
           'mailto:contact@offmarket.ma?subject=' + subject + '&body=' + body;

@@ -12,7 +12,7 @@ const SIMULATOR_NOTE_TEXT =
   "Estimation indicative. OFF MARKET affine cette simulation avec l\u2019adresse exacte, les charges réelles et les biens disponibles.";
 
 export function HomeSimulatorCalculator({
-  primaryCtaHref = "#callback-modal",
+  primaryCtaHref = "/contact/",
   secondaryCtaHref = "#featured-projects",
   motion = false,
 }: HomeSimulatorCalculatorProps) {

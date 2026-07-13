@@ -1,4 +1,4 @@
-import { PageFinalCtaMotion } from "@/components/motion/PageFinalCtaMotion";
+import { PageFinalCtaSection } from "@/components/sections/PageFinalCtaSection";
 import { HomeSimulatorSection } from "@/components/sections/HomeSimulatorSection";
 
 const SIMULATOR_PAGE_TEXT = (
@@ -20,11 +20,11 @@ export function SimulatorSection() {
         title="Simuler avant d'investir"
         text={SIMULATOR_PAGE_TEXT}
         motion
-        primaryCtaHref="#callback-modal"
+        primaryCtaHref="/contact/"
         secondaryCtaHref="/nos-projets/"
       />
 
-      <PageFinalCtaMotion />
+      <PageFinalCtaSection />
     </main>
   );
 }

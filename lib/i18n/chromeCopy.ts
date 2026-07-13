@@ -25,8 +25,11 @@ const FR: ChromeCopy = {
   menuTagline: "Immobilier privé à Marrakech",
   placeholderNav: [
     { label: "Accueil", href: "/" },
+    { label: "Notre Histoire", href: "/about/" },
+    { label: "Quartiers", href: "/quartiers/" },
+    { label: "Nos Projets", href: "/nos-projets/" },
     { label: "Sur plan", href: "/sur-plan/" },
-    { label: "Simulateur", href: "/simulateur/" },
+    { label: "Off-market", href: "/off-market/" },
     { label: "Contact", href: "/contact/" },
   ],
   openMenuPrefix: "Ouvrir le menu ",
@@ -43,8 +46,11 @@ const EN: ChromeCopy = {
   menuTagline: "Private real estate in Marrakech",
   placeholderNav: [
     { label: "Home", href: "/en/" },
+    { label: "Our story", href: "/about/" },
+    { label: "Neighbourhoods", href: "/quartiers/" },
+    { label: "Projects", href: "/nos-projets/" },
     { label: "Off-plan", href: "/en/off-plan/" },
-    { label: "Simulator", href: "/simulateur/" },
+    { label: "Off-market", href: "/en/off-market/" },
     { label: "Contact", href: "/en/contact/" },
   ],
   openMenuPrefix: "Open menu ",
@@ -61,19 +67,42 @@ const IT: ChromeCopy = {
   menuTagline: "Immobiliare privato a Marrakech",
   placeholderNav: [
     { label: "Home", href: "/it/" },
+    { label: "La nostra storia", href: "/about/" },
+    { label: "Quartieri", href: "/quartiers/" },
+    { label: "Progetti", href: "/nos-projets/" },
     { label: "Progetti su piano", href: "/it/progetti-su-piano/" },
-    { label: "Simulatore", href: "/simulateur/" },
+    { label: "Off-market", href: "/it/off-market/" },
     { label: "Contatto", href: "/it/contatto/" },
   ],
   openMenuPrefix: "Apri menu ",
   showPrefix: "Mostra ",
 };
 
+const NL: ChromeCopy = {
+  homeHref: "/nl/",
+  accessHref: "/nl/contact/",
+  accessLabel: "Toegang aanvragen",
+  menuAria: "Menu",
+  mainNavAria: "Hoofdnavigatie",
+  chooseLanguageAria: "Taal kiezen",
+  menuTagline: "Privé vastgoed in Marrakech",
+  placeholderNav: [
+    { label: "Home", href: "/nl/" },
+    { label: "Ons verhaal", href: "/about/" },
+    { label: "Wijken", href: "/quartiers/" },
+    { label: "Projecten", href: "/nos-projets/" },
+    { label: "Nieuwbouw", href: "/nl/nieuwbouw/" },
+    { label: "Contact", href: "/nl/contact/" },
+  ],
+  openMenuPrefix: "Menu openen ",
+  showPrefix: "Toon ",
+};
+
 const COPY: Record<SiteLocale, ChromeCopy> = {
   fr: FR,
   en: EN,
   it: IT,
-  nl: FR,
+  nl: NL,
 };
 
 export function getChromeCopy(locale?: SiteLocale): ChromeCopy {
