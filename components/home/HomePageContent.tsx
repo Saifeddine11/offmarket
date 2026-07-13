@@ -76,13 +76,14 @@ export function HomePageContent({
   const bodySegments = includeFaqSection
     ? insertFaqBeforeBlog(orderedSegments, buildHomeFaqHtml())
     : orderedSegments;
+  const shellBodySegments = withoutExternalScriptSegments(bodySegments);
   const needsBlogBoot = hasBlogHubSection(content);
 
   return (
     <>
       <HtmlInit preloaderDisabled removeNotReady />
       <HeroResourceHints />
-      <PageContentShell content={optimizedContent} bodySegments={bodySegments} />
+      <PageContentShell content={optimizedContent} bodySegments={shellBodySegments} />
       <LeadFormStaticBridge />
       {includeFaqSection ? <HomeFaqBoot sectionId={HOME_FAQ_SECTION_ID} /> : null}
       <DeferredHomeLegacyBoot />
@@ -91,6 +92,12 @@ export function HomePageContent({
       {needsBlogBoot ? <DeferredBlogBoot /> : null}
     </>
   );
+}
+
+function withoutExternalScriptSegments(
+  segments: PageContent["bodySegments"],
+): BodySegment[] {
+  return segments.filter((segment) => segment.kind !== "script" || !segment.src);
 }
 
 function insertFaqBeforeBlog(

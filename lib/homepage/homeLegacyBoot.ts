@@ -1,13 +1,9 @@
-import { getPageContent, type PageId } from "@/lib/content/pages";
 import {
-  deprioritizeLegacyBundles,
-  prioritizeHomepageStylesheets,
-  reorderHomepageScripts,
-  stripDuplicateHeadInit,
-} from "@/lib/homepage/optimizeHomepageLoad";
-import { withoutGlobalNavScripts } from "@/lib/nav/globalNav";
-import type { HomepageLocale } from "@/lib/homepage/homepagePages";
-import { getHomepagePageId } from "@/lib/homepage/homepagePages";
+  getHomeLegacyScriptUrls,
+  HOMEPAGE_PAGE_ID_BY_LOCALE,
+  type HomepageLocale,
+  type HomepagePageId,
+} from "@/lib/homepage/homeLegacyAssets";
 
 const HOME_SECTION_SELECTORS = [
   ".mav-hero",
@@ -22,27 +18,6 @@ const HOME_SECTION_SELECTORS = [
   ".om-final-cta",
   ".om-footer",
 ] as const;
-
-/** Ordered homepage legacy script URLs (matches HomePageContent optimization). */
-export function getHomeLegacyScriptUrls(pageId: PageId = "home-root"): string[] {
-  const content = stripDuplicateHeadInit({
-    ...getPageContent(pageId),
-    stylesheets: prioritizeHomepageStylesheets(getPageContent(pageId).stylesheets),
-  });
-
-  const segments = deprioritizeLegacyBundles(
-    reorderHomepageScripts(content.bodySegments),
-  );
-
-  return withoutGlobalNavScripts(
-    segments
-      .filter(
-        (segment): segment is Extract<typeof segment, { kind: "script" }> =>
-          segment.kind === "script" && Boolean(segment.src),
-      )
-      .map((segment) => segment.src!),
-  );
-}
 
 export function applyHomeDocumentState() {
   const html = document.documentElement;
@@ -138,7 +113,7 @@ function loadScript(src: string): Promise<void> {
   });
 }
 
-export async function bootHomeLegacyScripts(pageId: PageId = "home-root") {
+export async function bootHomeLegacyScripts(pageId: HomepagePageId = "home-root") {
   window.__staticHtmlScriptQueue = Promise.resolve();
 
   for (const src of getHomeLegacyScriptUrls(pageId)) {
@@ -163,9 +138,9 @@ export function resolveHomepageLocale(pathname: string | null): HomepageLocale |
   return null;
 }
 
-export function resolveHomepagePageId(pathname: string | null): PageId | null {
+export function resolveHomepagePageId(pathname: string | null): HomepagePageId | null {
   const locale = resolveHomepageLocale(pathname);
-  return locale ? getHomepagePageId(locale) : null;
+  return locale ? HOMEPAGE_PAGE_ID_BY_LOCALE[locale] : null;
 }
 
 export function dispatchHomeBootEvents() {

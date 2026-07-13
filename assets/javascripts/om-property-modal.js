@@ -74,7 +74,8 @@
       if (event.target.closest('[data-property-modal-trigger]')) return;
       var mediaHit = event.target.closest('.om-reveal-card__media');
       var arrowHit = event.target.closest('.om-reveal-card__image-arrow');
-      if (!mediaHit && !arrowHit) return;
+      var infoHit = event.target.closest('.om-reveal-card__info');
+      if (!mediaHit && !arrowHit && !infoHit) return;
       event.preventDefault();
       var propertyId = card.getAttribute('data-property-id');
       if (propertyId) requestOpenPropertyModal(propertyId);
@@ -1632,6 +1633,11 @@
         if (trigger.dataset.propertyModalBound === 'true') return;
         trigger.dataset.propertyModalBound = 'true';
         trigger.addEventListener('click', function (event) {
+          event.preventDefault();
+          openModal(trigger.dataset.propertyId);
+        });
+        trigger.addEventListener('keydown', function (event) {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
           event.preventDefault();
           openModal(trigger.dataset.propertyId);
         });

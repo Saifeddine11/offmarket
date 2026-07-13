@@ -1,0 +1,57 @@
+export type HomepageLocale = "root" | "fr" | "en" | "it" | "nl";
+export type HomepagePageId =
+  | "home-root"
+  | "home-fr"
+  | "home-en"
+  | "home-it"
+  | "home-nl";
+
+const HOME_LEGACY_SCRIPT_URLS = [
+  "/assets/javascripts/browser-message/browser-message.js?v=1765268659",
+  "/assets/javascripts/mav-hero-blur-text.js?v=1765408100",
+  "/assets/javascripts/mav-lazy-videos.js?v=1765308800",
+  "/assets/javascripts/shared.js?v=1765402000",
+  "/assets/javascripts/mav-editorial-text-reveal.js?v=1765301200",
+  "/assets/javascripts/om-home-private-access-reveal.js?v=1765356300",
+  "/assets/javascripts/scrolltrigger.min.js?v=1765268700",
+  "/assets/javascripts/om-cinematic-video.js?v=1765341000",
+  "/assets/javascripts/om-text-reveal.js?v=1765317800",
+  "/assets/javascripts/om-simulator.js?v=1765405800",
+  "/assets/javascripts/om-featured-projects.js?v=1765404001",
+  "/assets/javascripts/om-private-access-popup.js?v=1765340000",
+  "/assets/javascripts/om-territories.js?v=1765303200",
+  "/assets/javascripts/mav-who-reveal.js?v=1765310300",
+  "/assets/javascripts/om-testimonials.js?v=1765295700",
+  "/assets/javascripts/om-private-access-form.js?v=1765352000",
+  "/assets/javascripts/om-blog-data.js?v=1765335000",
+  "/assets/javascripts/om-blog.js?v=1765404201",
+  "/assets/javascripts/om-mobile-reveal.js?v=1765307200",
+  "/assets/javascripts/om-property-modal.js?v=1765404000",
+  "/assets/javascripts/om-language-switcher.js?v=1765350200",
+  "/assets/javascripts/landing.js?v=1765268659",
+] as const;
+
+export const HOMEPAGE_SCRIPT_URLS_BY_PAGE_ID: Record<
+  HomepagePageId,
+  readonly string[]
+> = {
+  "home-root": HOME_LEGACY_SCRIPT_URLS,
+  "home-fr": HOME_LEGACY_SCRIPT_URLS,
+  "home-en": HOME_LEGACY_SCRIPT_URLS,
+  "home-it": HOME_LEGACY_SCRIPT_URLS,
+  "home-nl": HOME_LEGACY_SCRIPT_URLS,
+};
+
+export const HOMEPAGE_PAGE_ID_BY_LOCALE: Record<HomepageLocale, HomepagePageId> = {
+  root: "home-root",
+  fr: "home-fr",
+  en: "home-en",
+  it: "home-it",
+  nl: "home-nl",
+};
+
+export function getHomeLegacyScriptUrls(
+  pageId: HomepagePageId = "home-root",
+): string[] {
+  return [...HOMEPAGE_SCRIPT_URLS_BY_PAGE_ID[pageId]];
+}
