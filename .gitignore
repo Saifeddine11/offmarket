@@ -1,10 +1,7 @@
 node_modules/
 .next/
 .next-prod-qa/
-out/
 tsconfig.tsbuildinfo
 .DS_Store
 *.log
 .env*.local
-offmarket-public_html.zip
-.ftp-deploy-sync-state.json
