@@ -9,10 +9,34 @@
     var path = window.location.pathname || '/';
     if (path.indexOf('/en') === 0) return 'en';
     if (path.indexOf('/it') === 0) return 'it';
+    if (path.indexOf('/nl') === 0) return 'nl';
     return 'fr';
   }
 
+  var projectCardCopyCache = null;
+
+  function readProjectCardCopy() {
+    if (projectCardCopyCache) return projectCardCopyCache;
+    var source = document.querySelector('[data-om-project-card-copy]');
+    if (!source) return null;
+
+    try {
+      projectCardCopyCache = JSON.parse(
+        decodeURIComponent(source.getAttribute('data-om-project-card-copy') || '')
+      );
+    } catch (error) {
+      projectCardCopyCache = null;
+    }
+
+    return projectCardCopyCache;
+  }
+
   function getUiCopy() {
+    var localizedCopy = readProjectCardCopy();
+    if (localizedCopy && localizedCopy.ui) {
+      return localizedCopy.ui;
+    }
+
     if (detectLocale() === 'en') {
       return { selectionPrefix: 'Selection:', defaultAction: 'View property' };
     }
@@ -206,6 +230,11 @@
   ];
 
   function getPropertyCards() {
+    var localizedCopy = readProjectCardCopy();
+    if (localizedCopy && localizedCopy.cards && localizedCopy.cards.length) {
+      return localizedCopy.cards;
+    }
+
     var locale = detectLocale();
     if (locale === 'en') return propertyCardsEn;
     if (locale === 'it') return propertyCardsIt;

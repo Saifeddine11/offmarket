@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
   twitterDescription:
     "Une sélection de villas, appartements et opportunités confidentielles à Marrakech, étudiées avant présentation.",
   canonicalPath: "/nos-projets/",
-  ogImage: "https://offmarket.ma/assets/mavericks/gallery/mavericks-collection-estates.jpg",
+  ogImage: "https://offmarketofficial.com/assets/mavericks/gallery/mavericks-collection-estates.jpg",
 });
 
 export const viewport = buildPageViewport("#565449");

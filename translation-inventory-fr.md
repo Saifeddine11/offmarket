@@ -397,7 +397,7 @@ Confidentialité
 - "Simulateur" Repeated occurrences: 2. References: index.html:984 (visible; .om-footer__links)
 - "Contact" Repeated occurrences: 3. References: index.html:985 (visible; .om-footer__links); index.html:989 (visible; .om-footer__label)
 - "Marrakech, Maroc" References: index.html:991 (visible; .om-footer__links)
-- "contact@offmarket.ma" Repeated occurrences: 2. References: index.html:992 (visible; .om-footer__links)
+- "contact@offmarketofficial.com" Repeated occurrences: 2. References: index.html:992 (visible; .om-footer__links)
 - "+212 (0) 000 000 000" Repeated occurrences: 2. References: index.html:993 (visible; .om-footer__links); index.html:993 (visible; .om-footer__phone)
 - "© OFF MARKET. Tous droits réservés." References: index.html:1003 (visible; .om-footer__bar)
 - "Mentions légales" References: index.html:1004 (visible; .om-footer__bar)
@@ -1153,7 +1153,7 @@ Confidentialité
 - "Simulateur" Repeated occurrences: 2. References: fr/index.html:984 (visible; .om-footer__links)
 - "Contact" Repeated occurrences: 3. References: fr/index.html:985 (visible; .om-footer__links); fr/index.html:989 (visible; .om-footer__label)
 - "Marrakech, Maroc" References: fr/index.html:991 (visible; .om-footer__links)
-- "contact@offmarket.ma" Repeated occurrences: 2. References: fr/index.html:992 (visible; .om-footer__links)
+- "contact@offmarketofficial.com" Repeated occurrences: 2. References: fr/index.html:992 (visible; .om-footer__links)
 - "+212 (0) 000 000 000" Repeated occurrences: 2. References: fr/index.html:993 (visible; .om-footer__links); fr/index.html:993 (visible; .om-footer__phone)
 - "© OFF MARKET. Tous droits réservés." References: fr/index.html:1003 (visible; .om-footer__bar)
 - "Mentions légales" References: fr/index.html:1004 (visible; .om-footer__bar)
@@ -1809,7 +1809,7 @@ to mail
 - "Simulateur" Repeated occurrences: 2. References: sur-plan/index.html:3517 (visible; .om-footer__links)
 - "Contact" Repeated occurrences: 3. References: sur-plan/index.html:3518 (visible; .om-footer__links); sur-plan/index.html:3522 (visible; .om-footer__label)
 - "Marrakech, Maroc" References: sur-plan/index.html:3524 (visible; .om-footer__links)
-- "contact@offmarket.ma" Repeated occurrences: 2. References: sur-plan/index.html:3525 (visible; .om-footer__links)
+- "contact@offmarketofficial.com" Repeated occurrences: 2. References: sur-plan/index.html:3525 (visible; .om-footer__links)
 - "+212 (0) 000 000 000" Repeated occurrences: 2. References: sur-plan/index.html:3526 (visible; .om-footer__links); sur-plan/index.html:3526 (visible; .om-footer__phone)
 - "© OFF MARKET. Tous droits réservés." References: sur-plan/index.html:3536 (visible; .om-footer__bar)
 - "Mentions légales" References: sur-plan/index.html:3537 (visible; .om-footer__bar)
@@ -2160,7 +2160,7 @@ to mail
 - "Simulateur" Repeated occurrences: 2. References: fr/sur-plan/index.html:3517 (visible; .om-footer__links)
 - "Contact" Repeated occurrences: 3. References: fr/sur-plan/index.html:3518 (visible; .om-footer__links); fr/sur-plan/index.html:3522 (visible; .om-footer__label)
 - "Marrakech, Maroc" References: fr/sur-plan/index.html:3524 (visible; .om-footer__links)
-- "contact@offmarket.ma" Repeated occurrences: 2. References: fr/sur-plan/index.html:3525 (visible; .om-footer__links)
+- "contact@offmarketofficial.com" Repeated occurrences: 2. References: fr/sur-plan/index.html:3525 (visible; .om-footer__links)
 - "+212 (0) 000 000 000" Repeated occurrences: 2. References: fr/sur-plan/index.html:3526 (visible; .om-footer__links); fr/sur-plan/index.html:3526 (visible; .om-footer__phone)
 - "© OFF MARKET. Tous droits réservés." References: fr/sur-plan/index.html:3536 (visible; .om-footer__bar)
 - "Mentions légales" References: fr/sur-plan/index.html:3537 (visible; .om-footer__bar)
@@ -2257,7 +2257,7 @@ l'accès
 - Source file: `contact/index.html`
 - "Recevoir une analyse privée" References: contact/index.html:178 (visible; .h2.leading-trim)
 - "Partagez votre projet. OFF MARKET vous répond avec une lecture ciblée et des comparables réels." References: contact/index.html:179 (visible; .mt-1)
-- "contact@offmarket.ma" References: contact/index.html:181 (visible; .om-contact-modal-button.om-contact-modal-button--primary)
+- "contact@offmarketofficial.com" References: contact/index.html:181 (visible; .om-contact-modal-button.om-contact-modal-button--primary)
 - "+212 (0) 000 000 000" References: contact/index.html:184 (visible; .om-contact-modal-button.om-contact-modal-button--secondary)
 
 ### Forms
@@ -2323,7 +2323,7 @@ Confidentialité
 - "Simulateur" Repeated occurrences: 2. References: contact/index.html:141 (visible; .om-footer__links)
 - "Contact" Repeated occurrences: 3. References: contact/index.html:142 (visible; .om-footer__links); contact/index.html:146 (visible; .om-footer__label)
 - "Marrakech, Maroc" References: contact/index.html:148 (visible; .om-footer__links)
-- "contact@offmarket.ma" Repeated occurrences: 2. References: contact/index.html:149 (visible; .om-footer__links)
+- "contact@offmarketofficial.com" Repeated occurrences: 2. References: contact/index.html:149 (visible; .om-footer__links)
 - "+212 (0) 000 000 000" Repeated occurrences: 2. References: contact/index.html:150 (visible; .om-footer__links); contact/index.html:150 (visible; .om-footer__phone)
 - "OFF MARKET" References: contact/index.html:156 (visible; .om-footer__watermark)
 - "© OFF MARKET. Tous droits réservés." References: contact/index.html:160 (visible; .om-footer__bar)
@@ -2459,7 +2459,7 @@ l'accès
 - Source file: `fr/contact/index.html`
 - "Recevoir une analyse privée" References: fr/contact/index.html:178 (visible; .h2.leading-trim)
 - "Partagez votre projet. OFF MARKET vous répond avec une lecture ciblée et des comparables réels." References: fr/contact/index.html:179 (visible; .mt-1)
-- "contact@offmarket.ma" References: fr/contact/index.html:181 (visible; .om-contact-modal-button.om-contact-modal-button--primary)
+- "contact@offmarketofficial.com" References: fr/contact/index.html:181 (visible; .om-contact-modal-button.om-contact-modal-button--primary)
 - "+212 (0) 000 000 000" References: fr/contact/index.html:184 (visible; .om-contact-modal-button.om-contact-modal-button--secondary)
 
 ### Forms
@@ -2525,7 +2525,7 @@ Confidentialité
 - "Simulateur" Repeated occurrences: 2. References: fr/contact/index.html:141 (visible; .om-footer__links)
 - "Contact" Repeated occurrences: 3. References: fr/contact/index.html:142 (visible; .om-footer__links); fr/contact/index.html:146 (visible; .om-footer__label)
 - "Marrakech, Maroc" References: fr/contact/index.html:148 (visible; .om-footer__links)
-- "contact@offmarket.ma" Repeated occurrences: 2. References: fr/contact/index.html:149 (visible; .om-footer__links)
+- "contact@offmarketofficial.com" Repeated occurrences: 2. References: fr/contact/index.html:149 (visible; .om-footer__links)
 - "+212 (0) 000 000 000" Repeated occurrences: 2. References: fr/contact/index.html:150 (visible; .om-footer__links); fr/contact/index.html:150 (visible; .om-footer__phone)
 - "OFF MARKET" References: fr/contact/index.html:156 (visible; .om-footer__watermark)
 - "© OFF MARKET. Tous droits réservés." References: fr/contact/index.html:160 (visible; .om-footer__bar)
@@ -2695,7 +2695,7 @@ OFF MARKET affine ensuite les chiffres avec des comparables réels et des opport
 - Source file: `simulateur/index.html`
 - "Recevoir une analyse privée" References: simulateur/index.html:332 (visible; .h2.leading-trim)
 - "Partagez votre projet. OFF MARKET vous répond avec une lecture ciblée et des comparables réels." References: simulateur/index.html:333 (visible; .mt-1)
-- "contact@offmarket.ma" References: simulateur/index.html:335 (visible; .om-button.om-button--primary)
+- "contact@offmarketofficial.com" References: simulateur/index.html:335 (visible; .om-button.om-button--primary)
 - "+212 (0) 000 000 000" References: simulateur/index.html:338 (visible; .om-button.om-button--secondary)
 
 ### Forms
@@ -2719,7 +2719,7 @@ OFF MARKET affine ensuite les chiffres avec des comparables réels et des opport
 - "Simulateur" Repeated occurrences: 2. References: simulateur/index.html:295 (visible; .om-footer__links)
 - "Contact" Repeated occurrences: 3. References: simulateur/index.html:296 (visible; .om-footer__links); simulateur/index.html:300 (visible; .om-footer__label)
 - "Marrakech, Maroc" References: simulateur/index.html:302 (visible; .om-footer__links)
-- "contact@offmarket.ma" Repeated occurrences: 2. References: simulateur/index.html:303 (visible; .om-footer__links)
+- "contact@offmarketofficial.com" Repeated occurrences: 2. References: simulateur/index.html:303 (visible; .om-footer__links)
 - "+212 (0) 000 000 000" Repeated occurrences: 2. References: simulateur/index.html:304 (visible; .om-footer__links); simulateur/index.html:304 (visible; .om-footer__phone)
 - "© OFF MARKET. Tous droits réservés." References: simulateur/index.html:314 (visible; .om-footer__bar)
 - "Mentions légales" References: simulateur/index.html:315 (visible; .om-footer__bar)
@@ -2829,8 +2829,8 @@ OFF MARKET affine ensuite les chiffres avec des comparables réels et des opport
 - "Aller au contenu principal" References: privacy-policy/index.html:50 (visible; .sr-only.sr-only--focusable)
 - "OFF MARKET" References: privacy-policy/index.html:137 (visible; #main)
 - "Immobilier privé à Marrakech" References: privacy-policy/index.html:140 (visible; #main)
-- "Email : contact@offmarket.ma" References: privacy-policy/index.html:143 (visible; #main)
-- "contact@offmarket.ma" Repeated occurrences: 2. References: privacy-policy/index.html:144 (visible; #main); privacy-policy/index.html:180 (visible; #main)
+- "Email : contact@offmarketofficial.com" References: privacy-policy/index.html:143 (visible; #main)
+- "contact@offmarketofficial.com" Repeated occurrences: 2. References: privacy-policy/index.html:144 (visible; #main); privacy-policy/index.html:180 (visible; #main)
 - "Téléphone : +212 (0) 000 000 000" References: privacy-policy/index.html:146 (visible; #main)
 - "Ce site présente une sélection privée d'opportunités immobilières à Marrakech. Les informations affichées sont indicatives et ne constituent pas une offre contractuelle." References: privacy-policy/index.html:152 (visible; #main)
 - "Données personnelles" References: privacy-policy/index.html:158 (visible; #main)
@@ -2838,13 +2838,13 @@ OFF MARKET affine ensuite les chiffres avec des comparables réels et des opport
 - "Cookies" References: privacy-policy/index.html:167 (visible; #main)
 - "Le site peut utiliser des cookies techniques nécessaires au bon fonctionnement de l'expérience." References: privacy-policy/index.html:170 (visible; #main)
 - "Contact" References: privacy-policy/index.html:176 (visible; #main)
-- "Pour toute demande relative au site ou à vos données, vous pouvez écrire à contact@offmarket.ma." References: privacy-policy/index.html:179 (visible; #main)
+- "Pour toute demande relative au site ou à vos données, vous pouvez écrire à contact@offmarketofficial.com." References: privacy-policy/index.html:179 (visible; #main)
 
 ### Modals / Popups
 - Source file: `privacy-policy/index.html`
 - "Recevoir une analyse privée" References: privacy-policy/index.html:236 (visible; .h2.leading-trim)
 - "Partagez votre projet. OFF MARKET vous répond avec une lecture ciblée et des comparables réels." References: privacy-policy/index.html:237 (visible; .mt-1)
-- "contact@offmarket.ma" References: privacy-policy/index.html:239 (visible; .om-button.om-button--primary)
+- "contact@offmarketofficial.com" References: privacy-policy/index.html:239 (visible; .om-button.om-button--primary)
 - "+212 (0) 000 000 000" References: privacy-policy/index.html:242 (visible; .om-button.om-button--secondary)
 
 ### Forms
@@ -2868,7 +2868,7 @@ OFF MARKET affine ensuite les chiffres avec des comparables réels et des opport
 - "Simulateur" Repeated occurrences: 2. References: privacy-policy/index.html:199 (visible; .om-footer__links)
 - "Contact" Repeated occurrences: 3. References: privacy-policy/index.html:200 (visible; .om-footer__links); privacy-policy/index.html:204 (visible; .om-footer__label)
 - "Marrakech, Maroc" References: privacy-policy/index.html:206 (visible; .om-footer__links)
-- "contact@offmarket.ma" Repeated occurrences: 2. References: privacy-policy/index.html:207 (visible; .om-footer__links)
+- "contact@offmarketofficial.com" Repeated occurrences: 2. References: privacy-policy/index.html:207 (visible; .om-footer__links)
 - "+212 (0) 000 000 000" Repeated occurrences: 2. References: privacy-policy/index.html:208 (visible; .om-footer__links); privacy-policy/index.html:208 (visible; .om-footer__phone)
 - "© OFF MARKET. Tous droits réservés." References: privacy-policy/index.html:218 (visible; .om-footer__bar)
 - "Mentions légales" References: privacy-policy/index.html:219 (visible; .om-footer__bar)
@@ -3426,7 +3426,7 @@ Confidentialité
 - "Simulateur" Repeated occurrences: 2. References: blog/index.html:77 (visible; .om-footer__links)
 - "Contact" Repeated occurrences: 3. References: blog/index.html:78 (visible; .om-footer__links); blog/index.html:82 (visible; .om-footer__label)
 - "Marrakech, Maroc" References: blog/index.html:84 (visible; .om-footer__links)
-- "contact@offmarket.ma" Repeated occurrences: 2. References: blog/index.html:85 (visible; .om-footer__links)
+- "contact@offmarketofficial.com" Repeated occurrences: 2. References: blog/index.html:85 (visible; .om-footer__links)
 - "OFF MARKET" References: blog/index.html:90 (visible; .om-footer__watermark)
 - "© OFF MARKET. Tous droits réservés." References: blog/index.html:93 (visible; .om-footer__bar)
 - "Mentions légales" References: blog/index.html:94 (visible; .om-footer__bar)

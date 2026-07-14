@@ -166,11 +166,58 @@ const IT: ContactCopy = {
   continue: "Avanti",
 };
 
+const NL: ContactCopy = {
+  skipToMain: "Naar hoofdinhoud",
+  breadcrumbAria: "Broodkruimel",
+  breadcrumbHome: "Home",
+  breadcrumbCurrent: "Contact",
+  h1: "Vertel ons over uw vastgoedproject",
+  intro:
+    "Enkele antwoorden volstaan om te begrijpen wat u zoekt en u naar een beter passende private selectie te begeleiden.",
+  formColumnAria: "Contactvragenlijst",
+  infoBrand: "OFF MARKET",
+  infoCity: "Marrakech",
+  infoText:
+    "Een discreet antwoord op basis van uw project, budget en doelstelling.",
+  trustChips: ["Private selectie", "Nieuwbouw", "Villa en appartement"],
+  stepLabel: (step) => `Stap ${step} van 3`,
+  questions: {
+    propertyType: "Welk type vastgoed zoekt u?",
+    budget: "Welk budget wilt u bekijken?",
+    objective: "Wat is uw belangrijkste doel?",
+  },
+  propertyTypes: [
+    "Villa",
+    "appartement",
+    "Nieuwbouwproject",
+    "Grond",
+    "Riad",
+    "Ik weet het nog niet",
+  ],
+  budgets: [
+    "120.000 € – 250.000 €",
+    "250.000 € – 350.000 €",
+    "350.000 € – 500.000 €",
+    "Meer dan 500.000 €",
+    "Ik wil advies",
+  ],
+  objectives: [
+    "Investeren en verhuren",
+    "Kopen om zelf te wonen",
+    "Tweede woning",
+    "Een latere verkoop voorbereiden",
+    "Een zeldzame kans vinden",
+    "Ik vergelijk nog",
+  ],
+  back: "Terug",
+  continue: "Verder",
+};
+
 const COPY: Record<SiteLocale, ContactCopy> = {
   fr: FR,
   en: EN,
   it: IT,
-  nl: FR,
+  nl: NL,
 };
 
 export function getContactCopy(locale?: SiteLocale): ContactCopy {

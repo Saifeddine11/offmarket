@@ -1,0 +1,368 @@
+import type { BodySegment } from "@/lib/static-html/parsePage";
+import type { SiteLocale } from "@/lib/i18n/types";
+
+type Replacement = readonly [from: string, to: string];
+
+const EN_REPLACEMENTS: readonly Replacement[] = [
+  ["Aller au contenu principal", "Skip to main content"],
+  ["L'immobilier privé à Marrakech", "Private real estate in Marrakech"],
+  ["L'immobilier privé", "Private real estate"],
+  ["à Marrakech", "in Marrakech"],
+  [
+    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon notre grille S.A.F.E. pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
+    "Access a confidential selection of villas, apartments and off-plan projects, reviewed through our S.A.F.E. framework for their location, integrity, coherence and potential.",
+  ],
+  [
+    "Accédez à une sélection confidentielle de villas, appartements et opportunités sur plan, choisie pour son emplacement, sa rareté et sa cohérence d'investissement.",
+    "Access a confidential selection of villas, apartments and off-plan opportunities, chosen for location, rarity and investment coherence.",
+  ],
+  ["Demander l'accès", "Request access"],
+  ["Voir la sélection", "View the selection"],
+  ["Certification S.A.F.E.", "S.A.F.E. Certification"],
+  ["Agréé par S.A.F.E.", "S.A.F.E. approved"],
+  ["Projets étudiés avant présentation.", "Projects reviewed before presentation."],
+  ["clients qualifiés accompagnés", "qualified clients supported"],
+  ["Typologies suivies", "Tracked property types"],
+  ["Villas privées", "Private villas"],
+  ["Appartements Guéliz", "Guéliz apartments"],
+  ["Riads de caractère", "Character riads"],
+  ["Biens sur plan", "Off-plan properties"],
+  ["Terrains rares", "Rare land"],
+  ["Opportunités investisseur", "Investor opportunities"],
+  ["QUI SOMMES-NOUS", "WHO WE ARE"],
+  [
+    "Une maison privée pour lire le marché immobilier de Marrakech avec exigence.",
+    "A private house for reading the Marrakech property market with rigour.",
+  ],
+  [
+    "OFF MARKET accompagne les acheteurs, investisseurs et propriétaires avec une sélection ciblée, une analyse claire et un accès discret aux opportunités pertinentes.",
+    "OFF MARKET supports buyers, investors and owners with a targeted selection, clear analysis and discreet access to relevant opportunities.",
+  ],
+  ["Sélection ciblée", "Targeted selection"],
+  ["Analyse claire", "Clear analysis"],
+  ["Accompagnement discret", "Discreet guidance"],
+  ["Découvrir notre approche", "Discover our approach"],
+  ["QUARTIERS", "NEIGHBOURHOODS"],
+  [
+    "Les zones où se construisent les meilleures opportunités",
+    "The districts where the finest opportunities take shape",
+  ],
+  ["Les zones où se construisent", "The districts where"],
+  ["les meilleures opportunités", "the finest opportunities take shape"],
+  [
+    "Une sélection privée, révélée avec discrétion.",
+    "A private selection, revealed with discretion.",
+  ],
+  [
+    "Des biens rares, des adresses confidentielles et une lecture claire avant chaque décision.",
+    "Rare properties, confidential addresses and a clear reading before every decision.",
+  ],
+  ["SIMULATEUR PRIVÉ", "PRIVATE SIMULATOR"],
+  ["Simuler avant d'investir", "Simulate before investing"],
+  [
+    "Estimez le potentiel d'un bien à Marrakech selon votre usage, puis affinez les chiffres avec",
+    "Estimate a Marrakech property's potential according to your use, then refine the figures with",
+  ],
+  ["Location courte durée", "Short-term rental"],
+  ["Location longue durée", "Long-term rental"],
+  ["Achat-revente", "Purchase-resale"],
+  ["PARAMÈTRES", "PARAMETERS"],
+  [
+    "Ajustez vos hypothèses. Le résultat se recalcule en direct.",
+    "Adjust your assumptions. The result recalculates live.",
+  ],
+  [
+    "Estimation indicative. OFF MARKET affine cette simulation avec l'adresse exacte, les charges réelles et les biens disponibles.",
+    "Indicative estimate. OFF MARKET refines this simulation with the exact address, actual charges and available properties.",
+  ],
+  ["Budget d'acquisition", "Purchase price"],
+  ["Prix estimé du bien, hors frais.", "Estimated property price, excluding fees."],
+  ["Prix nuitée moyen", "Average nightly rate"],
+  ["Semaines d'usage personnel", "Weeks of personal use"],
+  ["Taux d'occupation", "Occupancy rate"],
+  ["Loyer mensuel estimé", "Monthly rent"],
+  ["Horizon de revente", "Resale horizon"],
+  ["Hypothèse de valorisation annuelle", "Annual appreciation assumption"],
+  ["RÉSULTAT", "RESULT"],
+  ["RENDEMENT BRUT ANNUEL", "GROSS ANNUAL YIELD"],
+  [
+    "avant charges, fiscalité et frais réels",
+    "before charges, taxes and real operating costs",
+  ],
+  ["Recevoir une analyse privée", "Receive a private analysis"],
+  ["Voir les biens compatibles", "View compatible properties"],
+  ["LECTURES PRIVÉES", "PRIVATE READINGS"],
+  ["Ce que nos clients viennent chercher", "What our clients are looking for"],
+  ["Suivant", "Next"],
+  [
+    "Nous cherchions une opportunité claire, pas une liste de biens. OFF MARKET nous a aidés à comprendre l'adresse, la demande et le potentiel avant même la première visite.",
+    "We were looking for a clear opportunity, not a property list. OFF MARKET helped us understand the address, demand and potential before the first visit.",
+  ],
+  [
+    "Nous cherchions une opportunité claire, pas une liste de biens. OFF MARKET nous a aidés à comprendre l’adresse, la demande et le potentiel avant même la première visite.",
+    "We were looking for a clear opportunity, not a property list. OFF MARKET helped us understand the address, demand and potential before the first visit.",
+  ],
+  [
+    "La différence s’est faite dans la lecture du marché : comparables, risques, marge de négociation et cohérence patrimoniale. La décision est devenue beaucoup plus simple.",
+    "The difference came from the market reading: comparables, risks, negotiation margin and long-term coherence. The decision became much simpler.",
+  ],
+  [
+    "Nous avons apprécié la discrétion, le tri et la qualité des échanges. Les biens présentés étaient peu nombreux, mais réellement alignés avec notre projet.",
+    "We appreciated the discretion, filtering and quality of the conversations. The properties shown were few, but genuinely aligned with our project.",
+  ],
+  ["Acheteur privé", "Private buyer"],
+  ["Investisseur", "Investor"],
+  ["Client accompagné", "Supported client"],
+  ["Résidence secondaire · Marrakech", "Second home · Marrakech"],
+  ["Appartement premium · Guéliz / Hivernage", "Premium apartment · Guéliz / Hivernage"],
+  ["Riad de caractère · Médina", "Character riad · Medina"],
+  ["ACCÈS PRIVÉ", "PRIVATE ACCESS"],
+  ["Recevoir la sélection off-market", "Receive the off-market selection"],
+  [
+    "Remplissez le formulaire pour accéder aux projets confidentiels et recevoir une sélection privée adaptée à votre budget.",
+    "Complete the form to access confidential projects and receive a private selection aligned with your budget.",
+  ],
+  ["Nom complet", "Full name"],
+  ["Numéro de téléphone", "Phone number"],
+  ["Indicatif pays", "Country code"],
+  ["Numéro", "Number"],
+  ["Sélectionnez votre budget", "Select your budget"],
+  ["Message (optionnel)", "Message (optional)"],
+  [
+    "En cliquant sur le bouton, vous acceptez que OFF MARKET vous contacte au sujet de votre demande.",
+    "By clicking the button, you agree that OFF MARKET may contact you about your request.",
+  ],
+  ["Confidentialité", "Privacy policy"],
+  ["PARLONS-EN", "LET'S TALK"],
+  ["Votre projet mérite une lecture privée.", "Your project deserves a private reading."],
+  ["Dites-nous ce que vous recherchez.", "Tell us what you are looking for."],
+  [
+    "OFF MARKET vous répond avec une sélection ciblée, une analyse claire et un accompagnement discret.",
+    "OFF MARKET will respond with a targeted selection, clear analysis and discreet guidance.",
+  ],
+  [
+    " vous répond avec une sélection ciblée, une analyse claire et un accompagnement discret.",
+    " will respond with a targeted selection, clear analysis and discreet guidance.",
+  ],
+  ["Demander un accès privé", "Request private access"],
+  ["Parler à un conseiller", "Speak to an adviser"],
+  ["Veuillez pivoter votre appareil", "Please rotate your device"],
+  ["to portrait mode", "to portrait mode"],
+  ["to landscape mode", "to landscape mode"],
+];
+
+const NL_REPLACEMENTS: readonly Replacement[] = [
+  ["Skip to main content", "Naar hoofdinhoud"],
+  ["Aller au contenu principal", "Naar hoofdinhoud"],
+  ["L'immobilier privé à Marrakech", "Privé vastgoed in Marrakech"],
+  ["L'immobilier privé", "Privé vastgoed"],
+  ["à Marrakech", "in Marrakech"],
+  [
+    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon notre grille S.A.F.E. pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
+    "Krijg toegang tot een vertrouwelijke selectie van villa's, appartementen en nieuwbouwprojecten, beoordeeld volgens onze S.A.F.E.-methode op locatie, betrouwbaarheid, samenhang en potentieel.",
+  ],
+  [
+    "Accédez à une sélection confidentielle de villas, appartements et opportunités sur plan, choisie pour son emplacement, sa rareté et sa cohérence d'investissement.",
+    "Krijg toegang tot een vertrouwelijke selectie van villa's, appartementen en nieuwbouwkansen, gekozen om hun locatie, zeldzaamheid en investeringssamenhang.",
+  ],
+  ["Demander l'accès", "Toegang aanvragen"],
+  ["Voir la sélection", "De selectie bekijken"],
+  ["Certification S.A.F.E.", "S.A.F.E.-certificering"],
+  ["Agréé par S.A.F.E.", "Goedgekeurd door S.A.F.E."],
+  ["Projets étudiés avant présentation.", "Projecten geanalyseerd vóór presentatie."],
+  ["clients qualifiés accompagnés", "gekwalificeerde klanten begeleid"],
+  ["Typologies suivies", "Opgevolgde typologieën"],
+  ["Villas privées", "Private villa's"],
+  ["Appartements Guéliz", "Appartementen in Guéliz"],
+  ["Riads de caractère", "Karaktervolle riads"],
+  ["Biens sur plan", "Nieuwbouwvastgoed"],
+  ["Terrains rares", "Zeldzame gronden"],
+  ["Opportunités investisseur", "Investeringskansen"],
+  ["QUI SOMMES-NOUS", "WIE WIJ ZIJN"],
+  [
+    "Une maison privée pour lire le marché immobilier de Marrakech avec exigence.",
+    "Een privaat huis om de vastgoedmarkt van Marrakech met precisie te lezen.",
+  ],
+  [
+    "OFF MARKET accompagne les acheteurs, investisseurs et propriétaires avec une sélection ciblée, une analyse claire et un accès discret aux opportunités pertinentes.",
+    "OFF MARKET begeleidt kopers, investeerders en eigenaars met een gerichte selectie, heldere analyse en discrete toegang tot relevante kansen.",
+  ],
+  ["Sélection ciblée", "Gerichte selectie"],
+  ["Analyse claire", "Heldere analyse"],
+  ["Accompagnement discret", "Discrete begeleiding"],
+  ["Découvrir notre approche", "Onze aanpak ontdekken"],
+  ["QUARTIERS", "WIJKEN"],
+  [
+    "Les zones où se construisent les meilleures opportunités",
+    "De zones waar de beste kansen ontstaan",
+  ],
+  ["Les zones où se construisent", "De zones waar"],
+  ["les meilleures opportunités", "de beste kansen ontstaan"],
+  [
+    "Une sélection privée, révélée avec discrétion.",
+    "Een private selectie, discreet onthuld.",
+  ],
+  [
+    "Des biens rares, des adresses confidentielles et une lecture claire avant chaque décision.",
+    "Zeldzaam vastgoed, vertrouwelijke adressen en een heldere analyse vóór elke beslissing.",
+  ],
+  ["SIMULATEUR PRIVÉ", "PRIVATE SIMULATOR"],
+  ["Simuler avant d'investir", "Simuleren vóór u investeert"],
+  [
+    "Estimez le potentiel d'un bien à Marrakech selon votre usage, puis affinez les chiffres avec",
+    "Schat het potentieel van een pand in Marrakech volgens uw gebruik en verfijn daarna de cijfers met",
+  ],
+  ["Location courte durée", "Korte termijn verhuur"],
+  ["Location longue durée", "Lange termijn verhuur"],
+  ["Achat-revente", "Aankoop en herverkoop"],
+  ["PARAMÈTRES", "INSTELLINGEN"],
+  [
+    "Ajustez vos hypothèses. Le résultat se recalcule en direct.",
+    "Pas uw aannames aan. Het resultaat wordt live herberekend.",
+  ],
+  [
+    "Estimation indicative. OFF MARKET affine cette simulation avec l'adresse exacte, les charges réelles et les biens disponibles.",
+    "Indicatieve schatting. OFF MARKET verfijnt deze simulatie met het exacte adres, de werkelijke kosten en beschikbare woningen.",
+  ],
+  ["Budget d'acquisition", "Aankoopprijs"],
+  ["Prix estimé du bien, hors frais.", "Geschatte aankoopprijs, exclusief kosten."],
+  ["Prix nuitée moyen", "Gemiddelde nachtprijs"],
+  ["Semaines d'usage personnel", "Weken eigen gebruik"],
+  ["Taux d'occupation", "Bezettingsgraad"],
+  ["Loyer mensuel estimé", "Maandelijkse huur"],
+  ["Horizon de revente", "Herverkoophorizon"],
+  ["Hypothèse de valorisation annuelle", "Aanname jaarlijkse waardestijging"],
+  ["RÉSULTAT", "RESULTAAT"],
+  ["RENDEMENT BRUT ANNUEL", "BRUTO HUURRENDEMENT"],
+  [
+    "avant charges, fiscalité et frais réels",
+    "vóór kosten, fiscaliteit en werkelijke lasten",
+  ],
+  ["Recevoir une analyse privée", "Een private analyse ontvangen"],
+  ["Voir les biens compatibles", "Passend vastgoed bekijken"],
+  ["LECTURES PRIVÉES", "PRIVATE ANALYSES"],
+  ["Ce que nos clients viennent chercher", "Wat onze klanten komen zoeken"],
+  ["Suivant", "Volgende"],
+  [
+    "Nous cherchions une opportunité claire, pas une liste de biens. OFF MARKET nous a aidés à comprendre l'adresse, la demande et le potentiel avant même la première visite.",
+    "Wij zochten een duidelijke kans, geen lijst met panden. OFF MARKET hielp ons het adres, de vraag en het potentieel te begrijpen nog vóór het eerste bezoek.",
+  ],
+  [
+    "Nous cherchions une opportunité claire, pas une liste de biens. OFF MARKET nous a aidés à comprendre l’adresse, la demande et le potentiel avant même la première visite.",
+    "Wij zochten een duidelijke kans, geen lijst met panden. OFF MARKET hielp ons het adres, de vraag en het potentieel te begrijpen nog vóór het eerste bezoek.",
+  ],
+  [
+    "La différence s’est faite dans la lecture du marché : comparables, risques, marge de négociation et cohérence patrimoniale. La décision est devenue beaucoup plus simple.",
+    "Het verschil zat in de marktlezing: vergelijkbare panden, risico's, onderhandelingsruimte en patrimoniale samenhang. De beslissing werd veel eenvoudiger.",
+  ],
+  [
+    "Nous avons apprécié la discrétion, le tri et la qualité des échanges. Les biens présentés étaient peu nombreux, mais réellement alignés avec notre projet.",
+    "Wij waardeerden de discretie, de filtering en de kwaliteit van de gesprekken. Er werden weinig panden voorgesteld, maar ze sloten echt aan bij ons project.",
+  ],
+  ["Acheteur privé", "Private koper"],
+  ["Investisseur", "Investeerder"],
+  ["Client accompagné", "Begeleide klant"],
+  ["Résidence secondaire · Marrakech", "Tweede verblijf · Marrakech"],
+  ["Appartement premium · Guéliz / Hivernage", "Premium appartement · Guéliz / Hivernage"],
+  ["Riad de caractère · Médina", "Karaktervolle riad · Medina"],
+  ["ACCÈS PRIVÉ", "PRIVATE TOEGANG"],
+  ["Recevoir la sélection off-market", "De off-market selectie ontvangen"],
+  [
+    "Remplissez le formulaire pour accéder aux projets confidentiels et recevoir une sélection privée adaptée à votre budget.",
+    "Vul het formulier in om toegang te krijgen tot vertrouwelijke projecten en een private selectie te ontvangen die past bij uw budget.",
+  ],
+  ["Nom complet", "Volledige naam"],
+  ["Numéro de téléphone", "Telefoonnummer"],
+  ["Indicatif pays", "Landcode"],
+  ["Numéro", "Nummer"],
+  ["Sélectionnez votre budget", "Selecteer uw budget"],
+  ["Message (optionnel)", "Bericht (optioneel)"],
+  [
+    "En cliquant sur le bouton, vous acceptez que OFF MARKET vous contacte au sujet de votre demande.",
+    "Door op de knop te klikken, stemt u ermee in dat OFF MARKET contact met u opneemt over uw aanvraag.",
+  ],
+  ["Confidentialité", "Privacy"],
+  ["PARLONS-EN", "LATEN WE PRATEN"],
+  ["Votre projet mérite une lecture privée.", "Uw project verdient een private analyse."],
+  ["Dites-nous ce que vous recherchez.", "Vertel ons wat u zoekt."],
+  [
+    "OFF MARKET vous répond avec une sélection ciblée, une analyse claire et un accompagnement discret.",
+    "OFF MARKET antwoordt met een gerichte selectie, heldere analyse en discrete begeleiding.",
+  ],
+  [
+    " vous répond avec une sélection ciblée, une analyse claire et un accompagnement discret.",
+    " antwoordt met een gerichte selectie, heldere analyse en discrete begeleiding.",
+  ],
+  ["Demander un accès privé", "Private toegang aanvragen"],
+  ["Simulateur", "Simulator"],
+  ["Parler à un conseiller", "Met een adviseur spreken"],
+  ["Veuillez pivoter votre appareil", "Draai uw apparaat"],
+  ["to portrait mode", "naar portretmodus"],
+  ["to landscape mode", "naar landschapsmodus"],
+  ["Private properties", "Private panden"],
+  ["Contact us", "Contact"],
+  ["Our story", "Ons verhaal"],
+  ["Off-plan", "Nieuwbouw"],
+  ["Back to top", "Terug naar boven"],
+  ["Private real estate in Marrakech", "Privé vastgoed in Marrakech"],
+  ["Choose language", "Taal kiezen"],
+  ["Main navigation", "Hoofdnavigatie"],
+];
+
+const ROUTE_REPLACEMENTS: Record<"en" | "nl", readonly Replacement[]> = {
+  en: [
+    ['href="/simulateur/"', 'href="/en/simulator/"'],
+    ['href="/sur-plan/"', 'href="/en/off-plan/"'],
+    ['href="/contact/"', 'href="/en/contact/"'],
+    ['href="/off-market/"', 'href="/en/off-market/"'],
+    ['href="/blog/"', 'href="/en/blog/"'],
+  ],
+  nl: [
+    ['href="/simulateur/"', 'href="/nl/simulator/"'],
+    ['href="/sur-plan/"', 'href="/nl/nieuwbouw/"'],
+    ['href="/contact/"', 'href="/nl/contact/"'],
+    ['href="/off-market/"', 'href="/nl/off-market/"'],
+    ['href="/blog/"', 'href="/nl/blog/"'],
+    ['href="/en/"', 'href="/nl/"'],
+    ['href="/en/contact/"', 'href="/nl/contact/"'],
+    ['href="/en/off-market/"', 'href="/nl/off-market/"'],
+    ['href="/en/off-plan/"', 'href="/nl/nieuwbouw/"'],
+    ['href="/en/blog/"', 'href="/nl/blog/"'],
+    ['data-lang="EN">EN', 'data-lang="NL">NL'],
+  ],
+};
+
+function getReplacements(locale: SiteLocale): readonly Replacement[] {
+  if (locale === "en") return [...ROUTE_REPLACEMENTS.en, ...EN_REPLACEMENTS];
+  if (locale === "nl") return [...ROUTE_REPLACEMENTS.nl, ...NL_REPLACEMENTS];
+  return [];
+}
+
+function replaceAllLiteral(value: string, from: string, to: string): string {
+  return value.split(from).join(to);
+}
+
+export function localizeHomeLegacyHtml(html: string, locale: SiteLocale): string {
+  const replacements = getReplacements(locale);
+  if (!replacements.length) return html;
+
+  return [...replacements]
+    .sort((a, b) => b[0].length - a[0].length)
+    .reduce(
+      (result, [from, to]) => replaceAllLiteral(result, from, to),
+      html,
+    );
+}
+
+export function localizeHomeLegacySegments(
+  segments: BodySegment[],
+  locale: SiteLocale,
+): BodySegment[] {
+  if (locale !== "en" && locale !== "nl") return segments;
+
+  return segments.map((segment) =>
+    segment.kind === "html"
+      ? { ...segment, html: localizeHomeLegacyHtml(segment.html, locale) }
+      : segment,
+  );
+}

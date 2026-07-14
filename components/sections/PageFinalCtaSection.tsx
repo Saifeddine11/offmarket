@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { PageFinalCtaSecondaryButton } from "@/components/motion/PageFinalCtaMotion";
+import type { SiteLocale } from "@/lib/i18n/types";
 
 const BUTTON_ICON = (
   <span className="om-button__icon" aria-hidden="true">
@@ -64,12 +65,92 @@ const CALCULATOR_ICON = (
   </span>
 );
 
+export type PageFinalCtaCopy = {
+  eyebrow: string;
+  title: string;
+  text: string;
+  trust: string;
+  primaryHref: string;
+  primaryLabel: string;
+  simulatorHref: string;
+  simulatorLabel: string;
+  advisorHref: string;
+  advisorLabel: string;
+};
+
+const FINAL_CTA_COPY: Record<SiteLocale, PageFinalCtaCopy> = {
+  fr: {
+    eyebrow: "PARLONS-EN",
+    title: "Votre projet mérite une lecture privée.",
+    text:
+      "Dites-nous ce que vous recherchez. Nous vous répondons avec une sélection ciblée, une analyse claire et un accompagnement discret.",
+    trust:
+      "Nous qualifions votre demande avant de vous orienter vers les projets les plus cohérents avec votre profil.",
+    primaryHref: "/contact/",
+    primaryLabel: "Demander un accès privé",
+    simulatorHref: "/simulateur/",
+    simulatorLabel: "Simulateur",
+    advisorHref: "/contact/",
+    advisorLabel: "Parler à un conseiller",
+  },
+  en: {
+    eyebrow: "LET'S TALK",
+    title: "Your project deserves a private reading.",
+    text:
+      "Tell us what you are looking for. We will respond with a targeted selection, clear analysis and discreet guidance.",
+    trust:
+      "We qualify your request before guiding you toward the projects that best match your profile.",
+    primaryHref: "/en/contact/",
+    primaryLabel: "Request private access",
+    simulatorHref: "/en/simulator/",
+    simulatorLabel: "Simulator",
+    advisorHref: "/en/contact/",
+    advisorLabel: "Speak to an adviser",
+  },
+  it: {
+    eyebrow: "PARLIAMONE",
+    title: "Il tuo progetto merita una lettura privata.",
+    text:
+      "Dicci cosa stai cercando. Ti risponderemo con una selezione mirata, un'analisi chiara e un accompagnamento discreto.",
+    trust:
+      "Qualifichiamo la tua richiesta prima di orientarti verso i progetti più coerenti con il tuo profilo.",
+    primaryHref: "/it/contatto/",
+    primaryLabel: "Richiedi accesso privato",
+    simulatorHref: "/simulateur/",
+    simulatorLabel: "Simulatore",
+    advisorHref: "/it/contatto/",
+    advisorLabel: "Parla con un consulente",
+  },
+  nl: {
+    eyebrow: "LATEN WE PRATEN",
+    title: "Uw project verdient een private analyse.",
+    text:
+      "Vertel ons wat u zoekt. Wij antwoorden met een gerichte selectie, heldere analyse en discrete begeleiding.",
+    trust:
+      "Wij kwalificeren uw aanvraag voordat we u begeleiden naar de projecten die het beste bij uw profiel passen.",
+    primaryHref: "/nl/contact/",
+    primaryLabel: "Private toegang aanvragen",
+    simulatorHref: "/nl/simulator/",
+    simulatorLabel: "Simulator",
+    advisorHref: "/nl/contact/",
+    advisorLabel: "Met een adviseur spreken",
+  },
+};
+
+export function getFinalCtaCopy(locale: SiteLocale = "fr"): PageFinalCtaCopy {
+  return FINAL_CTA_COPY[locale];
+}
+
 /** Shared closing CTA for inner editorial pages (About, Quartiers, …). */
 export function PageFinalCtaSection({
   secondaryCta,
+  locale = "fr",
 }: {
   secondaryCta?: PageFinalCtaSecondaryButton;
+  locale?: SiteLocale;
 } = {}) {
+  const copy = getFinalCtaCopy(locale);
+
   return (
     <section
       className="om-final-cta om-final-cta--extended is-visible"
@@ -91,43 +172,41 @@ export function PageFinalCtaSection({
 
         <div className="om-final-cta__content">
           <span className="om-final-cta__eyebrow om-final-cta__reveal">
-            PARLONS-EN
+            {copy.eyebrow}
           </span>
 
           <h2
             className="om-final-cta__title om-final-cta__reveal"
             id="om-final-cta-title"
           >
-            Votre projet mérite une lecture privée.
+            {copy.title}
           </h2>
 
           <p className="om-final-cta__text om-final-cta__reveal">
-            Dites-nous ce que vous recherchez. Nous vous répondons avec une
-            sélection ciblée, une analyse claire et un accompagnement discret.
+            {copy.text}
           </p>
 
           <p className="om-final-cta__trust om-final-cta__reveal">
-            Nous qualifions votre demande avant de vous orienter vers les
-            projets les plus cohérents avec votre profil.
+            {copy.trust}
           </p>
 
           <div className="om-final-cta__actions om-final-cta__reveal">
-            <Link href="/contact/" className="om-button om-button--primary">
+            <Link href={copy.primaryHref} className="om-button om-button--primary">
               {BUTTON_ICON}
-              <span>Demander un accès privé</span>
+              <span>{copy.primaryLabel}</span>
             </Link>
 
             <Link
-              href={secondaryCta?.href ?? "/simulateur/"}
+              href={secondaryCta?.href ?? copy.simulatorHref}
               className="om-button om-button--secondary"
             >
               {secondaryCta ? BUTTON_ICON : CALCULATOR_ICON}
-              <span>{secondaryCta?.label ?? "Simulateur"}</span>
+              <span>{secondaryCta?.label ?? copy.simulatorLabel}</span>
             </Link>
 
-            <Link href="/contact/" className="om-button om-button--secondary">
+            <Link href={copy.advisorHref} className="om-button om-button--secondary">
               {ADVISOR_ICON}
-              <span>Parler à un conseiller</span>
+              <span>{copy.advisorLabel}</span>
             </Link>
           </div>
         </div>

@@ -139,7 +139,7 @@ Screenshots: not captured in automated run; manual browser verification used (he
 | Check | Status | Notes |
 |-------|--------|-------|
 | Visual | **pass** | Inner hero, cards, CTA, chrome, footer match backup structure |
-| SEO | **pass** | Canonical `https://offmarket.ma/about/`, OG image villa.webp |
+| SEO | **pass** | Canonical `https://offmarketofficial.com/about/`, OG image villa.webp |
 | Functionality | **pass** | `om-nav-menu.js` populates nav; lang switcher links EN/FR/IT/NL correct; inner hero renders |
 | Mobile | **pass** | Mobile menu button present; hero stacks; sections readable |
 | Safe to migrate | **yes** | |
@@ -153,7 +153,7 @@ Screenshots: not captured in automated run; manual browser verification used (he
 | Check | Status | Notes |
 |-------|--------|-------|
 | Visual | **pass** | Same as `/about/` |
-| SEO | **pass** | Canonical `https://offmarket.ma/fr/about/`; FR lang link → `/fr/about/` |
+| SEO | **pass** | Canonical `https://offmarketofficial.com/fr/about/`; FR lang link → `/fr/about/` |
 | Functionality | **pass** | Lang switcher + footer `Notre Histoire` → `/fr/about/` |
 | Mobile | **pass** | Same as `/about/` |
 | Safe to migrate | **yes** | |

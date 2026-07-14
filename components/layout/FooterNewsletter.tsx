@@ -31,7 +31,7 @@ export function FooterNewsletter({
     }
 
     setSubmitted(true);
-    window.location.href = `mailto:contact@offmarket.ma?subject=${encodeURIComponent(
+    window.location.href = `mailto:contact@offmarketofficial.com?subject=${encodeURIComponent(
       "Inscription newsletter OFF MARKET",
     )}&body=${encodeURIComponent(`Bonjour,\n\nJe souhaite recevoir les opportunités privées OFF MARKET.\n\nEmail : ${email}`)}`;
   }

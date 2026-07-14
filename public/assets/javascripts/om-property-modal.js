@@ -669,6 +669,435 @@
     },
   };
 
+  var PROPERTY_MODAL_TEXT_TRANSLATIONS = {
+    en: {
+      'Villa sur plan': 'Off-plan villa',
+      'Sélection :': 'Selection:',
+      'Projet sur plan': 'Off-plan project',
+      'À partir de 351 000 €': 'From €351,000',
+      '32 villas sur plan à Marrakech, avec une disponibilité limitée à 7 villas restantes.':
+        '32 off-plan villas in Marrakech, with limited availability of 7 villas remaining.',
+      'Villa Jaz — villas sur plan à Marrakech':
+        'Villa Jaz — off-plan villas in Marrakech',
+      'Réserver ta villa': 'Reserve your villa',
+      'Remplir le formulaire pour plus de détails': 'Complete the form for more details',
+      'Type': 'Type',
+      'Total': 'Total',
+      'Disponibilité': 'Availability',
+      'Statut': 'Status',
+      'Prix': 'Price',
+      'Adresse': 'Address',
+      'Paiement': 'Payment',
+      '32 villas': '32 villas',
+      '7 villas restantes': '7 villas remaining',
+      'Communiquée sur demande': 'Shared on request',
+      '30% à la réservation, puis 30% à chaque avancement du projet':
+        '30% on reservation, then 30% at each project milestone',
+      'Villa Jaz est une opportunité sur plan pensée pour les acquéreurs qui recherchent une villa privée à Marrakech, avec un cadre résidentiel, des espaces extérieurs et une disponibilité volontairement limitée.':
+        'Villa Jaz is an off-plan opportunity for buyers seeking a private villa in Marrakech, with a residential setting, outdoor spaces and intentionally limited availability.',
+      'Le projet réunit 32 villas, dont 7 restent disponibles. Les informations détaillées, les plans, les disponibilités actualisées et les conditions précises sont communiqués après formulaire afin de préserver la confidentialité du projet.':
+        'The project includes 32 villas, of which 7 remain available. Detailed information, plans, updated availability and exact terms are shared after the form to preserve project confidentiality.',
+      '32 villas au total': '32 villas in total',
+      'Prix à partir de 351 000 €': 'Price from €351,000',
+      '30% à la réservation': '30% on reservation',
+      '30% à chaque avancement du projet': '30% at each project milestone',
+      'Adresse communiquée sur demande': 'Address shared on request',
+      'Plans sur formulaire': 'Plans via form',
+      'Disponibilités actualisées': 'Updated availability',
+      'Détails complets sur demande': 'Full details on request',
+      'Réservation sur formulaire': 'Reservation via form',
+      'Informations clés': 'Key information',
+      'Disponibilité limitée': 'Limited availability',
+      'sur 32 villas': 'of 32 villas',
+      'Confort & équipements': 'Comfort & amenities',
+      'Piscine privée dans chaque villa': 'Private pool in every villa',
+      'Espaces verts paysagers': 'Landscaped green spaces',
+      'Aire de jeux pour enfants': "Children's play area",
+      'Équipements haut de gamme': 'High-end amenities',
+      'Jardins et espaces extérieurs aménagés': 'Landscaped gardens and outdoor spaces',
+      'Confidentialité & réservation': 'Confidentiality & reservation',
+      'Résidence sécurisée': 'Secure residence',
+      'Sécurité et confidentialité': 'Security and confidentiality',
+      'Modalités de paiement': 'Payment terms',
+      '30% à la réservation, puis 30% à chaque avancement du projet. Remplir le formulaire pour recevoir les détails complets.':
+        '30% on reservation, then 30% at each project milestone. Complete the form to receive the full details.',
+      'Détails sur demande': 'Details on request',
+      'Modalités de paiement — 30% à la réservation. 30% à chaque avancement du projet. Pour recevoir les détails complets, les disponibilités exactes et les conditions actualisées, merci de remplir le formulaire.\n\nDisponibilité limitée — 7 villas restantes sur un total de 32 villas.':
+        'Payment terms — 30% on reservation. 30% at each project milestone. To receive full details, exact availability and updated terms, please complete the form.\n\nLimited availability — 7 villas remaining out of 32 villas.',
+      'Appartement': 'Apartment',
+      'À partir de 1,05 M MAD': 'From MAD 1.05M',
+      'Programme neuf sur plan': 'New off-plan development',
+      'Appartement premium à Guéliz': 'Premium apartment in Guéliz',
+      'Studios, appartements, duplex et commerces en hyper-centre de Marrakech.':
+        'Studios, apartments, duplexes and retail units in Marrakech hyper-centre.',
+      'Appartement premium à Guéliz — Guéliz hyper-centre, Marrakech':
+        'Premium apartment in Guéliz — Guéliz hyper-centre, Marrakech',
+      'Réserver ton appartement': 'Reserve your apartment',
+      'Recevoir la fiche privée': 'Receive the private sheet',
+      'Studio': 'Studio',
+      'Duplex': 'Duplex',
+      'Magasin commercial': 'Retail unit',
+      'Programme neuf haut standing': 'High-end new development',
+      'Localisation': 'Location',
+      'Guéliz hyper-centre, Marrakech': 'Guéliz hyper-centre, Marrakech',
+      'Surfaces': 'Areas',
+      'Livraison': 'Delivery',
+      '2028 — 1ère livraison': '2028 — first delivery',
+      '39–140 m²': '39–140 m²',
+      'Programme immobilier neuf haut standing à Guéliz, avec studios, appartements, duplex et commerces. Une adresse sélectionnée pour acheter un bien neuf en hyper-centre de Marrakech.':
+        'High-end new real estate development in Guéliz, with studios, apartments, duplexes and retail units. A selected address for buying a new property in Marrakech hyper-centre.',
+      'Positionnement': 'Positioning',
+      'Hyper-centre, à proximité immédiate des commerces, restaurants et services.':
+        'Hyper-centre, immediately close to shops, restaurants and services.',
+      'Conception': 'Design',
+      'Une esthétique sobre, raffinée et intemporelle, inspirée des codes hôteliers haut de gamme.':
+        'A sober, refined and timeless aesthetic inspired by high-end hospitality codes.',
+      'Projet patrimonial': 'Legacy asset',
+      'Un actif pensé pour habiter, préparer un pied-à-terre ou étudier une stratégie patrimoniale à Guéliz.':
+        'An asset designed for living, preparing a pied-a-terre or studying a legacy strategy in Guéliz.',
+      'Studios, appartements, duplex et commerces à Guéliz hyper-centre':
+        'Studios, apartments, duplexes and retail units in Guéliz hyper-centre',
+      'Un confort pensé comme une expérience': 'Comfort designed as an experience',
+      'Chaque détail vise à créer une expérience résidentielle plus sereine, plus élégante et plus cohérente dans le temps.':
+        'Every detail is designed to create a calmer, more elegant and more coherent residential experience over time.',
+      'Piscines au rez-de-chaussée': 'Ground-floor pools',
+      'Deux bassins pensés pour des usages complémentaires, avec une piscine chauffée et une piscine classique intégrées dès le rez-de-chaussée.':
+        'Two pools designed for complementary uses, with a heated pool and a classic pool integrated from the ground floor.',
+      'Spa résidentiel': 'Residential spa',
+      'Un espace spa dédié au relâchement et au bien-être, conçu pour prolonger l’atmosphère calme et confidentielle de la résidence.':
+        'A spa area dedicated to relaxation and well-being, designed to extend the calm and confidential atmosphere of the residence.',
+      'Jacuzzi': 'Jacuzzi',
+      'Un jacuzzi intégré aux espaces détente pour offrir un supplément de confort recherché dans une adresse de haut standing.':
+        'A jacuzzi integrated into the relaxation areas to add the sought-after comfort of a high-end address.',
+      'Salle de sport': 'Gym',
+      'Une salle de sport réservée aux résidents, pensée pour un usage quotidien confortable au sein même du projet.':
+        'A gym reserved for residents, designed for comfortable daily use within the project itself.',
+      'Vestiaires séparés hommes / femmes': 'Separate men / women changing rooms',
+      'Des vestiaires distincts pour hommes et femmes, conçus pour offrir plus d’intimité, de confort et de praticité au quotidien.':
+        'Separate changing rooms for men and women, designed to offer more privacy, comfort and practicality day to day.',
+      'Parking titré & box privatifs': 'Titled parking & private storage boxes',
+      'Des stationnements titrés et des box privatifs qui renforcent la valeur patrimoniale et la qualité d’usage de l’ensemble.':
+        'Titled parking spaces and private storage boxes that strengthen the asset value and everyday quality of use.',
+      '30% à la réservation — ≈ 39 000 € d’apport. Disponibilités et conditions actualisées communiquées sur demande.':
+        '30% on reservation — approx. €39,000 contribution. Updated availability and terms shared on request.',
+      'Plans, surfaces disponibles et disponibilités actualisées communiqués après demande via le formulaire.':
+        'Plans, available areas and updated availability shared after request through the form.',
+      'Plans sur demande': 'Plans on request',
+      'Remplissez le formulaire pour recevoir les plans, les surfaces disponibles et les disponibilités actualisées.':
+        'Complete the form to receive plans, available areas and updated availability.',
+      'Riad': 'Riad',
+      'Prix sur demande': 'Price on request',
+      'Riad privé': 'Private riad',
+      'Riad de caractère à la Médina': 'Character riad in the Medina',
+      'Médina · architecture · emplacement rare': 'Medina · architecture · rare location',
+      'Un riad de caractère dans la médina de Marrakech, sélectionné pour son cachet architectural, son emplacement et son potentiel de valorisation.':
+        'A character riad in the Marrakech medina, selected for its architectural cachet, location and value potential.',
+      'Secteur': 'Area',
+      'Médina': 'Medina',
+      'Style': 'Style',
+      'Patrimoine': 'Heritage',
+      'Accès': 'Access',
+      'Sélection privée': 'Private selection',
+      'Un riad de caractère dans la médina de Marrakech, sélectionné pour son cachet architectural et son emplacement rare.':
+        'A character riad in the Marrakech medina, selected for its architectural cachet and rare location.',
+      'Bien patrimonial avec éléments architecturaux marocains, volumes intérieurs généreux et fort potentiel de valorisation.':
+        'A heritage asset with Moroccan architectural details, generous interior volumes and strong value potential.',
+      'Patio': 'Patio',
+      'Terrasse': 'Terrace',
+      'Architecture patrimoniale': 'Heritage architecture',
+      'Sécurité': 'Security',
+      'Salon de réception': 'Reception lounge',
+      'Matériaux traditionnels': 'Traditional materials',
+      'Emplacement Médina': 'Medina location',
+      'Cachet historique': 'Historic character',
+      'Volumes intérieurs': 'Interior volumes',
+      'Accès sélection privée': 'Private selection access',
+      'Potentiel locatif': 'Rental potential',
+      'Rénovation premium': 'Premium renovation',
+      'Sur demande': 'On request',
+      'Dossier complet transmis sur demande après qualification.':
+        'Full dossier shared on request after qualification.',
+      'Sur plan': 'Off-plan',
+      'Pré-lancement': 'Pre-launch',
+      'Opportunité sur plan à Marrakech': 'Off-plan opportunity in Marrakech',
+      'Pré-lancement · investissement · disponibilité limitée':
+        'Pre-launch · investment · limited availability',
+      "Une opportunité en pré-lancement, accessible avant diffusion publique, avec un positionnement pensé pour l'investissement à Marrakech.":
+        'A pre-launch opportunity, accessible before public release, with positioning designed for investment in Marrakech.',
+      'Prioritaire': 'Priority',
+      'Projet': 'Project',
+      'Limitée': 'Limited',
+      "Une opportunité en pré-lancement, accessible avant diffusion publique, avec un positionnement pensé pour l'investissement.":
+        'A pre-launch opportunity, accessible before public release, with positioning designed for investment.',
+      'Accès prioritaire à une sélection confidentielle, avec disponibilité limitée et dossier transmis sur qualification.':
+        'Priority access to a confidential selection, with limited availability and dossier shared after qualification.',
+      'Investissement': 'Investment',
+      'Accès prioritaire': 'Priority access',
+      'Disponibilité limitée': 'Limited availability',
+      'Piscine': 'Pool',
+      'Jardin': 'Garden',
+      'Parking': 'Parking',
+      'Livraison programmée': 'Scheduled delivery',
+      'Plans détaillés transmis après échange.':
+        'Detailed plans shared after an exchange.',
+      'photo': 'photo',
+      'photos': 'photos',
+      'extérieur': 'exterior',
+      'intérieur': 'interior',
+      'Plan': 'Plan',
+      'étage': 'first floor',
+      'rez-de-chaussée': 'ground floor',
+    },
+    nl: {
+      'Villa sur plan': 'Nieuwbouwvilla',
+      'Sélection :': 'Selectie:',
+      'Projet sur plan': 'Nieuwbouwproject',
+      'À partir de 351 000 €': 'Vanaf €351.000',
+      '32 villas sur plan à Marrakech, avec une disponibilité limitée à 7 villas restantes.':
+        '32 nieuwbouwvilla’s in Marrakech, met beperkte beschikbaarheid van 7 resterende villa’s.',
+      'Villa Jaz — villas sur plan à Marrakech':
+        'Villa Jaz — nieuwbouwvilla’s in Marrakech',
+      'Réserver ta villa': 'Uw villa reserveren',
+      'Remplir le formulaire pour plus de détails': 'Vul het formulier in voor meer details',
+      'Type': 'Type',
+      'Total': 'Totaal',
+      'Disponibilité': 'Beschikbaarheid',
+      'Statut': 'Status',
+      'Prix': 'Prijs',
+      'Adresse': 'Adres',
+      'Paiement': 'Betaling',
+      '32 villas': '32 villa’s',
+      '7 villas restantes': '7 villa’s beschikbaar',
+      'Communiquée sur demande': 'Op aanvraag gedeeld',
+      '30% à la réservation, puis 30% à chaque avancement du projet':
+        '30% bij reservering, daarna 30% bij elke projectfase',
+      'Villa Jaz est une opportunité sur plan pensée pour les acquéreurs qui recherchent une villa privée à Marrakech, avec un cadre résidentiel, des espaces extérieurs et une disponibilité volontairement limitée.':
+        'Villa Jaz is een nieuwbouwkans voor kopers die een privévilla in Marrakech zoeken, met een residentiële omgeving, buitenruimtes en bewust beperkte beschikbaarheid.',
+      'Le projet réunit 32 villas, dont 7 restent disponibles. Les informations détaillées, les plans, les disponibilités actualisées et les conditions précises sont communiqués après formulaire afin de préserver la confidentialité du projet.':
+        'Het project telt 32 villa’s, waarvan er 7 beschikbaar blijven. Gedetailleerde informatie, plannen, actuele beschikbaarheid en exacte voorwaarden worden na het formulier gedeeld om de vertrouwelijkheid van het project te bewaren.',
+      '32 villas au total': '32 villa’s in totaal',
+      'Prix à partir de 351 000 €': 'Prijs vanaf €351.000',
+      '30% à la réservation': '30% bij reservering',
+      '30% à chaque avancement du projet': '30% bij elke projectfase',
+      'Adresse communiquée sur demande': 'Adres op aanvraag gedeeld',
+      'Plans sur formulaire': 'Plannen via formulier',
+      'Disponibilités actualisées': 'Actuele beschikbaarheid',
+      'Détails complets sur demande': 'Volledige details op aanvraag',
+      'Réservation sur formulaire': 'Reservering via formulier',
+      'Informations clés': 'Kerninformatie',
+      'Disponibilité limitée': 'Beperkte beschikbaarheid',
+      'sur 32 villas': 'van 32 villa’s',
+      'Confort & équipements': 'Comfort en voorzieningen',
+      'Piscine privée dans chaque villa': 'Privézwembad bij elke villa',
+      'Espaces verts paysagers': 'Aangelegde groene ruimtes',
+      'Aire de jeux pour enfants': 'Speelzone voor kinderen',
+      'Équipements haut de gamme': 'Hoogwaardige voorzieningen',
+      'Jardins et espaces extérieurs aménagés': 'Aangelegde tuinen en buitenruimtes',
+      'Confidentialité & réservation': 'Vertrouwelijkheid en reservering',
+      'Résidence sécurisée': 'Beveiligde residentie',
+      'Sécurité et confidentialité': 'Veiligheid en vertrouwelijkheid',
+      'Modalités de paiement': 'Betalingsvoorwaarden',
+      '30% à la réservation, puis 30% à chaque avancement du projet. Remplir le formulaire pour recevoir les détails complets.':
+        '30% bij reservering, daarna 30% bij elke projectfase. Vul het formulier in om de volledige details te ontvangen.',
+      'Détails sur demande': 'Details op aanvraag',
+      'Modalités de paiement — 30% à la réservation. 30% à chaque avancement du projet. Pour recevoir les détails complets, les disponibilités exactes et les conditions actualisées, merci de remplir le formulaire.\n\nDisponibilité limitée — 7 villas restantes sur un total de 32 villas.':
+        'Betalingsvoorwaarden — 30% bij reservering. 30% bij elke projectfase. Vul het formulier in om de volledige details, exacte beschikbaarheid en actuele voorwaarden te ontvangen.\n\nBeperkte beschikbaarheid — 7 villa’s beschikbaar op een totaal van 32 villa’s.',
+      'Appartement': 'appartement',
+      'À partir de 1,05 M MAD': 'Vanaf 1,05 M MAD',
+      'Programme neuf sur plan': 'Nieuwbouwprogramma op plan',
+      'Appartement premium à Guéliz': 'Premium appartement in Guéliz',
+      'Studios, appartements, duplex et commerces en hyper-centre de Marrakech.':
+        'Studio’s, appartementen, duplexen en handelsruimtes in het hypercentrum van Marrakech.',
+      'Appartement premium à Guéliz — Guéliz hyper-centre, Marrakech':
+        'Premium appartement in Guéliz — hypercentrum Guéliz, Marrakech',
+      'Réserver ton appartement': 'Uw appartement reserveren',
+      'Recevoir la fiche privée': 'De privéfiche ontvangen',
+      'Studio': 'Studio',
+      'Duplex': 'Duplex',
+      'Magasin commercial': 'Handelsruimte',
+      'Programme neuf haut standing': 'Hoogwaardig nieuwbouwprogramma',
+      'Localisation': 'Locatie',
+      'Guéliz hyper-centre, Marrakech': 'Hypercentrum Guéliz, Marrakech',
+      'Surfaces': 'Oppervlaktes',
+      'Livraison': 'Oplevering',
+      '2028 — 1ère livraison': '2028 — eerste oplevering',
+      '39–140 m²': '39–140 m²',
+      'Programme immobilier neuf haut standing à Guéliz, avec studios, appartements, duplex et commerces. Une adresse sélectionnée pour acheter un bien neuf en hyper-centre de Marrakech.':
+        'Hoogwaardig nieuwbouwprogramma in Guéliz, met studio’s, appartementen, duplexen en handelsruimtes. Een geselecteerd adres om nieuw vastgoed te kopen in het hypercentrum van Marrakech.',
+      'Positionnement': 'Positionering',
+      'Hyper-centre, à proximité immédiate des commerces, restaurants et services.':
+        'Hypercentrum, direct nabij winkels, restaurants en diensten.',
+      'Conception': 'Ontwerp',
+      'Une esthétique sobre, raffinée et intemporelle, inspirée des codes hôteliers haut de gamme.':
+        'Een sobere, verfijnde en tijdloze esthetiek, geïnspireerd op hoogwaardige hotelcodes.',
+      'Projet patrimonial': 'Patrimoniaal project',
+      'Un actif pensé pour habiter, préparer un pied-à-terre ou étudier une stratégie patrimoniale à Guéliz.':
+        'Een asset ontworpen om te bewonen, een pied-a-terre voor te bereiden of een patrimoniale strategie in Guéliz te bestuderen.',
+      'Studios, appartements, duplex et commerces à Guéliz hyper-centre':
+        'Studio’s, appartementen, duplexen en handelsruimtes in het hypercentrum van Guéliz',
+      'Un confort pensé comme une expérience': 'Comfort ontworpen als ervaring',
+      'Chaque détail vise à créer une expérience résidentielle plus sereine, plus élégante et plus cohérente dans le temps.':
+        'Elk detail is bedoeld om een rustigere, elegantere en duurzamere woonervaring te creëren.',
+      'Piscines au rez-de-chaussée': 'Zwembaden op de begane grond',
+      'Deux bassins pensés pour des usages complémentaires, avec une piscine chauffée et une piscine classique intégrées dès le rez-de-chaussée.':
+        'Twee baden voor complementair gebruik, met een verwarmd zwembad en een klassiek zwembad vanaf de begane grond geïntegreerd.',
+      'Spa résidentiel': 'Residentiële spa',
+      'Un espace spa dédié au relâchement et au bien-être, conçu pour prolonger l’atmosphère calme et confidentielle de la résidence.':
+        'Een spa-ruimte voor ontspanning en welzijn, ontworpen om de rustige en vertrouwelijke sfeer van de residentie door te trekken.',
+      'Jacuzzi': 'Jacuzzi',
+      'Un jacuzzi intégré aux espaces détente pour offrir un supplément de confort recherché dans une adresse de haut standing.':
+        'Een jacuzzi geïntegreerd in de ontspanningsruimtes voor extra comfort in een hoogwaardig adres.',
+      'Salle de sport': 'Fitnessruimte',
+      'Une salle de sport réservée aux résidents, pensée pour un usage quotidien confortable au sein même du projet.':
+        'Een fitnessruimte voor bewoners, ontworpen voor comfortabel dagelijks gebruik binnen het project zelf.',
+      'Vestiaires séparés hommes / femmes': 'Gescheiden kleedkamers heren / dames',
+      'Des vestiaires distincts pour hommes et femmes, conçus pour offrir plus d’intimité, de confort et de praticité au quotidien.':
+        'Aparte kleedkamers voor heren en dames, ontworpen voor meer privacy, comfort en praktisch dagelijks gebruik.',
+      'Parking titré & box privatifs': 'Getitelde parking en privéboxen',
+      'Des stationnements titrés et des box privatifs qui renforcent la valeur patrimoniale et la qualité d’usage de l’ensemble.':
+        'Getitelde parkeerplaatsen en privéboxen die de patrimoniale waarde en het gebruikscomfort versterken.',
+      '30% à la réservation — ≈ 39 000 € d’apport. Disponibilités et conditions actualisées communiquées sur demande.':
+        '30% bij reservering — circa €39.000 eigen inbreng. Actuele beschikbaarheid en voorwaarden op aanvraag.',
+      'Plans, surfaces disponibles et disponibilités actualisées communiqués après demande via le formulaire.':
+        'Plannen, beschikbare oppervlaktes en actuele beschikbaarheid worden na aanvraag via het formulier gedeeld.',
+      'Plans sur demande': 'Plannen op aanvraag',
+      'Remplissez le formulaire pour recevoir les plans, les surfaces disponibles et les disponibilités actualisées.':
+        'Vul het formulier in om de plannen, beschikbare oppervlaktes en actuele beschikbaarheid te ontvangen.',
+      'Riad': 'Riad',
+      'Prix sur demande': 'Prijs op aanvraag',
+      'Riad privé': 'Privé-riad',
+      'Riad de caractère à la Médina': 'Karaktervolle riad in de Medina',
+      'Médina · architecture · emplacement rare': 'Medina · architectuur · zeldzame ligging',
+      'Un riad de caractère dans la médina de Marrakech, sélectionné pour son cachet architectural, son emplacement et son potentiel de valorisation.':
+        'Een karaktervolle riad in de medina van Marrakech, geselecteerd om zijn architecturale uitstraling, ligging en waardepotentieel.',
+      'Secteur': 'Sector',
+      'Médina': 'Medina',
+      'Style': 'Stijl',
+      'Patrimoine': 'Erfgoed',
+      'Accès': 'Toegang',
+      'Sélection privée': 'Privéselectie',
+      'Un riad de caractère dans la médina de Marrakech, sélectionné pour son cachet architectural et son emplacement rare.':
+        'Een karaktervolle riad in de medina van Marrakech, geselecteerd om zijn architecturale uitstraling en zeldzame ligging.',
+      'Bien patrimonial avec éléments architecturaux marocains, volumes intérieurs généreux et fort potentiel de valorisation.':
+        'Patrimoniaal vastgoed met Marokkaanse architecturale elementen, royale binnenvolumes en sterk waardepotentieel.',
+      'Patio': 'Patio',
+      'Terrasse': 'Terras',
+      'Architecture patrimoniale': 'Erfgoedarchitectuur',
+      'Sécurité': 'Veiligheid',
+      'Salon de réception': 'Ontvangstsalon',
+      'Matériaux traditionnels': 'Traditionele materialen',
+      'Emplacement Médina': 'Ligging in de Medina',
+      'Cachet historique': 'Historisch karakter',
+      'Volumes intérieurs': 'Binnenvolumes',
+      'Accès sélection privée': 'Toegang tot privéselectie',
+      'Potentiel locatif': 'Verhuurpotentieel',
+      'Rénovation premium': 'Premium renovatie',
+      'Sur demande': 'Op aanvraag',
+      'Dossier complet transmis sur demande après qualification.':
+        'Volledig dossier op aanvraag gedeeld na kwalificatie.',
+      'Sur plan': 'Nieuwbouw',
+      'Pré-lancement': 'Pre-lancering',
+      'Opportunité sur plan à Marrakech': 'Nieuwbouwkans in Marrakech',
+      'Pré-lancement · investissement · disponibilité limitée':
+        'Pre-lancering · investering · beperkte beschikbaarheid',
+      "Une opportunité en pré-lancement, accessible avant diffusion publique, avec un positionnement pensé pour l'investissement à Marrakech.":
+        'Een kans in pre-lancering, toegankelijk voor publieke verspreiding, met een positionering gericht op investering in Marrakech.',
+      'Prioritaire': 'Prioritair',
+      'Projet': 'Project',
+      'Limitée': 'Beperkt',
+      "Une opportunité en pré-lancement, accessible avant diffusion publique, avec un positionnement pensé pour l'investissement.":
+        'Een kans in pre-lancering, toegankelijk voor publieke verspreiding, met een positionering gericht op investering.',
+      'Accès prioritaire à une sélection confidentielle, avec disponibilité limitée et dossier transmis sur qualification.':
+        'Prioritaire toegang tot een vertrouwelijke selectie, met beperkte beschikbaarheid en dossier na kwalificatie.',
+      'Investissement': 'Investering',
+      'Accès prioritaire': 'Prioritaire toegang',
+      'Disponibilité limitée': 'Beperkte beschikbaarheid',
+      'Piscine': 'Zwembad',
+      'Jardin': 'Tuin',
+      'Parking': 'Parking',
+      'Livraison programmée': 'Geplande oplevering',
+      'Plans détaillés transmis après échange.':
+        'Gedetailleerde plannen gedeeld na gesprek.',
+      'photo': 'foto',
+      'photos': "foto's",
+      'extérieur': 'exterieur',
+      'intérieur': 'interieur',
+      'Plan': 'Plattegrond',
+      'étage': 'verdieping',
+      'rez-de-chaussée': 'begane grond',
+    },
+  };
+
+  var PROPERTY_MODAL_FORM_PREFIXES = {
+    en: {
+      '/contact/': '/en/contact/',
+      '/off-market/': '/en/off-market/',
+    },
+    nl: {
+      '/contact/': '/nl/contact/',
+      '/off-market/': '/nl/off-market/',
+    },
+  };
+
+  function getCurrentLocale() {
+    var htmlLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+    var pathLang = (window.location.pathname.split('/')[1] || '').toLowerCase();
+    if (htmlLang.indexOf('nl') === 0 || pathLang === 'nl') return 'nl';
+    if (htmlLang.indexOf('en') === 0 || pathLang === 'en') return 'en';
+    return 'fr';
+  }
+
+  function translateModalString(value, locale) {
+    if (locale === 'fr' || !value) return value;
+    var translations = PROPERTY_MODAL_TEXT_TRANSLATIONS[locale] || {};
+    return translations[value] || value;
+  }
+
+  function formatModalPhotoCount(count, locale) {
+    return count + ' ' + translateModalString(count === 1 ? 'photo' : 'photos', locale);
+  }
+
+  function localizeModalHref(value, locale) {
+    if (locale === 'fr' || typeof value !== 'string') return value;
+    var prefixes = PROPERTY_MODAL_FORM_PREFIXES[locale] || {};
+    var href = value;
+    Object.keys(prefixes).some(function (prefix) {
+      if (href.indexOf(prefix) !== 0) return false;
+      href = prefixes[prefix] + href.slice(prefix.length);
+      return true;
+    });
+    return href;
+  }
+
+  function localizeModalValue(value, locale) {
+    if (Array.isArray(value)) {
+      return value.map(function (item) {
+        return localizeModalValue(item, locale);
+      });
+    }
+    if (value && typeof value === 'object') {
+      var next = {};
+      Object.keys(value).forEach(function (key) {
+        var raw = value[key];
+        next[key] =
+          key === 'formHref'
+            ? localizeModalHref(raw, locale)
+            : localizeModalValue(raw, locale);
+      });
+      return next;
+    }
+    if (typeof value === 'string') {
+      return translateModalString(value, locale);
+    }
+    return value;
+  }
+
+  function getLocalizedPropertyModalData(propertyId) {
+    var property = propertyModalData[propertyId];
+    if (!property) return null;
+    return localizeModalValue(property, getCurrentLocale());
+  }
+
   function boot() {
     initPropertyDetailPage();
 
@@ -781,13 +1210,19 @@
         var figure = document.createElement('figure');
         var img = document.createElement('img');
         img.src = src;
-        img.alt = (imageAltBase || 'Villa Jaz') + ' — photo ' + (i + 1);
+        var locale = getCurrentLocale();
+        img.alt =
+          (imageAltBase || 'Villa Jaz') +
+          ' — ' +
+          translateModalString('photo', locale) +
+          ' ' +
+          (i + 1);
         img.loading = 'lazy';
         figure.appendChild(img);
         container.appendChild(figure);
       });
       if (countEl) {
-        countEl.textContent = (images || []).length + ' photos';
+        countEl.textContent = formatModalPhotoCount((images || []).length, getCurrentLocale());
       }
     }
 
@@ -1198,8 +1633,12 @@
       if (src) {
         layoutImage.src = src;
         layoutImage.alt =
-          'Plan ' +
-          (floor === 'first' ? 'étage' : 'rez-de-chaussée') +
+          translateModalString('Plan', getCurrentLocale()) +
+          ' ' +
+          translateModalString(
+            floor === 'first' ? 'étage' : 'rez-de-chaussée',
+            getCurrentLocale()
+          ) +
           ' — ' +
           ((activeProperty && activeProperty.title) || 'Villa Jaz');
         layoutImage.hidden = false;
@@ -1231,7 +1670,8 @@
         layoutPlaceholder.classList.remove(
           'om-property-modal__plan-placeholder--premium'
         );
-        layoutPlaceholder.textContent = 'Plans transmis sur demande.';
+        layoutPlaceholder.textContent =
+          translateModalString('Plans transmis sur demande', getCurrentLocale()) + '.';
       }
     }
 
@@ -1300,8 +1740,9 @@
       if (typeEl) typeEl.textContent = property.type;
       if (priceBottomEl) priceBottomEl.textContent = property.price;
       if (selectionEl) {
+        var selectionLabel = translateModalString('Sélection :', getCurrentLocale());
         selectionEl.innerHTML =
-          '<span>Sélection :</span> ' + property.selection;
+          '<span>' + selectionLabel + '</span> ' + property.selection;
       }
       if (titleEl) titleEl.textContent = property.title;
       renderSubtitle(property);
@@ -1324,13 +1765,13 @@
         exteriorGalleryEl,
         galleries.exterior,
         exteriorCountEl,
-        property.title + ' — extérieur'
+        property.title + ' — ' + translateModalString('extérieur', getCurrentLocale())
       );
       renderGallery(
         interiorGalleryEl,
         galleries.interior,
         interiorCountEl,
-        property.title + ' — intérieur'
+        property.title + ' — ' + translateModalString('intérieur', getCurrentLocale())
       );
 
       updateModalActions(property);
@@ -1341,7 +1782,8 @@
       if (layoutBaths) layoutBaths.textContent = layout.baths || '—';
       if (layoutDescription) {
         layoutDescription.textContent =
-          layout.description || 'Plans transmis sur demande.';
+          layout.description ||
+          translateModalString('Plans transmis sur demande', getCurrentLocale()) + '.';
       }
 
       layoutTabButtons.forEach(function (btn, index) {
@@ -1587,7 +2029,7 @@
     }
 
     function openModal(propertyId) {
-      var property = propertyModalData[propertyId];
+      var property = getLocalizedPropertyModalData(propertyId);
       if (!property) return;
 
       lastFocusedElement =
@@ -1806,7 +2248,7 @@
     if (!page || page.dataset.propertyDetailInit === 'true') return;
 
     var propertyId = page.getAttribute('data-property-id') || 'villa-jaz';
-    var property = propertyModalData[propertyId];
+    var property = getLocalizedPropertyModalData(propertyId);
     if (!property) return;
 
     page.dataset.propertyDetailInit = 'true';
@@ -2066,8 +2508,12 @@
       if (src) {
         layoutImage.src = src;
         layoutImage.alt =
-          'Plan ' +
-          (floor === 'first' ? 'étage' : 'rez-de-chaussée') +
+          translateModalString('Plan', getCurrentLocale()) +
+          ' ' +
+          translateModalString(
+            floor === 'first' ? 'étage' : 'rez-de-chaussée',
+            getCurrentLocale()
+          ) +
           ' — ' +
           (property.title || 'Villa Jaz');
         layoutImage.hidden = false;
@@ -2084,7 +2530,10 @@
       layoutPlaceholder.classList.remove(
         'om-property-modal__plan-placeholder--premium'
       );
-      layoutPlaceholder.textContent = 'Plans transmis sur demande';
+      layoutPlaceholder.textContent = translateModalString(
+        'Plans transmis sur demande',
+        getCurrentLocale()
+      );
     }
 
     page.classList.toggle('is-hyper-theme', property.theme === 'hyper');
@@ -2098,7 +2547,8 @@
     if (typeEl) typeEl.textContent = property.type;
     if (priceBottomEl) priceBottomEl.textContent = property.price;
     if (selectionEl) {
-      selectionEl.innerHTML = '<span>Sélection :</span> ' + property.selection;
+      var pageSelectionLabel = translateModalString('Sélection :', getCurrentLocale());
+      selectionEl.innerHTML = '<span>' + pageSelectionLabel + '</span> ' + property.selection;
     }
     if (titleEl) titleEl.textContent = property.title;
     if (descriptionEl) {
@@ -2117,13 +2567,13 @@
       exteriorGalleryEl,
       galleries.exterior,
       exteriorCountEl,
-      property.title + ' — extérieur'
+      property.title + ' — ' + translateModalString('extérieur', getCurrentLocale())
     );
     renderGallery(
       interiorGalleryEl,
       galleries.interior,
       interiorCountEl,
-      property.title + ' — intérieur'
+      property.title + ' — ' + translateModalString('intérieur', getCurrentLocale())
     );
 
     updateActions();
@@ -2134,7 +2584,8 @@
     if (layoutBaths) layoutBaths.textContent = layout.baths || '—';
     if (layoutDescription) {
       layoutDescription.textContent =
-        layout.description || 'Plans transmis sur demande.';
+        layout.description ||
+        translateModalString('Plans transmis sur demande', getCurrentLocale()) + '.';
     }
 
     layoutTabButtons.forEach(function (btn, index) {

@@ -125,6 +125,121 @@
     },
   ];
 
+  function detectLocale() {
+    var path = (global.location && global.location.pathname) || '/';
+    if (path.indexOf('/en') === 0) return 'en';
+    if (path.indexOf('/nl') === 0) return 'nl';
+    return 'fr';
+  }
+
+  var LOCALIZED = {
+    en: {
+      categories: [
+        { slug: 'sur-plan', label: 'Off-plan' },
+        { slug: 'investissement', label: 'Investment' },
+        { slug: 'marrakech', label: 'Marrakech' },
+        { slug: 'off-market', label: 'Off-market' },
+      ],
+      tabs: [
+        { slug: 'quartiers', label: 'Neighbourhoods', tag: 'quartiers' },
+        { slug: 'marrakech', label: 'Marrakech', tag: 'marrakech' },
+        { slug: 'investissement', label: 'Investment', tag: 'investissement' },
+        { slug: 'sur-plan', label: 'Off-plan', tag: 'sur-plan' },
+      ],
+      articles: [
+        {
+          slug: 'buying-off-plan-villa-marrakech',
+          title: 'Buying an off-plan villa in Marrakech: what to check before reserving',
+          imageAlt: 'Off-plan villa in Marrakech — exterior',
+          excerpt: 'Developer, schedule, staged payments and outdoor-space quality: the points to clarify before committing to an off-plan project.',
+        },
+        {
+          slug: 'luxury-real-estate-investment-marrakech',
+          title: 'Investing in luxury real estate in Marrakech: areas to monitor',
+          imageAlt: 'Luxury real estate in Marrakech',
+          excerpt: 'Rental demand, liquidity, buyer profile and urban dynamics: how to read an address before investing.',
+        },
+        {
+          slug: 'best-addresses-real-estate-marrakech',
+          title: 'Guéliz, Hivernage, Amelkis: understanding the addresses that gain value',
+          imageAlt: 'Architecture and addresses in Marrakech',
+          excerpt: 'Hyper-centre, heritage residential area or premium periphery: each sector follows a different logic.',
+        },
+        {
+          slug: 'off-market-properties-marrakech',
+          title: 'Why some Marrakech properties are never published online',
+          imageAlt: 'Private real estate selection in Marrakech',
+          excerpt: 'Seller discretion, incomplete files and qualified access: the structural reasons behind off-market real estate.',
+        },
+        {
+          slug: 'apartment-hypercentre-gueliz-marrakech',
+          title: 'Apartment in the hyper-centre: why location remains the first filter',
+          imageAlt: 'Apartment in Marrakech hyper-centre',
+          excerpt: 'Proximity to daily uses, rental profile and address rarity: what the hyper-centre brings to a residential project.',
+        },
+      ],
+    },
+    nl: {
+      categories: [
+        { slug: 'sur-plan', label: 'Nieuwbouw' },
+        { slug: 'investissement', label: 'Investering' },
+        { slug: 'marrakech', label: 'Marrakech' },
+        { slug: 'off-market', label: 'Off-market' },
+      ],
+      tabs: [
+        { slug: 'quartiers', label: 'Wijken', tag: 'quartiers' },
+        { slug: 'marrakech', label: 'Marrakech', tag: 'marrakech' },
+        { slug: 'investissement', label: 'Investering', tag: 'investissement' },
+        { slug: 'sur-plan', label: 'Nieuwbouw', tag: 'sur-plan' },
+      ],
+      articles: [
+        {
+          slug: 'nieuwbouwvilla-kopen-marrakech',
+          title: 'Een nieuwbouwvilla kopen in Marrakech: wat u moet controleren voordat u reserveert',
+          imageAlt: 'Nieuwbouwvilla in Marrakech — exterieur',
+          excerpt: 'Ontwikkelaar, planning, gefaseerde betalingen en kwaliteit van buitenruimtes: de punten om te verduidelijken voordat u zich verbindt aan een nieuwbouwproject.',
+        },
+        {
+          slug: 'investeren-luxe-vastgoed-marrakech',
+          title: 'Investeren in luxevastgoed in Marrakech: de zones om te volgen',
+          imageAlt: 'Luxevastgoed in Marrakech',
+          excerpt: 'Huurvraag, liquiditeit, kopersprofiel en stedelijke dynamiek: hoe u een adres leest voordat u investeert.',
+        },
+        {
+          slug: 'beste-adressen-vastgoed-marrakech',
+          title: 'Guéliz, Hivernage, Amelkis: adressen begrijpen die in waarde toenemen',
+          imageAlt: 'Architectuur en adressen in Marrakech',
+          excerpt: 'Hypercentrum, patrimoniale woonwijk of premium periferie: elke sector volgt een andere logica.',
+        },
+        {
+          slug: 'off-market-vastgoed-marrakech',
+          title: 'Waarom sommige panden in Marrakech nooit online verschijnen',
+          imageAlt: 'Private vastgoedselectie in Marrakech',
+          excerpt: 'Discretie van verkopers, onvolledige dossiers en gekwalificeerde toegang: de structurele redenen achter off-market vastgoed.',
+        },
+        {
+          slug: 'appartement-hypercentre-gueliz-marrakech',
+          title: 'Appartement in het hypercentrum: waarom ligging de eerste filter blijft',
+          imageAlt: 'Appartement in het hypercentrum van Marrakech',
+          excerpt: 'Nabijheid van dagelijkse functies, huurprofiel en schaarste van adressen: wat het hypercentrum toevoegt aan een residentieel project.',
+        },
+      ],
+    },
+  };
+
+  function applyLocalization() {
+    var locale = detectLocale();
+    var localized = LOCALIZED[locale];
+    if (!localized) return;
+    OM_BLOG_CATEGORIES = localized.categories;
+    OM_BLOG_QUARTIERS_TABS = localized.tabs;
+    OM_BLOG_ARTICLES = OM_BLOG_ARTICLES.map(function (article, index) {
+      return Object.assign({}, article, localized.articles[index] || {});
+    });
+  }
+
+  applyLocalization();
+
   function articleHasTag(article, tag) {
     return (
       Array.isArray(article.tags) && article.tags.indexOf(tag) !== -1

@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import { MOTION_EASE } from "@/lib/motion/config";
+import type { SiteLocale } from "@/lib/i18n/types";
 
 const VIDEO_SRC = "/assets/mavericks/video/fayssal_offmarket.mp4";
 const VIDEO_POSTER = "/assets/mavericks/video/fayssal_offmarket-poster.jpg";
@@ -30,7 +31,31 @@ const CLOSE_ICON = (
  * Qui sommes-nous video: muted autoplay preview that opens a premium
  * popup modal (blurred backdrop, sound enabled, controls) on click.
  */
-export function AboutWhoVideo() {
+const VIDEO_COPY = {
+  fr: {
+    open: "Ouvrir la vidéo de présentation OFF MARKET",
+    close: "Fermer la vidéo de présentation OFF MARKET",
+    dialog: "Vidéo de présentation OFF MARKET",
+  },
+  en: {
+    open: "Open the OFF MARKET presentation video",
+    close: "Close the OFF MARKET presentation video",
+    dialog: "OFF MARKET presentation video",
+  },
+  it: {
+    open: "Apri il video di presentazione OFF MARKET",
+    close: "Chiudi il video di presentazione OFF MARKET",
+    dialog: "Video di presentazione OFF MARKET",
+  },
+  nl: {
+    open: "Open de OFF MARKET-presentatievideo",
+    close: "Sluit de OFF MARKET-presentatievideo",
+    dialog: "OFF MARKET-presentatievideo",
+  },
+} satisfies Record<SiteLocale, { open: string; close: string; dialog: string }>;
+
+export function AboutWhoVideo({ locale = "fr" }: { locale?: SiteLocale }) {
+  const copy = VIDEO_COPY[locale] ?? VIDEO_COPY.fr;
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const reduced = useReducedMotion();
@@ -108,7 +133,7 @@ export function AboutWhoVideo() {
         ref={triggerRef}
         className="about-who__video-frame about-video-card about-who__video-button"
         onClick={() => setOpen(true)}
-        aria-label="Ouvrir la vidéo de présentation OFF MARKET"
+        aria-label={copy.open}
       >
         <video
           className="about-who__video"
@@ -140,7 +165,7 @@ export function AboutWhoVideo() {
                   className="about-video-modal"
                   role="dialog"
                   aria-modal="true"
-                  aria-label="Vidéo de présentation OFF MARKET"
+                  aria-label={copy.dialog}
                   onClick={(event) => event.stopPropagation()}
                   {...modalMotion}
                 >
@@ -158,7 +183,7 @@ export function AboutWhoVideo() {
                     ref={closeRef}
                     className="about-video-modal__close"
                     onClick={close}
-                    aria-label="Fermer la vidéo"
+                    aria-label={copy.close}
                   >
                     {CLOSE_ICON}
                   </button>

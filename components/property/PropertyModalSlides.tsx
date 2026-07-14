@@ -3,6 +3,7 @@ export type PropertyModalSlidesProps = {
   pageMode?: boolean;
   /** Modal-only: title id for aria-labelledby on the dialog shell. */
   titleId?: string;
+  locale?: "fr" | "en" | "nl";
 };
 
 const PAGE_SECTIONS = [
@@ -13,6 +14,84 @@ const PAGE_SECTIONS = [
   { slide: "interior", id: "interieur", active: true },
   { slide: "layout", id: "plans", active: true },
 ] as const;
+
+const COPY = {
+  fr: {
+    type: "Villa sur plan",
+    selectionLabel: "Sélection :",
+    selectionValue: "Projet sur plan",
+    price: "Prix",
+    fromPrice: "À partir de 351 000 €",
+    callback: "Rappel",
+    dossier: "Recevoir le dossier",
+    project: "Projet",
+    gallery: "Galerie",
+    photos: "5 photos",
+    exterior: "Extérieur",
+    interior: "Intérieur",
+    view: "Voir",
+    layoutTitle: "Plans & configuration",
+    ground: "Rez-de-chaussée",
+    first: "Étage",
+    surface: "Surface",
+    suites: "Suites",
+    baths: "Salles d'eau",
+    requestDetails: "Détails sur demande",
+    plansRequest: "Plans transmis sur demande",
+    contactHref: "/contact/",
+    dossierHref: "/off-market/",
+  },
+  en: {
+    type: "Off-plan villa",
+    selectionLabel: "Selection:",
+    selectionValue: "Off-plan property",
+    price: "Price",
+    fromPrice: "From €351,000",
+    callback: "Callback",
+    dossier: "Receive the dossier",
+    project: "Project",
+    gallery: "Gallery",
+    photos: "5 photos",
+    exterior: "Exterior",
+    interior: "Interior",
+    view: "View",
+    layoutTitle: "Plans & configuration",
+    ground: "Ground floor",
+    first: "First floor",
+    surface: "Area",
+    suites: "Suites",
+    baths: "Bathrooms",
+    requestDetails: "Details on request",
+    plansRequest: "Plans shared on request",
+    contactHref: "/en/contact/",
+    dossierHref: "/en/off-market/",
+  },
+  nl: {
+    type: "Nieuwbouwvilla",
+    selectionLabel: "Selectie:",
+    selectionValue: "Nieuwbouwproject",
+    price: "Prijs",
+    fromPrice: "Vanaf 351.000 €",
+    callback: "Terugbelverzoek",
+    dossier: "Het dossier ontvangen",
+    project: "Project",
+    gallery: "Galerij",
+    photos: "5 foto's",
+    exterior: "Exterieur",
+    interior: "Interieur",
+    view: "Bekijken",
+    layoutTitle: "Plattegronden en indeling",
+    ground: "Begane grond",
+    first: "Verdieping",
+    surface: "Oppervlakte",
+    suites: "Suites",
+    baths: "Badkamers",
+    requestDetails: "Details op aanvraag",
+    plansRequest: "Plattegronden op aanvraag",
+    contactHref: "/nl/contact/",
+    dossierHref: "/nl/off-market/",
+  },
+} as const;
 
 function slideClass(
   base: string,
@@ -33,7 +112,9 @@ function slideClass(
 export function PropertyModalSlides({
   pageMode = false,
   titleId = "om-property-modal-title",
+  locale = "fr",
 }: PropertyModalSlidesProps) {
+  const copy = COPY[locale] ?? COPY.fr;
   const general = PAGE_SECTIONS[0];
   const about = PAGE_SECTIONS[1];
   const characteristics = PAGE_SECTIONS[2];
@@ -60,11 +141,11 @@ export function PropertyModalSlides({
             <div className="om-property-modal__tags">
               <span data-modal-index>01</span>
               <span data-modal-location>MARRAKECH</span>
-              <span data-modal-type>Villa sur plan</span>
+              <span data-modal-type>{copy.type}</span>
             </div>
           </div>
           <p className="om-property-modal__selection" data-modal-selection>
-            <span>Sélection :</span> Projet sur plan
+            <span>{copy.selectionLabel}</span> {copy.selectionValue}
           </p>
           <h3
             className="om-property-modal__title"
@@ -79,11 +160,11 @@ export function PropertyModalSlides({
           <p className="om-property-modal__description" data-modal-description />
           <div className="om-property-modal__bottom">
             <div className="om-property-modal__bottom-price">
-              <span>Prix</span>
-              <strong data-modal-price-bottom>À partir de 351 000 €</strong>
+              <span>{copy.price}</span>
+              <strong data-modal-price-bottom>{copy.fromPrice}</strong>
             </div>
             <div className="om-property-modal__actions">
-              <a href="/contact/" className="om-cta om-button om-button--outline">
+              <a href={copy.contactHref} className="om-cta om-button om-button--outline">
                 <span className="om-button__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path
@@ -101,9 +182,9 @@ export function PropertyModalSlides({
                     />
                   </svg>
                 </span>
-                <span>Rappel</span>
+                <span>{copy.callback}</span>
               </a>
-              <a href="/off-market/" className="om-cta om-button om-button--dark">
+              <a href={copy.dossierHref} className="om-cta om-button om-button--dark">
                 <span className="om-button__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path
@@ -115,7 +196,7 @@ export function PropertyModalSlides({
                     />
                   </svg>
                 </span>
-                <span>Recevoir le dossier</span>
+                <span>{copy.dossier}</span>
               </a>
             </div>
           </div>
@@ -135,8 +216,8 @@ export function PropertyModalSlides({
           <div className="om-property-modal__about-kicker">
             <img data-modal-about-thumb alt="" />
             <div>
-              <span>Projet</span>
-              <strong data-modal-about-project>Projet sur plan</strong>
+              <span>{copy.project}</span>
+              <strong data-modal-about-project>{copy.selectionValue}</strong>
             </div>
           </div>
           <h3 data-modal-about-title>Villa Jaz</h3>
@@ -176,11 +257,11 @@ export function PropertyModalSlides({
       >
         <div className="om-property-modal__gallery" data-modal-exterior-gallery />
         <div className="om-property-modal__gallery-card">
-          <span>Galerie</span>
-          <strong data-modal-exterior-count>5 photos</strong>
-          <p>Extérieur</p>
+          <span>{copy.gallery}</span>
+          <strong data-modal-exterior-count>{copy.photos}</strong>
+          <p>{copy.exterior}</p>
           <button type="button" data-modal-gallery-focus="exterior">
-            Voir
+            {copy.view}
           </button>
         </div>
       </article>
@@ -196,11 +277,11 @@ export function PropertyModalSlides({
       >
         <div className="om-property-modal__gallery" data-modal-interior-gallery />
         <div className="om-property-modal__gallery-card">
-          <span>Galerie</span>
-          <strong data-modal-interior-count>5 photos</strong>
-          <p>Intérieur</p>
+          <span>{copy.gallery}</span>
+          <strong data-modal-interior-count>{copy.photos}</strong>
+          <p>{copy.interior}</p>
           <button type="button" data-modal-gallery-focus="interior">
-            Voir
+            {copy.view}
           </button>
         </div>
       </article>
@@ -216,33 +297,33 @@ export function PropertyModalSlides({
       >
         <div className="om-property-modal__layout-copy">
           <div>
-            <h3>Plans &amp; configuration</h3>
+            <h3>{copy.layoutTitle}</h3>
             <div className="om-property-modal__layout-tabs" data-modal-layout-tabs>
               <button type="button" className="is-active" data-layout-floor="ground">
-                Rez-de-chaussée
+                {copy.ground}
               </button>
               <button type="button" data-layout-floor="first">
-                Étage
+                {copy.first}
               </button>
             </div>
             <div className="om-property-modal__layout-meta">
               <div>
-                <span>Surface</span>
-                <strong data-modal-layout-surface>Détails sur demande</strong>
+                <span>{copy.surface}</span>
+                <strong data-modal-layout-surface>{copy.requestDetails}</strong>
               </div>
               <div>
-                <span>Suites</span>
-                <strong data-modal-layout-rooms>Détails sur demande</strong>
+                <span>{copy.suites}</span>
+                <strong data-modal-layout-rooms>{copy.requestDetails}</strong>
               </div>
               <div>
-                <span>Salles d&apos;eau</span>
-                <strong data-modal-layout-baths>Détails sur demande</strong>
+                <span>{copy.baths}</span>
+                <strong data-modal-layout-baths>{copy.requestDetails}</strong>
               </div>
             </div>
             <p data-modal-layout-description />
           </div>
           <div className="om-property-modal__actions">
-            <a href="/contact/" className="om-cta om-button om-button--outline">
+            <a href={copy.contactHref} className="om-cta om-button om-button--outline">
               <span className="om-button__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -260,9 +341,9 @@ export function PropertyModalSlides({
                   />
                 </svg>
               </span>
-              <span>Rappel</span>
+              <span>{copy.callback}</span>
             </a>
-            <a href="/off-market/" className="om-cta om-button om-button--dark">
+            <a href={copy.dossierHref} className="om-cta om-button om-button--dark">
               <span className="om-button__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -274,7 +355,7 @@ export function PropertyModalSlides({
                   />
                 </svg>
               </span>
-              <span>Recevoir le dossier</span>
+              <span>{copy.dossier}</span>
             </a>
           </div>
         </div>
@@ -292,7 +373,7 @@ export function PropertyModalSlides({
             className="om-property-modal__plan-placeholder"
             data-modal-layout-placeholder
           >
-            Plans transmis sur demande
+            {copy.plansRequest}
           </p>
         </figure>
       </article>
@@ -307,4 +388,22 @@ export const PROPERTY_DETAIL_ANCHORS = [
   { href: "#exterieur", label: "Extérieur", index: "04." },
   { href: "#interieur", label: "Intérieur", index: "05." },
   { href: "#plans", label: "Plans", index: "06." },
+] as const;
+
+export const PROPERTY_DETAIL_ANCHORS_EN = [
+  { href: "#general", label: "General", index: "01." },
+  { href: "#a-propos", label: "About", index: "02." },
+  { href: "#caracteristiques", label: "Features", index: "03." },
+  { href: "#exterieur", label: "Exterior", index: "04." },
+  { href: "#interieur", label: "Interior", index: "05." },
+  { href: "#plans", label: "Plans", index: "06." },
+] as const;
+
+export const PROPERTY_DETAIL_ANCHORS_NL = [
+  { href: "#general", label: "Algemeen", index: "01." },
+  { href: "#a-propos", label: "Over dit project", index: "02." },
+  { href: "#caracteristiques", label: "Kenmerken", index: "03." },
+  { href: "#exterieur", label: "Exterieur", index: "04." },
+  { href: "#interieur", label: "Interieur", index: "05." },
+  { href: "#plans", label: "Plattegronden", index: "06." },
 ] as const;

@@ -13,6 +13,7 @@
     var path = window.location.pathname || '/';
     if (path.indexOf('/en') === 0) return 'en';
     if (path.indexOf('/it') === 0) return 'it';
+    if (path.indexOf('/nl') === 0) return 'nl';
     return 'fr';
   }
 
@@ -188,6 +189,64 @@
           exitValue: 'Valore stimato in uscita',
           capitalGain: 'Plusvalenza lorda',
           horizon: 'Orizzonte',
+        },
+      },
+    },
+    nl: {
+      noteText:
+        'Indicatieve schatting. OFF MARKET verfijnt deze simulatie met het exacte adres, de werkelijke kosten en beschikbare woningen.',
+      modes: {
+        short: {
+          resultSection: 'RESULTAAT',
+          resultLabel: 'BRUTO HUURRENDEMENT',
+          resultCaption: 'vóór kosten, fiscaliteit en werkelijke lasten',
+          mainIsPercent: true,
+        },
+        long: {
+          resultSection: 'RESULTAAT',
+          resultLabel: 'BRUTO HUURRENDEMENT',
+          resultCaption: 'vóór kosten, fiscaliteit en werkelijke lasten',
+          mainIsPercent: true,
+        },
+        resale: {
+          resultSection: 'RESULTAAT',
+          resultLabel: 'GESCHATTE BRUTO MEERWAARDE',
+          resultCaption: '',
+          mainIsPercent: false,
+        },
+      },
+      longTermVacancy: '~1 maand / jaar',
+      longTermManagement: 'Ja',
+      annualisedAppreciation: 'Geannualiseerde waardestijging ',
+      yearsSuffix: ' jaar',
+      weeksSuffix: ' weken',
+      perYearSuffix: ' / jaar',
+      metricIcons: {
+        'Jaarlijkse huurinkomsten': 'wallet',
+        'Verhuurde nachten per jaar': 'calendar',
+        'Gekozen bezettingsgraad': 'gauge',
+        'Jaarlijkse huurinkomsten': 'wallet',
+        'Geschatte huurderving': 'calendar',
+        'OFF MARKET beheer inbegrepen': 'check',
+        'Geschatte uitstapwaarde': 'trend',
+        'Bruto meerwaarde': 'trend',
+        Horizon: 'clock',
+      },
+      metrics: {
+        short: {
+          grossRevenue: 'Jaarlijkse huurinkomsten',
+          nightsRented: 'Verhuurde nachten per jaar',
+          occupancy: 'Gekozen bezettingsgraad',
+        },
+        long: {
+          grossRent: 'Jaarlijkse huurinkomsten',
+          vacancy: 'Geschatte huurderving',
+          management: 'OFF MARKET beheer inbegrepen',
+        },
+        resale: {
+          exitValue: 'Geschatte uitstapwaarde',
+          capitalGain: 'Bruto meerwaarde',
+          horizon: 'Horizon',
         },
       },
     },

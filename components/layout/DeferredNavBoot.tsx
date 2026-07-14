@@ -11,6 +11,7 @@ declare global {
 }
 
 function dispatchNavBoot() {
+  window.dispatchEvent(new CustomEvent("om-react-ready"));
   document.dispatchEvent(new CustomEvent("om-nav-boot"));
 
   if (typeof window.__omNavMenuRender === "function") {

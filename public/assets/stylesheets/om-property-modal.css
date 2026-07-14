@@ -2042,6 +2042,13 @@ body.om-modal-open {
   }
 }
 
+/* Appartement fiche — blur all property images (modal + detail page). */
+.om-property-modal.is-hyper-theme img,
+.om-property-detail-page.is-hyper-theme img {
+  filter: blur(5px) saturate(1.04);
+  transform: scale(1.08);
+}
+
 .om-property-modal.is-hyper-theme .om-button--dark {
   background: #565449 !important;
   border-color: #565449 !important;

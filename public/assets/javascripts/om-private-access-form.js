@@ -39,19 +39,30 @@
     mailSubject: 'Richiesta accesso OFF MARKET',
   };
 
+  var COPY_NL = {
+    success:
+      'Uw aanvraag staat klaar in uw e-mailprogramma. Verstuur de e-mail om uw project met OFF MARKET te delen.',
+    error:
+      'Controleer de verplichte velden voordat u uw aanvraag verstuurt.',
+    mailSubject: 'OFF MARKET toegangsaanvraag',
+  };
+
   function detectFormLocale() {
     var path = window.location.pathname || '/';
     if (path.indexOf('/en') === 0) return 'en';
     if (path.indexOf('/it') === 0) return 'it';
+    if (path.indexOf('/nl') === 0) return 'nl';
     var attr = document.documentElement.getAttribute('lang');
     if (attr && attr.indexOf('en') === 0) return 'en';
     if (attr && attr.indexOf('it') === 0) return 'it';
+    if (attr && attr.indexOf('nl') === 0) return 'nl';
     return 'fr';
   }
 
   function resolveFormLocale(form) {
     if (form && form.getAttribute('data-form-locale') === 'en') return 'en';
     if (form && form.getAttribute('data-form-locale') === 'it') return 'it';
+    if (form && form.getAttribute('data-form-locale') === 'nl') return 'nl';
     return detectFormLocale();
   }
 
@@ -59,6 +70,7 @@
     var locale = resolveFormLocale(form);
     if (locale === 'en') return COPY_EN;
     if (locale === 'it') return COPY_IT;
+    if (locale === 'nl') return COPY_NL;
     return COPY_FR;
   }
 
@@ -176,31 +188,61 @@
 
   function buildMailBody(data, form) {
     var payload = buildLeadPayload(data, form);
+    var isEn = payload.locale === 'en';
+    var isNl = payload.locale === 'nl';
     var lines = [
-      'Bonjour, je souhaite demander l’accès aux projets OFF MARKET.',
+      isNl
+        ? 'Hallo, ik wil toegang aanvragen tot de OFF MARKET projecten.'
+        : isEn
+          ? 'Hello, I would like to request access to OFF MARKET projects.'
+          : 'Bonjour, je souhaite demander l’accès aux projets OFF MARKET.',
       '',
-      'Nom complet : ' + payload.fullName,
+      (isNl ? 'Volledige naam : ' : isEn ? 'Full name : ' : 'Nom complet : ') + payload.fullName,
       'Email : ' + payload.email,
-      'Téléphone : ' + payload.phoneCountry + ' ' + payload.phone,
+      (isNl ? 'Telefoon : ' : isEn ? 'Phone : ' : 'Téléphone : ') +
+        payload.phoneCountry +
+        ' ' +
+        payload.phone,
       'Message : ' + (payload.message || '—'),
       'Intent : ' + data.intent,
     ];
 
     if (payload.propertyType || payload.budget || payload.objective || payload.source || payload.context) {
       lines.push('');
-      if (payload.propertyType) lines.push('Type de bien : ' + payload.propertyType);
-      if (payload.budget) lines.push('Budget étudié : ' + payload.budget);
-      if (payload.objective) lines.push('Objectif : ' + payload.objective);
+      if (payload.propertyType) {
+        lines.push(
+          (isNl ? 'Type vastgoed : ' : isEn ? 'Property type : ' : 'Type de bien : ') +
+            payload.propertyType
+        );
+      }
+      if (payload.budget) {
+        lines.push(
+          (isNl ? 'Budget : ' : isEn ? 'Budget reviewed : ' : 'Budget étudié : ') +
+            payload.budget
+        );
+      }
+      if (payload.objective) {
+        lines.push(
+          (isNl ? 'Doelstelling : ' : isEn ? 'Objective : ' : 'Objectif : ') +
+            payload.objective
+        );
+      }
       if (payload.source) lines.push('Source : ' + payload.source);
-      if (payload.context) lines.push('Contexte : ' + payload.context);
+      if (payload.context) {
+        lines.push((isNl ? 'Context : ' : isEn ? 'Context : ' : 'Contexte : ') + payload.context);
+      }
     }
 
     lines.push('');
     lines.push('Locale : ' + payload.locale);
-    lines.push('Horodatage : ' + payload.createdAt);
+    lines.push((isNl ? 'Tijdstempel : ' : isEn ? 'Timestamp : ' : 'Horodatage : ') + payload.createdAt);
     lines.push('');
     lines.push(
-      'Merci de me recontacter avec une sélection privée adaptée à mon projet.'
+      isNl
+        ? 'Dank u om contact met mij op te nemen met een private selectie die past bij mijn project.'
+        : isEn
+          ? 'Please contact me with a private selection tailored to my project.'
+          : 'Merci de me recontacter avec une sélection privée adaptée à mon projet.'
     );
 
     return lines.join('\n');
@@ -311,7 +353,7 @@
       setStatus(statusEl, copy.success, false);
       window.setTimeout(function () {
         window.location.href =
-          'mailto:contact@offmarket.ma?subject=' + subject + '&body=' + body;
+          'mailto:contact@offmarketofficial.com?subject=' + subject + '&body=' + body;
       }, 120);
     });
   }

@@ -30,7 +30,14 @@ const DEFAULT_LANG_LINKS: LangLinks = {
   nl: "/nl/",
 };
 
-const ENABLE_LANGUAGE_SWITCHER = false;
+const ENABLE_LANGUAGE_SWITCHER = true;
+
+function localeToLangCode(locale: SiteLocale): LangCode {
+  if (locale === "en") return "EN";
+  if (locale === "it") return "IT";
+  if (locale === "nl") return "NL";
+  return "FR";
+}
 
 const ACCESS_BTN_ICON = (
   <span className="om-button__icon" aria-hidden="true">
@@ -48,13 +55,14 @@ const ACCESS_BTN_ICON = (
 
 export function MavericksChrome({
   variant = "default",
-  activeLang = "FR",
+  activeLang,
   langLinks = DEFAULT_LANG_LINKS,
   locale,
   activeDesktopNav,
   showMobileLangSwitcher = false,
 }: MavericksChromeProps) {
-  const resolvedLocale = locale ?? langCodeToLocale(activeLang);
+  const resolvedLocale = locale ?? langCodeToLocale(activeLang ?? "FR");
+  const resolvedActiveLang = activeLang ?? localeToLangCode(resolvedLocale);
   const copy = getChromeCopy(resolvedLocale);
 
   const chromeClass =
@@ -179,7 +187,7 @@ export function MavericksChrome({
                   aria-label={copy.chooseLanguageAria}
                   suppressHydrationWarning
                 >
-                  <span className="om-language-dropdown__current">{activeLang}</span>
+                  <span className="om-language-dropdown__current">{resolvedActiveLang}</span>
                   <span className="om-language-dropdown__chevron" aria-hidden="true">
                     ▾
                   </span>
@@ -191,36 +199,36 @@ export function MavericksChrome({
                 >
                   <Link
                     href={langLinks.en}
-                    className={`om-language-dropdown__option${activeLang === "EN" ? " is-active" : ""}`}
+                    className={`om-language-dropdown__option${resolvedActiveLang === "EN" ? " is-active" : ""}`}
                     role="option"
-                    aria-selected={activeLang === "EN"}
+                    aria-selected={resolvedActiveLang === "EN"}
                     data-lang="EN"
                   >
                     EN
                   </Link>
                   <Link
                     href={langLinks.fr}
-                    className={`om-language-dropdown__option${activeLang === "FR" ? " is-active" : ""}`}
+                    className={`om-language-dropdown__option${resolvedActiveLang === "FR" ? " is-active" : ""}`}
                     role="option"
-                    aria-selected={activeLang === "FR"}
+                    aria-selected={resolvedActiveLang === "FR"}
                     data-lang="FR"
                   >
                     FR
                   </Link>
                   <Link
                     href={langLinks.it}
-                    className={`om-language-dropdown__option${activeLang === "IT" ? " is-active" : ""}`}
+                    className={`om-language-dropdown__option${resolvedActiveLang === "IT" ? " is-active" : ""}`}
                     role="option"
-                    aria-selected={activeLang === "IT"}
+                    aria-selected={resolvedActiveLang === "IT"}
                     data-lang="IT"
                   >
                     IT
                   </Link>
                   <Link
                     href={langLinks.nl}
-                    className={`om-language-dropdown__option${activeLang === "NL" ? " is-active" : ""}`}
+                    className={`om-language-dropdown__option${resolvedActiveLang === "NL" ? " is-active" : ""}`}
                     role="option"
-                    aria-selected={activeLang === "NL"}
+                    aria-selected={resolvedActiveLang === "NL"}
                     data-lang="NL"
                   >
                     NL
@@ -276,9 +284,9 @@ export function MavericksChrome({
               </span>
               <Link
                 href={langLinks.fr}
-                className={`mv-lang-switcher__btn${activeLang === "FR" ? " is-active" : ""}`}
+                className={`mv-lang-switcher__btn${resolvedActiveLang === "FR" ? " is-active" : ""}`}
                 data-lang="FR"
-                aria-current={activeLang === "FR" ? "true" : undefined}
+                aria-current={resolvedActiveLang === "FR" ? "true" : undefined}
               >
                 FR
               </Link>

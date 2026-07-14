@@ -1,6 +1,8 @@
 import type { PageContent } from "@/lib/content/types";
 import { FINAL_CTA_STYLES } from "@/lib/assets";
 import type { BodySegment } from "@/lib/static-html/parsePage";
+import { PageFinalCtaMotion } from "@/components/motion/PageFinalCtaMotion";
+import type { SiteLocale } from "@/lib/i18n/types";
 
 import {
   insertFinalCtaBeforeFooter,
@@ -35,7 +37,13 @@ export function preparePageWithFinalCta(content: PageContent): PreparedPageWithF
     return { content, bodySegments: content.bodySegments, injected: false };
   }
 
-  const bodySegments = insertFinalCtaBeforeFooter(content.bodySegments);
+  const locale = ["fr", "en", "it", "nl"].includes(content.htmlLang)
+    ? (content.htmlLang as SiteLocale)
+    : "fr";
+  const bodySegments = insertFinalCtaBeforeFooter(
+    content.bodySegments,
+    <PageFinalCtaMotion locale={locale} />,
+  );
   if (bodySegments.length === content.bodySegments.length) {
     return { content, bodySegments: content.bodySegments, injected: false };
   }

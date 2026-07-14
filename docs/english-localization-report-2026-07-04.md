@@ -55,7 +55,7 @@
 | `/en/off-plan/` | Off-Plan Properties in Marrakech \| OFF MARKET |
 | `/en/contact/` | Contact OFF MARKET Marrakech \| Private Real Estate Access |
 
-Each route has English meta description, self-referencing canonical (`https://offmarket.ma/en/...`), `htmlLang: en`, `ogLocale: en_US`.
+Each route has English meta description, self-referencing canonical (`https://offmarketofficial.com/en/...`), `htmlLang: en`, `ogLocale: en_US`.
 
 ## 5. Components made locale-aware
 

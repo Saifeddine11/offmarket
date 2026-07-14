@@ -1,5 +1,6 @@
 import {
-  getHomeLegacyScriptUrls,
+  getHomeCriticalScriptUrls,
+  getHomeDeferredScriptUrls,
   HOMEPAGE_PAGE_ID_BY_LOCALE,
   type HomepageLocale,
   type HomepagePageId,
@@ -100,9 +101,10 @@ export function resetHomeScrollPosition() {
 
 function loadScript(src: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    document.querySelectorAll(`script[src="${src}"]`).forEach((node) => {
-      node.remove();
-    });
+    if (document.querySelector(`script[src="${src}"]`)) {
+      resolve();
+      return;
+    }
 
     const script = document.createElement("script");
     script.src = src;
@@ -113,10 +115,69 @@ function loadScript(src: string): Promise<void> {
   });
 }
 
-export async function bootHomeLegacyScripts(pageId: HomepagePageId = "home-root") {
+function preloadScript(src: string) {
+  if (document.querySelector(`link[rel="preload"][href="${src}"]`)) return;
+  if (document.querySelector(`script[src="${src}"]`)) return;
+
+  const link = document.createElement("link");
+  link.rel = "preload";
+  link.as = "script";
+  link.href = src;
+  document.head.appendChild(link);
+}
+
+function waitForIdle(timeoutMs = 1800): Promise<void> {
+  return new Promise((resolve) => {
+    const ric = (
+      window as Window & {
+        requestIdleCallback?: (
+          cb: () => void,
+          opts?: { timeout: number },
+        ) => number;
+      }
+    ).requestIdleCallback;
+
+    if (typeof ric === "function") {
+      ric(() => resolve(), { timeout: timeoutMs });
+      return;
+    }
+
+    window.setTimeout(() => resolve(), Math.min(timeoutMs, 200));
+  });
+}
+
+type BootHomeLegacyOptions = {
+  /** Fires once section scripts are ready — before the heavy vendor bundle. */
+  onCriticalReady?: () => void;
+  signal?: { cancelled: boolean };
+};
+
+export async function bootHomeLegacyScripts(
+  pageId: HomepagePageId = "home-root",
+  options: BootHomeLegacyOptions = {},
+) {
   window.__staticHtmlScriptQueue = Promise.resolve();
 
-  for (const src of getHomeLegacyScriptUrls(pageId)) {
+  const critical = getHomeCriticalScriptUrls(pageId);
+  const deferred = getHomeDeferredScriptUrls(pageId);
+
+  // Start downloading the heavy vendor early without blocking section boot.
+  for (const src of deferred) {
+    preloadScript(src);
+  }
+
+  for (const src of critical) {
+    if (options.signal?.cancelled) return;
+    await loadScript(src);
+  }
+
+  options.onCriticalReady?.();
+
+  if (options.signal?.cancelled) return;
+  await waitForIdle();
+
+  for (const src of deferred) {
+    if (options.signal?.cancelled) return;
     await loadScript(src);
   }
 

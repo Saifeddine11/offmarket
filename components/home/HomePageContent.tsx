@@ -14,6 +14,7 @@ import { HeroResourceHints } from "@/components/home/HeroResourceHints";
 import { HtmlInit } from "@/components/layout/HtmlInit";
 import { PageContentShell } from "@/components/pages/PageContentShell";
 import { boostAboveFoldImages } from "@/lib/homepage/boostAboveFoldImages";
+import { localizeHomeLegacySegments } from "@/lib/homepage/localizeHomeLegacyContent";
 import { replaceFeaturedProjectsSection } from "@/lib/homepage/replaceFeaturedProjectsSection";
 import {
   deprioritizeLegacyBundles,
@@ -22,6 +23,7 @@ import {
   stripDuplicateHeadInit,
 } from "@/lib/homepage/optimizeHomepageLoad";
 import type { PageContent } from "@/lib/content/types";
+import type { SiteLocale } from "@/lib/i18n/types";
 import type { BodySegment } from "@/lib/static-html/parsePage";
 
 function hasBlogHubSection(content: PageContent): boolean {
@@ -39,6 +41,14 @@ type HomePageContentProps = {
 const HOME_LEAD_QUESTIONNAIRE_STYLES =
   "/assets/stylesheets/om-contact-page.css?v=1767552000";
 
+function resolveContentLocale(content: PageContent): SiteLocale {
+  return content.htmlLang === "en" ||
+    content.htmlLang === "it" ||
+    content.htmlLang === "nl"
+    ? content.htmlLang
+    : "fr";
+}
+
 function withLeadQuestionnaireStyles(content: PageContent): PageContent {
   const styles = content.stylesheets ?? [];
   if (styles.some((href) => href.includes("om-contact-page.css"))) {
@@ -55,6 +65,7 @@ export function HomePageContent({
   content,
   includeFaqSection = false,
 }: HomePageContentProps) {
+  const locale = resolveContentLocale(content);
   const contentWithLeadStyles = withLeadQuestionnaireStyles(content);
   const optimizedContent = stripDuplicateHeadInit({
     ...contentWithLeadStyles,
@@ -70,8 +81,13 @@ export function HomePageContent({
   });
   const orderedSegments = replaceFeaturedProjectsSection(
     deprioritizeLegacyBundles(
-      reorderHomepageScripts(boostAboveFoldImages(optimizedContent.bodySegments)),
+      reorderHomepageScripts(
+        boostAboveFoldImages(
+          localizeHomeLegacySegments(optimizedContent.bodySegments, locale),
+        ),
+      ),
     ),
+    locale,
   );
   const bodySegments = includeFaqSection
     ? insertFaqBeforeBlog(orderedSegments, buildHomeFaqHtml())

@@ -7,7 +7,11 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { StaggerItem, StaggerReveal } from "@/components/motion/StaggerReveal";
 import { TextMaskReveal } from "@/components/motion/TextMaskReveal";
 import { useMotionMobile } from "@/components/motion/useMotionMobile";
-import { PageFinalCtaSection } from "@/components/sections/PageFinalCtaSection";
+import {
+  getFinalCtaCopy,
+  PageFinalCtaSection,
+} from "@/components/sections/PageFinalCtaSection";
+import type { SiteLocale } from "@/lib/i18n/types";
 import { MOTION_EASE, MOTION_VIEWPORT } from "@/lib/motion/config";
 
 const BUTTON_ICON = (
@@ -83,9 +87,14 @@ export type PageFinalCtaMotionProps = {
   imageSrc?: string;
   /** Override middle secondary CTA (e.g. on /simulateur/ use project selection instead). */
   secondaryCta?: PageFinalCtaSecondaryButton;
+  locale?: SiteLocale;
 };
 
-function buildCtaButtons(secondaryCta?: PageFinalCtaSecondaryButton) {
+function buildCtaButtons(
+  locale: SiteLocale,
+  secondaryCta?: PageFinalCtaSecondaryButton,
+) {
+  const copy = getFinalCtaCopy(locale);
   const secondary = secondaryCta
     ? {
         href: secondaryCta.href,
@@ -94,25 +103,25 @@ function buildCtaButtons(secondaryCta?: PageFinalCtaSecondaryButton) {
         label: secondaryCta.label,
       }
     : {
-        href: "/simulateur/",
+        href: copy.simulatorHref,
         className: "om-button om-button--secondary",
         icon: CALCULATOR_ICON,
-        label: "Simulateur",
+        label: copy.simulatorLabel,
       };
 
   return [
     {
-      href: "/contact/",
+      href: copy.primaryHref,
       className: "om-button om-button--primary",
       icon: BUTTON_ICON,
-      label: "Demander un accès privé",
+      label: copy.primaryLabel,
     },
     secondary,
     {
-      href: "/contact/",
+      href: copy.advisorHref,
       className: "om-button om-button--secondary",
       icon: ADVISOR_ICON,
-      label: "Parler à un conseiller",
+      label: copy.advisorLabel,
     },
   ] as const;
 }
@@ -121,13 +130,15 @@ function buildCtaButtons(secondaryCta?: PageFinalCtaSecondaryButton) {
 export function PageFinalCtaMotion({
   imageSrc = DEFAULT_IMAGE_SRC,
   secondaryCta,
+  locale = "fr",
 }: PageFinalCtaMotionProps = {}) {
   const reduced = useReducedMotion();
   const mobile = useMotionMobile();
-  const ctaButtons = buildCtaButtons(secondaryCta);
+  const copy = getFinalCtaCopy(locale);
+  const ctaButtons = buildCtaButtons(locale, secondaryCta);
 
   if (reduced) {
-    return <PageFinalCtaSection secondaryCta={secondaryCta} />;
+    return <PageFinalCtaSection secondaryCta={secondaryCta} locale={locale} />;
   }
 
   return (
@@ -167,7 +178,7 @@ export function PageFinalCtaMotion({
 
         <div className="om-final-cta__content">
           <ScrollReveal as="span" className="om-final-cta__eyebrow">
-            PARLONS-EN
+            {copy.eyebrow}
           </ScrollReveal>
 
           <TextMaskReveal
@@ -176,7 +187,7 @@ export function PageFinalCtaMotion({
             id="om-final-cta-title"
             delay={0.1}
           >
-            Votre projet mérite une lecture privée.
+            {copy.title}
           </TextMaskReveal>
 
           <ScrollReveal
@@ -185,8 +196,7 @@ export function PageFinalCtaMotion({
             delay={0.18}
             y={40}
           >
-            Dites-nous ce que vous recherchez. Nous vous répondons avec une
-            sélection ciblée, une analyse claire et un accompagnement discret.
+            {copy.text}
           </ScrollReveal>
 
           <ScrollReveal
@@ -195,8 +205,7 @@ export function PageFinalCtaMotion({
             delay={0.22}
             y={28}
           >
-            Nous qualifions votre demande avant de vous orienter vers les
-            projets les plus cohérents avec votre profil.
+            {copy.trust}
           </ScrollReveal>
 
           <StaggerReveal

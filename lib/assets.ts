@@ -52,7 +52,7 @@ export const STYLES = {
     "/assets/stylesheets/om-page-motion.css?v=1765422400",
     "/assets/stylesheets/om-featured-projects.css?v=1767546000",
     "/assets/stylesheets/om-private-access-popup.css?v=1765340000",
-    "/assets/stylesheets/om-property-modal.css?v=1767562610",
+    "/assets/stylesheets/om-property-modal.css?v=1767584400",
     "/assets/stylesheets/om-contact.css?v=1765356300",
     "/assets/stylesheets/om-contact-page.css?v=1767579000",
     "/assets/stylesheets/om-nos-projets.css?v=1767547000",
@@ -61,7 +61,7 @@ export const STYLES = {
   villaJazDetail: [
     ...INNER_EDITORIAL_STYLES,
     "/assets/stylesheets/om-page-motion.css?v=1765422400",
-    "/assets/stylesheets/om-property-modal.css?v=1767562610",
+    "/assets/stylesheets/om-property-modal.css?v=1767584400",
     "/assets/stylesheets/om-property-detail-page.css?v=1767564100",
   ],
   privacyPolicy: withoutGlobalFooterStyles(

@@ -117,7 +117,7 @@ offmarket-website/
 | `/infrastructure` | `/sur-plan/` | 301 |
 | `/infrastructure/` | `/sur-plan/` | 301 |
 
-**Note:** `/location` canonical is `https://offmarket.ma/location` (no trailing slash). Next.js `trailingSlash: true` serves `/location/` — add redirect `/location` → `/location/` or preserve both.
+**Note:** `/location` canonical is `https://offmarketofficial.com/location` (no trailing slash). Next.js `trailingSlash: true` serves `/location/` — add redirect `/location` → `/location/` or preserve both.
 
 ---
 
@@ -262,27 +262,27 @@ assets/fonts/TT_Commons_Pro_Bold.otf
 ```
 User-agent: *
 Allow: /
-Sitemap: https://offmarket.ma/sitemap.xml
+Sitemap: https://offmarketofficial.com/sitemap.xml
 ```
 
 ### sitemap.xml URLs (17)
-- `https://offmarket.ma/`
-- `https://offmarket.ma/fr/`
-- `https://offmarket.ma/sur-plan/`
-- `https://offmarket.ma/fr/sur-plan/`
-- `https://offmarket.ma/about/`
-- `https://offmarket.ma/fr/about/`
-- `https://offmarket.ma/off-market/`
-- `https://offmarket.ma/contact/`
-- `https://offmarket.ma/fr/contact/`
-- `https://offmarket.ma/blog/`
-- `https://offmarket.ma/blog/acheter-villa-sur-plan-marrakech/`
-- `https://offmarket.ma/blog/investir-immobilier-luxe-marrakech/`
-- `https://offmarket.ma/blog/adresses-immobilier-marrakech/`
-- `https://offmarket.ma/blog/off-market-marrakech-biens-confidentiels/`
-- `https://offmarket.ma/blog/appartement-hypercentre-gueliz-marrakech/`
-- `https://offmarket.ma/simulateur/`
-- `https://offmarket.ma/privacy-policy/`
+- `https://offmarketofficial.com/`
+- `https://offmarketofficial.com/fr/`
+- `https://offmarketofficial.com/sur-plan/`
+- `https://offmarketofficial.com/fr/sur-plan/`
+- `https://offmarketofficial.com/about/`
+- `https://offmarketofficial.com/fr/about/`
+- `https://offmarketofficial.com/off-market/`
+- `https://offmarketofficial.com/contact/`
+- `https://offmarketofficial.com/fr/contact/`
+- `https://offmarketofficial.com/blog/`
+- `https://offmarketofficial.com/blog/acheter-villa-sur-plan-marrakech/`
+- `https://offmarketofficial.com/blog/investir-immobilier-luxe-marrakech/`
+- `https://offmarketofficial.com/blog/adresses-immobilier-marrakech/`
+- `https://offmarketofficial.com/blog/off-market-marrakech-biens-confidentiels/`
+- `https://offmarketofficial.com/blog/appartement-hypercentre-gueliz-marrakech/`
+- `https://offmarketofficial.com/simulateur/`
+- `https://offmarketofficial.com/privacy-policy/`
 
 **Pages live but NOT in sitemap:** `/en/`, `/it/`, `/nl/`, `/en/contact/`, `/nl/contact/`, `/it/contatto/`, `/en/off-plan/`, `/it/progetti-su-piano/`, `/nl/nieuwbouw/`, `/location/`
 
@@ -294,18 +294,18 @@ Sitemap: https://offmarket.ma/sitemap.xml
 
 | Page | Title | Canonical |
 |------|-------|-----------|
-| `/` | OFF MARKET — Immobilier privé de prestige à Marrakech | `https://offmarket.ma/` |
-| `/fr/` | OFF MARKET — Immobilier privé de prestige à Marrakech | `https://offmarket.ma/fr/` |
+| `/` | OFF MARKET — Immobilier privé de prestige à Marrakech | `https://offmarketofficial.com/` |
+| `/fr/` | OFF MARKET — Immobilier privé de prestige à Marrakech | `https://offmarketofficial.com/fr/` |
 | `/en/`, `/it/`, `/nl/` | Same title pattern | Respective locale URL |
-| `/about/` | Notre Histoire — OFF MARKET Marrakech | `https://offmarket.ma/about/` |
-| `/fr/about/` | Notre Histoire — OFF MARKET Marrakech | `https://offmarket.ma/fr/about/` |
-| `/off-market/` | Accès privé — OFF MARKET Marrakech | `https://offmarket.ma/off-market/` |
-| `/contact/` | Contact — OFF MARKET Marrakech | `https://offmarket.ma/contact/` |
+| `/about/` | Notre Histoire — OFF MARKET Marrakech | `https://offmarketofficial.com/about/` |
+| `/fr/about/` | Notre Histoire — OFF MARKET Marrakech | `https://offmarketofficial.com/fr/about/` |
+| `/off-market/` | Accès privé — OFF MARKET Marrakech | `https://offmarketofficial.com/off-market/` |
+| `/contact/` | Contact — OFF MARKET Marrakech | `https://offmarketofficial.com/contact/` |
 | `/sur-plan/` + locale variants | OFF MARKET — Sur plan \| Opportunités sélectionnées à Marrakech | Locale-specific |
-| `/location/` | OFF MARKET — Adresses \| Territoires d'investissement à Marrakech | `https://offmarket.ma/location` |
-| `/simulateur/` | Simulateur investissement immobilier Marrakech \| OFF MARKET | `https://offmarket.ma/simulateur/` |
-| `/privacy-policy/` | Mentions légales \| OFF MARKET | `https://offmarket.ma/privacy-policy/` |
-| `/blog/` | Blog immobilier Marrakech — OFF MARKET | `https://offmarket.ma/blog/` |
+| `/location/` | OFF MARKET — Adresses \| Territoires d'investissement à Marrakech | `https://offmarketofficial.com/location` |
+| `/simulateur/` | Simulateur investissement immobilier Marrakech \| OFF MARKET | `https://offmarketofficial.com/simulateur/` |
+| `/privacy-policy/` | Mentions légales \| OFF MARKET | `https://offmarketofficial.com/privacy-policy/` |
+| `/blog/` | Blog immobilier Marrakech — OFF MARKET | `https://offmarketofficial.com/blog/` |
 
 **Open Graph / Twitter:** Present on all production pages. Standard pattern: `og:type=website`, locale-specific `og:locale`, hero image `mavericks-hero-poster.jpg` or `mavericks-hero-villa.webp` on about/blog.
 

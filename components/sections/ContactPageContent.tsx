@@ -94,7 +94,7 @@ export function ContactPageContent({
             </div>
           </div>
 
-          <PageFinalCtaMotion />
+          <PageFinalCtaMotion locale={locale} />
         </main>
       </PageEntranceMotion>
     </>

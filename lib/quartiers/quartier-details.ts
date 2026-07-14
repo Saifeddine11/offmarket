@@ -100,3 +100,111 @@ export const quartierDetails: QuartierDetail[] = [
     ],
   },
 ];
+
+export const quartierDetailsEn: QuartierDetail[] = [
+  {
+    ...quartierDetails[0],
+    valueLabel: "RENTAL CENTRALITY",
+    description:
+      "A sought-after central sector for apartments, pied-à-terre homes, shops, restaurants and regular rental demand.",
+    imageAlt: "Contemporary apartment in Guéliz Marrakech",
+    ctaLabel: "View apartments",
+    ctaHref: "/en/projects/",
+    points: [
+      { label: "Shops & restaurants", icon: "restaurant" },
+      { label: "Cafes & urban life", icon: "cup" },
+      { label: "Shopping centres", icon: "shopping" },
+      { label: "Hotels & services", icon: "building" },
+      { label: "Strong rental demand", icon: "chart", accent: "green" },
+      { label: "New apartments", icon: "building" },
+    ],
+  },
+  {
+    ...quartierDetails[1],
+    valueLabel: "RESIDENTIAL ADDRESSES",
+    description:
+      "A premium residential sector driven by space, calm, villas, main access routes and land scarcity.",
+    imageAlt: "Contemporary villa in a residential area of Marrakech",
+    ctaLabel: "View Villa Jaz",
+    ctaHref: "/en/off-plan/villa-jaz/",
+    points: [
+      { label: "Villas & private residences", icon: "villa" },
+      { label: "Garden & pool", icon: "pool" },
+      { label: "Main road access", icon: "road" },
+      { label: "Residential calm", icon: "leaf" },
+      { label: "Long-term value potential", icon: "chart" },
+      { label: "Land scarcity", icon: "lock" },
+    ],
+  },
+  {
+    ...quartierDetails[2],
+    valueLabel: "TOURIST YIELD",
+    description:
+      "A heritage and confidential market, sought after for riads, guest houses, tourism and character properties.",
+    imageAlt: "Character riad in the Medina of Marrakech",
+    ctaLabel: "Private access",
+    ctaHref: "/en/off-market/",
+    points: [
+      { label: "Character riads", icon: "arch" },
+      { label: "Guest houses", icon: "house" },
+      { label: "Heritage & souks", icon: "heritage" },
+      { label: "Near Jemaa el-Fna", icon: "pin" },
+      { label: "Tourism", icon: "suitcase" },
+      { label: "Confidential selection", icon: "lock" },
+    ],
+  },
+];
+
+export const quartierDetailsNl: QuartierDetail[] = [
+  {
+    ...quartierDetails[0],
+    valueLabel: "CENTRALE HUURVRAAG",
+    description:
+      "Een centrale sector die gezocht is voor appartementen, pied-à-terre woningen, winkels, restaurants en regelmatige huurvraag.",
+    imageAlt: "Modern appartement in Guéliz Marrakech",
+    ctaLabel: "Appartementen bekijken",
+    ctaHref: "/nl/projecten/",
+    points: [
+      { label: "Winkels & restaurants", icon: "restaurant" },
+      { label: "Cafés & stadsleven", icon: "cup" },
+      { label: "Winkelcentra", icon: "shopping" },
+      { label: "Hotels & diensten", icon: "building" },
+      { label: "Sterke huurvraag", icon: "chart", accent: "green" },
+      { label: "Nieuwe appartementen", icon: "building" },
+    ],
+  },
+  {
+    ...quartierDetails[1],
+    valueLabel: "RESIDENTIËLE ADRESSEN",
+    description:
+      "Een premium residentiële sector, gedragen door ruimte, rust, villa's, hoofdtoegangen en schaarse grond.",
+    imageAlt: "Moderne villa in een residentiële sector in Marrakech",
+    ctaLabel: "Villa Jaz bekijken",
+    ctaHref: "/nl/nieuwbouw/villa-jaz/",
+    points: [
+      { label: "Villa's & private residenties", icon: "villa" },
+      { label: "Tuin & zwembad", icon: "pool" },
+      { label: "Toegang tot hoofdwegen", icon: "road" },
+      { label: "Residentiële rust", icon: "leaf" },
+      { label: "Vermogenspotentieel", icon: "chart" },
+      { label: "Schaarse grond", icon: "lock" },
+    ],
+  },
+  {
+    ...quartierDetails[2],
+    valueLabel: "TOERISTISCH RENDEMENT",
+    description:
+      "Een patrimoniale en vertrouwelijke markt, gezocht voor riads, gastenhuizen, toerisme en karaktervolle woningen.",
+    imageAlt: "Karaktervolle riad in de Medina van Marrakech",
+    ctaLabel: "Private toegang",
+    ctaHref: "/nl/off-market/",
+    points: [
+      { label: "Karaktervolle riads", icon: "arch" },
+      { label: "Gastenhuizen", icon: "house" },
+      { label: "Erfgoed & souks", icon: "heritage" },
+      { label: "Nabij Jemaa el-Fna", icon: "pin" },
+      { label: "Toerisme", icon: "suitcase" },
+      { label: "Vertrouwelijke selectie", icon: "lock" },
+    ],
+  },
+];

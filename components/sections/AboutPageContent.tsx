@@ -6,6 +6,7 @@ import { AboutFinalCtaSection } from "@/components/sections/AboutFinalCtaSection
 import { AboutVerifiedActorsSection } from "@/components/sections/AboutVerifiedActorsSection";
 import { AboutWhoWeAreSection } from "@/components/sections/AboutWhoWeAreSection";
 import { InnerPageHero } from "@/components/sections/InnerPageHero";
+import type { SiteLocale } from "@/lib/i18n/types";
 
 const HERO_BUTTON_ICON = (
   <span className="om-button__icon" aria-hidden="true">
@@ -32,50 +33,109 @@ type AboutPageContentProps = {
   langLinks: LangLinks;
   activeLang?: LangCode;
   aboutHref?: string;
+  locale?: SiteLocale;
 };
+
+const ABOUT_COPY = {
+  fr: {
+    skip: "Aller au contenu principal",
+    breadcrumbs: ["Accueil", "Notre Histoire"],
+    title: "Notre Histoire",
+    subtitle:
+      "Une maison privée pour lire le marché immobilier de Marrakech avec exigence, discrétion et précision.",
+    primary: "Accéder au Off Market",
+    primaryHref: "/off-market/",
+    secondary: "Nos projets",
+    secondaryHref: "/sur-plan/",
+  },
+  en: {
+    skip: "Skip to main content",
+    breadcrumbs: ["Home", "Our Story"],
+    title: "Our Story",
+    subtitle:
+      "A private house for reading Marrakech real estate with rigour, discretion and precision.",
+    primary: "Access Off-market",
+    primaryHref: "/en/off-market/",
+    secondary: "Our projects",
+    secondaryHref: "/en/projects/",
+  },
+  it: {
+    skip: "Vai al contenuto principale",
+    breadcrumbs: ["Home", "La nostra storia"],
+    title: "La nostra storia",
+    subtitle:
+      "Una maison privata per leggere il mercato immobiliare di Marrakech con rigore, discrezione e precisione.",
+    primary: "Accedi all'Off-market",
+    primaryHref: "/it/off-market/",
+    secondary: "Progetti",
+    secondaryHref: "/it/progetti-su-piano/",
+  },
+  nl: {
+    skip: "Naar hoofdinhoud",
+    breadcrumbs: ["Home", "Ons verhaal"],
+    title: "Ons verhaal",
+    subtitle:
+      "Een private speler die de vastgoedmarkt van Marrakech met zorg, discretie en precisie leest.",
+    primary: "Off-market openen",
+    primaryHref: "/nl/off-market/",
+    secondary: "Onze projecten",
+    secondaryHref: "/nl/projecten/",
+  },
+} satisfies Record<SiteLocale, {
+  skip: string;
+  breadcrumbs: [string, string];
+  title: string;
+  subtitle: string;
+  primary: string;
+  primaryHref: string;
+  secondary: string;
+  secondaryHref: string;
+}>;
 
 export function AboutPageContent({
   aboutHref = "/about/",
+  locale = "fr",
 }: AboutPageContentProps) {
+  const copy = ABOUT_COPY[locale] ?? ABOUT_COPY.fr;
   return (
     <>
       <a href="#main" className="sr-only sr-only--focusable">
-        Aller au contenu principal
+        {copy.skip}
       </a>
 
       <main id="main">
         <InnerPageHero
           breadcrumbs={[
-            { label: "Accueil", href: "/" },
-            { label: "Notre Histoire", current: true },
+            { label: copy.breadcrumbs[0], href: locale === "fr" ? "/" : `/${locale}/` },
+            { label: copy.breadcrumbs[1], current: true },
           ]}
-          title="Notre Histoire"
-          subtitle="Une maison privée pour lire le marché immobilier de Marrakech avec exigence, discrétion et précision."
+          title={copy.title}
+          subtitle={copy.subtitle}
           imageSrc="/assets/mavericks/hero/mavericks-hero-villa.webp"
           actions={
             <>
               <Link
-                href="/off-market/"
+                href={copy.primaryHref}
                 className="mav-hero__button mav-hero__button--primary om-button om-button--primary"
               >
                 {HERO_BUTTON_ICON}
-                <span>Accéder au Off Market</span>
+                <span>{copy.primary}</span>
               </Link>
               <Link
-                href="/sur-plan/"
+                href={copy.secondaryHref}
                 className="mav-hero__button mav-hero__button--secondary om-button om-button--secondary"
               >
                 {HERO_BUTTON_ICON}
-                <span>Nos projets</span>
+                <span>{copy.secondary}</span>
               </Link>
             </>
           }
         />
 
-        <AboutWhoWeAreSection />
-        <AboutVerifiedActorsSection />
-        <TestimonialsSection />
-        <AboutFinalCtaSection />
+        <AboutWhoWeAreSection locale={locale} />
+        <AboutVerifiedActorsSection locale={locale} />
+        <TestimonialsSection locale={locale} />
+        <AboutFinalCtaSection locale={locale} />
         <AboutHomeSectionsBoot />
       </main>
     </>

@@ -57,7 +57,7 @@ export function PrivateAccessForm({
   return (
     <form
       className={formClassName}
-      action="mailto:contact@offmarket.ma"
+      action="mailto:contact@offmarketofficial.com"
       encType="text/plain"
       method="post"
       data-private-access-form

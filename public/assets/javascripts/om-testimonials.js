@@ -4,26 +4,79 @@
 (function () {
   'use strict';
 
-  var TESTIMONIALS = [
-    {
-      quote:
-        'Nous cherchions une opportunité claire, pas une liste de biens. OFF MARKET nous a aidés à comprendre l\u2019adresse, la demande et le potentiel avant même la première visite.',
-      author: 'Acheteur privé',
-      role: 'Résidence secondaire · Marrakech',
-    },
-    {
-      quote:
-        'La différence s\u2019est faite dans la lecture du marché : comparables, risques, marge de négociation et cohérence patrimoniale. La décision est devenue beaucoup plus simple.',
-      author: 'Investisseur',
-      role: 'Appartement premium · Guéliz / Hivernage',
-    },
-    {
-      quote:
-        'Nous avons apprécié la discrétion, le tri et la qualité des échanges. Les biens présentés étaient peu nombreux, mais réellement alignés avec notre projet.',
-      author: 'Client accompagné',
-      role: 'Riad de caractère · Médina',
-    },
-  ];
+  var TESTIMONIALS_BY_LOCALE = {
+    fr: [
+      {
+        quote:
+          'Nous cherchions une opportunité claire, pas une liste de biens. OFF MARKET nous a aidés à comprendre l\u2019adresse, la demande et le potentiel avant même la première visite.',
+        author: 'Acheteur privé',
+        role: 'Résidence secondaire · Marrakech',
+      },
+      {
+        quote:
+          'La différence s\u2019est faite dans la lecture du marché : comparables, risques, marge de négociation et cohérence patrimoniale. La décision est devenue beaucoup plus simple.',
+        author: 'Investisseur',
+        role: 'Appartement premium · Guéliz / Hivernage',
+      },
+      {
+        quote:
+          'Nous avons apprécié la discrétion, le tri et la qualité des échanges. Les biens présentés étaient peu nombreux, mais réellement alignés avec notre projet.',
+        author: 'Client accompagné',
+        role: 'Riad de caractère · Médina',
+      },
+    ],
+    en: [
+      {
+        quote:
+          'We were looking for a clear opportunity, not a property list. OFF MARKET helped us understand the address, demand and potential before the first visit.',
+        author: 'Private buyer',
+        role: 'Second home · Marrakech',
+      },
+      {
+        quote:
+          'The difference came from the market reading: comparables, risks, negotiation margin and long-term coherence. The decision became much simpler.',
+        author: 'Investor',
+        role: 'Premium apartment · Guéliz / Hivernage',
+      },
+      {
+        quote:
+          'We appreciated the discretion, filtering and quality of the conversations. The properties shown were few, but genuinely aligned with our project.',
+        author: 'Supported client',
+        role: 'Character riad · Medina',
+      },
+    ],
+    nl: [
+      {
+        quote:
+          'Wij zochten een duidelijke kans, geen lijst met panden. OFF MARKET hielp ons het adres, de vraag en het potentieel te begrijpen nog vóór het eerste bezoek.',
+        author: 'Private koper',
+        role: 'Tweede verblijf · Marrakech',
+      },
+      {
+        quote:
+          'Het verschil zat in de marktlezing: vergelijkbare panden, risico\u2019s, onderhandelingsruimte en patrimoniale samenhang. De beslissing werd veel eenvoudiger.',
+        author: 'Investeerder',
+        role: 'Premium appartement · Guéliz / Hivernage',
+      },
+      {
+        quote:
+          'Wij waardeerden de discretie, de filtering en de kwaliteit van de gesprekken. Er werden weinig panden voorgesteld, maar ze sloten echt aan bij ons project.',
+        author: 'Begeleide klant',
+        role: 'Karaktervolle riad · Medina',
+      },
+    ],
+  };
+
+  function detectLocale() {
+    var path = window.location.pathname || '/';
+    if (path.indexOf('/en') === 0) return 'en';
+    if (path.indexOf('/nl') === 0) return 'nl';
+    return 'fr';
+  }
+
+  function getTestimonials() {
+    return TESTIMONIALS_BY_LOCALE[detectLocale()] || TESTIMONIALS_BY_LOCALE.fr;
+  }
 
   function prefersReducedMotion() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -80,13 +133,14 @@
     var cursor = card.querySelector('.om-testimonial-card__cursor');
     var reducedMotion = prefersReducedMotion();
     var useCursor = cursor && isFinePointer() && !reducedMotion;
+    var testimonials = getTestimonials();
 
     if (!quoteEl || !authorEl || !roleEl || !currentEl || !progressEl) {
       return;
     }
 
     function renderTestimonial(animate) {
-      var item = TESTIMONIALS[activeIndex];
+      var item = testimonials[activeIndex];
 
       if (animate && !reducedMotion) {
         quoteEl.classList.remove('is-visible');
@@ -101,7 +155,7 @@
         roleEl.textContent = item.role;
         currentEl.textContent = String(activeIndex + 1).padStart(2, '0');
         progressEl.style.width =
-          ((activeIndex + 1) / TESTIMONIALS.length) * 100 + '%';
+          ((activeIndex + 1) / testimonials.length) * 100 + '%';
 
         dots.forEach(function (dot, index) {
           dot.classList.toggle('is-active', index === activeIndex);
@@ -129,7 +183,7 @@
     }
 
     function goNext() {
-      activeIndex = (activeIndex + 1) % TESTIMONIALS.length;
+      activeIndex = (activeIndex + 1) % testimonials.length;
       renderTestimonial(true);
     }
 

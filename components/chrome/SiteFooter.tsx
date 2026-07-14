@@ -47,7 +47,7 @@ export function SiteFooter({ currentPage = null }: SiteFooterProps) {
               <ul className="om-footer__links">
                 <li>Marrakech, Maroc</li>
                 <li>
-                  <a href="mailto:contact@offmarket.ma">contact@offmarket.ma</a>
+                  <a href="mailto:contact@offmarketofficial.com">contact@offmarketofficial.com</a>
                 </li>
               </ul>
             </div>

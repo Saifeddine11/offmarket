@@ -14,7 +14,3 @@ export function langCodeToLocale(code: LangCode): SiteLocale {
       return "fr";
   }
 }
-
-export function resolveSiteLocale(locale?: SiteLocale): SiteLocale {
-  return locale ?? "fr";
-}

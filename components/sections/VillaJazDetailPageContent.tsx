@@ -2,14 +2,36 @@ import { PageEntranceMotion } from "@/components/motion/PageEntranceMotion";
 import { PageFinalCtaMotion } from "@/components/motion/PageFinalCtaMotion";
 import {
   PROPERTY_DETAIL_ANCHORS,
+  PROPERTY_DETAIL_ANCHORS_EN,
+  PROPERTY_DETAIL_ANCHORS_NL,
   PropertyModalSlides,
 } from "@/components/property/PropertyModalSlides";
+import type { SiteLocale } from "@/lib/i18n/types";
 
-export function VillaJazDetailPageContent() {
+const VILLA_PAGE_COPY = {
+  fr: { skip: "Aller au contenu principal", nav: "Navigation fiche bien" },
+  en: { skip: "Skip to main content", nav: "Property detail navigation" },
+  it: { skip: "Vai al contenuto principale", nav: "Navigazione scheda bene" },
+  nl: { skip: "Naar hoofdinhoud", nav: "Navigatie vastgoedfiche" },
+} satisfies Record<SiteLocale, { skip: string; nav: string }>;
+
+function getAnchors(locale: SiteLocale) {
+  if (locale === "en") return PROPERTY_DETAIL_ANCHORS_EN;
+  if (locale === "nl") return PROPERTY_DETAIL_ANCHORS_NL;
+  return PROPERTY_DETAIL_ANCHORS;
+}
+
+export function VillaJazDetailPageContent({
+  locale = "fr",
+}: {
+  locale?: SiteLocale;
+}) {
+  const copy = VILLA_PAGE_COPY[locale] ?? VILLA_PAGE_COPY.fr;
+  const anchors = getAnchors(locale);
   return (
     <>
       <a href="#main" className="sr-only sr-only--focusable">
-        Aller au contenu principal
+        {copy.skip}
       </a>
 
       <PageEntranceMotion>
@@ -25,17 +47,20 @@ export function VillaJazDetailPageContent() {
                   className="om-property-detail-page__track om-property-modal__track"
                   data-property-detail-track
                 >
-                  <PropertyModalSlides pageMode />
+                  <PropertyModalSlides
+                    pageMode
+                    locale={locale === "it" ? "en" : locale}
+                  />
                 </div>
               </div>
 
               <nav
                 className="om-property-detail-page__nav"
-                aria-label="Navigation fiche bien"
+                aria-label={copy.nav}
                 data-property-detail-nav
               >
                 <div className="om-property-detail-page__nav-inner">
-                  {PROPERTY_DETAIL_ANCHORS.map((item) => (
+                  {anchors.map((item) => (
                     <a
                       key={item.href}
                       href={item.href}
@@ -50,7 +75,7 @@ export function VillaJazDetailPageContent() {
             </div>
           </div>
 
-          <PageFinalCtaMotion />
+          <PageFinalCtaMotion locale={locale} />
         </main>
       </PageEntranceMotion>
     </>

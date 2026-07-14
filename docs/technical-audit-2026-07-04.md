@@ -158,7 +158,7 @@ Build output:
 
 Indexing:
 
-- `robots.txt` allows all crawlers and points to `https://offmarket.ma/sitemap.xml`.
+- `robots.txt` allows all crawlers and points to `https://offmarketofficial.com/sitemap.xml`.
 - No route-level accidental `noindex` was found in saved snapshots.
 - Sitemap after fix contains 29 URLs.
 

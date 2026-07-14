@@ -14,7 +14,6 @@
       href: '/nos-projets/',
       children: [
         { label: 'Tous les projets', href: '/nos-projets/' },
-        { label: 'Sur plan', href: '/sur-plan/' },
         { label: 'Off-market', href: '/off-market/' },
       ],
     },
@@ -23,15 +22,14 @@
 
   var MENU_EN = [
     { id: 'home', label: 'Home', href: '/en/' },
-    { id: 'histoire', label: 'Our story', href: '/about/' },
-    { id: 'localisations', label: 'Neighbourhoods', href: '/quartiers/' },
+    { id: 'histoire', label: 'Our Story', href: '/en/about/' },
+    { id: 'localisations', label: 'Neighbourhoods', href: '/en/neighbourhoods/' },
     {
       id: 'projets',
-      label: 'Projects',
-      href: '/nos-projets/',
+      label: 'Our Projects',
+      href: '/en/projects/',
       children: [
-        { label: 'All projects', href: '/nos-projets/' },
-        { label: 'Off-plan', href: '/en/off-plan/' },
+        { label: 'All Projects', href: '/en/projects/' },
         { label: 'Off-market', href: '/en/off-market/' },
       ],
     },
@@ -48,7 +46,6 @@
       href: '/nos-projets/',
       children: [
         { label: 'Tutti i progetti', href: '/nos-projets/' },
-        { label: 'Progetti su piano', href: '/it/progetti-su-piano/' },
         { label: 'Off-market', href: '/it/off-market/' },
       ],
     },
@@ -57,16 +54,15 @@
 
   var MENU_NL = [
     { id: 'home', label: 'Home', href: '/nl/' },
-    { id: 'histoire', label: 'Ons verhaal', href: '/about/' },
-    { id: 'localisations', label: 'Wijken', href: '/quartiers/' },
+    { id: 'histoire', label: 'Ons verhaal', href: '/nl/over-ons/' },
+    { id: 'localisations', label: 'Wijken', href: '/nl/wijken/' },
     {
       id: 'projets',
-      label: 'Projecten',
-      href: '/nos-projets/',
+      label: 'Onze projecten',
+      href: '/nl/projecten/',
       children: [
-        { label: 'Alle projecten', href: '/nos-projets/' },
-        { label: 'Nieuwbouw', href: '/nl/nieuwbouw/' },
-        { label: 'Off-market', href: '/off-market/' },
+        { label: 'Alle projecten', href: '/nl/projecten/' },
+        { label: 'Off-market', href: '/nl/off-market/' },
       ],
     },
     { id: 'contact', label: 'Contact', href: '/nl/contact/' },
@@ -143,22 +139,24 @@
     }
 
     if (item.id === 'histoire') {
+      if (locale === 'en') return current === '/en/about';
+      if (locale === 'nl') return current === '/nl/over-ons';
       return current === '/about' || current === '/fr/about';
     }
 
     if (item.id === 'localisations') {
+      if (locale === 'en') return current === '/en/neighbourhoods';
+      if (locale === 'nl') return current === '/nl/wijken';
       return current === '/quartiers';
     }
 
     if (item.id === 'projets') {
       if (locale === 'en') {
         return (
+          current === '/en/projects' ||
           current === '/en/off-plan' ||
+          current === '/en/off-plan/villa-jaz' ||
           current === '/en/off-market' ||
-          current === '/nos-projets' ||
-          current === '/sur-plan' ||
-          current === '/sur-plan/villa-jaz' ||
-          current === '/off-market' ||
           (current === '/en' && window.location.hash === '#featured-projects')
         );
       }
@@ -174,11 +172,10 @@
       }
       if (locale === 'nl') {
         return (
+          current === '/nl/projecten' ||
           current === '/nl/nieuwbouw' ||
-          current === '/nos-projets' ||
-          current === '/sur-plan' ||
-          current === '/sur-plan/villa-jaz' ||
-          current === '/off-market'
+          current === '/nl/nieuwbouw/villa-jaz' ||
+          current === '/nl/off-market'
         );
       }
       return (

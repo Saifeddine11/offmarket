@@ -53,6 +53,8 @@ export function DeferredHomeLegacyBoot() {
       }, 1200);
     };
 
+    const signal = { cancelled: false };
+
     const run = async () => {
       const pageId = resolveHomepagePageId(pathname);
       if (!pageId) return;
@@ -72,13 +74,19 @@ export function DeferredHomeLegacyBoot() {
       // navigation. (`window.__staticHtmlScriptQueue` cannot gate this: it is a
       // global that leaks across client navigations, so a prior page having set
       // it says nothing about whether the homepage's own scripts have run.)
+      //
+      // Critical section scripts boot first; shared.js (~1.4MB) + landing.js
+      // load after first paint so the page becomes interactive sooner.
       try {
-        await bootHomeLegacyScripts(pageId);
+        await bootHomeLegacyScripts(pageId, {
+          signal,
+          onCriticalReady: finishBoot,
+        });
       } catch {
         forceHomeRevealFallback();
       }
 
-      finishBoot();
+      if (!signal.cancelled) finishBoot();
     };
 
     scheduleAfterPaint(() => {
@@ -87,6 +95,7 @@ export function DeferredHomeLegacyBoot() {
 
     return () => {
       cancelled = true;
+      signal.cancelled = true;
     };
   }, [pathname]);
 

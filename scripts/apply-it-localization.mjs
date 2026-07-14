@@ -13,7 +13,7 @@ const HOME_META = {
   title: "OFF MARKET Marrakech | Immobili di lusso riservati",
   description:
     "Accedi a opportunità immobiliari riservate a Marrakech: ville di lusso, proprietà off-market, progetti su piano e investimenti selezionati.",
-  canonical: "https://offmarket.ma/it/",
+  canonical: "https://offmarketofficial.com/it/",
   ogTitle: "OFF MARKET Marrakech | Immobili di lusso riservati",
   ogDescription:
     "Accedi a opportunità immobiliari riservate a Marrakech: ville di lusso, proprietà off-market, progetti su piano e investimenti selezionati.",
@@ -28,7 +28,7 @@ const OFFPLAN_META = {
   title: "Immobili su piano a Marrakech | OFF MARKET",
   description:
     "Scopri una selezione di progetti immobiliari su piano a Marrakech, dagli appartamenti premium alle ville private, con accompagnamento prima della prenotazione e dell'acquisto.",
-  canonical: "https://offmarket.ma/it/progetti-su-piano/",
+  canonical: "https://offmarketofficial.com/it/progetti-su-piano/",
   ogTitle: "Immobili su piano a Marrakech | OFF MARKET",
   ogDescription:
     "Scopri una selezione di progetti immobiliari su piano a Marrakech, dagli appartamenti premium alle ville private, con accompagnamento prima della prenotazione e dell'acquisto.",
@@ -43,7 +43,7 @@ const CONTACT_META = {
   title: "Contattare OFF MARKET Marrakech | Accesso immobiliare privato",
   description:
     "Contatta OFF MARKET Marrakech per discutere un progetto immobiliare privato, una ricerca off-market, un investimento su piano o l'acquisto di una villa di lusso.",
-  canonical: "https://offmarket.ma/it/contatto/",
+  canonical: "https://offmarketofficial.com/it/contatto/",
   ogType: "website",
   ogTitle: "Contatto OFF MARKET Marrakech | Accesso immobiliare riservato",
   ogDescription:

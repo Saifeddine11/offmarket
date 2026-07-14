@@ -63,6 +63,7 @@ function parseFeaturedProjectsProps(
  */
 export function replaceFeaturedProjectsSection(
   segments: BodySegment[],
+  locale?: string,
 ): BodySegment[] {
   const result: BodySegment[] = [];
 
@@ -99,7 +100,7 @@ export function replaceFeaturedProjectsSection(
     result.push({
       kind: "react",
       key: "featured-projects",
-      element: <FeaturedProjectsSection {...props} />,
+      element: <FeaturedProjectsSection {...props} locale={locale} />,
     });
 
     if (after) {

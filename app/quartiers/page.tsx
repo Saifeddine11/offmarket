@@ -15,7 +15,7 @@ export const metadata: Metadata = buildPageMetadata({
   ogDescription:
     "Une lecture claire des quartiers de Marrakech selon centralité, standing, rareté, potentiel locatif et valeur patrimoniale.",
   canonicalPath: "/quartiers/",
-  ogImage: "https://offmarket.ma/assets/mavericks/gallery/mavericks-the-passage.webp",
+  ogImage: "https://offmarketofficial.com/assets/mavericks/gallery/mavericks-the-passage.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

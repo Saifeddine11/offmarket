@@ -384,8 +384,7 @@
       });
 
       dropdown.querySelectorAll('.om-language-dropdown__option').forEach(function (option) {
-        option.addEventListener('click', function (event) {
-          event.preventDefault();
+        option.addEventListener('click', function () {
           var lang = option.getAttribute('data-lang') || option.textContent.trim();
           setActiveLanguage(lang);
           close();

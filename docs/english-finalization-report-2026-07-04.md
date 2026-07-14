@@ -114,7 +114,7 @@ Focused pass before hreflang readiness. No hreflang added. Italian/Dutch untouch
 **Created** — safe reuse of existing off-market layout, styles, scripts, and `PrivateAccessForm` with `locale="en"`.
 
 - Route: `/en/off-market/` (build + HTTP 200 verified)
-- Canonical: `https://offmarket.ma/en/off-market/`
+- Canonical: `https://offmarketofficial.com/en/off-market/`
 - Title: `Private Access | OFF MARKET Marrakech`
 - French `/off-market/` unchanged
 - EN links updated in `home-en.json`, `off-plan-en.json`, `chromeCopy.ts`, `om-nav-menu.js`, `om-private-access-form.js`

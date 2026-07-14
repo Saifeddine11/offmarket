@@ -45,7 +45,27 @@
     return n < 10 ? '0' + n : String(n);
   }
 
+  function formatArticleCount(count, locale) {
+    if (locale === 'nl') {
+      return count + ' ' + (count === 1 ? 'artikel' : 'artikelen');
+    }
+    if (locale === 'en') {
+      return count + ' ' + (count === 1 ? 'article' : 'articles');
+    }
+    return padCount(count) + ' ' + (count === 1 ? 'article' : 'articles');
+  }
+
+  function detectLocale() {
+    var path = window.location.pathname || '/';
+    if (path.indexOf('/en') === 0) return 'en';
+    if (path.indexOf('/nl') === 0) return 'nl';
+    return 'fr';
+  }
+
   function articleUrl(slug) {
+    var locale = detectLocale();
+    if (locale === 'en') return '/en/blog/' + slug + '/';
+    if (locale === 'nl') return '/nl/blog/' + slug + '/';
     return '/blog/' + slug + '/';
   }
 
@@ -101,23 +121,54 @@
   }
 
   function getSectionCopy(section, mode) {
+    var locale = detectLocale();
     var customTitle = section.dataset.omBlogTitle;
     var customLead = section.dataset.omBlogLead;
     var isHome = mode === 'home';
     var isQuartiers = mode === 'quartiers';
 
+    var localizedCopy = {
+      fr: {
+        quartiersTitle: 'Articles pour mieux lire les quartiers de Marrakech',
+        defaultTitle: 'Regards privés',
+        quartiersLead: 'Analyses, conseils et lectures du marché pour comprendre les zones, les prix et les opportunités avant d’acheter.',
+        homeLead: 'Analyses et lectures sur l’immobilier de prestige à Marrakech.',
+        hubLead: 'Analyses privées sur l’immobilier de prestige à Marrakech, les projets sur plan, l’investissement et les biens off-market.',
+        blogCta: 'Voir le blog',
+        homeCta: 'Retour à l’accueil',
+      },
+      en: {
+        quartiersTitle: 'Articles for reading Marrakech neighbourhoods more clearly',
+        defaultTitle: 'Private readings',
+        quartiersLead: 'Analyses, advice and market readings to understand areas, prices and opportunities before buying.',
+        homeLead: 'Analyses and readings on luxury real estate in Marrakech.',
+        hubLead: 'Private analyses on luxury real estate in Marrakech, off-plan projects, investment and off-market properties.',
+        blogCta: 'View the blog',
+        homeCta: 'Back to home',
+      },
+      nl: {
+        quartiersTitle: 'Artikelen om de wijken van Marrakech beter te lezen',
+        defaultTitle: 'Private analyses',
+        quartiersLead: 'Analyses, advies en marktinzichten om zones, prijzen en kansen te begrijpen voordat u koopt.',
+        homeLead: 'Analyses en inzichten over luxevastgoed in Marrakech.',
+        hubLead: 'Private analyses over luxevastgoed in Marrakech, nieuwbouwprojecten, investeringen en off-market panden.',
+        blogCta: 'De blog bekijken',
+        homeCta: 'Terug naar home',
+      },
+    }[locale] || {};
+
     var title =
       customTitle ||
       (isQuartiers
-        ? 'Articles pour mieux lire les quartiers de Marrakech'
-        : 'Regards privés');
+        ? localizedCopy.quartiersTitle
+        : localizedCopy.defaultTitle);
     var lead =
       customLead ||
       (isQuartiers
-        ? 'Analyses, conseils et lectures du marché pour comprendre les zones, les prix et les opportunités avant d’acheter.'
+        ? localizedCopy.quartiersLead
         : isHome
-          ? 'Analyses et lectures sur l’immobilier de prestige à Marrakech.'
-          : 'Analyses privées sur l’immobilier de prestige à Marrakech, les projets sur plan, l’investissement et les biens off-market.');
+          ? localizedCopy.homeLead
+          : localizedCopy.hubLead);
 
     var titleId = isHome
       ? 'om-blog-home-title'
@@ -125,9 +176,20 @@
         ? 'om-blog-quartiers-title'
         : 'om-blog-title';
 
-    var ctaHref = isHome || isQuartiers ? '/blog/' : '/';
+    var ctaHref =
+      isHome || isQuartiers
+        ? locale === 'en'
+          ? '/en/blog/'
+          : locale === 'nl'
+            ? '/nl/blog/'
+            : '/blog/'
+        : locale === 'en'
+          ? '/en/'
+          : locale === 'nl'
+            ? '/nl/'
+            : '/';
     var ctaLabel =
-      isHome || isQuartiers ? 'Voir le blog' : 'Retour à l’accueil';
+      isHome || isQuartiers ? localizedCopy.blogCta : localizedCopy.homeCta;
 
     return {
       title: title,
@@ -142,6 +204,7 @@
     var root = section.querySelector('[data-om-blog-root]');
     if (!root || !global.OM_BLOG_ARTICLES) return;
 
+    var locale = detectLocale();
     var mode = section.dataset.omBlogMode || 'home';
     var copy = getSectionCopy(section, mode);
     var isQuartiers = mode === 'quartiers';
@@ -190,13 +253,13 @@
       '</div>' +
       renderHeaderButton(copy.ctaHref, copy.ctaLabel) +
       '</div>' +
-      '<div class="om-blog-categories" role="tablist" aria-label="Catégories du blog"></div>' +
-      '<div class="om-blog-carousel" data-om-blog-carousel tabindex="0" aria-label="Articles du blog"></div>' +
-      '<div class="om-blog-controls" aria-label="Navigation articles">' +
-      '<button class="om-blog-control" type="button" data-blog-prev aria-label="Articles précédents">' +
+      '<div class="om-blog-categories" role="tablist" aria-label="' + (locale === 'en' ? 'Blog categories' : locale === 'nl' ? 'Blogcategorieën' : 'Catégories du blog') + '"></div>' +
+      '<div class="om-blog-carousel" data-om-blog-carousel tabindex="0" aria-label="' + (locale === 'en' ? 'Blog articles' : locale === 'nl' ? 'Blogartikelen' : 'Articles du blog') + '"></div>' +
+      '<div class="om-blog-controls" aria-label="' + (locale === 'en' ? 'Article navigation' : locale === 'nl' ? 'Artikelnavigatie' : 'Navigation articles') + '">' +
+      '<button class="om-blog-control" type="button" data-blog-prev aria-label="' + (locale === 'en' ? 'Previous articles' : locale === 'nl' ? 'Vorige artikelen' : 'Articles précédents') + '">' +
       CONTROL_PREV_SVG +
       '</button>' +
-      '<button class="om-blog-control" type="button" data-blog-next aria-label="Articles suivants">' +
+      '<button class="om-blog-control" type="button" data-blog-next aria-label="' + (locale === 'en' ? 'Next articles' : locale === 'nl' ? 'Volgende artikelen' : 'Articles suivants') + '">' +
       CONTROL_NEXT_SVG +
       '</button>' +
       '</div>';
@@ -220,7 +283,7 @@
       btn.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
       if (index === 0) btn.classList.add('is-active');
       btn.innerHTML =
-        cat.label + ' <span>' + padCount(count) + ' articles</span>';
+        cat.label + ' <span>' + formatArticleCount(count, locale) + '</span>';
       categoriesEl.appendChild(btn);
     });
 

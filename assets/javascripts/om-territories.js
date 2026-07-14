@@ -10,6 +10,7 @@
     var path = window.location.pathname || '/';
     if (path.indexOf('/en') === 0) return 'en';
     if (path.indexOf('/it') === 0) return 'it';
+    if (path.indexOf('/nl') === 0) return 'nl';
     return 'fr';
   }
 
@@ -92,6 +93,32 @@
     },
   ];
 
+  var ITEMS_HOME_NL = [
+    {
+      number: '01',
+      image: IMG_BASE + 'gueliz-hypercentre.webp',
+      label: 'Guéliz Hyper-Centre / Hivernage',
+      subtitle: 'Appartementen · centraliteit · sterke vraag',
+      tag: 'HUURLIQUIDITEIT',
+    },
+    {
+      number: '02',
+      image: IMG_BASE + 'triangle-or-hivernage.webp',
+      label: "Triangle d\u2019Or",
+      labelHtml: 'Triangle <span class="om-gold-word">d\u2019Or</span>',
+      subtitle: "Route de Tahnaout · Route de l'Ourika · Agdal",
+      tag: 'ONTWIKKELINGSAS',
+      goldNumber: true,
+    },
+    {
+      number: '03',
+      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      label: 'Médina',
+      subtitle: 'Karaktervolle riads · gastenhuizen · erfgoed',
+      tag: 'TOERISTISCH RENDEMENT',
+    },
+  ];
+
   var ITEMS_PAGE = ITEMS_HOME.concat([
     {
       number: '04',
@@ -130,6 +157,9 @@
     }
     if (locale === 'it') {
       return isPage ? ITEMS_PAGE : ITEMS_HOME_IT;
+    }
+    if (locale === 'nl') {
+      return isPage ? ITEMS_PAGE : ITEMS_HOME_NL;
     }
     if (isPage) {
       return ITEMS_PAGE;

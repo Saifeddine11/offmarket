@@ -134,11 +134,46 @@ const IT: PrivateAccessFormCopy = {
     "I progetti riservati non sono pubblicati online. Il nostro team ti ricontatterà con le opportunità disponibili.",
 };
 
+const NL: PrivateAccessFormCopy = {
+  eyebrow: "PRIVATE TOEGANG",
+  title: "Ontvang mijn private selectie",
+  subtitle:
+    "Laat uw gegevens achter. Wij antwoorden met een selectie die aansluit bij uw budget, doelstelling en het type vastgoed dat u zoekt.",
+  success:
+    "Uw aanvraag is voorbereid. Wij antwoorden met een eerste private analyse die past bij uw project.",
+  fullName: "Volledige naam",
+  fullNamePlaceholder: "Uw volledige naam",
+  email: "E-mail",
+  emailPlaceholder: "uw@email.com",
+  phoneLegend: "Telefoonnummer",
+  countryCodeAria: "Landcode",
+  phoneNumberAria: "Nummer",
+  phonePlaceholder: "6 00 00 00 00",
+  budget: "Budget",
+  budgetHint: "Selecteer uw budget",
+  message: "Bericht",
+  messageOptional: "(optioneel)",
+  messagePlaceholder:
+    "Uw bericht, project of specifieke criteria",
+  submit: "Verstuur mijn aanvraag",
+  back: "Terug",
+  searchSummaryPrefix: "Uw zoekopdracht",
+  privacyPrefix:
+    "Door op de knop te klikken, stemt u ermee in dat OFF MARKET contact met u opneemt over uw aanvraag.",
+  privacyLink: "Privacy",
+  contactHeaderEyebrow: "PRIVATE TOEGANG",
+  contactHeaderTitle: "Toegang tot off-market projecten",
+  contactHeaderSubtitle:
+    "Vul het formulier in om een private selectie te ontvangen die past bij uw budget en project.",
+  contactHeaderHelper:
+    "Vertrouwelijke projecten worden niet online gepubliceerd. Ons team neemt contact met u op met beschikbare kansen.",
+};
+
 const COPY: Record<SiteLocale, PrivateAccessFormCopy> = {
   fr: FR,
   en: EN,
   it: IT,
-  nl: FR,
+  nl: NL,
 };
 
 export function getFormCopy(locale?: SiteLocale): PrivateAccessFormCopy {

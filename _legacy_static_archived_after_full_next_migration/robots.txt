@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://offmarket.ma/sitemap.xml

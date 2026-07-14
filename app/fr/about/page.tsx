@@ -17,7 +17,7 @@ export const metadata: Metadata = buildPageMetadata({
   twitterDescription:
     "Une approche privée, sélective et confidentielle de l'immobilier à Marrakech.",
   canonicalPath: "/fr/about/",
-  ogImage: "https://offmarket.ma/assets/mavericks/hero/mavericks-hero-villa.webp",
+  ogImage: "https://offmarketofficial.com/assets/mavericks/hero/mavericks-hero-villa.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

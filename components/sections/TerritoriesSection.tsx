@@ -7,6 +7,7 @@ type TerritoriesSectionProps = {
   /** `home` = 3 cards. `quartiers` = 3 cards, /quartiers/ grid layout. `page` = 6 cards (legacy extended gallery). */
   variant?: "home" | "quartiers" | "page";
   id?: string;
+  ariaLabel?: string;
   eyebrow?: string;
   title?: ReactNode;
   subtitle?: string;
@@ -28,6 +29,7 @@ const DEFAULT_TITLE = (
 export function TerritoriesSection({
   variant = "home",
   id,
+  ariaLabel = "Territoires d'investissement à Marrakech",
   eyebrow = "QUARTIERS",
   title = DEFAULT_TITLE,
   subtitle,
@@ -46,7 +48,7 @@ export function TerritoriesSection({
     <section
       id={sectionId}
       className={sectionClass}
-      aria-label="Territoires d'investissement à Marrakech"
+      aria-label={ariaLabel}
       data-scroll-section
       data-om-territories-set={variant}
       // om-territories.js stamps data-om-territories-init, sometimes before hydration

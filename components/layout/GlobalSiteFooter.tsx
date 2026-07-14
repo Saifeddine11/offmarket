@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -38,13 +39,19 @@ function resolveCurrentPage(
 export function GlobalSiteFooter({ locale = "fr" }: GlobalSiteFooterProps) {
   const pathname = usePathname();
   const currentPage = resolveCurrentPage(pathname);
-  const resolvedLocale: SiteLocale = pathname.startsWith("/en")
-    ? "en"
-    : pathname.startsWith("/it")
-      ? "it"
-      : pathname.startsWith("/nl")
-        ? "nl"
-        : locale;
+  const [resolvedLocale, setResolvedLocale] = useState<SiteLocale>(locale);
+
+  useEffect(() => {
+    setResolvedLocale(
+      pathname.startsWith("/en")
+        ? "en"
+        : pathname.startsWith("/it")
+          ? "it"
+          : pathname.startsWith("/nl")
+            ? "nl"
+            : locale,
+    );
+  }, [locale, pathname]);
 
   return <SiteFooter locale={resolvedLocale} currentPage={currentPage} />;
 }

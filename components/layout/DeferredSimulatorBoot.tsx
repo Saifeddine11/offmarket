@@ -31,7 +31,12 @@ function isHomePath(pathname: string | null) {
 
 function isSimulatorPath(pathname: string | null) {
   if (!pathname) return false;
-  return normalizePath(pathname) === "/simulateur";
+  const normalized = normalizePath(pathname);
+  return (
+    normalized === "/simulateur" ||
+    normalized === "/en/simulator" ||
+    normalized === "/nl/simulator"
+  );
 }
 
 /** Boots simulator roots after React hydration (om-simulator.js skips already-init roots). */

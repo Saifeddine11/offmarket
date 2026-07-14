@@ -21,12 +21,6 @@ function isTemporarilyNoindexedPath(pathOrUrl: string): boolean {
       : pathOrUrl;
 
     return (
-      path.startsWith("/en/") ||
-      path === "/en" ||
-      path.startsWith("/it/") ||
-      path === "/it" ||
-      path.startsWith("/nl/") ||
-      path === "/nl" ||
       path === "/location/" ||
       path === "/location"
     );
@@ -35,8 +29,70 @@ function isTemporarilyNoindexedPath(pathOrUrl: string): boolean {
   }
 }
 
+const HREFLANG_GROUPS = [
+  { fr: "/", en: "/en/", nl: "/nl/" },
+  { fr: "/about/", en: "/en/about/", nl: "/nl/over-ons/" },
+  { fr: "/quartiers/", en: "/en/neighbourhoods/", nl: "/nl/wijken/" },
+  { fr: "/nos-projets/", en: "/en/projects/", nl: "/nl/projecten/" },
+  { fr: "/sur-plan/", en: "/en/off-plan/", nl: "/nl/nieuwbouw/" },
+  { fr: "/sur-plan/villa-jaz/", en: "/en/off-plan/villa-jaz/", nl: "/nl/nieuwbouw/villa-jaz/" },
+  { fr: "/off-market/", en: "/en/off-market/", nl: "/nl/off-market/" },
+  { fr: "/simulateur/", en: "/en/simulator/", nl: "/nl/simulator/" },
+  { fr: "/contact/", en: "/en/contact/", nl: "/nl/contact/" },
+  { fr: "/blog/", en: "/en/blog/", nl: "/nl/blog/" },
+  { fr: "/privacy-policy/", en: "/en/privacy-policy/", nl: "/nl/privacybeleid/" },
+  {
+    fr: "/blog/acheter-villa-sur-plan-marrakech/",
+    en: "/en/blog/buying-off-plan-villa-marrakech/",
+    nl: "/nl/blog/nieuwbouwvilla-kopen-marrakech/",
+  },
+  {
+    fr: "/blog/investir-immobilier-luxe-marrakech/",
+    en: "/en/blog/luxury-real-estate-investment-marrakech/",
+    nl: "/nl/blog/investeren-luxe-vastgoed-marrakech/",
+  },
+  {
+    fr: "/blog/adresses-immobilier-marrakech/",
+    en: "/en/blog/best-addresses-real-estate-marrakech/",
+    nl: "/nl/blog/beste-adressen-vastgoed-marrakech/",
+  },
+  {
+    fr: "/blog/off-market-marrakech-biens-confidentiels/",
+    en: "/en/blog/off-market-properties-marrakech/",
+    nl: "/nl/blog/off-market-vastgoed-marrakech/",
+  },
+  {
+    fr: "/blog/appartement-hypercentre-gueliz-marrakech/",
+    en: "/en/blog/apartment-hypercentre-gueliz-marrakech/",
+    nl: "/nl/blog/appartement-hypercentre-gueliz-marrakech/",
+  },
+] as const;
+
+function normalizePath(pathOrUrl: string): string {
+  const path = pathOrUrl.startsWith("http")
+    ? new URL(pathOrUrl).pathname
+    : pathOrUrl;
+  if (!path.endsWith("/")) return `${path}/`;
+  return path;
+}
+
+export function getLanguageAlternates(pathOrUrl: string) {
+  const path = normalizePath(pathOrUrl);
+  const group = HREFLANG_GROUPS.find((item) =>
+    Object.values(item).some((value) => value === path),
+  );
+  if (!group) return undefined;
+
+  return {
+    "fr-FR": `${SITE_URL}${group.fr}`,
+    "en-US": `${SITE_URL}${group.en}`,
+    "nl-NL": `${SITE_URL}${group.nl}`,
+    "x-default": `${SITE_URL}${group.fr}`,
+  };
+}
+
 function isTemporarilyNoindexedStaticPage(parsed: ParsedStaticPage): boolean {
-  return parsed.htmlLang !== "fr" || isTemporarilyNoindexedPath(parsed.canonical);
+  return isTemporarilyNoindexedPath(parsed.canonical);
 }
 
 export function buildMetadataFromParsed(parsed: ParsedStaticPage): Metadata {
@@ -48,7 +104,10 @@ export function buildMetadataFromParsed(parsed: ParsedStaticPage): Metadata {
   return {
     title: parsed.title,
     description: parsed.description,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      languages: getLanguageAlternates(canonical),
+    },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
     icons: {
       icon: "/assets/manifest/favicon-offmarket.svg?v=1765297300",
@@ -86,7 +145,10 @@ export function buildPageMetadata(seo: PageSeo): Metadata {
   return {
     title: seo.title,
     description: seo.description,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      languages: getLanguageAlternates(seo.canonicalPath),
+    },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
     icons: {
       icon: "/assets/manifest/favicon-offmarket.svg?v=1765297300",

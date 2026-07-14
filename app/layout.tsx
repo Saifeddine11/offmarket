@@ -8,7 +8,7 @@ import { ScrollLockCleanup } from "@/components/layout/ScrollLockCleanup";
 import { DeferredNavBoot } from "@/components/layout/DeferredNavBoot";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://offmarket.ma"),
+  metadataBase: new URL("https://offmarketofficial.com"),
 };
 
 export const dynamic = "force-dynamic";
@@ -40,6 +40,14 @@ export default async function RootLayout({
               if (navigator.platform.toUpperCase().indexOf('WIN') >= 0) {
                 document.documentElement.classList.add('is-win');
               }
+              var path = window.location.pathname;
+              document.documentElement.lang = path.indexOf('/en') === 0
+                ? 'en'
+                : path.indexOf('/it') === 0
+                  ? 'it'
+                  : path.indexOf('/nl') === 0
+                    ? 'nl'
+                    : 'fr';
             `,
           }}
         />

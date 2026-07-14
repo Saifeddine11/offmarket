@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 
 import { MOTION_EASE } from "@/lib/motion/config";
+import type { SiteLocale } from "@/lib/i18n/types";
 
 type TimelineEntry = {
   index: string;
@@ -18,46 +19,168 @@ type TimelineEntry = {
   details?: string[];
 };
 
-const TIMELINE_ENTRIES: TimelineEntry[] = [
-  {
-    index: "01",
-    title: "Étudier le projet",
-    content:
-      "Nous analysons l’emplacement, le promoteur, les documents, le prix, les matériaux, les prestations et le calendrier.",
-    details: [
-      "Emplacement",
-      "Promoteur",
-      "Documents",
-      "Prix",
-      "Matériaux",
-      "Livraison",
-    ],
-  },
-  {
-    index: "02",
-    title: "Examen S.A.F.E.",
-    content:
-      "Le projet passe par notre grille S.A.F.E. pour vérifier les points sensibles avant présentation.",
-    details: [
-      "Sécurité du dossier",
-      "Sérieux du promoteur",
-      "Fiabilité d’exécution",
-      "Encadrement acheteur",
-    ],
-  },
-  {
-    index: "03",
-    title: "Présenter avec exigence",
-    content:
-      "Un projet n’est présenté que s’il mérite réellement d’être étudié par un acheteur.",
-    details: [
-      "Opportunité qualifiée",
-      "Lecture claire",
-      "Risques identifiés",
-      "Décision plus sereine",
-    ],
-  },
-];
+const TIMELINE_ENTRIES = {
+  fr: [
+    {
+      index: "01",
+      title: "Étudier le projet",
+      content:
+        "Nous analysons l'emplacement, le promoteur, les documents, le prix, les matériaux, les prestations et le calendrier.",
+      details: [
+        "Emplacement",
+        "Promoteur",
+        "Documents",
+        "Prix",
+        "Matériaux",
+        "Livraison",
+      ],
+    },
+    {
+      index: "02",
+      title: "Examen S.A.F.E.",
+      content:
+        "Le projet passe par notre grille S.A.F.E. pour vérifier les points sensibles avant présentation.",
+      details: [
+        "Sécurité du dossier",
+        "Sérieux du promoteur",
+        "Fiabilité d'exécution",
+        "Encadrement acheteur",
+      ],
+    },
+    {
+      index: "03",
+      title: "Présenter avec exigence",
+      content:
+        "Un projet n'est présenté que s'il mérite réellement d'être étudié par un acheteur.",
+      details: [
+        "Opportunité qualifiée",
+        "Lecture claire",
+        "Risques identifiés",
+        "Décision plus sereine",
+      ],
+    },
+  ],
+  en: [
+    {
+      index: "01",
+      title: "Study the project",
+      content:
+        "We analyse the location, developer, documents, price, materials, specifications and schedule.",
+      details: [
+        "Location",
+        "Developer",
+        "Documents",
+        "Price",
+        "Materials",
+        "Delivery",
+      ],
+    },
+    {
+      index: "02",
+      title: "S.A.F.E. review",
+      content:
+        "The project goes through our S.A.F.E. grid to check sensitive points before presentation.",
+      details: [
+        "File security",
+        "Developer seriousness",
+        "Execution reliability",
+        "Buyer framework",
+      ],
+    },
+    {
+      index: "03",
+      title: "Present with rigour",
+      content:
+        "A project is presented only if it genuinely deserves to be studied by a buyer.",
+      details: [
+        "Qualified opportunity",
+        "Clear reading",
+        "Risks identified",
+        "Calmer decision",
+      ],
+    },
+  ],
+  it: [
+    {
+      index: "01",
+      title: "Studiare il progetto",
+      content:
+        "Analizziamo posizione, promotore, documenti, prezzo, materiali, prestazioni e calendario.",
+      details: [
+        "Posizione",
+        "Promotore",
+        "Documenti",
+        "Prezzo",
+        "Materiali",
+        "Consegna",
+      ],
+    },
+    {
+      index: "02",
+      title: "Esame S.A.F.E.",
+      content:
+        "Il progetto passa attraverso la nostra griglia S.A.F.E. per verificare i punti sensibili prima della presentazione.",
+      details: [
+        "Sicurezza del dossier",
+        "Serietà del promotore",
+        "Affidabilità esecutiva",
+        "Quadro acquirente",
+      ],
+    },
+    {
+      index: "03",
+      title: "Presentare con rigore",
+      content:
+        "Un progetto viene presentato solo se merita davvero di essere studiato da un acquirente.",
+      details: [
+        "Opportunità qualificata",
+        "Lettura chiara",
+        "Rischi identificati",
+        "Decisione più serena",
+      ],
+    },
+  ],
+  nl: [
+    {
+      index: "01",
+      title: "Het project onderzoeken",
+      content:
+        "Wij analyseren de ligging, ontwikkelaar, documenten, prijs, materialen, afwerking en planning.",
+      details: [
+        "Ligging",
+        "Ontwikkelaar",
+        "Documenten",
+        "Prijs",
+        "Materialen",
+        "Oplevering",
+      ],
+    },
+    {
+      index: "02",
+      title: "S.A.F.E.-controle",
+      content:
+        "Het project doorloopt onze S.A.F.E.-methode om gevoelige punten vóór presentatie te controleren.",
+      details: [
+        "Dossierzekerheid",
+        "Serieuze ontwikkelaar",
+        "Betrouwbare uitvoering",
+        "Koperskader",
+      ],
+    },
+    {
+      index: "03",
+      title: "Met zorg presenteren",
+      content:
+        "Een project wordt alleen gepresenteerd als het echt de moeite waard is om door een koper te worden bestudeerd.",
+      details: [
+        "Gekwalificeerde kans",
+        "Heldere analyse",
+        "Risico's benoemd",
+        "Rustigere beslissing",
+      ],
+    },
+  ],
+} satisfies Record<SiteLocale, TimelineEntry[]>;
 
 /**
  * whileInView is unreliable on these pages (viewport observer does not fire),
@@ -158,8 +281,9 @@ function TimelineRow({
 }
 
 /** About page — trust verification steps as a premium scroll timeline. */
-export function VerifiedActorsTimeline() {
+export function VerifiedActorsTimeline({ locale = "fr" }: { locale?: SiteLocale }) {
   const reduced = useReducedMotion() === true;
+  const entries = TIMELINE_ENTRIES[locale] ?? TIMELINE_ENTRIES.fr;
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -217,7 +341,7 @@ export function VerifiedActorsTimeline() {
         )}
       </div>
 
-      {TIMELINE_ENTRIES.map((entry, index) => (
+      {entries.map((entry, index) => (
         <TimelineRow
           key={entry.index}
           entry={entry}

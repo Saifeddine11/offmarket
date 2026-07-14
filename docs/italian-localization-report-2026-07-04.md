@@ -70,7 +70,7 @@ Italian SEO localization pass only. No hreflang. Dutch untouched. No commit, no 
 | `/it/contatto/` | Contattare OFF MARKET Marrakech \| Accesso immobiliare privato |
 | `/it/off-market/` | Accesso privato \| OFF MARKET Marrakech |
 
-Each route: Italian description, self-referencing canonical (`https://offmarket.ma/it/...`), `htmlLang: it`, `ogLocale: it_IT`.
+Each route: Italian description, self-referencing canonical (`https://offmarketofficial.com/it/...`), `htmlLang: it`, `ogLocale: it_IT`.
 
 ---
 
@@ -136,7 +136,7 @@ No visible English marketing copy on primary Italian conversion paths after JS b
 **Created** — same pattern as `/en/off-market/`:
 
 - Reuses off-market layout, styles, `PrivateAccessForm` with `locale="it"`
-- Canonical: `https://offmarket.ma/it/off-market/`
+- Canonical: `https://offmarketofficial.com/it/off-market/`
 - Italian links in `home-it.json`, `progetti-it.json`, `chromeCopy.ts`, `om-nav-menu.js`
 - French `/off-market/` and English `/en/off-market/` unchanged
 

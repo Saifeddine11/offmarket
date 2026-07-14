@@ -26,10 +26,12 @@ export function HomePrivateAccessLeadSection({
   intent = "homepage-off-market",
   id = "acces-off-market",
   eyebrow,
-  title = "Recevoir la sélection off-market",
-  subtitle = "Remplissez le formulaire pour accéder aux projets confidentiels et recevoir une sélection privée adaptée à votre budget.",
+  title,
+  subtitle,
 }: HomePrivateAccessLeadSectionProps) {
   const copy = getFormCopy(locale);
+  const resolvedTitle = title ?? copy.title;
+  const resolvedSubtitle = subtitle ?? copy.subtitle;
 
   return (
     <section
@@ -47,9 +49,9 @@ export function HomePrivateAccessLeadSection({
             id="om-home-private-access-title"
             className="om-home-private-access__title"
           >
-            {title}
+            {resolvedTitle}
           </h2>
-          <p className="om-home-private-access__subtitle">{subtitle}</p>
+          <p className="om-home-private-access__subtitle">{resolvedSubtitle}</p>
         </header>
 
         <div className="om-home-private-access__questionnaire">

@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
     "Découvrez Villa Jaz à Marrakech : villas sur plan, disponibilité limitée, informations générales, caractéristiques, extérieurs, intérieurs et plans.",
   canonicalPath: "/sur-plan/villa-jaz/",
   ogImage:
-    "https://offmarket.ma/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp",
+    "https://offmarketofficial.com/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

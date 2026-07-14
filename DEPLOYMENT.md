@@ -38,7 +38,7 @@ Hard refresh: `Cmd + Shift + R`. Test in incognito to avoid extension interferen
 
 | Platform | Notes |
 |----------|-------|
-| **Cloudflare Pages** | Drop folder, custom domain `offmarket.ma` (previous template domain: `springs.estate`), disable/minimize Workers cache on first deploy |
+| **Cloudflare Pages** | Drop folder, custom domain `offmarketofficial.com` (previous template domain: `springs.estate`), disable/minimize Workers cache on first deploy |
 | **Vercel** | Static deploy, preserve `/assets/` and `/media/` paths |
 | **Netlify** | Same as Vercel; add `_redirects` only if you need SPA fallback (not required for homepage-only) |
 | **AWS S3 + CloudFront** | Upload with `index.html` as default root object |
@@ -57,7 +57,7 @@ Example nginx:
 ```nginx
 server {
     listen 443 ssl;
-    server_name offmarket.ma;
+    server_name offmarketofficial.com;
     root /var/www/offmarket-production;
     index index.html;
     location / {

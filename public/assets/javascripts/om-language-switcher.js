@@ -14,9 +14,9 @@
   };
   var AVAILABLE_LANGS = {
     fr: true,
-    en: false,
-    it: false,
-    nl: false,
+    en: true,
+    it: true,
+    nl: true,
   };
 
   var ROUTES = {
@@ -32,6 +32,84 @@
       it: '/it/progetti-su-piano/',
       nl: '/nl/nieuwbouw/',
     },
+    about: {
+      fr: '/about/',
+      en: '/en/about/',
+      it: '/it/',
+      nl: '/nl/over-ons/',
+    },
+    neighbourhoods: {
+      fr: '/quartiers/',
+      en: '/en/neighbourhoods/',
+      it: '/it/',
+      nl: '/nl/wijken/',
+    },
+    projects: {
+      fr: '/nos-projets/',
+      en: '/en/projects/',
+      it: '/it/',
+      nl: '/nl/projecten/',
+    },
+    villaJaz: {
+      fr: '/sur-plan/villa-jaz/',
+      en: '/en/off-plan/villa-jaz/',
+      it: '/it/progetti-su-piano/',
+      nl: '/nl/nieuwbouw/villa-jaz/',
+    },
+    offMarket: {
+      fr: '/off-market/',
+      en: '/en/off-market/',
+      it: '/it/off-market/',
+      nl: '/nl/off-market/',
+    },
+    simulator: {
+      fr: '/simulateur/',
+      en: '/en/simulator/',
+      it: '/it/',
+      nl: '/nl/simulator/',
+    },
+    blog: {
+      fr: '/blog/',
+      en: '/en/blog/',
+      it: '/it/',
+      nl: '/nl/blog/',
+    },
+    blogVilla: {
+      fr: '/blog/acheter-villa-sur-plan-marrakech/',
+      en: '/en/blog/buying-off-plan-villa-marrakech/',
+      it: '/it/',
+      nl: '/nl/blog/nieuwbouwvilla-kopen-marrakech/',
+    },
+    blogInvest: {
+      fr: '/blog/investir-immobilier-luxe-marrakech/',
+      en: '/en/blog/luxury-real-estate-investment-marrakech/',
+      it: '/it/',
+      nl: '/nl/blog/investeren-luxe-vastgoed-marrakech/',
+    },
+    blogAddresses: {
+      fr: '/blog/adresses-immobilier-marrakech/',
+      en: '/en/blog/best-addresses-real-estate-marrakech/',
+      it: '/it/',
+      nl: '/nl/blog/beste-adressen-vastgoed-marrakech/',
+    },
+    blogOffMarket: {
+      fr: '/blog/off-market-marrakech-biens-confidentiels/',
+      en: '/en/blog/off-market-properties-marrakech/',
+      it: '/it/',
+      nl: '/nl/blog/off-market-vastgoed-marrakech/',
+    },
+    blogApartment: {
+      fr: '/blog/appartement-hypercentre-gueliz-marrakech/',
+      en: '/en/blog/apartment-hypercentre-gueliz-marrakech/',
+      it: '/it/',
+      nl: '/nl/blog/appartement-hypercentre-gueliz-marrakech/',
+    },
+    privacy: {
+      fr: '/privacy-policy/',
+      en: '/en/privacy-policy/',
+      it: '/it/',
+      nl: '/nl/privacybeleid/',
+    },
     contact: {
       fr: '/fr/contact/',
       en: '/en/contact/',
@@ -43,15 +121,61 @@
   var LEGACY_ROUTES = {
     '/': 'home',
     '/sur-plan/': 'offPlan',
+    '/about/': 'about',
+    '/fr/about/': 'about',
+    '/quartiers/': 'neighbourhoods',
+    '/nos-projets/': 'projects',
+    '/sur-plan/villa-jaz/': 'villaJaz',
+    '/off-market/': 'offMarket',
+    '/simulateur/': 'simulator',
+    '/blog/': 'blog',
+    '/blog/acheter-villa-sur-plan-marrakech/': 'blogVilla',
+    '/blog/investir-immobilier-luxe-marrakech/': 'blogInvest',
+    '/blog/adresses-immobilier-marrakech/': 'blogAddresses',
+    '/blog/off-market-marrakech-biens-confidentiels/': 'blogOffMarket',
+    '/blog/appartement-hypercentre-gueliz-marrakech/': 'blogApartment',
+    '/privacy-policy/': 'privacy',
     '/contact/': 'contact',
+    '/fr/contact/': 'contact',
   };
 
   var SLUG_TO_PAGE = {
     '': 'home',
+    about: 'about',
+    'over-ons': 'about',
+    quartiers: 'neighbourhoods',
+    neighbourhoods: 'neighbourhoods',
+    wijken: 'neighbourhoods',
+    'nos-projets': 'projects',
+    projects: 'projects',
+    projecten: 'projects',
     'sur-plan': 'offPlan',
     'off-plan': 'offPlan',
     'progetti-su-piano': 'offPlan',
     nieuwbouw: 'offPlan',
+    'sur-plan/villa-jaz': 'villaJaz',
+    'off-plan/villa-jaz': 'villaJaz',
+    'nieuwbouw/villa-jaz': 'villaJaz',
+    'off-market': 'offMarket',
+    simulateur: 'simulator',
+    simulator: 'simulator',
+    blog: 'blog',
+    'blog/acheter-villa-sur-plan-marrakech': 'blogVilla',
+    'blog/buying-off-plan-villa-marrakech': 'blogVilla',
+    'blog/nieuwbouwvilla-kopen-marrakech': 'blogVilla',
+    'blog/investir-immobilier-luxe-marrakech': 'blogInvest',
+    'blog/luxury-real-estate-investment-marrakech': 'blogInvest',
+    'blog/investeren-luxe-vastgoed-marrakech': 'blogInvest',
+    'blog/adresses-immobilier-marrakech': 'blogAddresses',
+    'blog/best-addresses-real-estate-marrakech': 'blogAddresses',
+    'blog/beste-adressen-vastgoed-marrakech': 'blogAddresses',
+    'blog/off-market-marrakech-biens-confidentiels': 'blogOffMarket',
+    'blog/off-market-properties-marrakech': 'blogOffMarket',
+    'blog/off-market-vastgoed-marrakech': 'blogOffMarket',
+    'blog/appartement-hypercentre-gueliz-marrakech': 'blogApartment',
+    'blog/apartment-hypercentre-gueliz-marrakech': 'blogApartment',
+    'privacy-policy': 'privacy',
+    privacybeleid: 'privacy',
     contact: 'contact',
     contatto: 'contact',
   };
@@ -248,10 +372,12 @@
   });
 
   document.addEventListener('om-nav-rendered', syncLanguageControls);
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', syncLanguageControls);
-  } else {
-    syncLanguageControls();
-  }
+  window.addEventListener('om-react-ready', syncLanguageControls);
+  window.addEventListener(
+    'load',
+    function () {
+      window.setTimeout(syncLanguageControls, 0);
+    },
+    { once: true },
+  );
 })();

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import { HomeSimulatorCalculator } from "@/components/sections/HomeSimulatorCalculator";
 import { SectionHeaderMotion } from "@/components/motion/SectionHeaderMotion";
+import type { SiteLocale } from "@/lib/i18n/types";
 
 export type HomeSimulatorSectionProps = {
   id?: string;
@@ -12,6 +13,7 @@ export type HomeSimulatorSectionProps = {
   primaryCtaHref?: string;
   secondaryCtaHref?: string;
   motion?: boolean;
+  locale?: SiteLocale;
 };
 
 const DEFAULT_EYEBROW = "SIMULATEUR PRIVÉ";
@@ -36,6 +38,7 @@ export function HomeSimulatorSection({
   primaryCtaHref,
   secondaryCtaHref,
   motion = false,
+  locale = "fr",
 }: HomeSimulatorSectionProps) {
   return (
     <section
@@ -70,6 +73,7 @@ export function HomeSimulatorSection({
         primaryCtaHref={primaryCtaHref}
         secondaryCtaHref={secondaryCtaHref}
         motion={motion}
+        locale={locale}
       />
     </section>
   );
