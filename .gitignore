@@ -6,3 +6,5 @@ tsconfig.tsbuildinfo
 .DS_Store
 *.log
 .env*.local
+offmarket-public_html.zip
+.ftp-deploy-sync-state.json
