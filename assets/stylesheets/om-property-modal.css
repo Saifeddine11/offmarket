@@ -17,6 +17,12 @@ body.om-modal-open {
     height: 100% !important;
     touch-action: none;
   }
+
+  /* Hide the global site navbar while a property fiche is open (mobile only). */
+  html.om-modal-open .mv-chrome,
+  body.om-modal-open .mv-chrome {
+    display: none !important;
+  }
 }
 
 .om-property-modal {

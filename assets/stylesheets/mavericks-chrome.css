@@ -1442,7 +1442,9 @@ body.menu-open {
 
   .mv-chrome__nav-mobile .om-header__logo .mv-chrome__logo,
   .mv-chrome__nav-mobile .om-header__logo img {
-    width: clamp(96px, 24vw, 112px);
+    width: auto;
+    max-width: 52vw;
+    height: clamp(1.95rem, 7.4vw, 2.5rem);
   }
 
   .mv-chrome__nav-mobile .om-header__actions {

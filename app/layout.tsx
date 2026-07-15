@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { GlobalFooterAssets } from "@/components/layout/GlobalFooterAssets";
 import { GlobalNavAssets } from "@/components/layout/GlobalNavAssets";
 import { GlobalSiteFooter } from "@/components/layout/GlobalSiteFooter";
 import { GlobalSiteNavbar } from "@/components/layout/GlobalSiteNavbar";
 import { ScrollLockCleanup } from "@/components/layout/ScrollLockCleanup";
 import { DeferredNavBoot } from "@/components/layout/DeferredNavBoot";
+import { SITE_STRUCTURED_DATA } from "@/lib/seo/structuredData";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://offmarketofficial.com"),
+  verification: {
+    google: "_NdQPaXlSnkC3js_-xW-1XLA2M1qC1RkOOHCpCWUOx8",
+  },
 };
 
 export const dynamic = "force-dynamic";
@@ -51,6 +56,13 @@ export default async function RootLayout({
             `,
           }}
         />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(SITE_STRUCTURED_DATA),
+          }}
+        />
       </head>
       <body suppressHydrationWarning>
         <style
@@ -70,6 +82,7 @@ export default async function RootLayout({
           src="/assets/javascripts/om-scroll-guard.js?v=1767540000"
           strategy="afterInteractive"
         />
+        <GoogleAnalytics />
       </body>
     </html>
   );

@@ -168,7 +168,7 @@ export function HomeSimulatorCalculator({
               </div>
               <span className="om-simulator__value"><span data-field-value suppressHydrationWarning /></span>
             </div>
-            <input className="om-simulator__range" type="range" min="600" max="3500" step="50" defaultValue="1200" />
+            <input className="om-simulator__range" type="range" min="600" max="12000" step="50" defaultValue="1200" />
           </div>
           <div className="om-simulator__field" data-field data-field-type="range" data-field-key="personalWeeks" data-field-weeks="true">
             <div className="om-simulator__field-header">

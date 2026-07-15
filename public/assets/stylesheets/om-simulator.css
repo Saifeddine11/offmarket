@@ -1154,6 +1154,39 @@
   .om-simulator__results-main,
   .om-simulator__result-value {
     font-size: clamp(4.2rem, 16vw, 5.8rem);
+    margin-top: 1.25rem;
+  }
+
+  /* Give the result card more breathing room on mobile (less cramped). */
+  .om-simulator__results,
+  .om-simulator__result {
+    padding: 2.1rem 1.55rem 2.3rem;
+    border-radius: 1.85rem;
+  }
+
+  .om-simulator__results-caption {
+    margin-top: 1rem;
+  }
+
+  .om-simulator__metrics {
+    gap: 1.05rem;
+    margin-top: 2rem;
+  }
+
+  .om-simulator__metric {
+    padding: 1.45rem 1.35rem;
+  }
+
+  .om-simulator__metric-value {
+    margin-top: 0.9rem;
+  }
+
+  .om-simulator__cta-note {
+    margin: 2rem 0 1.35rem;
+  }
+
+  .om-simulator__actions {
+    gap: 0.85rem;
   }
 }
 

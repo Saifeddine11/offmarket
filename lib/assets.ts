@@ -42,8 +42,8 @@ export const STYLES = {
     "/assets/stylesheets/om-territories.css?v=1765417000",
     "/assets/stylesheets/om-quartier-details.css?v=1765422700",
     "/assets/stylesheets/om-quartiers-motion.css?v=1765440000",
-    "/assets/stylesheets/om-simulator.css?v=1765338000",
-    "/assets/stylesheets/om-simulator-home.css?v=1765338000",
+    "/assets/stylesheets/om-simulator.css?v=1768513200",
+    "/assets/stylesheets/om-simulator-home.css?v=1768513800",
     "/assets/stylesheets/om-blog.css?v=1765405400",
   ],
   /** /nos-projets/ — inner hero + reused homepage featured-projects section. */
@@ -52,7 +52,7 @@ export const STYLES = {
     "/assets/stylesheets/om-page-motion.css?v=1765422400",
     "/assets/stylesheets/om-featured-projects.css?v=1767546000",
     "/assets/stylesheets/om-private-access-popup.css?v=1765340000",
-    "/assets/stylesheets/om-property-modal.css?v=1767584400",
+    "/assets/stylesheets/om-property-modal.css?v=1768512600",
     "/assets/stylesheets/om-contact.css?v=1765356300",
     "/assets/stylesheets/om-contact-page.css?v=1767579000",
     "/assets/stylesheets/om-nos-projets.css?v=1767547000",
@@ -61,7 +61,7 @@ export const STYLES = {
   villaJazDetail: [
     ...INNER_EDITORIAL_STYLES,
     "/assets/stylesheets/om-page-motion.css?v=1765422400",
-    "/assets/stylesheets/om-property-modal.css?v=1767584400",
+    "/assets/stylesheets/om-property-modal.css?v=1768512600",
     "/assets/stylesheets/om-property-detail-page.css?v=1767564100",
   ],
   privacyPolicy: withoutGlobalFooterStyles(
@@ -94,8 +94,8 @@ export const STYLES = {
       "/assets/stylesheets/om-typography.css?v=1765311000",
       "/assets/stylesheets/om-final-cta.css?v=1765404300",
       "/assets/stylesheets/om-page-motion.css?v=1765422400",
-      "/assets/stylesheets/om-simulator.css?v=1767580000",
-      "/assets/stylesheets/om-simulator-home.css?v=1765338000",
+      "/assets/stylesheets/om-simulator.css?v=1768513200",
+      "/assets/stylesheets/om-simulator-home.css?v=1768513800",
     ]),
   ),
 } as const;

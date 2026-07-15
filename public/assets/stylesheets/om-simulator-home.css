@@ -359,6 +359,7 @@
   .om-simulator--home {
     padding-top: clamp(120px, 24vw, 150px);
     padding-bottom: 64px;
+    padding-inline: 0.5rem;
     scroll-margin-top: 100px;
     overflow-x: clip;
   }
@@ -368,7 +369,7 @@
   .om-simulator--home .om-simulator__grid,
   .om-simulator--home .om-simulator__layout,
   .om-simulator--home .om-simulator-home__grid {
-    width: min(100% - 24px, 860px);
+    width: min(100% - 8px, 860px);
     max-width: 100%;
   }
 

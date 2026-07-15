@@ -17,6 +17,7 @@
         { label: 'Off-market', href: '/off-market/' },
       ],
     },
+    { id: 'simulateur', label: 'Simulateur', href: '/simulateur/' },
     { id: 'contact', label: 'Contact', href: '/contact/' },
   ];
 
@@ -33,6 +34,7 @@
         { label: 'Off-market', href: '/en/off-market/' },
       ],
     },
+    { id: 'simulateur', label: 'Simulator', href: '/en/simulator/' },
     { id: 'contact', label: 'Contact', href: '/en/contact/' },
   ];
 
@@ -49,6 +51,7 @@
         { label: 'Off-market', href: '/it/off-market/' },
       ],
     },
+    { id: 'simulateur', label: 'Simulatore', href: '/simulateur/' },
     { id: 'contact', label: 'Contatto', href: '/it/contatto/' },
   ];
 
@@ -65,6 +68,7 @@
         { label: 'Off-market', href: '/nl/off-market/' },
       ],
     },
+    { id: 'simulateur', label: 'Simulator', href: '/nl/simulator/' },
     { id: 'contact', label: 'Contact', href: '/nl/contact/' },
   ];
 
