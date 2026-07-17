@@ -53,6 +53,14 @@ export function PrivateAccessForm({
 
   const leadSource = source ?? contextValues?.source;
   const leadContext = context ?? contextValues?.context;
+  const privacyHref =
+    locale === "en"
+      ? "/en/privacy-policy/"
+      : locale === "nl"
+        ? "/nl/privacybeleid/"
+        : locale === "it"
+          ? "/it/"
+          : "/privacy-policy/";
 
   return (
     <form
@@ -229,7 +237,7 @@ export function PrivateAccessForm({
         </div>
         <p className="om-private-access-form__privacy">
           {copy.privacyPrefix}{" "}
-          <a href="/privacy-policy/">{copy.privacyLink}</a>
+          <a href={privacyHref}>{copy.privacyLink}</a>
         </p>
       </div>
     </form>

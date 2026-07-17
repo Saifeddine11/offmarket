@@ -64,7 +64,7 @@ const ABOUT_COPY = {
     breadcrumbs: ["Home", "La nostra storia"],
     title: "La nostra storia",
     subtitle:
-      "Una maison privata per leggere il mercato immobiliare di Marrakech con rigore, discrezione e precisione.",
+      "Una casa privata per leggere il mercato immobiliare di Marrakech con rigore, discrezione e precisione.",
     primary: "Accedi all'Off-market",
     primaryHref: "/it/off-market/",
     secondary: "Progetti",

@@ -1,4 +1,5 @@
 import { VerifiedActorsTimeline } from "@/components/sections/VerifiedActorsTimeline";
+import { SafeAuthorityContent } from "@/components/sections/SafeAuthorityContent";
 import type { SiteLocale } from "@/lib/i18n/types";
 
 const SAFE_CTA_ICON = (
@@ -18,15 +19,15 @@ const SAFE_CTA_ICON = (
 /** About page — the S.A.F.E. verification standard applied before presenting a project. */
 const SAFE_COPY = {
   fr: {
-    eyebrow: "VÉRIFICATION PRIVÉE",
+    eyebrow: "CADRE DE LECTURE PRIVÉ",
     titlePrefix: "Le standard",
     lead:
-      "Chaque projet est étudié avant d'être présenté : promoteur, dossier, construction, paiements, matériaux, livraison et cohérence avec le marché. Notre rôle n'est pas de montrer tout ce qui existe, mais de retenir les projets qui méritent vraiment d'être étudiés.",
+      "Chaque projet est étudié avant d'être présenté : promoteur, dossier, construction, paiements, matériaux, livraison et cohérence avec le marché. S.A.F.E. structure les informations disponibles et signale les sujets qui doivent encore être vérifiés.",
     closing: "La sélection commence avant la visite.",
     safeTitle: "C'est quoi la S.A.F.E. ?",
     safeText:
-      "Découvrez comment notre grille de vérification analyse un projet avant qu'il soit présenté : promoteur, dossier, matériaux, paiements, livraison et cohérence avec le marché.",
-    safeCta: "Lire plus sur la S.A.F.E.",
+      "S.A.F.E. — Secure Approved For Estate — est le cadre propriétaire d'examen de projets d'OFF MARKET. Il ne s'agit ni d'une certification officielle ni d'une garantie : il aide à organiser les informations et les points de vigilance avant une présentation.",
+    safeCta: "Lire le cadre S.A.F.E.",
   },
   en: {
     eyebrow: "PRIVATE REVIEW",
@@ -130,6 +131,8 @@ export function AboutVerifiedActorsSection({
             {SAFE_CTA_ICON}
           </a>
         </div>
+
+        {locale === "fr" ? <SafeAuthorityContent /> : null}
       </div>
     </section>
   );

@@ -21,7 +21,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url('/assets/mavericks/hero/mavericks-hero-villa.jpg');
+  background-image: url('/assets/mavericks/hero/mavericks-hero-villa.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -437,6 +437,30 @@ html.hero-video-autoplay-blocked .mav-hero__background {
 
 .mav-hero [data-blur-fade].is-blur-fade-visible {
   animation: mavHeroBlurFadeIn 780ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Pure-CSS time failsafe: reveal hero content even if the blur-fade script is
+   blocked or slow to boot. The JS entrance still wins when it arrives in time
+   (adding .is-blur-fade-visible removes this selector match cleanly). */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes omHeroBlurFadeFailsafe {
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .mav-hero [data-blur-fade]:not(.is-blur-fade-visible) {
+    animation: omHeroBlurFadeFailsafe 700ms cubic-bezier(0.22, 1, 0.36, 1) 1800ms
+      forwards;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mav-hero [data-blur-fade]:not(.is-blur-fade-visible) {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
 }
 
 /* Non-blocking fallback when reveal observers/animations do not complete */

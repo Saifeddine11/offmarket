@@ -25,6 +25,7 @@ export function buildBlogArticleMetadata(content: PageContent): Metadata {
 
   return {
     title: content.title,
+    description: content.description,
     alternates: {
       canonical,
       languages: getLanguageAlternates(canonical),

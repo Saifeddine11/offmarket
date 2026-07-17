@@ -124,7 +124,7 @@ const FEATURED_COPY: Record<SiteLocale, {
     ctaHref: "/nl/off-market/",
     ctaProof: "15+ private projecten opgevolgd in Marrakech",
     popupClose: "Sluiten",
-    popupBadge: "PRIVATE TOEGANG",
+    popupBadge: "PRIVÉTOEGANG",
     popupTitle:
       "Gronden, woningen, hotels en restaurants zijn off-market beschikbaar.",
     popupText: "Registreer u voor toegang tot de private selectie.",
@@ -138,7 +138,8 @@ const FEATURED_COPY: Record<SiteLocale, {
 };
 
 function resolveLocale(locale?: string): SiteLocale {
-  return locale === "en" || locale === "it" || locale === "nl" ? locale : "fr";
+  if (locale === "en" || locale === "it" || locale === "nl") return locale;
+  return "fr";
 }
 
 /**
@@ -295,7 +296,7 @@ function PropertyModalShell({ locale }: { locale: SiteLocale }) {
         </button>
         <div className="om-property-modal__stage">
           <div className="om-property-modal__track" data-property-modal-track>
-            <PropertyModalSlides locale={locale === "it" ? "en" : locale} />
+            <PropertyModalSlides locale={locale} />
           </div>
         </div>
         <div className="om-property-modal__arrows" aria-hidden="false">

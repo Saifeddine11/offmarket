@@ -135,7 +135,7 @@ const IT: PrivateAccessFormCopy = {
 };
 
 const NL: PrivateAccessFormCopy = {
-  eyebrow: "PRIVATE TOEGANG",
+  eyebrow: "PRIVÉTOEGANG",
   title: "Ontvang mijn private selectie",
   subtitle:
     "Laat uw gegevens achter. Wij antwoorden met een selectie die aansluit bij uw budget, doelstelling en het type vastgoed dat u zoekt.",
@@ -161,7 +161,7 @@ const NL: PrivateAccessFormCopy = {
   privacyPrefix:
     "Door op de knop te klikken, stemt u ermee in dat OFF MARKET contact met u opneemt over uw aanvraag.",
   privacyLink: "Privacy",
-  contactHeaderEyebrow: "PRIVATE TOEGANG",
+  contactHeaderEyebrow: "PRIVÉTOEGANG",
   contactHeaderTitle: "Toegang tot off-market projecten",
   contactHeaderSubtitle:
     "Vul het formulier in om een private selectie te ontvangen die past bij uw budget en project.",

@@ -115,7 +115,7 @@ export function HomeSimulatorCalculator({
   motion = false,
   locale = "fr",
 }: HomeSimulatorCalculatorProps) {
-  const copy = SIMULATOR_COPY[locale] ?? SIMULATOR_COPY.fr;
+  const copy = SIMULATOR_COPY[locale];
   return (
   <div className="om-simulator om-simulator-home__container" data-simulator>
     <div className="om-simulator__tabs-wrap om-simulator-home__tabs-wrap">

@@ -25,11 +25,11 @@ export const STYLES = {
   ],
   about: [
     ...INNER_EDITORIAL_STYLES,
-    "/assets/stylesheets/mav-who.css?v=1765338000",
+    "/assets/stylesheets/mav-who.css?v=1768600000",
     "/assets/stylesheets/om-testimonials.css?v=1765342000",
     "/assets/stylesheets/om-text-reveal.css?v=1765317800",
     "/assets/stylesheets/about-who.css?v=1767533000",
-    "/assets/stylesheets/about-verified.css?v=1767534200",
+    "/assets/stylesheets/about-verified.css?v=1768600000",
     "/assets/stylesheets/about-timeline.css?v=1765446000",
   ],
   /** New inner pages using the approved Framer Motion system (see docs/motion-system.md). */

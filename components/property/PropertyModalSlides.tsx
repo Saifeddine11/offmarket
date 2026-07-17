@@ -3,7 +3,7 @@ export type PropertyModalSlidesProps = {
   pageMode?: boolean;
   /** Modal-only: title id for aria-labelledby on the dialog shell. */
   titleId?: string;
-  locale?: "fr" | "en" | "nl";
+  locale?: "fr" | "en" | "it" | "nl";
 };
 
 const PAGE_SECTIONS = [
@@ -91,6 +91,31 @@ const COPY = {
     contactHref: "/nl/contact/",
     dossierHref: "/nl/off-market/",
   },
+  it: {
+    type: "Villa su piano",
+    selectionLabel: "Selezione:",
+    selectionValue: "Progetto su piano",
+    price: "Prezzo",
+    fromPrice: "Da 351.000 €",
+    callback: "Richiamami",
+    dossier: "Ricevi il dossier",
+    project: "Progetto",
+    gallery: "Galleria",
+    photos: "5 foto",
+    exterior: "Esterno",
+    interior: "Interno",
+    view: "Vedi",
+    layoutTitle: "Planimetrie e configurazione",
+    ground: "Piano terra",
+    first: "Primo piano",
+    surface: "Superficie",
+    suites: "Suite",
+    baths: "Bagni",
+    requestDetails: "Dettagli su richiesta",
+    plansRequest: "Planimetrie disponibili su richiesta",
+    contactHref: "/it/contatto/",
+    dossierHref: "/it/off-market/",
+  },
 } as const;
 
 function slideClass(
@@ -114,7 +139,7 @@ export function PropertyModalSlides({
   titleId = "om-property-modal-title",
   locale = "fr",
 }: PropertyModalSlidesProps) {
-  const copy = COPY[locale] ?? COPY.fr;
+  const copy = COPY[locale];
   const general = PAGE_SECTIONS[0];
   const about = PAGE_SECTIONS[1];
   const characteristics = PAGE_SECTIONS[2];
@@ -406,4 +431,13 @@ export const PROPERTY_DETAIL_ANCHORS_NL = [
   { href: "#exterieur", label: "Exterieur", index: "04." },
   { href: "#interieur", label: "Interieur", index: "05." },
   { href: "#plans", label: "Plattegronden", index: "06." },
+] as const;
+
+export const PROPERTY_DETAIL_ANCHORS_IT = [
+  { href: "#general", label: "Generale", index: "01." },
+  { href: "#a-propos", label: "Informazioni", index: "02." },
+  { href: "#caracteristiques", label: "Caratteristiche", index: "03." },
+  { href: "#exterieur", label: "Esterno", index: "04." },
+  { href: "#interieur", label: "Interno", index: "05." },
+  { href: "#plans", label: "Planimetrie", index: "06." },
 ] as const;

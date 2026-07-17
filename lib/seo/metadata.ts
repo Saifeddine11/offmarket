@@ -29,16 +29,23 @@ function isTemporarilyNoindexedPath(pathOrUrl: string): boolean {
   }
 }
 
-const HREFLANG_GROUPS = [
-  { fr: "/", en: "/en/", nl: "/nl/" },
+type HreflangGroup = {
+  fr: string;
+  en: string;
+  nl: string;
+  it?: string;
+};
+
+const HREFLANG_GROUPS: HreflangGroup[] = [
+  { fr: "/", en: "/en/", it: "/it/", nl: "/nl/" },
   { fr: "/about/", en: "/en/about/", nl: "/nl/over-ons/" },
   { fr: "/quartiers/", en: "/en/neighbourhoods/", nl: "/nl/wijken/" },
   { fr: "/nos-projets/", en: "/en/projects/", nl: "/nl/projecten/" },
-  { fr: "/sur-plan/", en: "/en/off-plan/", nl: "/nl/nieuwbouw/" },
+  { fr: "/sur-plan/", en: "/en/off-plan/", it: "/it/progetti-su-piano/", nl: "/nl/nieuwbouw/" },
   { fr: "/sur-plan/villa-jaz/", en: "/en/off-plan/villa-jaz/", nl: "/nl/nieuwbouw/villa-jaz/" },
-  { fr: "/off-market/", en: "/en/off-market/", nl: "/nl/off-market/" },
+  { fr: "/off-market/", en: "/en/off-market/", it: "/it/off-market/", nl: "/nl/off-market/" },
   { fr: "/simulateur/", en: "/en/simulator/", nl: "/nl/simulator/" },
-  { fr: "/contact/", en: "/en/contact/", nl: "/nl/contact/" },
+  { fr: "/contact/", en: "/en/contact/", it: "/it/contatto/", nl: "/nl/contact/" },
   { fr: "/blog/", en: "/en/blog/", nl: "/nl/blog/" },
   { fr: "/privacy-policy/", en: "/en/privacy-policy/", nl: "/nl/privacybeleid/" },
   {
@@ -86,6 +93,7 @@ export function getLanguageAlternates(pathOrUrl: string) {
   return {
     "fr-FR": `${SITE_URL}${group.fr}`,
     "en-US": `${SITE_URL}${group.en}`,
+    ...(group.it ? { "it-IT": `${SITE_URL}${group.it}` } : {}),
     "nl-NL": `${SITE_URL}${group.nl}`,
     "x-default": `${SITE_URL}${group.fr}`,
   };

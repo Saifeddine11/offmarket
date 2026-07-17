@@ -9,13 +9,13 @@ import { LANG_LINKS } from "@/lib/routes";
 import { buildPageMetadata, buildPageViewport } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Notre Histoire — OFF MARKET Marrakech",
+  title: "S.A.F.E. — Cadre de vérification immobilière au Maroc | OFF MARKET",
   description:
-    "Découvrez l'approche OFF MARKET à Marrakech : une maison privée dédiée à la sélection, l'analyse et l'accès confidentiel aux opportunités immobilières.",
+    "Découvrez S.A.F.E., le cadre propriétaire d'OFF MARKET pour examiner les informations, documents, risques et transparence des projets immobiliers à Marrakech et au Maroc avant leur présentation.",
   ogDescription:
-    "Une approche privée, sélective et confidentielle de l'immobilier à Marrakech.",
+    "Le cadre propriétaire d'OFF MARKET pour lire les informations, documents et points de vigilance d'un projet immobilier.",
   twitterDescription:
-    "Une approche privée, sélective et confidentielle de l'immobilier à Marrakech.",
+    "Le cadre propriétaire d'OFF MARKET pour lire les informations, documents et points de vigilance d'un projet immobilier.",
   canonicalPath: "/about/",
   ogImage: "https://offmarketofficial.com/assets/mavericks/hero/mavericks-hero-villa.webp",
 });

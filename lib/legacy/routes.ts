@@ -94,11 +94,9 @@ export const SITEMAP_URLS: Array<{
   priority: number;
 }> = [
   { path: "/", changefreq: "weekly", priority: 1.0 },
-  { path: "/fr/", changefreq: "weekly", priority: 1.0 },
   { path: "/en/", changefreq: "weekly", priority: 1.0 },
   { path: "/nl/", changefreq: "weekly", priority: 1.0 },
   { path: "/sur-plan/", changefreq: "monthly", priority: 0.9 },
-  { path: "/fr/sur-plan/", changefreq: "monthly", priority: 0.9 },
   { path: "/en/off-plan/", changefreq: "monthly", priority: 0.9 },
   { path: "/nl/nieuwbouw/", changefreq: "monthly", priority: 0.9 },
   { path: "/sur-plan/villa-jaz/", changefreq: "monthly", priority: 0.85 },
@@ -107,7 +105,6 @@ export const SITEMAP_URLS: Array<{
   { path: "/about/", changefreq: "monthly", priority: 0.85 },
   { path: "/en/about/", changefreq: "monthly", priority: 0.85 },
   { path: "/nl/over-ons/", changefreq: "monthly", priority: 0.85 },
-  { path: "/fr/about/", changefreq: "monthly", priority: 0.85 },
   { path: "/quartiers/", changefreq: "monthly", priority: 0.85 },
   { path: "/en/neighbourhoods/", changefreq: "monthly", priority: 0.85 },
   { path: "/nl/wijken/", changefreq: "monthly", priority: 0.85 },
@@ -120,7 +117,6 @@ export const SITEMAP_URLS: Array<{
   { path: "/contact/", changefreq: "monthly", priority: 0.8 },
   { path: "/en/contact/", changefreq: "monthly", priority: 0.8 },
   { path: "/nl/contact/", changefreq: "monthly", priority: 0.8 },
-  { path: "/fr/contact/", changefreq: "monthly", priority: 0.8 },
   { path: "/blog/", changefreq: "weekly", priority: 0.85 },
   { path: "/en/blog/", changefreq: "weekly", priority: 0.85 },
   { path: "/nl/blog/", changefreq: "weekly", priority: 0.85 },

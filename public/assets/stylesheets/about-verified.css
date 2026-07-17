@@ -188,6 +188,33 @@
   filter: blur(0);
 }
 
+/* Pure-CSS time failsafe: reveal if the boot script never adds .is-visible. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes omAboutVerifiedFailsafe {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 24px, 0);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      filter: blur(0);
+    }
+  }
+  .about-verified:not(.is-visible) .about-verified__reveal {
+    animation: omAboutVerifiedFailsafe 700ms cubic-bezier(0.22, 1, 0.36, 1) 2200ms
+      forwards;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-verified:not(.is-visible) .about-verified__reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
 .about-verified.is-visible .about-verified__eyebrow {
   --verified-reveal-delay: 60ms;
 }

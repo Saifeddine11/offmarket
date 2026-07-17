@@ -99,7 +99,10 @@ export function HomePageContent({
     <>
       <HtmlInit preloaderDisabled removeNotReady />
       <HeroResourceHints />
-      <PageContentShell content={optimizedContent} bodySegments={shellBodySegments} />
+      <PageContentShell
+        content={{ ...optimizedContent, bodySegments: shellBodySegments }}
+        bodySegments={shellBodySegments}
+      />
       <LeadFormStaticBridge />
       {includeFaqSection ? <HomeFaqBoot sectionId={HOME_FAQ_SECTION_ID} /> : null}
       <DeferredHomeLegacyBoot />

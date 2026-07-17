@@ -9,10 +9,16 @@ type BlogIndexContentProps = {
 
 export function BlogIndexContent({ content }: BlogIndexContentProps) {
   const prepared = preparePageWithFinalCta(content);
+  const heading =
+    content.htmlLang === "en"
+      ? "Marrakech real estate blog"
+      : content.htmlLang === "nl"
+        ? "Vastgoedblog Marrakech"
+        : "Blog immobilier Marrakech";
 
   return (
     <>
-      <h1 style={screenReaderOnlyStyle}>Blog immobilier Marrakech</h1>
+      <h1 style={screenReaderOnlyStyle}>{heading}</h1>
       <PageContentShell
         content={prepared.content}
         bodySegments={prepared.bodySegments}

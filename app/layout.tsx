@@ -7,7 +7,26 @@ import { GlobalSiteFooter } from "@/components/layout/GlobalSiteFooter";
 import { GlobalSiteNavbar } from "@/components/layout/GlobalSiteNavbar";
 import { ScrollLockCleanup } from "@/components/layout/ScrollLockCleanup";
 import { DeferredNavBoot } from "@/components/layout/DeferredNavBoot";
-import { SITE_STRUCTURED_DATA } from "@/lib/seo/structuredData";
+import { getSiteStructuredData } from "@/lib/seo/structuredData";
+import { localeFromPathname, languageTagForLocale } from "@/lib/i18n/locale";
+import { headers } from "next/headers";
+
+function requestPathname(headerList: Headers): string {
+  for (const name of [
+    "x-offmarket-pathname",
+    "x-invoke-path",
+    "x-matched-path",
+    "x-nextjs-matched-path",
+    "x-forwarded-uri",
+    "x-original-url",
+    "x-rewrite-url",
+    "next-url",
+  ]) {
+    const value = headerList.get(name);
+    if (value) return value.split("?")[0];
+  }
+  return "/";
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://offmarketofficial.com"),
@@ -16,14 +35,13 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = "force-dynamic";
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const lang = "fr";
+  const locale = localeFromPathname(requestPathname(await headers()));
+  const lang = languageTagForLocale(locale);
 
   return (
     <html lang={lang} dir="ltr" className="has-hover" suppressHydrationWarning>
@@ -31,6 +49,11 @@ export default async function RootLayout({
         <link
           rel="stylesheet"
           href="/assets/stylesheets/om-scroll-layout.css?v=1767557000"
+        />
+        <script
+          async
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="bSEjZd4P8psbV0Bag20Jkg"
         />
         <script
           dangerouslySetInnerHTML={{
@@ -45,14 +68,6 @@ export default async function RootLayout({
               if (navigator.platform.toUpperCase().indexOf('WIN') >= 0) {
                 document.documentElement.classList.add('is-win');
               }
-              var path = window.location.pathname;
-              document.documentElement.lang = path.indexOf('/en') === 0
-                ? 'en'
-                : path.indexOf('/it') === 0
-                  ? 'it'
-                  : path.indexOf('/nl') === 0
-                    ? 'nl'
-                    : 'fr';
             `,
           }}
         />
@@ -60,7 +75,7 @@ export default async function RootLayout({
           type="application/ld+json"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(SITE_STRUCTURED_DATA),
+            __html: JSON.stringify(getSiteStructuredData(locale)),
           }}
         />
       </head>
@@ -73,9 +88,9 @@ export default async function RootLayout({
         />
         <GlobalNavAssets />
         <GlobalFooterAssets />
-        <GlobalSiteNavbar locale={lang} />
+        <GlobalSiteNavbar locale={locale} />
         {children}
-        <GlobalSiteFooter locale={lang} />
+        <GlobalSiteFooter locale={locale} />
         <ScrollLockCleanup />
         <DeferredNavBoot />
         <Script

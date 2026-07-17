@@ -6,6 +6,7 @@ import type { SiteLocale } from "@/lib/i18n/types";
 
 const SIMULATOR_PAGE_COPY = {
   fr: {
+    eyebrow: "SIMULATEUR PRIVÉ",
     title: "Simuler avant d'investir",
     text: (
       <>
@@ -19,6 +20,7 @@ const SIMULATOR_PAGE_COPY = {
     secondaryHref: "/nos-projets/",
   },
   en: {
+    eyebrow: "PRIVATE SIMULATOR",
     title: "Simulate before investing",
     text: (
       <>
@@ -32,6 +34,7 @@ const SIMULATOR_PAGE_COPY = {
     secondaryHref: "/en/projects/",
   },
   it: {
+    eyebrow: "SIMULATORE PRIVATO",
     title: "Simulare prima di investire",
     text: (
       <>
@@ -44,6 +47,7 @@ const SIMULATOR_PAGE_COPY = {
     secondaryHref: "/it/progetti-su-piano/",
   },
   nl: {
+    eyebrow: "PRIVÉSIMULATOR",
     title: "Simuleren vóór u investeert",
     text: (
       <>
@@ -56,6 +60,7 @@ const SIMULATOR_PAGE_COPY = {
     secondaryHref: "/nl/projecten/",
   },
 } satisfies Record<SiteLocale, {
+  eyebrow: string;
   title: string;
   text: ReactNode;
   primaryHref: string;
@@ -69,6 +74,7 @@ export function SimulatorSection({ locale = "fr" }: { locale?: SiteLocale }) {
     <main id="main" className="om-simulator-page">
       <HomeSimulatorSection
         id="simulateur"
+        eyebrow={copy.eyebrow}
         titleId="om-simulator-page-title"
         title={copy.title}
         text={copy.text}

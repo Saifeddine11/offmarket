@@ -25,7 +25,7 @@ type MavericksChromeProps = {
 
 const DEFAULT_LANG_LINKS: LangLinks = {
   en: "/en/",
-  fr: "/fr/",
+  fr: "/",
   it: "/it/",
   nl: "/nl/",
 };

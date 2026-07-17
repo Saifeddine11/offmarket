@@ -31,7 +31,7 @@ export default function NlOffMarketPage() {
 
       <main id="main" className="om-off-market-main">
         <header className="om-off-market-hero">
-          <p className="om-off-market-hero__eyebrow">PRIVATE TOEGANG</p>
+          <p className="om-off-market-hero__eyebrow">PRIVÉTOEGANG</p>
           <h1 className="om-off-market-hero__title">
             Toegang tot off-market vastgoed
           </h1>

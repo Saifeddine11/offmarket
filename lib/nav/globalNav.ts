@@ -1,4 +1,5 @@
 import type { BodySegment } from "@/lib/static-html/parsePage";
+import type { SiteLocale } from "@/lib/i18n/types";
 
 /** Styles loaded once from app/layout.tsx for the global navbar. */
 export const GLOBAL_NAV_STYLES = [
@@ -192,7 +193,11 @@ export function stripLegacyStaticPropertyModals(html: string): string {
 }
 
 /** Rewrites stale or placeholder interactive targets in migrated static chunks. */
-export function fixStaticInteractiveTargets(html: string): string {
+export function fixStaticInteractiveTargets(html: string, locale: SiteLocale = "fr"): string {
+  const contactHref = locale === "en" ? "/en/contact/" : locale === "nl" ? "/nl/contact/" : locale === "it" ? "/it/contatto/" : "/contact/";
+  const aboutHref = locale === "en" ? "/en/about/#acteurs-verifies" : locale === "nl" ? "/nl/over-ons/#acteurs-verifies" : locale === "it" ? "/it/#acteurs-verifies" : "/about/#acteurs-verifies";
+  const neighbourhoodsHref = locale === "en" ? "/en/neighbourhoods/" : locale === "nl" ? "/nl/wijken/" : locale === "it" ? "/it/" : "/quartiers/";
+  const privacyHref = locale === "en" ? "/en/privacy-policy/" : locale === "nl" ? "/nl/privacybeleid/" : locale === "it" ? "/it/" : "/privacy-policy/";
   return html
     .replace(
       /<section class="section ui-dark-background"/,
@@ -204,20 +209,24 @@ export function fixStaticInteractiveTargets(html: string): string {
     )
     .replace(
       /(class="[^"]*\bmore-block__button\b[^"]*"[\s\S]*?)href=(["'])\2/g,
-      '$1href="/quartiers/"',
+      `$1href="${neighbourhoodsHref}"`,
     )
     .replace(
       /<a((?=[^>]*\brole="button")(?=[^>]*(?:\bcarousel__thumb__item\b|\bjs-content-animation-(?:prev|next)\b))(?![^>]*\bhref=)[^>]*)>/g,
       '<a$1 href="#sur-plan-details">',
     )
-    .replace(/href="#callback-modal"/g, 'href="/contact/"')
-    .replace(/href="#safe"/g, 'href="/about/#acteurs-verifies"')
-    .replace(/href="\/location\/?"/g, 'href="/quartiers/"')
-    .replace(/href="\/fr\/contact\/?"/g, 'href="/contact/"')
+    .replace(/href="#callback-modal"/g, `href="${contactHref}"`)
+    .replace(/href="#safe"/g, `href="${aboutHref}"`)
+    .replace(/href="\/about\/?#acteurs-verifies"/g, `href="${aboutHref}"`)
+    .replace(/href="\/privacy-policy\/?"/g, `href="${privacyHref}"`)
+    .replace(/href="\/location\/?"/g, `href="${neighbourhoodsHref}"`)
+    .replace(/href="\/fr\/?"/g, 'href="/"')
+    .replace(/href="\/fr\/about\/?"/g, 'href="/about/"')
     .replace(/href="\/fr\/sur-plan\/?"/g, 'href="/sur-plan/"')
-    .replace(/href="tel:\+212000000000"/g, 'href="/contact/"')
-    .replace(/href=(["'])\1/g, 'href="/contact/"')
-    .replace(/href=(["'])#\1/g, 'href="/contact/"');
+    .replace(/href="\/fr\/contact\/?"/g, 'href="/contact/"')
+    .replace(/href="tel:\+212000000000"/g, `href="${contactHref}"`)
+    .replace(/href=(["'])\1/g, `href="${contactHref}"`)
+    .replace(/href=(["'])#\1/g, `href="${contactHref}"`);
 }
 
 export function stripEmbeddedFooterFromSegments(
@@ -274,7 +283,7 @@ export function stripStaleInlineFooterScriptsFromSegments(
   });
 }
 
-export function prepareStaticPageSegments(segments: BodySegment[]): BodySegment[] {
+export function prepareStaticPageSegments(segments: BodySegment[], locale: SiteLocale = "fr"): BodySegment[] {
   return stripStaleInlineFooterScriptsFromSegments(
     stripGlobalNavScriptsFromSegments(
       stripEmbeddedFooterFromSegments(
@@ -289,6 +298,7 @@ export function prepareStaticPageSegments(segments: BodySegment[]): BodySegment[
               stripLegacyStaticPropertyModals(
                 stripLegacyStaticModals(stripLegacyStaticHeader(segment.html)),
               ),
+              locale,
             ),
           };
         }),

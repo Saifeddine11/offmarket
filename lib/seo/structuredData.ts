@@ -5,7 +5,17 @@ import { SITE_URL } from "@/lib/legacy/routes";
  * Rendered once in the root layout so Google can resolve the brand entity
  * on every page. Kept minimal and factual — no invented social profiles.
  */
-export const SITE_STRUCTURED_DATA = {
+export function getSiteStructuredData(locale: "fr" | "en" | "nl" | "it") {
+  const language =
+    locale === "fr"
+      ? "fr-FR"
+      : locale === "en"
+        ? "en-US"
+        : locale === "nl"
+          ? "nl-NL"
+          : "it-IT";
+
+  return {
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -37,8 +47,11 @@ export const SITE_STRUCTURED_DATA = {
       "@id": `${SITE_URL}/#website`,
       url: `${SITE_URL}/`,
       name: "OFF MARKET",
-      inLanguage: "fr-FR",
+      inLanguage: language,
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
   ],
-};
+  };
+}
+
+export const SITE_STRUCTURED_DATA = getSiteStructuredData("fr");

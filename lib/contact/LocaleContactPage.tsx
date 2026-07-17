@@ -33,7 +33,7 @@ const CONFIG: Record<
   }
 > = {
   "fr/contact": {
-    homeHref: "/fr/",
+    homeHref: "/",
     activeLang: "FR",
     langLinks: LANG_LINKS.contact,
     locale: "fr",

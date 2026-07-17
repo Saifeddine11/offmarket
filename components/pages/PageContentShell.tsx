@@ -33,10 +33,13 @@ export function PageContentShell({
   content,
   bodySegments = content.bodySegments,
 }: PageContentShellProps) {
+  const locale = content.htmlLang === "en" || content.htmlLang === "nl" || content.htmlLang === "it"
+    ? content.htmlLang
+    : "fr";
   const stylesheets = withoutGlobalFooterStyles(
     withoutGlobalNavStyles(content.stylesheets),
   );
-  const segments = prepareStaticPageSegments(bodySegments);
+  const segments = prepareStaticPageSegments(bodySegments, locale);
 
   return (
     <div suppressHydrationWarning style={{ display: "contents" }}>

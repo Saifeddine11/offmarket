@@ -3,6 +3,7 @@ import { PageFinalCtaMotion } from "@/components/motion/PageFinalCtaMotion";
 import {
   PROPERTY_DETAIL_ANCHORS,
   PROPERTY_DETAIL_ANCHORS_EN,
+  PROPERTY_DETAIL_ANCHORS_IT,
   PROPERTY_DETAIL_ANCHORS_NL,
   PropertyModalSlides,
 } from "@/components/property/PropertyModalSlides";
@@ -17,6 +18,7 @@ const VILLA_PAGE_COPY = {
 
 function getAnchors(locale: SiteLocale) {
   if (locale === "en") return PROPERTY_DETAIL_ANCHORS_EN;
+  if (locale === "it") return PROPERTY_DETAIL_ANCHORS_IT;
   if (locale === "nl") return PROPERTY_DETAIL_ANCHORS_NL;
   return PROPERTY_DETAIL_ANCHORS;
 }
@@ -26,7 +28,7 @@ export function VillaJazDetailPageContent({
 }: {
   locale?: SiteLocale;
 }) {
-  const copy = VILLA_PAGE_COPY[locale] ?? VILLA_PAGE_COPY.fr;
+  const copy = VILLA_PAGE_COPY[locale];
   const anchors = getAnchors(locale);
   return (
     <>
@@ -49,7 +51,7 @@ export function VillaJazDetailPageContent({
                 >
                   <PropertyModalSlides
                     pageMode
-                    locale={locale === "it" ? "en" : locale}
+                    locale={locale}
                   />
                 </div>
               </div>

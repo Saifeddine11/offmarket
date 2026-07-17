@@ -1,14 +1,14 @@
 export { SITE_URL, PRODUCTION_URLS, SITEMAP_URLS } from "@/lib/legacy/routes";
 
 export const LANG_LINKS = {
-  home: { en: "/en/", fr: "/fr/", it: "/it/", nl: "/nl/" },
+  home: { en: "/en/", fr: "/", it: "/it/", nl: "/nl/" },
   about: { en: "/en/about/", fr: "/about/", it: "/it/", nl: "/nl/over-ons/" },
-  frAbout: { en: "/en/about/", fr: "/fr/about/", it: "/it/", nl: "/nl/over-ons/" },
+  frAbout: { en: "/en/about/", fr: "/about/", it: "/it/", nl: "/nl/over-ons/" },
   quartiers: { en: "/en/neighbourhoods/", fr: "/quartiers/", it: "/it/", nl: "/nl/wijken/" },
   nosProjets: { en: "/en/projects/", fr: "/nos-projets/", it: "/it/", nl: "/nl/projecten/" },
   offPlan: {
     en: "/en/off-plan/",
-    fr: "/fr/sur-plan/",
+    fr: "/sur-plan/",
     it: "/it/progetti-su-piano/",
     nl: "/nl/nieuwbouw/",
   },
@@ -44,7 +44,7 @@ export const LANG_LINKS = {
   },
   contact: {
     en: "/en/contact/",
-    fr: "/fr/contact/",
+    fr: "/contact/",
     it: "/it/contatto/",
     nl: "/nl/contact/",
   },

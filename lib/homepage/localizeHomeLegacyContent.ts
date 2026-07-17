@@ -4,6 +4,16 @@ import type { SiteLocale } from "@/lib/i18n/types";
 type Replacement = readonly [from: string, to: string];
 
 const EN_REPLACEMENTS: readonly Replacement[] = [
+  ["Sur plan", "Off-plan"],
+  ["Projet sur plan", "Off-plan project"],
+  ["Villa sur plan", "Off-plan villa"],
+  ["Private villascious", "Private villas"],
+  ["Villas privéescious", "Private villas"],
+  ["Villas privéescious<br>\nSwimming Pool", "Private villas<br>\nSwimming pool"],
+  ["of beautiful reality", "that fits your project"],
+  ["Parc-like Parcing", "Park-like parking"],
+  ["Parc-like&nbsp;Parcing", "Park-like parking"],
+  ["Investirissement", "Investment"],
   ["Aller au contenu principal", "Skip to main content"],
   ["L'immobilier privé à Marrakech", "Private real estate in Marrakech"],
   ["L'immobilier privé", "Private real estate"],
@@ -149,9 +159,33 @@ const EN_REPLACEMENTS: readonly Replacement[] = [
   ["Veuillez pivoter votre appareil", "Please rotate your device"],
   ["to portrait mode", "to portrait mode"],
   ["to landscape mode", "to landscape mode"],
+  ["to portrait mode", "to portrait mode"],
+  ["to landscape mode", "to landscape mode"],
+  ["Maison OFF MARKET", "OFF MARKET"],
+  ["OFF MARKET — page d&amp;rsquo;accueil", "OFF MARKET — home"],
+  ["call time", "Call time"],
 ];
 
 const NL_REPLACEMENTS: readonly Replacement[] = [
+  ["Accueil", "Home"],
+  ["Notre Histoire", "Ons verhaal"],
+  ["Opportunités rares", "Zeldzame kansen"],
+  ["projets privés suivis", "private projecten gevolgd"],
+  ["PRIVATE TOEGANG", "PRIVÉTOEGANG"],
+  ["PRIVATE ACCESS", "PRIVÉTOEGANG"],
+  ["Demander l'accès", "Toegang aanvragen"],
+  ["Sur plan", "Nieuwbouw"],
+  ["Simulateur", "Simulator"],
+  ["Notre Histoire", "Ons verhaal"],
+  ["Projet sur plan", "Nieuwbouwproject"],
+  ["Villa sur plan", "Nieuwbouwvilla"],
+  ["Private villascious", "Private villa's"],
+  ["Villas privéescious", "Private villa's"],
+  ["Villas privéescious<br>\nSwimming Pool", "Private villa's<br>\nZwembad"],
+  ["of beautiful reality", "die bij uw project past"],
+  ["Parc-like Parcing", "Parkachtige parking"],
+  ["Parc-like&nbsp;Parcing", "Parkachtige parking"],
+  ["Investirissement", "Investering"],
   ["Skip to main content", "Naar hoofdinhoud"],
   ["Aller au contenu principal", "Naar hoofdinhoud"],
   ["L'immobilier privé à Marrakech", "Privé vastgoed in Marrakech"],
@@ -206,7 +240,7 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
     "Des biens rares, des adresses confidentielles et une lecture claire avant chaque décision.",
     "Zeldzaam vastgoed, vertrouwelijke adressen en een heldere analyse vóór elke beslissing.",
   ],
-  ["SIMULATEUR PRIVÉ", "PRIVATE SIMULATOR"],
+  ["SIMULATEUR PRIVÉ", "PRIVÉSIMULATOR"],
   ["Simuler avant d'investir", "Simuleren vóór u investeert"],
   [
     "Estimez le potentiel d'un bien à Marrakech selon votre usage, puis affinez les chiffres avec",
@@ -265,7 +299,7 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
   ["Résidence secondaire · Marrakech", "Tweede verblijf · Marrakech"],
   ["Appartement premium · Guéliz / Hivernage", "Premium appartement · Guéliz / Hivernage"],
   ["Riad de caractère · Médina", "Karaktervolle riad · Medina"],
-  ["ACCÈS PRIVÉ", "PRIVATE TOEGANG"],
+  ["ACCÈS PRIVÉ", "PRIVÉTOEGANG"],
   ["Recevoir la sélection off-market", "De off-market selectie ontvangen"],
   [
     "Remplissez le formulaire pour accéder aux projets confidentiels et recevoir une sélection privée adaptée à votre budget.",
@@ -299,6 +333,8 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
   ["Veuillez pivoter votre appareil", "Draai uw apparaat"],
   ["to portrait mode", "naar portretmodus"],
   ["to landscape mode", "naar landschapsmodus"],
+  ["to portrait mode", "naar portretmodus"],
+  ["to landscape mode", "naar landschapsmodus"],
   ["Private properties", "Private panden"],
   ["Contact us", "Contact"],
   ["Our story", "Ons verhaal"],
@@ -307,22 +343,69 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
   ["Private real estate in Marrakech", "Privé vastgoed in Marrakech"],
   ["Choose language", "Taal kiezen"],
   ["Main navigation", "Hoofdnavigatie"],
+  ["Maison OFF MARKET", "OFF MARKET"],
+  ["Sélection privée d'opportunités immobilières à Marrakech.", "Private selectie van vastgoedkansen in Marrakech."],
+  ["OFF MARKET — page d&amp;rsquo;accueil", "OFF MARKET — startpagina"],
+  ["call time", "Tijdstip gesprek"],
+  ["Envoyer<br>\n                    une demande", "Een aanvraag verzenden"],
 ];
 
-const ROUTE_REPLACEMENTS: Record<"en" | "nl", readonly Replacement[]> = {
+const IT_REPLACEMENTS: readonly Replacement[] = [
+  ["Skip to main content", "Vai al contenuto principale"],
+  ["Private properties", "Immobili privati"],
+  ["Contact us", "Contattaci"],
+  ["Off-plan", "Su piano"],
+  ["Simulator", "Simulatore"],
+  ["Request access", "Richiedi l'accesso"],
+  ["Private real estate in Marrakech", "Immobiliare privato a Marrakech"],
+  ["Maison OFF MARKET", "OFF MARKET"],
+  ["une demande", "una richiesta"],
+  ["Maroccocococo", "Marocco"],
+  ["Maroccoco", "Marocco"],
+  ["to portrait mode", "alla modalità verticale"],
+  ["to landscape mode", "alla modalità orizzontale"],
+  ["to portrait mode", "alla modalità verticale"],
+  ["to landscape mode", "alla modalità orizzontale"],
+  ["Nomeeeee completo", "Nome completo"],
+  ["Nomeeee", "Nome"],
+  ["call time", "Orario della chiamata"],
+  ["Envoyer<br>\n                    une demande", "Invia una richiesta"],
+  ["OFF MARKET — page d&amp;rsquo;accueil", "OFF MARKET — home"],
+  ["data-lang=\"FR\">FR", "data-lang=\"IT\">IT"],
+];
+
+const ROUTE_REPLACEMENTS: Record<"en" | "it" | "nl", readonly Replacement[]> = {
   en: [
+    ['href="/"', 'href="/en/"'],
+    ['href="/about/"', 'href="/en/about/"'],
+    ['href="/quartiers/"', 'href="/en/neighbourhoods/"'],
+    ['href="/nos-projets/"', 'href="/en/projects/"'],
     ['href="/simulateur/"', 'href="/en/simulator/"'],
+    ['href="/simulateur"', 'href="/en/simulator/"'],
     ['href="/sur-plan/"', 'href="/en/off-plan/"'],
+    ['href="/sur-plan"', 'href="/en/off-plan/"'],
     ['href="/contact/"', 'href="/en/contact/"'],
+    ['href="/contact"', 'href="/en/contact/"'],
     ['href="/off-market/"', 'href="/en/off-market/"'],
+    ['href="/off-market"', 'href="/en/off-market/"'],
     ['href="/blog/"', 'href="/en/blog/"'],
+    ['href="/blog"', 'href="/en/blog/"'],
   ],
   nl: [
+    ['href="/"', 'href="/nl/"'],
+    ['href="/about/"', 'href="/nl/over-ons/"'],
+    ['href="/quartiers/"', 'href="/nl/wijken/"'],
+    ['href="/nos-projets/"', 'href="/nl/projecten/"'],
     ['href="/simulateur/"', 'href="/nl/simulator/"'],
+    ['href="/simulateur"', 'href="/nl/simulator/"'],
     ['href="/sur-plan/"', 'href="/nl/nieuwbouw/"'],
+    ['href="/sur-plan"', 'href="/nl/nieuwbouw/"'],
     ['href="/contact/"', 'href="/nl/contact/"'],
+    ['href="/contact"', 'href="/nl/contact/"'],
     ['href="/off-market/"', 'href="/nl/off-market/"'],
+    ['href="/off-market"', 'href="/nl/off-market/"'],
     ['href="/blog/"', 'href="/nl/blog/"'],
+    ['href="/blog"', 'href="/nl/blog/"'],
     ['href="/en/"', 'href="/nl/"'],
     ['href="/en/contact/"', 'href="/nl/contact/"'],
     ['href="/en/off-market/"', 'href="/nl/off-market/"'],
@@ -330,11 +413,31 @@ const ROUTE_REPLACEMENTS: Record<"en" | "nl", readonly Replacement[]> = {
     ['href="/en/blog/"', 'href="/nl/blog/"'],
     ['data-lang="EN">EN', 'data-lang="NL">NL'],
   ],
+  it: [
+    ['href="/"', 'href="/it/"'],
+    ['href="/about/"', 'href="/it/"'],
+    ['href="/quartiers/"', 'href="/it/"'],
+    ['href="/nos-projets/"', 'href="/it/"'],
+    ['href="/simulateur/"', 'href="/it/"'],
+    ['href="/simulateur"', 'href="/it/"'],
+    ['href="/sur-plan/"', 'href="/it/progetti-su-piano/"'],
+    ['href="/sur-plan"', 'href="/it/progetti-su-piano/"'],
+    ['href="/contact/"', 'href="/it/contatto/"'],
+    ['href="/contact"', 'href="/it/contatto/"'],
+    ['href="/off-market/"', 'href="/it/off-market/"'],
+    ['href="/off-market"', 'href="/it/off-market/"'],
+    ['href="/blog/"', 'href="/it/"'],
+    ['href="/blog"', 'href="/it/"'],
+    ['href="/fr/sur-plan/"', 'href="/it/progetti-su-piano/"'],
+    ['href="/fr/contact/"', 'href="/it/contatto/"'],
+    ['href="/fr/about/"', 'href="/it/"'],
+  ],
 };
 
 function getReplacements(locale: SiteLocale): readonly Replacement[] {
   if (locale === "en") return [...ROUTE_REPLACEMENTS.en, ...EN_REPLACEMENTS];
   if (locale === "nl") return [...ROUTE_REPLACEMENTS.nl, ...NL_REPLACEMENTS];
+  if (locale === "it") return [...ROUTE_REPLACEMENTS.it, ...IT_REPLACEMENTS];
   return [];
 }
 
@@ -358,7 +461,7 @@ export function localizeHomeLegacySegments(
   segments: BodySegment[],
   locale: SiteLocale,
 ): BodySegment[] {
-  if (locale !== "en" && locale !== "nl") return segments;
+  if (locale !== "en" && locale !== "nl" && locale !== "it") return segments;
 
   return segments.map((segment) =>
     segment.kind === "html"
