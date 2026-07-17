@@ -39,10 +39,10 @@ const TIMELINE_ENTRIES = {
       index: "02",
       title: "Examen S.A.F.E.",
       content:
-        "Le projet passe par notre grille S.A.F.E. pour vérifier les points sensibles avant présentation.",
+        "OFF MARKET applique les principes S.A.F.E. pour identifier les points sensibles avant présentation.",
       details: [
-        "Sécurité du dossier",
-        "Sérieux du promoteur",
+        "Sécurisation du projet",
+        "Analyse d'investissement",
         "Fiabilité d'exécution",
         "Encadrement acheteur",
       ],
@@ -79,12 +79,12 @@ const TIMELINE_ENTRIES = {
       index: "02",
       title: "S.A.F.E. review",
       content:
-        "The project goes through our S.A.F.E. grid to check sensitive points before presentation.",
+        "OFF MARKET applies S.A.F.E. principles to identify sensitive points before presentation.",
       details: [
-        "File security",
-        "Developer seriousness",
-        "Execution reliability",
-        "Buyer framework",
+        "Project Security",
+        "Investment Analysis",
+        "Execution Reliability",
+        "Buyer Guidance",
       ],
     },
     {
@@ -119,12 +119,12 @@ const TIMELINE_ENTRIES = {
       index: "02",
       title: "Esame S.A.F.E.",
       content:
-        "Il progetto passa attraverso la nostra griglia S.A.F.E. per verificare i punti sensibili prima della presentazione.",
+        "OFF MARKET applica i principi S.A.F.E. per identificare i punti sensibili prima della presentazione.",
       details: [
-        "Sicurezza del dossier",
-        "Serietà del promotore",
-        "Affidabilità esecutiva",
-        "Quadro acquirente",
+        "Sicurezza del progetto",
+        "Analisi dell'investimento",
+        "Affidabilità dell'esecuzione",
+        "Assistenza all'acquirente",
       ],
     },
     {
@@ -159,12 +159,12 @@ const TIMELINE_ENTRIES = {
       index: "02",
       title: "S.A.F.E.-controle",
       content:
-        "Het project doorloopt onze S.A.F.E.-methode om gevoelige punten vóór presentatie te controleren.",
+        "OFF MARKET past de S.A.F.E.-principes toe om gevoelige punten vóór presentatie te identificeren.",
       details: [
-        "Dossierzekerheid",
-        "Serieuze ontwikkelaar",
-        "Betrouwbare uitvoering",
-        "Koperskader",
+        "Projectbeveiliging",
+        "Investeringsanalyse",
+        "Betrouwbaarheid van de uitvoering",
+        "Begeleiding van de koper",
       ],
     },
     {

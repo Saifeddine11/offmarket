@@ -44,7 +44,7 @@ const FAQ_ITEMS = [
   {
     question: "S.A.F.E. est-elle une certification officielle ?",
     answer:
-      "Non. S.A.F.E. — Secure Approved For Estate — est le cadre propriétaire d’examen de projets d’OFF MARKET. Il peut organiser la lecture de sujets comme le promoteur, le dossier, les matériaux, les paiements et la livraison, mais ce n’est ni une certification gouvernementale ni une garantie juridique.",
+      "Non. S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance est une méthode indépendante d’analyse, de présélection et de sécurisation immobilière destinée à renforcer la protection et la compréhension des acheteurs et des investisseurs. OFF MARKET n’est pas propriétaire de S.A.F.E. et n’en revendique pas la création. OFF MARKET respecte et applique les principes S.A.F.E. dans son processus d’étude et de présentation des opportunités immobilières. S.A.F.E. constitue un cadre indépendant d’analyse et de sécurisation immobilière. Son application ne remplace pas les vérifications juridiques, notariales, techniques, fiscales ou financières nécessaires avant toute acquisition et ne garantit pas l’absence totale de risque.",
   },
   {
     question: "Un achat sur plan garantit-il une rentabilité ?",
@@ -269,17 +269,20 @@ export function OffPlanPillarContent() {
             </p>
           </PillarSection>
 
-          <PillarSection eyebrow="S.A.F.E." title="Un cadre de lecture propriétaire">
+          <PillarSection eyebrow="S.A.F.E." title="Un cadre indépendant de lecture">
             <p>
-              <strong>S.A.F.E. — Secure Approved For Estate</strong> est le cadre propriétaire
-              d’examen de projets d’OFF MARKET. Il a pour objectif d’organiser la lecture d’une
-              opportunité avant sa présentation, autour de catégories déjà utilisées par OFF MARKET
-              : sérieux du promoteur, clarté du dossier, matériaux annoncés, sécurité des paiements,
-              conditions de livraison et cohérence avec le marché.
+              <strong>S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance</strong> est une
+              méthode indépendante d’analyse, de présélection et de sécurisation immobilière
+              destinée à renforcer la protection et la compréhension des acheteurs et des
+              investisseurs. OFF MARKET n’est pas propriétaire de S.A.F.E. et n’en revendique pas
+              la création. OFF MARKET respecte et applique les principes S.A.F.E. dans son
+              processus d’étude et de présentation des opportunités immobilières.
             </p>
             <p>
-              S.A.F.E. n’est pas une certification gouvernementale, ne constitue pas une garantie
-              juridique et ne remplace pas une vérification professionnelle indépendante. Consultez
+              S.A.F.E. constitue un cadre indépendant d’analyse et de sécurisation immobilière. Son
+              application ne remplace pas les vérifications juridiques, notariales, techniques,
+              fiscales ou financières nécessaires avant toute acquisition et ne garantit pas
+              l’absence totale de risque. Consultez
               la section <Link href="/about/#acteurs-verifies">S.A.F.E. et acteurs vérifiés</Link>
               pour comprendre son périmètre présenté par OFF MARKET.
             </p>

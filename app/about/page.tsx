@@ -9,13 +9,13 @@ import { LANG_LINKS } from "@/lib/routes";
 import { buildPageMetadata, buildPageViewport } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "S.A.F.E. — Cadre de vérification immobilière au Maroc | OFF MARKET",
+  title: "S.A.F.E. — Cadre indépendant d’analyse immobilière | OFF MARKET",
   description:
-    "Découvrez S.A.F.E., le cadre propriétaire d'OFF MARKET pour examiner les informations, documents, risques et transparence des projets immobiliers à Marrakech et au Maroc avant leur présentation.",
+    "Découvrez S.A.F.E., un cadre indépendant d'analyse et de sécurisation immobilière dont OFF MARKET respecte et applique les principes lors de l'étude des opportunités.",
   ogDescription:
-    "Le cadre propriétaire d'OFF MARKET pour lire les informations, documents et points de vigilance d'un projet immobilier.",
+    "Un cadre indépendant d'analyse immobilière dont OFF MARKET respecte et applique les principes.",
   twitterDescription:
-    "Le cadre propriétaire d'OFF MARKET pour lire les informations, documents et points de vigilance d'un projet immobilier.",
+    "Un cadre indépendant d'analyse immobilière dont OFF MARKET respecte et applique les principes.",
   canonicalPath: "/about/",
   ogImage: "https://offmarketofficial.com/assets/mavericks/hero/mavericks-hero-villa.webp",
 });

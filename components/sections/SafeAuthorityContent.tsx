@@ -2,19 +2,19 @@ import Link from "next/link";
 
 const SAFE_FAQ = [
   {
-    question: "Qu’est-ce que la certification S.A.F.E. ?",
+    question: "Qu’est-ce que S.A.F.E. ?",
     answer:
-      "S.A.F.E. n’est pas une certification officielle. C’est le cadre propriétaire d’examen de projets d’OFF MARKET, conçu pour structurer les informations disponibles avant de présenter une opportunité à un acheteur.",
+      "S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance est une méthode indépendante d’analyse, de présélection et de sécurisation immobilière destinée à renforcer la protection et la compréhension des acheteurs et des investisseurs. OFF MARKET n’est pas propriétaire de S.A.F.E. et n’en revendique pas la création. OFF MARKET respecte et applique les principes S.A.F.E. dans son processus d’étude et de présentation des opportunités immobilières.",
   },
   {
-    question: "Que signifie Secure Approved For Estate ?",
+    question: "Que signifie Security, Analysis, Fidelity & Expert Guidance ?",
     answer:
-      "Secure Approved For Estate est le nom anglais du cadre. S renvoie à Security, A à Approval, F à Framework et E à Estate : sécurité et vigilance, examen interne, méthode structurée et lecture du bien immobilier dans son contexte.",
+      "Security, Analysis, Fidelity & Expert Guidance est l’expansion officielle anglaise de S.A.F.E., identique dans toutes les langues. En français, les quatre piliers sont : Sécurisation du projet, Analyse d’investissement, Fiabilité d’exécution et Encadrement acheteur.",
   },
   {
     question: "S.A.F.E. est-elle une certification officielle au Maroc ?",
     answer:
-      "Non. S.A.F.E. n’est ni une certification gouvernementale, ni une autorisation administrative, ni une preuve de conformité juridique au Maroc. La transaction reste encadrée par le droit marocain, les documents officiels et les contrats signés.",
+      "Non. S.A.F.E. constitue un cadre indépendant d’analyse et de sécurisation immobilière. Son application ne remplace pas les vérifications juridiques, notariales, techniques, fiscales ou financières nécessaires avant toute acquisition et ne garantit pas l’absence totale de risque. La transaction reste encadrée par le droit marocain, les documents officiels et les contrats signés.",
   },
   {
     question: "Quels éléments sont examinés ?",
@@ -86,17 +86,20 @@ function SafeBlock({
 
 export function SafeAuthorityContent() {
   return (
-    <div id="safe-cadre" aria-label="Cadre S.A.F.E. d’OFF MARKET">
+    <div id="safe-cadre" aria-label="Cadre S.A.F.E. indépendant appliqué par OFF MARKET">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SAFE_FAQ_JSON_LD }}
       />
 
-      <SafeBlock eyebrow="DÉFINITION" title="Secure Approved For Estate">
+      <SafeBlock eyebrow="DÉFINITION" title="Security, Analysis, Fidelity & Expert Guidance">
         <p>
-          S.A.F.E. est le cadre propriétaire de revue de projets d’OFF MARKET. Il a été créé pour
-          rendre plus lisibles les informations disponibles sur une opportunité immobilière à
-          Marrakech ou au Maroc avant sa présentation à un acheteur.
+          S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance est une méthode indépendante
+          d’analyse, de présélection et de sécurisation immobilière destinée à renforcer la
+          protection et la compréhension des acheteurs et des investisseurs. OFF MARKET n’est pas
+          propriétaire de S.A.F.E. et n’en revendique pas la création. OFF MARKET respecte et
+          applique les principes S.A.F.E. dans son processus d’étude et de présentation des
+          opportunités immobilières.
         </p>
         <p>
           Il s’adresse aux acquéreurs qui souhaitent comprendre un projet sur plan ou dans
@@ -108,20 +111,16 @@ export function SafeAuthorityContent() {
 
       <SafeBlock eyebrow="LES QUATRE LETTRES" title="Une lecture en quatre angles">
         <p>
-          <strong>S — Security</strong> : sensibiliser aux risques juridiques, documentaires et
-          transactionnels, sans affirmer qu’un risque est supprimé.
+          <strong>S — Sécurisation du projet</strong>
         </p>
         <p>
-          <strong>A — Approval</strong> : désigner l’examen interne et la décision de présenter ou
-          non une opportunité avec un niveau d’information jugé suffisamment clair pour cet usage.
+          <strong>A — Analyse d’investissement</strong>
         </p>
         <p>
-          <strong>F — Framework</strong> : appliquer une méthode structurée aux dimensions du projet,
-          du promoteur, du juridique, du financier et du technique.
+          <strong>F — Fiabilité d’exécution</strong>
         </p>
         <p>
-          <strong>E — Estate</strong> : replacer le bien, sa livraison, son usage par l’acheteur et
-          son contexte d’investissement dans une lecture immobilière concrète.
+          <strong>E — Encadrement acheteur</strong>
         </p>
       </SafeBlock>
 
@@ -144,7 +143,7 @@ export function SafeAuthorityContent() {
 
       <SafeBlock eyebrow="ÉLÉMENTS DE PREUVE" title="Une revue fondée sur des documents datés">
         <p>
-          La méthode peut s’appuyer sur les documents fournis par les parties prenantes du projet,
+          Le cadre peut s’appuyer sur les documents fournis par les parties prenantes du projet,
           les registres publics ou documents officiels accessibles, les contrats et pièces
           techniques, les confirmations écrites et les informations de projet datées.
         </p>
@@ -177,9 +176,10 @@ export function SafeAuthorityContent() {
           à des risques opérationnels, contractuels et de livraison.
         </p>
         <p>
-          S.A.F.E. n’est pas une certification officielle au Maroc, une garantie juridique, une
-          garantie de livraison, de rentabilité, de revente ou d’absence de risque. L’acheteur doit
-          mener sa propre vérification avant de signer.
+          S.A.F.E. constitue un cadre indépendant d’analyse et de sécurisation immobilière. Son
+          application ne remplace pas les vérifications juridiques, notariales, techniques,
+          fiscales ou financières nécessaires avant toute acquisition et ne garantit pas l’absence
+          totale de risque.
         </p>
       </SafeBlock>
 
