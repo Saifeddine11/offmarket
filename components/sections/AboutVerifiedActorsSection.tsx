@@ -124,7 +124,9 @@ export function AboutVerifiedActorsSection({
           </p>
           <a
             className="om-button om-button--outline about-verified__safe-btn"
-            href="#acteurs-verifies"
+            href="https://levraimaroc.com/safe-certification-immobiliere/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <span>{copy.safeCta}</span>
             {SAFE_CTA_ICON}
