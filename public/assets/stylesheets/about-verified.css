@@ -60,7 +60,7 @@
   text-wrap: balance;
 }
 
-/* S.A.F.E. — success-green accent */
+/* S.A.F.E — success-green accent */
 .about-verified__title-safe {
   color: #4fd08a;
 }
@@ -85,7 +85,7 @@
   margin-top: clamp(0.85rem, 1.5vw, 1.1rem);
 }
 
-/* Process filter intro (S.A.F.E. lead-in) */
+/* Process filter intro (S.A.F.E lead-in) */
 .about-verified__process {
   position: relative;
   z-index: 1;
@@ -132,7 +132,7 @@
   text-wrap: balance;
 }
 
-/* Final question + CTA — S.A.F.E. explainer */
+/* Final question + CTA — S.A.F.E explainer */
 .about-verified__safe {
   position: relative;
   z-index: 1;

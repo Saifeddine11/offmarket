@@ -13,9 +13,9 @@ export const HOME_FAQ_ITEMS: HomeFaqItem[] = [
       "Acheter sur plan peut être intéressant, mais seulement si le projet est bien vérifié. Avant de réserver, il faut analyser le promoteur, les autorisations, les plans, le calendrier de livraison, les modalités de paiement, les matériaux annoncés et les garanties disponibles. Le risque ne vient pas du sur plan en lui-même, mais d’un projet mal étudié ou mal documenté.",
   },
   {
-    question: "Que signifie S.A.F.E. avant la présentation d’un projet ?",
+    question: "Que signifie S.A.F.E avant la présentation d’un projet ?",
     answer:
-      "S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance est une méthode indépendante d’analyse, de présélection et de sécurisation immobilière destinée à renforcer la protection et la compréhension des acheteurs et des investisseurs. OFF MARKET n’est pas propriétaire de S.A.F.E. et n’en revendique pas la création. OFF MARKET respecte et applique les principes S.A.F.E. dans son processus d’étude et de présentation des opportunités immobilières. S.A.F.E. constitue un cadre indépendant d’analyse et de sécurisation immobilière. Son application ne remplace pas les vérifications juridiques, notariales, techniques, fiscales ou financières nécessaires avant toute acquisition et ne garantit pas l’absence totale de risque.",
+      "S.A.F.E — Security, Analysis, Fidelity & Expert Guidance est une méthode indépendante d’analyse, de présélection et de sécurisation immobilière destinée à renforcer la protection et la compréhension des acheteurs et des investisseurs. OFF MARKET n’est pas propriétaire de S.A.F.E et n’en revendique pas la création. OFF MARKET respecte et applique les principes S.A.F.E dans son processus d’étude et de présentation des opportunités immobilières. S.A.F.E constitue un cadre indépendant d’analyse et de sécurisation immobilière. Son application ne remplace pas les vérifications juridiques, notariales, techniques, fiscales ou financières nécessaires avant toute acquisition et ne garantit pas l’absence totale de risque.",
   },
   {
     question: "Villa sur plan ou appartement neuf à Marrakech : que choisir ?",

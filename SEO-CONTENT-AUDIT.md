@@ -181,7 +181,7 @@ Missing trust signals:
 - named author and reviewer for articles;
 - editorial update/review dates rather than only “2026”;
 - who performs the project review;
-- what S.A.F.E. stands for and what evidence is checked;
+- what S.A.F.E stands for and what evidence is checked;
 - what SAFE does not verify or guarantee;
 - OFF MARKET’s legal role: agency, introducer, advisor, mandate holder, or other;
 - how developer, seller, and partner conflicts are disclosed;

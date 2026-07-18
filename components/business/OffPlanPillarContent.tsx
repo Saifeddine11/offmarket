@@ -42,9 +42,9 @@ const FAQ_ITEMS = [
       "Selon le projet, il peut exister des frais de notaire et d’enregistrement, des taxes, des honoraires d’agence ou de conseil, des coûts de financement, d’ameublement, d’assurance, de gestion, d’entretien et de charges communes. Le budget doit être confirmé avec des professionnels.",
   },
   {
-    question: "S.A.F.E. est-elle une certification officielle ?",
+    question: "S.A.F.E est-elle une certification officielle ?",
     answer:
-      "Non. S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance est une méthode indépendante d’analyse, de présélection et de sécurisation immobilière destinée à renforcer la protection et la compréhension des acheteurs et des investisseurs. OFF MARKET n’est pas propriétaire de S.A.F.E. et n’en revendique pas la création. OFF MARKET respecte et applique les principes S.A.F.E. dans son processus d’étude et de présentation des opportunités immobilières. S.A.F.E. constitue un cadre indépendant d’analyse et de sécurisation immobilière. Son application ne remplace pas les vérifications juridiques, notariales, techniques, fiscales ou financières nécessaires avant toute acquisition et ne garantit pas l’absence totale de risque.",
+      "Non. S.A.F.E — Security, Analysis, Fidelity & Expert Guidance est une méthode indépendante d’analyse, de présélection et de sécurisation immobilière destinée à renforcer la protection et la compréhension des acheteurs et des investisseurs. OFF MARKET n’est pas propriétaire de S.A.F.E et n’en revendique pas la création. OFF MARKET respecte et applique les principes S.A.F.E dans son processus d’étude et de présentation des opportunités immobilières. S.A.F.E constitue un cadre indépendant d’analyse et de sécurisation immobilière. Son application ne remplace pas les vérifications juridiques, notariales, techniques, fiscales ou financières nécessaires avant toute acquisition et ne garantit pas l’absence totale de risque.",
   },
   {
     question: "Un achat sur plan garantit-il une rentabilité ?",
@@ -269,21 +269,21 @@ export function OffPlanPillarContent() {
             </p>
           </PillarSection>
 
-          <PillarSection eyebrow="S.A.F.E." title="Un cadre indépendant de lecture">
+          <PillarSection eyebrow="S.A.F.E" title="Un cadre indépendant de lecture">
             <p>
-              <strong>S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance</strong> est une
+              <strong>S.A.F.E — Security, Analysis, Fidelity & Expert Guidance</strong> est une
               méthode indépendante d’analyse, de présélection et de sécurisation immobilière
               destinée à renforcer la protection et la compréhension des acheteurs et des
-              investisseurs. OFF MARKET n’est pas propriétaire de S.A.F.E. et n’en revendique pas
-              la création. OFF MARKET respecte et applique les principes S.A.F.E. dans son
+              investisseurs. OFF MARKET n’est pas propriétaire de S.A.F.E et n’en revendique pas
+              la création. OFF MARKET respecte et applique les principes S.A.F.E dans son
               processus d’étude et de présentation des opportunités immobilières.
             </p>
             <p>
-              S.A.F.E. constitue un cadre indépendant d’analyse et de sécurisation immobilière. Son
+              S.A.F.E constitue un cadre indépendant d’analyse et de sécurisation immobilière. Son
               application ne remplace pas les vérifications juridiques, notariales, techniques,
               fiscales ou financières nécessaires avant toute acquisition et ne garantit pas
               l’absence totale de risque. Consultez
-              la section <Link href="/about/#acteurs-verifies">S.A.F.E. et acteurs vérifiés</Link>
+              la section <Link href="/about/#acteurs-verifies">S.A.F.E et acteurs vérifiés</Link>
               pour comprendre son périmètre présenté par OFF MARKET.
             </p>
           </PillarSection>

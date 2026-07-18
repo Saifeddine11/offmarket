@@ -19,8 +19,8 @@ const EN_REPLACEMENTS: readonly Replacement[] = [
   ["L'immobilier privé", "Private real estate"],
   ["à Marrakech", "in Marrakech"],
   [
-    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon les principes S.A.F.E. pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
-    "Access a confidential selection of villas, apartments and off-plan projects, reviewed with S.A.F.E. principles for their location, integrity, coherence and potential.",
+    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon les principes S.A.F.E pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
+    "Access a confidential selection of villas, apartments and off-plan projects, reviewed with S.A.F.E principles for their location, integrity, coherence and potential.",
   ],
   [
     "Accédez à une sélection confidentielle de villas, appartements et opportunités sur plan, choisie pour son emplacement, sa rareté et sa cohérence d'investissement.",
@@ -28,8 +28,8 @@ const EN_REPLACEMENTS: readonly Replacement[] = [
   ],
   ["Demander l'accès", "Request access"],
   ["Voir la sélection", "View the selection"],
-  ["Principes S.A.F.E.", "S.A.F.E. principles"],
-  ["Lecture S.A.F.E.", "S.A.F.E. review"],
+  ["Principes S.A.F.E", "S.A.F.E principles"],
+  ["Lecture S.A.F.E", "S.A.F.E review"],
   ["Projets étudiés avant présentation.", "Projects reviewed before presentation."],
   ["clients qualifiés accompagnés", "qualified clients supported"],
   ["Typologies suivies", "Tracked property types"],
@@ -192,8 +192,8 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
   ["L'immobilier privé", "Privé vastgoed"],
   ["à Marrakech", "in Marrakech"],
   [
-    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon les principes S.A.F.E. pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
-    "Krijg toegang tot een vertrouwelijke selectie van villa's, appartementen en nieuwbouwprojecten, beoordeeld volgens de S.A.F.E.-principes op locatie, betrouwbaarheid, samenhang en potentieel.",
+    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon les principes S.A.F.E pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
+    "Krijg toegang tot een vertrouwelijke selectie van villa's, appartementen en nieuwbouwprojecten, beoordeeld volgens de S.A.F.E-principes op locatie, betrouwbaarheid, samenhang en potentieel.",
   ],
   [
     "Accédez à une sélection confidentielle de villas, appartements et opportunités sur plan, choisie pour son emplacement, sa rareté et sa cohérence d'investissement.",
@@ -201,8 +201,8 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
   ],
   ["Demander l'accès", "Toegang aanvragen"],
   ["Voir la sélection", "De selectie bekijken"],
-  ["Principes S.A.F.E.", "S.A.F.E.-principes"],
-  ["Lecture S.A.F.E.", "S.A.F.E.-analyse"],
+  ["Principes S.A.F.E", "S.A.F.E-principes"],
+  ["Lecture S.A.F.E", "S.A.F.E-analyse"],
   ["Projets étudiés avant présentation.", "Projecten geanalyseerd vóór presentatie."],
   ["clients qualifiés accompagnés", "gekwalificeerde klanten begeleid"],
   ["Typologies suivies", "Opgevolgde typologieën"],
