@@ -28,6 +28,8 @@ export type LeadSubmissionPayload = {
   pageUrl?: string;
   /** Explicit newsletter marketing consent — never invent if absent. */
   marketingConsent?: boolean;
+  /** Contact-form consent (separate from newsletter). */
+  contactConsent?: boolean;
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -53,6 +55,7 @@ export type NormalizedLead = {
   pagePath: string | null;
   pageUrl: string | null;
   marketingConsent: boolean | null;
+  contactConsent: boolean | null;
   utmSource: string | null;
   utmMedium: string | null;
   utmCampaign: string | null;
@@ -135,7 +138,11 @@ export function classifyLeadType(input: {
   return "lead";
 }
 
-export function subjectForLead(type: LeadSubmissionType, locale: string): string {
+export function subjectForLead(
+  type: LeadSubmissionType,
+  locale: string,
+  fullName?: string | null,
+): string {
   const subjects: Record<LeadSubmissionType, string> = {
     contact: "[OFF MARKET] Nouvelle demande de contact",
     private_access: "[OFF MARKET] Nouvelle demande d’accès privé",
@@ -147,7 +154,9 @@ export function subjectForLead(type: LeadSubmissionType, locale: string): string
     lead: "[OFF MARKET] Nouveau prospect immobilier",
   };
   void locale;
-  return subjects[type];
+  const base = subjects[type];
+  const name = fullName ? sanitizeHeaderish(fullName).slice(0, 80) : "";
+  return name ? `${base} — ${name}` : base;
 }
 
 export function normalizeLeadPayload(
@@ -191,6 +200,15 @@ export function normalizeLeadPayload(
     return { ok: false, error: "missing_consent" };
   }
 
+  // Contact/lead forms: submitting the form accepts contact about the request.
+  // Newsletter marketing consent stays separate and must be explicit.
+  const contactConsent =
+    classified === "newsletter"
+      ? null
+      : typeof body.contactConsent === "boolean"
+        ? body.contactConsent
+        : true;
+
   const locale = sanitizeHeaderish(trimTo(body.locale, 8).toLowerCase()) || "fr";
   const phoneFull =
     phoneCountry && phone ? `${phoneCountry} ${phone}`.trim() : phone;
@@ -215,6 +233,7 @@ export function normalizeLeadPayload(
       pagePath: sanitizeHeaderish(trimTo(body.pagePath, MAX.pagePath)) || null,
       pageUrl: sanitizeHeaderish(trimTo(body.pageUrl, MAX.pageUrl)) || null,
       marketingConsent,
+      contactConsent,
       utmSource: sanitizeHeaderish(trimTo(body.utmSource, MAX.utm)) || null,
       utmMedium: sanitizeHeaderish(trimTo(body.utmMedium, MAX.utm)) || null,
       utmCampaign: sanitizeHeaderish(trimTo(body.utmCampaign, MAX.utm)) || null,

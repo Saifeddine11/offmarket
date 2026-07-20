@@ -107,7 +107,7 @@ export const FINAL_CTA_STYLES = [
 ] as const;
 
 export const SCRIPTS = {
-  offMarket: ["/assets/javascripts/om-private-access-form.js?v=1765600200"],
+  offMarket: ["/assets/javascripts/om-private-access-form.js?v=1765600400"],
   /** Inner editorial pages — page-specific boot (navbar scripts are global). */
   innerEditorial: withoutGlobalNavScripts([
     "/assets/javascripts/gsap.min.js?v=1765268700",
@@ -132,10 +132,10 @@ export const SCRIPTS = {
     "/assets/javascripts/gsap.min.js?v=1765268700",
     "/assets/javascripts/om-language-switcher.js?v=1765350200",
     "/assets/javascripts/om-inner-hero.js?v=1765357000",
-    "/assets/javascripts/om-featured-projects.js?v=1765404001",
+    "/assets/javascripts/om-featured-projects.js?v=1765600300",
     "/assets/javascripts/om-property-modal.js?v=1767563620",
     "/assets/javascripts/om-private-access-popup.js?v=1765340000",
-    "/assets/javascripts/om-private-access-form.js?v=1765600200",
+    "/assets/javascripts/om-private-access-form.js?v=1765600400",
   ]),
   villaJazDetail: withoutGlobalNavScripts([
     "/assets/javascripts/gsap.min.js?v=1765268700",
@@ -154,7 +154,7 @@ export const SCRIPTS = {
   ]),
   contact: withoutGlobalNavScripts([
     "/assets/javascripts/om-language-switcher.js?v=1765350200",
-    "/assets/javascripts/om-private-access-form.js?v=1765600200",
+    "/assets/javascripts/om-private-access-form.js?v=1765600400",
   ]),
   simulateur: withoutGlobalNavScripts([
     "/assets/javascripts/om-simulator.js?v=1765405800",

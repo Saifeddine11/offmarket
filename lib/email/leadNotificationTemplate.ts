@@ -37,9 +37,30 @@ function localeLabel(locale: string): string {
   return "Français";
 }
 
+const COUNTRY_BY_DIAL: Record<string, string> = {
+  "+212": "Maroc",
+  "+33": "France",
+  "+32": "Belgique",
+  "+41": "Suisse",
+  "+34": "Espagne",
+  "+39": "Italie",
+  "+31": "Pays-Bas",
+  "+44": "Royaume-Uni",
+  "+1": "États-Unis / Canada",
+  "+971": "Émirats arabes unis",
+  "+966": "Arabie saoudite",
+  "+974": "Qatar",
+};
+
+function countryLabel(dial: string | null): string | null {
+  if (!dial) return null;
+  return COUNTRY_BY_DIAL[dial] || dial;
+}
+
 type Row = { label: string; value: string };
 
 function buildRows(lead: NormalizedLead): Row[] {
+  const country = countryLabel(lead.phoneCountry);
   const rows: Array<Row | null> = [
     { label: "Type", value: typeLabel(lead.type) },
     { label: "Date", value: lead.submittedAt },
@@ -49,16 +70,23 @@ function buildRows(lead: NormalizedLead): Row[] {
     lead.fullName ? { label: "Nom complet", value: lead.fullName } : null,
     { label: "Email", value: lead.email },
     lead.phoneFull ? { label: "Téléphone / WhatsApp", value: lead.phoneFull } : null,
+    country ? { label: "Pays", value: country } : null,
     lead.intent ? { label: "Intent", value: lead.intent } : null,
-    lead.propertyType ? { label: "Type de bien", value: lead.propertyType } : null,
+    lead.propertyType ? { label: "Bien / projet", value: lead.propertyType } : null,
     lead.budget ? { label: "Budget", value: lead.budget } : null,
     lead.objective ? { label: "Objectif", value: lead.objective } : null,
     lead.message ? { label: "Message", value: lead.message } : null,
     lead.source ? { label: "Source", value: lead.source } : null,
     lead.context ? { label: "Contexte", value: lead.context } : null,
+    lead.contactConsent !== null
+      ? {
+          label: "Consentement contact",
+          value: lead.contactConsent ? "Oui (soumission formulaire)" : "Non",
+        }
+      : null,
     lead.marketingConsent !== null
       ? {
-          label: "Consentement marketing",
+          label: "Consentement marketing (newsletter)",
           value: lead.marketingConsent ? "Oui (explicite)" : "Non",
         }
       : null,
@@ -74,7 +102,7 @@ export function buildLeadNotificationEmail(lead: NormalizedLead): {
   html: string;
   text: string;
 } {
-  const subject = subjectForLead(lead.type, lead.locale);
+  const subject = subjectForLead(lead.type, lead.locale, lead.fullName);
   const rows = buildRows(lead);
   const title = typeLabel(lead.type);
 

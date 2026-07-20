@@ -17,33 +17,41 @@
   ];
 
   var COPY_FR = {
-    success: 'Votre demande a bien été transmise à OFF MARKET. Nous vous recontacterons rapidement.',
+    success:
+      'Votre demande a bien été envoyée. Notre équipe vous contactera prochainement.',
     error: 'Merci de vérifier les champs obligatoires avant d’envoyer votre demande.',
-    sendError: 'Une erreur est survenue. Veuillez réessayer dans un instant.',
+    sendError:
+      'Votre demande n’a pas pu être envoyée. Veuillez réessayer dans quelques instants.',
     rateLimit: 'Trop de tentatives. Veuillez réessayer dans quelques minutes.',
     sending: 'Envoi en cours…',
   };
 
   var COPY_EN = {
-    success: 'Your request has been sent to OFF MARKET. We will get back to you shortly.',
+    success:
+      'Your request has been sent successfully. Our team will contact you shortly.',
     error: 'Please check the required fields before sending your request.',
-    sendError: 'Something went wrong. Please try again in a moment.',
+    sendError:
+      'Your request could not be sent. Please try again in a few moments.',
     rateLimit: 'Too many attempts. Please try again in a few minutes.',
     sending: 'Sending…',
   };
 
   var COPY_IT = {
-    success: 'La tua richiesta è stata inviata a OFF MARKET. Ti ricontatteremo a breve.',
+    success:
+      'La tua richiesta è stata inviata correttamente. Il nostro team ti contatterà a breve.',
     error: 'Verifica i campi obbligatori prima di inviare la richiesta.',
-    sendError: 'Si è verificato un errore. Riprova tra un momento.',
+    sendError:
+      'La tua richiesta non è stata inviata. Riprova tra qualche istante.',
     rateLimit: 'Troppi tentativi. Riprova tra qualche minuto.',
     sending: 'Invio in corso…',
   };
 
   var COPY_NL = {
-    success: 'Uw aanvraag is verzonden naar OFF MARKET. Wij nemen spoedig contact met u op.',
+    success:
+      'Uw aanvraag is succesvol verzonden. Ons team neemt binnenkort contact met u op.',
     error: 'Controleer de verplichte velden voordat u uw aanvraag verstuurt.',
-    sendError: 'Er is iets misgegaan. Probeer het zo opnieuw.',
+    sendError:
+      'Uw aanvraag kon niet worden verzonden. Probeer het over enkele ogenblikken opnieuw.',
     rateLimit: 'Te veel pogingen. Probeer het over enkele minuten opnieuw.',
     sending: 'Bezig met verzenden…',
   };

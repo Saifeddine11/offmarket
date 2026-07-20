@@ -28,11 +28,17 @@ const contact = normalizeLeadPayload({
 });
 assert(contact.ok, "contact should validate");
 assert(contact.lead.marketingConsent === null, "contact must not invent newsletter consent");
+assert(contact.lead.contactConsent === true, "contact form consent inferred from submission");
 assert(
-  subjectForLead(contact.lead.type, contact.lead.locale).includes("contact"),
-  "contact subject",
+  subjectForLead(contact.lead.type, contact.lead.locale, contact.lead.fullName).includes(
+    "Test Visitor",
+  ),
+  "contact subject includes visitor name",
 );
 const contactMail = buildLeadNotificationEmail(contact.lead);
+assert(contactMail.subject.includes("Test Visitor"), "email subject includes name");
+assert(contactMail.html.includes("Maroc"), "country derived from dial code");
+assert(contactMail.html.includes("Consentement contact"), "contact consent shown");
 assert(!contactMail.html.includes("Budget"), "empty budget hidden in HTML");
 assert(contactMail.html.includes("Villa"), "property type shown");
 assert(contactMail.text.includes("Reply-To") || contactMail.text.includes("test.visitor@example.com"), "reply instruction");
