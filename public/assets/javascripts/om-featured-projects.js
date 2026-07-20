@@ -447,12 +447,17 @@
   }
 
   function boot() {
+    // Always re-read localized card copy after client-side locale navigation.
+    projectCardCopyCache = null;
+
     var section = document.querySelector('.om-featured-projects');
     if (!section) return;
     renderPropertyCards(section);
     initPropertyCards(section);
     initPhotoFallback(section);
   }
+
+  window.__omFeaturedProjectsBoot = boot;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);

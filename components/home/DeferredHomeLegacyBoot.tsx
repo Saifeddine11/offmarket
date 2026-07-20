@@ -44,6 +44,16 @@ export function DeferredHomeLegacyBoot() {
 
       dispatchHomeBootEvents();
 
+      // Soft locale switches remount empty shells and clear reveal classes.
+      // Re-check quickly so the page does not stay blank for a full second.
+      window.setTimeout(() => {
+        if (cancelled || generation !== bootGeneration.current) return;
+        dispatchHomeBootEvents();
+        if (!homeSectionsHealthy()) {
+          forceHomeRevealFallback();
+        }
+      }, 280);
+
       window.setTimeout(() => {
         if (cancelled || generation !== bootGeneration.current) return;
         if (!homeSectionsHealthy()) {

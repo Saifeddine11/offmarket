@@ -1,6 +1,7 @@
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { TextMaskReveal } from "@/components/motion/TextMaskReveal";
 import { PropertyModalSlides } from "@/components/property/PropertyModalSlides";
+import { FeaturedProjectsBoot } from "@/components/sections/FeaturedProjectsBoot";
 import { serializeProjectCardCopy } from "@/lib/i18n/projectCardCopy";
 import type { SiteLocale } from "@/lib/i18n/types";
 
@@ -181,6 +182,7 @@ export function FeaturedProjectsSection({
       : ctaProof;
 
   return (
+    <>
     <section
       id={id}
       className="om-featured-projects"
@@ -270,6 +272,8 @@ export function FeaturedProjectsSection({
 
       <PropertyModalShell locale={resolvedLocale} />
     </section>
+    <FeaturedProjectsBoot />
+    </>
   );
 }
 

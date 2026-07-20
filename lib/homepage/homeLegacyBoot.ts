@@ -212,6 +212,7 @@ export function dispatchHomeBootEvents() {
   window.__mavHeroCounterBoot?.();
   window.__omNavMenuRender?.();
   window.__omTerritoriesBoot?.();
+  window.__omFeaturedProjectsBoot?.();
   window.OM_SIMULATOR_boot?.();
   window.OM_BLOG_boot?.();
   window.omScrollGuard?.run();
@@ -274,6 +275,7 @@ declare global {
     __mavHeroCounterBoot?: () => void;
     __omNavMenuRender?: () => void;
     __omTerritoriesBoot?: () => void;
+    __omFeaturedProjectsBoot?: () => void;
     OM_SIMULATOR_boot?: () => void;
     OM_BLOG_boot?: () => void;
     omScrollGuard?: { run: () => void; clearScrollLocks: () => void };
