@@ -48,7 +48,6 @@ const FR: ContactCopy = {
   propertyTypes: [
     "Villa",
     "Appartement",
-    "Projet sur plan",
     "Terrain",
     "Riad",
     "Je ne sais pas encore",
@@ -95,7 +94,6 @@ const EN: ContactCopy = {
   propertyTypes: [
     "Villa",
     "Apartment",
-    "Off-plan property",
     "Land",
     "Riad",
     "I'm not sure yet",
@@ -142,7 +140,6 @@ const IT: ContactCopy = {
   propertyTypes: [
     "Villa",
     "Appartamento",
-    "Progetto su piano",
     "Terreno",
     "Riad",
     "Non lo so ancora",
@@ -189,7 +186,6 @@ const NL: ContactCopy = {
   propertyTypes: [
     "Villa",
     "appartement",
-    "Nieuwbouwproject",
     "Grond",
     "Riad",
     "Ik weet het nog niet",
