@@ -3,8 +3,6 @@ import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-import { Redis } from "@upstash/redis";
-
 export type RateLimitStoreKind = "upstash" | "filesystem" | "memory";
 
 export type RateLimitStore = {
@@ -18,8 +16,17 @@ export type RateLimitStore = {
 
 type MemoryEntry = { value: string; expiresAt: number };
 
+type UpstashRedis = {
+  incr(key: string): Promise<number>;
+  expire(key: string, seconds: number): Promise<unknown>;
+  ttl(key: string): Promise<number>;
+  get<T = string>(key: string): Promise<T | null>;
+  set(key: string, value: string, opts: { ex: number }): Promise<unknown>;
+};
+
 const memory = new Map<string, MemoryEntry>();
 let warnedEphemeral = false;
+let warnedMissingUpstash = false;
 let storeSingleton: RateLimitStore | null = null;
 
 function pruneMemory(now: number) {
@@ -134,8 +141,28 @@ function createFilesystemStore(): RateLimitStore {
   };
 }
 
-function createUpstashStore(url: string, token: string): RateLimitStore {
-  const redis = new Redis({ url, token });
+function loadUpstashRedis(url: string, token: string): UpstashRedis | null {
+  try {
+    // Lazy load so a missing local install does not break Next.js module
+    // resolution at compile time. The package remains in package.json —
+    // run `npm install` to enable the Upstash backend.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const mod = require(/* webpackIgnore: true */ "@upstash/redis") as {
+      Redis: new (opts: { url: string; token: string }) => UpstashRedis;
+    };
+    return new mod.Redis({ url, token });
+  } catch {
+    if (!warnedMissingUpstash) {
+      warnedMissingUpstash = true;
+      console.warn(
+        "[rate-limit] @upstash/redis is not installed. Run `npm install`, then restart. Falling back to filesystem store.",
+      );
+    }
+    return null;
+  }
+}
+
+function createUpstashStore(redis: UpstashRedis): RateLimitStore {
   console.info("[rate-limit] Using Upstash Redis store", { durable: true, shared: true });
 
   return {
@@ -176,8 +203,11 @@ export function getRateLimitStore(): RateLimitStore {
   const url = process.env.UPSTASH_REDIS_REST_URL?.trim();
   const token = process.env.UPSTASH_REDIS_REST_TOKEN?.trim();
   if (url && token) {
-    storeSingleton = createUpstashStore(url, token);
-    return storeSingleton;
+    const redis = loadUpstashRedis(url, token);
+    if (redis) {
+      storeSingleton = createUpstashStore(redis);
+      return storeSingleton;
+    }
   }
 
   const mode = (process.env.RATE_LIMIT_STORE || "").trim().toLowerCase();
@@ -196,4 +226,5 @@ export function resetRateLimitStoreForTests(): void {
   storeSingleton = null;
   memory.clear();
   warnedEphemeral = false;
+  warnedMissingUpstash = false;
 }

@@ -1,5 +1,3 @@
-import { Resend } from "resend";
-
 import { buildLeadNotificationEmail } from "@/lib/email/leadNotificationTemplate";
 import type { NormalizedLead } from "@/lib/email/leadTypes";
 
@@ -10,10 +8,36 @@ export type SendLeadResult =
   | { ok: true; id: string }
   | { ok: false; category: "not_configured" | "provider_error" };
 
-function getResendClient(): Resend | null {
+type ResendClient = {
+  emails: {
+    send: (payload: {
+      from: string;
+      to: string[];
+      replyTo: string;
+      subject: string;
+      html: string;
+      text: string;
+    }) => Promise<{ data?: { id?: string } | null; error?: unknown }>;
+  };
+};
+
+function getResendClient(): ResendClient | null {
   const key = process.env.RESEND_API_KEY?.trim();
   if (!key) return null;
-  return new Resend(key);
+  try {
+    // Lazy load so a missing local install does not break Next.js builds
+    // before `npm install`. Package remains listed in package.json.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { Resend } = require(/* webpackIgnore: true */ "resend") as {
+      Resend: new (apiKey: string) => ResendClient;
+    };
+    return new Resend(key);
+  } catch {
+    console.warn(
+      "[leads] resend is not installed. Run `npm install`, then restart.",
+    );
+    return null;
+  }
 }
 
 /**
