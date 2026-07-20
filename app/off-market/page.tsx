@@ -5,7 +5,6 @@ import { PageShell } from "@/components/layout/PageShell";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { buildPageMetadata, buildPageViewport } from "@/lib/seo/metadata";
 import { SCRIPTS } from "@/lib/assets";
-import Link from "next/link";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Accès OFF MARKET Marrakech — Sélection privée de biens",
@@ -24,9 +23,6 @@ export default function OffMarketPage() {
       <a href="#main" className="om-contact-skip-link">
         Aller au contenu principal
       </a>
-      <Link className="om-off-market-close" href="/" aria-label="Retour à l'accueil">
-        ×
-      </Link>
 
       <main id="main" className="om-off-market-main">
         <header className="om-off-market-hero">

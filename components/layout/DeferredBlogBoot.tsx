@@ -10,12 +10,15 @@ declare global {
   }
 }
 
+function normalizePathname(pathname: string | null) {
+  if (!pathname) return "";
+  return pathname.length > 1 && pathname.endsWith("/")
+    ? pathname.slice(0, -1)
+    : pathname;
+}
+
 function isHomePath(pathname: string | null) {
-  if (!pathname) return false;
-  const normalized =
-    pathname.length > 1 && pathname.endsWith("/")
-      ? pathname.slice(0, -1)
-      : pathname;
+  const normalized = normalizePathname(pathname);
   return (
     normalized === "" ||
     normalized === "/" ||
@@ -26,12 +29,21 @@ function isHomePath(pathname: string | null) {
   );
 }
 
+function isBlogIndexPath(pathname: string | null) {
+  const normalized = normalizePathname(pathname);
+  return (
+    normalized === "/blog" ||
+    normalized === "/en/blog" ||
+    normalized === "/nl/blog"
+  );
+}
+
 /** Boots the blog hub after React hydration so SSR markup is not mutated early. */
 export function DeferredBlogBoot() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!isHomePath(pathname)) return;
+    if (!isHomePath(pathname) && !isBlogIndexPath(pathname)) return;
 
     function bootBlog() {
       if (typeof window.OM_BLOG_boot === "function") {

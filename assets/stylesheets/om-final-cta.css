@@ -16,6 +16,14 @@
   box-sizing: border-box;
 }
 
+/* Avoid white side gutters when 100vw breakout is clipped by body overflow-x */
+body:has(.om-final-cta) .om-final-cta {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .om-final-cta + .om-footer,
 .om-final-cta + footer {
   margin-top: 0;

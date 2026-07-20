@@ -275,18 +275,22 @@ function localizeArticleBody(
   pageId: PageId,
 ): PageContent {
   const replacements = ARTICLE_BODY_COPY[locale][pageId] ?? [];
-  const bodySegments = localizeHomeLegacySegments(content.bodySegments, locale).map(
-    (segment) => {
-      if (segment.kind !== "html" || !replacements.length) return segment;
-      return {
-        ...segment,
-        html: [...replacements]
-          .sort((a, b) => b[0].length - a[0].length)
-          .reduce((html, [from, to]) => html.split(from).join(to), segment.html),
-      };
-    },
-  );
-  return { ...content, bodySegments };
+  // Apply full-paragraph article copy first. Generic home legacy replacements
+  // (e.g. "à Marrakech" → "in Marrakech") must not rewrite FR source strings
+  // before those exact article matches run.
+  const withArticleCopy = content.bodySegments.map((segment) => {
+    if (segment.kind !== "html" || !replacements.length) return segment;
+    return {
+      ...segment,
+      html: [...replacements]
+        .sort((a, b) => b[0].length - a[0].length)
+        .reduce((html, [from, to]) => html.split(from).join(to), segment.html),
+    };
+  });
+  return {
+    ...content,
+    bodySegments: localizeHomeLegacySegments(withArticleCopy, locale),
+  };
 }
 
 function withSite(path: string): string {

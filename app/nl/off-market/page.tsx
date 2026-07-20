@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { BodyClass } from "@/components/layout/BodyClass";
 import { LegacyScripts } from "@/components/layout/LegacyScripts";
 import { PageShell } from "@/components/layout/PageShell";
@@ -25,9 +24,6 @@ export default function NlOffMarketPage() {
       <a href="#main" className="om-contact-skip-link">
         Naar hoofdinhoud
       </a>
-      <Link className="om-off-market-close" href="/nl/" aria-label="Terug naar home">
-        ×
-      </Link>
 
       <main id="main" className="om-off-market-main">
         <header className="om-off-market-hero">

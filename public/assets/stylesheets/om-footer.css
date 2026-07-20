@@ -42,12 +42,16 @@
 .om-final-cta + footer,
 .om-inner-page main:has(.om-final-cta) + .om-footer,
 .om-inner-page main:has(.om-final-cta) + footer.om-footer,
-.om-inner-page main:has(.om-final-cta) + footer {
+.om-inner-page main:has(.om-final-cta) + footer,
+/* GlobalSiteFooter is a direct body child, not adjacent to .om-final-cta */
+body:has(.om-final-cta) > .om-footer,
+body:has(.om-final-cta) > footer.om-footer,
+body:has(.om-final-cta) > footer {
   z-index: 1;
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
   margin-top: 0;
   border-top: 0;
   padding-top: 0;
@@ -58,7 +62,10 @@
 .om-final-cta + .om-footer .om-footer__transition,
 .om-final-cta + footer .om-footer__transition,
 .om-inner-page main:has(.om-final-cta) + .om-footer .om-footer__transition,
-.om-inner-page main:has(.om-final-cta) + footer .om-footer__transition {
+.om-inner-page main:has(.om-final-cta) + footer .om-footer__transition,
+body:has(.om-final-cta) > .om-footer .om-footer__transition,
+body:has(.om-final-cta) > footer.om-footer .om-footer__transition,
+body:has(.om-final-cta) > footer .om-footer__transition {
   height: 0;
   min-height: 0;
   overflow: hidden;
@@ -494,7 +501,10 @@
   .om-final-cta + footer,
   .om-inner-page main:has(.om-final-cta) + .om-footer,
   .om-inner-page main:has(.om-final-cta) + footer.om-footer,
-  .om-inner-page main:has(.om-final-cta) + footer {
+  .om-inner-page main:has(.om-final-cta) + footer,
+  body:has(.om-final-cta) > .om-footer,
+  body:has(.om-final-cta) > footer.om-footer,
+  body:has(.om-final-cta) > footer {
     width: 100%;
     max-width: 100%;
     margin-left: 0;
@@ -510,7 +520,10 @@
   .om-final-cta + footer,
   .om-inner-page main:has(.om-final-cta) + .om-footer,
   .om-inner-page main:has(.om-final-cta) + footer.om-footer,
-  .om-inner-page main:has(.om-final-cta) + footer {
+  .om-inner-page main:has(.om-final-cta) + footer,
+  body:has(.om-final-cta) > .om-footer,
+  body:has(.om-final-cta) > footer.om-footer,
+  body:has(.om-final-cta) > footer {
     width: 100%;
     max-width: 100%;
     margin-left: 0;

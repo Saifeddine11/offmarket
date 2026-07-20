@@ -50,5 +50,5 @@ export default async function BlogArticlePage({ params }: PageProps) {
   const pageId = resolveArticlePageId(slug);
   if (!pageId) notFound();
 
-  return <BlogArticleContent content={getPageContent(pageId)} />;
+  return <BlogArticleContent content={getPageContent(pageId)} pageId={pageId} />;
 }

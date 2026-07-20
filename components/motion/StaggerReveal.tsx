@@ -16,7 +16,7 @@ type StaggerRevealProps = {
 } & Omit<HTMLMotionProps<"div">, "children">;
 
 export const staggerItemVariants = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0.92, y: 10 },
   visible: { opacity: 1, y: 0 },
 };
 
@@ -91,11 +91,14 @@ export function StaggerItem({
     <Tag
       className={className}
       variants={{
-        hidden: { opacity: 0, y: mobile ? y * 0.5 : y },
+        hidden: { opacity: 0.92, y: mobile ? y * 0.4 : y * 0.6 },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: mobile ? 0.8 : duration, ease: MOTION_EASE },
+          transition: {
+            duration: mobile ? 0.35 : Math.min(duration, 0.45),
+            ease: MOTION_EASE,
+          },
         },
       }}
     >

@@ -1,14 +1,35 @@
 import { DeferredBlogBoot } from "@/components/layout/DeferredBlogBoot";
 import { PageContentShell } from "@/components/pages/PageContentShell";
+import { getBlogHubLocale } from "@/lib/blog/blogHubData";
+import { withServerRenderedBlogHub } from "@/lib/blog/buildBlogHubHtml";
 import { preparePageWithFinalCta } from "@/lib/pages/preparePageWithFinalCta";
 import type { PageContent } from "@/lib/content/types";
+import type { SiteLocale } from "@/lib/i18n/types";
+import type { BodySegment } from "@/lib/static-html/parsePage";
 
 type BlogIndexContentProps = {
   content: PageContent;
 };
 
+function withBlogHubMarkup(
+  segments: BodySegment[],
+  locale: SiteLocale,
+): BodySegment[] {
+  return segments.map((segment) => {
+    if (segment.kind !== "html" || !segment.html.includes("data-om-blog-root")) {
+      return segment;
+    }
+    return {
+      ...segment,
+      html: withServerRenderedBlogHub(segment.html, locale),
+    };
+  });
+}
+
 export function BlogIndexContent({ content }: BlogIndexContentProps) {
   const prepared = preparePageWithFinalCta(content);
+  const locale = getBlogHubLocale(content.htmlLang);
+  const bodySegments = withBlogHubMarkup(prepared.bodySegments, locale);
   const heading =
     content.htmlLang === "en"
       ? "Marrakech real estate blog"
@@ -20,8 +41,8 @@ export function BlogIndexContent({ content }: BlogIndexContentProps) {
     <>
       <h1 style={screenReaderOnlyStyle}>{heading}</h1>
       <PageContentShell
-        content={prepared.content}
-        bodySegments={prepared.bodySegments}
+        content={{ ...prepared.content, bodySegments }}
+        bodySegments={bodySegments}
       />
       <DeferredBlogBoot />
     </>

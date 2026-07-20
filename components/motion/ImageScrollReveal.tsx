@@ -45,7 +45,7 @@ export function ImageScrollReveal({
     offset: ["start end", "end start"],
   });
   const imageY = useTransform(scrollYProgress, [0, 1], ["-3%", "3%"]);
-  const motionDuration = mobile ? 0.9 : 1.2;
+  const motionDuration = mobile ? 0.3 : 0.4;
   const revealed = reduced || inView || visibleOnLoad;
 
   useLayoutEffect(() => {
@@ -99,15 +99,15 @@ export function ImageScrollReveal({
       className={className}
       aria-hidden={ariaHidden}
       style={{ overflow: "hidden", borderRadius: radius === "0px" ? undefined : radius }}
-      initial={{ opacity: 0, scale: 1.04 }}
-      animate={revealed ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.04 }}
+      initial={{ opacity: 1, scale: 1.02 }}
+      animate={revealed ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1.02 }}
       transition={{ duration: motionDuration, ease: MOTION_EASE, delay }}
     >
       <motion.div
         className="om-image-scroll-reveal__inner"
         style={parallax && !mobile && revealed ? { y: imageY } : undefined}
-        initial={{ scale: 1.04 }}
-        animate={revealed ? { scale: 1 } : { scale: 1.04 }}
+        initial={{ scale: 1.02 }}
+        animate={revealed ? { scale: 1 } : { scale: 1.02 }}
         transition={{ duration: motionDuration, ease: MOTION_EASE, delay }}
       >
         {children}

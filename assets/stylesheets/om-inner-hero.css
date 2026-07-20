@@ -234,6 +234,14 @@ html:has(body.om-inner-page) {
     transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Never leave hero chrome invisible during Next.js client navigations */
+html.js-no-reveal .inner-hero [data-hero-reveal],
+html.is-preloader-disabled .inner-hero [data-hero-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 .inner-hero.is-visible [data-hero-reveal] {
   opacity: 1;
   transform: translateY(0);

@@ -54,5 +54,7 @@ export default async function EnBlogArticlePage({ params }: PageProps) {
   const pageId = resolveArticlePageId(slug);
   if (!pageId) notFound();
 
-  return <BlogArticleContent content={getLocalizedContent(pageId)} />;
+  return (
+    <BlogArticleContent content={getLocalizedContent(pageId)} pageId={pageId} />
+  );
 }

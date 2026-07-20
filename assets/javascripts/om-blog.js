@@ -69,8 +69,17 @@
     return '/blog/' + slug + '/';
   }
 
+  function categoryLabel(slug, locale) {
+    var categories = global.OM_BLOG_CATEGORIES || [];
+    for (var i = 0; i < categories.length; i += 1) {
+      if (categories[i].slug === slug) return categories[i].label;
+    }
+    return slug;
+  }
+
   function renderCard(article, options) {
     options = options || {};
+    var locale = detectLocale();
     var card = document.createElement('article');
     card.className = 'om-blog-card';
     if (article.featured) {
@@ -82,9 +91,16 @@
       card.dataset.category = article.category;
     }
 
+    var titleAttr = article.title.replace(/"/g, '&quot;');
+    var excerpt = article.excerpt
+      ? '<p class="om-blog-card__excerpt">' + article.excerpt + '</p>'
+      : '';
+
     card.innerHTML =
       '<a class="om-blog-card__link" href="' +
       articleUrl(article.slug) +
+      '" aria-label="' +
+      titleAttr +
       '">' +
       '<img src="' +
       article.image +
@@ -95,14 +111,20 @@
       ARROW_SVG +
       '</span>' +
       '<div class="om-blog-card__content">' +
+      '<span class="om-blog-card__meta">' +
+      '<span class="om-blog-card__category">' +
+      categoryLabel(article.category, locale) +
+      '</span>' +
       '<span class="om-blog-card__date">' +
       article.date +
       '</span>' +
+      '</span>' +
       '<h3 class="om-blog-card__title" data-text="' +
-      article.title.replace(/"/g, '&quot;') +
+      titleAttr +
       '">' +
       article.title +
       '</h3>' +
+      excerpt +
       '</div>' +
       '</a>';
 
@@ -133,7 +155,7 @@
         defaultTitle: 'Regards privés',
         quartiersLead: 'Analyses, conseils et lectures du marché pour comprendre les zones, les prix et les opportunités avant d’acheter.',
         homeLead: 'Analyses et lectures sur l’immobilier de prestige à Marrakech.',
-        hubLead: 'Analyses privées sur l’immobilier de prestige à Marrakech, les projets sur plan, l’investissement et les biens off-market.',
+        hubLead: 'Lectures privées sur l’immobilier à Marrakech : sur plan, investissement, quartiers, biens off-market, et la sécurisation des projets.',
         blogCta: 'Voir le blog',
         homeCta: 'Retour à l’accueil',
       },
@@ -142,7 +164,7 @@
         defaultTitle: 'Private readings',
         quartiersLead: 'Analyses, advice and market readings to understand areas, prices and opportunities before buying.',
         homeLead: 'Analyses and readings on luxury real estate in Marrakech.',
-        hubLead: 'Private analyses on luxury real estate in Marrakech, off-plan projects, investment and off-market properties.',
+        hubLead: 'Private notes on Marrakech real estate: off-plan, investment, neighbourhoods, off-market properties, and how to secure a project reading.',
         blogCta: 'View the blog',
         homeCta: 'Back to home',
       },
@@ -151,7 +173,7 @@
         defaultTitle: 'Private analyses',
         quartiersLead: 'Analyses, advies en marktinzichten om zones, prijzen en kansen te begrijpen voordat u koopt.',
         homeLead: 'Analyses en inzichten over luxevastgoed in Marrakech.',
-        hubLead: 'Private analyses over luxevastgoed in Marrakech, nieuwbouwprojecten, investeringen en off-market panden.',
+        hubLead: 'Private lectuur over vastgoed in Marrakech: nieuwbouw, investeren, wijken, off-market panden, en hoe u een projectanalyse beveiligt.',
         blogCta: 'De blog bekijken',
         homeCta: 'Terug naar home',
       },

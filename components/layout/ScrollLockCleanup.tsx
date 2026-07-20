@@ -98,9 +98,16 @@ export function ScrollLockCleanup() {
   useEffect(() => {
     clearStaleScrollLocks();
 
+    // Keep content paintable immediately on client navigations (no preloader flash).
+    const html = document.documentElement;
+    html.classList.add("is-preloader-disabled", "js-no-reveal", "js");
+    html.classList.remove("not-ready", "is-preloader-active");
+
     if (isHomePath(pathname)) {
       applyHomeDocumentState();
       resetHomeScrollPosition();
+    } else if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     }
   }, [pathname]);
 

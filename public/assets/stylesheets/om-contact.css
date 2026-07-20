@@ -1336,7 +1336,7 @@ html.js .om-home-private-access:not(.is-animated):not(.is-animating):not(.is-ani
   -webkit-font-smoothing: antialiased;
 }
 
-.om-off-market-page a {
+.om-off-market-page a:not(.om-off-market-hero__cta) {
   color: inherit;
 }
 
@@ -1417,6 +1417,7 @@ html.js .om-home-private-access:not(.is-animated):not(.is-animating):not(.is-ani
   color: rgba(86, 84, 73, 0.58);
 }
 
+.om-off-market-page .om-off-market-hero__cta,
 .om-off-market-hero__cta {
   display: inline-flex;
   align-items: center;

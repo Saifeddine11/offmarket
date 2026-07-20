@@ -40,14 +40,14 @@ export function TextMaskReveal({
   className,
   id,
   delay = 0,
-  duration = 1.1,
+  duration = 0.55,
   ...rest
 }: TextMaskRevealProps) {
   const reduced = useReducedMotion();
   const mobile = useMotionMobile();
   const Tag = motion[as] as typeof motion.h2;
   const lines = lineChunks(children);
-  const motionDuration = mobile ? 0.85 : duration;
+  const motionDuration = mobile ? 0.4 : duration;
 
   if (reduced) {
     const Plain = as as ElementType;
@@ -65,15 +65,15 @@ export function TextMaskReveal({
           <motion.span
             className="om-text-mask-reveal__inner"
             initial={{
-              y: mobile ? "60%" : "110%",
-              opacity: mobile ? 0.4 : 0.2,
+              y: mobile ? "28%" : "45%",
+              opacity: mobile ? 0.85 : 0.75,
             }}
             whileInView={{ y: "0%", opacity: 1 }}
             viewport={MOTION_VIEWPORT}
             transition={{
               duration: motionDuration,
               ease: MOTION_EASE,
-              delay: delay + index * 0.08,
+              delay: delay + index * 0.05,
             }}
           >
             {line}

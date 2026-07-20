@@ -22,8 +22,8 @@ export function ScrollReveal({
   as = "div",
   className,
   delay = 0,
-  y = 56,
-  duration = 1,
+  y = 14,
+  duration = 0.32,
   id,
   disabled = false,
   ...rest
@@ -41,16 +41,16 @@ export function ScrollReveal({
     );
   }
 
-  const offsetY = mobile ? y * 0.5 : y;
-  const motionDuration = mobile ? Math.min(duration, 0.85) : duration;
+  const offsetY = mobile ? y * 0.45 : y;
+  const motionDuration = mobile ? Math.min(duration, 0.35) : duration;
 
   return (
     <Tag
       id={id}
       className={className}
-      initial={{ opacity: 0, y: offsetY }}
+      initial={{ opacity: 0.96, y: offsetY }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={MOTION_VIEWPORT}
+      viewport={{ ...MOTION_VIEWPORT, amount: 0.05 }}
       transition={{ duration: motionDuration, ease: MOTION_EASE, delay }}
       {...rest}
     >
