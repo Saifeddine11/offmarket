@@ -459,6 +459,16 @@
 
   window.__omFeaturedProjectsBoot = boot;
 
+  // Expose a cheap health check for React watchdogs.
+  window.__omFeaturedProjectsHasCards = function () {
+    var grid = document.querySelector(
+      '.om-featured-projects [data-om-property-cards]'
+    );
+    if (!grid) return false;
+    return grid.querySelectorAll('.om-reveal-card, .om-featured-projects__card')
+      .length > 0;
+  };
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
   } else {

@@ -239,19 +239,15 @@ export function FeaturedProjectsSection({
           </div>
         </header>
 
-        {/* Cards are injected by om-featured-projects.js, sometimes before
-            hydration — dangerouslySetInnerHTML keeps hydration from diffing. */}
-        <ScrollReveal
+        {/* Cards are injected by om-featured-projects.js.
+            Do NOT use dangerouslySetInnerHTML={{ __html: "" }} here —
+            React re-renders would wipe cards after the legacy script fills them. */}
+        <div
           className="om-featured-projects__grid"
           data-om-property-cards=""
           data-om-project-card-copy={serializeProjectCardCopy(resolvedLocale)}
-          delay={0.12}
-          disabled={!motion}
           suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: "" }}
-        >
-          {null}
-        </ScrollReveal>
+        />
 
         <div className="om-private-access-popup" aria-hidden="true">
           <button
