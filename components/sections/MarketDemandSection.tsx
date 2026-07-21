@@ -13,7 +13,7 @@ function resolveLocale(locale?: string): SiteLocale {
 }
 
 /**
- * Homepage demand-timeline section — server shell, shared across locales.
+ * Homepage market section — annual transaction variation at Marrakech.
  * Inserted once after featured property listings.
  */
 export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
@@ -37,7 +37,8 @@ export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
               graphLabel={copy.graphLabel}
               svgTitle={copy.svgTitle}
               svgDesc={copy.svgDesc}
-              projectedCaption={copy.projectedCaption}
+              unitHint={copy.unitHint}
+              locale={resolved}
             />
           </div>
         </div>

@@ -11,7 +11,7 @@ type MarketDemandEditorialProps = {
 };
 
 /**
- * Left editorial column — timeline copy + metrics, staggered on enter.
+ * Left editorial — clear YoY transaction copy + readable metrics.
  */
 export function MarketDemandEditorial({
   copy,
@@ -66,6 +66,9 @@ export function MarketDemandEditorial({
               {metric.value}
             </dt>
             <dd className="om-market-demand__metric-label">{metric.label}</dd>
+            {metric.detail ? (
+              <dd className="om-market-demand__metric-detail">{metric.detail}</dd>
+            ) : null}
           </div>
         ))}
       </dl>

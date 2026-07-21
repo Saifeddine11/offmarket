@@ -3,6 +3,7 @@ import type { SiteLocale } from "@/lib/i18n/types";
 export type MarketDemandMetric = {
   value: string;
   label: string;
+  detail?: string;
   accent?: boolean;
 };
 
@@ -14,82 +15,134 @@ export type MarketDemandCopy = {
   svgTitle: string;
   svgDesc: string;
   summary: string;
-  /** Short caption near the projected segment (optional visual cue). */
-  projectedCaption: string;
+  /** Tiny unit reminder near the graph (e.g. “%/an”). */
+  unitHint: string;
   metrics: readonly [MarketDemandMetric, MarketDemandMetric, MarketDemandMetric];
 };
 
 export const MARKET_DEMAND_COPY: Record<SiteLocale, MarketDemandCopy> = {
   fr: {
-    eyebrow: "TRAJECTOIRE DE LA DEMANDE",
-    title: "Une dynamique qui s’installe.",
+    eyebrow: "TRANSACTIONS À MARRAKECH",
+    title: "La variation annuelle des ventes.",
     lead:
-      "Depuis 2022, la demande progresse à Marrakech. Les projections à 2028 et 2030 prolongent cette tendance.",
-    graphLabel: "ÉVOLUTION DE LA DEMANDE · 2022 → 2030",
-    svgTitle: "Évolution de la demande de 2022 à 2030",
+      "Chaque chiffre indique de combien le nombre de transactions immobilières a changé par rapport à l’année précédente.",
+    graphLabel: "VARIATION ANNUELLE DU NOMBRE DE TRANSACTIONS",
+    svgTitle: "Variation annuelle des transactions immobilières à Marrakech",
     svgDesc:
-      "Indice de demande observé : 2022 à 100, 2024 à 124, 2026 à 148. Estimations : 2028 à 165, 2030 à 181.",
+      "Variation du nombre de ventes vs l’année précédente : 2022 −17,3 % vs 2021, 2023 +16,5 % vs 2022, 2024 +4,2 % vs 2023, 2025 +24,1 % vs 2024.",
     summary:
-      "La demande à Marrakech progresse de 2022 à 2026. Les années 2028 et 2030 sont des estimations qui prolongent la tendance.",
-    projectedCaption: "estimé",
+      "À Marrakech, le nombre de transactions immobilières a varié de −17,3 % en 2022, +16,5 % en 2023, +4,2 % en 2024 et +24,1 % en 2025, chaque fois par rapport à l’année précédente.",
+    unitHint: "% / an",
     metrics: [
-      { value: "2022–2026", label: "données observées", accent: true },
-      { value: "2028–2030", label: "estimations" },
-      { value: "5", label: "jalons de lecture" },
+      {
+        value: "+24,1 %",
+        label: "en 2025",
+        detail: "vs 2024",
+        accent: true,
+      },
+      {
+        value: "+16,5 %",
+        label: "en 2023",
+        detail: "vs 2022",
+      },
+      {
+        value: "−17,3 %",
+        label: "en 2022",
+        detail: "vs 2021",
+      },
     ],
   },
   en: {
-    eyebrow: "DEMAND TRAJECTORY",
-    title: "A momentum that settles in.",
+    eyebrow: "TRANSACTIONS IN MARRAKECH",
+    title: "Yearly change in sales volume.",
     lead:
-      "Since 2022, demand has been rising in Marrakech. Projections for 2028 and 2030 extend that trend.",
-    graphLabel: "DEMAND EVOLUTION · 2022 → 2030",
-    svgTitle: "Demand evolution from 2022 to 2030",
+      "Each figure shows how much the number of real-estate transactions changed compared with the previous year.",
+    graphLabel: "ANNUAL CHANGE IN TRANSACTION VOLUME",
+    svgTitle: "Annual change in real-estate transactions in Marrakech",
     svgDesc:
-      "Observed demand index: 2022 at 100, 2024 at 124, 2026 at 148. Estimates: 2028 at 165, 2030 at 181.",
+      "Year-over-year change in sales volume: 2022 −17.3% vs 2021, 2023 +16.5% vs 2022, 2024 +4.2% vs 2023, 2025 +24.1% vs 2024.",
     summary:
-      "Demand in Marrakech rises from 2022 to 2026. Years 2028 and 2030 are estimates extending the trend.",
-    projectedCaption: "est.",
+      "In Marrakech, real-estate transaction volume changed by −17.3% in 2022, +16.5% in 2023, +4.2% in 2024 and +24.1% in 2025 — each versus the prior year.",
+    unitHint: "% / year",
     metrics: [
-      { value: "2022–2026", label: "observed data", accent: true },
-      { value: "2028–2030", label: "estimates" },
-      { value: "5", label: "reading markers" },
+      {
+        value: "+24.1%",
+        label: "in 2025",
+        detail: "vs 2024",
+        accent: true,
+      },
+      {
+        value: "+16.5%",
+        label: "in 2023",
+        detail: "vs 2022",
+      },
+      {
+        value: "−17.3%",
+        label: "in 2022",
+        detail: "vs 2021",
+      },
     ],
   },
   it: {
-    eyebrow: "TRAETTORIA DELLA DOMANDA",
-    title: "Una dinamica che si afferma.",
+    eyebrow: "TRANSAZIONI A MARRAKECH",
+    title: "La variazione annuale delle vendite.",
     lead:
-      "Dal 2022 la domanda cresce a Marrakech. Le proiezioni al 2028 e al 2030 prolungano questa tendenza.",
-    graphLabel: "EVOLUZIONE DELLA DOMANDA · 2022 → 2030",
-    svgTitle: "Evoluzione della domanda dal 2022 al 2030",
+      "Ogni cifra indica di quanto è cambiato il numero di transazioni immobiliari rispetto all’anno precedente.",
+    graphLabel: "VARIAZIONE ANNUALE DEL NUMERO DI TRANSAZIONI",
+    svgTitle: "Variazione annuale delle transazioni immobiliari a Marrakech",
     svgDesc:
-      "Indice di domanda osservato: 2022 a 100, 2024 a 124, 2026 a 148. Stime: 2028 a 165, 2030 a 181.",
+      "Variazione del numero di vendite vs l’anno precedente: 2022 −17,3 % vs 2021, 2023 +16,5 % vs 2022, 2024 +4,2 % vs 2023, 2025 +24,1 % vs 2024.",
     summary:
-      "La domanda a Marrakech cresce dal 2022 al 2026. Gli anni 2028 e 2030 sono stime che prolungano la tendenza.",
-    projectedCaption: "stimato",
+      "A Marrakech, il numero di transazioni immobiliari è variato di −17,3 % nel 2022, +16,5 % nel 2023, +4,2 % nel 2024 e +24,1 % nel 2025, sempre rispetto all’anno precedente.",
+    unitHint: "% / anno",
     metrics: [
-      { value: "2022–2026", label: "dati osservati", accent: true },
-      { value: "2028–2030", label: "stime" },
-      { value: "5", label: "punti di lettura" },
+      {
+        value: "+24,1 %",
+        label: "nel 2025",
+        detail: "vs 2024",
+        accent: true,
+      },
+      {
+        value: "+16,5 %",
+        label: "nel 2023",
+        detail: "vs 2022",
+      },
+      {
+        value: "−17,3 %",
+        label: "nel 2022",
+        detail: "vs 2021",
+      },
     ],
   },
   nl: {
-    eyebrow: "VRAAGTRAJECT",
-    title: "Een dynamiek die zich vestigt.",
+    eyebrow: "TRANSACTIES IN MARRAKECH",
+    title: "De jaarlijkse verandering in verkopen.",
     lead:
-      "Sinds 2022 stijgt de vraag in Marrakech. De projecties voor 2028 en 2030 verlengen die trend.",
-    graphLabel: "VRAAGONTWIKKELING · 2022 → 2030",
-    svgTitle: "Vraagontwikkeling van 2022 tot 2030",
+      "Elk cijfer toont hoeveel het aantal vastgoedtransacties is veranderd ten opzichte van het vorige jaar.",
+    graphLabel: "JAARLIJKSE VARIATIE VAN HET AANTAL TRANSACTIES",
+    svgTitle: "Jaarlijkse variatie van vastgoedtransacties in Marrakech",
     svgDesc:
-      "Geobserveerde vraagindex: 2022 op 100, 2024 op 124, 2026 op 148. Schattingen: 2028 op 165, 2030 op 181.",
+      "Variatie van het aantal verkopen vs het vorige jaar: 2022 −17,3 % vs 2021, 2023 +16,5 % vs 2022, 2024 +4,2 % vs 2023, 2025 +24,1 % vs 2024.",
     summary:
-      "De vraag in Marrakech stijgt van 2022 tot 2026. De jaren 2028 en 2030 zijn schattingen die de trend verlengen.",
-    projectedCaption: "geschat",
+      "In Marrakech is het aantal vastgoedtransacties veranderd met −17,3 % in 2022, +16,5 % in 2023, +4,2 % in 2024 en +24,1 % in 2025 — telkens ten opzichte van het vorige jaar.",
+    unitHint: "% / jaar",
     metrics: [
-      { value: "2022–2026", label: "geobserveerde data", accent: true },
-      { value: "2028–2030", label: "schattingen" },
-      { value: "5", label: "leesmarkers" },
+      {
+        value: "+24,1 %",
+        label: "in 2025",
+        detail: "vs 2024",
+        accent: true,
+      },
+      {
+        value: "+16,5 %",
+        label: "in 2023",
+        detail: "vs 2022",
+      },
+      {
+        value: "−17,3 %",
+        label: "in 2022",
+        detail: "vs 2021",
+      },
     ],
   },
 };
