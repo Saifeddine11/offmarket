@@ -735,7 +735,8 @@
 
   /*
    * Mobile chart: full card width, uniform scale (no horizontal crush).
-   * Aspect matches LAYOUT_MOBILE viewBox 780×540 → ~250@360 · ~270@390 · ~298@430.
+   * Aspect matches LAYOUT_MOBILE viewBox 780×620 → ~286@360 · ~310@390 · ~342@430
+   * (content width after panel padding is slightly lower).
    */
   .om-market-demand__svg {
     display: block;
@@ -743,7 +744,7 @@
     max-width: 100%;
     height: auto;
     max-height: none;
-    aspect-ratio: 780 / 540;
+    aspect-ratio: 780 / 620;
     overflow: visible;
   }
 
@@ -824,7 +825,7 @@
     max-width: 100%;
     height: auto;
     max-height: none;
-    aspect-ratio: 780 / 540;
+    aspect-ratio: 780 / 620;
   }
 
   .om-market-demand__year {

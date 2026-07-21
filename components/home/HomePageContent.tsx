@@ -41,7 +41,7 @@ type HomePageContentProps = {
 const HOME_LEAD_QUESTIONNAIRE_STYLES =
   "/assets/stylesheets/om-contact-page.css?v=1767552000";
 const HOME_MARKET_DEMAND_STYLES =
-  "/assets/stylesheets/om-market-demand.css?v=1765612800";
+  "/assets/stylesheets/om-market-demand.css?v=1765612900";
 
 function resolveContentLocale(content: PageContent): SiteLocale {
   return content.htmlLang === "en" ||

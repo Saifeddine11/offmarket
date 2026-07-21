@@ -67,17 +67,17 @@ const LAYOUT_DESKTOP: ChartLayout = {
  */
 const LAYOUT_MOBILE: ChartLayout = {
   viewW: 780,
-  viewH: 540,
-  padL: 34,
-  padR: 34,
-  padT: 38,
-  padB: 48,
-  dotR: 9,
-  hitR: 30,
-  valueOffset: 14,
-  yearY: 16,
-  captionLift: 16,
-  yHeadroom: 0.12,
+  viewH: 620,
+  padL: 32,
+  padR: 32,
+  padT: 40,
+  padB: 50,
+  dotR: 10,
+  hitR: 32,
+  valueOffset: 15,
+  yearY: 17,
+  captionLift: 17,
+  yHeadroom: 0.1,
 };
 
 /** Permanent % labels on narrow screens; others via touch/focus. */
