@@ -1,6 +1,7 @@
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { TextMaskReveal } from "@/components/motion/TextMaskReveal";
 import { PropertyModalSlides } from "@/components/property/PropertyModalSlides";
+import { FeaturedProjectsBoot } from "@/components/sections/FeaturedProjectsBoot";
 import { serializeProjectCardCopy } from "@/lib/i18n/projectCardCopy";
 import type { SiteLocale } from "@/lib/i18n/types";
 
@@ -181,6 +182,7 @@ export function FeaturedProjectsSection({
       : ctaProof;
 
   return (
+    <>
     <section
       id={id}
       className="om-featured-projects"
@@ -237,19 +239,15 @@ export function FeaturedProjectsSection({
           </div>
         </header>
 
-        {/* Cards are injected by om-featured-projects.js, sometimes before
-            hydration — dangerouslySetInnerHTML keeps hydration from diffing. */}
-        <ScrollReveal
+        {/* Cards are injected by om-featured-projects.js.
+            Do NOT use dangerouslySetInnerHTML={{ __html: "" }} here —
+            React re-renders would wipe cards after the legacy script fills them. */}
+        <div
           className="om-featured-projects__grid"
           data-om-property-cards=""
           data-om-project-card-copy={serializeProjectCardCopy(resolvedLocale)}
-          delay={0.12}
-          disabled={!motion}
           suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: "" }}
-        >
-          {null}
-        </ScrollReveal>
+        />
 
         <div className="om-private-access-popup" aria-hidden="true">
           <button
@@ -270,6 +268,8 @@ export function FeaturedProjectsSection({
 
       <PropertyModalShell locale={resolvedLocale} />
     </section>
+    <FeaturedProjectsBoot />
+    </>
   );
 }
 

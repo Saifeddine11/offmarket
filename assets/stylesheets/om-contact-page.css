@@ -42,8 +42,12 @@
   padding-bottom: clamp(48px, 6vw, 72px);
 }
 
-.om-contact-lead-page > .om-final-cta {
-  flex-shrink: 0;
+/* Final CTA is rendered as a sibling of main (not a padded child) — keep it edge-to-edge. */
+.om-contact-lead-body .om-final-cta {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
   margin-top: 0;
 }
 

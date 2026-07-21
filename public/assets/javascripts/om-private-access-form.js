@@ -18,33 +18,42 @@
 
   var COPY_FR = {
     success:
-      'Votre demande est prête dans votre messagerie. Envoyez l’email pour transmettre votre projet à OFF MARKET.',
-    error:
-      'Merci de vérifier les champs obligatoires avant d’envoyer votre demande.',
-    mailSubject: 'Demande accès OFF MARKET',
+      'Votre demande a bien été envoyée. Notre équipe vous contactera prochainement.',
+    error: 'Merci de vérifier les champs obligatoires avant d’envoyer votre demande.',
+    sendError:
+      'Votre demande n’a pas pu être envoyée. Veuillez réessayer dans quelques instants.',
+    rateLimit: 'Trop de tentatives. Veuillez réessayer dans quelques minutes.',
+    sending: 'Envoi en cours…',
   };
 
   var COPY_EN = {
     success:
-      'Your request is ready in your email app. Send the email to share your project with OFF MARKET.',
+      'Your request has been sent successfully. Our team will contact you shortly.',
     error: 'Please check the required fields before sending your request.',
-    mailSubject: 'OFF MARKET access request',
+    sendError:
+      'Your request could not be sent. Please try again in a few moments.',
+    rateLimit: 'Too many attempts. Please try again in a few minutes.',
+    sending: 'Sending…',
   };
 
   var COPY_IT = {
     success:
-      'La tua richiesta è pronta nella tua email. Invia l’email per condividere il tuo progetto con OFF MARKET.',
-    error:
-      'Verifica i campi obbligatori prima di inviare la richiesta.',
-    mailSubject: 'Richiesta accesso OFF MARKET',
+      'La tua richiesta è stata inviata correttamente. Il nostro team ti contatterà a breve.',
+    error: 'Verifica i campi obbligatori prima di inviare la richiesta.',
+    sendError:
+      'La tua richiesta non è stata inviata. Riprova tra qualche istante.',
+    rateLimit: 'Troppi tentativi. Riprova tra qualche minuto.',
+    sending: 'Invio in corso…',
   };
 
   var COPY_NL = {
     success:
-      'Uw aanvraag staat klaar in uw e-mailprogramma. Verstuur de e-mail om uw project met OFF MARKET te delen.',
-    error:
-      'Controleer de verplichte velden voordat u uw aanvraag verstuurt.',
-    mailSubject: 'OFF MARKET toegangsaanvraag',
+      'Uw aanvraag is succesvol verzonden. Ons team neemt binnenkort contact met u op.',
+    error: 'Controleer de verplichte velden voordat u uw aanvraag verstuurt.',
+    sendError:
+      'Uw aanvraag kon niet worden verzonden. Probeer het over enkele ogenblikken opnieuw.',
+    rateLimit: 'Te veel pogingen. Probeer het over enkele minuten opnieuw.',
+    sending: 'Bezig met verzenden…',
   };
 
   function detectFormLocale() {
@@ -155,6 +164,62 @@
     return attr ? String(attr).trim() : '';
   }
 
+  function getUtmParams() {
+    var params = new URLSearchParams(window.location.search || '');
+    return {
+      utmSource: params.get('utm_source') || '',
+      utmMedium: params.get('utm_medium') || '',
+      utmCampaign: params.get('utm_campaign') || '',
+    };
+  }
+
+  function classifyType(intent, source, context) {
+    var blob = String(intent + ' ' + source + ' ' + context).toLowerCase();
+    if (blob.indexOf('villa-jaz') !== -1 || blob.indexOf('villa_jaz') !== -1) {
+      return 'villa_jaz';
+    }
+    if (
+      blob.indexOf('off-market') !== -1 ||
+      blob.indexOf('off_market') !== -1 ||
+      blob.indexOf('offmarket') !== -1
+    ) {
+      return 'off_market';
+    }
+    if (blob.indexOf('simulator') !== -1 || blob.indexOf('simulateur') !== -1) {
+      return 'simulator';
+    }
+    if (
+      blob.indexOf('nos-projets') !== -1 ||
+      blob.indexOf('nos_projets') !== -1 ||
+      blob.indexOf('homepage') !== -1 ||
+      blob.indexOf('home-page') !== -1 ||
+      blob.indexOf('home_page') !== -1
+    ) {
+      return 'project';
+    }
+    if (blob.indexOf('private') !== -1 || blob.indexOf('acces') !== -1) {
+      return 'private_access';
+    }
+    if (blob.indexOf('contact') !== -1) return 'contact';
+    return 'lead';
+  }
+
+  function createIdempotencyKey() {
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return window.crypto.randomUUID().replace(/-/g, '');
+      }
+    } catch (error) {
+      /* noop */
+    }
+    return (
+      'k' +
+      String(Date.now()) +
+      Math.random().toString(16).slice(2) +
+      Math.random().toString(16).slice(2)
+    );
+  }
+
   function buildLeadPayload(data, form) {
     var locale = resolveFormLocale(form);
     var propertyType = getContextField(form, 'contextPropertyType');
@@ -169,83 +234,41 @@
       getLeadField(form, 'leadContext') ||
       (form ? form.getAttribute('data-lead-context') : '') ||
       '';
+    var honeypotField = form ? form.querySelector('[name="companyWebsite"]') : null;
+    var utm = getUtmParams();
+    var startedAt = form && form.dataset.formStartedAt
+      ? Number(form.dataset.formStartedAt)
+      : Date.now();
 
     return {
+      type: classifyType(data.intent, source, context),
       fullName: data.name,
       phoneCountry: data.dialCode,
       phone: data.phone,
       email: data.email,
       message: data.message || '',
+      intent: data.intent || '',
       propertyType: propertyType,
       budget: contextBudget,
       objective: objective,
       source: source,
       context: context,
       locale: locale,
-      createdAt: new Date().toISOString(),
+      pagePath: window.location.pathname || '',
+      pageUrl: window.location.href || '',
+      utmSource: utm.utmSource,
+      utmMedium: utm.utmMedium,
+      utmCampaign: utm.utmCampaign,
+      companyWebsite: honeypotField ? String(honeypotField.value || '') : '',
+      formStartedAt: startedAt,
+      idempotencyKey: createIdempotencyKey(),
     };
   }
 
-  function buildMailBody(data, form) {
-    var payload = buildLeadPayload(data, form);
-    var isEn = payload.locale === 'en';
-    var isNl = payload.locale === 'nl';
-    var lines = [
-      isNl
-        ? 'Hallo, ik wil toegang aanvragen tot de OFF MARKET projecten.'
-        : isEn
-          ? 'Hello, I would like to request access to OFF MARKET projects.'
-          : 'Bonjour, je souhaite demander l’accès aux projets OFF MARKET.',
-      '',
-      (isNl ? 'Volledige naam : ' : isEn ? 'Full name : ' : 'Nom complet : ') + payload.fullName,
-      'Email : ' + payload.email,
-      (isNl ? 'Telefoon : ' : isEn ? 'Phone : ' : 'Téléphone : ') +
-        payload.phoneCountry +
-        ' ' +
-        payload.phone,
-      'Message : ' + (payload.message || '—'),
-      'Intent : ' + data.intent,
-    ];
-
-    if (payload.propertyType || payload.budget || payload.objective || payload.source || payload.context) {
-      lines.push('');
-      if (payload.propertyType) {
-        lines.push(
-          (isNl ? 'Type vastgoed : ' : isEn ? 'Property type : ' : 'Type de bien : ') +
-            payload.propertyType
-        );
-      }
-      if (payload.budget) {
-        lines.push(
-          (isNl ? 'Budget : ' : isEn ? 'Budget reviewed : ' : 'Budget étudié : ') +
-            payload.budget
-        );
-      }
-      if (payload.objective) {
-        lines.push(
-          (isNl ? 'Doelstelling : ' : isEn ? 'Objective : ' : 'Objectif : ') +
-            payload.objective
-        );
-      }
-      if (payload.source) lines.push('Source : ' + payload.source);
-      if (payload.context) {
-        lines.push((isNl ? 'Context : ' : isEn ? 'Context : ' : 'Contexte : ') + payload.context);
-      }
-    }
-
-    lines.push('');
-    lines.push('Locale : ' + payload.locale);
-    lines.push((isNl ? 'Tijdstempel : ' : isEn ? 'Timestamp : ' : 'Horodatage : ') + payload.createdAt);
-    lines.push('');
-    lines.push(
-      isNl
-        ? 'Dank u om contact met mij op te nemen met een private selectie die past bij mijn project.'
-        : isEn
-          ? 'Please contact me with a private selection tailored to my project.'
-          : 'Merci de me recontacter avec une sélection privée adaptée à mon projet.'
-    );
-
-    return lines.join('\n');
+  function setSubmitEnabled(form, enabled) {
+    var button = form.querySelector('.om-private-access-form__submit');
+    if (!button) return;
+    button.disabled = !enabled;
   }
 
   function resolveIntent(form) {
@@ -291,6 +314,7 @@
   function bindForm(form) {
     if (form.dataset.privateAccessBound === 'true') return;
     form.dataset.privateAccessBound = 'true';
+    form.dataset.formStartedAt = String(Date.now());
 
     populateSelects(form);
 
@@ -301,6 +325,8 @@
 
       var statusEl = form.querySelector('[data-private-status]');
       setStatus(statusEl, '', false);
+
+      if (form.dataset.privateAccessSubmitting === 'true') return;
 
       var nameField = form.querySelector('[name="fullName"]');
       var emailField = form.querySelector('[name="email"]');
@@ -337,7 +363,7 @@
         return;
       }
 
-      var payload = {
+      var data = {
         name: name,
         email: email,
         dialCode: dialCode,
@@ -347,14 +373,68 @@
         intent: intent,
       };
 
-      var body = encodeURIComponent(buildMailBody(payload, form));
-      var subject = encodeURIComponent(copy.mailSubject);
+      var payload = buildLeadPayload(data, form);
+      // Keep the same idempotency key across network retries for this attempt.
+      var attemptKey = payload.idempotencyKey;
+      form.dataset.privateAccessSubmitting = 'true';
+      setSubmitEnabled(form, false);
+      setStatus(statusEl, copy.sending, false);
 
-      setStatus(statusEl, copy.success, false);
-      window.setTimeout(function () {
-        window.location.href =
-          'mailto:contact@offmarketofficial.com?subject=' + subject + '&body=' + body;
-      }, 120);
+      var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      var timeoutId = window.setTimeout(function () {
+        if (controller) controller.abort();
+      }, 20000);
+
+      function postOnce() {
+        payload.idempotencyKey = attemptKey;
+        return fetch('/api/leads/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+          signal: controller ? controller.signal : undefined,
+        }).then(function (response) {
+          return response
+            .json()
+            .catch(function () {
+              return { ok: false };
+            })
+            .then(function (json) {
+              return {
+                status: response.status,
+                ok: response.ok && json && json.ok === true,
+                json: json,
+              };
+            });
+        });
+      }
+
+      postOnce()
+        .then(function (result) {
+          if (result.status === 429) {
+            setStatus(
+              statusEl,
+              (result.json && result.json.message) || copy.rateLimit,
+              true
+            );
+            return;
+          }
+          if (!result.ok) {
+            setStatus(statusEl, copy.sendError, true);
+            return;
+          }
+          setStatus(statusEl, copy.success, false);
+          form.reset();
+          form.dataset.formStartedAt = String(Date.now());
+          populateSelects(form);
+        })
+        .catch(function () {
+          setStatus(statusEl, copy.sendError, true);
+        })
+        .then(function () {
+          window.clearTimeout(timeoutId);
+          form.dataset.privateAccessSubmitting = 'false';
+          setSubmitEnabled(form, true);
+        });
     });
   }
 

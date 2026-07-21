@@ -65,8 +65,7 @@ export function PrivateAccessForm({
   return (
     <form
       className={formClassName}
-      action="mailto:contact@offmarketofficial.com"
-      encType="text/plain"
+      action="/api/leads/"
       method="post"
       data-private-access-form
       data-form-intent={intentMode === "from-url" ? "from-url" : intent}
@@ -76,6 +75,18 @@ export function PrivateAccessForm({
       noValidate
     >
       <input type="hidden" name="intent" value={intent} data-private-intent />
+
+      {/* Honeypot — visually hidden, ignored by assistive tech */}
+      <label className="om-private-access-form__label--sr" aria-hidden="true">
+        <span>Company website</span>
+        <input
+          type="text"
+          name="companyWebsite"
+          tabIndex={-1}
+          autoComplete="off"
+          defaultValue=""
+        />
+      </label>
 
       {contextValues?.propertyType ? (
         <input

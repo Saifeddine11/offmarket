@@ -54,7 +54,7 @@ export const STYLES = {
     "/assets/stylesheets/om-private-access-popup.css?v=1765340000",
     "/assets/stylesheets/om-property-modal.css?v=1768512600",
     "/assets/stylesheets/om-contact.css?v=1765405100",
-    "/assets/stylesheets/om-contact-page.css?v=1767579000",
+    "/assets/stylesheets/om-contact-page.css?v=1767579100",
     "/assets/stylesheets/om-nos-projets.css?v=1767547000",
   ],
   /** /sur-plan/villa-jaz/ — modal slides as vertical project detail sections. */
@@ -83,7 +83,7 @@ export const STYLES = {
       "/assets/stylesheets/om-final-cta.css?v=1765404400",
       "/assets/stylesheets/om-page-motion.css?v=1765422400",
       "/assets/stylesheets/om-contact.css?v=1765405100",
-      "/assets/stylesheets/om-contact-page.css?v=1767579000",
+      "/assets/stylesheets/om-contact-page.css?v=1767579100",
     ]),
   ),
   simulateur: withoutGlobalFooterStyles(
@@ -107,7 +107,7 @@ export const FINAL_CTA_STYLES = [
 ] as const;
 
 export const SCRIPTS = {
-  offMarket: ["/assets/javascripts/om-private-access-form.js?v=1765352200"],
+  offMarket: ["/assets/javascripts/om-private-access-form.js?v=1765600400"],
   /** Inner editorial pages — page-specific boot (navbar scripts are global). */
   innerEditorial: withoutGlobalNavScripts([
     "/assets/javascripts/gsap.min.js?v=1765268700",
@@ -132,10 +132,10 @@ export const SCRIPTS = {
     "/assets/javascripts/gsap.min.js?v=1765268700",
     "/assets/javascripts/om-language-switcher.js?v=1765350200",
     "/assets/javascripts/om-inner-hero.js?v=1765357000",
-    "/assets/javascripts/om-featured-projects.js?v=1765404001",
+    "/assets/javascripts/om-featured-projects.js?v=1765600600",
     "/assets/javascripts/om-property-modal.js?v=1767563620",
     "/assets/javascripts/om-private-access-popup.js?v=1765340000",
-    "/assets/javascripts/om-private-access-form.js?v=1765352200",
+    "/assets/javascripts/om-private-access-form.js?v=1765600400",
   ]),
   villaJazDetail: withoutGlobalNavScripts([
     "/assets/javascripts/gsap.min.js?v=1765268700",
@@ -154,7 +154,7 @@ export const SCRIPTS = {
   ]),
   contact: withoutGlobalNavScripts([
     "/assets/javascripts/om-language-switcher.js?v=1765350200",
-    "/assets/javascripts/om-private-access-form.js?v=1765352200",
+    "/assets/javascripts/om-private-access-form.js?v=1765600400",
   ]),
   simulateur: withoutGlobalNavScripts([
     "/assets/javascripts/om-simulator.js?v=1765405800",

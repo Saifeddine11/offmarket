@@ -35,7 +35,7 @@ const FR: PrivateAccessFormCopy = {
   subtitle:
     "Laissez vos coordonnées. Nous vous répondons avec une sélection adaptée à votre budget, votre objectif et le type de bien recherché.",
   success:
-    "Votre demande a bien été préparée. Nous vous répondrons avec une première lecture privée adaptée à votre projet.",
+    "Votre demande a bien été envoyée. Notre équipe vous contactera prochainement.",
   fullName: "Nom complet",
   fullNamePlaceholder: "Votre nom complet",
   email: "Email",
@@ -70,7 +70,7 @@ const EN: PrivateAccessFormCopy = {
   subtitle:
     "Leave your details. We will respond with a selection aligned with your budget, objective and property type.",
   success:
-    "Your request has been prepared. We will respond with an initial private review tailored to your project.",
+    "Your request has been sent successfully. Our team will contact you shortly.",
   fullName: "Full name",
   fullNamePlaceholder: "Your full name",
   email: "Email",
@@ -105,7 +105,7 @@ const IT: PrivateAccessFormCopy = {
   subtitle:
     "Lascia i tuoi dati. Ti rispondiamo con una selezione in linea con budget, obiettivo e tipo di immobile.",
   success:
-    "La tua richiesta è stata preparata. Ti risponderemo con una prima lettura privata in linea con il tuo progetto.",
+    "La tua richiesta è stata inviata correttamente. Il nostro team ti contatterà a breve.",
   fullName: "Nome completo",
   fullNamePlaceholder: "Il tuo nome completo",
   email: "Indirizzo email",
@@ -140,7 +140,7 @@ const NL: PrivateAccessFormCopy = {
   subtitle:
     "Laat uw gegevens achter. Wij antwoorden met een selectie die aansluit bij uw budget, doelstelling en het type vastgoed dat u zoekt.",
   success:
-    "Uw aanvraag is voorbereid. Wij antwoorden met een eerste private analyse die past bij uw project.",
+    "Uw aanvraag is succesvol verzonden. Ons team neemt binnenkort contact met u op.",
   fullName: "Volledige naam",
   fullNamePlaceholder: "Uw volledige naam",
   email: "E-mail",

@@ -13,6 +13,8 @@ export type FooterCopy = {
   newsletterPlaceholder: string;
   newsletterButton: string;
   newsletterSuccess: string;
+  newsletterError: string;
+  newsletterRateLimit: string;
   navTitle: string;
   navLinks: FooterLink[];
   immobilierTitle: string;
@@ -43,7 +45,9 @@ const FR: FooterCopy = {
   newsletterText: "Soyez informé des nouveaux projets sélectionnés à Marrakech.",
   newsletterPlaceholder: "votre@email.com",
   newsletterButton: "S'inscrire",
-  newsletterSuccess: "Votre demande d'inscription est prête dans votre messagerie.",
+  newsletterSuccess: "Votre inscription a bien été enregistrée.",
+  newsletterError: "Une erreur est survenue. Veuillez réessayer.",
+  newsletterRateLimit: "Trop de tentatives. Veuillez réessayer dans quelques minutes.",
   navTitle: "Navigation",
   navLinks: [
     { label: "Accueil", href: "/" },
@@ -90,7 +94,9 @@ const EN: FooterCopy = {
   newsletterText: "Be informed of newly selected projects in Marrakech.",
   newsletterPlaceholder: "your@email.com",
   newsletterButton: "Subscribe",
-  newsletterSuccess: "Your subscription request is ready in your email app.",
+  newsletterSuccess: "Your subscription has been registered.",
+  newsletterError: "Something went wrong. Please try again.",
+  newsletterRateLimit: "Too many attempts. Please try again in a few minutes.",
   navTitle: "Navigation",
   navLinks: [
     { label: "Home", href: "/en/" },
@@ -132,7 +138,9 @@ const IT: FooterCopy = {
   newsletterText: "Resta informato sui nuovi progetti selezionati a Marrakech.",
   newsletterPlaceholder: "tua@email.com",
   newsletterButton: "Iscriviti",
-  newsletterSuccess: "La tua richiesta di iscrizione è pronta nella tua email.",
+  newsletterSuccess: "La tua iscrizione è stata registrata.",
+  newsletterError: "Si è verificato un errore. Riprova.",
+  newsletterRateLimit: "Troppi tentativi. Riprova tra qualche minuto.",
   navTitle: "Navigazione",
   navLinks: [
     { label: "Home", href: "/it/" },
@@ -176,7 +184,9 @@ const NL: FooterCopy = {
   newsletterText: "Blijf op de hoogte van nieuw geselecteerde projecten in Marrakech.",
   newsletterPlaceholder: "uw@email.com",
   newsletterButton: "Inschrijven",
-  newsletterSuccess: "Uw inschrijvingsaanvraag staat klaar in uw e-mailprogramma.",
+  newsletterSuccess: "Uw inschrijving is geregistreerd.",
+  newsletterError: "Er is iets misgegaan. Probeer het opnieuw.",
+  newsletterRateLimit: "Te veel pogingen. Probeer het over enkele minuten opnieuw.",
   navTitle: "Navigatie",
   navLinks: [
     { label: "Home", href: "/nl/" },

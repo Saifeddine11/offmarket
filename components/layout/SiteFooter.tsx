@@ -59,11 +59,14 @@ export function SiteFooter({
             <p className="om-footer__headline">{copy.brandHeadline}</p>
             <p className="om-footer__support">{copy.brandSupport}</p>
             <FooterNewsletter
+              locale={locale}
               title={copy.newsletterTitle}
               text={copy.newsletterText}
               placeholder={copy.newsletterPlaceholder}
               buttonLabel={copy.newsletterButton}
               successMessage={copy.newsletterSuccess}
+              errorMessage={copy.newsletterError}
+              rateLimitMessage={copy.newsletterRateLimit}
             />
           </div>
 
