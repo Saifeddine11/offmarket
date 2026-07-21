@@ -115,7 +115,7 @@ export function MarketDemandGraph({
         role="img"
         aria-label={graphLabel}
       >
-        <title>{graphLabel}</title>
+        {/* Do not render <title> here — in the App Router it can override the document title. */}
 
         {[0.25, 0.5, 0.75, 1].map((t) => {
           const y = PAD_T + (VIEW_H - PAD_T - PAD_B) * (1 - t);
