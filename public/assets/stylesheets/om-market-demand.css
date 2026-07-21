@@ -849,4 +849,14 @@
     opacity: 1 !important;
     transform: none !important;
   }
+
+  .om-market-demand__graph .om-market-demand__value.is-collapsed {
+    opacity: 0 !important;
+  }
+
+  .om-market-demand__graph.is-hovering
+    .om-market-demand__point-group.is-active
+    .om-market-demand__value.is-collapsed {
+    opacity: 1 !important;
+  }
 }
