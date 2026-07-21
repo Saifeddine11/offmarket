@@ -83,6 +83,9 @@ const LAYOUT_MOBILE: ChartLayout = {
 /** Permanent % labels on narrow screens; others via touch/focus. */
 const MOBILE_PINNED_VALUE_YEARS = new Set([2022, 2025, 2028, 2030]);
 
+/** Permanent year axis labels on narrow screens; others via touch/focus. */
+const MOBILE_PINNED_YEAR_LABELS = new Set([2022, 2024, 2026, 2030]);
+
 const MOBILE_MQ = "(max-width: 759px)";
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
@@ -429,6 +432,9 @@ export function MarketDemandGraph({
             const pinValue =
               !isMobile || MOBILE_PINNED_VALUE_YEARS.has(point.year);
             const valueCollapsed = isMobile && !pinValue;
+            const pinYear =
+              !isMobile || MOBILE_PINNED_YEAR_LABELS.has(point.year);
+            const yearCollapsed = isMobile && !pinYear;
 
             return (
               <g
@@ -505,12 +511,14 @@ export function MarketDemandGraph({
                     "om-market-demand__year",
                     point.projected ? "om-market-demand__year--projected" : "",
                     point.isAnchor ? "om-market-demand__year--anchor" : "",
+                    yearCollapsed ? "is-collapsed" : "",
                   ]
                     .filter(Boolean)
                     .join(" ")}
                   x={point.x}
                   y={layout.viewH - layout.yearY}
                   textAnchor="middle"
+                  aria-hidden={yearCollapsed && !isActive ? true : undefined}
                 >
                   {point.year}
                 </text>
