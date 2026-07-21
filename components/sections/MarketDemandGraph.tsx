@@ -62,22 +62,22 @@ const LAYOUT_DESKTOP: ChartLayout = {
 };
 
 /**
- * Mobile — wider horizontal viewBox, shorter on-screen height (~300–340px).
- * Generous side pads keep 2022 / 2030 clear; yHeadroom softens the rise.
+ * Mobile — landscape viewBox, uniform scale (no stretch).
+ * Full content width; progressive rise without horizontal crush.
  */
 const LAYOUT_MOBILE: ChartLayout = {
-  viewW: 920,
-  viewH: 400,
-  padL: 52,
-  padR: 52,
-  padT: 26,
-  padB: 44,
-  dotR: 7,
+  viewW: 780,
+  viewH: 540,
+  padL: 34,
+  padR: 34,
+  padT: 38,
+  padB: 48,
+  dotR: 9,
   hitR: 30,
-  valueOffset: 13,
-  yearY: 15,
-  captionLift: 14,
-  yHeadroom: 0.28,
+  valueOffset: 14,
+  yearY: 16,
+  captionLift: 16,
+  yHeadroom: 0.12,
 };
 
 /** Permanent % labels on narrow screens; others via touch/focus. */
@@ -352,7 +352,7 @@ export function MarketDemandGraph({
         ref={svgRef}
         className="om-market-demand__svg"
         viewBox={`0 0 ${layout.viewW} ${layout.viewH}`}
-        preserveAspectRatio={isMobile ? "none" : "xMidYMid meet"}
+        preserveAspectRatio="xMidYMid meet"
         role="img"
         aria-label={svgTitle}
         aria-labelledby={`${titleId} ${descId}`}

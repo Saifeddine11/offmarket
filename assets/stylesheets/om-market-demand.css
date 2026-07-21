@@ -734,15 +734,16 @@
   }
 
   /*
-   * Mobile chart: full width, ~300–340px tall, wider horizontal feel.
-   * viewBox 920×400 + mild none-fill; Y headroom in JS flattens the rise.
+   * Mobile chart: full card width, uniform scale (no horizontal crush).
+   * Aspect matches LAYOUT_MOBILE viewBox 780×540 → ~250@360 · ~270@390 · ~298@430.
    */
   .om-market-demand__svg {
+    display: block;
     width: 100%;
     max-width: 100%;
-    height: clamp(300px, 84vw, 340px);
-    max-height: 340px;
-    aspect-ratio: auto;
+    height: auto;
+    max-height: none;
+    aspect-ratio: 780 / 540;
     overflow: visible;
   }
 
@@ -819,9 +820,11 @@
   }
 
   .om-market-demand__svg {
-    height: clamp(300px, 88vw, 340px);
-    max-height: 340px;
-    aspect-ratio: auto;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: 780 / 540;
   }
 
   .om-market-demand__year {
