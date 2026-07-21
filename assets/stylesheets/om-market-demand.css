@@ -13,14 +13,10 @@
   --om-md-page: var(--om-ivory, #f5f4f2);
   --om-md-beige: var(--om-sand, #d6c0b1);
   --om-md-grid: rgba(17, 17, 17, 0.05);
-  /*
-   * OffMarket brand red — original --om-red / --om-ruby-800 / --mv-deep-red
-   * from this repo’s design tokens (#700015), before the Mavericks olive remap.
-   * Do not substitute purple/blue/green/gold.
-   */
-  --om-md-accent: #700015;
-  --om-md-accent-rgb: 112, 0, 21;
-  --om-md-area: rgba(var(--om-md-accent-rgb), 0.05);
+  /* Accent: existing OffMarket green token (--om-green) */
+  --om-md-accent: var(--om-green, #4fd08a);
+  --om-md-accent-rgb: 79, 208, 138;
+  --om-md-area: rgba(var(--om-md-accent-rgb), 0.08);
   --om-md-shadow: 0 12px 32px rgba(17, 17, 17, 0.03);
   --om-md-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
