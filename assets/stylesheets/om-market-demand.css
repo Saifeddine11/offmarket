@@ -1,6 +1,6 @@
 /**
  * OffMarket — Market demand section
- * Minimal editorial panel · brand accent (`--om-red`) · custom SVG curve.
+ * Minimal editorial panel · brand accent (`--om-green`) · custom SVG curve.
  * Scoped to .om-market-demand.
  */
 
@@ -403,7 +403,7 @@
   font-weight: 600;
 }
 
-/* Marrakech stays brand red even when another point is active */
+/* Marrakech stays brand green even when another point is active */
 .om-market-demand__graph.is-hovering .om-market-demand__point-group--peak.is-dimmed .om-market-demand__dot--peak {
   fill: var(--om-md-accent);
   stroke: var(--om-md-accent);

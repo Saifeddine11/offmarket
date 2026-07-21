@@ -111,7 +111,7 @@ function nearestPointIndex(
 
 /**
  * Custom SVG demand curve — one upward entrance + restrained hover.
- * Marrakech stays brand-accent (`--om-red`) by default.
+ * Marrakech stays brand-accent (`--om-green`) by default.
  */
 export function MarketDemandGraph({
   cities,
