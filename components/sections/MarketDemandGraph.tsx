@@ -78,24 +78,34 @@ function nearestPointIndex(
   svgX: number,
   svgY: number,
 ): number | null {
+  // Prefer nearest city by X when the pointer is within the plot band
+  // (generous hit area around the line / points).
+  const inBand =
+    svgY >= PAD_T - HIT_R && svgY <= BASELINE_Y + HIT_R * 0.75;
+
+  if (inBand) {
+    let best = 0;
+    let bestDx = Math.abs(points[0].x - svgX);
+    for (let i = 1; i < points.length; i += 1) {
+      const dx = Math.abs(points[i].x - svgX);
+      if (dx < bestDx) {
+        bestDx = dx;
+        best = i;
+      }
+    }
+    // Require reasonable proximity to the series
+    if (bestDx <= HIT_R * 1.35) return best;
+  }
+
   let best = -1;
   let bestDist = Number.POSITIVE_INFINITY;
-
   for (let i = 0; i < points.length; i += 1) {
-    const dx = points[i].x - svgX;
-    const dy = points[i].y - svgY;
-    const dist = Math.hypot(dx, dy);
-    const verticalNear =
-      Math.abs(dx) < HIT_R * 0.85 &&
-      svgY >= points[i].y - HIT_R &&
-      svgY <= BASELINE_Y + 8;
-    const score = verticalNear ? Math.abs(dx) : dist;
-    if ((dist <= HIT_R || verticalNear) && score < bestDist) {
-      bestDist = score;
+    const dist = Math.hypot(points[i].x - svgX, points[i].y - svgY);
+    if (dist <= HIT_R && dist < bestDist) {
+      bestDist = dist;
       best = i;
     }
   }
-
   return best >= 0 ? best : null;
 }
 

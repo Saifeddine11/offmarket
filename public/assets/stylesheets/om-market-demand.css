@@ -11,10 +11,16 @@
   --om-md-line: rgba(17, 17, 17, 0.1);
   --om-md-panel: var(--om-white, #ffffff);
   --om-md-page: var(--om-ivory, #f5f4f2);
+  --om-md-beige: var(--om-sand, #d6c0b1);
   --om-md-grid: rgba(17, 17, 17, 0.05);
-  --om-md-area: rgba(var(--om-red-rgb, 86, 84, 73), 0.055);
-  --om-md-accent: var(--om-red, #565449);
-  --om-md-accent-rgb: var(--om-red-rgb, 86, 84, 73);
+  /*
+   * OffMarket brand red — original --om-red / --om-ruby-800 / --mv-deep-red
+   * from this repo’s design tokens (#700015), before the Mavericks olive remap.
+   * Do not substitute purple/blue/green/gold.
+   */
+  --om-md-accent: #700015;
+  --om-md-accent-rgb: 112, 0, 21;
+  --om-md-area: rgba(var(--om-md-accent-rgb), 0.05);
   --om-md-shadow: 0 12px 32px rgba(17, 17, 17, 0.03);
   --om-md-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -36,10 +42,13 @@
 
 .om-market-demand__panel {
   background: var(--om-md-panel);
-  border: 1px solid var(--om-md-line);
+  border: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: clamp(22px, 2.2vw, 30px);
   box-shadow: var(--om-md-shadow);
   padding: clamp(2rem, 3.8vw, 3.25rem) clamp(2rem, 4vw, 3.5rem);
+  /* Whisper of warm beige from the design system */
+  outline: 1px solid rgba(214, 192, 177, 0.18);
+  outline-offset: -1px;
 }
 
 .om-market-demand__layout {
@@ -208,7 +217,7 @@
 }
 
 .om-market-demand__halo {
-  fill: rgba(var(--om-md-accent-rgb), 0.12);
+  fill: rgba(var(--om-md-accent-rgb), 0.14);
   pointer-events: none;
 }
 
@@ -370,7 +379,17 @@
 /* ── Hover ── */
 
 .om-market-demand__graph.is-hovering .om-market-demand__point-group.is-dimmed {
-  opacity: 0.38 !important;
+  opacity: 0.42 !important;
+}
+
+.om-market-demand__graph.is-hovering .om-market-demand__point-group.is-dimmed .om-market-demand__dot {
+  fill: #f3f2f0;
+  stroke: rgba(17, 17, 17, 0.28);
+}
+
+.om-market-demand__graph.is-hovering .om-market-demand__point-group.is-dimmed .om-market-demand__value,
+.om-market-demand__graph.is-hovering .om-market-demand__point-group.is-dimmed .om-market-demand__city {
+  fill: rgba(17, 17, 17, 0.32);
 }
 
 .om-market-demand__graph.is-hovering .om-market-demand__point-group.is-active .om-market-demand__dot {
@@ -388,9 +407,20 @@
   font-weight: 600;
 }
 
+/* Marrakech stays brand red even when another point is active */
 .om-market-demand__graph.is-hovering .om-market-demand__point-group--peak.is-dimmed .om-market-demand__dot--peak {
   fill: var(--om-md-accent);
   stroke: var(--om-md-accent);
+  opacity: 0.72;
+}
+
+.om-market-demand__graph.is-hovering .om-market-demand__point-group--peak.is-dimmed .om-market-demand__value--peak {
+  fill: var(--om-md-accent);
+  opacity: 0.72;
+}
+
+.om-market-demand__graph.is-hovering .om-market-demand__point-group--peak.is-dimmed .om-market-demand__halo {
+  opacity: 0.45;
 }
 
 @keyframes om-md-stagger {
@@ -473,25 +503,31 @@
   }
 }
 
-@media (max-width: 1100px) {
+/* Tablet — keep two columns while readable */
+@media (max-width: 1100px) and (min-width: 760px) {
   .om-market-demand__panel {
-    padding: clamp(1.65rem, 3.2vw, 2.35rem);
+    padding: clamp(1.55rem, 2.8vw, 2.15rem) clamp(1.55rem, 3vw, 2.35rem);
   }
 
   .om-market-demand__layout {
-    gap: 1.5rem;
+    grid-template-columns: minmax(0, 0.36fr) 1px minmax(0, 0.64fr);
+    gap: 1.35rem;
   }
 
   .om-market-demand__title {
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+  }
+
+  .om-market-demand__metric-value {
+    font-size: clamp(1.2rem, 1.6vw, 1.45rem);
   }
 
   .om-market-demand__svg {
-    max-height: 300px;
+    max-height: 290px;
   }
 }
 
-@media (max-width: 879px) {
+@media (max-width: 759px) {
   .om-market-demand {
     padding: clamp(2.75rem, 7vw, 4.25rem) 0;
   }
@@ -499,6 +535,7 @@
   .om-market-demand__panel {
     padding: clamp(1.4rem, 4.5vw, 1.85rem);
     border-radius: 22px;
+    outline: none;
   }
 
   .om-market-demand__layout {
