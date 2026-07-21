@@ -40,6 +40,8 @@ type HomePageContentProps = {
 
 const HOME_LEAD_QUESTIONNAIRE_STYLES =
   "/assets/stylesheets/om-contact-page.css?v=1767552000";
+const HOME_MARKET_DEMAND_STYLES =
+  "/assets/stylesheets/om-market-demand.css?v=1765602100";
 
 function resolveContentLocale(content: PageContent): SiteLocale {
   return content.htmlLang === "en" ||
@@ -57,6 +59,14 @@ function withLeadQuestionnaireStyles(content: PageContent): PageContent {
   return { ...content, stylesheets: [...styles, HOME_LEAD_QUESTIONNAIRE_STYLES] };
 }
 
+function withMarketDemandStyles(content: PageContent): PageContent {
+  const styles = content.stylesheets ?? [];
+  if (styles.some((href) => href.includes("om-market-demand.css"))) {
+    return content;
+  }
+  return { ...content, stylesheets: [...styles, HOME_MARKET_DEMAND_STYLES] };
+}
+
 /**
  * French / locale homepages — structured content from content/pages/home-*.json.
  * Body segments preserve exact legacy markup, classes, and script order.
@@ -66,7 +76,9 @@ export function HomePageContent({
   includeFaqSection = false,
 }: HomePageContentProps) {
   const locale = resolveContentLocale(content);
-  const contentWithLeadStyles = withLeadQuestionnaireStyles(content);
+  const contentWithLeadStyles = withMarketDemandStyles(
+    withLeadQuestionnaireStyles(content),
+  );
   const optimizedContent = stripDuplicateHeadInit({
     ...contentWithLeadStyles,
     stylesheets: prioritizeHomepageStylesheets(

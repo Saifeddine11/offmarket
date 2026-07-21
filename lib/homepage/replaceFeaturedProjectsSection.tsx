@@ -1,5 +1,6 @@
 import { FeaturedProjectsSection } from "@/components/sections/FeaturedProjectsSection";
 import type { FeaturedProjectsSectionProps } from "@/components/sections/FeaturedProjectsSection";
+import { MarketDemandSection } from "@/components/sections/MarketDemandSection";
 import type { BodySegment } from "@/lib/static-html/parsePage";
 
 function findFeaturedSectionEnd(html: string, startIndex: number): number {
@@ -99,8 +100,16 @@ export function replaceFeaturedProjectsSection(
 
     result.push({
       kind: "react",
-      key: "featured-projects",
+      key: `featured-projects-${locale ?? "fr"}`,
       element: <FeaturedProjectsSection {...props} locale={locale} />,
+    });
+
+    // Shared market-demand panel — once, immediately after the listing closes,
+    // before territories / remaining homepage HTML for every locale.
+    result.push({
+      kind: "react",
+      key: `market-demand-${locale ?? "fr"}`,
+      element: <MarketDemandSection locale={locale} />,
     });
 
     if (after) {
