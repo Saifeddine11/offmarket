@@ -17,32 +17,32 @@ export const DEMAND_DATA: readonly DemandPoint[] = [
 export type MarketDemandMetric = {
   value: string;
   label: string;
-  detail: string;
+  accent?: boolean;
 };
 
 export type MarketDemandCopy = {
-  ariaLabel: string;
   eyebrow: string;
   title: string;
   lead: string;
-  secondaryTitle: string;
-  secondaryLead: string;
   graphLabel: string;
+  svgTitle: string;
+  svgDesc: string;
+  summary: string;
   cities: Record<DemandPoint["cityKey"], string>;
   metrics: readonly [MarketDemandMetric, MarketDemandMetric, MarketDemandMetric];
 };
 
 export const MARKET_DEMAND_COPY: Record<SiteLocale, MarketDemandCopy> = {
   fr: {
-    ariaLabel: "Lecture du marché immobilier",
     eyebrow: "LECTURE DU MARCHÉ",
-    title: "La demande se concentre là où l’offre se raréfie.",
-    lead:
-      "Parmi cinq grandes villes marocaines, Marrakech affiche la progression la plus nette. Une demande en hausse face à une offre limitée, notamment sur les biens proposés hors marché.",
-    secondaryTitle: "Un écart qui se creuse.",
-    secondaryLead:
-      "La courbe compare l’évolution relative de la demande. Marrakech termine à +42 %, devant Agadir à +28 %.",
-    graphLabel: "VARIATION RELATIVE DE LA DEMANDE",
+    title: "Marrakech prend de l’avance.",
+    lead: "La demande progresse plus vite que dans les autres grandes villes marocaines.",
+    graphLabel: "ÉVOLUTION DE LA DEMANDE",
+    svgTitle: "Évolution de la demande par ville",
+    svgDesc:
+      "Courbe de la demande relative : Rabat +2 %, Casablanca +9 %, Tanger +18 %, Agadir +28 %, Marrakech +42 %.",
+    summary:
+      "Parmi cinq villes, Marrakech enregistre la plus forte progression de la demande à +42 %, devant Agadir à +28 %.",
     cities: {
       rabat: "Rabat",
       casablanca: "Casablanca",
@@ -51,33 +51,21 @@ export const MARKET_DEMAND_COPY: Record<SiteLocale, MarketDemandCopy> = {
       marrakech: "Marrakech",
     },
     metrics: [
-      {
-        value: "+42 %",
-        label: "Marrakech",
-        detail: "Plus forte progression",
-      },
-      {
-        value: "5",
-        label: "villes",
-        detail: "Comparées sur la même base",
-      },
-      {
-        value: "+14 pts",
-        label: "d’écart",
-        detail: "Avec Agadir, deuxième",
-      },
+      { value: "+42 %", label: "Marrakech", accent: true },
+      { value: "5", label: "villes comparées" },
+      { value: "+14 pts", label: "devant Agadir" },
     ],
   },
   en: {
-    ariaLabel: "Real-estate market reading",
     eyebrow: "MARKET READING",
-    title: "Demand concentrates where supply grows scarce.",
-    lead:
-      "Among five major Moroccan cities, Marrakech shows the clearest rise. Demand is climbing against limited supply — especially on properties offered off-market.",
-    secondaryTitle: "A gap that keeps widening.",
-    secondaryLead:
-      "The curve compares relative demand growth. Marrakech ends at +42%, ahead of Agadir at +28%.",
-    graphLabel: "RELATIVE DEMAND VARIATION",
+    title: "Marrakech pulls ahead.",
+    lead: "Demand is rising faster here than in other major Moroccan cities.",
+    graphLabel: "DEMAND TREND",
+    svgTitle: "Demand trend by city",
+    svgDesc:
+      "Relative demand curve: Rabat +2%, Casablanca +9%, Tangier +18%, Agadir +28%, Marrakech +42%.",
+    summary:
+      "Among five cities, Marrakech leads demand growth at +42%, ahead of Agadir at +28%.",
     cities: {
       rabat: "Rabat",
       casablanca: "Casablanca",
@@ -86,33 +74,21 @@ export const MARKET_DEMAND_COPY: Record<SiteLocale, MarketDemandCopy> = {
       marrakech: "Marrakech",
     },
     metrics: [
-      {
-        value: "+42%",
-        label: "Marrakech",
-        detail: "Strongest progression",
-      },
-      {
-        value: "5",
-        label: "cities",
-        detail: "Compared on the same basis",
-      },
-      {
-        value: "+14 pts",
-        label: "gap",
-        detail: "Versus Agadir, second",
-      },
+      { value: "+42%", label: "Marrakech", accent: true },
+      { value: "5", label: "cities compared" },
+      { value: "+14 pts", label: "ahead of Agadir" },
     ],
   },
   it: {
-    ariaLabel: "Lettura del mercato immobiliare",
     eyebrow: "LETTURA DI MERCATO",
-    title: "La domanda si concentra dove l’offerta si rarefà.",
-    lead:
-      "Tra cinque grandi città marocchine, Marrakech mostra la progressione più netta. Una domanda in crescita di fronte a un’offerta limitata, soprattutto sui beni proposti fuori mercato.",
-    secondaryTitle: "Uno scarto che si allarga.",
-    secondaryLead:
-      "La curva confronta l’evoluzione relativa della domanda. Marrakech chiude a +42 %, davanti ad Agadir a +28 %.",
-    graphLabel: "VARIAZIONE RELATIVA DELLA DOMANDA",
+    title: "Marrakech prende il largo.",
+    lead: "La domanda cresce più in fretta che nelle altre grandi città marocchine.",
+    graphLabel: "EVOLUZIONE DELLA DOMANDA",
+    svgTitle: "Evoluzione della domanda per città",
+    svgDesc:
+      "Curva della domanda relativa: Rabat +2 %, Casablanca +9 %, Tangeri +18 %, Agadir +28 %, Marrakech +42 %.",
+    summary:
+      "Tra cinque città, Marrakech registra la crescita di domanda più forte a +42 %, davanti ad Agadir a +28 %.",
     cities: {
       rabat: "Rabat",
       casablanca: "Casablanca",
@@ -121,33 +97,21 @@ export const MARKET_DEMAND_COPY: Record<SiteLocale, MarketDemandCopy> = {
       marrakech: "Marrakech",
     },
     metrics: [
-      {
-        value: "+42 %",
-        label: "Marrakech",
-        detail: "Progressione più forte",
-      },
-      {
-        value: "5",
-        label: "città",
-        detail: "Confrontate sulla stessa base",
-      },
-      {
-        value: "+14 pts",
-        label: "di scarto",
-        detail: "Con Agadir, seconda",
-      },
+      { value: "+42 %", label: "Marrakech", accent: true },
+      { value: "5", label: "città confrontate" },
+      { value: "+14 pts", label: "davanti ad Agadir" },
     ],
   },
   nl: {
-    ariaLabel: "Vastgoedmarktlezing",
     eyebrow: "MARKTLEZING",
-    title: "De vraag concentreert zich waar het aanbod schaarser wordt.",
-    lead:
-      "Onder vijf grote Marokkaanse steden toont Marrakech de duidelijkste stijging. Vraag die toeneemt tegenover beperkt aanbod — vooral bij off-market aanbod.",
-    secondaryTitle: "Een kloof die groter wordt.",
-    secondaryLead:
-      "De curve vergelijkt de relatieve vraagontwikkeling. Marrakech eindigt op +42 %, vóór Agadir op +28 %.",
-    graphLabel: "RELATIEVE VRAAGVARIATIE",
+    title: "Marrakech trekt vooruit.",
+    lead: "De vraag stijgt hier sneller dan in andere grote Marokkaanse steden.",
+    graphLabel: "VRAAGONTWIKKELING",
+    svgTitle: "Vraagontwikkeling per stad",
+    svgDesc:
+      "Relatieve vraagcurve: Rabat +2 %, Casablanca +9 %, Tanger +18 %, Agadir +28 %, Marrakech +42 %.",
+    summary:
+      "Onder vijf steden toont Marrakech de sterkste vraagstijging op +42 %, vóór Agadir op +28 %.",
     cities: {
       rabat: "Rabat",
       casablanca: "Casablanca",
@@ -156,21 +120,9 @@ export const MARKET_DEMAND_COPY: Record<SiteLocale, MarketDemandCopy> = {
       marrakech: "Marrakech",
     },
     metrics: [
-      {
-        value: "+42 %",
-        label: "Marrakech",
-        detail: "Sterkste progressie",
-      },
-      {
-        value: "5",
-        label: "steden",
-        detail: "Vergelijkbaar op dezelfde basis",
-      },
-      {
-        value: "+14 pts",
-        label: "verschil",
-        detail: "Met Agadir, tweede",
-      },
+      { value: "+42 %", label: "Marrakech", accent: true },
+      { value: "5", label: "steden vergeleken" },
+      { value: "+14 pts", label: "vóór Agadir" },
     ],
   },
 };

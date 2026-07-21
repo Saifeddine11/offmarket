@@ -1,35 +1,54 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 
+import { useOnceInView } from "@/hooks/useOnceInView";
 import { DEMAND_DATA, type DemandPoint } from "@/lib/i18n/marketDemandCopy";
 
 type MarketDemandGraphProps = {
   cities: Record<DemandPoint["cityKey"], string>;
   graphLabel: string;
+  svgTitle: string;
+  svgDesc: string;
 };
 
-const VIEW_W = 720;
-const VIEW_H = 310;
-const PAD_L = 22;
-const PAD_R = 26;
-const PAD_T = 38;
-const PAD_B = 44;
-const DOT_R = 4.5;
-/** Marrakech point ~30% larger than other cities. */
-const DOT_R_PEAK = DOT_R * 1.3;
-
+const VIEW_W = 760;
+const VIEW_H = 340;
+const PAD_L = 28;
+const PAD_R = 32;
+const PAD_T = 42;
+const PAD_B = 48;
+const DOT_R = 4.75;
+/** Marrakech ~35% larger than standard points. */
+const DOT_R_PEAK = DOT_R * 1.35;
+const HIT_R = 28;
+const BASELINE_Y = VIEW_H - PAD_B;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+
+type PlotPoint = DemandPoint & {
+  x: number;
+  y: number;
+  label: string;
+  index: number;
+};
 
 function buildGeometry(data: readonly DemandPoint[]) {
   const max = Math.max(...data.map((d) => d.value));
   const spanX = VIEW_W - PAD_L - PAD_R;
   const spanY = VIEW_H - PAD_T - PAD_B;
 
-  const points = data.map((d, index) => {
+  const points: PlotPoint[] = data.map((d, index) => {
     const x = PAD_L + (spanX * index) / (data.length - 1);
     const y = PAD_T + spanY * (1 - d.value / max);
-    return { ...d, x, y, label: `+${d.value}%` };
+    return { ...d, x, y, label: `+${d.value}%`, index };
   });
 
   const linePath = points
@@ -37,9 +56,9 @@ function buildGeometry(data: readonly DemandPoint[]) {
     .join(" ");
 
   const areaPath = [
-    `M ${points[0].x.toFixed(2)} ${(VIEW_H - PAD_B).toFixed(2)}`,
+    `M ${points[0].x.toFixed(2)} ${BASELINE_Y.toFixed(2)}`,
     ...points.map((p) => `L ${p.x.toFixed(2)} ${p.y.toFixed(2)}`),
-    `L ${points[points.length - 1].x.toFixed(2)} ${(VIEW_H - PAD_B).toFixed(2)}`,
+    `L ${points[points.length - 1].x.toFixed(2)} ${BASELINE_Y.toFixed(2)}`,
     "Z",
   ].join(" ");
 
@@ -54,93 +73,132 @@ function buildGeometry(data: readonly DemandPoint[]) {
   return { points, linePath, areaPath, lineLength };
 }
 
+function nearestPointIndex(
+  points: readonly PlotPoint[],
+  svgX: number,
+  svgY: number,
+): number | null {
+  let best = -1;
+  let bestDist = Number.POSITIVE_INFINITY;
+
+  for (let i = 0; i < points.length; i += 1) {
+    const dx = points[i].x - svgX;
+    const dy = points[i].y - svgY;
+    const dist = Math.hypot(dx, dy);
+    const verticalNear =
+      Math.abs(dx) < HIT_R * 0.85 &&
+      svgY >= points[i].y - HIT_R &&
+      svgY <= BASELINE_Y + 8;
+    const score = verticalNear ? Math.abs(dx) : dist;
+    if ((dist <= HIT_R || verticalNear) && score < bestDist) {
+      bestDist = score;
+      best = i;
+    }
+  }
+
+  return best >= 0 ? best : null;
+}
+
 /**
- * Custom SVG demand curve.
- * One upward entrance when #market-demand enters the viewport:
- * plot rises → line draws L→R → area reveals → points → labels → Marrakech last.
+ * Custom SVG demand curve — one upward entrance + restrained hover.
+ * Marrakech stays brand-accent (`--om-red`) by default.
  */
 export function MarketDemandGraph({
   cities,
   graphLabel,
+  svgTitle,
+  svgDesc,
 }: MarketDemandGraphProps) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const [animated, setAnimated] = useState(false);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [settled, setSettled] = useState(false);
+  const { visible, reducedMotion } = useOnceInView({
+    targetId: "market-demand",
+    fallbackRef: rootRef,
+  });
+
   const { points, linePath, areaPath, lineLength } = useMemo(
     () => buildGeometry(DEMAND_DATA),
     [],
   );
 
+  const peakIndex = points.length - 1;
+  const titleId = "om-md-svg-title";
+  const descId = "om-md-svg-desc";
+
   useEffect(() => {
-    const section = document.getElementById("market-demand");
-    const target = section ?? rootRef.current;
-    if (!target) {
+    if (!visible) return;
+    if (reducedMotion) {
       setSettled(true);
       return;
     }
+    const id = window.setTimeout(() => setSettled(true), 2100);
+    return () => window.clearTimeout(id);
+  }, [visible, reducedMotion]);
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      setAnimated(true);
-      setSettled(true);
-      return;
-    }
+  // Inject SVG <title>/<desc> client-side only — React/App Router treats
+  // SSR <title> as the document title.
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
 
-    let started = false;
-    const start = () => {
-      if (started) return;
-      started = true;
-      setAnimated(true);
-      window.setTimeout(() => setSettled(true), 2200);
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          start();
-          observer.disconnect();
-        }
-      },
-      { threshold: [0, 0.12, 0.25], rootMargin: "0px 0px -8% 0px" },
-    );
-
-    observer.observe(target);
-
-    const rect = target.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.82 && rect.bottom > window.innerHeight * 0.12) {
-      start();
-      observer.disconnect();
-    }
-
-    const fallbackId = window.setTimeout(() => {
-      if (!started) {
-        setAnimated(true);
-        setSettled(true);
+    const ensure = (tag: "title" | "desc", id: string, text: string) => {
+      let node = svg.querySelector(
+        `:scope > ${tag}`,
+      ) as SVGTitleElement | SVGDescElement | null;
+      if (!node) {
+        node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        svg.insertBefore(node, svg.firstChild);
       }
-    }, 2800);
-
-    return () => {
-      observer.disconnect();
-      window.clearTimeout(fallbackId);
+      node.setAttribute("id", id);
+      node.textContent = text;
     };
-  }, []);
+
+    ensure("title", titleId, svgTitle);
+    ensure("desc", descId, svgDesc);
+  }, [svgTitle, svgDesc, titleId, descId]);
+
+  const handlePointerMove = useCallback(
+    (event: ReactPointerEvent<SVGSVGElement>) => {
+      const svg = svgRef.current;
+      if (!svg) return;
+      const rect = svg.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+      const svgX = ((event.clientX - rect.left) / rect.width) * VIEW_W;
+      const svgY = ((event.clientY - rect.top) / rect.height) * VIEW_H;
+      setActiveIndex(nearestPointIndex(points, svgX, svgY));
+    },
+    [points],
+  );
+
+  const clearActive = useCallback(() => setActiveIndex(null), []);
 
   const graphClass = [
     "om-market-demand__graph",
-    animated ? "is-animated" : "",
-    settled ? "is-settled" : "",
+    visible ? "is-animated" : "",
+    settled || reducedMotion ? "is-settled" : "",
+    activeIndex !== null ? "is-hovering" : "",
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <div ref={rootRef} className={graphClass} style={{ ["--om-md-ease" as string]: EASE }}>
+    <div
+      ref={rootRef}
+      className={graphClass}
+      style={{ ["--om-md-ease" as string]: EASE }}
+    >
       <p className="om-market-demand__graph-label">{graphLabel}</p>
       <svg
+        ref={svgRef}
         className="om-market-demand__svg"
         viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
         role="img"
-        aria-label={graphLabel}
+        aria-label={svgTitle}
+        aria-labelledby={`${titleId} ${descId}`}
+        onPointerMove={handlePointerMove}
+        onPointerLeave={clearActive}
       >
         {[0.25, 0.5, 0.75, 1].map((t) => {
           const y = PAD_T + (VIEW_H - PAD_T - PAD_B) * (1 - t);
@@ -169,43 +227,76 @@ export function MarketDemandGraph({
             }
           />
 
-          {points.map((point, index) => {
-            const isLast = index === points.length - 1;
+          {activeIndex !== null ? (
+            <line
+              className="om-market-demand__guide"
+              x1={points[activeIndex].x}
+              x2={points[activeIndex].x}
+              y1={points[activeIndex].y}
+              y2={BASELINE_Y}
+            />
+          ) : null}
+
+          {points.map((point) => {
+            const isPeak = point.index === peakIndex;
+            const isActive = activeIndex === point.index;
+            const isDimmed =
+              activeIndex !== null && activeIndex !== point.index;
+
             return (
               <g
                 key={point.cityKey}
-                className={
-                  isLast
-                    ? "om-market-demand__point-group om-market-demand__point-group--peak"
-                    : "om-market-demand__point-group"
+                className={[
+                  "om-market-demand__point-group",
+                  isPeak ? "om-market-demand__point-group--peak" : "",
+                  isActive ? "is-active" : "",
+                  isDimmed ? "is-dimmed" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                style={
+                  { ["--om-md-point-index"]: point.index } as CSSProperties
                 }
-                style={{ ["--om-md-point-index"]: index } as CSSProperties}
               >
+                {isPeak ? (
+                  <circle
+                    className="om-market-demand__halo"
+                    cx={point.x}
+                    cy={point.y}
+                    r={DOT_R_PEAK * 2.4}
+                  />
+                ) : null}
+                <circle
+                  className="om-market-demand__hit"
+                  cx={point.x}
+                  cy={point.y}
+                  r={HIT_R}
+                />
                 <circle
                   className={
-                    isLast
+                    isPeak
                       ? "om-market-demand__dot om-market-demand__dot--peak"
                       : "om-market-demand__dot"
                   }
                   cx={point.x}
                   cy={point.y}
-                  r={isLast ? DOT_R_PEAK : DOT_R}
+                  r={isPeak ? DOT_R_PEAK : DOT_R}
                 />
                 <text
                   className={
-                    isLast
+                    isPeak
                       ? "om-market-demand__value om-market-demand__value--peak"
                       : "om-market-demand__value"
                   }
                   x={point.x}
-                  y={point.y - (isLast ? 15 : 12)}
+                  y={point.y - (isPeak ? 16 : 13)}
                   textAnchor="middle"
                 >
                   {point.label}
                 </text>
                 <text
                   className={
-                    isLast
+                    isPeak
                       ? "om-market-demand__city om-market-demand__city--peak"
                       : "om-market-demand__city"
                   }
