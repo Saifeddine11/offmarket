@@ -13,7 +13,7 @@ function resolveLocale(locale?: string): SiteLocale {
 }
 
 /**
- * Homepage market section — annual transaction variation at Marrakech.
+ * Homepage market section — Marrakech transaction recovery (2023–2025).
  * Inserted once after featured property listings.
  */
 export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
@@ -41,6 +41,13 @@ export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
               locale={resolved}
             />
           </div>
+
+          <details className="om-market-demand__sources">
+            <summary className="om-market-demand__sources-summary">
+              {copy.sourcesTitle}
+            </summary>
+            <p className="om-market-demand__sources-body">{copy.sourcesBody}</p>
+          </details>
         </div>
       </div>
       <p className="om-market-demand__sr-only">{copy.summary}</p>

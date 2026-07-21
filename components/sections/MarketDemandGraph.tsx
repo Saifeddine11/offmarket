@@ -13,7 +13,7 @@ import {
 import { useOnceInView } from "@/hooks/useOnceInView";
 import {
   TRANSACTION_ANCHOR_YEAR,
-  TRANSACTION_HISTORY,
+  VISIBLE_TRANSACTION_HISTORY,
   formatChangePercent,
   type TransactionPoint,
 } from "@/lib/data/demandTimeline";
@@ -147,7 +147,7 @@ export function MarketDemandGraph({
   });
 
   const { points, linePath, areaPath, lineLength, zeroY } = useMemo(
-    () => buildGeometry(TRANSACTION_HISTORY, locale),
+    () => buildGeometry(VISIBLE_TRANSACTION_HISTORY, locale),
     [locale],
   );
 

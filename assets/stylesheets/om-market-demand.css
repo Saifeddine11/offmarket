@@ -326,6 +326,59 @@
   border: 0;
 }
 
+.om-market-demand__sources {
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  padding-top: 1rem;
+  border-top: 1px solid var(--om-md-line);
+}
+
+.om-market-demand__sources-summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--om-font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--om-md-soft);
+  transition: color 180ms var(--om-md-ease);
+}
+
+.om-market-demand__sources-summary::-webkit-details-marker {
+  display: none;
+}
+
+.om-market-demand__sources-summary::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 0.45rem;
+  border-left: 4px solid currentColor;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  vertical-align: 0.1em;
+  transition: transform 180ms var(--om-md-ease);
+}
+
+.om-market-demand__sources[open] .om-market-demand__sources-summary::before {
+  transform: rotate(90deg);
+}
+
+.om-market-demand__sources-summary:hover {
+  color: var(--om-md-muted);
+}
+
+.om-market-demand__sources-body {
+  margin: 0.75rem 0 0;
+  max-width: 62rem;
+  font-family: var(--om-font-body);
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.55;
+  color: var(--om-md-soft);
+}
+
 /* ── Left stagger ── */
 
 .om-market-demand__reveal {
@@ -379,7 +432,7 @@
 
 .om-market-demand__graph.is-animated .om-market-demand__point-group--anchor .om-market-demand__dot {
   animation: om-md-peak-scale 0.5s var(--om-md-ease) both;
-  animation-delay: calc(0.28s + (3 * 0.16s));
+  animation-delay: calc(0.28s + (2 * 0.16s));
 }
 
 .om-market-demand__graph.is-animated .om-market-demand__value {
@@ -395,7 +448,7 @@
 
 .om-market-demand__graph.is-animated .om-market-demand__halo {
   animation: om-md-fade 0.55s var(--om-md-ease) both;
-  animation-delay: calc(0.35s + (3 * 0.16s));
+  animation-delay: calc(0.35s + (2 * 0.16s));
 }
 
 .om-market-demand__graph.is-settled .om-market-demand__plot {
