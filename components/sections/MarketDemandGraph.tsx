@@ -6,6 +6,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
 } from "react";
@@ -28,17 +29,78 @@ type MarketDemandGraphProps = {
   locale: "fr" | "en" | "it" | "nl";
 };
 
-const VIEW_W = 780;
-const VIEW_H = 340;
-const PAD_L = 28;
-const PAD_R = 32;
-const PAD_T = 44;
-const PAD_B = 52;
-const DOT_R = 4;
-const DOT_R_ANCHOR = DOT_R * 1.35;
-const HIT_R = 26;
-const BASELINE_Y = VIEW_H - PAD_B;
+type ChartLayout = {
+  viewW: number;
+  viewH: number;
+  padL: number;
+  padR: number;
+  padT: number;
+  padB: number;
+  dotR: number;
+  hitR: number;
+  valueOffset: number;
+  yearY: number;
+  captionLift: number;
+};
+
+/** Desktop / tablet — unchanged proportions, slightly roomier plot. */
+const LAYOUT_DESKTOP: ChartLayout = {
+  viewW: 780,
+  viewH: 340,
+  padL: 28,
+  padR: 32,
+  padT: 44,
+  padB: 52,
+  dotR: 4,
+  hitR: 26,
+  valueOffset: 12,
+  yearY: 14,
+  captionLift: 18,
+};
+
+/**
+ * Mobile — taller viewBox so full-width SVG lands ~380–430px tall,
+ * tighter pads to cut empty chrome, larger dots for touch readability.
+ * Aspect 780×860 → ~397px @360, ~430px @390, capped @430.
+ */
+const LAYOUT_MOBILE: ChartLayout = {
+  viewW: 780,
+  viewH: 860,
+  padL: 22,
+  padR: 22,
+  padT: 52,
+  padB: 58,
+  dotR: 11,
+  hitR: 34,
+  valueOffset: 18,
+  yearY: 20,
+  captionLift: 28,
+};
+
+const MOBILE_MQ = "(max-width: 759px)";
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+
+function subscribeMobile(onStoreChange: () => void) {
+  const mql = window.matchMedia(MOBILE_MQ);
+  mql.addEventListener("change", onStoreChange);
+  return () => mql.removeEventListener("change", onStoreChange);
+}
+
+function getMobileSnapshot() {
+  return window.matchMedia(MOBILE_MQ).matches;
+}
+
+function getServerMobileSnapshot() {
+  return false;
+}
+
+function useIsMobileLayout() {
+  return useSyncExternalStore(
+    subscribeMobile,
+    getMobileSnapshot,
+    getServerMobileSnapshot,
+  );
+}
 
 type PlotPoint = TimelinePoint & {
   x: number;
@@ -53,19 +115,21 @@ function buildGeometry(
   data: readonly TimelinePoint[],
   locale: MarketDemandGraphProps["locale"],
   baseLabel: string,
+  layout: ChartLayout,
 ) {
+  const { viewW, viewH, padL, padR, padT, padB, captionLift } = layout;
+  const baselineY = viewH - padB;
   const values = data.map((d) => d.cumulativeGrowth);
   const max = Math.max(...values);
-  const min = 0;
-  const spanX = VIEW_W - PAD_L - PAD_R;
-  const spanY = VIEW_H - PAD_T - PAD_B;
+  const spanX = viewW - padL - padR;
+  const spanY = viewH - padT - padB;
   // Leave a little floor so the base point sits above the axis
   const floor = -max * 0.04;
   const range = max - floor;
 
   const points: PlotPoint[] = data.map((d, index) => {
-    const x = PAD_L + (spanX * index) / (data.length - 1);
-    const y = PAD_T + spanY * (1 - (d.cumulativeGrowth - floor) / range);
+    const x = padL + (spanX * index) / (data.length - 1);
+    const y = padT + spanY * (1 - (d.cumulativeGrowth - floor) / range);
     const isBase = d.cumulativeGrowth === 0;
     return {
       ...d,
@@ -95,9 +159,9 @@ function buildGeometry(
   const areaFor = (pts: PlotPoint[]) => {
     if (pts.length < 2) return "";
     return [
-      `M ${pts[0].x.toFixed(2)} ${BASELINE_Y.toFixed(2)}`,
+      `M ${pts[0].x.toFixed(2)} ${baselineY.toFixed(2)}`,
       ...pts.map((p) => `L ${p.x.toFixed(2)} ${p.y.toFixed(2)}`),
-      `L ${pts[pts.length - 1].x.toFixed(2)} ${BASELINE_Y.toFixed(2)}`,
+      `L ${pts[pts.length - 1].x.toFixed(2)} ${baselineY.toFixed(2)}`,
       "Z",
     ].join(" ");
   };
@@ -112,6 +176,7 @@ function buildGeometry(
 
   return {
     points,
+    baselineY,
     lastObservedIdx,
     observedLine: toLine(observedPoints),
     projectedLine: toLine(projectedPoints),
@@ -127,7 +192,7 @@ function buildGeometry(
       Math.min(
         points[lastObservedIdx].y,
         points[Math.min(lastObservedIdx + 1, points.length - 1)].y,
-      ) - 18,
+      ) - captionLift,
   };
 }
 
@@ -135,8 +200,11 @@ function nearestPointIndex(
   points: readonly PlotPoint[],
   svgX: number,
   svgY: number,
+  layout: ChartLayout,
+  baselineY: number,
 ): number | null {
-  const inBand = svgY >= PAD_T - HIT_R && svgY <= BASELINE_Y + HIT_R;
+  const { padT, hitR } = layout;
+  const inBand = svgY >= padT - hitR && svgY <= baselineY + hitR;
   if (inBand) {
     let best = 0;
     let bestDx = Math.abs(points[0].x - svgX);
@@ -147,13 +215,13 @@ function nearestPointIndex(
         best = i;
       }
     }
-    if (bestDx <= HIT_R * 1.35) return best;
+    if (bestDx <= hitR * 1.35) return best;
   }
   let best = -1;
   let bestDist = Number.POSITIVE_INFINITY;
   for (let i = 0; i < points.length; i += 1) {
     const dist = Math.hypot(points[i].x - svgX, points[i].y - svgY);
-    if (dist <= HIT_R && dist < bestDist) {
+    if (dist <= hitR && dist < bestDist) {
       bestDist = dist;
       best = i;
     }
@@ -178,17 +246,20 @@ export function MarketDemandGraph({
   const svgRef = useRef<SVGSVGElement>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [settled, setSettled] = useState(false);
+  const isMobile = useIsMobileLayout();
+  const layout = isMobile ? LAYOUT_MOBILE : LAYOUT_DESKTOP;
   const { visible, reducedMotion } = useOnceInView({
     targetId: "market-demand",
     fallbackRef: rootRef,
   });
 
   const geometry = useMemo(
-    () => buildGeometry(TRANSACTION_TIMELINE, locale, baseLabel),
-    [locale, baseLabel],
+    () => buildGeometry(TRANSACTION_TIMELINE, locale, baseLabel, layout),
+    [locale, baseLabel, layout],
   );
   const {
     points,
+    baselineY,
     observedLine,
     projectedLine,
     observedArea,
@@ -200,6 +271,7 @@ export function MarketDemandGraph({
 
   const titleId = "om-md-svg-title";
   const descId = "om-md-svg-desc";
+  const dotRAnchor = layout.dotR * 1.35;
 
   useEffect(() => {
     if (!visible) return;
@@ -235,17 +307,18 @@ export function MarketDemandGraph({
       if (!svg) return;
       const rect = svg.getBoundingClientRect();
       if (rect.width === 0 || rect.height === 0) return;
-      const svgX = ((event.clientX - rect.left) / rect.width) * VIEW_W;
-      const svgY = ((event.clientY - rect.top) / rect.height) * VIEW_H;
-      setActiveIndex(nearestPointIndex(points, svgX, svgY));
+      const svgX = ((event.clientX - rect.left) / rect.width) * layout.viewW;
+      const svgY = ((event.clientY - rect.top) / rect.height) * layout.viewH;
+      setActiveIndex(nearestPointIndex(points, svgX, svgY, layout, baselineY));
     },
-    [points],
+    [points, layout, baselineY],
   );
 
   const clearActive = useCallback(() => setActiveIndex(null), []);
 
   const graphClass = [
     "om-market-demand__graph",
+    isMobile ? "is-mobile-chart" : "",
     visible ? "is-animated" : "",
     settled || reducedMotion ? "is-settled" : "",
     activeIndex !== null ? "is-hovering" : "",
@@ -266,7 +339,8 @@ export function MarketDemandGraph({
       <svg
         ref={svgRef}
         className="om-market-demand__svg"
-        viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+        viewBox={`0 0 ${layout.viewW} ${layout.viewH}`}
+        preserveAspectRatio={isMobile ? "none" : "xMidYMid meet"}
         role="img"
         aria-label={svgTitle}
         aria-labelledby={`${titleId} ${descId}`}
@@ -274,13 +348,13 @@ export function MarketDemandGraph({
         onPointerLeave={clearActive}
       >
         {[0.25, 0.5, 0.75, 1].map((t) => {
-          const y = PAD_T + (VIEW_H - PAD_T - PAD_B) * (1 - t);
+          const y = layout.padT + (layout.viewH - layout.padT - layout.padB) * (1 - t);
           return (
             <line
               key={t}
               className="om-market-demand__grid-line"
-              x1={PAD_L}
-              x2={VIEW_W - PAD_R}
+              x1={layout.padL}
+              x2={layout.viewW - layout.padR}
               y1={y}
               y2={y}
             />
@@ -325,7 +399,7 @@ export function MarketDemandGraph({
               x1={points[activeIndex].x}
               x2={points[activeIndex].x}
               y1={points[activeIndex].y}
-              y2={BASELINE_Y}
+              y2={baselineY}
             />
           ) : null}
 
@@ -366,14 +440,14 @@ export function MarketDemandGraph({
                     className="om-market-demand__halo"
                     cx={point.x}
                     cy={point.y}
-                    r={DOT_R_ANCHOR * 2.3}
+                    r={dotRAnchor * 2.3}
                   />
                 ) : null}
                 <circle
                   className="om-market-demand__hit"
                   cx={point.x}
                   cy={point.y}
-                  r={HIT_R}
+                  r={layout.hitR}
                 />
                 <circle
                   className={[
@@ -385,7 +459,7 @@ export function MarketDemandGraph({
                     .join(" ")}
                   cx={point.x}
                   cy={point.y}
-                  r={point.isAnchor ? DOT_R_ANCHOR : DOT_R}
+                  r={point.isAnchor ? dotRAnchor : layout.dotR}
                 />
                 <text
                   className={[
@@ -396,7 +470,12 @@ export function MarketDemandGraph({
                     .filter(Boolean)
                     .join(" ")}
                   x={point.x}
-                  y={point.y - (point.isAnchor ? 15 : 12)}
+                  y={
+                    point.y -
+                    (point.isAnchor
+                      ? layout.valueOffset + 3
+                      : layout.valueOffset)
+                  }
                   textAnchor="middle"
                 >
                   {point.label}
@@ -410,7 +489,7 @@ export function MarketDemandGraph({
                     .filter(Boolean)
                     .join(" ")}
                   x={point.x}
-                  y={VIEW_H - 14}
+                  y={layout.viewH - layout.yearY}
                   textAnchor="middle"
                 >
                   {point.year}

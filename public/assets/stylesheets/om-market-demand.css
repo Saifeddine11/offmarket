@@ -69,7 +69,7 @@
 .om-market-demand__eyebrow {
   margin: 0 0 0.85rem;
   font-family: var(--om-font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
   line-height: 1.2;
@@ -80,7 +80,7 @@
 .om-market-demand__title {
   margin: 0 0 0.85rem;
   font-family: var(--om-font-heading);
-  font-size: clamp(1.55rem, 2.3vw, 2.2rem);
+  font-size: clamp(1.69rem, 2.5vw, 2.4rem);
   font-weight: 560;
   letter-spacing: -0.048em;
   line-height: 1.08;
@@ -91,7 +91,7 @@
 .om-market-demand__lead {
   margin: 0;
   font-family: var(--om-font-body);
-  font-size: clamp(14.5px, 1.1vw, 16px);
+  font-size: clamp(15.5px, 1.15vw, 17px);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.5;
@@ -122,7 +122,7 @@
 .om-market-demand__metric-value {
   margin: 0 0 0.25rem;
   font-family: var(--om-font-heading);
-  font-size: clamp(1.15rem, 1.45vw, 1.45rem);
+  font-size: clamp(1.25rem, 1.55vw, 1.55rem);
   font-weight: 560;
   letter-spacing: -0.04em;
   line-height: 1.1;
@@ -136,7 +136,7 @@
 .om-market-demand__metric-label {
   margin: 0;
   font-family: var(--om-font-body);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.25;
@@ -146,7 +146,7 @@
 .om-market-demand__metric-detail {
   margin: 0.1rem 0 0;
   font-family: var(--om-font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: -0.005em;
   line-height: 1.3;
@@ -171,7 +171,7 @@
 .om-market-demand__graph-label {
   margin: 0;
   font-family: var(--om-font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
   line-height: 1.25;
@@ -183,7 +183,7 @@
   margin: 0;
   flex-shrink: 0;
   font-family: var(--om-font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--om-md-soft);
@@ -193,7 +193,7 @@
   display: block;
   width: 100%;
   height: auto;
-  max-height: 340px;
+  max-height: 372px;
   overflow: visible;
   aspect-ratio: 780 / 340;
   cursor: default;
@@ -291,7 +291,7 @@
 .om-market-demand__value {
   fill: rgba(17, 17, 17, 0.78);
   font-family: var(--om-font-heading);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: -0.02em;
   transition: fill 220ms var(--om-md-ease);
@@ -300,7 +300,7 @@
 
 .om-market-demand__value--anchor {
   fill: var(--om-md-accent);
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 650;
 }
 
@@ -312,7 +312,7 @@
 .om-market-demand__year {
   fill: var(--om-md-ink);
   font-family: var(--om-font-body);
-  font-size: 10.5px;
+  font-size: 11.5px;
   font-weight: 540;
   letter-spacing: 0.01em;
   transition: fill 220ms var(--om-md-ease);
@@ -331,7 +331,7 @@
 .om-market-demand__projected-caption {
   fill: var(--om-md-projected-soft);
   font-family: var(--om-font-body);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -648,23 +648,25 @@
   }
 
   .om-market-demand__title {
-    font-size: clamp(1.4rem, 2.3vw, 1.85rem);
+    font-size: clamp(1.52rem, 2.5vw, 2.02rem);
   }
 
   .om-market-demand__svg {
-    max-height: 290px;
+    max-height: 320px;
   }
 }
 
 @media (max-width: 759px) {
   .om-market-demand {
     padding: clamp(2.75rem, 7vw, 4.25rem) 0;
+    overflow-x: clip;
   }
 
   .om-market-demand__panel {
     padding: clamp(1.4rem, 4.5vw, 1.85rem);
     border-radius: 22px;
     outline: none;
+    max-width: 100%;
   }
 
   .om-market-demand__layout {
@@ -682,14 +684,72 @@
     max-width: none;
   }
 
+  .om-market-demand__title {
+    font-size: clamp(1.55rem, 7vw, 1.9rem);
+  }
+
+  .om-market-demand__lead {
+    font-size: clamp(15px, 3.8vw, 16.5px);
+  }
+
+  .om-market-demand__graph {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
   .om-market-demand__graph-head {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.35rem;
+    margin-bottom: 0.45rem;
   }
 
+  .om-market-demand__graph-label {
+    font-size: 12.5px;
+  }
+
+  .om-market-demand__unit-hint {
+    font-size: 12.5px;
+  }
+
+  /*
+   * Mobile chart: full content width, ~380–430px tall.
+   * viewBox 780×860 + preserveAspectRatio none keeps distortion minimal
+   * while guaranteeing height in the requested band at 360–430 viewports.
+   */
   .om-market-demand__svg {
-    max-height: 270px;
+    width: 100%;
+    max-width: 100%;
+    height: clamp(380px, 105vw, 430px);
+    max-height: 430px;
+    aspect-ratio: auto;
+    overflow: visible;
+  }
+
+  .om-market-demand__line--observed {
+    stroke-width: 2.45;
+  }
+
+  .om-market-demand__line--projected {
+    stroke-width: 2.1;
+  }
+
+  .om-market-demand__value {
+    font-size: 13px;
+  }
+
+  .om-market-demand__value--anchor {
+    font-size: 15px;
+  }
+
+  .om-market-demand__year {
+    font-size: 12.5px;
+  }
+
+  .om-market-demand__projected-caption {
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
   }
 }
 
@@ -717,23 +777,29 @@
   }
 
   .om-market-demand__title {
-    font-size: clamp(1.4rem, 6.5vw, 1.75rem);
+    font-size: clamp(1.52rem, 7vw, 1.85rem);
   }
 
   .om-market-demand__svg {
-    max-height: 240px;
+    height: clamp(380px, 108vw, 430px);
+    max-height: 430px;
+    aspect-ratio: auto;
   }
 
   .om-market-demand__year {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .om-market-demand__value {
-    font-size: 11px;
+    font-size: 12.5px;
   }
 
   .om-market-demand__value--anchor {
-    font-size: 12.5px;
+    font-size: 14.5px;
+  }
+
+  .om-market-demand__projected-caption {
+    font-size: 12px;
   }
 }
 
