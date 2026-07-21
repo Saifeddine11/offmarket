@@ -58,7 +58,7 @@ export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
       data-scroll-section
     >
       <div className="om-market-demand__shell">
-        <ScrollReveal className="om-market-demand__panel" y={18} duration={0.55}>
+        <ScrollReveal className="om-market-demand__panel" y={10} duration={0.4}>
           <div className="om-market-demand__layout">
             <MarketDemandEditorial copy={copy} />
             <div className="om-market-demand__divider" aria-hidden="true" />

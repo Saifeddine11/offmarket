@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import { DEMAND_DATA, type DemandPoint } from "@/lib/i18n/marketDemandCopy";
 
@@ -9,12 +9,13 @@ type MarketDemandGraphProps = {
   graphLabel: string;
 };
 
-const VIEW_W = 640;
-const VIEW_H = 420;
-const PAD_L = 28;
-const PAD_R = 36;
-const PAD_T = 48;
-const PAD_B = 56;
+/** Wider / flatter canvas so the section reads shorter and less compressed. */
+const VIEW_W = 720;
+const VIEW_H = 300;
+const PAD_L = 24;
+const PAD_R = 28;
+const PAD_T = 36;
+const PAD_B = 42;
 
 function buildGeometry(data: readonly DemandPoint[]) {
   const max = Math.max(...data.map((d) => d.value));
@@ -50,9 +51,8 @@ function buildGeometry(data: readonly DemandPoint[]) {
 }
 
 /**
- * Animated SVG demand curve.
- * Content stays visible by default — motion is progressive enhancement via
- * `.is-animated` so a failed observer never leaves the graph blank.
+ * Demand curve — starts undrawn, climbs left→right when #market-demand
+ * enters the viewport. Falls back to a settled visible state if needed.
  */
 export function MarketDemandGraph({
   cities,
@@ -60,54 +60,78 @@ export function MarketDemandGraph({
 }: MarketDemandGraphProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [animated, setAnimated] = useState(false);
+  const [settled, setSettled] = useState(false);
   const { points, linePath, areaPath, lineLength } = useMemo(
     () => buildGeometry(DEMAND_DATA),
     [],
   );
 
   useEffect(() => {
-    const root = rootRef.current;
     const section = document.getElementById("market-demand");
-    const target = section ?? root;
-    if (!target) return;
+    const target = section ?? rootRef.current;
+    if (!target) {
+      setSettled(true);
+      return;
+    }
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
       setAnimated(true);
+      setSettled(true);
       return;
     }
 
-    const start = () => setAnimated(true);
-
-    const rect = target.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.9 && rect.bottom > 40) {
-      start();
-      return;
-    }
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+      setAnimated(true);
+      window.setTimeout(() => setSettled(true), 1900);
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries.some((entry) => entry.isIntersecting && entry.intersectionRatio > 0)) {
+        if (entries.some((entry) => entry.isIntersecting)) {
           start();
           observer.disconnect();
         }
       },
-      { threshold: [0, 0.05, 0.15, 0.3] },
+      { threshold: [0, 0.1, 0.2], rootMargin: "0px 0px -5% 0px" },
     );
 
     observer.observe(target);
-    return () => observer.disconnect();
+
+    // If already in view on mount / after scroll restore.
+    const rect = target.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.15) {
+      start();
+      observer.disconnect();
+    }
+
+    // Safety: never leave the curve blank if the observer never fires.
+    const fallbackId = window.setTimeout(() => {
+      if (!started) {
+        setAnimated(true);
+        setSettled(true);
+      }
+    }, 2500);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallbackId);
+    };
   }, []);
 
+  const graphClass = [
+    "om-market-demand__graph",
+    animated ? "is-animated" : "",
+    settled ? "is-settled" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div
-      ref={rootRef}
-      className={
-        animated
-          ? "om-market-demand__graph is-animated"
-          : "om-market-demand__graph"
-      }
-    >
+    <div ref={rootRef} className={graphClass}>
       <p className="om-market-demand__graph-label">{graphLabel}</p>
       <svg
         className="om-market-demand__svg"
@@ -115,8 +139,6 @@ export function MarketDemandGraph({
         role="img"
         aria-label={graphLabel}
       >
-        {/* Do not render <title> here — in the App Router it can override the document title. */}
-
         {[0.25, 0.5, 0.75, 1].map((t) => {
           const y = PAD_T + (VIEW_H - PAD_T - PAD_B) * (1 - t);
           return (
@@ -138,8 +160,8 @@ export function MarketDemandGraph({
           fill="none"
           style={
             {
-              ["--om-md-line-length" as string]: `${lineLength}`,
-            } as React.CSSProperties
+              ["--om-md-line-length"]: String(Math.ceil(lineLength)),
+            } as CSSProperties
           }
         />
 
@@ -149,7 +171,7 @@ export function MarketDemandGraph({
             <g
               key={point.cityKey}
               className="om-market-demand__point-group"
-              style={{ ["--om-md-point-index" as string]: index }}
+              style={{ ["--om-md-point-index"]: index } as CSSProperties}
             >
               <circle
                 className={
@@ -159,7 +181,7 @@ export function MarketDemandGraph({
                 }
                 cx={point.x}
                 cy={point.y}
-                r={isLast ? 6.5 : 4.5}
+                r={isLast ? 6 : 4.25}
               />
               <text
                 className={
@@ -168,7 +190,7 @@ export function MarketDemandGraph({
                     : "om-market-demand__value"
                 }
                 x={point.x}
-                y={point.y - (isLast ? 18 : 14)}
+                y={point.y - (isLast ? 14 : 12)}
                 textAnchor="middle"
               >
                 {point.label}
@@ -180,7 +202,7 @@ export function MarketDemandGraph({
                     : "om-market-demand__city"
                 }
                 x={point.x}
-                y={VIEW_H - 22}
+                y={VIEW_H - 14}
                 textAnchor="middle"
               >
                 {cities[point.cityKey]}
