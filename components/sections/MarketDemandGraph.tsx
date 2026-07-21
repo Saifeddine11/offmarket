@@ -41,6 +41,8 @@ type ChartLayout = {
   valueOffset: number;
   yearY: number;
   captionLift: number;
+  /** Extra headroom above the peak (0–1) — flattens the visual Y scale. */
+  yHeadroom: number;
 };
 
 /** Desktop / tablet — unchanged proportions, slightly roomier plot. */
@@ -56,26 +58,30 @@ const LAYOUT_DESKTOP: ChartLayout = {
   valueOffset: 12,
   yearY: 14,
   captionLift: 18,
+  yHeadroom: 0,
 };
 
 /**
- * Mobile — taller viewBox so full-width SVG lands ~380–430px tall,
- * tighter pads to cut empty chrome, larger dots for touch readability.
- * Aspect 780×860 → ~397px @360, ~430px @390, capped @430.
+ * Mobile — wider horizontal viewBox, shorter on-screen height (~300–340px).
+ * Generous side pads keep 2022 / 2030 clear; yHeadroom softens the rise.
  */
 const LAYOUT_MOBILE: ChartLayout = {
-  viewW: 780,
-  viewH: 860,
-  padL: 22,
-  padR: 22,
-  padT: 52,
-  padB: 58,
-  dotR: 11,
-  hitR: 34,
-  valueOffset: 18,
-  yearY: 20,
-  captionLift: 28,
+  viewW: 920,
+  viewH: 400,
+  padL: 52,
+  padR: 52,
+  padT: 26,
+  padB: 44,
+  dotR: 7,
+  hitR: 30,
+  valueOffset: 13,
+  yearY: 15,
+  captionLift: 14,
+  yHeadroom: 0.28,
 };
+
+/** Permanent % labels on narrow screens; others via touch/focus. */
+const MOBILE_PINNED_VALUE_YEARS = new Set([2022, 2025, 2028, 2030]);
 
 const MOBILE_MQ = "(max-width: 759px)";
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -117,7 +123,8 @@ function buildGeometry(
   baseLabel: string,
   layout: ChartLayout,
 ) {
-  const { viewW, viewH, padL, padR, padT, padB, captionLift } = layout;
+  const { viewW, viewH, padL, padR, padT, padB, captionLift, yHeadroom } =
+    layout;
   const baselineY = viewH - padB;
   const values = data.map((d) => d.cumulativeGrowth);
   const max = Math.max(...values);
@@ -125,7 +132,9 @@ function buildGeometry(
   const spanY = viewH - padT - padB;
   // Leave a little floor so the base point sits above the axis
   const floor = -max * 0.04;
-  const range = max - floor;
+  // Headroom above the peak compresses the visual Y scale (gentler rise)
+  const ceiling = max + (max - floor) * Math.max(0, yHeadroom);
+  const range = ceiling - floor;
 
   const points: PlotPoint[] = data.map((d, index) => {
     const x = padL + (spanX * index) / (data.length - 1);
@@ -346,6 +355,7 @@ export function MarketDemandGraph({
         aria-labelledby={`${titleId} ${descId}`}
         onPointerMove={handlePointerMove}
         onPointerLeave={clearActive}
+        onPointerDown={handlePointerMove}
       >
         {[0.25, 0.5, 0.75, 1].map((t) => {
           const y = layout.padT + (layout.viewH - layout.padT - layout.padB) * (1 - t);
@@ -416,6 +426,9 @@ export function MarketDemandGraph({
             const isActive = activeIndex === point.index;
             const isDimmed =
               activeIndex !== null && activeIndex !== point.index;
+            const pinValue =
+              !isMobile || MOBILE_PINNED_VALUE_YEARS.has(point.year);
+            const valueCollapsed = isMobile && !pinValue;
 
             return (
               <g
@@ -448,6 +461,11 @@ export function MarketDemandGraph({
                   cx={point.x}
                   cy={point.y}
                   r={layout.hitR}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`${point.year}: ${point.label}`}
+                  onFocus={() => setActiveIndex(point.index)}
+                  onBlur={clearActive}
                 />
                 <circle
                   className={[
@@ -466,6 +484,7 @@ export function MarketDemandGraph({
                     "om-market-demand__value",
                     point.projected ? "om-market-demand__value--projected" : "",
                     point.isAnchor ? "om-market-demand__value--anchor" : "",
+                    valueCollapsed ? "is-collapsed" : "",
                   ]
                     .filter(Boolean)
                     .join(" ")}
@@ -477,6 +496,7 @@ export function MarketDemandGraph({
                       : layout.valueOffset)
                   }
                   textAnchor="middle"
+                  aria-hidden={valueCollapsed && !isActive ? true : undefined}
                 >
                   {point.label}
                 </text>
