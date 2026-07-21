@@ -1,83 +1,112 @@
 /**
- * Marrakech — annual change in real-estate transaction volume.
+ * Marrakech — cumulative transaction-level index since 2022.
  *
- * Public chart uses `VISIBLE_TRANSACTION_HISTORY` only (2023–2025).
- * Full series including 2022 is kept for the methodology disclosure.
+ * Graph Y = cumulativeGrowth vs 2022 (base 100).
+ * Always rises when annual growth is positive; never falls on a slowdown year.
+ *
+ * Observed annual rates (official):
+ *   2023 +16.5% vs 2022 · 2024 +4.2% vs 2023 · 2025 +24.1% vs 2024
+ *
+ * 2026–2030 are editable OffMarket internal projections (not official stats).
  */
 
-export type TransactionPoint = {
+export type TimelinePoint = {
   year: number;
-  /** Year-over-year % change in number of transactions. */
-  change: number;
-  /** Human-readable baseline year, e.g. "vs 2024". */
-  comparison: string;
-  type: "observed" | "projected";
+  /** Index level with 2022 = 100. */
+  level: number;
+  /** % above the 2022 baseline (= level − 100). */
+  cumulativeGrowth: number;
+  /** YoY % used to build the level (null for the base year). */
+  annualGrowth: number | null;
+  status: "observed" | "projected";
 };
 
-/** Complete verified series — for methodology / transparency only. */
-export const TRANSACTION_HISTORY: readonly TransactionPoint[] = [
+/** Verified observed cumulative path from official annual rates. */
+export const OBSERVED_TRANSACTION_TIMELINE: readonly TimelinePoint[] = [
   {
     year: 2022,
-    change: -17.3,
-    comparison: "vs 2021",
-    type: "observed",
+    level: 100,
+    cumulativeGrowth: 0,
+    annualGrowth: null,
+    status: "observed",
   },
   {
     year: 2023,
-    change: 16.5,
-    comparison: "vs 2022",
-    type: "observed",
+    level: 116.5,
+    cumulativeGrowth: 16.5,
+    annualGrowth: 16.5,
+    status: "observed",
   },
   {
     year: 2024,
-    change: 4.2,
-    comparison: "vs 2023",
-    type: "observed",
+    level: 121.393,
+    cumulativeGrowth: 21.393,
+    annualGrowth: 4.2,
+    status: "observed",
   },
   {
     year: 2025,
-    change: 24.1,
-    comparison: "vs 2024",
-    type: "observed",
+    level: 150.648713,
+    cumulativeGrowth: 50.648713,
+    annualGrowth: 24.1,
+    status: "observed",
   },
 ] as const;
 
 /**
- * Public-facing chart — recovery narrative only.
- * Do not surface 2022 (negative) in the main visual.
+ * Internal projected annual growth rates applied after 2025.
+ * Edit these rates to reshape 2026–2030 without touching the chart code.
  */
-export const VISIBLE_TRANSACTION_HISTORY: readonly TransactionPoint[] = [
-  {
-    year: 2023,
-    change: 16.5,
-    comparison: "vs 2022",
-    type: "observed",
-  },
-  {
-    year: 2024,
-    change: 4.2,
-    comparison: "vs 2023",
-    type: "observed",
-  },
-  {
-    year: 2025,
-    change: 24.1,
-    comparison: "vs 2024",
-    type: "observed",
-  },
+export const PROJECTED_ANNUAL_GROWTH_RATES = [
+  { year: 2026, annualGrowth: 9 },
+  { year: 2027, annualGrowth: 8 },
+  { year: 2028, annualGrowth: 7 },
+  { year: 2029, annualGrowth: 6 },
+  { year: 2030, annualGrowth: 5 },
 ] as const;
 
-/** Latest observed year — visual anchor on the chart. */
+function buildProjectedTimeline(
+  observed: readonly TimelinePoint[],
+  rates: typeof PROJECTED_ANNUAL_GROWTH_RATES,
+): TimelinePoint[] {
+  const last = observed[observed.length - 1];
+  let level = last.level;
+  return rates.map(({ year, annualGrowth }) => {
+    level = level * (1 + annualGrowth / 100);
+    return {
+      year,
+      level,
+      cumulativeGrowth: level - 100,
+      annualGrowth,
+      status: "projected" as const,
+    };
+  });
+}
+
+/** Full public chart series: observed 2022–2025 + projected 2026–2030. */
+export const TRANSACTION_TIMELINE: readonly TimelinePoint[] = [
+  ...OBSERVED_TRANSACTION_TIMELINE,
+  ...buildProjectedTimeline(
+    OBSERVED_TRANSACTION_TIMELINE,
+    PROJECTED_ANNUAL_GROWTH_RATES,
+  ),
+];
+
+/** Last observed year — visual anchor before the projection. */
 export const TRANSACTION_ANCHOR_YEAR = 2025;
 
-export function formatChangePercent(
-  change: number,
+export function formatCumulativePercent(
+  cumulativeGrowth: number,
   locale: "fr" | "en" | "it" | "nl" = "fr",
 ): string {
-  const abs = Math.abs(change);
+  if (Math.abs(cumulativeGrowth) < 0.05) {
+    return locale === "en" ? "base" : "base";
+  }
+  const rounded = Math.round(cumulativeGrowth * 10) / 10;
   const formatted =
-    locale === "en" ? abs.toFixed(1) : abs.toFixed(1).replace(".", ",");
-  const sign = change > 0 ? "+" : change < 0 ? "−" : "";
+    locale === "en"
+      ? rounded.toFixed(1)
+      : rounded.toFixed(1).replace(".", ",");
   const space = locale === "en" ? "" : " ";
-  return `${sign}${formatted}${space}%`;
+  return `+${formatted}${space}%`;
 }

@@ -13,7 +13,7 @@ function resolveLocale(locale?: string): SiteLocale {
 }
 
 /**
- * Homepage market section — Marrakech transaction recovery (2023–2025).
+ * Homepage market section — cumulative transaction progress since 2022.
  * Inserted once after featured property listings.
  */
 export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
@@ -38,6 +38,8 @@ export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
               svgTitle={copy.svgTitle}
               svgDesc={copy.svgDesc}
               unitHint={copy.unitHint}
+              projectedCaption={copy.projectedCaption}
+              baseLabel={copy.baseLabel}
               locale={resolved}
             />
           </div>

@@ -13,9 +13,9 @@ import {
 import { useOnceInView } from "@/hooks/useOnceInView";
 import {
   TRANSACTION_ANCHOR_YEAR,
-  VISIBLE_TRANSACTION_HISTORY,
-  formatChangePercent,
-  type TransactionPoint,
+  TRANSACTION_TIMELINE,
+  formatCumulativePercent,
+  type TimelinePoint,
 } from "@/lib/data/demandTimeline";
 
 type MarketDemandGraphProps = {
@@ -23,21 +23,24 @@ type MarketDemandGraphProps = {
   svgTitle: string;
   svgDesc: string;
   unitHint: string;
+  projectedCaption: string;
+  baseLabel: string;
   locale: "fr" | "en" | "it" | "nl";
 };
 
-const VIEW_W = 760;
+const VIEW_W = 780;
 const VIEW_H = 340;
-const PAD_L = 36;
-const PAD_R = 36;
+const PAD_L = 28;
+const PAD_R = 32;
 const PAD_T = 44;
-const PAD_B = 58;
-const DOT_R = 4.5;
-const DOT_R_ANCHOR = DOT_R * 1.32;
-const HIT_R = 32;
+const PAD_B = 52;
+const DOT_R = 4;
+const DOT_R_ANCHOR = DOT_R * 1.35;
+const HIT_R = 26;
+const BASELINE_Y = VIEW_H - PAD_B;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-type PlotPoint = TransactionPoint & {
+type PlotPoint = TimelinePoint & {
   x: number;
   y: number;
   label: string;
@@ -47,52 +50,85 @@ type PlotPoint = TransactionPoint & {
 };
 
 function buildGeometry(
-  data: readonly TransactionPoint[],
+  data: readonly TimelinePoint[],
   locale: MarketDemandGraphProps["locale"],
+  baseLabel: string,
 ) {
-  const changes = data.map((d) => d.change);
-  const maxAbs = Math.max(...changes.map((c) => Math.abs(c)), 1);
-  // Symmetric headroom around zero so + and − read equally
-  const bound = maxAbs * 1.18;
+  const values = data.map((d) => d.cumulativeGrowth);
+  const max = Math.max(...values);
+  const min = 0;
   const spanX = VIEW_W - PAD_L - PAD_R;
   const spanY = VIEW_H - PAD_T - PAD_B;
-  const zeroY = PAD_T + spanY * (bound / (bound * 2));
+  // Leave a little floor so the base point sits above the axis
+  const floor = -max * 0.04;
+  const range = max - floor;
 
   const points: PlotPoint[] = data.map((d, index) => {
     const x = PAD_L + (spanX * index) / (data.length - 1);
-    const y = PAD_T + spanY * (1 - (d.change + bound) / (bound * 2));
+    const y = PAD_T + spanY * (1 - (d.cumulativeGrowth - floor) / range);
+    const isBase = d.cumulativeGrowth === 0;
     return {
       ...d,
       x,
       y,
-      label: formatChangePercent(d.change, locale),
+      label: isBase
+        ? baseLabel
+        : formatCumulativePercent(d.cumulativeGrowth, locale),
       index,
-      projected: d.type === "projected",
-      isAnchor: d.year === TRANSACTION_ANCHOR_YEAR && d.type === "observed",
+      projected: d.status === "projected",
+      isAnchor: d.year === TRANSACTION_ANCHOR_YEAR && d.status === "observed",
     };
   });
 
-  const linePath = points
-    .map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(2)} ${p.y.toFixed(2)}`)
-    .join(" ");
+  const lastObservedIdx = points.reduce(
+    (acc, p, i) => (!p.projected ? i : acc),
+    0,
+  );
+  const observedPoints = points.slice(0, lastObservedIdx + 1);
+  const projectedPoints = points.slice(lastObservedIdx);
 
-  // Area between the curve and the zero line
-  const areaPath = [
-    `M ${points[0].x.toFixed(2)} ${zeroY.toFixed(2)}`,
-    ...points.map((p) => `L ${p.x.toFixed(2)} ${p.y.toFixed(2)}`),
-    `L ${points[points.length - 1].x.toFixed(2)} ${zeroY.toFixed(2)}`,
-    "Z",
-  ].join(" ");
+  const toLine = (pts: PlotPoint[]) =>
+    pts
+      .map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(2)} ${p.y.toFixed(2)}`)
+      .join(" ");
 
-  let lineLength = 0;
-  for (let i = 1; i < points.length; i += 1) {
-    lineLength += Math.hypot(
-      points[i].x - points[i - 1].x,
-      points[i].y - points[i - 1].y,
-    );
-  }
+  const areaFor = (pts: PlotPoint[]) => {
+    if (pts.length < 2) return "";
+    return [
+      `M ${pts[0].x.toFixed(2)} ${BASELINE_Y.toFixed(2)}`,
+      ...pts.map((p) => `L ${p.x.toFixed(2)} ${p.y.toFixed(2)}`),
+      `L ${pts[pts.length - 1].x.toFixed(2)} ${BASELINE_Y.toFixed(2)}`,
+      "Z",
+    ].join(" ");
+  };
 
-  return { points, linePath, areaPath, lineLength, zeroY };
+  const pathLength = (pts: PlotPoint[]) => {
+    let len = 0;
+    for (let i = 1; i < pts.length; i += 1) {
+      len += Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
+    }
+    return len;
+  };
+
+  return {
+    points,
+    lastObservedIdx,
+    observedLine: toLine(observedPoints),
+    projectedLine: toLine(projectedPoints),
+    observedArea: areaFor(observedPoints),
+    projectedArea: areaFor(projectedPoints),
+    observedLength: pathLength(observedPoints),
+    projectedCaptionX:
+      (points[lastObservedIdx].x +
+        points[Math.min(lastObservedIdx + 1, points.length - 1)].x) /
+        2 +
+      6,
+    projectedCaptionY:
+      Math.min(
+        points[lastObservedIdx].y,
+        points[Math.min(lastObservedIdx + 1, points.length - 1)].y,
+      ) - 18,
+  };
 }
 
 function nearestPointIndex(
@@ -100,7 +136,7 @@ function nearestPointIndex(
   svgX: number,
   svgY: number,
 ): number | null {
-  const inBand = svgY >= PAD_T - HIT_R && svgY <= VIEW_H - PAD_B + HIT_R;
+  const inBand = svgY >= PAD_T - HIT_R && svgY <= BASELINE_Y + HIT_R;
   if (inBand) {
     let best = 0;
     let bestDx = Math.abs(points[0].x - svgX);
@@ -111,9 +147,8 @@ function nearestPointIndex(
         best = i;
       }
     }
-    if (bestDx <= HIT_R * 1.4) return best;
+    if (bestDx <= HIT_R * 1.35) return best;
   }
-
   let best = -1;
   let bestDist = Number.POSITIVE_INFINITY;
   for (let i = 0; i < points.length; i += 1) {
@@ -127,14 +162,16 @@ function nearestPointIndex(
 }
 
 /**
- * Custom SVG — annual % change in Marrakech transaction volume.
- * Zero baseline · signed percentages · 2025 as current anchor.
+ * Cumulative transaction timeline — observed solid, projected dashed gray.
+ * Labels = % above 2022 baseline.
  */
 export function MarketDemandGraph({
   graphLabel,
   svgTitle,
   svgDesc,
   unitHint,
+  projectedCaption,
+  baseLabel,
   locale,
 }: MarketDemandGraphProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -146,10 +183,20 @@ export function MarketDemandGraph({
     fallbackRef: rootRef,
   });
 
-  const { points, linePath, areaPath, lineLength, zeroY } = useMemo(
-    () => buildGeometry(VISIBLE_TRANSACTION_HISTORY, locale),
-    [locale],
+  const geometry = useMemo(
+    () => buildGeometry(TRANSACTION_TIMELINE, locale, baseLabel),
+    [locale, baseLabel],
   );
+  const {
+    points,
+    observedLine,
+    projectedLine,
+    observedArea,
+    projectedArea,
+    observedLength,
+    projectedCaptionX,
+    projectedCaptionY,
+  } = geometry;
 
   const titleId = "om-md-svg-title";
   const descId = "om-md-svg-desc";
@@ -160,14 +207,13 @@ export function MarketDemandGraph({
       setSettled(true);
       return;
     }
-    const id = window.setTimeout(() => setSettled(true), 2200);
+    const id = window.setTimeout(() => setSettled(true), 2600);
     return () => window.clearTimeout(id);
   }, [visible, reducedMotion]);
 
   useEffect(() => {
     const svg = svgRef.current;
     if (!svg) return;
-
     const ensure = (tag: "title" | "desc", id: string, text: string) => {
       let node = svg.querySelector(
         `:scope > ${tag}`,
@@ -179,7 +225,6 @@ export function MarketDemandGraph({
       node.setAttribute("id", id);
       node.textContent = text;
     };
-
     ensure("title", titleId, svgTitle);
     ensure("desc", descId, svgDesc);
   }, [svgTitle, svgDesc, titleId, descId]);
@@ -228,9 +273,8 @@ export function MarketDemandGraph({
         onPointerMove={handlePointerMove}
         onPointerLeave={clearActive}
       >
-        {/* Soft horizontal guides */}
-        {[0.2, 0.4, 0.6, 0.8].map((t) => {
-          const y = PAD_T + (VIEW_H - PAD_T - PAD_B) * t;
+        {[0.25, 0.5, 0.75, 1].map((t) => {
+          const y = PAD_T + (VIEW_H - PAD_T - PAD_B) * (1 - t);
           return (
             <line
               key={t}
@@ -244,57 +288,69 @@ export function MarketDemandGraph({
         })}
 
         <g className="om-market-demand__plot">
-          {/* Zero baseline — “no change vs previous year” */}
-          <line
-            className="om-market-demand__zero-line"
-            x1={PAD_L}
-            x2={VIEW_W - PAD_R}
-            y1={zeroY}
-            y2={zeroY}
-          />
-          <text
-            className="om-market-demand__zero-label"
-            x={PAD_L - 6}
-            y={zeroY + 3}
-            textAnchor="end"
-          >
-            0
-          </text>
-
-          <path className="om-market-demand__area" d={areaPath} />
           <path
-            className="om-market-demand__line"
-            d={linePath}
+            className="om-market-demand__area om-market-demand__area--observed"
+            d={observedArea}
+          />
+          <g className="om-market-demand__projected-draw">
+            <path
+              className="om-market-demand__area om-market-demand__area--projected"
+              d={projectedArea}
+            />
+            <path
+              className="om-market-demand__line om-market-demand__line--projected"
+              d={projectedLine}
+              fill="none"
+            />
+          </g>
+
+          <path
+            className="om-market-demand__line om-market-demand__line--observed"
+            d={observedLine}
             fill="none"
             style={
               {
-                ["--om-md-line-length"]: String(Math.ceil(lineLength)),
+                ["--om-md-line-length"]: String(Math.ceil(observedLength)),
               } as CSSProperties
             }
           />
 
           {activeIndex !== null ? (
             <line
-              className="om-market-demand__guide"
+              className={
+                points[activeIndex].projected
+                  ? "om-market-demand__guide om-market-demand__guide--projected"
+                  : "om-market-demand__guide"
+              }
               x1={points[activeIndex].x}
               x2={points[activeIndex].x}
               y1={points[activeIndex].y}
-              y2={zeroY}
+              y2={BASELINE_Y}
             />
           ) : null}
+
+          <text
+            className="om-market-demand__projected-caption"
+            x={projectedCaptionX}
+            y={projectedCaptionY}
+            textAnchor="middle"
+          >
+            {projectedCaption}
+          </text>
 
           {points.map((point) => {
             const isActive = activeIndex === point.index;
             const isDimmed =
               activeIndex !== null && activeIndex !== point.index;
-            const valueAbove = point.change >= 0;
 
             return (
               <g
                 key={point.year}
                 className={[
                   "om-market-demand__point-group",
-                  point.change < 0 ? "is-negative" : "is-positive",
+                  point.projected
+                    ? "om-market-demand__point-group--projected"
+                    : "",
                   point.isAnchor ? "om-market-demand__point-group--anchor" : "",
                   isActive ? "is-active" : "",
                   isDimmed ? "is-dimmed" : "",
@@ -310,7 +366,7 @@ export function MarketDemandGraph({
                     className="om-market-demand__halo"
                     cx={point.x}
                     cy={point.y}
-                    r={DOT_R_ANCHOR * 2.35}
+                    r={DOT_R_ANCHOR * 2.3}
                   />
                 ) : null}
                 <circle
@@ -322,6 +378,7 @@ export function MarketDemandGraph({
                 <circle
                   className={[
                     "om-market-demand__dot",
+                    point.projected ? "om-market-demand__dot--projected" : "",
                     point.isAnchor ? "om-market-demand__dot--anchor" : "",
                   ]
                     .filter(Boolean)
@@ -333,16 +390,13 @@ export function MarketDemandGraph({
                 <text
                   className={[
                     "om-market-demand__value",
+                    point.projected ? "om-market-demand__value--projected" : "",
                     point.isAnchor ? "om-market-demand__value--anchor" : "",
                   ]
                     .filter(Boolean)
                     .join(" ")}
                   x={point.x}
-                  y={
-                    valueAbove
-                      ? point.y - (point.isAnchor ? 16 : 13)
-                      : point.y + (point.isAnchor ? 20 : 17)
-                  }
+                  y={point.y - (point.isAnchor ? 15 : 12)}
                   textAnchor="middle"
                 >
                   {point.label}
@@ -350,23 +404,16 @@ export function MarketDemandGraph({
                 <text
                   className={[
                     "om-market-demand__year",
+                    point.projected ? "om-market-demand__year--projected" : "",
                     point.isAnchor ? "om-market-demand__year--anchor" : "",
                   ]
                     .filter(Boolean)
                     .join(" ")}
                   x={point.x}
-                  y={VIEW_H - 22}
+                  y={VIEW_H - 14}
                   textAnchor="middle"
                 >
                   {point.year}
-                </text>
-                <text
-                  className="om-market-demand__comparison"
-                  x={point.x}
-                  y={VIEW_H - 8}
-                  textAnchor="middle"
-                >
-                  {point.comparison}
                 </text>
               </g>
             );
