@@ -1,6 +1,6 @@
 /**
- * OffMarket — Market demand section
- * Minimal editorial panel · brand accent (`--om-green`) · custom SVG curve.
+ * OffMarket — Demand timeline section
+ * Observed years (dark) · projected years (gray) · accent (--om-green).
  * Scoped to .om-market-demand.
  */
 
@@ -11,12 +11,13 @@
   --om-md-line: rgba(17, 17, 17, 0.1);
   --om-md-panel: var(--om-white, #ffffff);
   --om-md-page: var(--om-ivory, #f5f4f2);
-  --om-md-beige: var(--om-sand, #d6c0b1);
   --om-md-grid: rgba(17, 17, 17, 0.05);
-  /* Accent: existing OffMarket green token (--om-green) */
+  --om-md-projected: rgba(17, 17, 17, 0.28);
+  --om-md-projected-soft: rgba(17, 17, 17, 0.16);
   --om-md-accent: var(--om-green, #4fd08a);
   --om-md-accent-rgb: 79, 208, 138;
-  --om-md-area: rgba(var(--om-md-accent-rgb), 0.08);
+  --om-md-area: rgba(17, 17, 17, 0.045);
+  --om-md-area-proj: rgba(17, 17, 17, 0.02);
   --om-md-shadow: 0 12px 32px rgba(17, 17, 17, 0.03);
   --om-md-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -42,8 +43,7 @@
   border-radius: clamp(22px, 2.2vw, 30px);
   box-shadow: var(--om-md-shadow);
   padding: clamp(2rem, 3.8vw, 3.25rem) clamp(2rem, 4vw, 3.5rem);
-  /* Whisper of warm beige from the design system */
-  outline: 1px solid rgba(214, 192, 177, 0.18);
+  outline: 1px solid rgba(214, 192, 177, 0.16);
   outline-offset: -1px;
 }
 
@@ -111,7 +111,7 @@
 
 .om-market-demand__metric {
   min-width: 0;
-  padding: 0 clamp(0.55rem, 1vw, 0.9rem);
+  padding: 0 clamp(0.5rem, 0.9vw, 0.85rem);
   border-left: 1px solid var(--om-md-line);
 }
 
@@ -123,10 +123,10 @@
 .om-market-demand__metric-value {
   margin: 0 0 0.3rem;
   font-family: var(--om-font-heading);
-  font-size: clamp(1.35rem, 1.75vw, 1.7rem);
+  font-size: clamp(1.05rem, 1.35vw, 1.35rem);
   font-weight: 560;
-  letter-spacing: -0.05em;
-  line-height: 1;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
   color: var(--om-md-ink);
 }
 
@@ -156,7 +156,7 @@
   font-family: var(--om-font-body);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   line-height: 1.2;
   text-transform: uppercase;
   color: var(--om-md-soft);
@@ -185,13 +185,18 @@
 }
 
 .om-market-demand__area {
-  fill: var(--om-md-area);
   pointer-events: none;
 }
 
+.om-market-demand__area--observed {
+  fill: var(--om-md-area);
+}
+
+.om-market-demand__area--projected {
+  fill: var(--om-md-area-proj);
+}
+
 .om-market-demand__line {
-  stroke: var(--om-md-ink);
-  stroke-width: 2.15;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
@@ -199,11 +204,26 @@
   pointer-events: none;
 }
 
+.om-market-demand__line--observed {
+  stroke: var(--om-md-ink);
+  stroke-width: 2.15;
+}
+
+.om-market-demand__line--projected {
+  stroke: var(--om-md-projected);
+  stroke-width: 1.85;
+  stroke-dasharray: 5 6;
+}
+
 .om-market-demand__guide {
-  stroke: rgba(var(--om-md-accent-rgb), 0.28);
+  stroke: rgba(var(--om-md-accent-rgb), 0.35);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
   pointer-events: none;
+}
+
+.om-market-demand__guide--projected {
+  stroke: rgba(17, 17, 17, 0.18);
 }
 
 .om-market-demand__hit {
@@ -213,7 +233,7 @@
 }
 
 .om-market-demand__halo {
-  fill: rgba(var(--om-md-accent-rgb), 0.14);
+  fill: rgba(var(--om-md-accent-rgb), 0.16);
   pointer-events: none;
 }
 
@@ -230,9 +250,15 @@
   pointer-events: none;
 }
 
-.om-market-demand__dot--peak {
+.om-market-demand__dot--anchor {
   fill: var(--om-md-accent);
   stroke: var(--om-md-accent);
+}
+
+.om-market-demand__dot--projected {
+  fill: #f7f6f4;
+  stroke: var(--om-md-projected);
+  stroke-width: 1.5;
 }
 
 .om-market-demand__value {
@@ -245,27 +271,45 @@
   pointer-events: none;
 }
 
-.om-market-demand__value--peak {
+.om-market-demand__value--anchor {
   fill: var(--om-md-accent);
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 650;
 }
 
-.om-market-demand__city {
+.om-market-demand__value--projected {
+  fill: var(--om-md-projected);
+  font-weight: 500;
+}
+
+.om-market-demand__year {
   fill: var(--om-md-soft);
   font-family: var(--om-font-body);
   font-size: 11.5px;
   font-weight: 500;
-  letter-spacing: 0.01em;
-  transition:
-    fill 220ms var(--om-md-ease),
-    font-weight 220ms var(--om-md-ease);
+  letter-spacing: 0.02em;
+  transition: fill 220ms var(--om-md-ease);
   pointer-events: none;
 }
 
-.om-market-demand__city--peak {
+.om-market-demand__year--anchor {
   fill: var(--om-md-ink);
   font-weight: 600;
+}
+
+.om-market-demand__year--projected {
+  fill: var(--om-md-projected-soft);
+  font-weight: 450;
+}
+
+.om-market-demand__projected-caption {
+  fill: var(--om-md-projected-soft);
+  font-family: var(--om-font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
 }
 
 .om-market-demand__sr-only {
@@ -299,16 +343,21 @@
   transform: translateY(20px);
 }
 
-.om-market-demand__graph:not(.is-animated):not(.is-settled) .om-market-demand__line {
+.om-market-demand__graph:not(.is-animated):not(.is-settled) .om-market-demand__line--observed {
   stroke-dasharray: var(--om-md-line-length);
   stroke-dashoffset: var(--om-md-line-length);
 }
 
-.om-market-demand__graph:not(.is-animated):not(.is-settled) .om-market-demand__area {
+.om-market-demand__graph:not(.is-animated):not(.is-settled) .om-market-demand__area--observed {
   clip-path: inset(0 100% 0 0);
 }
 
-.om-market-demand__graph:not(.is-animated):not(.is-settled) .om-market-demand__point-group {
+.om-market-demand__graph:not(.is-animated):not(.is-settled) .om-market-demand__projected-draw {
+  clip-path: inset(0 100% 0 0);
+}
+
+.om-market-demand__graph:not(.is-animated):not(.is-settled) .om-market-demand__point-group,
+.om-market-demand__graph:not(.is-animated):not(.is-settled) .om-market-demand__projected-caption {
   opacity: 0;
 }
 
@@ -316,39 +365,48 @@
   animation: om-md-rise 0.9s var(--om-md-ease) both;
 }
 
-.om-market-demand__graph.is-animated .om-market-demand__line {
+.om-market-demand__graph.is-animated .om-market-demand__line--observed {
   stroke-dasharray: var(--om-md-line-length);
   stroke-dashoffset: var(--om-md-line-length);
-  animation: om-md-draw 1.35s var(--om-md-ease) 0.2s both;
+  animation: om-md-draw 1.05s var(--om-md-ease) 0.18s both;
 }
 
-.om-market-demand__graph.is-animated .om-market-demand__area {
-  animation: om-md-area-reveal 1.35s var(--om-md-ease) 0.2s both;
+.om-market-demand__graph.is-animated .om-market-demand__area--observed {
+  animation: om-md-area-reveal 1.05s var(--om-md-ease) 0.18s both;
+}
+
+.om-market-demand__graph.is-animated .om-market-demand__projected-draw {
+  animation: om-md-area-reveal 0.95s var(--om-md-ease) 1.05s both;
 }
 
 .om-market-demand__graph.is-animated .om-market-demand__point-group {
   animation: om-md-point 0.48s var(--om-md-ease) both;
-  animation-delay: calc(0.34s + (var(--om-md-point-index, 0) * 0.18s));
+  animation-delay: calc(0.28s + (var(--om-md-point-index, 0) * 0.16s));
 }
 
-.om-market-demand__graph.is-animated .om-market-demand__point-group--peak .om-market-demand__dot {
-  animation: om-md-peak-scale 0.55s var(--om-md-ease) both;
-  animation-delay: calc(0.34s + (4 * 0.18s));
+.om-market-demand__graph.is-animated .om-market-demand__point-group--anchor .om-market-demand__dot {
+  animation: om-md-peak-scale 0.5s var(--om-md-ease) both;
+  animation-delay: calc(0.28s + (2 * 0.16s));
 }
 
 .om-market-demand__graph.is-animated .om-market-demand__value {
   animation: om-md-label 0.46s var(--om-md-ease) both;
-  animation-delay: calc(0.44s + (var(--om-md-point-index, 0) * 0.18s));
+  animation-delay: calc(0.38s + (var(--om-md-point-index, 0) * 0.16s));
 }
 
-.om-market-demand__graph.is-animated .om-market-demand__city {
+.om-market-demand__graph.is-animated .om-market-demand__year {
   animation: om-md-fade 0.42s var(--om-md-ease) both;
-  animation-delay: calc(0.48s + (var(--om-md-point-index, 0) * 0.18s));
+  animation-delay: calc(0.42s + (var(--om-md-point-index, 0) * 0.16s));
 }
 
 .om-market-demand__graph.is-animated .om-market-demand__halo {
-  animation: om-md-fade 0.6s var(--om-md-ease) both;
-  animation-delay: calc(0.4s + (4 * 0.18s));
+  animation: om-md-fade 0.55s var(--om-md-ease) both;
+  animation-delay: calc(0.35s + (2 * 0.16s));
+}
+
+.om-market-demand__graph.is-animated .om-market-demand__projected-caption {
+  animation: om-md-fade 0.5s var(--om-md-ease) both;
+  animation-delay: 1.35s;
 }
 
 .om-market-demand__graph.is-settled .om-market-demand__plot {
@@ -356,18 +414,20 @@
   transform: none;
 }
 
-.om-market-demand__graph.is-settled .om-market-demand__line {
+.om-market-demand__graph.is-settled .om-market-demand__line--observed {
   stroke-dashoffset: 0 !important;
 }
 
-.om-market-demand__graph.is-settled .om-market-demand__area {
+.om-market-demand__graph.is-settled .om-market-demand__area--observed,
+.om-market-demand__graph.is-settled .om-market-demand__projected-draw {
   clip-path: inset(0 0 0 0) !important;
 }
 
 .om-market-demand__graph.is-settled .om-market-demand__point-group,
 .om-market-demand__graph.is-settled .om-market-demand__value,
-.om-market-demand__graph.is-settled .om-market-demand__city,
-.om-market-demand__graph.is-settled .om-market-demand__halo {
+.om-market-demand__graph.is-settled .om-market-demand__year,
+.om-market-demand__graph.is-settled .om-market-demand__halo,
+.om-market-demand__graph.is-settled .om-market-demand__projected-caption {
   opacity: 1 !important;
   transform: none !important;
 }
@@ -375,48 +435,48 @@
 /* ── Hover ── */
 
 .om-market-demand__graph.is-hovering .om-market-demand__point-group.is-dimmed {
-  opacity: 0.42 !important;
-}
-
-.om-market-demand__graph.is-hovering .om-market-demand__point-group.is-dimmed .om-market-demand__dot {
-  fill: #f3f2f0;
-  stroke: rgba(17, 17, 17, 0.28);
-}
-
-.om-market-demand__graph.is-hovering .om-market-demand__point-group.is-dimmed .om-market-demand__value,
-.om-market-demand__graph.is-hovering .om-market-demand__point-group.is-dimmed .om-market-demand__city {
-  fill: rgba(17, 17, 17, 0.32);
+  opacity: 0.4 !important;
 }
 
 .om-market-demand__graph.is-hovering .om-market-demand__point-group.is-active .om-market-demand__dot {
-  fill: var(--om-md-accent);
-  stroke: var(--om-md-accent);
   transform: scale(1.18);
 }
 
-.om-market-demand__graph.is-hovering .om-market-demand__point-group.is-active .om-market-demand__value {
+.om-market-demand__graph.is-hovering
+  .om-market-demand__point-group.is-active:not(.om-market-demand__point-group--projected)
+  .om-market-demand__dot {
+  fill: var(--om-md-accent);
+  stroke: var(--om-md-accent);
+}
+
+.om-market-demand__graph.is-hovering
+  .om-market-demand__point-group.is-active:not(.om-market-demand__point-group--projected)
+  .om-market-demand__value {
   fill: var(--om-md-accent);
 }
 
-.om-market-demand__graph.is-hovering .om-market-demand__point-group.is-active .om-market-demand__city {
+.om-market-demand__graph.is-hovering
+  .om-market-demand__point-group.is-active:not(.om-market-demand__point-group--projected)
+  .om-market-demand__year {
   fill: var(--om-md-ink);
   font-weight: 600;
 }
 
-/* Marrakech stays brand green even when another point is active */
-.om-market-demand__graph.is-hovering .om-market-demand__point-group--peak.is-dimmed .om-market-demand__dot--peak {
-  fill: var(--om-md-accent);
-  stroke: var(--om-md-accent);
-  opacity: 0.72;
+/* Projected hover stays gray — secondary emphasis only */
+.om-market-demand__graph.is-hovering
+  .om-market-demand__point-group--projected.is-active
+  .om-market-demand__dot {
+  fill: #eceae7;
+  stroke: rgba(17, 17, 17, 0.42);
 }
 
-.om-market-demand__graph.is-hovering .om-market-demand__point-group--peak.is-dimmed .om-market-demand__value--peak {
-  fill: var(--om-md-accent);
-  opacity: 0.72;
-}
-
-.om-market-demand__graph.is-hovering .om-market-demand__point-group--peak.is-dimmed .om-market-demand__halo {
-  opacity: 0.45;
+.om-market-demand__graph.is-hovering
+  .om-market-demand__point-group--projected.is-active
+  .om-market-demand__value,
+.om-market-demand__graph.is-hovering
+  .om-market-demand__point-group--projected.is-active
+  .om-market-demand__year {
+  fill: rgba(17, 17, 17, 0.55);
 }
 
 @keyframes om-md-stagger {
@@ -499,7 +559,6 @@
   }
 }
 
-/* Tablet — keep two columns while readable */
 @media (max-width: 1100px) and (min-width: 760px) {
   .om-market-demand__panel {
     padding: clamp(1.55rem, 2.8vw, 2.15rem) clamp(1.55rem, 3vw, 2.35rem);
@@ -515,7 +574,7 @@
   }
 
   .om-market-demand__metric-value {
-    font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+    font-size: clamp(0.95rem, 1.25vw, 1.15rem);
   }
 
   .om-market-demand__svg {
@@ -582,10 +641,10 @@
   }
 
   .om-market-demand__svg {
-    max-height: 230px;
+    max-height: 240px;
   }
 
-  .om-market-demand__city {
+  .om-market-demand__year {
     font-size: 10px;
   }
 
@@ -593,8 +652,8 @@
     font-size: 11px;
   }
 
-  .om-market-demand__value--peak {
-    font-size: 13px;
+  .om-market-demand__value--anchor {
+    font-size: 12.5px;
   }
 }
 
@@ -606,9 +665,11 @@
   .om-market-demand__graph .om-market-demand__line,
   .om-market-demand__graph .om-market-demand__point-group,
   .om-market-demand__graph .om-market-demand__value,
-  .om-market-demand__graph .om-market-demand__city,
+  .om-market-demand__graph .om-market-demand__year,
   .om-market-demand__graph .om-market-demand__halo,
-  .om-market-demand__graph .om-market-demand__dot {
+  .om-market-demand__graph .om-market-demand__dot,
+  .om-market-demand__graph .om-market-demand__projected-caption,
+  .om-market-demand__graph .om-market-demand__projected-draw {
     animation: none !important;
     stroke-dashoffset: 0 !important;
     clip-path: none !important;

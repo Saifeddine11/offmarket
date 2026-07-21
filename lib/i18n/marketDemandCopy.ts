@@ -1,19 +1,5 @@
 import type { SiteLocale } from "@/lib/i18n/types";
 
-export type DemandPoint = {
-  cityKey: "rabat" | "casablanca" | "tanger" | "agadir" | "marrakech";
-  value: number;
-};
-
-/** Exact demand series — left → right, Marrakech is final / highest. */
-export const DEMAND_DATA: readonly DemandPoint[] = [
-  { cityKey: "rabat", value: 2 },
-  { cityKey: "casablanca", value: 9 },
-  { cityKey: "tanger", value: 18 },
-  { cityKey: "agadir", value: 28 },
-  { cityKey: "marrakech", value: 42 },
-] as const;
-
 export type MarketDemandMetric = {
   value: string;
   label: string;
@@ -28,101 +14,82 @@ export type MarketDemandCopy = {
   svgTitle: string;
   svgDesc: string;
   summary: string;
-  cities: Record<DemandPoint["cityKey"], string>;
+  /** Short caption near the projected segment (optional visual cue). */
+  projectedCaption: string;
   metrics: readonly [MarketDemandMetric, MarketDemandMetric, MarketDemandMetric];
 };
 
 export const MARKET_DEMAND_COPY: Record<SiteLocale, MarketDemandCopy> = {
   fr: {
-    eyebrow: "LECTURE DU MARCHÉ",
-    title: "Marrakech prend de l’avance.",
-    lead: "La demande progresse plus vite que dans les autres grandes villes marocaines.",
-    graphLabel: "ÉVOLUTION DE LA DEMANDE",
-    svgTitle: "Évolution de la demande par ville",
+    eyebrow: "TRAJECTOIRE DE LA DEMANDE",
+    title: "Une dynamique qui s’installe.",
+    lead:
+      "Depuis 2022, la demande progresse à Marrakech. Les projections à 2028 et 2030 prolongent cette tendance.",
+    graphLabel: "ÉVOLUTION DE LA DEMANDE · 2022 → 2030",
+    svgTitle: "Évolution de la demande de 2022 à 2030",
     svgDesc:
-      "Courbe de la demande relative : Rabat +2 %, Casablanca +9 %, Tanger +18 %, Agadir +28 %, Marrakech +42 %.",
+      "Indice de demande observé : 2022 à 100, 2024 à 124, 2026 à 148. Estimations : 2028 à 165, 2030 à 181.",
     summary:
-      "Parmi cinq villes, Marrakech enregistre la plus forte progression de la demande à +42 %, devant Agadir à +28 %.",
-    cities: {
-      rabat: "Rabat",
-      casablanca: "Casablanca",
-      tanger: "Tanger",
-      agadir: "Agadir",
-      marrakech: "Marrakech",
-    },
+      "La demande à Marrakech progresse de 2022 à 2026. Les années 2028 et 2030 sont des estimations qui prolongent la tendance.",
+    projectedCaption: "estimé",
     metrics: [
-      { value: "+42 %", label: "Marrakech", accent: true },
-      { value: "5", label: "villes comparées" },
-      { value: "+14 pts", label: "devant Agadir" },
+      { value: "2022–2026", label: "données observées", accent: true },
+      { value: "2028–2030", label: "estimations" },
+      { value: "5", label: "jalons de lecture" },
     ],
   },
   en: {
-    eyebrow: "MARKET READING",
-    title: "Marrakech pulls ahead.",
-    lead: "Demand is rising faster here than in other major Moroccan cities.",
-    graphLabel: "DEMAND TREND",
-    svgTitle: "Demand trend by city",
+    eyebrow: "DEMAND TRAJECTORY",
+    title: "A momentum that settles in.",
+    lead:
+      "Since 2022, demand has been rising in Marrakech. Projections for 2028 and 2030 extend that trend.",
+    graphLabel: "DEMAND EVOLUTION · 2022 → 2030",
+    svgTitle: "Demand evolution from 2022 to 2030",
     svgDesc:
-      "Relative demand curve: Rabat +2%, Casablanca +9%, Tangier +18%, Agadir +28%, Marrakech +42%.",
+      "Observed demand index: 2022 at 100, 2024 at 124, 2026 at 148. Estimates: 2028 at 165, 2030 at 181.",
     summary:
-      "Among five cities, Marrakech leads demand growth at +42%, ahead of Agadir at +28%.",
-    cities: {
-      rabat: "Rabat",
-      casablanca: "Casablanca",
-      tanger: "Tangier",
-      agadir: "Agadir",
-      marrakech: "Marrakech",
-    },
+      "Demand in Marrakech rises from 2022 to 2026. Years 2028 and 2030 are estimates extending the trend.",
+    projectedCaption: "est.",
     metrics: [
-      { value: "+42%", label: "Marrakech", accent: true },
-      { value: "5", label: "cities compared" },
-      { value: "+14 pts", label: "ahead of Agadir" },
+      { value: "2022–2026", label: "observed data", accent: true },
+      { value: "2028–2030", label: "estimates" },
+      { value: "5", label: "reading markers" },
     ],
   },
   it: {
-    eyebrow: "LETTURA DI MERCATO",
-    title: "Marrakech prende il largo.",
-    lead: "La domanda cresce più in fretta che nelle altre grandi città marocchine.",
-    graphLabel: "EVOLUZIONE DELLA DOMANDA",
-    svgTitle: "Evoluzione della domanda per città",
+    eyebrow: "TRAETTORIA DELLA DOMANDA",
+    title: "Una dinamica che si afferma.",
+    lead:
+      "Dal 2022 la domanda cresce a Marrakech. Le proiezioni al 2028 e al 2030 prolungano questa tendenza.",
+    graphLabel: "EVOLUZIONE DELLA DOMANDA · 2022 → 2030",
+    svgTitle: "Evoluzione della domanda dal 2022 al 2030",
     svgDesc:
-      "Curva della domanda relativa: Rabat +2 %, Casablanca +9 %, Tangeri +18 %, Agadir +28 %, Marrakech +42 %.",
+      "Indice di domanda osservato: 2022 a 100, 2024 a 124, 2026 a 148. Stime: 2028 a 165, 2030 a 181.",
     summary:
-      "Tra cinque città, Marrakech registra la crescita di domanda più forte a +42 %, davanti ad Agadir a +28 %.",
-    cities: {
-      rabat: "Rabat",
-      casablanca: "Casablanca",
-      tanger: "Tangeri",
-      agadir: "Agadir",
-      marrakech: "Marrakech",
-    },
+      "La domanda a Marrakech cresce dal 2022 al 2026. Gli anni 2028 e 2030 sono stime che prolungano la tendenza.",
+    projectedCaption: "stimato",
     metrics: [
-      { value: "+42 %", label: "Marrakech", accent: true },
-      { value: "5", label: "città confrontate" },
-      { value: "+14 pts", label: "davanti ad Agadir" },
+      { value: "2022–2026", label: "dati osservati", accent: true },
+      { value: "2028–2030", label: "stime" },
+      { value: "5", label: "punti di lettura" },
     ],
   },
   nl: {
-    eyebrow: "MARKTLEZING",
-    title: "Marrakech trekt vooruit.",
-    lead: "De vraag stijgt hier sneller dan in andere grote Marokkaanse steden.",
-    graphLabel: "VRAAGONTWIKKELING",
-    svgTitle: "Vraagontwikkeling per stad",
+    eyebrow: "VRAAGTRAJECT",
+    title: "Een dynamiek die zich vestigt.",
+    lead:
+      "Sinds 2022 stijgt de vraag in Marrakech. De projecties voor 2028 en 2030 verlengen die trend.",
+    graphLabel: "VRAAGONTWIKKELING · 2022 → 2030",
+    svgTitle: "Vraagontwikkeling van 2022 tot 2030",
     svgDesc:
-      "Relatieve vraagcurve: Rabat +2 %, Casablanca +9 %, Tanger +18 %, Agadir +28 %, Marrakech +42 %.",
+      "Geobserveerde vraagindex: 2022 op 100, 2024 op 124, 2026 op 148. Schattingen: 2028 op 165, 2030 op 181.",
     summary:
-      "Onder vijf steden toont Marrakech de sterkste vraagstijging op +42 %, vóór Agadir op +28 %.",
-    cities: {
-      rabat: "Rabat",
-      casablanca: "Casablanca",
-      tanger: "Tanger",
-      agadir: "Agadir",
-      marrakech: "Marrakech",
-    },
+      "De vraag in Marrakech stijgt van 2022 tot 2026. De jaren 2028 en 2030 zijn schattingen die de trend verlengen.",
+    projectedCaption: "geschat",
     metrics: [
-      { value: "+42 %", label: "Marrakech", accent: true },
-      { value: "5", label: "steden vergeleken" },
-      { value: "+14 pts", label: "vóór Agadir" },
+      { value: "2022–2026", label: "geobserveerde data", accent: true },
+      { value: "2028–2030", label: "schattingen" },
+      { value: "5", label: "leesmarkers" },
     ],
   },
 };

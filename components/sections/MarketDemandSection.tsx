@@ -13,7 +13,7 @@ function resolveLocale(locale?: string): SiteLocale {
 }
 
 /**
- * Homepage market-demand section — server shell, shared across all locales.
+ * Homepage demand-timeline section — server shell, shared across locales.
  * Inserted once after featured property listings.
  */
 export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
@@ -34,10 +34,10 @@ export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
             <MarketDemandEditorial copy={copy} titleId={titleId} />
             <div className="om-market-demand__divider" aria-hidden="true" />
             <MarketDemandGraph
-              cities={copy.cities}
               graphLabel={copy.graphLabel}
               svgTitle={copy.svgTitle}
               svgDesc={copy.svgDesc}
+              projectedCaption={copy.projectedCaption}
             />
           </div>
         </div>

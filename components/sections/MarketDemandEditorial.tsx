@@ -11,7 +11,7 @@ type MarketDemandEditorialProps = {
 };
 
 /**
- * Left editorial column — one upward stagger when the section enters view.
+ * Left editorial column — timeline copy + metrics, staggered on enter.
  */
 export function MarketDemandEditorial({
   copy,
@@ -26,10 +26,7 @@ export function MarketDemandEditorial({
   const reveal = visible ? " is-revealed" : "";
 
   return (
-    <div
-      ref={rootRef}
-      className={`om-market-demand__editorial${reveal}`}
-    >
+    <div ref={rootRef} className={`om-market-demand__editorial${reveal}`}>
       <p
         className="om-market-demand__eyebrow om-market-demand__reveal"
         style={{ ["--om-md-stagger" as string]: 0 }}
