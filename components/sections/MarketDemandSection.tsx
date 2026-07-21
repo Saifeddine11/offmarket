@@ -1,6 +1,5 @@
 "use client";
 
-import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { MarketDemandGraph } from "@/components/sections/MarketDemandGraph";
 import {
   MARKET_DEMAND_COPY,
@@ -31,7 +30,7 @@ function MarketDemandEditorial({ copy }: { copy: MarketDemandCopy }) {
 
       <dl className="om-market-demand__metrics">
         {copy.metrics.map((metric) => (
-          <div key={metric.label} className="om-market-demand__metric">
+          <div key={`${metric.value}-${metric.label}`} className="om-market-demand__metric">
             <dt className="om-market-demand__metric-value">{metric.value}</dt>
             <dd className="om-market-demand__metric-label">{metric.label}</dd>
             <dd className="om-market-demand__metric-detail">{metric.detail}</dd>
@@ -43,8 +42,8 @@ function MarketDemandEditorial({ copy }: { copy: MarketDemandCopy }) {
 }
 
 /**
- * Homepage market-demand section — inserted once after featured projects
- * for every localized homepage via the shared HomePageContent pipeline.
+ * Homepage market-analysis section — shared across all locales,
+ * inserted once after featured property listings.
  */
 export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
   const resolved = resolveLocale(locale);
@@ -58,7 +57,7 @@ export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
       data-scroll-section
     >
       <div className="om-market-demand__shell">
-        <ScrollReveal className="om-market-demand__panel" y={10} duration={0.4}>
+        <div className="om-market-demand__panel">
           <div className="om-market-demand__layout">
             <MarketDemandEditorial copy={copy} />
             <div className="om-market-demand__divider" aria-hidden="true" />
@@ -67,7 +66,7 @@ export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
               graphLabel={copy.graphLabel}
             />
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );
