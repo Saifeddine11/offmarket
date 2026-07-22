@@ -291,7 +291,7 @@
 .om-market-demand__value {
   fill: rgba(17, 17, 17, 0.78);
   font-family: var(--om-font-heading);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.02em;
   transition: fill 220ms var(--om-md-ease);
@@ -300,7 +300,7 @@
 
 .om-market-demand__value--anchor {
   fill: var(--om-md-accent);
-  font-size: 13.5px;
+  font-size: 14.5px;
   font-weight: 650;
 }
 
@@ -312,7 +312,7 @@
 .om-market-demand__year {
   fill: var(--om-md-ink);
   font-family: var(--om-font-body);
-  font-size: 11.5px;
+  font-size: 12.5px;
   font-weight: 540;
   letter-spacing: 0.01em;
   transition: fill 220ms var(--om-md-ease);
