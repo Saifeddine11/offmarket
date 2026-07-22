@@ -465,7 +465,7 @@
 
 .om-market-demand__graph.is-animated .om-market-demand__point-group--anchor .om-market-demand__dot {
   animation: om-md-peak-scale 0.5s var(--om-md-ease) both;
-  animation-delay: calc(0.22s + (3 * 0.12s));
+  animation-delay: calc(0.22s + (var(--om-md-point-index, 1) * 0.12s));
 }
 
 .om-market-demand__graph.is-animated .om-market-demand__value {
@@ -480,7 +480,7 @@
 
 .om-market-demand__graph.is-animated .om-market-demand__halo {
   animation: om-md-fade 0.5s var(--om-md-ease) both;
-  animation-delay: calc(0.28s + (3 * 0.12s));
+  animation-delay: calc(0.28s + (var(--om-md-point-index, 1) * 0.12s));
 }
 
 .om-market-demand__graph.is-animated .om-market-demand__projected-caption {
