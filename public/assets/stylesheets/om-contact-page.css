@@ -42,9 +42,19 @@
   padding-bottom: clamp(48px, 6vw, 72px);
 }
 
-.om-contact-lead-page > .om-final-cta {
-  flex-shrink: 0;
+/* Final CTA is rendered as a sibling of main (not a padded child) — keep it edge-to-edge. */
+.om-contact-lead-body .om-final-cta,
+.om-contact-lead-body .om-final-cta__media {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
   margin-top: 0;
+  box-sizing: border-box;
+}
+
+.om-contact-lead-body .om-final-cta__media {
+  border-radius: var(--om-radius-lg, 2rem) var(--om-radius-lg, 2rem) 0 0;
 }
 
 .om-contact-lead-page__columns {
