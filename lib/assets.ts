@@ -12,7 +12,7 @@ const INNER_EDITORIAL_STYLES = withoutGlobalFooterStyles(
     "/assets/stylesheets/offmarket-tokens.css?v=1765402900",
     "/assets/stylesheets/offmarket-overrides.css?v=1765338000",
     "/assets/stylesheets/om-typography.css?v=1765311000",
-    "/assets/stylesheets/om-final-cta.css?v=1765404400",
+    "/assets/stylesheets/om-final-cta.css?v=1767581200",
     "/assets/stylesheets/om-inner-hero.css?v=1765405200",
   ]),
 );
@@ -54,7 +54,7 @@ export const STYLES = {
     "/assets/stylesheets/om-private-access-popup.css?v=1765340000",
     "/assets/stylesheets/om-property-modal.css?v=1768512600",
     "/assets/stylesheets/om-contact.css?v=1765405100",
-    "/assets/stylesheets/om-contact-page.css?v=1767580500",
+    "/assets/stylesheets/om-contact-page.css?v=1767581200",
     "/assets/stylesheets/om-nos-projets.css?v=1767547000",
   ],
   /** /sur-plan/villa-jaz/ — modal slides as vertical project detail sections. */
@@ -71,7 +71,7 @@ export const STYLES = {
       "/assets/stylesheets/offmarket-overrides.css?v=1765311000",
       "/assets/stylesheets/om-typography.css?v=1765311000",
       "/assets/stylesheets/om-legal.css?v=1765311000",
-      "/assets/stylesheets/om-final-cta.css?v=1765404400",
+      "/assets/stylesheets/om-final-cta.css?v=1767581200",
       "/assets/stylesheets/om-page-motion.css?v=1765422400",
     ]),
   ),
@@ -80,10 +80,10 @@ export const STYLES = {
       "/assets/stylesheets/offmarket-tokens.css?v=1765402900",
       "/assets/stylesheets/offmarket-overrides.css?v=1765338000",
       "/assets/stylesheets/om-typography.css?v=1765311000",
-      "/assets/stylesheets/om-final-cta.css?v=1765404400",
+      "/assets/stylesheets/om-final-cta.css?v=1767581200",
       "/assets/stylesheets/om-page-motion.css?v=1765422400",
       "/assets/stylesheets/om-contact.css?v=1765405100",
-      "/assets/stylesheets/om-contact-page.css?v=1767580500",
+      "/assets/stylesheets/om-contact-page.css?v=1767581200",
     ]),
   ),
   simulateur: withoutGlobalFooterStyles(
@@ -92,7 +92,7 @@ export const STYLES = {
       "/assets/stylesheets/offmarket-tokens.css?v=1765402900",
       "/assets/stylesheets/offmarket-overrides.css?v=1765338000",
       "/assets/stylesheets/om-typography.css?v=1765311000",
-      "/assets/stylesheets/om-final-cta.css?v=1765404400",
+      "/assets/stylesheets/om-final-cta.css?v=1767581200",
       "/assets/stylesheets/om-page-motion.css?v=1765422400",
       "/assets/stylesheets/om-simulator.css?v=1768513200",
       "/assets/stylesheets/om-simulator-home.css?v=1768513800",
@@ -102,7 +102,7 @@ export const STYLES = {
 
 /** Styles required when injecting PageFinalCtaMotion on static HTML routes. */
 export const FINAL_CTA_STYLES = [
-  "/assets/stylesheets/om-final-cta.css?v=1765404400",
+  "/assets/stylesheets/om-final-cta.css?v=1767581200",
   "/assets/stylesheets/om-page-motion.css?v=1765422400",
 ] as const;
 
