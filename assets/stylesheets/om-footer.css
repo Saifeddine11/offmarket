@@ -34,8 +34,14 @@ footer.om-footer {
   transition: color 220ms ease;
 }
 
-.om-footer a:hover {
-  color: rgba(255, 251, 244, 0.96);
+/* Beat global `.has-hover a:hover { color: var(--t-heading) }` (black) on dark footer */
+.om-footer a:hover,
+.om-footer a:focus-visible,
+.om-footer a:hover:active,
+.has-hover .om-footer a:hover,
+.has-hover .om-footer a:hover:active,
+.has-hover .om-footer a:focus-visible {
+  color: rgba(255, 251, 244, 0.96) !important;
 }
 
 .om-footer__transition {
@@ -265,8 +271,12 @@ body:has(.om-final-cta) > footer .om-footer__transition {
 }
 
 .om-footer__links a:hover,
-.om-footer__links a[aria-current='page'] {
-  color: rgba(255, 251, 244, 0.95);
+.om-footer__links a:focus-visible,
+.om-footer__links a[aria-current='page'],
+.has-hover .om-footer__links a:hover,
+.has-hover .om-footer__links a:hover:active,
+.has-hover .om-footer__links a:focus-visible {
+  color: rgba(255, 251, 244, 0.95) !important;
 }
 
 .om-footer__newsletter {
@@ -505,8 +515,11 @@ body:has(.om-final-cta) > footer .om-footer__transition {
 }
 
 .om-footer__legal a:hover,
-.om-footer__legal a[aria-current='page'] {
-  color: rgba(255, 251, 244, 0.9);
+.om-footer__legal a:focus-visible,
+.om-footer__legal a[aria-current='page'],
+.has-hover .om-footer__legal a:hover,
+.has-hover .om-footer__legal a:hover:active {
+  color: rgba(255, 251, 244, 0.9) !important;
 }
 
 .om-footer__sr-only {

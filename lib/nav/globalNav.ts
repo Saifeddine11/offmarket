@@ -12,7 +12,7 @@ export const GLOBAL_NAV_STYLES = [
 /** Styles loaded once from app/layout.tsx for the global footer. */
 export const GLOBAL_FOOTER_STYLES = [
   "/assets/stylesheets/offmarket-tokens.css?v=1765402900",
-  "/assets/stylesheets/om-footer.css?v=1767581200",
+  "/assets/stylesheets/om-footer.css?v=1767582100",
 ] as const;
 
 /** Scripts loaded once from app/layout.tsx — matches homepage nav boot order. */
