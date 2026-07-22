@@ -2,6 +2,7 @@
 
 import { animate, inView, useReducedMotion } from "framer-motion";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 import { MOTION_EASE } from "@/lib/motion/config";
 
@@ -296,6 +297,7 @@ function bootDynamicMotion() {
 
 export function QuartiersDynamicMotion() {
   const reduced = useReducedMotion();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (reduced) return;
@@ -322,7 +324,7 @@ export function QuartiersDynamicMotion() {
       observer?.disconnect();
       delete window.__omQuartiersMotionBoot;
     };
-  }, [reduced]);
+  }, [pathname, reduced]);
 
   return null;
 }

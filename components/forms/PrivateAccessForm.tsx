@@ -28,6 +28,13 @@ const SUBMIT_ARROW_ICON = (
   </svg>
 );
 
+const HONEYPOT_LABELS: Record<SiteLocale, string> = {
+  fr: "Site web de l'entreprise",
+  en: "Company website",
+  it: "Sito web aziendale",
+  nl: "Bedrijfswebsite",
+};
+
 export function PrivateAccessForm({
   intent,
   intentMode = "fixed",
@@ -59,14 +66,13 @@ export function PrivateAccessForm({
       : locale === "nl"
         ? "/nl/privacybeleid/"
         : locale === "it"
-          ? "/it/"
+          ? "/it/privacy-policy/"
           : "/privacy-policy/";
 
   return (
     <form
       className={formClassName}
-      action="mailto:contact@offmarketofficial.com"
-      encType="text/plain"
+      action="/api/leads/"
       method="post"
       data-private-access-form
       data-form-intent={intentMode === "from-url" ? "from-url" : intent}
@@ -76,6 +82,18 @@ export function PrivateAccessForm({
       noValidate
     >
       <input type="hidden" name="intent" value={intent} data-private-intent />
+
+      {/* Honeypot — visually hidden, ignored by assistive tech */}
+      <label className="om-private-access-form__label--sr" aria-hidden="true">
+        <span>{HONEYPOT_LABELS[locale]}</span>
+        <input
+          type="text"
+          name="companyWebsite"
+          tabIndex={-1}
+          autoComplete="off"
+          defaultValue=""
+        />
+      </label>
 
       {contextValues?.propertyType ? (
         <input

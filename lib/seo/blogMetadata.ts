@@ -22,6 +22,9 @@ export function buildBlogArticleMetadata(content: PageContent): Metadata {
   if (content.ogDescription) {
     openGraph.description = content.ogDescription;
   }
+  if (content.ogLocale) {
+    openGraph.locale = content.ogLocale;
+  }
 
   return {
     title: content.title,

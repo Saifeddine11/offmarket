@@ -38,6 +38,49 @@ const GLOBAL_NAV_SCRIPT_FILES = new Set(
   GLOBAL_NAV_SCRIPTS.map((href) => scriptOrStyleFile(href)),
 );
 
+const SIMULATOR_RANGE_LABELS: Record<SiteLocale, Record<string, string>> = {
+  fr: {
+    budget: "Budget d'acquisition",
+    nightlyRate: "Prix nuitée moyen",
+    personalWeeks: "Semaines d'usage personnel",
+    occupancy: "Taux d'occupation",
+    monthlyRent: "Loyer mensuel estimé",
+    resaleHorizonYears: "Horizon de revente",
+    annualAppreciationRate: "Hypothèse de valorisation annuelle",
+    taxRate: "Taux d'imposition",
+  },
+  en: {
+    budget: "Acquisition budget",
+    nightlyRate: "Average nightly rate",
+    personalWeeks: "Weeks of personal use",
+    occupancy: "Occupancy rate",
+    monthlyRent: "Estimated monthly rent",
+    resaleHorizonYears: "Resale horizon",
+    annualAppreciationRate: "Annual appreciation assumption",
+    taxRate: "Tax rate",
+  },
+  it: {
+    budget: "Budget di acquisizione",
+    nightlyRate: "Tariffa media per notte",
+    personalWeeks: "Settimane di utilizzo personale",
+    occupancy: "Tasso di occupazione",
+    monthlyRent: "Canone mensile stimato",
+    resaleHorizonYears: "Orizzonte di rivendita",
+    annualAppreciationRate: "Ipotesi di rivalutazione annua",
+    taxRate: "Aliquota fiscale",
+  },
+  nl: {
+    budget: "Aankoopprijs",
+    nightlyRate: "Gemiddelde nachtprijs",
+    personalWeeks: "Weken eigen gebruik",
+    occupancy: "Bezettingsgraad",
+    monthlyRent: "Maandelijkse huur",
+    resaleHorizonYears: "Herverkoophorizon",
+    annualAppreciationRate: "Aanname jaarlijkse waardestijging",
+    taxRate: "Belastingtarief",
+  },
+};
+
 function scriptOrStyleFile(href: string): string {
   return href.split("/").pop()?.split("?")[0] ?? "";
 }
@@ -195,9 +238,43 @@ export function stripLegacyStaticPropertyModals(html: string): string {
 /** Rewrites stale or placeholder interactive targets in migrated static chunks. */
 export function fixStaticInteractiveTargets(html: string, locale: SiteLocale = "fr"): string {
   const contactHref = locale === "en" ? "/en/contact/" : locale === "nl" ? "/nl/contact/" : locale === "it" ? "/it/contatto/" : "/contact/";
-  const aboutHref = locale === "en" ? "/en/about/#acteurs-verifies" : locale === "nl" ? "/nl/over-ons/#acteurs-verifies" : locale === "it" ? "/it/#acteurs-verifies" : "/about/#acteurs-verifies";
-  const neighbourhoodsHref = locale === "en" ? "/en/neighbourhoods/" : locale === "nl" ? "/nl/wijken/" : locale === "it" ? "/it/" : "/quartiers/";
-  const privacyHref = locale === "en" ? "/en/privacy-policy/" : locale === "nl" ? "/nl/privacybeleid/" : locale === "it" ? "/it/" : "/privacy-policy/";
+  const aboutHref = locale === "en" ? "/en/about/#acteurs-verifies" : locale === "nl" ? "/nl/over-ons/#acteurs-verifies" : locale === "it" ? "/it/chi-siamo/#acteurs-verifies" : "/about/#acteurs-verifies";
+  const neighbourhoodsHref = locale === "en" ? "/en/neighbourhoods/" : locale === "nl" ? "/nl/wijken/" : locale === "it" ? "/it/quartieri/" : "/quartiers/";
+  const privacyHref = locale === "en" ? "/en/privacy-policy/" : locale === "nl" ? "/nl/privacybeleid/" : locale === "it" ? "/it/privacy-policy/" : "/privacy-policy/";
+  const interactiveLabels = {
+    introNext:
+      locale === "en"
+        ? "View project details"
+        : locale === "nl"
+          ? "Bekijk projectdetails"
+          : locale === "it"
+            ? "Vedi i dettagli del progetto"
+            : "Voir les détails du projet",
+    carouselPrev:
+      locale === "en"
+        ? "Previous project"
+        : locale === "nl"
+          ? "Vorig project"
+          : locale === "it"
+            ? "Progetto precedente"
+            : "Projet précédent",
+    carouselNext:
+      locale === "en"
+        ? "Next project"
+        : locale === "nl"
+          ? "Volgend project"
+          : locale === "it"
+            ? "Progetto successivo"
+            : "Projet suivant",
+    neighbourhoods:
+      locale === "en"
+        ? "Explore neighbourhoods"
+        : locale === "nl"
+          ? "Ontdek de wijken"
+          : locale === "it"
+            ? "Esplora i quartieri"
+            : "Découvrir les quartiers",
+  };
   return html
     .replace(
       /<section class="section ui-dark-background"/,
@@ -208,12 +285,35 @@ export function fixStaticInteractiveTargets(html: string, locale: SiteLocale = "
       '$1href="#sur-plan-details"',
     )
     .replace(
+      /<a((?=[^>]*\bclass="[^"]*\bi-intro__next\b)(?![^>]*\baria-label=)[^>]*)>/gi,
+      `<a$1 aria-label="${interactiveLabels.introNext}">`,
+    )
+    .replace(
       /(class="[^"]*\bmore-block__button\b[^"]*"[\s\S]*?)href=(["'])\2/g,
       `$1href="${neighbourhoodsHref}"`,
     )
     .replace(
+      /<a((?=[^>]*\bclass="[^"]*\bmore-block__button\b)(?![^>]*\baria-label=)[^>]*)>/gi,
+      `<a$1 aria-label="${interactiveLabels.neighbourhoods}">`,
+    )
+    .replace(
       /<a((?=[^>]*\brole="button")(?=[^>]*(?:\bcarousel__thumb__item\b|\bjs-content-animation-(?:prev|next)\b))(?![^>]*\bhref=)[^>]*)>/g,
       '<a$1 href="#sur-plan-details">',
+    )
+    .replace(
+      /<a((?=[^>]*\bclass="[^"]*\bjs-content-animation-prev\b)(?![^>]*\baria-label=)[^>]*)>/gi,
+      `<a$1 aria-label="${interactiveLabels.carouselPrev}">`,
+    )
+    .replace(
+      /<a((?=[^>]*\bclass="[^"]*\bjs-content-animation-next\b)(?![^>]*\baria-label=)[^>]*)>/gi,
+      `<a$1 aria-label="${interactiveLabels.carouselNext}">`,
+    )
+    .replace(
+      /(<div[^>]*\bdata-field-key="([^"]+)"[^>]*>[\s\S]*?<input(?=[^>]*\bclass="[^"]*\bom-simulator__range\b)(?![^>]*\baria-label=)[^>]*)(>)/gi,
+      (match, fieldHtml: string, fieldKey: string, close: string) => {
+        const label = SIMULATOR_RANGE_LABELS[locale][fieldKey];
+        return label ? `${fieldHtml} aria-label="${label}"${close}` : match;
+      },
     )
     .replace(/href="#callback-modal"/g, `href="${contactHref}"`)
     .replace(/href="#safe"/g, `href="${aboutHref}"`)

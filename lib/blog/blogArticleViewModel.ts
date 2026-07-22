@@ -2,6 +2,7 @@ import {
   BLOG_ARTICLES,
   BLOG_ARTICLES_EN,
   BLOG_ARTICLES_NL,
+  BLOG_ARTICLES_IT,
   type BlogArticleSlug,
 } from "@/lib/blog/articles";
 import {
@@ -180,18 +181,24 @@ function resolveCurrentSlug(locale: SiteLocale, pageId: PageId | null, hub: Blog
     const entry = Object.entries(BLOG_ARTICLES_NL).find(([, id]) => id === pageId);
     return entry?.[0] ?? null;
   }
+  if (locale === "it") {
+    const entry = Object.entries(BLOG_ARTICLES_IT).find(([, id]) => id === pageId);
+    return entry?.[0] ?? null;
+  }
   return PAGE_ID_TO_FR_SLUG[pageId] ?? null;
 }
 
 function blogIndexHref(locale: SiteLocale): string {
   if (locale === "en") return "/en/blog/";
   if (locale === "nl") return "/nl/blog/";
+  if (locale === "it") return "/it/blog/";
   return "/blog/";
 }
 
 function aboutHref(locale: SiteLocale): string {
   if (locale === "en") return "/en/about/";
   if (locale === "nl") return "/nl/over-ons/";
+  if (locale === "it") return "/it/chi-siamo/";
   return "/about/";
 }
 
@@ -305,6 +312,63 @@ function getCopy(locale: SiteLocale) {
           text: "Vertel wat u zoekt. Wij antwoorden met een gerichte private selectie.",
           href: "/nl/contact/",
           label: "Contacteer een adviseur",
+        },
+      },
+    };
+  }
+
+  if (locale === "it") {
+    return {
+      home: "Home",
+      blog: "Blog",
+      toc: "In questo articolo",
+      takeaways: "Punti chiave",
+      related: "Da leggere",
+      published: "Pubblicato",
+      updated: "Aggiornato",
+      breadcrumbNav: "Breadcrumb",
+      editorial: "Redazione OFF MARKET",
+      backLabel: "Tornare al blog",
+      readingTime: (minutes: number) =>
+        minutes <= 1 ? "1 min di lettura" : `${minutes} min di lettura`,
+      trustTitle: "Nota informativa",
+      trustText:
+        "Questo articolo ha finalità esclusivamente informative. Non sostituisce una consulenza legale, notarile, tecnica, fiscale o finanziaria qualificata per il vostro progetto.",
+      cta: {
+        surPlan: {
+          eyebrow: "Acquisto su progetto",
+          title: "Scopri i progetti selezionati",
+          text: "Confronta i programmi attraverso una lettura chiara di posizione, calendario e uso pratico.",
+          href: "/it/progetti-su-piano/",
+          label: "Vedi i progetti",
+        },
+        investissement: {
+          eyebrow: "Investimento",
+          title: "Modella il tuo scenario di acquisto",
+          text: "Usa il simulatore per inquadrare budget, uso previsto e prossime domande prima di un confronto privato.",
+          href: "/it/simulatore/",
+          label: "Apri il simulatore",
+        },
+        marrakech: {
+          eyebrow: "Quartieri",
+          title: "Esplora i quartieri di Marrakech",
+          text: "Leggi le zone che definiscono domanda, stile di vita e desiderabilità nel tempo.",
+          href: "/it/quartieri/",
+          label: "Scopri i quartieri",
+        },
+        offMarket: {
+          eyebrow: "Off-market",
+          title: "Richiedi un accesso privato",
+          text: "Accedi a opportunità riservate attraverso un percorso discreto e qualificato.",
+          href: "/it/off-market/",
+          label: "Richiedi accesso",
+        },
+        contact: {
+          eyebrow: "Contatto",
+          title: "Parla con un consulente",
+          text: "Raccontaci cosa cerchi. Risponderemo con una selezione privata mirata.",
+          href: "/it/contatto/",
+          label: "Contatta un consulente",
         },
       },
     };
@@ -473,7 +537,13 @@ export function buildBlogArticleViewModel(options: {
       datePublished: publishedLabel || undefined,
       mainEntityOfPage: canonical,
       inLanguage:
-        locale === "en" ? "en-US" : locale === "nl" ? "nl-NL" : "fr-FR",
+        locale === "en"
+          ? "en-US"
+          : locale === "nl"
+            ? "nl-NL"
+            : locale === "it"
+              ? "it-IT"
+              : "fr-FR",
       publisher: {
         "@type": "Organization",
         name: "OFF MARKET",

@@ -68,7 +68,7 @@ const ABOUT_COPY = {
     primary: "Accedi all'Off-market",
     primaryHref: "/it/off-market/",
     secondary: "Progetti",
-    secondaryHref: "/it/progetti-su-piano/",
+    secondaryHref: "/it/progetti/",
   },
   nl: {
     skip: "Naar hoofdinhoud",
@@ -97,6 +97,14 @@ export function AboutPageContent({
   locale = "fr",
 }: AboutPageContentProps) {
   const copy = ABOUT_COPY[locale] ?? ABOUT_COPY.fr;
+  const breadcrumbAriaLabel =
+    locale === "en"
+      ? "Breadcrumb"
+      : locale === "nl"
+        ? "Broodkruimel"
+        : locale === "it"
+          ? "Percorso di navigazione"
+          : "Fil d'Ariane";
   return (
     <>
       <a href="#main" className="sr-only sr-only--focusable">
@@ -105,6 +113,7 @@ export function AboutPageContent({
 
       <main id="main">
         <InnerPageHero
+          breadcrumbAriaLabel={breadcrumbAriaLabel}
           breadcrumbs={[
             { label: copy.breadcrumbs[0], href: locale === "fr" ? "/" : `/${locale}/` },
             { label: copy.breadcrumbs[1], current: true },

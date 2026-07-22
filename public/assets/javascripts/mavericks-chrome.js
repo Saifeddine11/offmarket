@@ -214,11 +214,19 @@
     backdrop.addEventListener('click', closeMenu);
   }
 
+  chrome.addEventListener('click', function (e) {
+    var target = e.target;
+    var link = target && target.closest
+      ? target.closest('.cinematic-menu-link, .cinematic-menu-sublink, .mv-lang-switcher__btn')
+      : null;
+    if (link && chrome.contains(link)) closeMenu();
+  }, true);
+
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && menuOpen) closeMenu();
   });
 
-  chrome.querySelectorAll('.cinematic-menu-link, .cinematic-menu-sublink').forEach(function (link) {
+  chrome.querySelectorAll('.cinematic-menu-link, .cinematic-menu-sublink, .mv-lang-switcher__btn').forEach(function (link) {
     if (link.getAttribute('data-om-nav-close-bound') === 'true') return;
     link.setAttribute('data-om-nav-close-bound', 'true');
     link.addEventListener('click', function () {
@@ -227,7 +235,7 @@
   });
 
   document.addEventListener('om-nav-rendered', function () {
-    chrome.querySelectorAll('.cinematic-menu-link, .cinematic-menu-sublink').forEach(function (link) {
+    chrome.querySelectorAll('.cinematic-menu-link, .cinematic-menu-sublink, .mv-lang-switcher__btn').forEach(function (link) {
       if (link.getAttribute('data-om-nav-close-bound') === 'true') return;
       link.setAttribute('data-om-nav-close-bound', 'true');
       link.addEventListener('click', function () {

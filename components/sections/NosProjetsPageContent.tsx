@@ -45,10 +45,10 @@ const PROJECTS_COPY = {
     breadcrumbs: ["Home", "Progetti"],
     title: "Progetti",
     subtitle:
-      "Una selezione di ville, appartamenti, progetti su piano e opportunità riservate a Marrakech, studiate prima della presentazione.",
+      "Una selezione di ville, appartamenti, progetti in costruzione e opportunità riservate a Marrakech, studiate prima della presentazione.",
     primary: "Accedi all'Off-market",
     primaryHref: "/it/off-market/",
-    secondary: "Vedi i progetti su piano",
+    secondary: "Vedi i progetti in costruzione",
     secondaryHref: "/it/progetti-su-piano/",
   },
   nl: {
@@ -73,11 +73,20 @@ const PROJECTS_COPY = {
 
 export function NosProjetsPageContent({ locale = "fr" }: { locale?: SiteLocale }) {
   const copy = PROJECTS_COPY[locale] ?? PROJECTS_COPY.fr;
+  const breadcrumbAriaLabel =
+    locale === "en"
+      ? "Breadcrumb"
+      : locale === "nl"
+        ? "Broodkruimel"
+        : locale === "it"
+          ? "Percorso di navigazione"
+          : "Fil d'Ariane";
   return (
     <AnimatedInnerPageTemplate
-      skipLinkLabel={locale === "fr" ? "Aller au contenu principal" : locale === "nl" ? "Naar hoofdinhoud" : "Skip to main content"}
+      skipLinkLabel={locale === "fr" ? "Aller au contenu principal" : locale === "nl" ? "Naar hoofdinhoud" : locale === "it" ? "Vai al contenuto principale" : "Skip to main content"}
       finalCta={<PageFinalCtaMotion locale={locale} />}
       hero={{
+        breadcrumbAriaLabel,
         breadcrumbs: [
           { label: copy.breadcrumbs[0], href: locale === "fr" ? "/" : `/${locale}/` },
           { label: copy.breadcrumbs[1], current: true },

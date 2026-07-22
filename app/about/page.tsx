@@ -9,7 +9,7 @@ import { LANG_LINKS } from "@/lib/routes";
 import { buildPageMetadata, buildPageViewport } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "S.A.F.E — Cadre indépendant d’analyse immobilière | OFF MARKET",
+  title: "S.A.F.E. — Cadre indépendant d’analyse immobilière | OFF MARKET",
   description:
     "Découvrez S.A.F.E, un cadre indépendant d'analyse et de sécurisation immobilière dont OFF MARKET respecte et applique les principes lors de l'étude des opportunités.",
   ogDescription:

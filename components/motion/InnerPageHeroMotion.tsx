@@ -16,6 +16,7 @@ export function InnerPageHeroMotion(props: InnerPageHeroProps) {
     imageSrc,
     scrollTarget,
     scrollLabel = "Scroll to explore ↓",
+    breadcrumbAriaLabel = "Fil d'Ariane",
     actions,
   } = props;
 
@@ -40,7 +41,7 @@ export function InnerPageHeroMotion(props: InnerPageHeroProps) {
         </ImageScrollReveal>
 
         <div className="inner-hero__content">
-          <ScrollReveal as="nav" className="inner-hero__breadcrumb" aria-label="Fil d'Ariane">
+          <ScrollReveal as="nav" className="inner-hero__breadcrumb" aria-label={breadcrumbAriaLabel}>
             {breadcrumbs.map((crumb, index) => (
               <span key={`${crumb.label}-${index}`}>
                 {index > 0 ? (

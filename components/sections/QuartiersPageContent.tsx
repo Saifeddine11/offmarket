@@ -83,7 +83,7 @@ const QUARTIERS_COPY = {
     primary: "Accedi all'Off-market",
     primaryHref: "/it/off-market/",
     secondaryCta: "Progetti",
-    secondaryHref: "/it/progetti-su-piano/",
+    secondaryHref: "/it/progetti/",
     territoriesTitle: "Top 3 quartieri in cui investire a Marrakech",
     territoriesEyebrow: "QUARTIERI",
     territoriesAria: "Zone di investimento a Marrakech",
@@ -140,6 +140,14 @@ const QUARTIERS_COPY = {
 
 export function QuartiersPageContent({ locale = "fr" }: { locale?: SiteLocale }) {
   const copy = QUARTIERS_COPY[locale] ?? QUARTIERS_COPY.fr;
+  const breadcrumbAriaLabel =
+    locale === "en"
+      ? "Breadcrumb"
+      : locale === "nl"
+        ? "Broodkruimel"
+        : locale === "it"
+          ? "Percorso di navigazione"
+          : "Fil d'Ariane";
   return (
     <>
       <a href="#main" className="sr-only sr-only--focusable">
@@ -149,6 +157,7 @@ export function QuartiersPageContent({ locale = "fr" }: { locale?: SiteLocale })
       <QuartiersPageMotion>
         <main id="main">
           <InnerPageHero
+            breadcrumbAriaLabel={breadcrumbAriaLabel}
             breadcrumbs={[
               { label: copy.breadcrumbs[0], href: locale === "fr" ? "/" : `/${locale}/` },
               { label: copy.breadcrumbs[1], current: true },

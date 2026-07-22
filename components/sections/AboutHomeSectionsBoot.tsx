@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { SCRIPTS } from "@/lib/assets";
 
 const ABOUT_WHO_COPY = {
@@ -110,6 +111,8 @@ async function bootAboutHomeSections() {
  * Defer-loaded legacy scripts can init too early and lose their DOM hooks.
  */
 export function AboutHomeSectionsBoot() {
+  const pathname = usePathname();
+
   useEffect(() => {
     let cancelled = false;
 
@@ -137,7 +140,7 @@ export function AboutHomeSectionsBoot() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

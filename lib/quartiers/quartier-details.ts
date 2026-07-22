@@ -208,3 +208,58 @@ export const quartierDetailsNl: QuartierDetail[] = [
     ],
   },
 ];
+
+export const quartierDetailsIt: QuartierDetail[] = [
+  {
+    ...quartierDetails[0],
+    valueLabel: "CENTRALITÀ LOCATIVA",
+    title: "Guéliz Iper-centro / Hivernage",
+    description:
+      "Un settore centrale ricercato per appartamenti, pied-à-terre, negozi, ristoranti e una domanda locativa costante.",
+    imageAlt: "Appartamento contemporaneo a Guéliz, Marrakech",
+    ctaLabel: "Vedi gli appartamenti",
+    ctaHref: "/it/progetti/",
+    points: [
+      { label: "Negozi e ristoranti", icon: "restaurant" },
+      { label: "Caffè e vita urbana", icon: "cup" },
+      { label: "Centri commerciali", icon: "shopping" },
+      { label: "Hotel e servizi", icon: "building" },
+      { label: "Forte domanda locativa", icon: "chart", accent: "green" },
+      { label: "Appartamenti nuovi", icon: "building" },
+    ],
+  },
+  {
+    ...quartierDetails[1],
+    valueLabel: "INDIRIZZI RESIDENZIALI",
+    description:
+      "Un settore residenziale premium, sostenuto da spazio, tranquillità, ville, assi di accesso principali e scarsità di terreni.",
+    imageAlt: "Villa contemporanea in una zona residenziale di Marrakech",
+    ctaLabel: "Vedi Villa Jaz",
+    ctaHref: "/it/progetti-su-piano/villa-jaz/",
+    points: [
+      { label: "Ville e residenze private", icon: "villa" },
+      { label: "Giardino e piscina", icon: "pool" },
+      { label: "Accesso alle strade principali", icon: "road" },
+      { label: "Tranquillità residenziale", icon: "leaf" },
+      { label: "Potenziale patrimoniale", icon: "chart" },
+      { label: "Scarsità di terreni", icon: "lock" },
+    ],
+  },
+  {
+    ...quartierDetails[2],
+    valueLabel: "RENDIMENTO TURISTICO",
+    description:
+      "Un mercato patrimoniale e riservato, ricercato per riad, maison d’hôtes, turismo e immobili di carattere.",
+    imageAlt: "Riad di carattere nella Medina di Marrakech",
+    ctaLabel: "Accesso privato",
+    ctaHref: "/it/off-market/",
+    points: [
+      { label: "Riad di carattere", icon: "arch" },
+      { label: "Maison d’hôtes", icon: "house" },
+      { label: "Patrimonio e souk", icon: "heritage" },
+      { label: "Vicino a Jemaa el-Fna", icon: "pin" },
+      { label: "Turismo", icon: "suitcase" },
+      { label: "Selezione riservata", icon: "lock" },
+    ],
+  },
+];

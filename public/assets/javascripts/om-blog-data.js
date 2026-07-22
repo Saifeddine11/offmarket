@@ -129,6 +129,7 @@
     var path = (global.location && global.location.pathname) || '/';
     if (path.indexOf('/en') === 0) return 'en';
     if (path.indexOf('/nl') === 0) return 'nl';
+    if (path.indexOf('/it') === 0) return 'it';
     return 'fr';
   }
 
@@ -225,10 +226,56 @@
         },
       ],
     },
+    it: {
+      categories: [
+        { slug: 'sur-plan', label: 'Acquisto su progetto' },
+        { slug: 'investissement', label: 'Investimento' },
+        { slug: 'marrakech', label: 'Marrakech' },
+        { slug: 'off-market', label: 'Off-market' },
+      ],
+      tabs: [
+        { slug: 'quartiers', label: 'Quartieri', tag: 'quartiers' },
+        { slug: 'marrakech', label: 'Marrakech', tag: 'marrakech' },
+        { slug: 'investissement', label: 'Investimento', tag: 'investissement' },
+        { slug: 'sur-plan', label: 'Acquisto su progetto', tag: 'sur-plan' },
+      ],
+      articles: [
+        {
+          slug: 'acquistare-villa-su-progetto-marrakech',
+          title: 'Acquistare una villa su progetto a Marrakech: cosa verificare prima di prenotare',
+          imageAlt: 'Villa su progetto a Marrakech — esterno',
+          excerpt: 'Prima di prenotare una villa su progetto a Marrakech, cosa verificare sul promotore, sul calendario, sui pagamenti e sulla coerenza del dossier.',
+        },
+        {
+          slug: 'investire-immobiliare-di-lusso-marrakech',
+          title: "Investire nell'immobiliare di lusso a Marrakech: le zone da seguire",
+          imageAlt: 'Immobiliare di lusso a Marrakech',
+          excerpt: 'Come leggere un indirizzo a Marrakech prima di investire: domanda locativa, liquidità alla rivendita, profilo degli acquirenti e dinamica del quartiere.',
+        },
+        {
+          slug: 'indirizzi-immobiliari-marrakech',
+          title: 'Guéliz, Hivernage, Amelkis: capire gli indirizzi di Marrakech che acquistano valore',
+          imageAlt: 'Architettura e indirizzi a Marrakech',
+          excerpt: 'Guéliz, Hivernage, Amelkis: cosa distingue queste zone di Marrakech e come ciascuna risponde a un uso e a un orizzonte diversi.',
+        },
+        {
+          slug: 'immobili-off-market-marrakech',
+          title: 'Perché alcuni immobili a Marrakech non vengono mai pubblicati online',
+          imageAlt: 'Selezione immobiliare privata a Marrakech',
+          excerpt: 'Perché alcuni immobili a Marrakech restano fuori dagli annunci pubblici: riservatezza, dossier sensibili e accesso riservato ad acquirenti qualificati.',
+        },
+        {
+          slug: 'appartamento-centro-gueliz-marrakech',
+          title: 'Appartamento nel centro di Guéliz: perché la posizione resta il primo filtro',
+          imageAlt: 'Appartamento nel centro di Marrakech',
+          excerpt: 'Nel centro di Marrakech, la posizione filtra il progetto: uso quotidiano, rarità degli indirizzi e lettura del potenziale residenziale.',
+        },
+      ],
+    },
   };
 
-  function applyLocalization() {
-    var locale = detectLocale();
+  function applyLocalization(localeOverride) {
+    var locale = localeOverride || detectLocale();
     var localized = LOCALIZED[locale];
     if (!localized) return;
     OM_BLOG_CATEGORIES = localized.categories;
@@ -236,9 +283,15 @@
     OM_BLOG_ARTICLES = OM_BLOG_ARTICLES.map(function (article, index) {
       return Object.assign({}, article, localized.articles[index] || {});
     });
+    global.OM_BLOG_CATEGORIES = OM_BLOG_CATEGORIES;
+    global.OM_BLOG_QUARTIERS_TABS = OM_BLOG_QUARTIERS_TABS;
+    global.OM_BLOG_ARTICLES = OM_BLOG_ARTICLES;
   }
 
   applyLocalization();
+  global.OM_BLOG_applyLocalization = function (locale) {
+    applyLocalization(locale);
+  };
 
   function articleHasTag(article, tag) {
     return (

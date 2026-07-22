@@ -29,12 +29,14 @@ type QuartierFeatureCardProps = {
   detail: QuartierDetail;
   reverse?: boolean;
   motion?: boolean;
+  pointsAriaLabel?: string;
 };
 
 export function QuartierFeatureCard({
   detail,
   reverse = false,
   motion = false,
+  pointsAriaLabel = "Points clés",
 }: QuartierFeatureCardProps) {
   const reduced = useReducedMotion();
   const mobile = useMotionMobile();
@@ -69,7 +71,7 @@ export function QuartierFeatureCard({
         <StaggerReveal
           as="ul"
           className="quartier-feature-card__points"
-          aria-label={`Points clés — ${detail.title}`}
+          aria-label={`${pointsAriaLabel} — ${detail.title}`}
           stagger={0.06}
           delayChildren={0.2}
         >
@@ -90,7 +92,7 @@ export function QuartierFeatureCard({
           ))}
         </StaggerReveal>
       ) : (
-        <ul className="quartier-feature-card__points" aria-label={`Points clés — ${detail.title}`}>
+        <ul className="quartier-feature-card__points" aria-label={`${pointsAriaLabel} — ${detail.title}`}>
           {detail.points.map((point) => (
             <li
               key={point.label}

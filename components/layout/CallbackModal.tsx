@@ -14,6 +14,7 @@ type CallbackModalProps = {
 const CALLBACK_COPY = {
   fr: {
     close: "Fermer",
+    dialog: "Contact",
     title: "Recevoir une analyse privée",
     text:
       "Partagez votre projet. OFF MARKET vous répond avec une lecture ciblée et des comparables réels.",
@@ -21,6 +22,7 @@ const CALLBACK_COPY = {
   },
   en: {
     close: "Close",
+    dialog: "Contact",
     title: "Receive a private analysis",
     text:
       "Share your project. OFF MARKET will respond with a targeted reading and real comparables.",
@@ -28,6 +30,7 @@ const CALLBACK_COPY = {
   },
   it: {
     close: "Chiudi",
+    dialog: "Contatto",
     title: "Ricevere un'analisi privata",
     text:
       "Condividi il tuo progetto. OFF MARKET risponde con una lettura mirata e comparabili reali.",
@@ -35,6 +38,7 @@ const CALLBACK_COPY = {
   },
   nl: {
     close: "Sluiten",
+    dialog: "Contact",
     title: "Een private analyse ontvangen",
     text:
       "Deel uw project. OFF MARKET antwoordt met een gerichte analyse en echte vergelijkingspunten.",
@@ -42,6 +46,7 @@ const CALLBACK_COPY = {
   },
 } satisfies Record<SiteLocale, {
   close: string;
+  dialog: string;
   title: string;
   text: string;
   secondary: string;
@@ -67,7 +72,7 @@ export function CallbackModal({
         data-modal-one-per-page="true"
         role="dialog"
         aria-hidden="true"
-        aria-label="Contact"
+        aria-label={copy.dialog}
         // mavericks-chrome.js stamps data-om-callback-init, possibly pre-hydration
         suppressHydrationWarning
       >

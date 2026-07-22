@@ -73,6 +73,7 @@ export default async function RootLayout({
         />
         <script
           type="application/ld+json"
+          id="site-structured-data"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(getSiteStructuredData(locale)),

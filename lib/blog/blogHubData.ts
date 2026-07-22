@@ -37,6 +37,13 @@ const CATEGORIES_NL: BlogHubCategory[] = [
   { slug: "off-market", label: "Off-market" },
 ];
 
+const CATEGORIES_IT: BlogHubCategory[] = [
+  { slug: "sur-plan", label: "Acquisto su progetto" },
+  { slug: "investissement", label: "Investimento" },
+  { slug: "marrakech", label: "Marrakech" },
+  { slug: "off-market", label: "Off-market" },
+];
+
 const ARTICLES_FR: BlogHubArticle[] = [
   {
     slug: "acheter-villa-sur-plan-marrakech",
@@ -187,6 +194,49 @@ const ARTICLES_NL: BlogHubArticle[] = [
   },
 ];
 
+const ARTICLES_IT: BlogHubArticle[] = [
+  {
+    ...ARTICLES_FR[0],
+    slug: "acquistare-villa-su-progetto-marrakech",
+    title: "Acquistare una villa su progetto a Marrakech: cosa verificare prima di prenotare",
+    imageAlt: "Villa su progetto a Marrakech — esterno",
+    excerpt:
+      "Prima di prenotare una villa su progetto a Marrakech, cosa verificare sul promotore, sul calendario, sui pagamenti e sulla coerenza del dossier.",
+  },
+  {
+    ...ARTICLES_FR[1],
+    slug: "investire-immobiliare-di-lusso-marrakech",
+    title: "Investire nell'immobiliare di lusso a Marrakech: le zone da seguire",
+    imageAlt: "Immobiliare di lusso a Marrakech",
+    excerpt:
+      "Come leggere un indirizzo a Marrakech prima di investire: domanda locativa, liquidità alla rivendita, profilo degli acquirenti e dinamica del quartiere.",
+  },
+  {
+    ...ARTICLES_FR[2],
+    slug: "indirizzi-immobiliari-marrakech",
+    title: "Guéliz, Hivernage, Amelkis: capire gli indirizzi di Marrakech che acquistano valore",
+    imageAlt: "Architettura e indirizzi a Marrakech",
+    excerpt:
+      "Guéliz, Hivernage, Amelkis: cosa distingue queste zone di Marrakech e come ciascuna risponde a un uso e a un orizzonte diversi.",
+  },
+  {
+    ...ARTICLES_FR[3],
+    slug: "immobili-off-market-marrakech",
+    title: "Perché alcuni immobili a Marrakech non vengono mai pubblicati online",
+    imageAlt: "Selezione immobiliare privata a Marrakech",
+    excerpt:
+      "Perché alcuni immobili a Marrakech restano fuori dagli annunci pubblici: riservatezza, dossier sensibili e accesso riservato ad acquirenti qualificati.",
+  },
+  {
+    ...ARTICLES_FR[4],
+    slug: "appartamento-centro-gueliz-marrakech",
+    title: "Appartamento nel centro di Guéliz: perché la posizione resta il primo filtro",
+    imageAlt: "Appartamento nel centro di Marrakech",
+    excerpt:
+      "Nel centro di Marrakech, la posizione filtra il progetto: uso quotidiano, rarità degli indirizzi e lettura del potenziale residenziale.",
+  },
+];
+
 export function getBlogHubLocale(htmlLang: string): SiteLocale {
   return htmlLang === "en" || htmlLang === "nl" || htmlLang === "it"
     ? htmlLang
@@ -196,12 +246,14 @@ export function getBlogHubLocale(htmlLang: string): SiteLocale {
 export function getBlogHubCategories(locale: SiteLocale): BlogHubCategory[] {
   if (locale === "en") return CATEGORIES_EN;
   if (locale === "nl") return CATEGORIES_NL;
+  if (locale === "it") return CATEGORIES_IT;
   return CATEGORIES_FR;
 }
 
 export function getBlogHubArticles(locale: SiteLocale): BlogHubArticle[] {
   if (locale === "en") return ARTICLES_EN;
   if (locale === "nl") return ARTICLES_NL;
+  if (locale === "it") return ARTICLES_IT;
   return ARTICLES_FR;
 }
 
@@ -216,12 +268,13 @@ export function getBlogHubCategoryLabel(
 export function blogHubArticleHref(locale: SiteLocale, slug: string): string {
   if (locale === "en") return `/en/blog/${slug}/`;
   if (locale === "nl") return `/nl/blog/${slug}/`;
+  if (locale === "it") return `/it/blog/${slug}/`;
   return `/blog/${slug}/`;
 }
 
 export function blogHubHomeHref(locale: SiteLocale): string {
   if (locale === "en") return "/en/";
   if (locale === "nl") return "/nl/";
+  if (locale === "it") return "/it/";
   return "/";
 }
-

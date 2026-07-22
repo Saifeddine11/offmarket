@@ -37,9 +37,9 @@ const TIMELINE_ENTRIES = {
     },
     {
       index: "02",
-      title: "Examen S.A.F.E",
+      title: "Examen S.A.F.E.",
       content:
-        "OFF MARKET applique les principes S.A.F.E pour identifier les points sensibles avant présentation.",
+        "OFF MARKET applique les principes S.A.F.E. pour identifier les points sensibles avant présentation.",
       details: [
         "Sécurisation du projet",
         "Analyse d'investissement",
@@ -77,9 +77,9 @@ const TIMELINE_ENTRIES = {
     },
     {
       index: "02",
-      title: "S.A.F.E review",
+      title: "S.A.F.E. review",
       content:
-        "OFF MARKET applies S.A.F.E principles to identify sensitive points before presentation.",
+        "OFF MARKET applies S.A.F.E. principles to identify sensitive points before presentation.",
       details: [
         "Project Security",
         "Investment Analysis",
@@ -117,9 +117,9 @@ const TIMELINE_ENTRIES = {
     },
     {
       index: "02",
-      title: "Esame S.A.F.E",
+      title: "Esame S.A.F.E.",
       content:
-        "OFF MARKET applica i principi S.A.F.E per identificare i punti sensibili prima della presentazione.",
+        "OFF MARKET applica i principi S.A.F.E. per identificare i punti sensibili prima della presentazione.",
       details: [
         "Sicurezza del progetto",
         "Analisi dell'investimento",
@@ -157,9 +157,9 @@ const TIMELINE_ENTRIES = {
     },
     {
       index: "02",
-      title: "S.A.F.E-controle",
+      title: "S.A.F.E.-controle",
       content:
-        "OFF MARKET past de S.A.F.E-principes toe om gevoelige punten vóór presentatie te identificeren.",
+        "OFF MARKET past de S.A.F.E.-principes toe om gevoelige punten vóór presentatie te identificeren.",
       details: [
         "Projectbeveiliging",
         "Investeringsanalyse",

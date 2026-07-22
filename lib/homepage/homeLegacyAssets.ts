@@ -17,17 +17,17 @@ const HOME_CRITICAL_SCRIPT_URLS = [
   "/assets/javascripts/om-cinematic-video.js?v=1765341000",
   "/assets/javascripts/om-text-reveal.js?v=1765317800",
   "/assets/javascripts/om-simulator.js?v=1765405800",
-  "/assets/javascripts/om-featured-projects.js?v=1765404001",
+  "/assets/javascripts/om-featured-projects.js?v=1769202001",
   "/assets/javascripts/om-private-access-popup.js?v=1765340000",
   "/assets/javascripts/om-territories.js?v=1765303200",
   "/assets/javascripts/mav-who-reveal.js?v=1765310300",
   "/assets/javascripts/om-testimonials.js?v=1765295700",
-  "/assets/javascripts/om-private-access-form.js?v=1765352000",
+  "/assets/javascripts/om-private-access-form.js?v=1765600400",
   "/assets/javascripts/om-blog-data.js?v=1765335000",
   "/assets/javascripts/om-blog.js?v=1765404501",
   "/assets/javascripts/om-mobile-reveal.js?v=1765307200",
-  "/assets/javascripts/om-property-modal.js?v=1765404000",
-  "/assets/javascripts/om-language-switcher.js?v=1765350200",
+  "/assets/javascripts/om-property-modal.js?v=1769202006",
+  "/assets/javascripts/om-language-switcher.js?v=1769200000",
 ] as const;
 
 /** ~1.4MB Three/jQuery vendor + page chunk — load after first interactive paint. */

@@ -3,6 +3,7 @@ import { SectionHeaderMotion } from "@/components/motion/SectionHeaderMotion";
 import {
   quartierDetails,
   quartierDetailsEn,
+  quartierDetailsIt,
   quartierDetailsNl,
 } from "@/lib/quartiers/quartier-details";
 import type { SiteLocale } from "@/lib/i18n/types";
@@ -37,6 +38,7 @@ const DETAIL_COPY = {
 
 function getDetails(locale: SiteLocale) {
   if (locale === "en") return quartierDetailsEn;
+  if (locale === "it") return quartierDetailsIt;
   if (locale === "nl") return quartierDetailsNl;
   return quartierDetails;
 }
@@ -50,6 +52,14 @@ export function QuartierDetailSection({
 }) {
   const copy = DETAIL_COPY[locale] ?? DETAIL_COPY.fr;
   const details = getDetails(locale);
+  const pointsAriaLabel =
+    locale === "en"
+      ? "Key points"
+      : locale === "nl"
+        ? "Belangrijke punten"
+        : locale === "it"
+          ? "Punti chiave"
+          : "Points clés";
   return (
     <section
       id="quartiers-details"
@@ -86,6 +96,7 @@ export function QuartierDetailSection({
             detail={detail}
             reverse={index === 1}
             motion={motion}
+            pointsAriaLabel={pointsAriaLabel}
           />
         ))}
       </div>

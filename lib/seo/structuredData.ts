@@ -12,8 +12,14 @@ export function getSiteStructuredData(locale: "fr" | "en" | "nl" | "it") {
       : locale === "en"
         ? "en-US"
         : locale === "nl"
-          ? "nl-NL"
-          : "it-IT";
+        ? "nl-NL"
+        : "it-IT";
+  const descriptions = {
+    fr: "Immobilier privé à Marrakech : une sélection confidentielle de villas, appartements, projets sur plan et opportunités off-market.",
+    en: "Private real estate in Marrakech: a confidential selection of villas, apartments, off-plan projects and off-market opportunities.",
+    nl: "Privaat vastgoed in Marrakech: een vertrouwelijke selectie van villa's, appartementen, nieuwbouwprojecten en off-marketkansen.",
+    it: "Immobiliare privato a Marrakech: una selezione riservata di ville, appartamenti, progetti in costruzione e opportunità off-market.",
+  } as const;
 
   return {
   "@context": "https://schema.org",
@@ -28,8 +34,7 @@ export function getSiteStructuredData(locale: "fr" | "en" | "nl" | "it") {
         url: `${SITE_URL}/assets/logos/logoblack.webp`,
       },
       image: `${SITE_URL}/assets/mavericks/hero/mavericks-hero-poster.jpg`,
-      description:
-        "Immobilier privé à Marrakech : une sélection confidentielle de villas, appartements, projets sur plan et opportunités off-market.",
+      description: descriptions[locale],
       email: "contact@offmarketofficial.com",
       areaServed: {
         "@type": "City",

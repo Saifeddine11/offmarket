@@ -9,8 +9,9 @@ import { SCRIPTS } from "@/lib/assets";
 export const metadata: Metadata = buildPageMetadata({
   title: "Accesso privato | OFF MARKET Marrakech",
   description:
-    "Richiedi l'accesso privato a opportunità immobiliari off-market selezionate a Marrakech, tra ville private, proprietà riservate e progetti su piano.",
+    "Richiedi l'accesso privato a opportunità immobiliari off-market selezionate a Marrakech, tra ville private, proprietà riservate e progetti in costruzione.",
   canonicalPath: "/it/off-market/",
+  ogLocale: "it_IT",
 });
 
 export const viewport = buildPageViewport("#565449");

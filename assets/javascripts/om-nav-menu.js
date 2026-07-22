@@ -40,18 +40,18 @@
 
   var MENU_IT = [
     { id: 'home', label: 'Home', href: '/it/' },
-    { id: 'histoire', label: 'La nostra storia', href: '/about/' },
-    { id: 'localisations', label: 'Quartieri', href: '/quartiers/' },
+    { id: 'histoire', label: 'La nostra storia', href: '/it/chi-siamo/' },
+    { id: 'localisations', label: 'Quartieri', href: '/it/quartieri/' },
     {
       id: 'projets',
       label: 'Progetti',
-      href: '/nos-projets/',
+      href: '/it/progetti/',
       children: [
-        { label: 'Tutti i progetti', href: '/nos-projets/' },
+        { label: 'Tutti i progetti', href: '/it/progetti/' },
         { label: 'Off-market', href: '/it/off-market/' },
       ],
     },
-    { id: 'simulateur', label: 'Simulatore', href: '/simulateur/' },
+    { id: 'simulateur', label: 'Simulatore', href: '/it/simulatore/' },
     { id: 'contact', label: 'Contatto', href: '/it/contatto/' },
   ];
 
@@ -145,12 +145,14 @@
     if (item.id === 'histoire') {
       if (locale === 'en') return current === '/en/about';
       if (locale === 'nl') return current === '/nl/over-ons';
+      if (locale === 'it') return current === '/it/chi-siamo';
       return current === '/about' || current === '/fr/about';
     }
 
     if (item.id === 'localisations') {
       if (locale === 'en') return current === '/en/neighbourhoods';
       if (locale === 'nl') return current === '/nl/wijken';
+      if (locale === 'it') return current === '/it/quartieri';
       return current === '/quartiers';
     }
 
@@ -166,12 +168,10 @@
       }
       if (locale === 'it') {
         return (
+          current === '/it/progetti' ||
           current === '/it/progetti-su-piano' ||
           current === '/it/off-market' ||
-          current === '/nos-projets' ||
-          current === '/sur-plan' ||
-          current === '/sur-plan/villa-jaz' ||
-          current === '/off-market'
+          current === '/it/progetti-su-piano/villa-jaz'
         );
       }
       if (locale === 'nl') {

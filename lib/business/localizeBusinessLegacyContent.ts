@@ -17,6 +17,7 @@ const COMMON_OFF_PLAN_REPLACEMENTS: readonly Replacement[] = [
 ];
 
 const EN_OFF_PLAN_REPLACEMENTS: readonly Replacement[] = [
+  ["Langue", "Language"],
   ["<span>Sur plan</span>", "<span>Off-plan</span>"],
   ["Aller au contenu principal", "Skip to main content"],
   ["Accueil", "Home"],
@@ -62,8 +63,19 @@ const EN_OFF_PLAN_REPLACEMENTS: readonly Replacement[] = [
 ];
 
 const NL_OFF_PLAN_REPLACEMENTS: readonly Replacement[] = [
+  ["Choisir la langue", "Taal kiezen"],
+  ["Langue", "Taal"],
   ["<span>Sur plan</span>", "<span>Nieuwbouw</span>"],
-  ["Private villas", "Private villa's"],
+  ["Villas privéescious", "Privévilla's"],
+  ["Private villascious", "Privévilla's"],
+  ["Villas privéescious<br>\nSwimming Pool", "Privévilla's<br>\nZwembad"],
+  ["Private villascious<br>\nSwimming Pool", "Privévilla's<br>\nZwembad"],
+  ["of beautiful reality", "die bij uw project past"],
+  ["of&nbsp;beautiful reality", "die bij uw project past"],
+  ["Parc-like Parcing", "Parkachtige parking"],
+  ["Parc-like&nbsp;Parcing", "Parkachtige parking"],
+  ["Investirissement", "Investering"],
+  ["Private villas", "Privévilla's"],
   ["that fits your project", "die bij uw project past"],
   ["Park-like parking", "Parkachtige parking"],
   ["Investment", "Investering"],
@@ -72,9 +84,9 @@ const NL_OFF_PLAN_REPLACEMENTS: readonly Replacement[] = [
   ["Navigation principale", "Hoofdnavigatie"],
   ["Choisir la langue", "Taal kiezen"],
   ["Demander l'accès", "Toegang aanvragen"],
-  ["Immobilier privé à Marrakech", "Privé vastgoed in Marrakech"],
+  ["Immobilier privé à Marrakech", "Privévastgoed in Marrakech"],
   ["Nous contacter", "Contact opnemen"],
-  ["Biens privés", "Private panden"],
+  ["Biens privés", "Privéaanbod"],
   ["OFF MARKET — page d&amp;rsquo;accueil", "OFF MARKET — startpagina"],
   ["Marrakech, Maroc", "Marrakech, Marokko"],
   ["Accès privé sur demande", "Private toegang op aanvraag"],
@@ -91,6 +103,7 @@ const NL_OFF_PLAN_REPLACEMENTS: readonly Replacement[] = [
   ["Simulateur", "Simulator"],
   ["Contact", "Contact"],
   ["LA SÉLECTION À PORTÉE DE MAIN", "DE SELECTIE BINNEN HANDBEREIK"],
+  ["La sélection à portée de main", "De selectie binnen handbereik"],
   [
     "OFF MARKET sécurise chaque parcours jusqu'à la décision finale, avec un accompagnement clair et discret.",
     "OFF MARKET begeleidt elk traject tot aan de eindbeslissing, met heldere en discrete ondersteuning.",
@@ -282,24 +295,34 @@ const NL_OFF_PLAN_REPLACEMENTS: readonly Replacement[] = [
   ["En cliquant, vous acceptez notre", "Door te klikken accepteert u onze"],
   ["à notre", "onze"],
   ["politique de confidentialité", "privacyverklaring"],
+  ["Sélection :", "Selectie:"],
+  ["Navigation fiche bien", "Navigatie vastgoedfiche"],
+  ["Fermer la fiche", "Vastgoedfiche sluiten"],
+  ["Plans transmis sur demande", "Plattegronden beschikbaar op aanvraag"],
   ["call time", "Tijdstip gesprek"],
   ["Permanent outdoor recreation spaces", "Permanente buitenruimtes"],
   ["Video-monitored playgrounds", "Beveiligde speelzones"],
   ["Portable outdoor furniture", "Flexibel buitenmeubilair"],
   ["Maison OFF MARKET", "OFF MARKET"],
+  ["Veuillez pivoter votre appareil", "Draai uw apparaat"],
   ["Sélection privée d'opportunités immobilières à Marrakech.", "Private selectie van vastgoedkansen in Marrakech."],
   ["Veuillez pivoter votre appareil<br>to&nbsp;portrait mode", "Draai uw apparaat<br>naar portretmodus"],
   ["Veuillez pivoter votre appareil<br>to&nbsp;landscape mode", "Draai uw apparaat<br>naar landschapsmodus"],
   ["Veuillez pivoter votre appareil<br>to portrait mode", "Draai uw apparaat<br>naar portretmodus"],
   ["Veuillez pivoter votre appareil<br>to landscape mode", "Draai uw apparaat<br>naar landschapsmodus"],
+  ["Bien immobilier de prestige OFF MARKET à Marrakech", "Exclusief vastgoed van OFF MARKET in Marrakech"],
+  ["to portrait mode", "naar portretmodus"],
+  ["to landscape mode", "naar landschapsmodus"],
 ];
 
 const IT_OFF_PLAN_REPLACEMENTS: readonly Replacement[] = [
+  ["Choisir la langue", "Scegli la lingua"],
+  ["Langue", "Lingua"],
   ["Skip to main content", "Vai al contenuto principale"],
   ["Private properties", "Immobili privati"],
   ["Contact us", "Contattaci"],
   ["Request access", "Richiedi l'accesso"],
-  ["Off-plan", "Su piano"],
+  ["Off-plan", "In costruzione"],
   ["Simulator", "Simulatore"],
   ["Private real estate in Marrakech", "Immobiliare privato a Marrakech"],
   ["Marrakech, Morocco", "Marrakech, Marocco"],
@@ -350,6 +373,12 @@ const IT_OFF_PLAN_REPLACEMENTS: readonly Replacement[] = [
   ["to portrait mode", "alla modalità verticale"],
   ["to landscape mode", "alla modalità orizzontale"],
   ["une demande", "una richiesta"],
+  ["Bien immobilier de prestige OFF MARKET a Marrakech", "Immobiliare di prestigio OFF MARKET a Marrakech"],
+  ["Richiestar un appel", "Richiedi un contatto"],
+  ["Planimetrie &amp; configuration", "Planimetrie e configurazione"],
+  ["Slide suivante", "Slide successiva"],
+  ["5 photos", "5 foto"],
+  ["su piano", "in costruzione"],
 ];
 
 const ROUTE_REPLACEMENTS: Record<"en" | "it" | "nl", readonly Replacement[]> = {
@@ -393,20 +422,20 @@ const ROUTE_REPLACEMENTS: Record<"en" | "it" | "nl", readonly Replacement[]> = {
   ],
   it: [
     ['href="/"', 'href="/it/"'],
-    ['href="/about/"', 'href="/it/"'],
-    ['href="/quartiers/"', 'href="/it/"'],
-    ['href="/nos-projets/"', 'href="/it/"'],
-    ['href="/simulateur/"', 'href="/it/"'],
-    ['href="/simulateur"', 'href="/it/"'],
+    ['href="/about/"', 'href="/it/chi-siamo/"'],
+    ['href="/quartiers/"', 'href="/it/quartieri/"'],
+    ['href="/nos-projets/"', 'href="/it/progetti/"'],
+    ['href="/simulateur/"', 'href="/it/simulatore/"'],
+    ['href="/simulateur"', 'href="/it/simulatore/"'],
     ['href="/sur-plan/"', 'href="/it/progetti-su-piano/"'],
     ['href="/sur-plan"', 'href="/it/progetti-su-piano/"'],
     ['href="/contact/"', 'href="/it/contatto/"'],
     ['href="/contact"', 'href="/it/contatto/"'],
     ['href="/off-market/"', 'href="/it/off-market/"'],
     ['href="/off-market"', 'href="/it/off-market/"'],
-    ['href="/blog/"', 'href="/it/"'],
-    ['href="/blog"', 'href="/it/"'],
-    ['href="/privacy-policy/"', 'href="/it/"'],
+    ['href="/blog/"', 'href="/it/blog/"'],
+    ['href="/blog"', 'href="/it/blog/"'],
+    ['href="/privacy-policy/"', 'href="/it/privacy-policy/"'],
   ],
 };
 
@@ -415,9 +444,22 @@ function replaceAllLiteral(value: string, from: string, to: string): string {
 }
 
 function localizeHtml(html: string, replacements: readonly Replacement[]): string {
-  return [...replacements]
+  const tokens = new Map<string, string>();
+  let result = html;
+
+  [...replacements]
     .sort((a, b) => b[0].length - a[0].length)
-    .reduce((result, [from, to]) => replaceAllLiteral(result, from, to), html);
+    .forEach(([from, to], index) => {
+      const token = `\u0000OM_BUSINESS_LOC_${index}\u0000`;
+      result = replaceAllLiteral(result, from, token);
+      tokens.set(token, to);
+    });
+
+  tokens.forEach((to, token) => {
+    result = replaceAllLiteral(result, token, to);
+  });
+
+  return result;
 }
 
 function localizeSegments(
@@ -447,7 +489,17 @@ export function localizeBusinessLegacyContent(content: PageContent): PageContent
   return {
     ...content,
     bodySegments: localizeSegments(content.bodySegments, replacements).map((segment) => {
-      if (locale !== "it" || segment.kind !== "html") return segment;
+      if (segment.kind !== "html") return segment;
+      if (locale === "nl") {
+        return {
+          ...segment,
+          html: segment.html.replace(
+            /(?:Door te klikken accepteert u onze|En cliquant, vous acceptez notre)\s*<br>\s*(?:onze|à notre)\s*(<a\b[^>]*>)\s*(?:politique de confidentialité|privacyverklaring)(\s*<\/a>)/gi,
+            "Door te klikken, gaat u akkoord met ons<br>$1privacybeleid$2",
+          ),
+        };
+      }
+      if (locale !== "it") return segment;
       return {
         ...segment,
         html: segment.html.replace(/Marrakech,\s+Maroc\w*/g, "Marrakech, Marocco"),

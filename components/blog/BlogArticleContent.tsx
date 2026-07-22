@@ -1,6 +1,5 @@
 import { BlogArticleTemplate } from "@/components/blog/BlogArticleTemplate";
 import { PageContentShell } from "@/components/pages/PageContentShell";
-import { PageHeadMeta } from "@/components/pages/PageHeadMeta";
 import { buildBlogArticleViewModel } from "@/lib/blog/blogArticleViewModel";
 import {
   findBlogArticleHtml,
@@ -50,7 +49,6 @@ export function BlogArticleContent({ content, pageId }: BlogArticleContentProps)
     const prepared = preparePageWithFinalCta(styled);
     return (
       <>
-        <PageHeadMeta content={prepared.content} />
         <PageContentShell
           content={prepared.content}
           bodySegments={prepared.bodySegments}
@@ -76,7 +74,6 @@ export function BlogArticleContent({ content, pageId }: BlogArticleContentProps)
 
   return (
     <>
-      <PageHeadMeta content={prepared.content} />
       <PageContentShell
         content={{
           ...prepared.content,

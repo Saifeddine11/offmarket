@@ -173,19 +173,19 @@
       id: 'villa-jaz',
       index: '01',
       location: 'MARRAKECH',
-      type: 'Villa su piano',
+      type: 'Villa in costruzione',
       price: 'Da 351.000 €',
       priceCase: 'normal',
-      selection: 'Su piano',
+      selection: 'In costruzione',
       title: 'Villa Jaz',
-      meta: '7 ville rimanenti · Marrakech · Progetto su piano',
+      meta: '7 ville rimanenti · Marrakech · Progetto in costruzione',
       image: '/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp',
-      alt: 'Villa Jaz — ville su piano a Marrakech',
+      alt: 'Villa Jaz — ville in costruzione a Marrakech',
       href: '/it/contatto/?intent=villa-jaz',
-      overlayLine: 'Su piano',
+      overlayLine: 'In costruzione',
       overlayTitle: 'Villa Jaz',
       actionLabel: 'Vedi scheda',
-      imageBadge: 'Su piano',
+      imageBadge: 'In costruzione',
     },
     {
       id: 'appartement-gueliz',
@@ -194,7 +194,7 @@
       type: 'Appartamento',
       price: 'Da 1,05 M MAD',
       priceCase: 'normal',
-      selection: 'Programma su piano',
+      selection: 'Nuovo progetto residenziale',
       title: 'Appartamento premium a Guéliz',
       meta: '39–140 m² · Guéliz iper-centro · Consegna 2028',
       image:
@@ -204,7 +204,7 @@
       overlayLine: 'Appartamento',
       overlayTitle: 'Appartamento premium a Guéliz',
       actionLabel: 'Vedi scheda',
-      imageBadge: 'Su piano',
+      imageBadge: 'In costruzione',
     },
     {
       id: 'restaurant-jemaa-el-fna',
@@ -449,9 +449,14 @@
   function boot() {
     var section = document.querySelector('.om-featured-projects');
     if (!section) return;
+    projectCardCopyCache = null;
     renderPropertyCards(section);
     initPropertyCards(section);
     initPhotoFallback(section);
+  }
+
+  function handleReactReady() {
+    boot();
   }
 
   if (document.readyState === 'loading') {
@@ -459,4 +464,7 @@
   } else {
     boot();
   }
+
+  window.addEventListener('om-react-ready', handleReactReady);
+  window.addEventListener('popstate', handleReactReady);
 })();

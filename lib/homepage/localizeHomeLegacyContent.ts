@@ -4,6 +4,7 @@ import type { SiteLocale } from "@/lib/i18n/types";
 type Replacement = readonly [from: string, to: string];
 
 const EN_REPLACEMENTS: readonly Replacement[] = [
+  ["Langue", "Language"],
   ["Sur plan", "Off-plan"],
   ["Projet sur plan", "Off-plan project"],
   ["Villa sur plan", "Off-plan villa"],
@@ -17,10 +18,22 @@ const EN_REPLACEMENTS: readonly Replacement[] = [
   ["Aller au contenu principal", "Skip to main content"],
   ["L'immobilier privé à Marrakech", "Private real estate in Marrakech"],
   ["L'immobilier privé", "Private real estate"],
+  [
+    "Sélection immobilière privée à Marrakech",
+    "Private real estate selection in Marrakech",
+  ],
+  [
+    "Territoires d'investissement à Marrakech",
+    "Investment areas in Marrakech",
+  ],
+  [
+    "Villa sur plan à Marrakech — extérieur",
+    "Off-plan villa in Marrakech — exterior",
+  ],
   ["à Marrakech", "in Marrakech"],
   [
-    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon les principes S.A.F.E pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
-    "Access a confidential selection of villas, apartments and off-plan projects, reviewed with S.A.F.E principles for their location, integrity, coherence and potential.",
+    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon les principes S.A.F.E. pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
+    "Access a confidential selection of villas, apartments and off-plan projects, reviewed with S.A.F.E. principles for their location, integrity, coherence and potential.",
   ],
   [
     "Accédez à une sélection confidentielle de villas, appartements et opportunités sur plan, choisie pour son emplacement, sa rareté et sa cohérence d'investissement.",
@@ -28,8 +41,8 @@ const EN_REPLACEMENTS: readonly Replacement[] = [
   ],
   ["Demander l'accès", "Request access"],
   ["Voir la sélection", "View the selection"],
-  ["Principes S.A.F.E", "S.A.F.E principles"],
-  ["Lecture S.A.F.E", "S.A.F.E review"],
+  ["Principes S.A.F.E", "S.A.F.E. principles"],
+  ["Lecture S.A.F.E", "S.A.F.E. review"],
   ["Projets étudiés avant présentation.", "Projects reviewed before presentation."],
   ["clients qualifiés accompagnés", "qualified clients supported"],
   ["Typologies suivies", "Tracked property types"],
@@ -167,13 +180,17 @@ const EN_REPLACEMENTS: readonly Replacement[] = [
 ];
 
 const NL_REPLACEMENTS: readonly Replacement[] = [
+  ["Choisir la langue", "Taal kiezen"],
+  ["Langue", "Taal"],
   ["Accueil", "Home"],
   ["Notre Histoire", "Ons verhaal"],
   ["Opportunités rares", "Zeldzame kansen"],
-  ["projets privés suivis", "private projecten gevolgd"],
+  ["projets privés suivis", "privéprojecten gevolgd"],
   ["PRIVATE TOEGANG", "PRIVÉTOEGANG"],
   ["PRIVATE ACCESS", "PRIVÉTOEGANG"],
   ["Demander l'accès", "Toegang aanvragen"],
+  ["Biens privés", "Privéaanbod"],
+  ["Immobilier privé à Marrakech", "Privévastgoed in Marrakech"],
   ["Sur plan", "Nieuwbouw"],
   ["Simulateur", "Simulator"],
   ["Notre Histoire", "Ons verhaal"],
@@ -188,12 +205,24 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
   ["Investirissement", "Investering"],
   ["Skip to main content", "Naar hoofdinhoud"],
   ["Aller au contenu principal", "Naar hoofdinhoud"],
-  ["L'immobilier privé à Marrakech", "Privé vastgoed in Marrakech"],
-  ["L'immobilier privé", "Privé vastgoed"],
+  ["L'immobilier privé à Marrakech", "Privévastgoed in Marrakech"],
+  ["L'immobilier privé", "Privévastgoed"],
+  [
+    "Sélection immobilière privée à Marrakech",
+    "Private vastgoedselectie in Marrakech",
+  ],
+  [
+    "Territoires d'investissement à Marrakech",
+    "Investeringsgebieden in Marrakech",
+  ],
+  [
+    "Villa sur plan à Marrakech — extérieur",
+    "Nieuwbouwvilla in Marrakech — exterieur",
+  ],
   ["à Marrakech", "in Marrakech"],
   [
-    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon les principes S.A.F.E pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
-    "Krijg toegang tot een vertrouwelijke selectie van villa's, appartementen en nieuwbouwprojecten, beoordeeld volgens de S.A.F.E-principes op locatie, betrouwbaarheid, samenhang en potentieel.",
+    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon les principes S.A.F.E. pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
+    "Krijg toegang tot een vertrouwelijke selectie van villa's, appartementen en nieuwbouwprojecten, beoordeeld volgens de S.A.F.E.-principes op locatie, betrouwbaarheid, samenhang en potentieel.",
   ],
   [
     "Accédez à une sélection confidentielle de villas, appartements et opportunités sur plan, choisie pour son emplacement, sa rareté et sa cohérence d'investissement.",
@@ -201,8 +230,8 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
   ],
   ["Demander l'accès", "Toegang aanvragen"],
   ["Voir la sélection", "De selectie bekijken"],
-  ["Principes S.A.F.E", "S.A.F.E-principes"],
-  ["Lecture S.A.F.E", "S.A.F.E-analyse"],
+  ["Principes S.A.F.E", "S.A.F.E.-principes"],
+  ["Lecture S.A.F.E", "S.A.F.E.-analyse"],
   ["Projets étudiés avant présentation.", "Projecten geanalyseerd vóór presentatie."],
   ["clients qualifiés accompagnés", "gekwalificeerde klanten begeleid"],
   ["Typologies suivies", "Opgevolgde typologieën"],
@@ -316,6 +345,14 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
     "Door op de knop te klikken, stemt u ermee in dat OFF MARKET contact met u opneemt over uw aanvraag.",
   ],
   ["Confidentialité", "Privacy"],
+  ["Tous droits réservés", "Alle rechten voorbehouden"],
+  ["Mentions légales", "Juridische vermeldingen"],
+  ["politique de confidentialité", "privacybeleid"],
+  ["Sélection :", "Selectie:"],
+  ["Navigation fiche bien", "Navigatie vastgoedfiche"],
+  ["Fermer la fiche", "Vastgoedfiche sluiten"],
+  ["Plans transmis sur demande", "Plattegronden beschikbaar op aanvraag"],
+  ["Rappel", "Terugbelverzoek"],
   ["PARLONS-EN", "LATEN WE PRATEN"],
   ["Votre projet mérite une lecture privée.", "Uw project verdient een private analyse."],
   ["Dites-nous ce que vous recherchez.", "Vertel ons wat u zoekt."],
@@ -340,7 +377,7 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
   ["Our story", "Ons verhaal"],
   ["Off-plan", "Nieuwbouw"],
   ["Back to top", "Terug naar boven"],
-  ["Private real estate in Marrakech", "Privé vastgoed in Marrakech"],
+  ["Private real estate in Marrakech", "Privévastgoed in Marrakech"],
   ["Choose language", "Taal kiezen"],
   ["Main navigation", "Hoofdnavigatie"],
   ["Maison OFF MARKET", "OFF MARKET"],
@@ -351,10 +388,162 @@ const NL_REPLACEMENTS: readonly Replacement[] = [
 ];
 
 const IT_REPLACEMENTS: readonly Replacement[] = [
+  ["Choisir la langue", "Scegli la lingua"],
+  ["Langue", "Lingua"],
+  ["Aller au contenu principal", "Vai al contenuto principale"],
+  ["L'immobilier privé à Marrakech", "L'immobiliare privato a Marrakech"],
+  ["L'immobilier privé", "L'immobiliare privato"],
+  [
+    "Sélection immobilière privée à Marrakech",
+    "Selezione immobiliare privata a Marrakech",
+  ],
+  [
+    "Territoires d'investissement à Marrakech",
+    "Zone di investimento a Marrakech",
+  ],
+  [
+    "Villa sur plan à Marrakech — extérieur",
+    "Villa su progetto a Marrakech — esterno",
+  ],
+  ["à Marrakech", "a Marrakech"],
+  [
+    "Accédez à une sélection confidentielle de villas, appartements et projets sur plan, étudiés selon les principes S.A.F.E. pour leur emplacement, leur sérieux, leur cohérence et leur potentiel.",
+    "Accedi a una selezione riservata di ville, appartamenti e progetti in costruzione, valutati secondo i principi S.A.F.E. per posizione, affidabilità, coerenza e potenziale.",
+  ],
+  [
+    "Accédez à une sélection confidentielle de villas, appartements et opportunités sur plan, choisie pour son emplacement, sa rareté et sa cohérence d'investissement.",
+    "Accedi a una selezione riservata di ville, appartamenti e opportunità in costruzione, scelta per posizione, rarità e coerenza dell’investimento.",
+  ],
+  ["Demander l'accès", "Richiedi l'accesso"],
+  ["Voir la sélection", "Vedi la selezione"],
+  ["Principes S.A.F.E", "Principi S.A.F.E."],
+  ["Lecture S.A.F.E", "Analisi S.A.F.E."],
+  ["Projets étudiés avant présentation.", "Progetti esaminati prima della presentazione."],
+  ["clients qualifiés accompagnés", "clienti qualificati accompagnati"],
+  ["Typologies suivies", "Tipologie seguite"],
+  ["Villas privées", "Ville private"],
+  ["Appartements Guéliz", "Appartamenti a Guéliz"],
+  ["Riads de caractère", "Riad di carattere"],
+  ["Biens sur plan", "Immobili in costruzione"],
+  ["Terrains rares", "Terreni rari"],
+  ["Opportunités investisseur", "Opportunità per investitori"],
+  ["QUI SOMMES-NOUS", "CHI SIAMO"],
+  [
+    "Une maison privée pour lire le marché immobilier de Marrakech avec exigence.",
+    "Una maison privata per leggere il mercato immobiliare di Marrakech con rigore.",
+  ],
+  [
+    "OFF MARKET accompagne les acheteurs, investisseurs et propriétaires avec une sélection ciblée, une analyse claire et un accès discret aux opportunités pertinentes.",
+    "OFF MARKET accompagna acquirenti, investitori e proprietari con una selezione mirata, un’analisi chiara e un accesso discreto alle opportunità pertinenti.",
+  ],
+  ["Sélection ciblée", "Selezione mirata"],
+  ["Analyse claire", "Analisi chiara"],
+  ["Accompagnement discret", "Accompagnamento discreto"],
+  ["Découvrir notre approche", "Scopri il nostro approccio"],
+  ["QUARTIERS", "QUARTIERI"],
+  [
+    "Les zones où se construisent les meilleures opportunités",
+    "Le zone in cui nascono le migliori opportunità",
+  ],
+  ["Les zones où se construisent", "Le zone in cui nascono"],
+  ["les meilleures opportunités", "le migliori opportunità"],
+  ["Une sélection privée, révélée avec discrétion.", "Una selezione privata, rivelata con discrezione."],
+  [
+    "Des biens rares, des adresses confidentielles et une lecture claire avant chaque décision.",
+    "Immobili rari, indirizzi riservati e una lettura chiara prima di ogni decisione.",
+  ],
+  ["SIMULATEUR PRIVÉ", "SIMULATORE PRIVATO"],
+  ["Simuler avant d'investir", "Simula prima di investire"],
+  [
+    "Estimez le potentiel d'un bien à Marrakech selon votre usage, puis affinez les chiffres avec",
+    "Stima il potenziale di un immobile a Marrakech in base al tuo utilizzo, poi affina i numeri con",
+  ],
+  ["Location courte durée", "Affitto a breve termine"],
+  ["Location longue durée", "Affitto a lungo termine"],
+  ["Achat-revente", "Acquisto e rivendita"],
+  ["PARAMÈTRES", "PARAMETRI"],
+  ["Ajustez vos hypothèses. Le résultat se recalcule en direct.", "Regola le tue ipotesi. Il risultato si ricalcola in tempo reale."],
+  [
+    "Estimation indicative. OFF MARKET affine cette simulation avec l'adresse exacte, les charges réelles et les biens disponibles.",
+    "Stima indicativa. OFF MARKET perfeziona questa simulazione con l’indirizzo esatto, i costi reali e gli immobili disponibili.",
+  ],
+  ["Budget d'acquisition", "Budget di acquisto"],
+  ["Prix estimé du bien, hors frais.", "Prezzo stimato dell’immobile, escluse le spese."],
+  ["Prix nuitée moyen", "Prezzo medio per notte"],
+  ["Semaines d'usage personnel", "Settimane di uso personale"],
+  ["Taux d'occupation", "Tasso di occupazione"],
+  ["Loyer mensuel estimé", "Canone mensile stimato"],
+  ["Horizon de revente", "Orizzonte di rivendita"],
+  ["Hypothèse de valorisation annuelle", "Ipotesi di rivalutazione annua"],
+  ["RÉSULTAT", "RISULTATO"],
+  ["RENDEMENT BRUT ANNUEL", "RENDIMENTO LORDO ANNUO"],
+  ["avant charges, fiscalité et frais réels", "prima di costi, imposte e spese operative reali"],
+  ["Recevoir une analyse privée", "Ricevi un’analisi privata"],
+  ["Voir les biens compatibles", "Vedi gli immobili compatibili"],
+  ["LECTURES PRIVÉES", "LETTURE PRIVATE"],
+  ["Ce que nos clients viennent chercher", "Cosa cercano i nostri clienti"],
+  ["Afficher le témoignage suivant", "Mostra la testimonianza successiva"],
+  ["Suivant", "Successiva"],
+  [
+    "Nous cherchions une opportunité claire, pas une liste de biens. OFF MARKET nous a aidés à comprendre l'adresse, la demande et le potentiel avant même la première visite.",
+    "Cercavamo un’opportunità chiara, non un elenco di immobili. OFF MARKET ci ha aiutati a comprendere l’indirizzo, la domanda e il potenziale prima ancora della prima visita.",
+  ],
+  [
+    "Nous cherchions une opportunité claire, pas une liste de biens. OFF MARKET nous a aidés à comprendre l’adresse, la demande et le potentiel avant même la première visite.",
+    "Cercavamo un’opportunità chiara, non un elenco di immobili. OFF MARKET ci ha aiutati a comprendere l’indirizzo, la domanda e il potenziale prima ancora della prima visita.",
+  ],
+  [
+    "La différence s’est faite dans la lecture du marché : comparables, risques, marge de négociation et cohérence patrimoniale. La décision est devenue beaucoup plus simple.",
+    "La differenza è stata nella lettura del mercato: comparabili, rischi, margine di negoziazione e coerenza patrimoniale. La decisione è diventata molto più semplice.",
+  ],
+  [
+    "Nous avons apprécié la discrétion, le tri et la qualité des échanges. Les biens présentés étaient peu nombreux, mais réellement alignés avec notre projet.",
+    "Abbiamo apprezzato la discrezione, la selezione e la qualità degli scambi. Gli immobili presentati erano pochi, ma realmente in linea con il nostro progetto.",
+  ],
+  ["Acheteur privé", "Acquirente privato"],
+  ["Investisseur", "Investitore"],
+  ["Client accompagné", "Cliente accompagnato"],
+  ["Résidence secondaire · Marrakech", "Seconda casa · Marrakech"],
+  ["Appartement premium · Guéliz / Hivernage", "Appartamento premium · Guéliz / Hivernage"],
+  ["Riad de caractère · Médina", "Riad di carattere · Medina"],
+  ["ACCÈS PRIVÉ", "ACCESSO PRIVATO"],
+  ["Recevoir la sélection off-market", "Ricevi la selezione off-market"],
+  ["Remplissez le formulaire pour accéder aux projets confidentiels et recevoir une sélection privée adaptée à votre budget.", "Compila il modulo per accedere ai progetti riservati e ricevere una selezione privata adatta al tuo budget."],
+  ["Nom complet", "Nome completo"],
+  ["Numéro de téléphone", "Numero di telefono"],
+  ["Indicatif pays", "Prefisso internazionale"],
+  ["Numéro", "Numero"],
+  ["Sélectionnez votre budget", "Seleziona il tuo budget"],
+  ["Message (optionnel)", "Messaggio (facoltativo)"],
+  ["En cliquant sur le bouton, vous acceptez que OFF MARKET vous contacte au sujet de votre demande.", "Cliccando sul pulsante, accetti di essere contattato da OFF MARKET in merito alla tua richiesta."],
+  ["Confidentialité", "Privacy"],
+  ["PARLONS-EN", "PARLIAMONE"],
+  ["Votre projet mérite une lecture privée.", "Il tuo progetto merita un’analisi privata."],
+  ["Dites-nous ce que vous recherchez.", "Raccontaci cosa stai cercando."],
+  ["OFF MARKET vous répond avec une sélection ciblée, une analyse claire et un accompagnement discret.", "OFF MARKET ti risponderà con una selezione mirata, un’analisi chiara e un accompagnamento discreto."],
+  ["Demander un accès privé", "Richiedi un accesso privato"],
+  ["Parler à un conseiller", "Parla con un consulente"],
+  ["Slide precedente", "Slide precedente"],
+  ["Slide suivante", "Slide successiva"],
+  ["Général", "Generale"],
+  ["À propos", "Informazioni"],
+  ["Caractéristiques", "Caratteristiche"],
+  ["Extérieur", "Esterno"],
+  ["Intérieur", "Interno"],
+  ["Rez-de-chaussée", "Piano terra"],
+  ["Étage", "Primo piano"],
+  ["Salles d'eau", "Bagni"],
+  ["Détails sur demande", "Dettagli su richiesta"],
+  ["Prix", "Prezzo"],
+  ["À partir de 351 000 €", "Da 351.000 €"],
+  ["Rappel", "Richiamami"],
+  ["Recevoir le dossier", "Ricevi il dossier"],
+  ["Plans & configuration", "Planimetrie e configurazione"],
+  ["Navigation fiche bien", "Navigazione scheda immobile"],
   ["Skip to main content", "Vai al contenuto principale"],
   ["Private properties", "Immobili privati"],
   ["Contact us", "Contattaci"],
-  ["Off-plan", "Su piano"],
+  ["Off-plan", "In costruzione"],
   ["Simulator", "Simulatore"],
   ["Request access", "Richiedi l'accesso"],
   ["Private real estate in Marrakech", "Immobiliare privato a Marrakech"],
@@ -362,16 +551,23 @@ const IT_REPLACEMENTS: readonly Replacement[] = [
   ["une demande", "una richiesta"],
   ["Maroccocococo", "Marocco"],
   ["Maroccoco", "Marocco"],
-  ["to portrait mode", "alla modalità verticale"],
-  ["to landscape mode", "alla modalità orizzontale"],
-  ["to portrait mode", "alla modalità verticale"],
-  ["to landscape mode", "alla modalità orizzontale"],
+  ["to portrait mode", "in modalità verticale"],
+  ["to landscape mode", "in modalità orizzontale"],
+  ["to portrait mode", "in modalità verticale"],
+  ["to landscape mode", "in modalità orizzontale"],
   ["Nomeeeee completo", "Nome completo"],
   ["Nomeeee", "Nome"],
   ["call time", "Orario della chiamata"],
   ["Envoyer<br>\n                    une demande", "Invia una richiesta"],
   ["OFF MARKET — page d&amp;rsquo;accueil", "OFF MARKET — home"],
   ["data-lang=\"FR\">FR", "data-lang=\"IT\">IT"],
+  ["su piano", "in costruzione"],
+  ["Bien immobilier de prestige OFF MARKET a Marrakech", "Immobiliare di prestigio OFF MARKET a Marrakech"],
+  ["Richiestar un appel", "Richiedi un contatto"],
+  ["Planimetrie &amp; configuration", "Planimetrie e configurazione"],
+  ["Slide suivante", "Slide successiva"],
+  ["5 photos", "5 foto"],
+  ["Maroccocococo", "Marocco"],
 ];
 
 const ROUTE_REPLACEMENTS: Record<"en" | "it" | "nl", readonly Replacement[]> = {
@@ -390,6 +586,8 @@ const ROUTE_REPLACEMENTS: Record<"en" | "it" | "nl", readonly Replacement[]> = {
     ['href="/off-market"', 'href="/en/off-market/"'],
     ['href="/blog/"', 'href="/en/blog/"'],
     ['href="/blog"', 'href="/en/blog/"'],
+    ['href="/privacy-policy/"', 'href="/en/privacy-policy/"'],
+    ['href="/about/#acteurs-verifies"', 'href="/en/about/#acteurs-verifies"'],
   ],
   nl: [
     ['href="/"', 'href="/nl/"'],
@@ -406,6 +604,8 @@ const ROUTE_REPLACEMENTS: Record<"en" | "it" | "nl", readonly Replacement[]> = {
     ['href="/off-market"', 'href="/nl/off-market/"'],
     ['href="/blog/"', 'href="/nl/blog/"'],
     ['href="/blog"', 'href="/nl/blog/"'],
+    ['href="/privacy-policy/"', 'href="/nl/privacybeleid/"'],
+    ['href="/about/#acteurs-verifies"', 'href="/nl/over-ons/#acteurs-verifies"'],
     ['href="/en/"', 'href="/nl/"'],
     ['href="/en/contact/"', 'href="/nl/contact/"'],
     ['href="/en/off-market/"', 'href="/nl/off-market/"'],
@@ -415,22 +615,36 @@ const ROUTE_REPLACEMENTS: Record<"en" | "it" | "nl", readonly Replacement[]> = {
   ],
   it: [
     ['href="/"', 'href="/it/"'],
-    ['href="/about/"', 'href="/it/"'],
-    ['href="/quartiers/"', 'href="/it/"'],
-    ['href="/nos-projets/"', 'href="/it/"'],
-    ['href="/simulateur/"', 'href="/it/"'],
-    ['href="/simulateur"', 'href="/it/"'],
+    ['href="/about/"', 'href="/it/chi-siamo/"'],
+    ['href="/quartiers/"', 'href="/it/quartieri/"'],
+    ['href="/nos-projets/"', 'href="/it/progetti/"'],
+    ['href="/simulateur/"', 'href="/it/simulatore/"'],
+    ['href="/simulateur"', 'href="/it/simulatore/"'],
     ['href="/sur-plan/"', 'href="/it/progetti-su-piano/"'],
     ['href="/sur-plan"', 'href="/it/progetti-su-piano/"'],
     ['href="/contact/"', 'href="/it/contatto/"'],
     ['href="/contact"', 'href="/it/contatto/"'],
     ['href="/off-market/"', 'href="/it/off-market/"'],
     ['href="/off-market"', 'href="/it/off-market/"'],
-    ['href="/blog/"', 'href="/it/"'],
-    ['href="/blog"', 'href="/it/"'],
+    ['href="/blog/"', 'href="/it/blog/"'],
+    ['href="/blog"', 'href="/it/blog/"'],
+    ['href="/privacy-policy/"', 'href="/it/privacy-policy/"'],
+    ['href="/about/#acteurs-verifies"', 'href="/it/chi-siamo/#acteurs-verifies"'],
     ['href="/fr/sur-plan/"', 'href="/it/progetti-su-piano/"'],
-    ['href="/fr/contact/"', 'href="/it/contatto/"'],
-    ['href="/fr/about/"', 'href="/it/"'],
+    ['href="/contact/"', 'href="/it/contatto/"'],
+    ['href="/fr/about/"', 'href="/it/chi-siamo/"'],
+    ['href="/fr/" class="is-active"', 'href="/it/" class="is-active"'],
+    ['href="/fr/" class="cinematic-menu-link"', 'href="/it/" class="cinematic-menu-link"'],
+    [
+      'href="/fr/" class="om-language-dropdown__option is-active"',
+      'href="/it/" class="om-language-dropdown__option is-active"',
+    ],
+    [
+      'href="/fr/" class="mv-lang-switcher__btn is-active"',
+      'href="/it/" class="mv-lang-switcher__btn is-active"',
+    ],
+    ['data-lang="FR">FR', 'data-lang="IT">IT'],
+    ['href="/it/">La nostra storia', 'href="/it/chi-siamo/">La nostra storia'],
   ],
 };
 
@@ -441,20 +655,48 @@ function getReplacements(locale: SiteLocale): readonly Replacement[] {
   return [];
 }
 
-function replaceAllLiteral(value: string, from: string, to: string): string {
-  return value.split(from).join(to);
+function applyReplacements(value: string, replacements: readonly Replacement[]): string {
+  const tokens = new Map<string, string>();
+  let result = value;
+
+  const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  // Tokenize every source phrase before restoring translations so generated text
+  // can never become input for a later replacement.
+  [...replacements]
+    .sort((a, b) => b[0].length - a[0].length)
+    .forEach(([from, to], index) => {
+      const token = `\u0000OM_LOC_${index}\u0000`;
+      if (/^[\p{L}\p{N}][\p{L}\p{N}.'’-]*$/u.test(from)) {
+        const pattern = new RegExp(
+          `(?<![\\p{L}\\p{N}])${escapeRegExp(from)}(?![\\p{L}\\p{N}])`,
+          "gu",
+        );
+        result = result.replace(pattern, token);
+      } else {
+        result = result.split(from).join(token);
+      }
+      tokens.set(token, to);
+    });
+
+  tokens.forEach((to, token) => {
+    result = result.split(token).join(to);
+  });
+
+  return result;
 }
 
 export function localizeHomeLegacyHtml(html: string, locale: SiteLocale): string {
   const replacements = getReplacements(locale);
   if (!replacements.length) return html;
 
-  return [...replacements]
-    .sort((a, b) => b[0].length - a[0].length)
-    .reduce(
-      (result, [from, to]) => replaceAllLiteral(result, from, to),
-      html,
-    );
+  const localized = applyReplacements(html, replacements);
+  if (locale !== "nl") return localized;
+
+  return localized.replace(
+    /(?:Door te klikken accepteert u onze|En cliquant, vous acceptez notre)\s*<br>\s*(?:onze|à notre)\s*(<a\b[^>]*>)(?:politique de confidentialité|privacybeleid)(<\/a>)/gi,
+    "Door te klikken, gaat u akkoord met ons<br>$1privacybeleid$2",
+  );
 }
 
 export function localizeHomeLegacySegments(

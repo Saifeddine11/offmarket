@@ -35,6 +35,8 @@ export function BlogIndexContent({ content }: BlogIndexContentProps) {
       ? "Marrakech real estate blog"
       : content.htmlLang === "nl"
         ? "Vastgoedblog Marrakech"
+        : content.htmlLang === "it"
+          ? "Blog immobiliare Marrakech"
         : "Blog immobilier Marrakech";
 
   return (

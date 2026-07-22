@@ -12,46 +12,46 @@ const EN_SCRIPT_PATH = path.join(ROOT, "scripts/apply-en-localization.mjs");
 const HOME_META = {
   title: "OFF MARKET Marrakech | Immobili di lusso riservati",
   description:
-    "Accedi a opportunità immobiliari riservate a Marrakech: ville di lusso, proprietà off-market, progetti su piano e investimenti selezionati.",
+    "Accedi a opportunità immobiliari riservate a Marrakech: ville di lusso, proprietà off-market, progetti in costruzione e investimenti selezionati.",
   canonical: "https://offmarketofficial.com/it/",
   ogTitle: "OFF MARKET Marrakech | Immobili di lusso riservati",
   ogDescription:
-    "Accedi a opportunità immobiliari riservate a Marrakech: ville di lusso, proprietà off-market, progetti su piano e investimenti selezionati.",
+    "Accedi a opportunità immobiliari riservate a Marrakech: ville di lusso, proprietà off-market, progetti in costruzione e investimenti selezionati.",
   ogLocale: "it_IT",
   twitterTitle: "OFF MARKET Marrakech | Immobili di lusso riservati",
   twitterDescription:
-    "Accedi a opportunità immobiliari riservate a Marrakech: ville di lusso, proprietà off-market, progetti su piano e investimenti selezionati.",
+    "Accedi a opportunità immobiliari riservate a Marrakech: ville di lusso, proprietà off-market, progetti in costruzione e investimenti selezionati.",
   htmlLang: "it",
 };
 
 const OFFPLAN_META = {
-  title: "Immobili su piano a Marrakech | OFF MARKET",
+  title: "Immobili in costruzione a Marrakech | OFF MARKET",
   description:
-    "Scopri una selezione di progetti immobiliari su piano a Marrakech, dagli appartamenti premium alle ville private, con accompagnamento prima della prenotazione e dell'acquisto.",
+    "Scopri una selezione di progetti immobiliari in costruzione a Marrakech, dagli appartamenti premium alle ville private, con accompagnamento prima della prenotazione e dell'acquisto.",
   canonical: "https://offmarketofficial.com/it/progetti-su-piano/",
-  ogTitle: "Immobili su piano a Marrakech | OFF MARKET",
+  ogTitle: "Immobili in costruzione a Marrakech | OFF MARKET",
   ogDescription:
-    "Scopri una selezione di progetti immobiliari su piano a Marrakech, dagli appartamenti premium alle ville private, con accompagnamento prima della prenotazione e dell'acquisto.",
+    "Scopri una selezione di progetti immobiliari in costruzione a Marrakech, dagli appartamenti premium alle ville private, con accompagnamento prima della prenotazione e dell'acquisto.",
   ogLocale: "it_IT",
-  twitterTitle: "Immobili su piano a Marrakech | OFF MARKET",
+  twitterTitle: "Immobili in costruzione a Marrakech | OFF MARKET",
   twitterDescription:
-    "Scopri una selezione di progetti immobiliari su piano a Marrakech, dagli appartamenti premium alle ville private, con accompagnamento prima della prenotazione e dell'acquisto.",
+    "Scopri una selezione di progetti immobiliari in costruzione a Marrakech, dagli appartamenti premium alle ville private, con accompagnamento prima della prenotazione e dell'acquisto.",
   htmlLang: "it",
 };
 
 const CONTACT_META = {
   title: "Contattare OFF MARKET Marrakech | Accesso immobiliare privato",
   description:
-    "Contatta OFF MARKET Marrakech per discutere un progetto immobiliare privato, una ricerca off-market, un investimento su piano o l'acquisto di una villa di lusso.",
+    "Contatta OFF MARKET Marrakech per discutere un progetto immobiliare privato, una ricerca off-market, un investimento in costruzione o l'acquisto di una villa di lusso.",
   canonical: "https://offmarketofficial.com/it/contatto/",
   ogType: "website",
   ogTitle: "Contatto OFF MARKET Marrakech | Accesso immobiliare riservato",
   ogDescription:
-    "Contatta OFF MARKET Marrakech per discutere un progetto immobiliare riservato, una ricerca off-market, un investimento su piano o l'acquisto di una villa di prestigio.",
+    "Contatta OFF MARKET Marrakech per discutere un progetto immobiliare riservato, una ricerca off-market, un investimento in costruzione o l'acquisto di una villa di prestigio.",
   ogLocale: "it_IT",
   twitterTitle: "Contatto OFF MARKET Marrakech | Accesso immobiliare riservato",
   twitterDescription:
-    "Contatta OFF MARKET Marrakech per discutere un progetto immobiliare riservato, una ricerca off-market, un investimento su piano o l'acquisto di una villa di prestigio.",
+    "Contatta OFF MARKET Marrakech per discutere un progetto immobiliare riservato, una ricerca off-market, un investimento in costruzione o l'acquisto di una villa di prestigio.",
   htmlLang: "it",
 };
 
@@ -71,7 +71,7 @@ const IT_TEXT_REPLACEMENTS = [
   ],
   [
     "Accédez à une sélection confidentielle de villas, appartements et opportunités sur plan, choisie pour son emplacement, sa rareté et sa cohérence d'investissement.",
-    "Accedi a una selezione confidenziale di ville, appartamenti e opportunita su piano, scelta per posizione, rarita e coerenza d'investimento.",
+    "Accedi a una selezione confidenziale di ville, appartamenti e opportunita in costruzione, scelta per posizione, rarita e coerenza d'investimento.",
   ],
   [
     "Remplissez le formulaire pour accéder aux projets confidentiels et recevoir une sélection privée adaptée à votre budget.",
@@ -355,7 +355,7 @@ const IT_TEXT_REPLACEMENTS = [
   ],
   [
     "Projet sur plan",
-    "Progetto su piano",
+    "Progetto in costruzione",
   ],
   [
     "Recevoir la sélection off-market",
@@ -419,7 +419,7 @@ const IT_TEXT_REPLACEMENTS = [
   ],
   [
     "Villa sur plan",
-    "Villa su piano",
+    "Villa in costruzione",
   ],
   [
     "Villas privées",
@@ -471,7 +471,7 @@ const IT_TEXT_REPLACEMENTS = [
   ],
   [
     "Biens sur plan",
-    "Immobili su piano",
+    "Immobili in costruzione",
   ],
   [
     "Confidentialité",
@@ -551,7 +551,7 @@ const IT_TEXT_REPLACEMENTS = [
   ],
   [
     "Sur plan",
-    "Su piano",
+    "in costruzione",
   ],
   [
     "À propos",
@@ -712,11 +712,11 @@ const IT_TEXT_REPLACEMENTS = [
   ],
   [
     "Des programmes sur plan sélectionnés pour leur architecture, leur emplacement et leur potentiel patrimonial à Marrakech.",
-    "Programmi su piano selezionati per architettura, posizione e potenziale patrimoniale a Marrakech.",
+    "Programmi in costruzione selezionati per architettura, posizione e potenziale patrimoniale a Marrakech.",
   ],
   [
     "Des programmes sur plan sélectionnés pour leur architecture, leur emplacement et leur potentiel patrimonial in Marrakech.",
-    "Programmi su piano selezionati per architettura, posizione e potenziale patrimoniale a Marrakech.",
+    "Programmi in costruzione selezionati per architettura, posizione e potenziale patrimoniale a Marrakech.",
   ],
   [
     "Nous cadrons votre recherche, votre horizon, votre budget et votre logique d&rsquo;achat avec méthode et discrétion.",
@@ -876,7 +876,7 @@ const IT_FINALIZATION_REPLACEMENTS = [
   ],
   [
     "Des programmes sur plan sélectionnés pour leur architecture, leur emplacement et leur potentiel patrimonial a Marrakech.",
-    "Programmi su piano selezionati per architettura, posizione e potenziale patrimoniale a Marrakech.",
+    "Programmi in costruzione selezionati per architettura, posizione e potenziale patrimoniale a Marrakech.",
   ],
   ["Choisir la langue", "Scegli la lingua"],
   [

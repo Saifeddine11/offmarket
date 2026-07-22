@@ -12,6 +12,12 @@
     it: 'IT',
     nl: 'NL',
   };
+  var STRUCTURED_DESCRIPTIONS = {
+    fr: 'Immobilier privé à Marrakech : une sélection confidentielle de villas, appartements, projets sur plan et opportunités off-market.',
+    en: 'Private real estate in Marrakech: a confidential selection of villas, apartments, off-plan projects and off-market opportunities.',
+    nl: "Privaat vastgoed in Marrakech: een vertrouwelijke selectie van villa's, appartementen, nieuwbouwprojecten en off-marketkansen.",
+    it: 'Immobiliare privato a Marrakech: una selezione riservata di ville, appartamenti, progetti in costruzione e opportunità off-market.',
+  };
   var AVAILABLE_LANGS = {
     fr: true,
     en: true,
@@ -35,25 +41,25 @@
     about: {
       fr: '/about/',
       en: '/en/about/',
-      it: '/it/',
+      it: '/it/chi-siamo/',
       nl: '/nl/over-ons/',
     },
     neighbourhoods: {
       fr: '/quartiers/',
       en: '/en/neighbourhoods/',
-      it: '/it/',
+      it: '/it/quartieri/',
       nl: '/nl/wijken/',
     },
     projects: {
       fr: '/nos-projets/',
       en: '/en/projects/',
-      it: '/it/',
+      it: '/it/progetti/',
       nl: '/nl/projecten/',
     },
     villaJaz: {
       fr: '/sur-plan/villa-jaz/',
       en: '/en/off-plan/villa-jaz/',
-      it: '/it/progetti-su-piano/',
+      it: '/it/progetti-su-piano/villa-jaz/',
       nl: '/nl/nieuwbouw/villa-jaz/',
     },
     offMarket: {
@@ -65,53 +71,53 @@
     simulator: {
       fr: '/simulateur/',
       en: '/en/simulator/',
-      it: '/it/',
+      it: '/it/simulatore/',
       nl: '/nl/simulator/',
     },
     blog: {
       fr: '/blog/',
       en: '/en/blog/',
-      it: '/it/',
+      it: '/it/blog/',
       nl: '/nl/blog/',
     },
     blogVilla: {
       fr: '/blog/acheter-villa-sur-plan-marrakech/',
       en: '/en/blog/buying-off-plan-villa-marrakech/',
-      it: '/it/',
+      it: '/it/blog/acquistare-villa-su-progetto-marrakech/',
       nl: '/nl/blog/nieuwbouwvilla-kopen-marrakech/',
     },
     blogInvest: {
       fr: '/blog/investir-immobilier-luxe-marrakech/',
       en: '/en/blog/luxury-real-estate-investment-marrakech/',
-      it: '/it/',
+      it: '/it/blog/investire-immobiliare-di-lusso-marrakech/',
       nl: '/nl/blog/investeren-luxe-vastgoed-marrakech/',
     },
     blogAddresses: {
       fr: '/blog/adresses-immobilier-marrakech/',
       en: '/en/blog/best-addresses-real-estate-marrakech/',
-      it: '/it/',
+      it: '/it/blog/indirizzi-immobiliari-marrakech/',
       nl: '/nl/blog/beste-adressen-vastgoed-marrakech/',
     },
     blogOffMarket: {
       fr: '/blog/off-market-marrakech-biens-confidentiels/',
       en: '/en/blog/off-market-properties-marrakech/',
-      it: '/it/',
+      it: '/it/blog/immobili-off-market-marrakech/',
       nl: '/nl/blog/off-market-vastgoed-marrakech/',
     },
     blogApartment: {
       fr: '/blog/appartement-hypercentre-gueliz-marrakech/',
       en: '/en/blog/apartment-hypercentre-gueliz-marrakech/',
-      it: '/it/',
+      it: '/it/blog/appartamento-centro-gueliz-marrakech/',
       nl: '/nl/blog/appartement-hypercentre-gueliz-marrakech/',
     },
     privacy: {
       fr: '/privacy-policy/',
       en: '/en/privacy-policy/',
-      it: '/it/',
+      it: '/it/privacy-policy/',
       nl: '/nl/privacybeleid/',
     },
     contact: {
-      fr: '/fr/contact/',
+      fr: '/contact/',
       en: '/en/contact/',
       it: '/it/contatto/',
       nl: '/nl/contact/',
@@ -142,38 +148,48 @@
   var SLUG_TO_PAGE = {
     '': 'home',
     about: 'about',
+    'chi-siamo': 'about',
     'over-ons': 'about',
     quartiers: 'neighbourhoods',
     neighbourhoods: 'neighbourhoods',
     wijken: 'neighbourhoods',
+    quartieri: 'neighbourhoods',
     'nos-projets': 'projects',
     projects: 'projects',
     projecten: 'projects',
+    progetti: 'projects',
     'sur-plan': 'offPlan',
     'off-plan': 'offPlan',
     'progetti-su-piano': 'offPlan',
     nieuwbouw: 'offPlan',
     'sur-plan/villa-jaz': 'villaJaz',
     'off-plan/villa-jaz': 'villaJaz',
+    'progetti-su-piano/villa-jaz': 'villaJaz',
     'nieuwbouw/villa-jaz': 'villaJaz',
     'off-market': 'offMarket',
     simulateur: 'simulator',
     simulator: 'simulator',
+    simulatore: 'simulator',
     blog: 'blog',
     'blog/acheter-villa-sur-plan-marrakech': 'blogVilla',
     'blog/buying-off-plan-villa-marrakech': 'blogVilla',
     'blog/nieuwbouwvilla-kopen-marrakech': 'blogVilla',
+    'blog/acquistare-villa-su-progetto-marrakech': 'blogVilla',
     'blog/investir-immobilier-luxe-marrakech': 'blogInvest',
     'blog/luxury-real-estate-investment-marrakech': 'blogInvest',
     'blog/investeren-luxe-vastgoed-marrakech': 'blogInvest',
+    'blog/investire-immobiliare-di-lusso-marrakech': 'blogInvest',
     'blog/adresses-immobilier-marrakech': 'blogAddresses',
     'blog/best-addresses-real-estate-marrakech': 'blogAddresses',
     'blog/beste-adressen-vastgoed-marrakech': 'blogAddresses',
+    'blog/indirizzi-immobiliari-marrakech': 'blogAddresses',
     'blog/off-market-marrakech-biens-confidentiels': 'blogOffMarket',
     'blog/off-market-properties-marrakech': 'blogOffMarket',
     'blog/off-market-vastgoed-marrakech': 'blogOffMarket',
+    'blog/immobili-off-market-marrakech': 'blogOffMarket',
     'blog/appartement-hypercentre-gueliz-marrakech': 'blogApartment',
     'blog/apartment-hypercentre-gueliz-marrakech': 'blogApartment',
+    'blog/appartamento-centro-gueliz-marrakech': 'blogApartment',
     'privacy-policy': 'privacy',
     privacybeleid: 'privacy',
     contact: 'contact',
@@ -314,8 +330,31 @@
     });
   }
 
+  function syncRuntimeLocale(currentLang) {
+    document.documentElement.lang = currentLang;
+
+    var structuredData = document.querySelector('script[type="application/ld+json"]');
+    if (structuredData && STRUCTURED_DESCRIPTIONS[currentLang]) {
+      try {
+        var data = JSON.parse(structuredData.textContent || '{}');
+        var graph = Array.isArray(data['@graph']) ? data['@graph'] : [];
+        var organization = graph.find(function (entry) {
+          return entry && entry['@type'] === 'RealEstateAgent';
+        });
+        if (organization) {
+          organization.description = STRUCTURED_DESCRIPTIONS[currentLang];
+          structuredData.textContent = JSON.stringify(data);
+        }
+      } catch (error) {
+        /* Keep the server-rendered structured data if it is not valid JSON. */
+      }
+    }
+
+  }
+
   function syncLanguageControls() {
     var currentLang = detectCurrentLang();
+    syncRuntimeLocale(currentLang);
 
     document.querySelectorAll('[data-language-dropdown]').forEach(function (dropdown) {
       syncDropdown(dropdown, currentLang);
@@ -348,6 +387,7 @@
       }
       var optionDropdown = option.closest('[data-language-dropdown]');
       if (optionDropdown) closeDropdown(optionDropdown);
+      syncRuntimeLocale((option.getAttribute('data-lang') || option.textContent || '').trim().toLowerCase());
       return;
     }
 
@@ -373,6 +413,7 @@
 
   document.addEventListener('om-nav-rendered', syncLanguageControls);
   window.addEventListener('om-react-ready', syncLanguageControls);
+  window.addEventListener('popstate', syncLanguageControls);
   window.addEventListener(
     'load',
     function () {

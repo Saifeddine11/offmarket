@@ -59,7 +59,7 @@ export function MavericksChrome({
   langLinks = DEFAULT_LANG_LINKS,
   locale,
   activeDesktopNav,
-  showMobileLangSwitcher = false,
+  showMobileLangSwitcher = true,
 }: MavericksChromeProps) {
   const resolvedLocale = locale ?? langCodeToLocale(activeLang ?? "FR");
   const resolvedActiveLang = activeLang ?? localeToLangCode(resolvedLocale);
@@ -274,7 +274,7 @@ export function MavericksChrome({
           {ENABLE_LANGUAGE_SWITCHER && showMobileLangSwitcher ? (
             <nav
               className="mv-lang-switcher mv-lang-switcher--on-dark mv-lang-switcher--mobile-only"
-              aria-label={copy.chooseLanguageAria}
+              aria-label={copy.languageLabel}
             >
               <Link href={langLinks.en} className="mv-lang-switcher__btn" data-lang="EN">
                 EN

@@ -65,11 +65,32 @@
         role: 'Karaktervolle riad · Medina',
       },
     ],
+    it: [
+      {
+        quote:
+          'Cercavamo un’opportunità chiara, non un elenco di immobili. OFF MARKET ci ha aiutati a comprendere l’indirizzo, la domanda e il potenziale prima ancora della prima visita.',
+        author: 'Acquirente privato',
+        role: 'Seconda casa · Marrakech',
+      },
+      {
+        quote:
+          'La differenza è stata nella lettura del mercato: comparabili, rischi, margine di negoziazione e coerenza patrimoniale. La decisione è diventata molto più semplice.',
+        author: 'Investitore',
+        role: 'Appartamento premium · Guéliz / Hivernage',
+      },
+      {
+        quote:
+          'Abbiamo apprezzato la discrezione, la selezione e la qualità degli scambi. Gli immobili presentati erano pochi, ma realmente in linea con il nostro progetto.',
+        author: 'Cliente accompagnato',
+        role: 'Riad di carattere · Medina',
+      },
+    ],
   };
 
   function detectLocale() {
     var path = window.location.pathname || '/';
     if (path.indexOf('/en') === 0) return 'en';
+    if (path.indexOf('/it') === 0) return 'it';
     if (path.indexOf('/nl') === 0) return 'nl';
     return 'fr';
   }

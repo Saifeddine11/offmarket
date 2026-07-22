@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 declare global {
   interface Window {
@@ -52,8 +53,22 @@ function bootLegacySections(): boolean {
   return ready;
 }
 
+function resetLegacyMounts() {
+  document.querySelectorAll<HTMLElement>("[data-om-territories-set]").forEach((section) => {
+    section.removeAttribute("data-om-territories-init");
+    section.querySelector<HTMLElement>("[data-om-territories-stage]")?.replaceChildren();
+    section.querySelector<HTMLElement>("[data-om-territories-mobile]")?.replaceChildren();
+  });
+
+  document.querySelectorAll<HTMLElement>("[data-om-blog] [data-om-blog-root]").forEach((root) => {
+    root.replaceChildren();
+  });
+}
+
 /** Boots territories, simulator, and blog after React hydration on inner pages. */
 export function DeferredQuartiersLegacyBoot() {
+  const pathname = usePathname();
+
   useEffect(() => {
     let cancelled = false;
     let retryId: number | undefined;
@@ -96,6 +111,7 @@ export function DeferredQuartiersLegacyBoot() {
       }, 15000);
     };
 
+    resetLegacyMounts();
     waitForScripts();
 
     return () => {
@@ -103,7 +119,7 @@ export function DeferredQuartiersLegacyBoot() {
       if (retryId) window.clearInterval(retryId);
       if (queueWaitId) window.clearInterval(queueWaitId);
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

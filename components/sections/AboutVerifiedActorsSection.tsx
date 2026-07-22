@@ -25,7 +25,7 @@ const SAFE_COPY = {
     closing: "La sélection commence avant la visite.",
     safeTitle: "C'est quoi la S.A.F.E ?",
     safeText:
-      "S.A.F.E — Security, Analysis, Fidelity & Expert Guidance est une méthode indépendante d'analyse, de présélection et de sécurisation immobilière destinée à renforcer la protection et la compréhension des acheteurs et des investisseurs. OFF MARKET n'est pas propriétaire de S.A.F.E et n'en revendique pas la création. OFF MARKET respecte et applique les principes S.A.F.E dans son processus d'étude et de présentation des opportunités immobilières. S.A.F.E constitue un cadre indépendant d'analyse et de sécurisation immobilière. Son application ne remplace pas les vérifications juridiques, notariales, techniques, fiscales ou financières nécessaires avant toute acquisition et ne garantit pas l'absence totale de risque.",
+      "S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance est une méthode indépendante d'analyse, de présélection et de sécurisation immobilière destinée à renforcer la protection et la compréhension des acheteurs et des investisseurs. OFF MARKET n'est pas propriétaire de S.A.F.E. et n'en revendique pas la création. OFF MARKET respecte et applique les principes S.A.F.E. dans son processus d'étude et de présentation des opportunités immobilières. S.A.F.E. constitue un cadre indépendant d'analyse et de sécurisation immobilière. Son application ne remplace pas les vérifications juridiques, notariales, techniques, fiscales ou financières nécessaires avant toute acquisition et ne garantit pas l'absence totale de risque.",
     safeCta: "Lire le cadre S.A.F.E",
   },
   en: {
@@ -36,7 +36,7 @@ const SAFE_COPY = {
     closing: "Selection begins before the visit.",
     safeTitle: "What is S.A.F.E?",
     safeText:
-      "S.A.F.E — Security, Analysis, Fidelity & Expert Guidance is an independent real-estate analysis, pre-selection and security framework designed to strengthen the protection and understanding of buyers and investors. OFF MARKET does not own S.A.F.E and does not claim to have created it. OFF MARKET follows and applies S.A.F.E principles when reviewing and presenting real-estate opportunities. S.A.F.E is an independent real-estate analysis and security framework. Its application does not replace the legal, notarial, technical, tax or financial checks required before an acquisition and does not guarantee the complete absence of risk.",
+      "S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance is an independent real-estate analysis, pre-selection and security framework designed to strengthen the protection and understanding of buyers and investors. OFF MARKET does not own S.A.F.E. and does not claim to have created it. OFF MARKET follows and applies S.A.F.E. principles when reviewing and presenting real-estate opportunities. S.A.F.E. is an independent real-estate analysis and security framework. Its application does not replace the legal, notarial, technical, tax or financial checks required before an acquisition and does not guarantee the complete absence of risk.",
     safeCta: "Read more about S.A.F.E",
   },
   it: {
@@ -47,7 +47,7 @@ const SAFE_COPY = {
     closing: "La selezione inizia prima della visita.",
     safeTitle: "Che cos'è S.A.F.E?",
     safeText:
-      "S.A.F.E — Security, Analysis, Fidelity & Expert Guidance è un metodo indipendente di analisi, preselezione e tutela immobiliare, concepito per rafforzare la protezione e la comprensione di acquirenti e investitori. S.A.F.E non appartiene a OFF MARKET e OFF MARKET non ne rivendica la creazione. OFF MARKET rispetta e applica i principi S.A.F.E nella valutazione e presentazione delle opportunità immobiliari. S.A.F.E è un quadro indipendente di analisi e tutela immobiliare. La sua applicazione non sostituisce le verifiche legali, notarili, tecniche, fiscali o finanziarie necessarie prima di un acquisto e non garantisce la totale assenza di rischi.",
+      "S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance è un metodo indipendente di analisi, preselezione e tutela immobiliare, concepito per rafforzare la protezione e la comprensione di acquirenti e investitori. S.A.F.E. non appartiene a OFF MARKET e OFF MARKET non ne rivendica la creazione. OFF MARKET rispetta e applica i principi S.A.F.E. nella valutazione e presentazione delle opportunità immobiliari. S.A.F.E. è un quadro indipendente di analisi e tutela immobiliare. La sua applicazione non sostituisce le verifiche legali, notarili, tecniche, fiscali o finanziarie necessarie prima di un acquisto e non garantisce la totale assenza di rischi.",
     safeCta: "Leggere di più su S.A.F.E",
   },
   nl: {
@@ -58,7 +58,7 @@ const SAFE_COPY = {
     closing: "De selectie begint vóór de bezichtiging.",
     safeTitle: "Wat is S.A.F.E?",
     safeText:
-      "S.A.F.E — Security, Analysis, Fidelity & Expert Guidance is een onafhankelijke methode voor vastgoedanalyse, voorselectie en risicobeheersing, bedoeld om kopers en investeerders beter te beschermen en te informeren. S.A.F.E is geen eigendom van OFF MARKET en OFF MARKET beweert niet de methode te hebben ontwikkeld. OFF MARKET volgt en past de S.A.F.E-principes toe bij de beoordeling en presentatie van vastgoedmogelijkheden. S.A.F.E is een onafhankelijk kader voor vastgoedanalyse en risicobeheersing. De toepassing ervan vervangt niet de juridische, notariële, technische, fiscale of financiële controles die vóór een aankoop nodig zijn en garandeert niet dat elk risico is uitgesloten.",
+      "S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance is een onafhankelijke methode voor vastgoedanalyse, voorselectie en risicobeheersing, bedoeld om kopers en investeerders beter te beschermen en te informeren. S.A.F.E. is geen eigendom van OFF MARKET en OFF MARKET beweert niet de methode te hebben ontwikkeld. OFF MARKET volgt en past de S.A.F.E.-principes toe bij de beoordeling en presentatie van vastgoedmogelijkheden. S.A.F.E. is een onafhankelijk kader voor vastgoedanalyse en risicobeheersing. De toepassing ervan vervangt niet de juridische, notariële, technische, fiscale of financiële controles die vóór een aankoop nodig zijn en garandeert niet dat elk risico is uitgesloten.",
     safeCta: "Lees meer over S.A.F.E",
   },
 } satisfies Record<SiteLocale, {
@@ -97,7 +97,7 @@ export function AboutVerifiedActorsSection({
             className="about-verified__title about-verified__reveal mav-reveal-item"
           >
             {copy.titlePrefix}{" "}
-            <span className="about-verified__title-safe">S.A.F.E</span>
+            <span className="about-verified__title-safe">S.A.F.E.</span>
           </h2>
 
           <div className="about-verified__intro">

@@ -30,38 +30,38 @@ export function languageTagForLocale(locale: SiteLocale): string {
 export function languageLinksForPathname(pathname: string | null | undefined): LocaleLinkMap {
   const path = (pathname ?? "/").replace(/\/$/, "") || "/";
 
-  if (path === "/about" || path === "/fr/about" || path === "/en/about" || path === "/nl/over-ons") {
-    return { en: "/en/about/", fr: "/about/", it: "/it/", nl: "/nl/over-ons/" };
+  if (path === "/about" || path === "/fr/about" || path === "/en/about" || path === "/it/chi-siamo" || path === "/nl/over-ons") {
+    return { en: "/en/about/", fr: "/about/", it: "/it/chi-siamo/", nl: "/nl/over-ons/" };
   }
-  if (path === "/quartiers" || path === "/en/neighbourhoods" || path === "/nl/wijken") {
-    return { en: "/en/neighbourhoods/", fr: "/quartiers/", it: "/it/", nl: "/nl/wijken/" };
+  if (path === "/quartiers" || path === "/en/neighbourhoods" || path === "/it/quartieri" || path === "/nl/wijken") {
+    return { en: "/en/neighbourhoods/", fr: "/quartiers/", it: "/it/quartieri/", nl: "/nl/wijken/" };
   }
-  if (path === "/nos-projets" || path === "/en/projects" || path === "/nl/projecten") {
-    return { en: "/en/projects/", fr: "/nos-projets/", it: "/it/", nl: "/nl/projecten/" };
+  if (path === "/nos-projets" || path === "/en/projects" || path === "/it/progetti" || path === "/nl/projecten") {
+    return { en: "/en/projects/", fr: "/nos-projets/", it: "/it/progetti/", nl: "/nl/projecten/" };
   }
   if (path === "/sur-plan" || path === "/fr/sur-plan" || path === "/en/off-plan" || path === "/nl/nieuwbouw" || path === "/it/progetti-su-piano") {
     return { en: "/en/off-plan/", fr: "/sur-plan/", it: "/it/progetti-su-piano/", nl: "/nl/nieuwbouw/" };
   }
-  if (path === "/sur-plan/villa-jaz" || path === "/en/off-plan/villa-jaz" || path === "/nl/nieuwbouw/villa-jaz") {
-    return { en: "/en/off-plan/villa-jaz/", fr: "/sur-plan/villa-jaz/", it: "/it/progetti-su-piano/", nl: "/nl/nieuwbouw/villa-jaz/" };
+  if (path === "/sur-plan/villa-jaz" || path === "/en/off-plan/villa-jaz" || path === "/it/progetti-su-piano/villa-jaz" || path === "/nl/nieuwbouw/villa-jaz") {
+    return { en: "/en/off-plan/villa-jaz/", fr: "/sur-plan/villa-jaz/", it: "/it/progetti-su-piano/villa-jaz/", nl: "/nl/nieuwbouw/villa-jaz/" };
   }
   if (path === "/off-market" || path === "/en/off-market" || path === "/nl/off-market" || path === "/it/off-market") {
     return { en: "/en/off-market/", fr: "/off-market/", it: "/it/off-market/", nl: "/nl/off-market/" };
   }
-  if (path === "/simulateur" || path === "/en/simulator" || path === "/nl/simulator") {
-    return { en: "/en/simulator/", fr: "/simulateur/", it: "/it/", nl: "/nl/simulator/" };
+  if (path === "/simulateur" || path === "/en/simulator" || path === "/it/simulatore" || path === "/nl/simulator") {
+    return { en: "/en/simulator/", fr: "/simulateur/", it: "/it/simulatore/", nl: "/nl/simulator/" };
   }
   if (path === "/contact" || path === "/fr/contact" || path === "/en/contact" || path === "/nl/contact" || path === "/it/contatto") {
     return { en: "/en/contact/", fr: "/contact/", it: "/it/contatto/", nl: "/nl/contact/" };
   }
-  if (path === "/blog" || path === "/en/blog" || path === "/nl/blog") {
-    return { en: "/en/blog/", fr: "/blog/", it: "/it/", nl: "/nl/blog/" };
+  if (path === "/blog" || path === "/en/blog" || path === "/it/blog" || path === "/nl/blog") {
+    return { en: "/en/blog/", fr: "/blog/", it: "/it/blog/", nl: "/nl/blog/" };
   }
-  if (path.startsWith("/blog/") || path.startsWith("/en/blog/") || path.startsWith("/nl/blog/")) {
-    return { en: "/en/blog/", fr: "/blog/", it: "/it/", nl: "/nl/blog/" };
+  if (path.startsWith("/blog/") || path.startsWith("/en/blog/") || path.startsWith("/it/blog/") || path.startsWith("/nl/blog/")) {
+    return { en: "/en/blog/", fr: "/blog/", it: "/it/blog/", nl: "/nl/blog/" };
   }
-  if (path === "/privacy-policy" || path === "/en/privacy-policy" || path === "/nl/privacybeleid") {
-    return { en: "/en/privacy-policy/", fr: "/privacy-policy/", it: "/it/", nl: "/nl/privacybeleid/" };
+  if (path === "/privacy-policy" || path === "/en/privacy-policy" || path === "/it/privacy-policy" || path === "/nl/privacybeleid") {
+    return { en: "/en/privacy-policy/", fr: "/privacy-policy/", it: "/it/privacy-policy/", nl: "/nl/privacybeleid/" };
   }
 
   return { en: "/en/", fr: "/", it: "/it/", nl: "/nl/" };

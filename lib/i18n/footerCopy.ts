@@ -13,6 +13,8 @@ export type FooterCopy = {
   newsletterPlaceholder: string;
   newsletterButton: string;
   newsletterSuccess: string;
+  newsletterError: string;
+  newsletterRateLimit: string;
   navTitle: string;
   navLinks: FooterLink[];
   immobilierTitle: string;
@@ -28,6 +30,8 @@ export type FooterCopy = {
   privacy: string;
   terms: string;
   legal: string;
+  legalNavAria: string;
+  newsletterEmailLabel: string;
   privacyHref: string;
   termsHref: string;
   legalHref: string;
@@ -43,7 +47,9 @@ const FR: FooterCopy = {
   newsletterText: "Soyez informé des nouveaux projets sélectionnés à Marrakech.",
   newsletterPlaceholder: "votre@email.com",
   newsletterButton: "S'inscrire",
-  newsletterSuccess: "Votre demande d'inscription est prête dans votre messagerie.",
+  newsletterSuccess: "Votre inscription a bien été enregistrée.",
+  newsletterError: "Une erreur est survenue. Veuillez réessayer.",
+  newsletterRateLimit: "Trop de tentatives. Veuillez réessayer dans quelques minutes.",
   navTitle: "Navigation",
   navLinks: [
     { label: "Accueil", href: "/" },
@@ -74,8 +80,10 @@ const FR: FooterCopy = {
   privacy: "Confidentialité",
   terms: "Conditions",
   legal: "Mentions légales",
+  legalNavAria: "Liens légaux",
+  newsletterEmailLabel: "Email",
   privacyHref: "/privacy-policy/",
-  termsHref: "",
+  termsHref: "/privacy-policy/",
   legalHref: "/privacy-policy/",
   logoAlt: "OFF MARKET",
   logoHref: "/",
@@ -90,7 +98,9 @@ const EN: FooterCopy = {
   newsletterText: "Be informed of newly selected projects in Marrakech.",
   newsletterPlaceholder: "your@email.com",
   newsletterButton: "Subscribe",
-  newsletterSuccess: "Your subscription request is ready in your email app.",
+  newsletterSuccess: "Your subscription has been registered.",
+  newsletterError: "Something went wrong. Please try again.",
+  newsletterRateLimit: "Too many attempts. Please try again in a few minutes.",
   navTitle: "Navigation",
   navLinks: [
     { label: "Home", href: "/en/" },
@@ -118,7 +128,10 @@ const EN: FooterCopy = {
   privacy: "Privacy",
   terms: "Terms",
   legal: "Legal notice",
+  legalNavAria: "Legal links",
+  newsletterEmailLabel: "Email",
   privacyHref: "/en/privacy-policy/",
+  termsHref: "/en/privacy-policy/",
   legalHref: "/en/privacy-policy/",
   logoHref: "/en/",
 };
@@ -127,29 +140,31 @@ const IT: FooterCopy = {
   ...FR,
   brandHeadline: "Immobiliare privato a Marrakech.",
   brandSupport:
-    "Una selezione riservata di ville, appartamenti, progetti su piano e opportunità off-market.",
+    "Una selezione riservata di ville, appartamenti, progetti in costruzione e opportunità off-market.",
   newsletterTitle: "Ricevere le opportunità private",
   newsletterText: "Resta informato sui nuovi progetti selezionati a Marrakech.",
   newsletterPlaceholder: "tua@email.com",
   newsletterButton: "Iscriviti",
-  newsletterSuccess: "La tua richiesta di iscrizione è pronta nella tua email.",
+  newsletterSuccess: "La tua iscrizione è stata registrata.",
+  newsletterError: "Si è verificato un errore. Riprova.",
+  newsletterRateLimit: "Troppi tentativi. Riprova tra qualche minuto.",
   navTitle: "Navigazione",
   navLinks: [
     { label: "Home", href: "/it/" },
-    { label: "La nostra storia", href: "/it/" },
-    { label: "Quartieri", href: "/it/" },
-    { label: "Progetti", href: "/it/" },
-    { label: "Su piano", href: "/it/progetti-su-piano/" },
+    { label: "La nostra storia", href: "/it/chi-siamo/" },
+    { label: "Quartieri", href: "/it/quartieri/" },
+    { label: "Progetti", href: "/it/progetti/" },
+    { label: "In costruzione", href: "/it/progetti-su-piano/" },
     { label: "Contatto", href: "/it/contatto/" },
   ],
   immobilierTitle: "Immobiliare",
   immobilierLinks: [
     { label: "Off-market", href: "/it/off-market/" },
-    { label: "Ville a Marrakech", href: "/it/" },
-    { label: "Appartamenti a Marrakech", href: "/it/" },
-    { label: "Acquistare su piano", href: "/it/progetti-su-piano/" },
-    { label: "Simulatore investimento", href: "/it/" },
-    { label: "Blog", href: "/it/" },
+    { label: "Ville a Marrakech", href: "/it/progetti/" },
+    { label: "Appartamenti a Marrakech", href: "/it/progetti/" },
+    { label: "Acquistare in costruzione", href: "/it/progetti-su-piano/" },
+    { label: "Simulatore investimento", href: "/it/simulatore/" },
+    { label: "Blog", href: "/it/blog/" },
   ],
   ctaStatement:
     "Un'opportunità rara inizia spesso con una conversazione privata.",
@@ -161,9 +176,11 @@ const IT: FooterCopy = {
   privacy: "Privacy",
   terms: "Condizioni",
   legal: "Note legali",
-  privacyHref: "/it/",
-  termsHref: "/it/",
-  legalHref: "/it/",
+  legalNavAria: "Collegamenti legali",
+  newsletterEmailLabel: "Email",
+  privacyHref: "/it/privacy-policy/",
+  termsHref: "/it/privacy-policy/",
+  legalHref: "/it/privacy-policy/",
   logoHref: "/it/",
 };
 
@@ -176,7 +193,9 @@ const NL: FooterCopy = {
   newsletterText: "Blijf op de hoogte van nieuw geselecteerde projecten in Marrakech.",
   newsletterPlaceholder: "uw@email.com",
   newsletterButton: "Inschrijven",
-  newsletterSuccess: "Uw inschrijvingsaanvraag staat klaar in uw e-mailprogramma.",
+  newsletterSuccess: "Uw inschrijving is geregistreerd.",
+  newsletterError: "Er is iets misgegaan. Probeer het opnieuw.",
+  newsletterRateLimit: "Te veel pogingen. Probeer het over enkele minuten opnieuw.",
   navTitle: "Navigatie",
   navLinks: [
     { label: "Home", href: "/nl/" },
@@ -204,8 +223,10 @@ const NL: FooterCopy = {
   privacy: "Privacy",
   terms: "Voorwaarden",
   legal: "Wettelijke vermeldingen",
+  legalNavAria: "Juridische links",
+  newsletterEmailLabel: "E-mailadres",
   privacyHref: "/nl/privacybeleid/",
-  termsHref: "/nl/",
+    termsHref: "/nl/privacybeleid/",
   legalHref: "/nl/privacybeleid/",
   logoHref: "/nl/",
 };

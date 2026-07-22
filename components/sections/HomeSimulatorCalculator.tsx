@@ -159,7 +159,7 @@ export function HomeSimulatorCalculator({
               </div>
               <span className="om-simulator__value"><span data-field-value suppressHydrationWarning /><span className="om-simulator__value-eur" data-field-eur suppressHydrationWarning /></span>
             </div>
-            <input className="om-simulator__range" type="range" min="750000" max="12000000" step="50000" defaultValue="1500000" />
+            <input className="om-simulator__range" type="range" min="750000" max="12000000" step="50000" defaultValue="1500000" aria-label={copy.purchasePrice} />
           </div>
           <div className="om-simulator__field" data-field data-field-type="range" data-field-key="nightlyRate">
             <div className="om-simulator__field-header">
@@ -168,7 +168,7 @@ export function HomeSimulatorCalculator({
               </div>
               <span className="om-simulator__value"><span data-field-value suppressHydrationWarning /></span>
             </div>
-            <input className="om-simulator__range" type="range" min="600" max="12000" step="50" defaultValue="1200" />
+            <input className="om-simulator__range" type="range" min="600" max="12000" step="50" defaultValue="1200" aria-label={copy.nightlyRate} />
           </div>
           <div className="om-simulator__field" data-field data-field-type="range" data-field-key="personalWeeks" data-field-weeks="true">
             <div className="om-simulator__field-header">
@@ -177,7 +177,7 @@ export function HomeSimulatorCalculator({
               </div>
               <span className="om-simulator__value"><span data-field-value suppressHydrationWarning /></span>
             </div>
-            <input className="om-simulator__range" type="range" min="0" max="20" step="1" defaultValue="0" />
+            <input className="om-simulator__range" type="range" min="0" max="20" step="1" defaultValue="0" aria-label={copy.personalWeeks} />
           </div>
           <div className="om-simulator__field" data-field data-field-type="range" data-field-key="occupancy" data-field-percent="true">
             <div className="om-simulator__field-header">
@@ -186,7 +186,7 @@ export function HomeSimulatorCalculator({
               </div>
               <span className="om-simulator__value"><span data-field-value suppressHydrationWarning /></span>
             </div>
-            <input className="om-simulator__range" type="range" min="30" max="85" step="1" defaultValue="70" />
+            <input className="om-simulator__range" type="range" min="30" max="85" step="1" defaultValue="70" aria-label={copy.occupancy} />
           </div>
         </div>
 
@@ -199,7 +199,7 @@ export function HomeSimulatorCalculator({
               </div>
               <span className="om-simulator__value"><span data-field-value suppressHydrationWarning /><span className="om-simulator__value-eur" data-field-eur suppressHydrationWarning /></span>
             </div>
-            <input className="om-simulator__range" type="range" min="750000" max="12000000" step="50000" defaultValue="1500000" />
+            <input className="om-simulator__range" type="range" min="750000" max="12000000" step="50000" defaultValue="1500000" aria-label={copy.purchasePrice} />
           </div>
           <div className="om-simulator__field" data-field data-field-type="range" data-field-key="monthlyRent">
             <div className="om-simulator__field-header">
@@ -208,7 +208,7 @@ export function HomeSimulatorCalculator({
               </div>
               <span className="om-simulator__value"><span data-field-value suppressHydrationWarning /></span>
             </div>
-            <input className="om-simulator__range" type="range" min="6000" max="60000" step="500" defaultValue="18000" />
+            <input className="om-simulator__range" type="range" min="6000" max="60000" step="500" defaultValue="18000" aria-label={copy.monthlyRent} />
           </div>
         </div>
 
@@ -221,7 +221,7 @@ export function HomeSimulatorCalculator({
               </div>
               <span className="om-simulator__value"><span data-field-value suppressHydrationWarning /><span className="om-simulator__value-eur" data-field-eur suppressHydrationWarning /></span>
             </div>
-            <input className="om-simulator__range" type="range" min="750000" max="12000000" step="50000" defaultValue="1500000" />
+            <input className="om-simulator__range" type="range" min="750000" max="12000000" step="50000" defaultValue="1500000" aria-label={copy.purchasePrice} />
           </div>
           <div className="om-simulator__field" data-field data-field-type="range" data-field-key="resaleHorizonYears" data-field-years="true">
             <div className="om-simulator__field-header">
@@ -230,7 +230,7 @@ export function HomeSimulatorCalculator({
               </div>
               <span className="om-simulator__value"><span data-field-value suppressHydrationWarning /></span>
             </div>
-            <input className="om-simulator__range" type="range" min="3" max="15" step="1" defaultValue="8" />
+            <input className="om-simulator__range" type="range" min="3" max="15" step="1" defaultValue="8" aria-label={copy.resaleHorizon} />
           </div>
           <div className="om-simulator__field" data-field data-field-type="range" data-field-key="annualAppreciationRate" data-field-percent="true" data-field-decimals="1">
             <div className="om-simulator__field-header">
@@ -239,7 +239,7 @@ export function HomeSimulatorCalculator({
               </div>
               <span className="om-simulator__value"><span data-field-value suppressHydrationWarning /></span>
             </div>
-            <input className="om-simulator__range" type="range" min="8" max="15" step="0.5" defaultValue="10" />
+            <input className="om-simulator__range" type="range" min="8" max="15" step="0.5" defaultValue="10" aria-label={copy.appreciation} />
           </div>
         </div>
       </ScrollReveal>

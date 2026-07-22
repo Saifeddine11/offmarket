@@ -6,6 +6,7 @@
     { code: '+33', label: 'France', flag: '🇫🇷', locales: ['fr-FR'], region: 'FR' },
     { code: '+32', label: 'Belgique', flag: '🇧🇪', locales: ['fr-BE', 'nl-BE'], region: 'BE' },
     { code: '+41', label: 'Suisse', flag: '🇨🇭', locales: ['fr-CH', 'de-CH', 'it-CH'], region: 'CH' },
+    { code: '+49', label: 'Allemagne', flag: '🇩🇪', locales: ['de-DE'], region: 'DE' },
     { code: '+34', label: 'Espagne', flag: '🇪🇸', locales: ['es-ES'], region: 'ES' },
     { code: '+39', label: 'Italie', flag: '🇮🇹', locales: ['it-IT'], region: 'IT' },
     { code: '+31', label: 'Pays-Bas', flag: '🇳🇱', locales: ['nl-NL'], region: 'NL' },
@@ -15,6 +16,29 @@
     { code: '+966', label: 'Arabie saoudite', flag: '🇸🇦', locales: ['ar-SA'], region: 'SA' },
     { code: '+974', label: 'Qatar', flag: '🇶🇦', locales: ['ar-QA'], region: 'QA' },
   ];
+
+  var COUNTRY_LABELS = {
+    fr: {
+      MA: 'Maroc', FR: 'France', BE: 'Belgique', CH: 'Suisse', DE: 'Allemagne', ES: 'Espagne',
+      IT: 'Italie', NL: 'Pays-Bas', GB: 'Royaume-Uni', US: 'États-Unis',
+      AE: 'Émirats arabes unis', SA: 'Arabie saoudite', QA: 'Qatar',
+    },
+    en: {
+      MA: 'Morocco', FR: 'France', BE: 'Belgium', CH: 'Switzerland', DE: 'Germany', ES: 'Spain',
+      IT: 'Italy', NL: 'Netherlands', GB: 'United Kingdom', US: 'United States',
+      AE: 'United Arab Emirates', SA: 'Saudi Arabia', QA: 'Qatar',
+    },
+    it: {
+      MA: 'Marocco', FR: 'Francia', BE: 'Belgio', CH: 'Svizzera', DE: 'Germania', ES: 'Spagna',
+      IT: 'Italia', NL: 'Paesi Bassi', GB: 'Regno Unito', US: 'Stati Uniti',
+      AE: 'Emirati Arabi Uniti', SA: 'Arabia Saudita', QA: 'Qatar',
+    },
+    nl: {
+      MA: 'Marokko', FR: 'Frankrijk', BE: 'België', CH: 'Zwitserland', DE: 'Duitsland', ES: 'Spanje',
+      IT: 'Italië', NL: 'Nederland', GB: 'Verenigd Koninkrijk', US: 'Verenigde Staten',
+      AE: 'Verenigde Arabische Emiraten', SA: 'Saudi-Arabië', QA: 'Qatar',
+    },
+  };
 
   var COPY_FR = {
     success:
@@ -45,6 +69,41 @@
     error:
       'Controleer de verplichte velden voordat u uw aanvraag verstuurt.',
     mailSubject: 'OFF MARKET toegangsaanvraag',
+  };
+
+  var LEGACY_FORM_COPY = {
+    fr: {
+      fullName: 'Nom complet', fullNamePlaceholder: 'Votre nom complet',
+      phoneLegend: 'Numéro de téléphone', countryCode: 'Indicatif pays',
+      phoneNumber: 'Numéro', message: 'Message (optionnel)',
+      messagePlaceholder: 'Votre message, votre projet ou vos critères spécifiques',
+      submit: "Demander l'accès", privacyPrefix: 'En cliquant sur le bouton, vous acceptez que OFF MARKET vous contacte au sujet de votre demande.',
+      privacyLink: 'Confidentialité', privacyHref: '/privacy-policy/',
+    },
+    en: {
+      fullName: 'Full name', fullNamePlaceholder: 'Your full name',
+      phoneLegend: 'Phone number', countryCode: 'Country code',
+      phoneNumber: 'Number', message: 'Message (optional)',
+      messagePlaceholder: 'Your message, project details or specific criteria',
+      submit: 'Request access', privacyPrefix: 'By clicking the button, you agree that OFF MARKET may contact you about your request.',
+      privacyLink: 'Privacy policy', privacyHref: '/en/privacy-policy/',
+    },
+    it: {
+      fullName: 'Nome completo', fullNamePlaceholder: 'Il tuo nome completo',
+      phoneLegend: 'Numero di telefono', countryCode: 'Prefisso internazionale',
+      phoneNumber: 'Numero', message: 'Messaggio (facoltativo)',
+      messagePlaceholder: 'Il tuo messaggio, progetto o criteri specifici',
+      submit: 'Richiedi accesso', privacyPrefix: 'Cliccando sul pulsante, accetti che OFF MARKET ti contatti in merito alla tua richiesta.',
+      privacyLink: 'Informativa sulla privacy', privacyHref: '/it/privacy-policy/',
+    },
+    nl: {
+      fullName: 'Volledige naam', fullNamePlaceholder: 'Uw volledige naam',
+      phoneLegend: 'Telefoonnummer', countryCode: 'Landcode',
+      phoneNumber: 'Nummer', message: 'Bericht (optioneel)',
+      messagePlaceholder: 'Uw bericht, project of specifieke criteria',
+      submit: 'Toegang aanvragen', privacyPrefix: 'Door op de knop te klikken, stemt u ermee in dat OFF MARKET contact met u opneemt over uw aanvraag.',
+      privacyLink: 'Privacy', privacyHref: '/nl/privacybeleid/',
+    },
   };
 
   function detectFormLocale() {
@@ -111,7 +170,8 @@
     return '+212';
   }
 
-  function countryOptionsHtml(selectedCode) {
+  function countryOptionsHtml(selectedCode, locale) {
+    var labels = COUNTRY_LABELS[locale] || COUNTRY_LABELS.fr;
     return COUNTRY_CODES.map(function (entry) {
       var selected = entry.code === selectedCode ? ' selected' : '';
       return (
@@ -122,12 +182,28 @@
         '>' +
         entry.flag +
         ' ' +
-        entry.label +
+        (labels[entry.region] || entry.label) +
         ' ' +
         entry.code +
         '</option>'
       );
     }).join('');
+  }
+
+  function localizeLegacyForm(form) {
+    if (!form || !form.hasAttribute('data-legacy-private-access-form')) return;
+    var locale = resolveFormLocale(form);
+    var copy = LEGACY_FORM_COPY[locale] || LEGACY_FORM_COPY.fr;
+    form.querySelectorAll('[data-private-copy]').forEach(function (element) {
+      var key = element.getAttribute('data-private-copy');
+      if (copy[key]) element.textContent = copy[key];
+    });
+    form.querySelectorAll('[data-private-placeholder]').forEach(function (element) {
+      var key = element.getAttribute('data-private-placeholder');
+      if (copy[key]) element.setAttribute('placeholder', copy[key]);
+    });
+    var privacyLink = form.querySelector('[data-private-copy="privacyLink"]');
+    if (privacyLink) privacyLink.setAttribute('href', copy.privacyHref);
   }
 
   function setStatus(statusEl, text, isError) {
@@ -268,7 +344,10 @@
     var intentInput = form.querySelector('[data-private-intent]');
 
     if (countrySelect && !countrySelect.options.length) {
-      countrySelect.innerHTML = countryOptionsHtml(detectCountryCode());
+      countrySelect.innerHTML = countryOptionsHtml(
+        detectCountryCode(),
+        resolveFormLocale(form),
+      );
     }
 
     if (intentInput) {
@@ -292,6 +371,7 @@
     if (form.dataset.privateAccessBound === 'true') return;
     form.dataset.privateAccessBound = 'true';
 
+    localizeLegacyForm(form);
     populateSelects(form);
 
     form.addEventListener('submit', function (event) {

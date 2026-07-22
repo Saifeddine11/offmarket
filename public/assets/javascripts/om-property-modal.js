@@ -14,6 +14,25 @@
 
   var bootObserver = null;
 
+  function destroyBoot() {
+    if (typeof boot.cleanup === 'function') {
+      boot.cleanup();
+    }
+    boot.didInit = false;
+    boot.modal = null;
+    boot.cleanup = null;
+    modalController.ready = false;
+    modalController.pendingId = null;
+    window.omPropertyModal = {
+      open: requestOpenPropertyModal,
+      close: function () {
+        var closeButton = document.querySelector('[data-property-modal-close]');
+        if (closeButton) closeButton.click();
+      },
+      data: propertyModalData,
+    };
+  }
+
   function requestOpenPropertyModal(propertyId) {
     if (!propertyId) return;
     if (modalController.ready && typeof modalController.open === 'function') {
@@ -26,7 +45,6 @@
 
   function scheduleBoot() {
     initPropertyDetailPage();
-    if (boot.didInit) return;
     boot();
     if (
       boot.didInit &&
@@ -60,11 +78,79 @@
       if (!trigger) return;
       if (trigger.disabled || trigger.getAttribute('aria-disabled') === 'true') return;
       event.preventDefault();
+      event.stopPropagation();
       var propertyId = trigger.getAttribute('data-property-id');
       if (propertyId) requestOpenPropertyModal(propertyId);
     },
     true
   );
+
+  document.addEventListener(
+    'pointerup',
+    function (event) {
+      var target = event.target;
+      var closeTarget = target && target.closest ? target.closest('[data-property-modal-close]') : null;
+      if (!closeTarget) return;
+      var modal = closeTarget.closest('[data-property-modal]');
+      if (!modal || !modal.classList.contains('is-open')) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (typeof modalController.close === 'function') {
+        modalController.close();
+      }
+    },
+    true
+  );
+
+  document.addEventListener(
+    'pointerup',
+    function (event) {
+      if (event.pointerType === 'mouse') return;
+      var target = event.target;
+      var trigger = target && target.closest ? target.closest('[data-property-modal-trigger]') : null;
+      if (!trigger) return;
+      if (trigger.disabled || trigger.getAttribute('aria-disabled') === 'true') return;
+      event.preventDefault();
+      event.stopPropagation();
+      requestOpenPropertyModal(trigger.getAttribute('data-property-id'));
+    },
+    true
+  );
+
+  document.addEventListener(
+    'keydown',
+    function (event) {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      var target = event.target;
+      var trigger = target && target.closest ? target.closest('[data-property-modal-trigger]') : null;
+      if (!trigger) return;
+      if (trigger.disabled || trigger.getAttribute('aria-disabled') === 'true') return;
+      event.preventDefault();
+      event.stopPropagation();
+      requestOpenPropertyModal(trigger.getAttribute('data-property-id'));
+    },
+    true
+  );
+
+  document.addEventListener(
+    'click',
+    function (event) {
+      var target = event.target;
+      var closeTarget = target && target.closest ? target.closest('[data-property-modal-close]') : null;
+      if (!closeTarget) return;
+      var modal = closeTarget.closest('[data-property-modal]');
+      if (!modal || !modal.classList.contains('is-open')) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (typeof modalController.close === 'function') {
+        modalController.close();
+      }
+    },
+    true
+  );
+
+  document.addEventListener('om-react-ready', scheduleBoot);
+  document.addEventListener('om-property-cards-rendered', scheduleBoot);
 
   document.addEventListener(
     'click',
@@ -671,6 +757,11 @@
 
   var PROPERTY_MODAL_TEXT_TRANSLATIONS = {
     en: {
+      'Fermer la fiche': 'Close property sheet',
+      'Navigation fiche bien': 'Property sheet navigation',
+      'Plans transmis sur demande': 'Plans available on request',
+      'Rappel': 'Callback',
+      'Recevoir le dossier': 'Receive the dossier',
       'Villa sur plan': 'Off-plan villa',
       'Sélection :': 'Selection:',
       'Projet sur plan': 'Off-plan project',
@@ -849,6 +940,11 @@
       'rez-de-chaussée': 'ground floor',
     },
     nl: {
+      'Fermer la fiche': 'Vastgoedfiche sluiten',
+      'Navigation fiche bien': 'Navigatie vastgoedfiche',
+      'Plans transmis sur demande': 'Plattegronden beschikbaar op aanvraag',
+      'Rappel': 'Terugbelverzoek',
+      'Recevoir le dossier': 'Het dossier ontvangen',
       'Villa sur plan': 'Nieuwbouwvilla',
       'Sélection :': 'Selectie:',
       'Projet sur plan': 'Nieuwbouwproject',
@@ -1026,6 +1122,191 @@
       'étage': 'verdieping',
       'rez-de-chaussée': 'begane grond',
     },
+    it: {
+      'Fermer la fiche': 'Chiudi la scheda immobiliare',
+      'Navigation fiche bien': 'Navigazione scheda immobile',
+      'Plans transmis sur demande': 'Planimetrie disponibili su richiesta',
+      'Rappel': 'Richiamami',
+      'Recevoir le dossier': 'Ricevi il dossier',
+      'Villa sur plan': 'Villa su progetto',
+      'Sélection :': 'Selezione:',
+      'Projet sur plan': 'Progetto in costruzione',
+      'À partir de 351 000 €': 'Da 351.000 €',
+      '32 villas sur plan à Marrakech, avec une disponibilité limitée à 7 villas restantes.':
+        '32 ville su progetto a Marrakech, con disponibilità limitata a 7 ville rimanenti.',
+      'Villa Jaz — villas sur plan à Marrakech':
+        'Villa Jaz — ville su progetto a Marrakech',
+      'Réserver ta villa': 'Prenota la tua villa',
+      'Remplir le formulaire pour plus de détails':
+        'Compila il modulo per maggiori dettagli',
+      'Type': 'Tipologia',
+      'Total': 'Totale',
+      'Disponibilité': 'Disponibilità',
+      'Statut': 'Stato',
+      'Prix': 'Prezzo',
+      'Adresse': 'Indirizzo',
+      'Paiement': 'Pagamento',
+      '32 villas': '32 ville',
+      '7 villas restantes': '7 ville rimanenti',
+      'Communiquée sur demande': 'Comunicata su richiesta',
+      '30% à la réservation, puis 30% à chaque avancement du projet':
+        '30% alla prenotazione, poi 30% a ogni fase del progetto',
+      'Villa Jaz est une opportunité sur plan pensée pour les acquéreurs qui recherchent une villa privée à Marrakech, avec un cadre résidentiel, des espaces extérieurs et une disponibilité volontairement limitée.':
+        'Villa Jaz è un’opportunità su progetto per chi cerca una villa privata a Marrakech, in un contesto residenziale, con spazi esterni e una disponibilità volutamente limitata.',
+      'Le projet réunit 32 villas, dont 7 restent disponibles. Les informations détaillées, les plans, les disponibilités actualisées et les conditions précises sont communiqués après formulaire afin de préserver la confidentialité du projet.':
+        'Il progetto comprende 32 ville, di cui 7 ancora disponibili. Informazioni dettagliate, planimetrie, disponibilità aggiornate e condizioni precise vengono comunicate dopo la compilazione del modulo per tutelare la riservatezza del progetto.',
+      '32 villas au total': '32 ville in totale',
+      'Prix à partir de 351 000 €': 'Prezzo a partire da 351.000 €',
+      '30% à la réservation': '30% alla prenotazione',
+      '30% à chaque avancement du projet': '30% a ogni fase del progetto',
+      'Adresse communiquée sur demande': 'Indirizzo comunicato su richiesta',
+      'Plans sur formulaire': 'Planimetrie tramite modulo',
+      'Disponibilités actualisées': 'Disponibilità aggiornate',
+      'Détails complets sur demande': 'Dettagli completi su richiesta',
+      'Réservation sur formulaire': 'Prenotazione tramite modulo',
+      'Informations clés': 'Informazioni chiave',
+      'Disponibilité limitée': 'Disponibilità limitata',
+      'sur 32 villas': 'su 32 ville',
+      'Confort & équipements': 'Comfort e dotazioni',
+      'Piscine privée dans chaque villa': 'Piscina privata in ogni villa',
+      'Espaces verts paysagers': 'Spazi verdi paesaggistici',
+      'Aire de jeux pour enfants': 'Area giochi per bambini',
+      'Équipements haut de gamme': 'Dotazioni di alta gamma',
+      'Jardins et espaces extérieurs aménagés': 'Giardini e spazi esterni curati',
+      'Confidentialité & réservation': 'Riservatezza e prenotazione',
+      'Résidence sécurisée': 'Residenza sicura',
+      'Sécurité et confidentialité': 'Sicurezza e riservatezza',
+      'Modalités de paiement': 'Modalità di pagamento',
+      '30% à la réservation, puis 30% à chaque avancement du projet. Remplir le formulaire pour recevoir les détails complets.':
+        '30% alla prenotazione, poi 30% a ogni fase del progetto. Compila il modulo per ricevere tutti i dettagli.',
+      'Détails sur demande': 'Dettagli su richiesta',
+      'Modalités de paiement — 30% à la réservation. 30% à chaque avancement du projet. Pour recevoir les détails complets, les disponibilités exactes et les conditions actualisées, merci de remplir le formulaire.\n\nDisponibilité limitée — 7 villas restantes sur un total de 32 villas.':
+      'Modalità di pagamento — 30% alla prenotazione. 30% a ogni fase del progetto. Compila il modulo per ricevere tutti i dettagli, la disponibilità esatta e le condizioni aggiornate.\n\nDisponibilità limitata — 7 ville rimanenti su un totale di 32 ville.',
+      'Appartement': 'Appartamento',
+      'À partir de 1,05 M MAD': 'Da 1,05 M MAD',
+      'Programme neuf sur plan': 'Nuovo progetto in costruzione',
+      'Appartement premium à Guéliz': 'Appartamento premium a Guéliz',
+      'Studios, appartements, duplex et commerces en hyper-centre de Marrakech.':
+        'Monolocali, appartamenti, duplex e locali commerciali nel cuore di Marrakech.',
+      'Appartement premium à Guéliz — Guéliz hyper-centre, Marrakech':
+        'Appartamento premium a Guéliz — ipercentro di Guéliz, Marrakech',
+      'Réserver ton appartement': 'Prenota il tuo appartamento',
+      'Recevoir la fiche privée': 'Ricevi la scheda privata',
+      'Studio': 'Monolocale',
+      'Duplex': 'Duplex',
+      'Magasin commercial': 'Locale commerciale',
+      'Programme neuf haut standing': 'Nuovo progetto di alta gamma',
+      'Localisation': 'Posizione',
+      'Guéliz hyper-centre, Marrakech': 'Ipercentro di Guéliz, Marrakech',
+      'Surfaces': 'Superfici',
+      'Livraison': 'Consegna',
+      '2028 — 1ère livraison': '2028 — prima consegna',
+      '39–140 m²': '39–140 m²',
+      'Programme immobilier neuf haut standing à Guéliz, avec studios, appartements, duplex et commerces. Une adresse sélectionnée pour acheter un bien neuf en hyper-centre de Marrakech.':
+        'Nuovo progetto immobiliare di alta gamma a Guéliz, con monolocali, appartamenti, duplex e locali commerciali. Un indirizzo selezionato per acquistare un immobile nuovo nell’ipercentro di Marrakech.',
+      'Positionnement': 'Posizionamento',
+      'Hyper-centre, à proximité immédiate des commerces, restaurants et services.':
+        'Ipercentro, a pochi passi da negozi, ristoranti e servizi.',
+      'Conception': 'Progettazione',
+      'Une esthétique sobre, raffinée et intemporelle, inspirée des codes hôteliers haut de gamme.':
+        'Un’estetica sobria, raffinata e senza tempo, ispirata ai codici dell’ospitalità di alta gamma.',
+      'Projet patrimonial': 'Investimento patrimoniale',
+      'Un actif pensé pour habiter, préparer un pied-à-terre ou étudier une stratégie patrimoniale à Guéliz.':
+        'Un bene pensato per viverci, creare un punto d’appoggio o valutare una strategia patrimoniale a Guéliz.',
+      'Studios, appartements, duplex et commerces à Guéliz hyper-centre':
+        'Monolocali, appartamenti, duplex e locali commerciali nell’ipercentro di Guéliz',
+      'Un confort pensé comme une expérience': 'Un comfort pensato come esperienza',
+      'Chaque détail vise à créer une expérience résidentielle plus sereine, plus élégante et plus cohérente dans le temps.':
+        'Ogni dettaglio contribuisce a creare un’esperienza residenziale più serena, elegante e coerente nel tempo.',
+      'Piscines au rez-de-chaussée': 'Piscine al piano terra',
+      'Deux bassins pensés pour des usages complémentaires, avec une piscine chauffée et une piscine classique intégrées dès le rez-de-chaussée.':
+        'Due vasche pensate per usi complementari, con una piscina riscaldata e una piscina tradizionale integrate al piano terra.',
+      'Spa résidentiel': 'Spa residenziale',
+      'Un espace spa dédié au relâchement et au bien-être, conçu pour prolonger l’atmosphère calme et confidentielle de la résidence.':
+        'Uno spazio spa dedicato al relax e al benessere, pensato per prolungare l’atmosfera calma e riservata della residenza.',
+      'Jacuzzi': 'Jacuzzi',
+      'Un jacuzzi intégré aux espaces détente pour offrir un supplément de confort recherché dans une adresse de haut standing.':
+        'Una jacuzzi integrata nelle aree relax per offrire un comfort aggiuntivo, ricercato in un indirizzo di alta gamma.',
+      'Salle de sport': 'Palestra',
+      'Une salle de sport réservée aux résidents, pensée pour un usage quotidien confortable au sein même du projet.':
+        'Una palestra riservata ai residenti, progettata per un uso quotidiano confortevole all’interno del progetto.',
+      'Vestiaires séparés hommes / femmes': 'Spogliatoi separati uomo / donna',
+      'Des vestiaires distincts pour hommes et femmes, conçus pour offrir plus d’intimité, de confort et de praticité au quotidien.':
+        'Spogliatoi distinti per uomini e donne, pensati per offrire più privacy, comfort e praticità ogni giorno.',
+      'Parking titré & box privatifs': 'Parcheggio titolato e box privati',
+      'Des stationnements titrés et des box privatifs qui renforcent la valeur patrimoniale et la qualité d’usage de l’ensemble.':
+        'Posti auto titolati e box privati che rafforzano il valore patrimoniale e la qualità d’uso dell’insieme.',
+      '30% à la réservation — ≈ 39 000 € d’apport. Disponibilités et conditions actualisées communiquées sur demande.':
+        '30% alla prenotazione — circa 39.000 € di capitale iniziale. Disponibilità e condizioni aggiornate comunicate su richiesta.',
+      'Studio · Appartement · Duplex': 'Monolocale · Appartamento · Duplex',
+      'Plans, surfaces disponibles et disponibilités actualisées communiqués après demande via le formulaire.':
+        'Planimetrie, superfici disponibili e disponibilità aggiornate comunicate dopo la richiesta tramite il modulo.',
+      'Plans sur demande': 'Planimetrie su richiesta',
+      'Remplissez le formulaire pour recevoir les plans, les surfaces disponibles et les disponibilités actualisées.':
+        'Compila il modulo per ricevere le planimetrie, le superfici disponibili e la disponibilità aggiornata.',
+      'Riad': 'Riad',
+      'Prix sur demande': 'Prezzo su richiesta',
+      'Riad privé': 'Riad privato',
+      'Riad de caractère à la Médina': 'Riad di carattere nella Medina',
+      'Médina · architecture · emplacement rare': 'Medina · architettura · posizione rara',
+      'Un riad de caractère dans la médina de Marrakech, sélectionné pour son cachet architectural, son emplacement et son potentiel de valorisation.':
+        'Un riad di carattere nella medina di Marrakech, selezionato per il fascino architettonico, la posizione e il potenziale di valorizzazione.',
+      'Secteur': 'Zona',
+      'Médina': 'Medina',
+      'Style': 'Stile',
+      'Patrimoine': 'Patrimonio',
+      'Accès': 'Accesso',
+      'Sélection privée': 'Selezione privata',
+      'Un riad de caractère dans la médina de Marrakech, sélectionné pour son cachet architectural et son emplacement rare.':
+        'Un riad di carattere nella medina di Marrakech, selezionato per il fascino architettonico e la posizione rara.',
+      'Bien patrimonial avec éléments architecturaux marocains, volumes intérieurs généreux et fort potentiel de valorisation.':
+        'Un bene patrimoniale con elementi architettonici marocchini, ampi volumi interni e un forte potenziale di valorizzazione.',
+      'Patio': 'Patio',
+      'Terrasse': 'Terrazza',
+      'Architecture patrimoniale': 'Architettura patrimoniale',
+      'Sécurité': 'Sicurezza',
+      'Salon de réception': 'Salone di ricevimento',
+      'Matériaux traditionnels': 'Materiali tradizionali',
+      'Emplacement Médina': 'Posizione nella Medina',
+      'Cachet historique': 'Fascino storico',
+      'Volumes intérieurs': 'Volumi interni',
+      'Accès sélection privée': 'Accesso a una selezione privata',
+      'Potentiel locatif': 'Potenziale locativo',
+      'Rénovation premium': 'Ristrutturazione premium',
+      'Sur demande': 'Su richiesta',
+      'Dossier complet transmis sur demande après qualification.':
+        'Dossier completo trasmesso su richiesta dopo la qualificazione.',
+      'Sur plan': 'In costruzione',
+      'Pré-lancement': 'Pre-lancio',
+      'Opportunité sur plan à Marrakech': 'Opportunità in costruzione a Marrakech',
+      'Pré-lancement · investissement · disponibilité limitée':
+        'Pre-lancio · investimento · disponibilità limitata',
+      "Une opportunité en pré-lancement, accessible avant diffusion publique, avec un positionnement pensé pour l'investissement à Marrakech.":
+        'Un’opportunità in pre-lancio, accessibile prima della diffusione pubblica, con un posizionamento pensato per l’investimento a Marrakech.',
+      'Prioritaire': 'Prioritario',
+      'Projet': 'Progetto',
+      'Limitée': 'Limitata',
+      "Une opportunité en pré-lancement, accessible avant diffusion publique, avec un positionnement pensé pour l'investissement.":
+        'Un’opportunità in pre-lancio, accessibile prima della diffusione pubblica, con un posizionamento pensato per l’investimento.',
+      'Accès prioritaire à une sélection confidentielle, avec disponibilité limitée et dossier transmis sur qualification.':
+        'Accesso prioritario a una selezione riservata, con disponibilità limitata e dossier trasmesso dopo la qualificazione.',
+      'Investissement': 'Investimento',
+      'Accès prioritaire': 'Accesso prioritario',
+      'Piscine': 'Piscina',
+      'Jardin': 'Giardino',
+      'Parking': 'Parcheggio',
+      'Livraison programmée': 'Consegna programmata',
+      'Plans détaillés transmis après échange.':
+        'Planimetrie dettagliate trasmesse dopo il contatto.',
+      'photo': 'foto',
+      'photos': 'foto',
+      'extérieur': 'esterno',
+      'intérieur': 'interno',
+      'Plan': 'Planimetria',
+      'étage': 'primo piano',
+      'rez-de-chaussée': 'piano terra',
+      'Plans transmis sur demande': 'Planimetrie disponibili su richiesta',
+    },
   };
 
   var PROPERTY_MODAL_FORM_PREFIXES = {
@@ -1037,12 +1318,17 @@
       '/contact/': '/nl/contact/',
       '/off-market/': '/nl/off-market/',
     },
+    it: {
+      '/contact/': '/it/contatto/',
+      '/off-market/': '/it/off-market/',
+    },
   };
 
   function getCurrentLocale() {
     var htmlLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
     var pathLang = (window.location.pathname.split('/')[1] || '').toLowerCase();
     if (htmlLang.indexOf('nl') === 0 || pathLang === 'nl') return 'nl';
+    if (htmlLang.indexOf('it') === 0 || pathLang === 'it') return 'it';
     if (htmlLang.indexOf('en') === 0 || pathLang === 'en') return 'en';
     return 'fr';
   }
@@ -1051,6 +1337,33 @@
     if (locale === 'fr' || !value) return value;
     var translations = PROPERTY_MODAL_TEXT_TRANSLATIONS[locale] || {};
     return translations[value] || value;
+  }
+
+  function localizeModalChrome(root, locale) {
+    if (!root) return;
+
+    root.querySelectorAll('[data-property-modal-close]').forEach(function (button) {
+      button.setAttribute(
+        'aria-label',
+        translateModalString('Fermer la fiche', locale)
+      );
+    });
+
+    root.querySelectorAll('.om-property-modal__tabs').forEach(function (tabs) {
+      tabs.setAttribute(
+        'aria-label',
+        translateModalString('Navigation fiche bien', locale)
+      );
+    });
+
+    root.querySelectorAll('[data-modal-layout-placeholder]').forEach(function (placeholder) {
+      if (placeholder.textContent && placeholder.textContent.indexOf('Plans transmis sur demande') >= 0) {
+        placeholder.textContent = translateModalString(
+          'Plans transmis sur demande',
+          locale
+        );
+      }
+    });
   }
 
   function formatModalPhotoCount(count, locale) {
@@ -1098,16 +1411,37 @@
     return localizeModalValue(property, getCurrentLocale());
   }
 
+  // Keep a public handle available while the page-specific bindings finish.
+  window.omPropertyModal = {
+    open: requestOpenPropertyModal,
+    close: function () {
+      var closeButton = document.querySelector('[data-property-modal-close]');
+      if (closeButton) closeButton.click();
+    },
+    data: propertyModalData,
+  };
+
   function boot() {
     initPropertyDetailPage();
 
     var modal = document.querySelector('[data-property-modal]');
     if (!modal) {
+      if (boot.didInit) destroyBoot();
       return;
     }
 
-    if (boot.didInit) return;
+    if (boot.didInit && boot.modal !== modal) {
+      destroyBoot();
+    }
+
+    if (boot.didInit && boot.modal === modal) {
+      localizeModalChrome(modal, getCurrentLocale());
+      bindTriggers();
+      return;
+    }
     boot.didInit = true;
+    boot.modal = modal;
+    localizeModalChrome(modal, getCurrentLocale());
 
     var track = modal.querySelector('[data-property-modal-track]');
     var stage = modal.querySelector('.om-property-modal__stage');
@@ -1677,8 +2011,12 @@
 
     function updateModalActions(property) {
       var href = property.formHref || '/contact/';
-      var outlineLabel = property.ctaOutline || 'Rappel';
-      var primaryLabel = property.ctaPrimary || 'Recevoir le dossier';
+      var outlineLabel =
+        property.ctaOutline ||
+        translateModalString('Rappel', getCurrentLocale());
+      var primaryLabel =
+        property.ctaPrimary ||
+        translateModalString('Recevoir le dossier', getCurrentLocale());
 
       modal.querySelectorAll('.om-property-modal__actions').forEach(function (group) {
         var links = group.querySelectorAll('a.om-cta');
@@ -2069,13 +2407,25 @@
       lastFocusedElement = null;
     }
 
+    // Expose the controller before optional interaction bindings run so cards
+    // can open the modal even if a late enhancement is unavailable.
+    modalController.open = openModal;
+    modalController.close = closeModal;
+    modalController.ready = true;
+    window.omPropertyModal = {
+      open: openModal,
+      close: closeModal,
+      data: propertyModalData,
+    };
+
     function bindTriggers() {
       var triggers = document.querySelectorAll('[data-property-modal-trigger]');
       triggers.forEach(function (trigger) {
-        if (trigger.dataset.propertyModalBound === 'true') return;
+        if (trigger.dataset.propertyModalListenerBound === 'true') return;
         trigger.dataset.propertyModalBound = 'true';
         trigger.addEventListener('click', function (event) {
           event.preventDefault();
+          event.stopPropagation();
           openModal(trigger.dataset.propertyId);
         });
         trigger.addEventListener('keydown', function (event) {
@@ -2083,6 +2433,7 @@
           event.preventDefault();
           openModal(trigger.dataset.propertyId);
         });
+        trigger.dataset.propertyModalListenerBound = 'true';
       });
     }
 
@@ -2190,13 +2541,13 @@
       });
     });
 
-    document.addEventListener('keydown', function (event) {
+    function handleDocumentKeydown(event) {
       if (event.key === 'Escape' && modal.classList.contains('is-open')) {
         closeModal();
       }
-    });
+    }
 
-    modal.addEventListener('click', function (event) {
+    function handleModalClick(event) {
       if (
         event.target === modal ||
         event.target.classList.contains('om-property-modal__backdrop')
@@ -2207,9 +2558,9 @@
 
       var formCta = event.target.closest('.om-property-modal__actions a[href^="/contact/"], .om-property-modal__actions a[href^="/off-market/"]');
       if (formCta) closeModal();
-    });
+    }
 
-    window.addEventListener('resize', function () {
+    function handleWindowResize() {
       if (!modal.classList.contains('is-open')) return;
 
       if (modalResizeRaf) {
@@ -2221,14 +2572,29 @@
           skipAnimation: true,
         });
       });
-    });
+    }
+
+    document.addEventListener('keydown', handleDocumentKeydown);
+    modal.addEventListener('click', handleModalClick);
+    window.addEventListener('resize', handleWindowResize);
 
     bindTriggers();
     document.addEventListener('om-property-cards-rendered', bindTriggers);
 
-    modalController.open = openModal;
-    modalController.close = closeModal;
-    modalController.ready = true;
+    boot.cleanup = function () {
+      if (modal.classList.contains('is-open')) closeModal();
+      document.removeEventListener('keydown', handleDocumentKeydown);
+      document.removeEventListener('om-property-cards-rendered', bindTriggers);
+      modal.removeEventListener('click', handleModalClick);
+      window.removeEventListener('resize', handleWindowResize);
+      if (modal.dataset.wheelBound === 'true') {
+        modal.removeEventListener('wheel', handleModalWheel);
+        delete modal.dataset.wheelBound;
+      }
+      if (modalController.open === openModal) {
+        modalController.open = requestOpenPropertyModal;
+      }
+    };
 
     if (modalController.pendingId) {
       var pendingId = modalController.pendingId;
@@ -2236,11 +2602,6 @@
       openModal(pendingId);
     }
 
-    window.omPropertyModal = {
-      open: openModal,
-      close: closeModal,
-      data: propertyModalData,
-    };
   }
 
   function initPropertyDetailPage() {
@@ -2253,6 +2614,7 @@
 
     page.dataset.propertyDetailInit = 'true';
     initPropertyDetailPage.done = true;
+    localizeModalChrome(page, getCurrentLocale());
 
     var image = page.querySelector('[data-modal-image]');
     var indexEl = page.querySelector('[data-modal-index]');
@@ -2315,7 +2677,10 @@
         container.appendChild(figure);
       });
       if (countEl) {
-        countEl.textContent = (images || []).length + ' photos';
+        countEl.textContent = formatModalPhotoCount(
+          (images || []).length,
+          getCurrentLocale(),
+        );
       }
     }
 
@@ -2472,8 +2837,12 @@
 
     function updateActions() {
       var href = property.formHref || '/contact/?intent=villa-jaz';
-      var outlineLabel = property.ctaOutline || 'Rappel';
-      var primaryLabel = property.ctaPrimary || 'Recevoir le dossier';
+      var outlineLabel =
+        property.ctaOutline ||
+        translateModalString('Rappel', getCurrentLocale());
+      var primaryLabel =
+        property.ctaPrimary ||
+        translateModalString('Recevoir le dossier', getCurrentLocale());
 
       page.querySelectorAll('.om-property-modal__actions').forEach(function (group) {
         var links = group.querySelectorAll('a.om-cta');
@@ -2678,4 +3047,6 @@
   }
 
   window.addEventListener('load', startBoot);
+  window.addEventListener('om-react-ready', scheduleBoot);
+  window.addEventListener('popstate', scheduleBoot);
 })();

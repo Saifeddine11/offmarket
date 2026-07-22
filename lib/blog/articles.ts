@@ -44,8 +44,22 @@ export const BLOG_ARTICLES_NL = {
     "blog-appartement-hypercentre-gueliz-marrakech",
 } as const;
 
+export const BLOG_ARTICLES_IT = {
+  "acquistare-villa-su-progetto-marrakech":
+    "blog-acheter-villa-sur-plan-marrakech",
+  "investire-immobiliare-di-lusso-marrakech":
+    "blog-investir-immobilier-luxe-marrakech",
+  "indirizzi-immobiliari-marrakech":
+    "blog-adresses-immobilier-marrakech",
+  "immobili-off-market-marrakech":
+    "blog-off-market-marrakech-biens-confidentiels",
+  "appartamento-centro-gueliz-marrakech":
+    "blog-appartement-hypercentre-gueliz-marrakech",
+} as const;
+
 export type BlogArticleSlugEn = keyof typeof BLOG_ARTICLES_EN;
 export type BlogArticleSlugNl = keyof typeof BLOG_ARTICLES_NL;
+export type BlogArticleSlugIt = keyof typeof BLOG_ARTICLES_IT;
 
 export const BLOG_ARTICLE_SLUGS_EN = Object.keys(
   BLOG_ARTICLES_EN,
@@ -54,6 +68,10 @@ export const BLOG_ARTICLE_SLUGS_EN = Object.keys(
 export const BLOG_ARTICLE_SLUGS_NL = Object.keys(
   BLOG_ARTICLES_NL,
 ) as BlogArticleSlugNl[];
+
+export const BLOG_ARTICLE_SLUGS_IT = Object.keys(
+  BLOG_ARTICLES_IT,
+) as BlogArticleSlugIt[];
 
 export function blogArticlePath(slug: BlogArticleSlug): string {
   return `/blog/${slug}/`;

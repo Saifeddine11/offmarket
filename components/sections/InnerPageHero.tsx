@@ -14,6 +14,7 @@ export type InnerPageHeroProps = {
   imageSrc: string;
   scrollTarget?: string;
   scrollLabel?: string;
+  breadcrumbAriaLabel?: string;
   /** Optional supporting line rendered below the subtitle. */
   secondary?: ReactNode;
   actions?: ReactNode;
@@ -27,6 +28,7 @@ export function InnerPageHero({
   imageSrc,
   scrollTarget,
   scrollLabel = "Scroll to explore ↓",
+  breadcrumbAriaLabel = "Fil d'Ariane",
   secondary,
   actions,
 }: InnerPageHeroProps) {
@@ -52,7 +54,7 @@ export function InnerPageHero({
         <div className="inner-hero__content">
           <nav
             className="inner-hero__breadcrumb"
-            aria-label="Fil d'Ariane"
+            aria-label={breadcrumbAriaLabel}
             data-hero-reveal="breadcrumb"
           >
             {breadcrumbs.map((crumb, index) => (

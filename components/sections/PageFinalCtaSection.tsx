@@ -116,7 +116,7 @@ const FINAL_CTA_COPY: Record<SiteLocale, PageFinalCtaCopy> = {
       "Qualifichiamo la tua richiesta prima di orientarti verso i progetti più coerenti con il tuo profilo.",
     primaryHref: "/it/contatto/",
     primaryLabel: "Richiedi accesso privato",
-    simulatorHref: "/it/",
+    simulatorHref: "/it/simulatore/",
     simulatorLabel: "Simulatore",
     advisorHref: "/it/contatto/",
     advisorLabel: "Parla con un consulente",

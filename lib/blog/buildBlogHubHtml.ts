@@ -48,6 +48,9 @@ function formatArticleCount(count: number, locale: SiteLocale): string {
   if (locale === "en") {
     return `${count} ${count === 1 ? "article" : "articles"}`;
   }
+  if (locale === "it") {
+    return `${count} ${count === 1 ? "articolo" : "articoli"}`;
+  }
   return `${padCount(count)} ${count === 1 ? "article" : "articles"}`;
 }
 
@@ -62,6 +65,18 @@ function getHubCopy(locale: SiteLocale) {
       controlsLabel: "Article navigation",
       prevLabel: "Previous articles",
       nextLabel: "Next articles",
+    };
+  }
+  if (locale === "it") {
+    return {
+      title: "Letture private",
+      lead: "Analisi riservate sul mercato immobiliare di Marrakech: acquisto su progetto, investimenti, quartieri e opportunità off-market.",
+      ctaLabel: "Tornare alla home",
+      categoriesLabel: "Categorie del blog",
+      carouselLabel: "Articoli del blog",
+      controlsLabel: "Navigazione articoli",
+      prevLabel: "Articoli precedenti",
+      nextLabel: "Articoli successivi",
     };
   }
   if (locale === "nl") {

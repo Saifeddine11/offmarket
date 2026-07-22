@@ -16,6 +16,7 @@ import { PageContentShell } from "@/components/pages/PageContentShell";
 import { boostAboveFoldImages } from "@/lib/homepage/boostAboveFoldImages";
 import { localizeHomeLegacySegments } from "@/lib/homepage/localizeHomeLegacyContent";
 import { replaceFeaturedProjectsSection } from "@/lib/homepage/replaceFeaturedProjectsSection";
+import { withServerRenderedBlogHub } from "@/lib/blog/buildBlogHubHtml";
 import {
   deprioritizeLegacyBundles,
   prioritizeHomepageStylesheets,
@@ -88,7 +89,7 @@ export function HomePageContent({
       ? [...content.headInlineStyles, HOME_FAQ_STYLES]
       : content.headInlineStyles,
     headJsonLdScripts: includeFaqSection
-      ? [...content.headJsonLdScripts, buildHomeFaqJsonLd()]
+      ? [...content.headJsonLdScripts, buildHomeFaqJsonLd(locale)]
       : content.headJsonLdScripts,
   });
   const orderedSegments = replaceFeaturedProjectsSection(
@@ -102,10 +103,19 @@ export function HomePageContent({
     locale,
   );
   const bodySegments = includeFaqSection
-    ? insertFaqBeforeBlog(orderedSegments, buildHomeFaqHtml())
+    ? insertFaqBeforeBlog(orderedSegments, buildHomeFaqHtml(locale))
     : orderedSegments;
-  const shellBodySegments = withoutExternalScriptSegments(bodySegments);
-  const needsBlogBoot = hasBlogHubSection(content);
+  const serverRenderedBodySegments = bodySegments.map((segment) => {
+    if (segment.kind !== "html" || !segment.html.includes("data-om-blog-root")) {
+      return segment;
+    }
+    return { ...segment, html: withServerRenderedBlogHub(segment.html, locale) };
+  });
+  const shellBodySegments = withoutExternalScriptSegments(serverRenderedBodySegments);
+  const needsBlogBoot = hasBlogHubSection({
+    ...content,
+    bodySegments: serverRenderedBodySegments,
+  });
 
   return (
     <>

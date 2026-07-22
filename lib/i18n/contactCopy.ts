@@ -130,7 +130,7 @@ const IT: ContactCopy = {
   infoCity: "Marrakech",
   infoText:
     "Risposta riservata in base al tuo progetto, budget e obiettivo.",
-  trustChips: ["Selezione privata", "Su piano", "Villa e appartamento"],
+  trustChips: ["Selezione privata", "In costruzione", "Villa e appartamento"],
   stepLabel: (step) => `Fase ${step} di 3`,
   questions: {
     propertyType: "Che tipo di immobile stai cercando?",

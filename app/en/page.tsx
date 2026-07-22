@@ -10,5 +10,5 @@ export const metadata: Metadata = buildHomepageMetadata("en");
 export const viewport = buildHomepageViewport("en");
 
 export default function EnHomePage() {
-  return <HomePageContent content={getPageContent("home-en")} />;
+  return <HomePageContent content={getPageContent("home-en")} includeFaqSection />;
 }

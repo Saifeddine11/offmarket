@@ -1,3 +1,4 @@
+/* LEGACY: retained for archived contact markup; active routes use the React contact form. */
 (function () {
   'use strict';
 
