@@ -30,6 +30,13 @@ const CATEGORIES_EN: BlogHubCategory[] = [
   { slug: "off-market", label: "Off-market" },
 ];
 
+const CATEGORIES_ES: BlogHubCategory[] = [
+  { slug: "sur-plan", label: "Sobre plano" },
+  { slug: "investissement", label: "Inversión" },
+  { slug: "marrakech", label: "Marrakech" },
+  { slug: "off-market", label: "Off-market" },
+];
+
 const CATEGORIES_NL: BlogHubCategory[] = [
   { slug: "sur-plan", label: "Nieuwbouw" },
   { slug: "investissement", label: "Investering" },
@@ -40,6 +47,13 @@ const CATEGORIES_NL: BlogHubCategory[] = [
 const CATEGORIES_IT: BlogHubCategory[] = [
   { slug: "sur-plan", label: "Acquisto su progetto" },
   { slug: "investissement", label: "Investimento" },
+  { slug: "marrakech", label: "Marrakech" },
+  { slug: "off-market", label: "Off-market" },
+];
+
+const CATEGORIES_NO: BlogHubCategory[] = [
+  { slug: "sur-plan", label: "Nybygg" },
+  { slug: "investissement", label: "Investering" },
   { slug: "marrakech", label: "Marrakech" },
   { slug: "off-market", label: "Off-market" },
 ];
@@ -150,6 +164,49 @@ const ARTICLES_EN: BlogHubArticle[] = [
   },
 ];
 
+const ARTICLES_ES: BlogHubArticle[] = [
+  {
+    ...ARTICLES_FR[0],
+    slug: "comprar-villa-sobre-plano-marrakech",
+    title: "Comprar una villa sobre plano en Marrakech: qué verificar antes de reservar",
+    imageAlt: "Villa sobre plano en Marrakech — exterior",
+    excerpt:
+      "Antes de reservar una villa sobre plano en Marrakech: qué verificar sobre el promotor, el calendario, los pagos y la coherencia del expediente.",
+  },
+  {
+    ...ARTICLES_FR[1],
+    slug: "invertir-inmobiliario-lujo-marrakech",
+    title: "Invertir en inmobiliario de lujo en Marrakech: zonas que conviene seguir",
+    imageAlt: "Inmobiliario de lujo en Marrakech",
+    excerpt:
+      "Cómo leer una dirección en Marrakech antes de invertir: demanda de alquiler, liquidez de reventa, perfil de comprador y dinámica del barrio.",
+  },
+  {
+    ...ARTICLES_FR[2],
+    slug: "mejores-zonas-inmobiliarias-marrakech",
+    title: "Guéliz, Hivernage, Amelkis: entender las direcciones que ganan valor",
+    imageAlt: "Arquitectura y direcciones en Marrakech",
+    excerpt:
+      "Guéliz, Hivernage, Amelkis: qué distingue a estas zonas de Marrakech y cómo cada una responde a un uso y horizonte diferentes.",
+  },
+  {
+    ...ARTICLES_FR[3],
+    slug: "inmuebles-off-market-marrakech",
+    title: "Por qué algunos inmuebles en Marrakech nunca se publican en línea",
+    imageAlt: "Selección inmobiliaria privada en Marrakech",
+    excerpt:
+      "Por qué algunos inmuebles en Marrakech quedan fuera de los anuncios públicos: discreción, expedientes sensibles y acceso reservado a compradores cualificados.",
+  },
+  {
+    ...ARTICLES_FR[4],
+    slug: "apartamento-centro-gueliz-marrakech",
+    title: "Apartamento en el centro de Guéliz: por qué la ubicación sigue siendo el primer filtro",
+    imageAlt: "Apartamento en el centro de Marrakech",
+    excerpt:
+      "En el centro de Marrakech, la ubicación filtra el proyecto: usos diarios, rareza de las direcciones y lectura del potencial residencial.",
+  },
+];
+
 const ARTICLES_NL: BlogHubArticle[] = [
   {
     ...ARTICLES_FR[0],
@@ -237,23 +294,74 @@ const ARTICLES_IT: BlogHubArticle[] = [
   },
 ];
 
+const ARTICLES_NO: BlogHubArticle[] = [
+  {
+    ...ARTICLES_FR[0],
+    slug: "kjope-nybyggvilla-marrakech",
+    title: "Kjøpe nybyggvilla i Marrakech: hva du bør kontrollere før reservasjon",
+    imageAlt: "Nybyggvilla i Marrakech — eksteriør",
+    excerpt:
+      "Før du reserverer en nybyggvilla i Marrakech: hva du bør kontrollere om utvikler, fremdrift, betalinger og sammenhengen i dokumentasjonen.",
+  },
+  {
+    ...ARTICLES_FR[1],
+    slug: "investere-luksus-eiendom-marrakech",
+    title: "Investere i luksuseiendom i Marrakech: områdene du bør følge",
+    imageAlt: "Luksuseiendom i Marrakech",
+    excerpt:
+      "Hvordan lese en adresse i Marrakech før investering: utleieetterspørsel, likviditet ved videresalg, kjøperprofil og områdets dynamikk.",
+  },
+  {
+    ...ARTICLES_FR[2],
+    slug: "beste-omrader-eiendom-marrakech",
+    title: "Guéliz, Hivernage, Amelkis: forstå adressene som øker i verdi",
+    imageAlt: "Arkitektur og adresser i Marrakech",
+    excerpt:
+      "Guéliz, Hivernage, Amelkis: hva som skiller disse områdene i Marrakech, og hvordan hvert område passer ulik bruk og tidshorisont.",
+  },
+  {
+    ...ARTICLES_FR[3],
+    slug: "off-market-eiendom-marrakech",
+    title: "Hvorfor enkelte eiendommer i Marrakech aldri publiseres på nett",
+    imageAlt: "Privat eiendomsutvalg i Marrakech",
+    excerpt:
+      "Hvorfor noen eiendommer i Marrakech holdes utenfor offentlige annonser: diskresjon, sensitive saker og tilgang for kvalifiserte kjøpere.",
+  },
+  {
+    ...ARTICLES_FR[4],
+    slug: "leilighet-sentrum-gueliz-marrakech",
+    title: "Leilighet i sentrum av Guéliz: hvorfor beliggenhet fortsatt er første filter",
+    imageAlt: "Leilighet i sentrum av Marrakech",
+    excerpt:
+      "I sentrum av Marrakech filtrerer beliggenheten prosjektet: hverdagsbruk, sjeldne adresser og lesingen av boligens potensial.",
+  },
+];
+
 export function getBlogHubLocale(htmlLang: string): SiteLocale {
-  return htmlLang === "en" || htmlLang === "nl" || htmlLang === "it"
+  return htmlLang === "en" ||
+    htmlLang === "es" ||
+    htmlLang === "nl" ||
+    htmlLang === "it" ||
+    htmlLang === "no"
     ? htmlLang
     : "fr";
 }
 
 export function getBlogHubCategories(locale: SiteLocale): BlogHubCategory[] {
   if (locale === "en") return CATEGORIES_EN;
+  if (locale === "es") return CATEGORIES_ES;
   if (locale === "nl") return CATEGORIES_NL;
   if (locale === "it") return CATEGORIES_IT;
+  if (locale === "no") return CATEGORIES_NO;
   return CATEGORIES_FR;
 }
 
 export function getBlogHubArticles(locale: SiteLocale): BlogHubArticle[] {
   if (locale === "en") return ARTICLES_EN;
+  if (locale === "es") return ARTICLES_ES;
   if (locale === "nl") return ARTICLES_NL;
   if (locale === "it") return ARTICLES_IT;
+  if (locale === "no") return ARTICLES_NO;
   return ARTICLES_FR;
 }
 
@@ -267,14 +375,18 @@ export function getBlogHubCategoryLabel(
 
 export function blogHubArticleHref(locale: SiteLocale, slug: string): string {
   if (locale === "en") return `/en/blog/${slug}/`;
+  if (locale === "es") return `/es/blog/${slug}/`;
   if (locale === "nl") return `/nl/blog/${slug}/`;
   if (locale === "it") return `/it/blog/${slug}/`;
+  if (locale === "no") return `/no/blogg/${slug}/`;
   return `/blog/${slug}/`;
 }
 
 export function blogHubHomeHref(locale: SiteLocale): string {
   if (locale === "en") return "/en/";
+  if (locale === "es") return "/es/";
   if (locale === "nl") return "/nl/";
   if (locale === "it") return "/it/";
+  if (locale === "no") return "/no/";
   return "/";
 }

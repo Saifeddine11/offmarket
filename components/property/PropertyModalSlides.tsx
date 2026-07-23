@@ -1,9 +1,11 @@
+import type { SiteLocale } from "@/lib/i18n/types";
+
 export type PropertyModalSlidesProps = {
   /** When true, slides stack as page sections with anchor IDs (no carousel). */
   pageMode?: boolean;
   /** Modal-only: title id for aria-labelledby on the dialog shell. */
   titleId?: string;
-  locale?: "fr" | "en" | "it" | "nl";
+  locale?: SiteLocale;
 };
 
 const PAGE_SECTIONS = [
@@ -66,6 +68,31 @@ const COPY = {
     contactHref: "/en/contact/",
     dossierHref: "/en/off-market/",
   },
+  es: {
+    type: "Villa sobre plano",
+    selectionLabel: "Selección:",
+    selectionValue: "Proyecto sobre plano",
+    price: "Precio",
+    fromPrice: "Desde 351 000 €",
+    callback: "Llamada",
+    dossier: "Recibir el expediente",
+    project: "Proyecto",
+    gallery: "Galería",
+    photos: "5 fotos",
+    exterior: "Exterior",
+    interior: "Interior",
+    view: "Ver",
+    layoutTitle: "Planos y configuración",
+    ground: "Planta baja",
+    first: "Planta alta",
+    surface: "Superficie",
+    suites: "Suites",
+    baths: "Baños",
+    requestDetails: "Detalles previa solicitud",
+    plansRequest: "Planos transmitidos previa solicitud",
+    contactHref: "/es/contacto/",
+    dossierHref: "/es/off-market/",
+  },
   nl: {
     type: "Nieuwbouwvilla",
     selectionLabel: "Selectie:",
@@ -115,6 +142,31 @@ const COPY = {
     plansRequest: "Planimetrie disponibili su richiesta",
     contactHref: "/it/contatto/",
     dossierHref: "/it/off-market/",
+  },
+  no: {
+    type: "Nybyggvilla",
+    selectionLabel: "Utvalg:",
+    selectionValue: "Nybyggprosjekt",
+    price: "Pris",
+    fromPrice: "Fra 351 000 €",
+    callback: "Bli oppringt",
+    dossier: "Motta dokumentasjonen",
+    project: "Prosjekt",
+    gallery: "Galleri",
+    photos: "5 bilder",
+    exterior: "Eksteriør",
+    interior: "Interiør",
+    view: "Se",
+    layoutTitle: "Planer og konfigurasjon",
+    ground: "Første etasje",
+    first: "Andre etasje",
+    surface: "Areal",
+    suites: "Suiter",
+    baths: "Bad",
+    requestDetails: "Detaljer på forespørsel",
+    plansRequest: "Planer deles på forespørsel",
+    contactHref: "/no/kontakt/",
+    dossierHref: "/no/off-market/",
   },
 } as const;
 
@@ -245,7 +297,9 @@ export function PropertyModalSlides({
               <strong data-modal-about-project>{copy.selectionValue}</strong>
             </div>
           </div>
-          <h3 data-modal-about-title>Villa Jaz</h3>
+          <div className="om-property-modal__about-title" data-modal-about-title>
+            Villa Jaz
+          </div>
           <div
             className="om-property-modal__about-editorial"
             data-modal-about-editorial
@@ -283,7 +337,9 @@ export function PropertyModalSlides({
         <div className="om-property-modal__gallery" data-modal-exterior-gallery />
         <div className="om-property-modal__gallery-card">
           <span>{copy.gallery}</span>
-          <strong data-modal-exterior-count>{copy.photos}</strong>
+          <div className="om-property-modal__gallery-count" data-modal-exterior-count>
+            {copy.photos}
+          </div>
           <p>{copy.exterior}</p>
           <button type="button" data-modal-gallery-focus="exterior">
             {copy.view}
@@ -303,7 +359,9 @@ export function PropertyModalSlides({
         <div className="om-property-modal__gallery" data-modal-interior-gallery />
         <div className="om-property-modal__gallery-card">
           <span>{copy.gallery}</span>
-          <strong data-modal-interior-count>{copy.photos}</strong>
+          <div className="om-property-modal__gallery-count" data-modal-interior-count>
+            {copy.photos}
+          </div>
           <p>{copy.interior}</p>
           <button type="button" data-modal-gallery-focus="interior">
             {copy.view}
@@ -424,6 +482,15 @@ export const PROPERTY_DETAIL_ANCHORS_EN = [
   { href: "#plans", label: "Plans", index: "06." },
 ] as const;
 
+export const PROPERTY_DETAIL_ANCHORS_ES = [
+  { href: "#general", label: "General", index: "01." },
+  { href: "#a-propos", label: "Sobre el proyecto", index: "02." },
+  { href: "#caracteristiques", label: "Características", index: "03." },
+  { href: "#exterieur", label: "Exterior", index: "04." },
+  { href: "#interieur", label: "Interior", index: "05." },
+  { href: "#plans", label: "Planos", index: "06." },
+] as const;
+
 export const PROPERTY_DETAIL_ANCHORS_NL = [
   { href: "#general", label: "Algemeen", index: "01." },
   { href: "#a-propos", label: "Over dit project", index: "02." },
@@ -440,4 +507,13 @@ export const PROPERTY_DETAIL_ANCHORS_IT = [
   { href: "#exterieur", label: "Esterno", index: "04." },
   { href: "#interieur", label: "Interno", index: "05." },
   { href: "#plans", label: "Planimetrie", index: "06." },
+] as const;
+
+export const PROPERTY_DETAIL_ANCHORS_NO = [
+  { href: "#general", label: "Generelt", index: "01." },
+  { href: "#a-propos", label: "Om prosjektet", index: "02." },
+  { href: "#caracteristiques", label: "Kjennetegn", index: "03." },
+  { href: "#exterieur", label: "Eksteriør", index: "04." },
+  { href: "#interieur", label: "Interiør", index: "05." },
+  { href: "#plans", label: "Planer", index: "06." },
 ] as const;

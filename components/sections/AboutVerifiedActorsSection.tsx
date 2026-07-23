@@ -39,6 +39,17 @@ const SAFE_COPY = {
       "S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance is an independent real-estate analysis, pre-selection and security framework designed to strengthen the protection and understanding of buyers and investors. OFF MARKET does not own S.A.F.E. and does not claim to have created it. OFF MARKET follows and applies S.A.F.E. principles when reviewing and presenting real-estate opportunities. S.A.F.E. is an independent real-estate analysis and security framework. Its application does not replace the legal, notarial, technical, tax or financial checks required before an acquisition and does not guarantee the complete absence of risk.",
     safeCta: "Read more about S.A.F.E",
   },
+  es: {
+    eyebrow: "MARCO INDEPENDIENTE",
+    titlePrefix: "El marco",
+    lead:
+      "Cada proyecto se estudia antes de ser presentado: promotor, expediente, construcción, pagos, materiales, entrega y coherencia con el mercado. S.A.F.E estructura la información disponible y señala los puntos que aún deben verificarse.",
+    closing: "La selección empieza antes de la visita.",
+    safeTitle: "¿Qué es S.A.F.E?",
+    safeText:
+      "S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance es un método independiente de análisis, preselección y seguridad inmobiliaria destinado a reforzar la protección y la comprensión de compradores e inversores. OFF MARKET no es propietario de S.A.F.E. ni reivindica su creación. OFF MARKET respeta y aplica los principios S.A.F.E. en su proceso de estudio y presentación de oportunidades inmobiliarias. S.A.F.E. constituye un marco independiente de análisis y seguridad inmobiliaria. Su aplicación no sustituye las verificaciones jurídicas, notariales, técnicas, fiscales o financieras necesarias antes de cualquier adquisición y no garantiza la ausencia total de riesgo.",
+    safeCta: "Leer el marco S.A.F.E",
+  },
   it: {
     eyebrow: "QUADRO INDIPENDENTE",
     titlePrefix: "Il quadro",
@@ -60,6 +71,17 @@ const SAFE_COPY = {
     safeText:
       "S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance is een onafhankelijke methode voor vastgoedanalyse, voorselectie en risicobeheersing, bedoeld om kopers en investeerders beter te beschermen en te informeren. S.A.F.E. is geen eigendom van OFF MARKET en OFF MARKET beweert niet de methode te hebben ontwikkeld. OFF MARKET volgt en past de S.A.F.E.-principes toe bij de beoordeling en presentatie van vastgoedmogelijkheden. S.A.F.E. is een onafhankelijk kader voor vastgoedanalyse en risicobeheersing. De toepassing ervan vervangt niet de juridische, notariële, technische, fiscale of financiële controles die vóór een aankoop nodig zijn en garandeert niet dat elk risico is uitgesloten.",
     safeCta: "Lees meer over S.A.F.E",
+  },
+  no: {
+    eyebrow: "UAVHENGIG RAMMEVERK",
+    titlePrefix: "Rammeverket",
+    lead:
+      "Hvert prosjekt vurderes før det presenteres: utvikler, dokumentasjon, bygging, betalinger, materialer, levering og samsvar med markedet. S.A.F.E strukturerer tilgjengelig informasjon og synliggjør punktene som fortsatt må kontrolleres.",
+    closing: "Utvelgelsen starter før visningen.",
+    safeTitle: "Hva er S.A.F.E?",
+    safeText:
+      "S.A.F.E. — Security, Analysis, Fidelity & Expert Guidance er en uavhengig metode for eiendomsanalyse, forhåndsutvelgelse og sikring, utviklet for å styrke kjøperes og investorers beskyttelse og forståelse. OFF MARKET eier ikke S.A.F.E. og hevder ikke å ha skapt det. OFF MARKET respekterer og anvender S.A.F.E.-prinsippene i prosessen med å vurdere og presentere eiendomsmuligheter. S.A.F.E. utgjør et uavhengig rammeverk for eiendomsanalyse og sikring. Bruken erstatter ikke nødvendige juridiske, notarielle, tekniske, skattemessige eller finansielle kontroller før et kjøp, og garanterer ikke fullstendig fravær av risiko.",
+    safeCta: "Les S.A.F.E.-rammeverket",
   },
 } satisfies Record<SiteLocale, {
   eyebrow: string;

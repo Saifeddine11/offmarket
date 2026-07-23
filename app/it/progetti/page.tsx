@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { BodyClass } from "@/components/layout/BodyClass";
 import { HtmlInit } from "@/components/layout/HtmlInit";
-import { LegacyScripts } from "@/components/layout/LegacyScripts";
 import { PageShell } from "@/components/layout/PageShell";
 import { NosProjetsPageContent } from "@/components/sections/NosProjetsPageContent";
-import { SCRIPTS } from "@/lib/assets";
 import { buildPageMetadata, buildPageViewport } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -28,7 +26,6 @@ export default function ItProgettiPage() {
       <HtmlInit preloaderDisabled />
       <BodyClass className="om-nos-projets-page om-animated-page om-inner-page" />
       <NosProjetsPageContent locale="it" />
-      <LegacyScripts srcs={SCRIPTS.nosProjets} />
     </PageShell>
   );
 }

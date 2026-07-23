@@ -540,7 +540,8 @@ body.om-modal-open {
   color: rgba(44, 41, 41, 0.72);
 }
 
-.om-property-modal__about-copy h3 {
+.om-property-modal__about-copy h3,
+.om-property-modal__about-copy .om-property-modal__about-title {
   max-width: 680px;
   margin: 0;
   font-family: var(--om-font-heading);
@@ -967,8 +968,10 @@ body.om-modal-open {
   color: rgba(44, 41, 41, 0.42);
 }
 
-.om-property-modal__gallery-card strong {
+.om-property-modal__gallery-card strong,
+.om-property-modal__gallery-card .om-property-modal__gallery-count {
   display: block;
+  margin: 0;
   font-family: var(--om-font-body);
   font-size: var(--om-body-md);
   line-height: 1.1;
@@ -1749,7 +1752,8 @@ body.om-modal-open {
   }
 
   .om-property-modal__title,
-  .om-property-modal__about-copy h3 {
+  .om-property-modal__about-copy h3,
+  .om-property-modal__about-copy .om-property-modal__about-title {
     max-width: 100%;
     font-size: clamp(28px, 8vw, 34px);
     line-height: 1.12;

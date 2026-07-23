@@ -31,8 +31,10 @@ const SUBMIT_ARROW_ICON = (
 const HONEYPOT_LABELS: Record<SiteLocale, string> = {
   fr: "Site web de l'entreprise",
   en: "Company website",
+  es: "Sitio web de la empresa",
   it: "Sito web aziendale",
   nl: "Bedrijfswebsite",
+  no: "Bedriftens nettsted",
 };
 
 export function PrivateAccessForm({
@@ -63,8 +65,12 @@ export function PrivateAccessForm({
   const privacyHref =
     locale === "en"
       ? "/en/privacy-policy/"
+      : locale === "es"
+        ? "/es/politica-de-privacidad/"
       : locale === "nl"
         ? "/nl/privacybeleid/"
+        : locale === "no"
+          ? "/no/personvernerklaering/"
         : locale === "it"
           ? "/it/privacy-policy/"
           : "/privacy-policy/";

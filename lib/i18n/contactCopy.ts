@@ -209,11 +209,105 @@ const NL: ContactCopy = {
   continue: "Verder",
 };
 
+const ES: ContactCopy = {
+  skipToMain: "Saltar al contenido principal",
+  breadcrumbAria: "Miga de pan",
+  breadcrumbHome: "Inicio",
+  breadcrumbCurrent: "Contacto",
+  h1: "Háblenos de su proyecto",
+  intro:
+    "Unas pocas respuestas bastan para comprender lo que busca y orientarle hacia una selección más adecuada.",
+  formColumnAria: "Cuestionario de contacto",
+  infoBrand: "OFF MARKET",
+  infoCity: "Marrakech",
+  infoText:
+    "Respuesta privada según su proyecto, su presupuesto y su objetivo.",
+  trustChips: ["Selección privada", "Compra sobre plano", "Villa y apartamento"],
+  stepLabel: (step) => `Paso ${step} de 3`,
+  questions: {
+    propertyType: "¿Qué tipo de propiedad busca?",
+    budget: "¿Qué presupuesto desea estudiar?",
+    objective: "¿Cuál es su objetivo principal?",
+  },
+  propertyTypes: [
+    "Villa",
+    "Apartamento",
+    "Terreno",
+    "Riad",
+    "Aún no lo sé",
+  ],
+  budgets: [
+    "120 000 € – 250 000 €",
+    "250 000 € – 350 000 €",
+    "350 000 € – 500 000 €",
+    "+ 500 000 €",
+    "Quiero asesoramiento",
+  ],
+  objectives: [
+    "Invertir y alquilar",
+    "Comprar para vivir",
+    "Residencia secundaria",
+    "Preparar una reventa",
+    "Encontrar una oportunidad poco común",
+    "Todavía estoy comparando",
+  ],
+  back: "Atrás",
+  continue: "Continuar",
+};
+
+const NO: ContactCopy = {
+  skipToMain: "Gå til hovedinnhold",
+  breadcrumbAria: "Brødsmulesti",
+  breadcrumbHome: "Hjem",
+  breadcrumbCurrent: "Kontakt",
+  h1: "Fortell oss om prosjektet ditt",
+  intro:
+    "Noen få svar er nok til å forstå hva du ser etter og veilede deg mot et mer relevant privat utvalg.",
+  formColumnAria: "Kontaktskjema",
+  infoBrand: "OFF MARKET",
+  infoCity: "Marrakech",
+  infoText:
+    "Privat svar basert på prosjektet, budsjettet og målet ditt.",
+  trustChips: ["Privat utvalg", "Nybygg", "Villa og leilighet"],
+  stepLabel: (step) => `Trinn ${step} av 3`,
+  questions: {
+    propertyType: "Hvilken type eiendom ser du etter?",
+    budget: "Hvilket budsjett vil du vurdere?",
+    objective: "Hva er hovedmålet ditt?",
+  },
+  propertyTypes: [
+    "Villa",
+    "Leilighet",
+    "Tomt",
+    "Riad",
+    "Jeg vet ikke ennå",
+  ],
+  budgets: [
+    "120 000 € – 250 000 €",
+    "250 000 € – 350 000 €",
+    "350 000 € – 500 000 €",
+    "+ 500 000 €",
+    "Jeg ønsker rådgivning",
+  ],
+  objectives: [
+    "Investere og leie ut",
+    "Kjøpe for å bo",
+    "Feriebolig",
+    "Forberede videresalg",
+    "Finne en sjelden mulighet",
+    "Jeg sammenligner fortsatt",
+  ],
+  back: "Tilbake",
+  continue: "Fortsett",
+};
+
 const COPY: Record<SiteLocale, ContactCopy> = {
   fr: FR,
   en: EN,
+  es: ES,
   it: IT,
   nl: NL,
+  no: NO,
 };
 
 export function getContactCopy(locale?: SiteLocale): ContactCopy {

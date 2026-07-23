@@ -20,7 +20,7 @@ export const GLOBAL_NAV_SCRIPTS = [
   "/assets/javascripts/om-no-preloader.js?v=1765312000",
   "/assets/javascripts/gsap.min.js?v=1765268700",
   "/assets/javascripts/om-gsap-config.js?v=1767582000",
-  "/assets/javascripts/om-nav-menu.js?v=1768512000",
+  "/assets/javascripts/om-nav-menu.js?v=1769203000",
   "/assets/javascripts/mavericks-chrome.js?v=1765406000",
   "/assets/javascripts/om-nav-scroll.js?v=1767562700",
   "/assets/javascripts/mav-navbar-hero-visibility.js?v=1765287000",
@@ -59,6 +59,16 @@ const SIMULATOR_RANGE_LABELS: Record<SiteLocale, Record<string, string>> = {
     annualAppreciationRate: "Annual appreciation assumption",
     taxRate: "Tax rate",
   },
+  es: {
+    budget: "Presupuesto de adquisición",
+    nightlyRate: "Precio medio por noche",
+    personalWeeks: "Semanas de uso personal",
+    occupancy: "Tasa de ocupación",
+    monthlyRent: "Alquiler mensual estimado",
+    resaleHorizonYears: "Horizonte de reventa",
+    annualAppreciationRate: "Hipótesis de valorización anual",
+    taxRate: "Tipo impositivo",
+  },
   it: {
     budget: "Budget di acquisizione",
     nightlyRate: "Tariffa media per notte",
@@ -78,6 +88,16 @@ const SIMULATOR_RANGE_LABELS: Record<SiteLocale, Record<string, string>> = {
     resaleHorizonYears: "Herverkoophorizon",
     annualAppreciationRate: "Aanname jaarlijkse waardestijging",
     taxRate: "Belastingtarief",
+  },
+  no: {
+    budget: "Kjøpsbudsjett",
+    nightlyRate: "Gjennomsnittlig nattpris",
+    personalWeeks: "Uker med egen bruk",
+    occupancy: "Beleggsgrad",
+    monthlyRent: "Estimert månedlig leie",
+    resaleHorizonYears: "Videresalgshorisont",
+    annualAppreciationRate: "Antatt årlig verdistigning",
+    taxRate: "Skattesats",
   },
 };
 
@@ -237,45 +257,65 @@ export function stripLegacyStaticPropertyModals(html: string): string {
 
 /** Rewrites stale or placeholder interactive targets in migrated static chunks. */
 export function fixStaticInteractiveTargets(html: string, locale: SiteLocale = "fr"): string {
-  const contactHref = locale === "en" ? "/en/contact/" : locale === "nl" ? "/nl/contact/" : locale === "it" ? "/it/contatto/" : "/contact/";
-  const aboutHref = locale === "en" ? "/en/about/#acteurs-verifies" : locale === "nl" ? "/nl/over-ons/#acteurs-verifies" : locale === "it" ? "/it/chi-siamo/#acteurs-verifies" : "/about/#acteurs-verifies";
-  const neighbourhoodsHref = locale === "en" ? "/en/neighbourhoods/" : locale === "nl" ? "/nl/wijken/" : locale === "it" ? "/it/quartieri/" : "/quartiers/";
-  const privacyHref = locale === "en" ? "/en/privacy-policy/" : locale === "nl" ? "/nl/privacybeleid/" : locale === "it" ? "/it/privacy-policy/" : "/privacy-policy/";
+  const contactHref = locale === "en" ? "/en/contact/" : locale === "es" ? "/es/contacto/" : locale === "nl" ? "/nl/contact/" : locale === "no" ? "/no/kontakt/" : locale === "it" ? "/it/contatto/" : "/contact/";
+  const aboutHref = locale === "en" ? "/en/about/#acteurs-verifies" : locale === "es" ? "/es/sobre-nosotros/#acteurs-verifies" : locale === "nl" ? "/nl/over-ons/#acteurs-verifies" : locale === "no" ? "/no/om-oss/#acteurs-verifies" : locale === "it" ? "/it/chi-siamo/#acteurs-verifies" : "/about/#acteurs-verifies";
+  const neighbourhoodsHref = locale === "en" ? "/en/neighbourhoods/" : locale === "es" ? "/es/barrios/" : locale === "nl" ? "/nl/wijken/" : locale === "no" ? "/no/omrader/" : locale === "it" ? "/it/quartieri/" : "/quartiers/";
+  const privacyHref = locale === "en" ? "/en/privacy-policy/" : locale === "es" ? "/es/politica-de-privacidad/" : locale === "nl" ? "/nl/privacybeleid/" : locale === "no" ? "/no/personvernerklaering/" : locale === "it" ? "/it/privacy-policy/" : "/privacy-policy/";
   const interactiveLabels = {
     introNext:
       locale === "en"
         ? "View project details"
+        : locale === "es"
+          ? "Ver detalles del proyecto"
         : locale === "nl"
           ? "Bekijk projectdetails"
+          : locale === "no"
+            ? "Se prosjektdetaljer"
           : locale === "it"
             ? "Vedi i dettagli del progetto"
             : "Voir les détails du projet",
     carouselPrev:
       locale === "en"
         ? "Previous project"
+        : locale === "es"
+          ? "Proyecto anterior"
         : locale === "nl"
           ? "Vorig project"
+          : locale === "no"
+            ? "Forrige prosjekt"
           : locale === "it"
             ? "Progetto precedente"
             : "Projet précédent",
     carouselNext:
       locale === "en"
         ? "Next project"
+        : locale === "es"
+          ? "Proyecto siguiente"
         : locale === "nl"
           ? "Volgend project"
+          : locale === "no"
+            ? "Neste prosjekt"
           : locale === "it"
             ? "Progetto successivo"
             : "Projet suivant",
     neighbourhoods:
       locale === "en"
         ? "Explore neighbourhoods"
+        : locale === "es"
+          ? "Explorar los barrios"
         : locale === "nl"
           ? "Ontdek de wijken"
+          : locale === "no"
+            ? "Utforsk områdene"
           : locale === "it"
             ? "Esplora i quartieri"
             : "Découvrir les quartiers",
   };
   return html
+    .replace(/aria-label="Voir les détails du projet"/g, `aria-label="${interactiveLabels.introNext}"`)
+    .replace(/aria-label="Projet précédent"/g, `aria-label="${interactiveLabels.carouselPrev}"`)
+    .replace(/aria-label="Projet suivant"/g, `aria-label="${interactiveLabels.carouselNext}"`)
+    .replace(/aria-label="Découvrir les quartiers"/g, `aria-label="${interactiveLabels.neighbourhoods}"`)
     .replace(
       /<section class="section ui-dark-background"/,
       '<section id="sur-plan-details" class="section ui-dark-background"',

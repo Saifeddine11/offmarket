@@ -45,6 +45,26 @@
         role: 'Character riad · Medina',
       },
     ],
+    es: [
+      {
+        quote:
+          'Buscábamos una oportunidad clara, no una lista de inmuebles. OFF MARKET nos ayudó a entender la dirección, la demanda y el potencial incluso antes de la primera visita.',
+        author: 'Comprador privado',
+        role: 'Residencia secundaria · Marrakech',
+      },
+      {
+        quote:
+          'La diferencia estuvo en la lectura del mercado: comparables, riesgos, margen de negociación y coherencia patrimonial. La decisión se volvió mucho más sencilla.',
+        author: 'Inversor',
+        role: 'Apartamento premium · Guéliz / Hivernage',
+      },
+      {
+        quote:
+          'Apreciamos la discreción, el filtro y la calidad de los intercambios. Los inmuebles presentados eran pocos, pero realmente alineados con nuestro proyecto.',
+        author: 'Cliente acompañado',
+        role: 'Riad con carácter · Medina',
+      },
+    ],
     nl: [
       {
         quote:
@@ -85,13 +105,39 @@
         role: 'Riad di carattere · Medina',
       },
     ],
+    no: [
+      {
+        quote:
+          'Vi lette etter en tydelig mulighet, ikke en liste med eiendommer. OFF MARKET hjalp oss med å forstå adressen, etterspørselen og potensialet før første visning.',
+        author: 'Privat kjøper',
+        role: 'Sekundærbolig · Marrakech',
+      },
+      {
+        quote:
+          'Forskjellen lå i markedsforståelsen: sammenlignbare eiendommer, risiko, forhandlingsrom og langsiktig verdi. Beslutningen ble langt enklere.',
+        author: 'Investor',
+        role: 'Premiumleilighet · Guéliz / Hivernage',
+      },
+      {
+        quote:
+          'Vi satte pris på diskresjonen, filtreringen og kvaliteten i dialogen. Eiendommene som ble presentert var få, men reelt tilpasset prosjektet vårt.',
+        author: 'Kunde med rådgivning',
+        role: 'Riad med særpreg · Medina',
+      },
+    ],
   };
+
+  function isLocalePath(path, locale) {
+    return path === '/' + locale || path.indexOf('/' + locale + '/') === 0;
+  }
 
   function detectLocale() {
     var path = window.location.pathname || '/';
-    if (path.indexOf('/en') === 0) return 'en';
-    if (path.indexOf('/it') === 0) return 'it';
-    if (path.indexOf('/nl') === 0) return 'nl';
+    if (isLocalePath(path, 'en')) return 'en';
+    if (isLocalePath(path, 'es')) return 'es';
+    if (isLocalePath(path, 'it')) return 'it';
+    if (isLocalePath(path, 'nl')) return 'nl';
+    if (isLocalePath(path, 'no')) return 'no';
     return 'fr';
   }
 

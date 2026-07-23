@@ -33,6 +33,20 @@ const SIMULATOR_PAGE_COPY = {
     primaryHref: "/en/contact/",
     secondaryHref: "/en/projects/",
   },
+  es: {
+    eyebrow: "SIMULADOR PRIVADO",
+    title: "Simular antes de invertir",
+    text: (
+      <>
+        Estime el potencial de una propiedad en Marrakech según su uso, su dirección y su
+        estrategia.{" "}
+        <span className="om-brand-inline">OFF MARKET</span> afina después las cifras con
+        comparables reales y oportunidades seleccionadas.
+      </>
+    ),
+    primaryHref: "/es/contacto/",
+    secondaryHref: "/es/proyectos/",
+  },
   it: {
     eyebrow: "SIMULATORE PRIVATO",
     title: "Simulare prima di investire",
@@ -58,6 +72,19 @@ const SIMULATOR_PAGE_COPY = {
     ),
     primaryHref: "/nl/contact/",
     secondaryHref: "/nl/projecten/",
+  },
+  no: {
+    eyebrow: "PRIVAT KALKULATOR",
+    title: "Simuler før du investerer",
+    text: (
+      <>
+        Estimer potensialet til en eiendom i Marrakech etter bruk, adresse og strategi.{" "}
+        <span className="om-brand-inline">OFF MARKET</span> finjusterer deretter tallene med
+        reelle sammenligninger og utvalgte muligheter.
+      </>
+    ),
+    primaryHref: "/no/kontakt/",
+    secondaryHref: "/no/prosjekter/",
   },
 } satisfies Record<SiteLocale, {
   eyebrow: string;

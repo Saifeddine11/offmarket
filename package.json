@@ -7,8 +7,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/build-production.mjs",
-    "start": "node scripts/start-production.mjs"
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",

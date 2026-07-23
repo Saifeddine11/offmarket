@@ -42,6 +42,9 @@ function padCount(n: number): string {
 }
 
 function formatArticleCount(count: number, locale: SiteLocale): string {
+  if (locale === "es") {
+    return `${count} ${count === 1 ? "artículo" : "artículos"}`;
+  }
   if (locale === "nl") {
     return `${count} ${count === 1 ? "artikel" : "artikelen"}`;
   }
@@ -50,6 +53,9 @@ function formatArticleCount(count: number, locale: SiteLocale): string {
   }
   if (locale === "it") {
     return `${count} ${count === 1 ? "articolo" : "articoli"}`;
+  }
+  if (locale === "no") {
+    return `${count} ${count === 1 ? "artikkel" : "artikler"}`;
   }
   return `${padCount(count)} ${count === 1 ? "article" : "articles"}`;
 }
@@ -79,6 +85,18 @@ function getHubCopy(locale: SiteLocale) {
       nextLabel: "Articoli successivi",
     };
   }
+  if (locale === "es") {
+    return {
+      title: "Lecturas privadas",
+      lead: "Análisis privados sobre el mercado inmobiliario de Marrakech: compra sobre plano, inversión, barrios, propiedades off-market y cómo asegurar una lectura de proyecto.",
+      ctaLabel: "Volver al inicio",
+      categoriesLabel: "Categorías del blog",
+      carouselLabel: "Artículos del blog",
+      controlsLabel: "Navegación de artículos",
+      prevLabel: "Artículos anteriores",
+      nextLabel: "Artículos siguientes",
+    };
+  }
   if (locale === "nl") {
     return {
       title: "Private analyses",
@@ -89,6 +107,18 @@ function getHubCopy(locale: SiteLocale) {
       controlsLabel: "Artikelnavigatie",
       prevLabel: "Vorige artikelen",
       nextLabel: "Volgende artikelen",
+    };
+  }
+  if (locale === "no") {
+    return {
+      title: "Private analyser",
+      lead: "Private vurderinger av eiendom i Marrakech: nybygg, investering, områder, off-market eiendommer og hvordan en prosjektanalyse sikres.",
+      ctaLabel: "Tilbake til hjem",
+      categoriesLabel: "Bloggkategorier",
+      carouselLabel: "Bloggartikler",
+      controlsLabel: "Artikkelnavigasjon",
+      prevLabel: "Forrige artikler",
+      nextLabel: "Neste artikler",
     };
   }
   return {

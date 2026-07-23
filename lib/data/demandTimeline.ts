@@ -97,7 +97,7 @@ export const TRANSACTION_ANCHOR_YEAR = 2025;
 
 export function formatCumulativePercent(
   cumulativeGrowth: number,
-  locale: "fr" | "en" | "it" | "nl" = "fr",
+  locale: "fr" | "en" | "es" | "it" | "nl" | "no" = "fr",
 ): string {
   if (Math.abs(cumulativeGrowth) < 0.05) {
     return locale === "en" ? "base" : "base";

@@ -34,49 +34,64 @@ type HreflangGroup = {
   en: string;
   nl: string;
   it?: string;
+  es?: string;
+  no?: string;
+  ar?: string;
 };
 
 const HREFLANG_GROUPS: HreflangGroup[] = [
-  { fr: "/", en: "/en/", it: "/it/", nl: "/nl/" },
-  { fr: "/about/", en: "/en/about/", it: "/it/chi-siamo/", nl: "/nl/over-ons/" },
-  { fr: "/quartiers/", en: "/en/neighbourhoods/", it: "/it/quartieri/", nl: "/nl/wijken/" },
-  { fr: "/nos-projets/", en: "/en/projects/", it: "/it/progetti/", nl: "/nl/projecten/" },
-  { fr: "/sur-plan/", en: "/en/off-plan/", it: "/it/progetti-su-piano/", nl: "/nl/nieuwbouw/" },
-  { fr: "/sur-plan/villa-jaz/", en: "/en/off-plan/villa-jaz/", it: "/it/progetti-su-piano/villa-jaz/", nl: "/nl/nieuwbouw/villa-jaz/" },
-  { fr: "/off-market/", en: "/en/off-market/", it: "/it/off-market/", nl: "/nl/off-market/" },
-  { fr: "/simulateur/", en: "/en/simulator/", it: "/it/simulatore/", nl: "/nl/simulator/" },
-  { fr: "/contact/", en: "/en/contact/", it: "/it/contatto/", nl: "/nl/contact/" },
-  { fr: "/blog/", en: "/en/blog/", it: "/it/blog/", nl: "/nl/blog/" },
-  { fr: "/privacy-policy/", en: "/en/privacy-policy/", it: "/it/privacy-policy/", nl: "/nl/privacybeleid/" },
+  { fr: "/", en: "/en/", es: "/es/", it: "/it/", nl: "/nl/", no: "/no/" },
+  { fr: "/about/", en: "/en/about/", es: "/es/sobre-nosotros/", it: "/it/chi-siamo/", nl: "/nl/over-ons/", no: "/no/om-oss/" },
+  { fr: "/quartiers/", en: "/en/neighbourhoods/", es: "/es/barrios/", it: "/it/quartieri/", nl: "/nl/wijken/", no: "/no/omrader/" },
+  { fr: "/nos-projets/", en: "/en/projects/", es: "/es/proyectos/", it: "/it/progetti/", nl: "/nl/projecten/", no: "/no/prosjekter/" },
+  { fr: "/sur-plan/", en: "/en/off-plan/", es: "/es/sobre-plano/", it: "/it/progetti-su-piano/", nl: "/nl/nieuwbouw/", no: "/no/nybygg/" },
+  { fr: "/sur-plan/villa-jaz/", en: "/en/off-plan/villa-jaz/", es: "/es/sobre-plano/villa-jaz/", it: "/it/progetti-su-piano/villa-jaz/", nl: "/nl/nieuwbouw/villa-jaz/", no: "/no/nybygg/villa-jaz/" },
+  { fr: "/off-market/", en: "/en/off-market/", es: "/es/off-market/", it: "/it/off-market/", nl: "/nl/off-market/", no: "/no/off-market/" },
+  { fr: "/simulateur/", en: "/en/simulator/", es: "/es/simulador/", it: "/it/simulatore/", nl: "/nl/simulator/", no: "/no/kalkulator/" },
+  { fr: "/contact/", en: "/en/contact/", es: "/es/contacto/", it: "/it/contatto/", nl: "/nl/contact/", no: "/no/kontakt/" },
+  { fr: "/blog/", en: "/en/blog/", es: "/es/blog/", it: "/it/blog/", nl: "/nl/blog/", no: "/no/blogg/" },
+  { fr: "/privacy-policy/", en: "/en/privacy-policy/", it: "/it/privacy-policy/", nl: "/nl/privacybeleid/", es: "/es/politica-de-privacidad/", no: "/no/personvernerklaering/", ar: "/ar/privacy-policy/" },
+  { fr: "/conditions-generales/", en: "/en/terms-of-use/", it: "/it/condizioni-d-uso/", nl: "/nl/gebruiksvoorwaarden/", es: "/es/condiciones-de-uso/", no: "/no/bruksvilkaar/", ar: "/ar/terms-of-use/" },
+  { fr: "/mentions-legales/", en: "/en/legal-notice/", it: "/it/note-legali/", nl: "/nl/wettelijke-vermeldingen/", es: "/es/aviso-legal/", no: "/no/juridisk-merknad/", ar: "/ar/legal-notice/" },
   {
     fr: "/blog/acheter-villa-sur-plan-marrakech/",
     en: "/en/blog/buying-off-plan-villa-marrakech/",
+    es: "/es/blog/comprar-villa-sobre-plano-marrakech/",
     it: "/it/blog/acquistare-villa-su-progetto-marrakech/",
     nl: "/nl/blog/nieuwbouwvilla-kopen-marrakech/",
+    no: "/no/blogg/kjope-nybyggvilla-marrakech/",
   },
   {
     fr: "/blog/investir-immobilier-luxe-marrakech/",
     en: "/en/blog/luxury-real-estate-investment-marrakech/",
+    es: "/es/blog/invertir-inmobiliario-lujo-marrakech/",
     it: "/it/blog/investire-immobiliare-di-lusso-marrakech/",
     nl: "/nl/blog/investeren-luxe-vastgoed-marrakech/",
+    no: "/no/blogg/investere-luksus-eiendom-marrakech/",
   },
   {
     fr: "/blog/adresses-immobilier-marrakech/",
     en: "/en/blog/best-addresses-real-estate-marrakech/",
+    es: "/es/blog/mejores-zonas-inmobiliarias-marrakech/",
     it: "/it/blog/indirizzi-immobiliari-marrakech/",
     nl: "/nl/blog/beste-adressen-vastgoed-marrakech/",
+    no: "/no/blogg/beste-omrader-eiendom-marrakech/",
   },
   {
     fr: "/blog/off-market-marrakech-biens-confidentiels/",
     en: "/en/blog/off-market-properties-marrakech/",
+    es: "/es/blog/inmuebles-off-market-marrakech/",
     it: "/it/blog/immobili-off-market-marrakech/",
     nl: "/nl/blog/off-market-vastgoed-marrakech/",
+    no: "/no/blogg/off-market-eiendom-marrakech/",
   },
   {
     fr: "/blog/appartement-hypercentre-gueliz-marrakech/",
     en: "/en/blog/apartment-hypercentre-gueliz-marrakech/",
+    es: "/es/blog/apartamento-centro-gueliz-marrakech/",
     it: "/it/blog/appartamento-centro-gueliz-marrakech/",
     nl: "/nl/blog/appartement-hypercentre-gueliz-marrakech/",
+    no: "/no/blogg/leilighet-sentrum-gueliz-marrakech/",
   },
 ] as const;
 
@@ -100,6 +115,9 @@ export function getLanguageAlternates(pathOrUrl: string) {
     "en-US": `${SITE_URL}${group.en}`,
     ...(group.it ? { "it-IT": `${SITE_URL}${group.it}` } : {}),
     "nl-NL": `${SITE_URL}${group.nl}`,
+    ...(group.es ? { "es-ES": `${SITE_URL}${group.es}` } : {}),
+    ...(group.no ? { "nb-NO": `${SITE_URL}${group.no}` } : {}),
+    ...(group.ar ? { "ar-MA": `${SITE_URL}${group.ar}` } : {}),
     "x-default": `${SITE_URL}${group.fr}`,
   };
 }
@@ -124,6 +142,7 @@ export function buildMetadataFromParsed(parsed: ParsedStaticPage): Metadata {
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
     icons: {
       icon: "/assets/manifest/favicon-offmarket.svg?v=1765297300",
+      apple: "/assets/manifest/apple-touch-icon.png",
     },
     openGraph: {
       type: (parsed.ogType === "article" ? "article" : "website") as
@@ -165,6 +184,7 @@ export function buildPageMetadata(seo: PageSeo): Metadata {
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
     icons: {
       icon: "/assets/manifest/favicon-offmarket.svg?v=1765297300",
+      apple: "/assets/manifest/apple-touch-icon.png",
     },
     openGraph: {
       type: "website",

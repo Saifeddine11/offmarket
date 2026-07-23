@@ -59,6 +59,17 @@ const ABOUT_COPY = {
     secondary: "Our projects",
     secondaryHref: "/en/projects/",
   },
+  es: {
+    skip: "Saltar al contenido principal",
+    breadcrumbs: ["Inicio", "Nuestra historia"],
+    title: "Nuestra historia",
+    subtitle:
+      "Una casa privada para leer el mercado inmobiliario de Marrakech con exigencia, discreción y precisión.",
+    primary: "Acceder al Off-market",
+    primaryHref: "/es/off-market/",
+    secondary: "Proyectos",
+    secondaryHref: "/es/proyectos/",
+  },
   it: {
     skip: "Vai al contenuto principale",
     breadcrumbs: ["Home", "La nostra storia"],
@@ -81,6 +92,17 @@ const ABOUT_COPY = {
     secondary: "Onze projecten",
     secondaryHref: "/nl/projecten/",
   },
+  no: {
+    skip: "Gå til hovedinnhold",
+    breadcrumbs: ["Hjem", "Vår historie"],
+    title: "Vår historie",
+    subtitle:
+      "Et privat miljø for å lese eiendomsmarkedet i Marrakech med grundighet, diskresjon og presisjon.",
+    primary: "Få tilgang til Off-market",
+    primaryHref: "/no/off-market/",
+    secondary: "Prosjekter",
+    secondaryHref: "/no/prosjekter/",
+  },
 } satisfies Record<SiteLocale, {
   skip: string;
   breadcrumbs: [string, string];
@@ -102,11 +124,24 @@ export function AboutPageContent({
       ? "Breadcrumb"
       : locale === "nl"
         ? "Broodkruimel"
+        : locale === "es"
+          ? "Miga de pan"
+          : locale === "no"
+            ? "Brødsmulesti"
         : locale === "it"
           ? "Percorso di navigazione"
           : "Fil d'Ariane";
   return (
     <>
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/images/hero/notre-histoire-hero-1280.webp"
+        imageSrcSet="/assets/images/hero/notre-histoire-hero-768.webp 768w, /assets/images/hero/notre-histoire-hero-1280.webp 1280w, /assets/images/hero/notre-histoire-hero.webp 1536w"
+        imageSizes="100vw"
+        type="image/webp"
+        fetchPriority="high"
+      />
       <a href="#main" className="sr-only sr-only--focusable">
         {copy.skip}
       </a>
@@ -120,7 +155,12 @@ export function AboutPageContent({
           ]}
           title={copy.title}
           subtitle={copy.subtitle}
-          imageSrc="/assets/mavericks/hero/mavericks-hero-villa.webp"
+          imageSrc="/assets/images/hero/notre-histoire-hero.webp"
+          imageSrcSet="/assets/images/hero/notre-histoire-hero-768.webp 768w, /assets/images/hero/notre-histoire-hero-1280.webp 1280w, /assets/images/hero/notre-histoire-hero.webp 1536w"
+          imageAvifSrcSet="/assets/images/hero/notre-histoire-hero-768.avif 768w, /assets/images/hero/notre-histoire-hero-1280.avif 1280w, /assets/images/hero/notre-histoire-hero.avif 1536w"
+          imageSizes="100vw"
+          imageWidth={1536}
+          imageHeight={1024}
           actions={
             <>
               <Link

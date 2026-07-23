@@ -1,16 +1,27 @@
+const HERO_IMAGE_HREF = "/assets/images/hero/herophoto2-1280.webp";
+const HERO_IMAGE_SRCSET =
+  "/assets/images/hero/herophoto2-768.webp 768w, /assets/images/hero/herophoto2-1280.webp 1280w, /assets/images/hero/herophoto2.webp 1536w";
+
 type HeroResourceHintsProps = {
-  posterHref?: string;
+  imageHref?: string;
+  imageSrcSet?: string;
+  imageSizes?: string;
 };
 
-/** Preloads above-the-fold hero poster without changing layout. */
+/** Preloads above-the-fold hero image without changing layout. */
 export function HeroResourceHints({
-  posterHref = "/assets/images/hero/mavericks-hero-poster.webp",
+  imageHref = HERO_IMAGE_HREF,
+  imageSrcSet = HERO_IMAGE_SRCSET,
+  imageSizes = "100vw",
 }: HeroResourceHintsProps) {
   return (
     <link
       rel="preload"
       as="image"
-      href={posterHref}
+      href={imageHref}
+      imageSrcSet={imageSrcSet}
+      imageSizes={imageSizes}
+      type="image/webp"
       fetchPriority="high"
     />
   );

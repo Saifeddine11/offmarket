@@ -1,6 +1,6 @@
-export type SiteLocale = "fr" | "en" | "it" | "nl";
+export type SiteLocale = "fr" | "en" | "it" | "nl" | "es" | "no";
 
-export type LangCode = "FR" | "EN" | "IT" | "NL";
+export type LangCode = "FR" | "EN" | "IT" | "NL" | "ES" | "NO";
 
 export function langCodeToLocale(code: LangCode): SiteLocale {
   switch (code) {
@@ -10,6 +10,10 @@ export function langCodeToLocale(code: LangCode): SiteLocale {
       return "it";
     case "NL":
       return "nl";
+    case "ES":
+      return "es";
+    case "NO":
+      return "no";
     default:
       return "fr";
   }

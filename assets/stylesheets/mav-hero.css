@@ -21,44 +21,26 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url('/assets/mavericks/hero/mavericks-hero-villa.webp');
+  background-image: url('/assets/images/hero/herophoto2-bg.webp');
   background-size: cover;
-  background-position: center;
+  background-position: 58% center;
   background-repeat: no-repeat;
 }
 
-.mav-hero__video {
+.mav-hero__media-wrap,
+.mav-hero__media {
   position: absolute;
   inset: 0;
   z-index: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: 1;
+  display: block;
   pointer-events: none;
-  -webkit-appearance: none;
 }
 
-.mav-hero__video::-webkit-media-controls,
-.mav-hero__video::-webkit-media-controls-start-playback-button,
-.mav-hero__video::-webkit-media-controls-panel,
-.mav-hero video::-webkit-media-controls,
-.mav-hero video::-webkit-media-controls-start-playback-button,
-.mav-hero video::-webkit-media-controls-panel {
-  display: none !important;
-  -webkit-appearance: none;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-html.hero-video-autoplay-blocked .mav-hero__video {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-html.hero-video-autoplay-blocked .mav-hero__background {
-  opacity: 0.35;
+.mav-hero__media {
+  object-fit: cover;
+  object-position: 58% center;
 }
 
 .mav-hero__overlay {
@@ -744,10 +726,8 @@ html.hero-video-autoplay-blocked .mav-hero__background {
 }
 
 @media (max-width: 979px) {
-  .mav-hero__video {
-    opacity: 1 !important;
-    visibility: visible !important;
-    display: block !important;
+  .mav-hero__media-wrap,
+  .mav-hero__media {
     z-index: 0;
   }
 

@@ -104,11 +104,57 @@ const NL: ChromeCopy = {
   showPrefix: "Toon ",
 };
 
+const ES: ChromeCopy = {
+  homeHref: "/es/",
+  accessHref: "/es/contacto/",
+  accessLabel: "Solicitar acceso",
+  menuAria: "Menú",
+  mainNavAria: "Navegación principal",
+  languageLabel: "Idioma",
+  chooseLanguageAria: "Elegir idioma",
+  menuTagline: "Inmobiliaria privada en Marrakech",
+  placeholderNav: [
+    { label: "Inicio", href: "/es/" },
+    { label: "Nuestra historia", href: "/es/sobre-nosotros/" },
+    { label: "Barrios", href: "/es/barrios/" },
+    { label: "Proyectos", href: "/es/proyectos/" },
+    { label: "Off-market", href: "/es/off-market/" },
+    { label: "Simulador", href: "/es/simulador/" },
+    { label: "Contacto", href: "/es/contacto/" },
+  ],
+  openMenuPrefix: "Abrir menú ",
+  showPrefix: "Mostrar ",
+};
+
+const NO: ChromeCopy = {
+  homeHref: "/no/",
+  accessHref: "/no/kontakt/",
+  accessLabel: "Be om tilgang",
+  menuAria: "Meny",
+  mainNavAria: "Hovednavigasjon",
+  languageLabel: "Språk",
+  chooseLanguageAria: "Velg språk",
+  menuTagline: "Privat eiendom i Marrakech",
+  placeholderNav: [
+    { label: "Hjem", href: "/no/" },
+    { label: "Vår historie", href: "/no/om-oss/" },
+    { label: "Områder", href: "/no/omrader/" },
+    { label: "Prosjekter", href: "/no/prosjekter/" },
+    { label: "Off-market", href: "/no/off-market/" },
+    { label: "Kalkulator", href: "/no/kalkulator/" },
+    { label: "Kontakt", href: "/no/kontakt/" },
+  ],
+  openMenuPrefix: "Åpne meny ",
+  showPrefix: "Vis ",
+};
+
 const COPY: Record<SiteLocale, ChromeCopy> = {
   fr: FR,
   en: EN,
+  es: ES,
   it: IT,
   nl: NL,
+  no: NO,
 };
 
 export function getChromeCopy(locale?: SiteLocale): ChromeCopy {

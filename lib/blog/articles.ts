@@ -31,6 +31,19 @@ export const BLOG_ARTICLES_EN = {
     "blog-appartement-hypercentre-gueliz-marrakech",
 } as const;
 
+export const BLOG_ARTICLES_ES = {
+  "comprar-villa-sobre-plano-marrakech":
+    "blog-acheter-villa-sur-plan-marrakech",
+  "invertir-inmobiliario-lujo-marrakech":
+    "blog-investir-immobilier-luxe-marrakech",
+  "mejores-zonas-inmobiliarias-marrakech":
+    "blog-adresses-immobilier-marrakech",
+  "inmuebles-off-market-marrakech":
+    "blog-off-market-marrakech-biens-confidentiels",
+  "apartamento-centro-gueliz-marrakech":
+    "blog-appartement-hypercentre-gueliz-marrakech",
+} as const;
+
 export const BLOG_ARTICLES_NL = {
   "nieuwbouwvilla-kopen-marrakech":
     "blog-acheter-villa-sur-plan-marrakech",
@@ -41,6 +54,19 @@ export const BLOG_ARTICLES_NL = {
   "off-market-vastgoed-marrakech":
     "blog-off-market-marrakech-biens-confidentiels",
   "appartement-hypercentre-gueliz-marrakech":
+    "blog-appartement-hypercentre-gueliz-marrakech",
+} as const;
+
+export const BLOG_ARTICLES_NO = {
+  "kjope-nybyggvilla-marrakech":
+    "blog-acheter-villa-sur-plan-marrakech",
+  "investere-luksus-eiendom-marrakech":
+    "blog-investir-immobilier-luxe-marrakech",
+  "beste-omrader-eiendom-marrakech":
+    "blog-adresses-immobilier-marrakech",
+  "off-market-eiendom-marrakech":
+    "blog-off-market-marrakech-biens-confidentiels",
+  "leilighet-sentrum-gueliz-marrakech":
     "blog-appartement-hypercentre-gueliz-marrakech",
 } as const;
 
@@ -58,16 +84,26 @@ export const BLOG_ARTICLES_IT = {
 } as const;
 
 export type BlogArticleSlugEn = keyof typeof BLOG_ARTICLES_EN;
+export type BlogArticleSlugEs = keyof typeof BLOG_ARTICLES_ES;
 export type BlogArticleSlugNl = keyof typeof BLOG_ARTICLES_NL;
+export type BlogArticleSlugNo = keyof typeof BLOG_ARTICLES_NO;
 export type BlogArticleSlugIt = keyof typeof BLOG_ARTICLES_IT;
 
 export const BLOG_ARTICLE_SLUGS_EN = Object.keys(
   BLOG_ARTICLES_EN,
 ) as BlogArticleSlugEn[];
 
+export const BLOG_ARTICLE_SLUGS_ES = Object.keys(
+  BLOG_ARTICLES_ES,
+) as BlogArticleSlugEs[];
+
 export const BLOG_ARTICLE_SLUGS_NL = Object.keys(
   BLOG_ARTICLES_NL,
 ) as BlogArticleSlugNl[];
+
+export const BLOG_ARTICLE_SLUGS_NO = Object.keys(
+  BLOG_ARTICLES_NO,
+) as BlogArticleSlugNo[];
 
 export const BLOG_ARTICLE_SLUGS_IT = Object.keys(
   BLOG_ARTICLES_IT,

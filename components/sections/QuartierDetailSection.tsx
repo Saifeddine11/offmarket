@@ -3,8 +3,10 @@ import { SectionHeaderMotion } from "@/components/motion/SectionHeaderMotion";
 import {
   quartierDetails,
   quartierDetailsEn,
+  quartierDetailsEs,
   quartierDetailsIt,
   quartierDetailsNl,
+  quartierDetailsNo,
 } from "@/lib/quartiers/quartier-details";
 import type { SiteLocale } from "@/lib/i18n/types";
 
@@ -22,6 +24,12 @@ const DETAIL_COPY = {
     subtitle:
       "Each Marrakech neighbourhood follows a different logic: access, shops, schools, hospitality, rental demand, rarity and resale potential.",
   },
+  es: {
+    eyebrow: "BARRIO POR BARRIO",
+    title: "Comprender lo que da valor a una dirección.",
+    subtitle:
+      "Cada barrio de Marrakech responde a una lógica distinta: accesibilidad, comercios, colegios, hostelería, demanda de alquiler, rareza y potencial de reventa.",
+  },
   it: {
     eyebrow: "QUARTIERE PER QUARTIERE",
     title: "Capire cosa dà valore a un indirizzo.",
@@ -34,12 +42,20 @@ const DETAIL_COPY = {
     subtitle:
       "Elke wijk in Marrakech volgt een andere logica: bereikbaarheid, winkels, scholen, hotellerie, huurvraag, schaarste en herverkooppotentieel.",
   },
+  no: {
+    eyebrow: "OMRÅDE FOR OMRÅDE",
+    title: "Forstå hva som gir verdi til en adresse.",
+    subtitle:
+      "Hvert område i Marrakech følger en egen logikk: tilgjengelighet, butikker, skoler, hotelltilbud, utleieetterspørsel, sjeldenhet og videresalgspotensial.",
+  },
 } satisfies Record<SiteLocale, { eyebrow: string; title: string; subtitle: string }>;
 
 function getDetails(locale: SiteLocale) {
   if (locale === "en") return quartierDetailsEn;
+  if (locale === "es") return quartierDetailsEs;
   if (locale === "it") return quartierDetailsIt;
   if (locale === "nl") return quartierDetailsNl;
+  if (locale === "no") return quartierDetailsNo;
   return quartierDetails;
 }
 
@@ -55,8 +71,12 @@ export function QuartierDetailSection({
   const pointsAriaLabel =
     locale === "en"
       ? "Key points"
+      : locale === "es"
+        ? "Puntos clave"
       : locale === "nl"
         ? "Belangrijke punten"
+        : locale === "no"
+          ? "Nøkkelpunkter"
         : locale === "it"
           ? "Punti chiave"
           : "Points clés";

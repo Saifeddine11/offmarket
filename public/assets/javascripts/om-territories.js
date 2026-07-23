@@ -6,11 +6,17 @@
 (function () {
   'use strict';
 
+  function isLocalePath(path, locale) {
+    return path === '/' + locale || path.indexOf('/' + locale + '/') === 0;
+  }
+
   function detectLocale() {
     var path = window.location.pathname || '/';
-    if (path.indexOf('/en') === 0) return 'en';
-    if (path.indexOf('/it') === 0) return 'it';
-    if (path.indexOf('/nl') === 0) return 'nl';
+    if (isLocalePath(path, 'en')) return 'en';
+    if (isLocalePath(path, 'es')) return 'es';
+    if (isLocalePath(path, 'it')) return 'it';
+    if (isLocalePath(path, 'nl')) return 'nl';
+    if (isLocalePath(path, 'no')) return 'no';
     return 'fr';
   }
 
@@ -45,25 +51,51 @@
     {
       number: '01',
       image: IMG_BASE + 'gueliz-hypercentre.webp',
-      label: 'Guéliz Hyper-Centre / Hivernage',
-      subtitle: 'Apartments · central location · strong demand',
+      label: 'Central Guéliz / Hivernage',
+      subtitle: 'Apartments · central setting · strong demand',
       tag: 'RENTAL LIQUIDITY',
     },
     {
       number: '02',
       image: IMG_BASE + 'triangle-or-hivernage.webp',
-      label: "Triangle d\u2019Or",
-      labelHtml: 'Triangle <span class="om-gold-word">d\u2019Or</span>',
-      subtitle: "Route de Tahnaout · Route de l'Ourika · Agdal",
+      label: 'Golden Triangle',
+      labelHtml: 'Golden <span class="om-gold-word">Triangle</span>',
+      subtitle: 'Tahnaout Road · Ourika Road · Agdal',
       tag: 'DEVELOPMENT CORRIDOR',
       goldNumber: true,
     },
     {
       number: '03',
       image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
-      label: 'Médina',
+      label: 'Medina',
       subtitle: 'Character riads · guest houses · heritage',
       tag: 'TOURIST YIELD',
+    },
+  ];
+
+  var ITEMS_HOME_ES = [
+    {
+      number: '01',
+      image: IMG_BASE + 'gueliz-hypercentre.webp',
+      label: 'Centro de Guéliz / Hivernage',
+      subtitle: 'Apartamentos · centralidad · alta demanda',
+      tag: 'LIQUIDEZ DE ALQUILER',
+    },
+    {
+      number: '02',
+      image: IMG_BASE + 'triangle-or-hivernage.webp',
+      label: 'Triángulo de Oro',
+      labelHtml: 'Triángulo <span class="om-gold-word">de Oro</span>',
+      subtitle: 'Carretera de Tahanaout · Carretera de Ourika · Agdal',
+      tag: 'EJE EN DESARROLLO',
+      goldNumber: true,
+    },
+    {
+      number: '03',
+      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      label: 'Medina',
+      subtitle: 'Riads con carácter · casas de huéspedes · patrimonio',
+      tag: 'RENTABILIDAD TURÍSTICA',
     },
   ];
 
@@ -71,24 +103,24 @@
     {
       number: '01',
       image: IMG_BASE + 'gueliz-hypercentre.webp',
-      label: 'Guéliz Hyper-Centre / Hivernage',
+      label: 'Centro di Guéliz / Hivernage',
       subtitle: 'Appartamenti · centralità · forte domanda',
       tag: 'LIQUIDITÀ LOCATIVA',
     },
     {
       number: '02',
       image: IMG_BASE + 'triangle-or-hivernage.webp',
-      label: "Triangle d\u2019Or",
-      labelHtml: 'Triangle <span class="om-gold-word">d\u2019Or</span>',
-      subtitle: "Route de Tahnaout · Route de l'Ourika · Agdal",
+      label: "Triangolo d\u2019Oro",
+      labelHtml: 'Triangolo <span class="om-gold-word">d\u2019Oro</span>',
+      subtitle: "Strada di Tahnaout · Strada dell'Ourika · Agdal",
       tag: 'ASSE IN SVILUPPO',
       goldNumber: true,
     },
     {
       number: '03',
       image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
-      label: 'Médina',
-      subtitle: 'Riad di carattere · case di ospitalità · patrimonio',
+      label: 'Medina',
+      subtitle: 'Riad di carattere · case per ospiti · patrimonio',
       tag: 'RENDIMENTO TURISTICO',
     },
   ];
@@ -97,25 +129,51 @@
     {
       number: '01',
       image: IMG_BASE + 'gueliz-hypercentre.webp',
-      label: 'Guéliz Hyper-Centre / Hivernage',
-      subtitle: 'Appartementen · centraliteit · sterke vraag',
+      label: 'Centrum van Guéliz / Hivernage',
+      subtitle: 'Appartementen · centrale ligging · sterke vraag',
       tag: 'HUURLIQUIDITEIT',
     },
     {
       number: '02',
       image: IMG_BASE + 'triangle-or-hivernage.webp',
-      label: "Triangle d\u2019Or",
-      labelHtml: 'Triangle <span class="om-gold-word">d\u2019Or</span>',
-      subtitle: "Route de Tahnaout · Route de l'Ourika · Agdal",
-      tag: 'ONTWIKKELINGSAS',
+      label: 'Gouden Driehoek',
+      labelHtml: 'Gouden <span class="om-gold-word">Driehoek</span>',
+      subtitle: 'Tahnaoutweg · Ourikaweg · Agdal',
+      tag: 'GROEIAS',
       goldNumber: true,
     },
     {
       number: '03',
       image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
-      label: 'Médina',
-      subtitle: 'Karaktervolle riads · gastenhuizen · erfgoed',
+      label: 'Medina',
+      subtitle: 'Riads met karakter · pensions · erfgoed',
       tag: 'TOERISTISCH RENDEMENT',
+    },
+  ];
+
+  var ITEMS_HOME_NO = [
+    {
+      number: '01',
+      image: IMG_BASE + 'gueliz-hypercentre.webp',
+      label: 'Guéliz sentrum / Hivernage',
+      subtitle: 'Leiligheter · sentral beliggenhet · høy etterspørsel',
+      tag: 'UTLEIELIKVIDITET',
+    },
+    {
+      number: '02',
+      image: IMG_BASE + 'triangle-or-hivernage.webp',
+      label: 'Den gylne trekanten',
+      labelHtml: 'Den gylne <span class="om-gold-word">trekanten</span>',
+      subtitle: 'Tahanaout-veien · Ourika-veien · Agdal',
+      tag: 'UTVIKLINGSAKSE',
+      goldNumber: true,
+    },
+    {
+      number: '03',
+      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      label: 'Medina',
+      subtitle: 'Riader med særpreg · gjestehus · kulturarv',
+      tag: 'TURISTISK AVKASTNING',
     },
   ];
 
@@ -143,6 +201,126 @@
     },
   ]);
 
+  var ITEMS_PAGE_ES = ITEMS_HOME_ES.concat([
+    {
+      number: '04',
+      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      label: 'Carretera de Ourika',
+      subtitle: 'Villas · terrenos · residencias privadas',
+      tag: 'VILLAS Y EXTERIOR',
+    },
+    {
+      number: '05',
+      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      label: 'Palmeraie',
+      subtitle: 'Grandes propiedades · calma · confidencialidad',
+      tag: 'GRANDES PROPIEDADES',
+    },
+    {
+      number: '06',
+      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      label: 'Carretera de Amizmiz',
+      subtitle: 'Villas sobre plano · terrenos · proyectos residenciales',
+      tag: 'PROYECTOS RESIDENCIALES',
+    },
+  ]);
+
+  var ITEMS_PAGE_EN = ITEMS_HOME_EN.concat([
+    {
+      number: '04',
+      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      label: 'Ourika Road',
+      subtitle: 'Villas · plots · private residences',
+      tag: 'VILLAS & OUTDOOR LIVING',
+    },
+    {
+      number: '05',
+      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      label: 'Palmeraie',
+      subtitle: 'Large estates · tranquillity · privacy',
+      tag: 'LARGE ESTATES',
+    },
+    {
+      number: '06',
+      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      label: 'Amizmiz Road',
+      subtitle: 'Off-plan villas · plots · residential developments',
+      tag: 'RESIDENTIAL DEVELOPMENTS',
+    },
+  ]);
+
+  var ITEMS_PAGE_IT = ITEMS_HOME_IT.concat([
+    {
+      number: '04',
+      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      label: "Strada dell\u2019Ourika",
+      subtitle: 'Ville · terreni · residenze private',
+      tag: 'VILLE E SPAZI ESTERNI',
+    },
+    {
+      number: '05',
+      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      label: 'Palmeraie',
+      subtitle: 'Grandi proprietà · tranquillità · riservatezza',
+      tag: 'GRANDI PROPRIETÀ',
+    },
+    {
+      number: '06',
+      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      label: 'Strada di Amizmiz',
+      subtitle: 'Ville su progetto · terreni · progetti residenziali',
+      tag: 'PROGETTI RESIDENZIALI',
+    },
+  ]);
+
+  var ITEMS_PAGE_NL = ITEMS_HOME_NL.concat([
+    {
+      number: '04',
+      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      label: 'Ourikaweg',
+      subtitle: "Villa's · percelen · privéresidenties",
+      tag: "VILLA'S EN BUITENLEVEN",
+    },
+    {
+      number: '05',
+      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      label: 'Palmeraie',
+      subtitle: 'Grote eigendommen · rust · privacy',
+      tag: 'GROTE EIGENDOMMEN',
+    },
+    {
+      number: '06',
+      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      label: 'Amizmizweg',
+      subtitle: "Nieuwbouwvilla's · percelen · woonprojecten",
+      tag: 'WOONPROJECTEN',
+    },
+  ]);
+
+  var ITEMS_PAGE_NO = ITEMS_HOME_NO.concat([
+    {
+      number: '04',
+      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      label: 'Ourika-veien',
+      subtitle: 'Villaer · tomter · private residenser',
+      tag: 'VILLAER OG UTEOMRÅDER',
+    },
+    {
+      number: '05',
+      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      label: 'Palmeraie',
+      subtitle: 'Store eiendommer · ro · konfidensialitet',
+      tag: 'STORE EIENDOMMER',
+    },
+    {
+      number: '06',
+      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      label: 'Amizmiz-veien',
+      subtitle: 'Nybyggvillaer · tomter · boligprosjekter',
+      tag: 'BOLIGPROSJEKTER',
+    },
+  ]);
+
   var QUARTIERS_DETAIL_TARGETS = [
     'quartier-gueliz-hivernage',
     'quartier-triangle-or',
@@ -153,13 +331,19 @@
     var isPage = section.getAttribute('data-om-territories-set') === 'page';
     var locale = detectLocale();
     if (locale === 'en') {
-      return isPage ? ITEMS_PAGE : ITEMS_HOME_EN;
+      return isPage ? ITEMS_PAGE_EN : ITEMS_HOME_EN;
+    }
+    if (locale === 'es') {
+      return isPage ? ITEMS_PAGE_ES : ITEMS_HOME_ES;
     }
     if (locale === 'it') {
-      return isPage ? ITEMS_PAGE : ITEMS_HOME_IT;
+      return isPage ? ITEMS_PAGE_IT : ITEMS_HOME_IT;
     }
     if (locale === 'nl') {
-      return isPage ? ITEMS_PAGE : ITEMS_HOME_NL;
+      return isPage ? ITEMS_PAGE_NL : ITEMS_HOME_NL;
+    }
+    if (locale === 'no') {
+      return isPage ? ITEMS_PAGE_NO : ITEMS_HOME_NO;
     }
     if (isPage) {
       return ITEMS_PAGE;

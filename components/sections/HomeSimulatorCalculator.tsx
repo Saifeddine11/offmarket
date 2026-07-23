@@ -59,6 +59,30 @@ const SIMULATOR_COPY = {
     primary: "Receive a private analysis",
     secondary: "View compatible properties",
   },
+  es: {
+    tabsAria: "Modos de simulación",
+    short: "Alquiler de corta duración",
+    long: "Alquiler de larga duración",
+    resale: "Compra-reventa",
+    inputsAria: "Parámetros de simulación",
+    panelEyebrow: "PARÁMETROS",
+    panelTitle: "Ajuste sus hipótesis. El resultado se recalcula en directo.",
+    note:
+      "Estimación indicativa. OFF MARKET afina esta simulación con la dirección exacta, los gastos reales y las propiedades disponibles.",
+    purchasePrice: "Presupuesto de adquisición",
+    purchaseHelp: "Precio estimado del bien, sin gastos.",
+    nightlyRate: "Precio medio por noche",
+    personalWeeks: "Semanas de uso personal",
+    occupancy: "Tasa de ocupación",
+    monthlyRent: "Alquiler mensual estimado",
+    resaleHorizon: "Horizonte de reventa",
+    appreciation: "Hipótesis de valorización anual",
+    resultSection: "RESULTADO",
+    resultLabel: "RENDIMIENTO BRUTO ANUAL",
+    resultCaption: "antes de gastos, fiscalidad y costes reales",
+    primary: "Recibir un análisis privado",
+    secondary: "Ver propiedades compatibles",
+  },
   it: {
     tabsAria: "Modalità di simulazione",
     short: "Affitto breve",
@@ -107,6 +131,30 @@ const SIMULATOR_COPY = {
     primary: "Een private analyse ontvangen",
     secondary: "Passend vastgoed bekijken",
   },
+  no: {
+    tabsAria: "Simuleringsmoduser",
+    short: "Korttidsutleie",
+    long: "Langtidsutleie",
+    resale: "Kjøp og videresalg",
+    inputsAria: "Simuleringsparametere",
+    panelEyebrow: "PARAMETERE",
+    panelTitle: "Juster forutsetningene. Resultatet beregnes på nytt direkte.",
+    note:
+      "Indikativt estimat. OFF MARKET finjusterer simuleringen med nøyaktig adresse, reelle kostnader og tilgjengelige eiendommer.",
+    purchasePrice: "Kjøpsbudsjett",
+    purchaseHelp: "Estimert eiendomspris, eksklusive kostnader.",
+    nightlyRate: "Gjennomsnittlig nattpris",
+    personalWeeks: "Uker med egen bruk",
+    occupancy: "Beleggsgrad",
+    monthlyRent: "Estimert månedlig leie",
+    resaleHorizon: "Videresalgshorisont",
+    appreciation: "Antatt årlig verdistigning",
+    resultSection: "RESULTAT",
+    resultLabel: "BRUTTO ÅRLIG AVKASTNING",
+    resultCaption: "før kostnader, skatt og reelle driftsutgifter",
+    primary: "Motta en privat analyse",
+    secondary: "Se kompatible eiendommer",
+  },
 } satisfies Record<SiteLocale, Record<string, string>>;
 
 export function HomeSimulatorCalculator({
@@ -145,9 +193,6 @@ export function HomeSimulatorCalculator({
         <header className="om-simulator__panel-intro">
           <span className="om-simulator__panel-eyebrow">{copy.panelEyebrow}</span>
           <h3 className="om-simulator__panel-title">{copy.panelTitle}</h3>
-          <p className="om-simulator__note om-simulator__panel-copy" data-simulator-note suppressHydrationWarning>
-            {copy.note}
-          </p>
         </header>
 
         <div className="om-simulator__panel" data-simulator-panel="short" role="tabpanel">

@@ -8,7 +8,7 @@ export type MarketDemandSectionProps = {
 };
 
 function resolveLocale(locale?: string): SiteLocale {
-  if (locale === "en" || locale === "it" || locale === "nl") return locale;
+  if (locale === "en" || locale === "es" || locale === "it" || locale === "nl" || locale === "no") return locale;
   return "fr";
 }
 

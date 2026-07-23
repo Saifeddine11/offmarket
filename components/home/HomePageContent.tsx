@@ -47,7 +47,9 @@ const HOME_MARKET_DEMAND_STYLES =
 function resolveContentLocale(content: PageContent): SiteLocale {
   return content.htmlLang === "en" ||
     content.htmlLang === "it" ||
-    content.htmlLang === "nl"
+    content.htmlLang === "nl" ||
+    content.htmlLang === "es" ||
+    content.htmlLang === "no"
     ? content.htmlLang
     : "fr";
 }
@@ -105,7 +107,8 @@ export function HomePageContent({
   const bodySegments = includeFaqSection
     ? insertFaqBeforeBlog(orderedSegments, buildHomeFaqHtml(locale))
     : orderedSegments;
-  const serverRenderedBodySegments = bodySegments.map((segment) => {
+  const deduplicatedSimulatorSegments = removeLegacySimulatorPanelNote(bodySegments);
+  const serverRenderedBodySegments = deduplicatedSimulatorSegments.map((segment) => {
     if (segment.kind !== "html" || !segment.html.includes("data-om-blog-root")) {
       return segment;
     }
@@ -139,6 +142,28 @@ function withoutExternalScriptSegments(
   segments: PageContent["bodySegments"],
 ): BodySegment[] {
   return segments.filter((segment) => segment.kind !== "script" || !segment.src);
+}
+
+/**
+ * The legacy home simulator includes two copies of the same note: one in the
+ * hidden panel introduction and one beside the results. The latter is the
+ * visible, semantic note used by the calculator. Remove only the hidden copy;
+ * its wrapper has no script hook.
+ */
+function removeLegacySimulatorPanelNote(
+  segments: PageContent["bodySegments"],
+): PageContent["bodySegments"] {
+  return segments.map((segment) =>
+    segment.kind !== "html"
+      ? segment
+      : {
+          ...segment,
+          html: segment.html.replace(
+            /<p class="om-simulator__note om-simulator__panel-copy" data-simulator-note>[\s\S]*?<\/p>/,
+            "",
+          ),
+        },
+  );
 }
 
 function insertFaqBeforeBlog(

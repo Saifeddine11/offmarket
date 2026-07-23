@@ -33,7 +33,12 @@ export function PageContentShell({
   content,
   bodySegments = content.bodySegments,
 }: PageContentShellProps) {
-  const locale = content.htmlLang === "en" || content.htmlLang === "nl" || content.htmlLang === "it"
+  const locale =
+    content.htmlLang === "en" ||
+    content.htmlLang === "es" ||
+    content.htmlLang === "nl" ||
+    content.htmlLang === "it" ||
+    content.htmlLang === "no"
     ? content.htmlLang
     : "fr";
   const stylesheets = withoutGlobalFooterStyles(
@@ -54,9 +59,6 @@ export function PageContentShell({
         <link key={href} rel="preconnect" href={href} />
       ))}
       <StylesheetLinks hrefs={stylesheets} />
-      {content.manifestHref ? (
-        <link rel="manifest" href={content.manifestHref} />
-      ) : null}
       {content.headInlineStyles.map((css, index) => (
         <style key={index} suppressHydrationWarning>
           {css}

@@ -125,11 +125,17 @@
     },
   ];
 
+  function isLocalePath(path, locale) {
+    return path === '/' + locale || path.indexOf('/' + locale + '/') === 0;
+  }
+
   function detectLocale() {
     var path = (global.location && global.location.pathname) || '/';
-    if (path.indexOf('/en') === 0) return 'en';
-    if (path.indexOf('/nl') === 0) return 'nl';
-    if (path.indexOf('/it') === 0) return 'it';
+    if (isLocalePath(path, 'en')) return 'en';
+    if (isLocalePath(path, 'es')) return 'es';
+    if (isLocalePath(path, 'nl')) return 'nl';
+    if (isLocalePath(path, 'it')) return 'it';
+    if (isLocalePath(path, 'no')) return 'no';
     return 'fr';
   }
 
@@ -177,6 +183,52 @@
           title: 'Apartment in the hyper-centre: why location remains the first filter',
           imageAlt: 'Apartment in Marrakech hyper-centre',
           excerpt: 'In Marrakech’s hyper-centre, location filters the project: daily uses, address rarity and how to read residential potential.',
+        },
+      ],
+    },
+    es: {
+      categories: [
+        { slug: 'sur-plan', label: 'Sobre plano' },
+        { slug: 'investissement', label: 'Inversión' },
+        { slug: 'marrakech', label: 'Marrakech' },
+        { slug: 'off-market', label: 'Off-market' },
+      ],
+      tabs: [
+        { slug: 'quartiers', label: 'Barrios', tag: 'quartiers' },
+        { slug: 'marrakech', label: 'Marrakech', tag: 'marrakech' },
+        { slug: 'investissement', label: 'Inversión', tag: 'investissement' },
+        { slug: 'sur-plan', label: 'Sobre plano', tag: 'sur-plan' },
+      ],
+      articles: [
+        {
+          slug: 'comprar-villa-sobre-plano-marrakech',
+          title: 'Comprar una villa sobre plano en Marrakech: qué comprobar antes de reservar',
+          imageAlt: 'Villa sobre plano en Marrakech — exterior',
+          excerpt: 'Antes de reservar una villa sobre plano en Marrakech, qué verificar sobre el promotor, el calendario, los pagos y la coherencia del expediente.',
+        },
+        {
+          slug: 'invertir-inmobiliario-lujo-marrakech',
+          title: 'Invertir en inmobiliario de lujo en Marrakech: zonas que conviene seguir',
+          imageAlt: 'Inmobiliario de lujo en Marrakech',
+          excerpt: 'Cómo leer una dirección en Marrakech antes de invertir: demanda de alquiler, liquidez de reventa, perfil de compradores y dinámica del barrio.',
+        },
+        {
+          slug: 'mejores-zonas-inmobiliarias-marrakech',
+          title: 'Guéliz, Hivernage, Amelkis: entender las direcciones que ganan valor',
+          imageAlt: 'Arquitectura y direcciones en Marrakech',
+          excerpt: 'Guéliz, Hivernage, Amelkis: qué distingue estas zonas de Marrakech y cómo cada una responde a usos y horizontes distintos.',
+        },
+        {
+          slug: 'inmuebles-off-market-marrakech',
+          title: 'Por qué algunos inmuebles en Marrakech nunca se publican online',
+          imageAlt: 'Selección inmobiliaria privada en Marrakech',
+          excerpt: 'Por qué algunos inmuebles en Marrakech quedan fuera de los anuncios públicos: discreción, expedientes sensibles y acceso reservado a compradores cualificados.',
+        },
+        {
+          slug: 'apartamento-centro-gueliz-marrakech',
+          title: 'Apartamento en el centro de Guéliz: por qué la ubicación sigue siendo el primer filtro',
+          imageAlt: 'Apartamento en el centro de Marrakech',
+          excerpt: 'En el centro de Marrakech, la ubicación filtra el proyecto: usos diarios, escasez de direcciones y lectura del potencial residencial.',
         },
       ],
     },
@@ -269,6 +321,52 @@
           title: 'Appartamento nel centro di Guéliz: perché la posizione resta il primo filtro',
           imageAlt: 'Appartamento nel centro di Marrakech',
           excerpt: 'Nel centro di Marrakech, la posizione filtra il progetto: uso quotidiano, rarità degli indirizzi e lettura del potenziale residenziale.',
+        },
+      ],
+    },
+    no: {
+      categories: [
+        { slug: 'sur-plan', label: 'Nybygg' },
+        { slug: 'investissement', label: 'Investering' },
+        { slug: 'marrakech', label: 'Marrakech' },
+        { slug: 'off-market', label: 'Off-market' },
+      ],
+      tabs: [
+        { slug: 'quartiers', label: 'Områder', tag: 'quartiers' },
+        { slug: 'marrakech', label: 'Marrakech', tag: 'marrakech' },
+        { slug: 'investissement', label: 'Investering', tag: 'investissement' },
+        { slug: 'sur-plan', label: 'Nybygg', tag: 'sur-plan' },
+      ],
+      articles: [
+        {
+          slug: 'kjope-nybyggvilla-marrakech',
+          title: 'Kjøpe nybyggvilla i Marrakech: hva du bør sjekke før reservasjon',
+          imageAlt: 'Nybyggvilla i Marrakech — eksteriør',
+          excerpt: 'Før du reserverer en nybyggvilla i Marrakech: hva som bør kontrolleres om utvikler, tidsplan, betalinger og helheten i dokumentasjonen.',
+        },
+        {
+          slug: 'investere-luksus-eiendom-marrakech',
+          title: 'Investere i luksuseiendom i Marrakech: områdene du bør følge',
+          imageAlt: 'Luksuseiendom i Marrakech',
+          excerpt: 'Slik leser du en adresse i Marrakech før investering: utleieetterspørsel, likviditet ved videresalg, kjøperprofil og områdets dynamikk.',
+        },
+        {
+          slug: 'beste-omrader-eiendom-marrakech',
+          title: 'Guéliz, Hivernage, Amelkis: forstå adressene som øker i verdi',
+          imageAlt: 'Arkitektur og adresser i Marrakech',
+          excerpt: 'Guéliz, Hivernage, Amelkis: hva som skiller disse områdene i Marrakech, og hvordan hvert område svarer på ulike bruk og tidshorisonter.',
+        },
+        {
+          slug: 'off-market-eiendom-marrakech',
+          title: 'Hvorfor enkelte eiendommer i Marrakech aldri publiseres på nett',
+          imageAlt: 'Privat eiendomsutvalg i Marrakech',
+          excerpt: 'Hvorfor enkelte eiendommer i Marrakech holdes utenfor offentlige annonser: diskresjon, sensitive saker og tilgang for kvalifiserte kjøpere.',
+        },
+        {
+          slug: 'leilighet-sentrum-gueliz-marrakech',
+          title: 'Leilighet i sentrum av Guéliz: hvorfor beliggenhet fortsatt er første filter',
+          imageAlt: 'Leilighet i sentrum av Marrakech',
+          excerpt: 'I sentrum av Marrakech filtrerer beliggenheten prosjektet: daglig bruk, adresseknapphet og vurdering av boligens potensial.',
         },
       ],
     },

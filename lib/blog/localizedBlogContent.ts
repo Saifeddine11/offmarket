@@ -20,6 +20,14 @@ const BLOG_INDEX_META = {
     canonical: "/en/blog/",
     ogLocale: "en_US",
   },
+  es: {
+    title: "Blog inmobiliario Marrakech — OFF MARKET",
+    description:
+      "Análisis privados sobre inmobiliario de lujo en Marrakech, proyectos sobre plano, inversión, Guéliz, Hivernage y propiedades off-market.",
+    ogTitle: "Blog inmobiliario Marrakech — OFF MARKET",
+    canonical: "/es/blog/",
+    ogLocale: "es_ES",
+  },
   nl: {
     title: "Vastgoedblog Marrakech — OFF MARKET",
     description:
@@ -36,7 +44,15 @@ const BLOG_INDEX_META = {
     canonical: "/it/blog/",
     ogLocale: "it_IT",
   },
-} satisfies Record<"en" | "nl" | "it", {
+  no: {
+    title: "Eiendomsblogg Marrakech — OFF MARKET",
+    description:
+      "Private analyser om luksuseiendom i Marrakech, nybyggprosjekter, investering, Guéliz, Hivernage og off-market eiendommer.",
+    ogTitle: "Eiendomsblogg Marrakech — OFF MARKET",
+    canonical: "/no/blogg/",
+    ogLocale: "nb_NO",
+  },
+} satisfies Record<"en" | "es" | "nl" | "it" | "no", {
   title: string;
   description: string;
   ogTitle: string;
@@ -45,7 +61,7 @@ const BLOG_INDEX_META = {
 }>;
 
 const ARTICLE_META: Record<
-  "en" | "nl" | "it",
+  "en" | "es" | "nl" | "it" | "no",
   Partial<Record<PageId, LocalizedBlogMeta>>
 > = {
   en: {
@@ -83,6 +99,43 @@ const ARTICLE_META: Record<
       description:
         "Why immediate location remains the first filter for an apartment in Guéliz hyper-centre: access, noise, uses, liquidity and resale.",
       ogTitle: "Apartment in the hyper-centre: why location remains the first filter",
+    },
+  },
+  es: {
+    "blog-acheter-villa-sur-plan-marrakech": {
+      slug: "comprar-villa-sobre-plano-marrakech",
+      title: "Comprar una villa sobre plano en Marrakech — OFF MARKET",
+      description:
+        "Qué verificar antes de reservar una villa sobre plano en Marrakech: promotor, calendario, pagos y calidad de los espacios exteriores.",
+      ogTitle: "Comprar una villa sobre plano en Marrakech",
+    },
+    "blog-investir-immobilier-luxe-marrakech": {
+      slug: "invertir-inmobiliario-lujo-marrakech",
+      title: "Invertir en inmobiliario de lujo en Marrakech — OFF MARKET",
+      description:
+        "Las zonas que conviene seguir antes de invertir en inmobiliario de lujo en Marrakech: dirección, demanda de alquiler, liquidez y valor patrimonial.",
+      ogTitle: "Invertir en inmobiliario de lujo en Marrakech",
+    },
+    "blog-adresses-immobilier-marrakech": {
+      slug: "mejores-zonas-inmobiliarias-marrakech",
+      title: "Guéliz, Hivernage, Amelkis — Entender las direcciones de Marrakech",
+      description:
+        "Entender las direcciones de Marrakech que ganan valor: Guéliz, Hivernage, Amelkis, perfiles de compradores, rareza y demanda futura.",
+      ogTitle: "Entender las direcciones de Marrakech que ganan valor",
+    },
+    "blog-off-market-marrakech-biens-confidentiels": {
+      slug: "inmuebles-off-market-marrakech",
+      title: "Por qué algunos inmuebles en Marrakech nunca se publican en línea",
+      description:
+        "Por qué muchos inmuebles premium en Marrakech permanecen off-market: discreción, acceso cualificado, negociaciones sensibles y direcciones confidenciales.",
+      ogTitle: "Por qué algunos inmuebles en Marrakech nunca se publican en línea",
+    },
+    "blog-appartement-hypercentre-gueliz-marrakech": {
+      slug: "apartamento-centro-gueliz-marrakech",
+      title: "Apartamento en el centro de Guéliz — Por qué la ubicación sigue siendo el primer filtro",
+      description:
+        "Por qué la ubicación inmediata sigue siendo el primer filtro para un apartamento en el centro de Guéliz: acceso, ruido, usos, liquidez y reventa.",
+      ogTitle: "Apartamento en el centro de Guéliz: por qué la ubicación sigue siendo el primer filtro",
     },
   },
   nl: {
@@ -159,9 +212,46 @@ const ARTICLE_META: Record<
       ogTitle: "Appartamento nel centro di Guéliz: perché la posizione resta il primo filtro",
     },
   },
+  no: {
+    "blog-acheter-villa-sur-plan-marrakech": {
+      slug: "kjope-nybyggvilla-marrakech",
+      title: "Kjøpe nybyggvilla i Marrakech — OFF MARKET",
+      description:
+        "Hva du bør kontrollere før reservasjon av nybyggvilla i Marrakech: utvikler, fremdrift, betalinger og kvaliteten på uteområdene.",
+      ogTitle: "Kjøpe nybyggvilla i Marrakech",
+    },
+    "blog-investir-immobilier-luxe-marrakech": {
+      slug: "investere-luksus-eiendom-marrakech",
+      title: "Investere i luksuseiendom i Marrakech — OFF MARKET",
+      description:
+        "Områdene du bør følge før investering i luksuseiendom i Marrakech: adresse, utleieetterspørsel, likviditet og langsiktig verdi.",
+      ogTitle: "Investere i luksuseiendom i Marrakech",
+    },
+    "blog-adresses-immobilier-marrakech": {
+      slug: "beste-omrader-eiendom-marrakech",
+      title: "Guéliz, Hivernage, Amelkis — Forstå adressene i Marrakech",
+      description:
+        "Forstå adressene i Marrakech som øker i verdi: Guéliz, Hivernage, Amelkis, kjøperprofiler, sjeldenhet og fremtidig etterspørsel.",
+      ogTitle: "Forstå adressene i Marrakech som øker i verdi",
+    },
+    "blog-off-market-marrakech-biens-confidentiels": {
+      slug: "off-market-eiendom-marrakech",
+      title: "Hvorfor enkelte eiendommer i Marrakech aldri publiseres på nett",
+      description:
+        "Hvorfor mange premiumeiendommer i Marrakech forblir off-market: diskresjon, kvalifisert tilgang, sensitive forhandlinger og konfidensielle adresser.",
+      ogTitle: "Hvorfor enkelte eiendommer i Marrakech aldri publiseres på nett",
+    },
+    "blog-appartement-hypercentre-gueliz-marrakech": {
+      slug: "leilighet-sentrum-gueliz-marrakech",
+      title: "Leilighet i sentrum av Guéliz — Hvorfor beliggenhet fortsatt er første filter",
+      description:
+        "Hvorfor umiddelbar beliggenhet fortsatt er første filter for en leilighet i Guéliz sentrum: tilgang, støy, bruk, likviditet og videresalg.",
+      ogTitle: "Leilighet i sentrum av Guéliz: hvorfor beliggenhet fortsatt er første filter",
+    },
+  },
 };
 
-type ArticleBodyLocale = Extract<SiteLocale, "en" | "nl" | "it">;
+type ArticleBodyLocale = Extract<SiteLocale, "en" | "es" | "nl" | "it" | "no">;
 type BodyReplacement = readonly [from: string, to: string];
 
 const ARTICLE_BODY_COPY: Record<
@@ -237,6 +327,78 @@ const ARTICLE_BODY_COPY: Record<
       [
         "L’off-market n’est donc pas une simple absence de publicité. C’est un mode de distribution qui filtre l’accès, préserve la confidentialité et permet de traiter des opportunités avec plus de rigueur, là où la visibilité publique serait contre-productive.",
         "Off-market is therefore more than the absence of advertising. It is a distribution method that filters access, preserves confidentiality and allows opportunities to be handled with greater rigour where public visibility would be counterproductive.",
+      ],
+    ],
+  },
+  es: {
+    "blog-acheter-villa-sur-plan-marrakech": [
+      [
+        "Un projet sur plan à Marrakech peut offrir une excellente opportunité d’entrée sur un secteur recherché, à condition de lire le dossier avec méthode. Avant de réserver, la première lecture porte sur le promoteur, la solidité juridique du programme et la cohérence entre les visuels marketing et les plans techniques transmis.",
+        "Un proyecto sobre plano en Marrakech puede ofrecer una excelente oportunidad de entrada en una zona buscada, siempre que el expediente se lea con método. Antes de reservar, la primera revisión debe centrarse en el promotor, la solidez jurídica del programa y la coherencia entre las imágenes comerciales y los planos técnicos entregados.",
+      ],
+      [
+        "Le calendrier compte autant que le prix affiché. Dates de livraison, étapes de paiement, pénalités de retard et niveau d’avancement réel du chantier doivent être explicités. Un échéancier clair protège l’acquéreur et évite les mauvaises surprises en cours de projet.",
+        "El calendario cuenta tanto como el precio anunciado. Las fechas de entrega, las etapas de pago, las penalizaciones por retraso y el avance real de la obra deben estar claramente definidos. Un calendario preciso protege al comprador y evita sorpresas durante el proyecto.",
+      ],
+      [
+        "Enfin, les espaces extérieurs — jardin, piscine, stationnement, sécurité — structurent la valeur d’usage d’une villa. Sur plan, ils sont souvent sous-estimés dans la décision. Les vérifier en amont permet de comparer des programmes sur des bases comparables, pas seulement sur une surface habitable.",
+        "Por último, los espacios exteriores — jardín, piscina, estacionamiento y seguridad — estructuran el valor de uso de una villa. En una compra sobre plano, a menudo se subestiman. Verificarlos de antemano permite comparar programas sobre bases equivalentes, no solo por superficie habitable.",
+      ],
+    ],
+    "blog-adresses-immobilier-marrakech": [
+      [
+        "À Marrakech, chaque secteur répond à une demande différente. Guéliz concentre une logique urbaine dense, prisée pour la proximité des usages et la liquidité. Hivernage et ses abords s’appuient sur une image patrimoniale et une clientèle internationale exigeante. Amelkis et les zones résidentielles périphériques séduisent par l’espace, le calme et une offre plus contemporaine.",
+        "En Marrakech, cada sector responde a una demanda diferente. Guéliz concentra una lógica urbana densa, apreciada por la proximidad de los usos diarios y la liquidez. Hivernage y sus alrededores se apoyan en una imagen patrimonial y una clientela internacional exigente. Amelkis y las zonas residenciales periféricas atraen por el espacio, la calma y una oferta más contemporánea.",
+      ],
+      [
+        "Comprendre une adresse, c’est lire sa demande réelle : profil d’acquéreurs, niveau de rareté, qualité du cadre de vie et capacité du secteur à rester désirable dans le temps. Deux biens au même prix n’ont pas la même trajectoire si leurs environnements immédiats ne répondent pas aux mêmes attentes.",
+        "Entender una dirección significa leer su demanda real: perfil de compradores, nivel de rareza, calidad del entorno de vida y capacidad del sector para seguir siendo deseable con el tiempo. Dos propiedades al mismo precio no tienen la misma trayectoria si sus entornos inmediatos no responden a las mismas expectativas.",
+      ],
+      [
+        "Pour un acheteur ou un investisseur, la bonne question n’est donc pas seulement « où acheter », mais « quelle adresse correspond à mon usage, mon horizon et mon niveau de discrétion recherché ».",
+        "Para un comprador o un inversor, la pregunta correcta no es solo «dónde comprar», sino «qué dirección corresponde a mi uso, mi horizonte y el nivel de discreción que busco».",
+      ],
+    ],
+    "blog-appartement-hypercentre-gueliz-marrakech": [
+      [
+        "En hypercentre, un appartement se compare d’abord par son adresse immédiate : rue, orientation, accès, bruit, vis-à-vis et proximité réelle des usages quotidiens. Deux programmes voisins peuvent avoir des trajectoires très différentes si l’un bénéficie d’un accès plus direct aux axes, commerces ou espaces de respiration urbaine.",
+        "En pleno centro, un apartamento se compara primero por su dirección inmediata: calle, orientación, acceso, ruido, vistas y proximidad real a los usos cotidianos. Dos programas vecinos pueden tener trayectorias muy distintas si uno ofrece un acceso más directo a los ejes, comercios o espacios urbanos de respiro.",
+      ],
+      [
+        "Pour un usage résidentiel ou locatif, cette localisation structure la demande future. L’hypercentre de Guéliz, par exemple, reste recherché pour sa centralité, mais toutes les adresses n’offrent pas le même confort de vie ni la même capacité de revente.",
+        "Para uso residencial o de alquiler, esta ubicación estructura la demanda futura. El centro de Guéliz, por ejemplo, sigue siendo buscado por su centralidad, pero no todas las direcciones ofrecen el mismo confort de vida ni la misma capacidad de reventa.",
+      ],
+      [
+        "Avant d’étudier la surface ou le prix, il est donc pertinent de valider la cohérence de l’emplacement avec le projet : qui va y vivre, combien de temps, et avec quelle exigence de liquidité ou de valorisation patrimoniale.",
+        "Antes de estudiar la superficie o el precio, conviene validar la coherencia de la ubicación con el proyecto: quién vivirá allí, durante cuánto tiempo y con qué exigencia de liquidez o valorización patrimonial.",
+      ],
+    ],
+    "blog-investir-immobilier-luxe-marrakech": [
+      [
+        "Investir à Marrakech ne se résume pas à choisir un prix au mètre carré attractif. La performance d’un actif dépend d’abord de l’adresse, du profil d’usage visé — résidence principale, location saisonnière ou patrimoine long terme — et de la capacité du secteur à absorber une revente dans de bonnes conditions.",
+        "Invertir en Marrakech no consiste únicamente en elegir un precio atractivo por metro cuadrado. El rendimiento de un activo depende primero de la dirección, del uso previsto — residencia principal, alquiler estacional o patrimonio a largo plazo — y de la capacidad del sector para absorber una reventa en buenas condiciones.",
+      ],
+      [
+        "Les zones centrales et les quartiers patrimoniaux offrent une visibilité locative forte, mais avec des niveaux de prix plus élevés. Les secteurs périphériques premium, quant à eux, peuvent proposer plus d’espace et une dynamique de croissance, à condition d’anticiper les infrastructures et la demande future.",
+        "Las zonas centrales y los barrios patrimoniales ofrecen una fuerte visibilidad de alquiler, pero con niveles de precio más elevados. Los sectores periféricos premium pueden ofrecer más espacio y una dinámica de crecimiento, siempre que se anticipen las infraestructuras y la demanda futura.",
+      ],
+      [
+        "Une lecture investisseur sérieuse croise donc liquidité, demande locative, qualité de l’environnement et rareté de l’adresse. C’est cette combinaison qui distingue un simple achat immobilier d’un placement cohérent sur le moyen terme.",
+        "Una lectura inversora seria cruza liquidez, demanda de alquiler, calidad del entorno y rareza de la dirección. Es esta combinación la que distingue una simple compra inmobiliaria de una inversión coherente a medio plazo.",
+      ],
+    ],
+    "blog-off-market-marrakech-biens-confidentiels": [
+      [
+        "Une part significative de l’immobilier premium à Marrakech ne passe jamais par les portails publics. Les vendeurs privés, familles, investisseurs ou propriétaires occupant encore le bien recherchent souvent la discrétion avant la visibilité. La publication large peut attirer des demandes non qualifiées et compliquer une négociation sensible.",
+        "Una parte significativa del inmobiliario premium en Marrakech nunca pasa por portales públicos. Vendedores privados, familias, inversores o propietarios que aún ocupan la propiedad suelen buscar discreción antes que visibilidad. Una publicación amplia puede atraer solicitudes no cualificadas y complicar una negociación sensible.",
+      ],
+      [
+        "Par ailleurs, certains dossiers ne sont pas immédiatement présentables : prix en cours de définition, travaux à finaliser, documents en cours de consolidation ou simple volonté de tester le marché sans exposer l’adresse. Dans ces cas, la diffusion se fait de manière ciblée, auprès d’acheteurs ou d’interlocuteurs déjà identifiés.",
+        "Además, algunos expedientes no están listos para presentarse: precio en definición, obras por finalizar, documentos en consolidación o simple voluntad de probar el mercado sin exponer la dirección. En esos casos, la difusión se realiza de forma dirigida, con compradores o interlocutores ya identificados.",
+      ],
+      [
+        "L’off-market n’est donc pas une simple absence de publicité. C’est un mode de distribution qui filtre l’accès, préserve la confidentialité et permet de traiter des opportunités avec plus de rigueur, là où la visibilité publique serait contre-productive.",
+        "El off-market no es una simple ausencia de publicidad. Es un modo de distribución que filtra el acceso, preserva la confidencialidad y permite tratar oportunidades con más rigor allí donde la visibilidad pública sería contraproducente.",
       ],
     ],
   },
@@ -384,6 +546,78 @@ const ARTICLE_BODY_COPY: Record<
       ],
     ],
   },
+  no: {
+    "blog-acheter-villa-sur-plan-marrakech": [
+      [
+        "Un projet sur plan à Marrakech peut offrir une excellente opportunité d’entrée sur un secteur recherché, à condition de lire le dossier avec méthode. Avant de réserver, la première lecture porte sur le promoteur, la solidité juridique du programme et la cohérence entre les visuels marketing et les plans techniques transmis.",
+        "Et nybyggprosjekt i Marrakech kan gi en sterk inngangsmulighet i et etterspurt område, forutsatt at dokumentasjonen leses metodisk. Før reservasjon bør den første vurderingen gjelde utvikleren, prosjektets juridiske soliditet og sammenhengen mellom markedsføringsbildene og de tekniske planene som er levert.",
+      ],
+      [
+        "Le calendrier compte autant que le prix affiché. Dates de livraison, étapes de paiement, pénalités de retard et niveau d’avancement réel du chantier doivent être explicités. Un échéancier clair protège l’acquéreur et évite les mauvaises surprises en cours de projet.",
+        "Fremdriften er like viktig som den oppgitte prisen. Leveringsdatoer, betalingsetapper, bestemmelser ved forsinkelse og reell byggefase må være tydelige. En klar betalings- og fremdriftsplan beskytter kjøperen og reduserer ubehagelige overraskelser underveis.",
+      ],
+      [
+        "Enfin, les espaces extérieurs — jardin, piscine, stationnement, sécurité — structurent la valeur d’usage d’une villa. Sur plan, ils sont souvent sous-estimés dans la décision. Les vérifier en amont permet de comparer des programmes sur des bases comparables, pas seulement sur une surface habitable.",
+        "Til slutt former uteområdene — hage, basseng, parkering og sikkerhet — den praktiske verdien av en villa. Ved kjøp av nybygg undervurderes de ofte i beslutningen. Å kontrollere dem tidlig gjør det mulig å sammenligne prosjekter på like kriterier, ikke bare på boareal.",
+      ],
+    ],
+    "blog-adresses-immobilier-marrakech": [
+      [
+        "À Marrakech, chaque secteur répond à une demande différente. Guéliz concentre une logique urbaine dense, prisée pour la proximité des usages et la liquidité. Hivernage et ses abords s’appuient sur une image patrimoniale et une clientèle internationale exigeante. Amelkis et les zones résidentielles périphériques séduisent par l’espace, le calme et une offre plus contemporaine.",
+        "I Marrakech svarer hvert område på en annen type etterspørsel. Guéliz har en tett urban logikk, verdsatt for nærhet til daglige funksjoner og god likviditet. Hivernage og nærområdene bygger på et patrimonielt image og en krevende internasjonal kundebase. Amelkis og de perifere boligområdene tiltrekker gjennom plass, ro og et mer moderne tilbud.",
+      ],
+      [
+        "Comprendre une adresse, c’est lire sa demande réelle : profil d’acquéreurs, niveau de rareté, qualité du cadre de vie et capacité du secteur à rester désirable dans le temps. Deux biens au même prix n’ont pas la même trajectoire si leurs environnements immédiats ne répondent pas aux mêmes attentes.",
+        "Å forstå en adresse betyr å lese den reelle etterspørselen: kjøperprofil, grad av sjeldenhet, kvaliteten på bomiljøet og områdets evne til å forbli attraktivt over tid. To eiendommer til samme pris får ikke samme utvikling dersom deres umiddelbare omgivelser svarer på ulike forventninger.",
+      ],
+      [
+        "Pour un acheteur ou un investisseur, la bonne question n’est donc pas seulement « où acheter », mais « quelle adresse correspond à mon usage, mon horizon et mon niveau de discrétion recherché ».",
+        "For en kjøper eller investor er derfor spørsmålet ikke bare «hvor bør jeg kjøpe», men «hvilken adresse passer til mitt bruk, min tidshorisont og ønsket diskresjonsnivå».",
+      ],
+    ],
+    "blog-appartement-hypercentre-gueliz-marrakech": [
+      [
+        "En hypercentre, un appartement se compare d’abord par son adresse immédiate : rue, orientation, accès, bruit, vis-à-vis et proximité réelle des usages quotidiens. Deux programmes voisins peuvent avoir des trajectoires très différentes si l’un bénéficie d’un accès plus direct aux axes, commerces ou espaces de respiration urbaine.",
+        "I sentrum sammenlignes en leilighet først etter den umiddelbare adressen: gate, orientering, tilgang, støy, innsyn og reell nærhet til daglige funksjoner. To naboprosjekter kan utvikle seg svært forskjellig dersom ett har mer direkte tilgang til hovedårer, butikker eller rolige urbane rom.",
+      ],
+      [
+        "Pour un usage résidentiel ou locatif, cette localisation structure la demande future. L’hypercentre de Guéliz, par exemple, reste recherché pour sa centralité, mais toutes les adresses n’offrent pas le même confort de vie ni la même capacité de revente.",
+        "For boligbruk eller utleie former beliggenheten den fremtidige etterspørselen. Sentrum av Guéliz er fortsatt etterspurt for sin sentralitet, men ikke alle adresser gir samme bokomfort eller samme videresalgspotensial.",
+      ],
+      [
+        "Avant d’étudier la surface ou le prix, il est donc pertinent de valider la cohérence de l’emplacement avec le projet : qui va y vivre, combien de temps, et avec quelle exigence de liquidité ou de valorisation patrimoniale.",
+        "Før areal eller pris vurderes, er det derfor relevant å kontrollere om beliggenheten stemmer med prosjektet: hvem skal bo der, hvor lenge, og med hvilke krav til likviditet eller langsiktig verdistigning.",
+      ],
+    ],
+    "blog-investir-immobilier-luxe-marrakech": [
+      [
+        "Investir à Marrakech ne se résume pas à choisir un prix au mètre carré attractif. La performance d’un actif dépend d’abord de l’adresse, du profil d’usage visé — résidence principale, location saisonnière ou patrimoine long terme — et de la capacité du secteur à absorber une revente dans de bonnes conditions.",
+        "Å investere i Marrakech handler ikke bare om å velge en attraktiv kvadratmeterpris. Avkastningen til et objekt avhenger først av adressen, tiltenkt bruk — primærbolig, sesongutleie eller langsiktig formue — og områdets evne til å tåle et videresalg under gode forhold.",
+      ],
+      [
+        "Les zones centrales et les quartiers patrimoniaux offrent une visibilité locative forte, mais avec des niveaux de prix plus élevés. Les secteurs périphériques premium, quant à eux, peuvent proposer plus d’espace et une dynamique de croissance, à condition d’anticiper les infrastructures et la demande future.",
+        "Sentrale soner og patrimonielle nabolag gir sterk utleiesynlighet, men med høyere prisnivåer. Premiumområder utenfor sentrum kan tilby mer plass og vekstdynamikk, forutsatt at infrastruktur og fremtidig etterspørsel vurderes på forhånd.",
+      ],
+      [
+        "Une lecture investisseur sérieuse croise donc liquidité, demande locative, qualité de l’environnement et rareté de l’adresse. C’est cette combinaison qui distingue un simple achat immobilier d’un placement cohérent sur le moyen terme.",
+        "En seriøs investorvurdering kombinerer derfor likviditet, utleieetterspørsel, kvaliteten på omgivelsene og adressens sjeldenhet. Det er denne kombinasjonen som skiller et vanlig eiendomskjøp fra en sammenhengende mellomlangsiktig investering.",
+      ],
+    ],
+    "blog-off-market-marrakech-biens-confidentiels": [
+      [
+        "Une part significative de l’immobilier premium à Marrakech ne passe jamais par les portails publics. Les vendeurs privés, familles, investisseurs ou propriétaires occupant encore le bien recherchent souvent la discrétion avant la visibilité. La publication large peut attirer des demandes non qualifiées et compliquer une négociation sensible.",
+        "En betydelig del av premiumeiendommene i Marrakech når aldri offentlige portaler. Private selgere, familier, investorer og eiere som fortsatt bor i eiendommen, søker ofte diskresjon før synlighet. Bred publisering kan tiltrekke ukvalifiserte henvendelser og komplisere sensitive forhandlinger.",
+      ],
+      [
+        "Par ailleurs, certains dossiers ne sont pas immédiatement présentables : prix en cours de définition, travaux à finaliser, documents en cours de consolidation ou simple volonté de tester le marché sans exposer l’adresse. Dans ces cas, la diffusion se fait de manière ciblée, auprès d’acheteurs ou d’interlocuteurs déjà identifiés.",
+        "Noen saker er heller ikke klare for offentlig presentasjon: pris er under avklaring, arbeider må fullføres, dokumenter samles, eller eieren ønsker ganske enkelt å teste markedet uten å eksponere adressen. Da deles informasjonen målrettet med allerede identifiserte kjøpere eller kontaktpersoner.",
+      ],
+      [
+        "L’off-market n’est donc pas une simple absence de publicité. C’est un mode de distribution qui filtre l’accès, préserve la confidentialité et permet de traiter des opportunités avec plus de rigueur, là où la visibilité publique serait contre-productive.",
+        "Off-market er derfor mer enn fravær av annonsering. Det er en distribusjonsmåte som filtrerer tilgang, bevarer konfidensialitet og gjør det mulig å behandle muligheter med større presisjon der offentlig synlighet ville vært kontraproduktiv.",
+      ],
+    ],
+  },
 };
 
 function localizeArticleBody(
@@ -430,7 +664,7 @@ function replaceJsonLdUrl(json: string, from: RegExp | string, to: string): stri
 
 export function localizeBlogIndexContent(
   content: PageContent,
-  locale: Extract<SiteLocale, "en" | "nl" | "it">,
+  locale: Extract<SiteLocale, "en" | "es" | "nl" | "it" | "no">,
 ): PageContent {
   const meta = BLOG_INDEX_META[locale];
   return {
@@ -453,12 +687,15 @@ export function localizeBlogIndexContent(
 
 export function localizeBlogArticleContent(
   content: PageContent,
-  locale: Extract<SiteLocale, "en" | "nl" | "it">,
+  locale: Extract<SiteLocale, "en" | "es" | "nl" | "it" | "no">,
   pageId: PageId,
 ): PageContent {
   const meta = ARTICLE_META[locale][pageId];
   if (!meta) return content;
-  const canonicalPath = `/${locale}/blog/${meta.slug}/`;
+  const canonicalPath =
+    locale === "no"
+      ? `/no/blogg/${meta.slug}/`
+      : `/${locale}/blog/${meta.slug}/`;
   return localizeArticleBody({
     ...content,
     htmlLang: locale,
@@ -467,7 +704,16 @@ export function localizeBlogArticleContent(
     canonical: withSite(canonicalPath),
     ogTitle: meta.ogTitle,
     ogDescription: meta.description,
-    ogLocale: locale === "en" ? "en_US" : locale === "nl" ? "nl_NL" : "it_IT",
+    ogLocale:
+      locale === "en"
+        ? "en_US"
+        : locale === "es"
+          ? "es_ES"
+          : locale === "nl"
+            ? "nl_NL"
+            : locale === "no"
+              ? "nb_NO"
+              : "it_IT",
     twitterTitle: meta.ogTitle,
     twitterDescription: meta.description,
     headJsonLdScripts: content.headJsonLdScripts.map((json) =>

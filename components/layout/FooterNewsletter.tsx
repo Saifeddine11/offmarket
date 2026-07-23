@@ -19,8 +19,10 @@ type FooterNewsletterProps = {
 const HONEYPOT_LABELS: Record<SiteLocale, string> = {
   fr: "Site web de l'entreprise",
   en: "Company website",
+  es: "Sitio web de la empresa",
   it: "Sito web aziendale",
   nl: "Bedrijfswebsite",
+  no: "Bedriftens nettsted",
 };
 
 function readUtm() {

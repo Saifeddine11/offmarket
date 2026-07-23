@@ -7,10 +7,6 @@ export default function ContactLayout({
   return (
     <>
       <StylesheetLinks hrefs={STYLES.contact} />
-      <link
-        rel="manifest"
-        href="/assets/manifest/manifest.webmanifest?v=1765268659"
-      />
       {children}
     </>
   );

@@ -11,8 +11,10 @@ export type HomeSectionKey = "intro" | "testimonials";
 const SECTIONS_BY_LOCALE = {
   fr: frSections.sections as Record<string, string>,
   en: enSections.sections as Record<string, string>,
+  es: frSections.sections as Record<string, string>,
   nl: nlSections.sections as Record<string, string>,
   it: itSections.sections as Record<string, string>,
+  no: frSections.sections as Record<string, string>,
 } satisfies Record<SiteLocale, Record<string, string>>;
 
 /** Homepage section HTML extracted from the matching locale homepage archive. */

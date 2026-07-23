@@ -3,10 +3,12 @@ import Link from "next/link";
 import { FooterNewsletter } from "@/components/layout/FooterNewsletter";
 import { getFooterCopy } from "@/lib/i18n/footerCopy";
 import type { SiteLocale } from "@/lib/i18n/types";
+import { LEGAL_ROUTES, type LegalLocale } from "@/lib/legal/legalContent";
 
 type SiteFooterProps = {
   currentPage?: "about" | "contact" | "privacy-policy" | null;
   locale?: SiteLocale;
+  legalLocale?: LegalLocale;
 };
 
 function FooterEmailIcon() {
@@ -37,8 +39,25 @@ function FooterEmailIcon() {
 export function SiteFooter({
   currentPage = null,
   locale = "fr",
+  legalLocale,
 }: SiteFooterProps) {
   const copy = getFooterCopy(locale);
+  const resolvedLegalLocale = legalLocale ?? locale;
+  const legalLabels: Record<LegalLocale, { privacy: string; terms: string; legal: string; aria: string }> = {
+    fr: { privacy: "Confidentialité", terms: "Conditions", legal: "Mentions légales", aria: "Liens légaux" },
+    en: { privacy: "Privacy", terms: "Terms", legal: "Legal notice", aria: "Legal links" },
+    it: { privacy: "Privacy", terms: "Condizioni", legal: "Note legali", aria: "Collegamenti legali" },
+    nl: { privacy: "Privacy", terms: "Voorwaarden", legal: "Wettelijke vermeldingen", aria: "Juridische links" },
+    es: { privacy: "Privacidad", terms: "Condiciones", legal: "Aviso legal", aria: "Enlaces legales" },
+    no: { privacy: "Personvern", terms: "Vilkår", legal: "Juridisk merknad", aria: "Juridiske lenker" },
+    ar: { privacy: "الخصوصية", terms: "الشروط", legal: "إشعار قانوني", aria: "الروابط القانونية" },
+  };
+  const localizedLegalLabels = legalLabels[resolvedLegalLocale];
+  const legalLinks = [
+    { href: LEGAL_ROUTES[resolvedLegalLocale].privacy, label: localizedLegalLabels.privacy, current: currentPage === "privacy-policy" },
+    { href: LEGAL_ROUTES[resolvedLegalLocale].terms, label: localizedLegalLabels.terms, current: false },
+    { href: LEGAL_ROUTES[resolvedLegalLocale].legal, label: localizedLegalLabels.legal, current: false },
+  ];
 
   return (
     <footer id="contact" className="om-footer">
@@ -136,18 +155,8 @@ export function SiteFooter({
               </span>{" "}
               OFF MARKET. {copy.rights}
             </p>
-            <nav className="om-footer__legal" aria-label={copy.legalNavAria}>
-              {[
-                {
-                  href: copy.privacyHref,
-                  label: copy.privacy,
-                  current: currentPage === "privacy-policy",
-                },
-                { href: copy.termsHref, label: copy.terms, current: false },
-                { href: copy.legalHref, label: copy.legal, current: false },
-              ]
-                .filter((link) => link.href && link.href !== "#")
-                .map((link) => (
+            <nav className="om-footer__legal" aria-label={localizedLegalLabels.aria}>
+              {legalLinks.map((link) => (
                   <Link
                     key={link.href + link.label}
                     href={link.href}

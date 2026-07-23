@@ -46,6 +46,12 @@
   }
 
   function formatArticleCount(count, locale) {
+    if (locale === 'no') {
+      return count + ' ' + (count === 1 ? 'artikkel' : 'artikler');
+    }
+    if (locale === 'es') {
+      return count + ' ' + (count === 1 ? 'artículo' : 'artículos');
+    }
     if (locale === 'nl') {
       return count + ' ' + (count === 1 ? 'artikel' : 'artikelen');
     }
@@ -58,19 +64,27 @@
     return padCount(count) + ' ' + (count === 1 ? 'article' : 'articles');
   }
 
+  function isLocalePath(path, locale) {
+    return path === '/' + locale || path.indexOf('/' + locale + '/') === 0;
+  }
+
   function detectLocale() {
     var path = window.location.pathname || '/';
-    if (path.indexOf('/en') === 0) return 'en';
-    if (path.indexOf('/nl') === 0) return 'nl';
-    if (path.indexOf('/it') === 0) return 'it';
+    if (isLocalePath(path, 'en')) return 'en';
+    if (isLocalePath(path, 'es')) return 'es';
+    if (isLocalePath(path, 'nl')) return 'nl';
+    if (isLocalePath(path, 'it')) return 'it';
+    if (isLocalePath(path, 'no')) return 'no';
     return 'fr';
   }
 
   function articleUrl(slug) {
     var locale = detectLocale();
     if (locale === 'en') return '/en/blog/' + slug + '/';
+    if (locale === 'es') return '/es/blog/' + slug + '/';
     if (locale === 'nl') return '/nl/blog/' + slug + '/';
     if (locale === 'it') return '/it/blog/' + slug + '/';
+    if (locale === 'no') return '/no/blogg/' + slug + '/';
     return '/blog/' + slug + '/';
   }
 
@@ -80,6 +94,55 @@
       if (categories[i].slug === slug) return categories[i].label;
     }
     return slug;
+  }
+
+  function getBlogUiLabels(locale) {
+    var labels = {
+      fr: {
+        categories: 'Catégories du blog',
+        articles: 'Articles du blog',
+        controls: 'Navigation articles',
+        prev: 'Articles précédents',
+        next: 'Articles suivants',
+      },
+      en: {
+        categories: 'Blog categories',
+        articles: 'Blog articles',
+        controls: 'Article navigation',
+        prev: 'Previous articles',
+        next: 'Next articles',
+      },
+      es: {
+        categories: 'Categorías del blog',
+        articles: 'Artículos del blog',
+        controls: 'Navegación de artículos',
+        prev: 'Artículos anteriores',
+        next: 'Artículos siguientes',
+      },
+      nl: {
+        categories: 'Blogcategorieën',
+        articles: 'Blogartikelen',
+        controls: 'Artikelnavigatie',
+        prev: 'Vorige artikelen',
+        next: 'Volgende artikelen',
+      },
+      it: {
+        categories: 'Categorie del blog',
+        articles: 'Articoli del blog',
+        controls: 'Navigazione articoli',
+        prev: 'Articoli precedenti',
+        next: 'Articoli successivi',
+      },
+      no: {
+        categories: 'Bloggkategorier',
+        articles: 'Bloggartikler',
+        controls: 'Artikkelnavigasjon',
+        prev: 'Forrige artikler',
+        next: 'Neste artikler',
+      },
+    };
+
+    return labels[locale] || labels.fr;
   }
 
   function renderCard(article, options) {
@@ -173,6 +236,15 @@
         blogCta: 'View the blog',
         homeCta: 'Back to home',
       },
+      es: {
+        quartiersTitle: 'Artículos para leer mejor los barrios de Marrakech',
+        defaultTitle: 'Lecturas privadas',
+        quartiersLead: 'Análisis, consejos y lecturas del mercado para entender zonas, precios y oportunidades antes de comprar.',
+        homeLead: 'Análisis y lecturas sobre el inmobiliario de prestigio en Marrakech.',
+        hubLead: 'Lecturas privadas sobre el inmobiliario en Marrakech: sobre plano, inversión, barrios, inmuebles off-market y la seguridad de los proyectos.',
+        blogCta: 'Ver el blog',
+        homeCta: 'Volver al inicio',
+      },
       nl: {
         quartiersTitle: 'Artikelen om de wijken van Marrakech beter te lezen',
         defaultTitle: 'Private analyses',
@@ -190,6 +262,15 @@
         hubLead: 'Analisi riservate sul mercato immobiliare di Marrakech: acquisto su progetto, investimenti, quartieri e opportunità off-market.',
         blogCta: 'Vedi il blog',
         homeCta: 'Tornare alla home',
+      },
+      no: {
+        quartiersTitle: 'Artikler som gjør Marrakechs områder lettere å lese',
+        defaultTitle: 'Private markedsblikk',
+        quartiersLead: 'Analyser, råd og markedslesning for å forstå områder, priser og muligheter før kjøp.',
+        homeLead: 'Analyser og markedsblikk på luksuseiendom i Marrakech.',
+        hubLead: 'Private notater om eiendom i Marrakech: nybygg, investering, områder, off-market eiendommer og sikring av prosjekter.',
+        blogCta: 'Se bloggen',
+        homeCta: 'Tilbake til hjem',
       },
     }[locale] || {};
 
@@ -216,17 +297,25 @@
       isHome || isQuartiers
           ? locale === 'en'
           ? '/en/blog/'
+          : locale === 'es'
+            ? '/es/blog/'
           : locale === 'nl'
             ? '/nl/blog/'
             : locale === 'it'
               ? '/it/blog/'
+              : locale === 'no'
+                ? '/no/blogg/'
             : '/blog/'
         : locale === 'en'
           ? '/en/'
+          : locale === 'es'
+            ? '/es/'
           : locale === 'nl'
             ? '/nl/'
             : locale === 'it'
               ? '/it/'
+              : locale === 'no'
+                ? '/no/'
             : '/';
     var ctaLabel =
       isHome || isQuartiers ? localizedCopy.blogCta : localizedCopy.homeCta;
@@ -255,6 +344,7 @@
     var articles;
     var activeCategory;
     var useQuartiersTabs = false;
+    var uiLabels = getBlogUiLabels(locale);
 
     if (isQuartiers && typeof global.OM_BLOG_getQuartiersArticles === 'function') {
       useQuartiersTabs = true;
@@ -295,13 +385,13 @@
       '</div>' +
       renderHeaderButton(copy.ctaHref, copy.ctaLabel) +
       '</div>' +
-      '<div class="om-blog-categories" role="tablist" aria-label="' + (locale === 'en' ? 'Blog categories' : locale === 'nl' ? 'Blogcategorieën' : locale === 'it' ? 'Categorie del blog' : 'Catégories du blog') + '"></div>' +
-      '<div class="om-blog-carousel" data-om-blog-carousel tabindex="0" aria-label="' + (locale === 'en' ? 'Blog articles' : locale === 'nl' ? 'Blogartikelen' : locale === 'it' ? 'Articoli del blog' : 'Articles du blog') + '"></div>' +
-      '<div class="om-blog-controls" aria-label="' + (locale === 'en' ? 'Article navigation' : locale === 'nl' ? 'Artikelnavigatie' : locale === 'it' ? 'Navigazione articoli' : 'Navigation articles') + '">' +
-      '<button class="om-blog-control" type="button" data-blog-prev aria-label="' + (locale === 'en' ? 'Previous articles' : locale === 'nl' ? 'Vorige artikelen' : locale === 'it' ? 'Articoli precedenti' : 'Articles précédents') + '">' +
+      '<div class="om-blog-categories" role="tablist" aria-label="' + uiLabels.categories + '"></div>' +
+      '<div class="om-blog-carousel" data-om-blog-carousel tabindex="0" aria-label="' + uiLabels.articles + '"></div>' +
+      '<div class="om-blog-controls" aria-label="' + uiLabels.controls + '">' +
+      '<button class="om-blog-control" type="button" data-blog-prev aria-label="' + uiLabels.prev + '">' +
       CONTROL_PREV_SVG +
       '</button>' +
-      '<button class="om-blog-control" type="button" data-blog-next aria-label="' + (locale === 'en' ? 'Next articles' : locale === 'nl' ? 'Volgende artikelen' : locale === 'it' ? 'Articoli successivi' : 'Articles suivants') + '">' +
+      '<button class="om-blog-control" type="button" data-blog-next aria-label="' + uiLabels.next + '">' +
       CONTROL_NEXT_SVG +
       '</button>' +
       '</div>';

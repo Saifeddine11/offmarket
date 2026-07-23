@@ -26,7 +26,7 @@ type MarketDemandGraphProps = {
   unitHint: string;
   projectedCaption: string;
   baseLabel: string;
-  locale: "fr" | "en" | "it" | "nl";
+  locale: "fr" | "en" | "es" | "it" | "nl" | "no";
 };
 
 type ChartLayout = {

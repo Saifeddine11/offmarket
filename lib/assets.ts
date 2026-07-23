@@ -13,7 +13,7 @@ const INNER_EDITORIAL_STYLES = withoutGlobalFooterStyles(
     "/assets/stylesheets/offmarket-overrides.css?v=1765338000",
     "/assets/stylesheets/om-typography.css?v=1765311000",
     "/assets/stylesheets/om-final-cta.css?v=1765404400",
-    "/assets/stylesheets/om-inner-hero.css?v=1765405200",
+    "/assets/stylesheets/om-inner-hero.css?v=1784751000",
   ]),
 );
 
@@ -54,7 +54,7 @@ export const STYLES = {
     "/assets/stylesheets/om-private-access-popup.css?v=1765340000",
     "/assets/stylesheets/om-property-modal.css?v=1768512600",
     "/assets/stylesheets/om-contact.css?v=1765405100",
-    "/assets/stylesheets/om-contact-page.css?v=1767579100",
+    "/assets/stylesheets/om-contact-page.css?v=1784754000",
     "/assets/stylesheets/om-nos-projets.css?v=1767547000",
   ],
   /** /sur-plan/villa-jaz/ — modal slides as vertical project detail sections. */
@@ -83,7 +83,7 @@ export const STYLES = {
       "/assets/stylesheets/om-final-cta.css?v=1765404400",
       "/assets/stylesheets/om-page-motion.css?v=1765422400",
       "/assets/stylesheets/om-contact.css?v=1765405100",
-      "/assets/stylesheets/om-contact-page.css?v=1767579100",
+      "/assets/stylesheets/om-contact-page.css?v=1784754000",
     ]),
   ),
   simulateur: withoutGlobalFooterStyles(
@@ -106,6 +106,21 @@ export const FINAL_CTA_STYLES = [
   "/assets/stylesheets/om-page-motion.css?v=1765422400",
 ] as const;
 
+/**
+ * Shared projects-page legacy scripts for all locales:
+ * /nos-projets/, /en/projects/, /it/progetti/, /nl/projecten/,
+ * /es/proyectos/, /no/prosjekter/
+ */
+export const NOS_PROJETS_SCRIPTS = withoutGlobalNavScripts([
+  "/assets/javascripts/gsap.min.js?v=1765268700",
+  "/assets/javascripts/om-language-switcher.js?v=1769200000",
+  "/assets/javascripts/om-inner-hero.js?v=1765357000",
+  "/assets/javascripts/om-featured-projects.js?v=1769202007",
+  "/assets/javascripts/om-property-modal.js?v=1769202006",
+  "/assets/javascripts/om-private-access-popup.js?v=1765340000",
+  "/assets/javascripts/om-private-access-form.js?v=1765600400",
+]) as string[];
+
 export const SCRIPTS = {
   offMarket: ["/assets/javascripts/om-private-access-form.js?v=1765600400"],
   /** Inner editorial pages — page-specific boot (navbar scripts are global). */
@@ -118,7 +133,7 @@ export const SCRIPTS = {
     "/assets/javascripts/gsap.min.js?v=1765268700",
     "/assets/javascripts/om-language-switcher.js?v=1769200000",
     "/assets/javascripts/om-inner-hero.js?v=1765357000",
-    "/assets/javascripts/om-territories.js?v=1765421000",
+    "/assets/javascripts/om-territories.js?v=1784800800",
     "/assets/javascripts/om-simulator.js?v=1765405800",
     "/assets/javascripts/om-blog-data.js?v=1765405600",
     "/assets/javascripts/om-blog.js?v=1765404501",
@@ -128,15 +143,8 @@ export const SCRIPTS = {
     "/assets/javascripts/om-language-switcher.js?v=1769200000",
     "/assets/javascripts/om-inner-hero.js?v=1765357000",
   ]),
-  nosProjets: withoutGlobalNavScripts([
-    "/assets/javascripts/gsap.min.js?v=1765268700",
-    "/assets/javascripts/om-language-switcher.js?v=1769200000",
-    "/assets/javascripts/om-inner-hero.js?v=1765357000",
-    "/assets/javascripts/om-featured-projects.js?v=1769202001",
-    "/assets/javascripts/om-property-modal.js?v=1769202006",
-    "/assets/javascripts/om-private-access-popup.js?v=1765340000",
-    "/assets/javascripts/om-private-access-form.js?v=1765600400",
-  ]),
+  /** French + localized projects pages — do not reuse homepage script lists. */
+  nosProjets: NOS_PROJETS_SCRIPTS,
   villaJazDetail: withoutGlobalNavScripts([
     "/assets/javascripts/gsap.min.js?v=1765268700",
     "/assets/javascripts/om-language-switcher.js?v=1769200000",
@@ -164,3 +172,12 @@ export const SCRIPTS = {
     "/assets/javascripts/om-language-switcher.js?v=1769200000",
   ]),
 } as const;
+
+if (
+  process.env.NODE_ENV !== "production" &&
+  (!Array.isArray(SCRIPTS.nosProjets) || SCRIPTS.nosProjets.length === 0)
+) {
+  console.warn(
+    "[assets] SCRIPTS.nosProjets is missing or empty — projects pages will skip legacy boot.",
+  );
+}

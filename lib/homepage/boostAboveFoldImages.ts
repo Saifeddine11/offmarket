@@ -22,18 +22,12 @@ export function boostAboveFoldImages(segments: BodySegment[]): BodySegment[] {
 function boostHeroBlock(heroBlock: string): string {
   let block = heroBlock;
 
-  block = block.replace(
-    /<video([^>]*)\bposter="([^"]+)"([^>]*)>/gi,
-    (match, before, poster, after) => {
-      if (/\bfetchpriority=/i.test(match)) {
-        return match;
-      }
-      return `<video${before}poster="${poster}"${after} fetchpriority="high">`;
-    },
-  );
-
   block = block.replace(/<img([^>]*)>/gi, (match) => {
-    if (!/\bdata-src="/i.test(match) && !/\bsrc="\/assets\//i.test(match)) {
+    if (
+      !/\bclass="[^"]*mav-hero__media[^"]*"/i.test(match) &&
+      !/\bdata-src="/i.test(match) &&
+      !/\bsrc="\/assets\//i.test(match)
+    ) {
       return match;
     }
     let tag = match;
@@ -42,6 +36,9 @@ function boostHeroBlock(heroBlock: string): string {
     }
     if (!/\bloading=/i.test(tag)) {
       tag = tag.replace("<img", '<img loading="eager"');
+    }
+    if (!/\bdecoding=/i.test(tag)) {
+      tag = tag.replace("<img", '<img decoding="async"');
     }
     return tag;
   });

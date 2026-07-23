@@ -3,8 +3,10 @@ import { PageFinalCtaMotion } from "@/components/motion/PageFinalCtaMotion";
 import {
   PROPERTY_DETAIL_ANCHORS,
   PROPERTY_DETAIL_ANCHORS_EN,
+  PROPERTY_DETAIL_ANCHORS_ES,
   PROPERTY_DETAIL_ANCHORS_IT,
   PROPERTY_DETAIL_ANCHORS_NL,
+  PROPERTY_DETAIL_ANCHORS_NO,
   PropertyModalSlides,
 } from "@/components/property/PropertyModalSlides";
 import type { SiteLocale } from "@/lib/i18n/types";
@@ -12,14 +14,18 @@ import type { SiteLocale } from "@/lib/i18n/types";
 const VILLA_PAGE_COPY = {
   fr: { skip: "Aller au contenu principal", nav: "Navigation fiche bien" },
   en: { skip: "Skip to main content", nav: "Property detail navigation" },
+  es: { skip: "Saltar al contenido principal", nav: "Navegación de la ficha de propiedad" },
   it: { skip: "Vai al contenuto principale", nav: "Navigazione scheda bene" },
   nl: { skip: "Naar hoofdinhoud", nav: "Navigatie vastgoedfiche" },
+  no: { skip: "Gå til hovedinnhold", nav: "Navigasjon for eiendomsfiche" },
 } satisfies Record<SiteLocale, { skip: string; nav: string }>;
 
 function getAnchors(locale: SiteLocale) {
   if (locale === "en") return PROPERTY_DETAIL_ANCHORS_EN;
+  if (locale === "es") return PROPERTY_DETAIL_ANCHORS_ES;
   if (locale === "it") return PROPERTY_DETAIL_ANCHORS_IT;
   if (locale === "nl") return PROPERTY_DETAIL_ANCHORS_NL;
+  if (locale === "no") return PROPERTY_DETAIL_ANCHORS_NO;
   return PROPERTY_DETAIL_ANCHORS;
 }
 

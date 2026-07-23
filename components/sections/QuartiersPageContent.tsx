@@ -72,6 +72,29 @@ const QUARTIERS_COPY = {
     simulatorPrimary: "/en/contact/",
     simulatorSecondary: "/en/off-plan/",
   },
+  es: {
+    skip: "Saltar al contenido principal",
+    breadcrumbs: ["Inicio", "Barrios"],
+    title: "Dónde invertir en Marrakech",
+    subtitle:
+      "Cada barrio tiene su lógica: centralidad, standing, rareza o potencial de alquiler.",
+    secondary:
+      "Guéliz, Hivernage, Triangle d'Or y la Medina se comparan según su presupuesto, su uso y su horizonte.",
+    primary: "Acceder al Off-market",
+    primaryHref: "/es/off-market/",
+    secondaryCta: "Proyectos",
+    secondaryHref: "/es/proyectos/",
+    territoriesTitle: "Top 3 barrios donde invertir en Marrakech",
+    territoriesEyebrow: "BARRIOS",
+    territoriesAria: "Zonas de inversión en Marrakech",
+    territoriesSubtitle:
+      "Una lectura clara de las zonas más buscadas para comprar, invertir o comparar un proyecto inmobiliario en Marrakech.",
+    simulatorTitle: "Simular un proyecto según su barrio objetivo",
+    simulatorText:
+      "Compare su presupuesto, objetivo y estrategia antes de estudiar una oportunidad en Marrakech.",
+    simulatorPrimary: "/es/contacto/",
+    simulatorSecondary: "/es/sobre-plano/",
+  },
   it: {
     skip: "Vai al contenuto principale",
     breadcrumbs: ["Home", "Quartieri"],
@@ -118,6 +141,29 @@ const QUARTIERS_COPY = {
     simulatorPrimary: "/nl/contact/",
     simulatorSecondary: "/nl/nieuwbouw/",
   },
+  no: {
+    skip: "Gå til hovedinnhold",
+    breadcrumbs: ["Hjem", "Områder"],
+    title: "Hvor investere i Marrakech",
+    subtitle:
+      "Hvert område har sin egen logikk: sentralitet, standard, sjeldenhet eller utleiepotensial.",
+    secondary:
+      "Guéliz, Hivernage, Triangle d'Or og Medina sammenlignes etter budsjett, bruk og tidshorisont.",
+    primary: "Få tilgang til Off-market",
+    primaryHref: "/no/off-market/",
+    secondaryCta: "Prosjekter",
+    secondaryHref: "/no/prosjekter/",
+    territoriesTitle: "Topp 3 områder å investere i Marrakech",
+    territoriesEyebrow: "OMRÅDER",
+    territoriesAria: "Investeringsområder i Marrakech",
+    territoriesSubtitle:
+      "En tydelig vurdering av de mest etterspurte områdene for kjøp, investering eller sammenligning av et eiendomsprosjekt i Marrakech.",
+    simulatorTitle: "Simuler et prosjekt ut fra målområdet ditt",
+    simulatorText:
+      "Sammenlign budsjett, mål og strategi før du vurderer en mulighet i Marrakech.",
+    simulatorPrimary: "/no/kontakt/",
+    simulatorSecondary: "/no/nybygg/",
+  },
 } satisfies Record<SiteLocale, {
   skip: string;
   breadcrumbs: [string, string];
@@ -145,6 +191,10 @@ export function QuartiersPageContent({ locale = "fr" }: { locale?: SiteLocale })
       ? "Breadcrumb"
       : locale === "nl"
         ? "Broodkruimel"
+        : locale === "es"
+          ? "Miga de pan"
+          : locale === "no"
+            ? "Brødsmulesti"
         : locale === "it"
           ? "Percorso di navigazione"
           : "Fil d'Ariane";

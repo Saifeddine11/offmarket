@@ -28,6 +28,14 @@ const CALLBACK_COPY = {
       "Share your project. OFF MARKET will respond with a targeted reading and real comparables.",
     secondary: "Contact form",
   },
+  es: {
+    close: "Cerrar",
+    dialog: "Contacto",
+    title: "Recibir un análisis privado",
+    text:
+      "Comparta su proyecto. OFF MARKET le responde con una lectura específica y comparables reales.",
+    secondary: "Formulario de contacto",
+  },
   it: {
     close: "Chiudi",
     dialog: "Contatto",
@@ -43,6 +51,14 @@ const CALLBACK_COPY = {
     text:
       "Deel uw project. OFF MARKET antwoordt met een gerichte analyse en echte vergelijkingspunten.",
     secondary: "Contactformulier",
+  },
+  no: {
+    close: "Lukk",
+    dialog: "Kontakt",
+    title: "Motta en privat analyse",
+    text:
+      "Del prosjektet ditt. OFF MARKET svarer med en målrettet vurdering og reelle sammenligninger.",
+    secondary: "Kontaktskjema",
   },
 } satisfies Record<SiteLocale, {
   close: string;

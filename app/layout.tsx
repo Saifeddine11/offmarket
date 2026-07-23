@@ -8,7 +8,8 @@ import { GlobalSiteNavbar } from "@/components/layout/GlobalSiteNavbar";
 import { ScrollLockCleanup } from "@/components/layout/ScrollLockCleanup";
 import { DeferredNavBoot } from "@/components/layout/DeferredNavBoot";
 import { getSiteStructuredData } from "@/lib/seo/structuredData";
-import { localeFromPathname, languageTagForLocale } from "@/lib/i18n/locale";
+import { localeFromPathname } from "@/lib/i18n/locale";
+import { legalLocaleFromPathname } from "@/lib/legal/legalContent";
 import { headers } from "next/headers";
 
 function requestPathname(headerList: Headers): string {
@@ -30,6 +31,11 @@ function requestPathname(headerList: Headers): string {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://offmarketofficial.com"),
+  manifest: "/assets/manifest/manifest.webmanifest?v=1765268659",
+  icons: {
+    icon: "/assets/manifest/favicon-offmarket.svg?v=1765297300",
+    apple: "/assets/manifest/apple-touch-icon.png",
+  },
   verification: {
     google: "_NdQPaXlSnkC3js_-xW-1XLA2M1qC1RkOOHCpCWUOx8",
   },
@@ -40,11 +46,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = localeFromPathname(requestPathname(await headers()));
-  const lang = languageTagForLocale(locale);
+  const pathname = requestPathname(await headers());
+  const legalLocale = legalLocaleFromPathname(pathname);
+  const locale = localeFromPathname(pathname);
+  const lang = legalLocale === "no" ? "nb-NO" : legalLocale;
 
   return (
-    <html lang={lang} dir="ltr" className="has-hover" suppressHydrationWarning>
+    <html lang={lang} dir={legalLocale === "ar" ? "rtl" : "ltr"} className="has-hover" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
@@ -91,7 +99,7 @@ export default async function RootLayout({
         <GlobalFooterAssets />
         <GlobalSiteNavbar locale={locale} />
         {children}
-        <GlobalSiteFooter locale={locale} />
+        <GlobalSiteFooter locale={locale} legalLocale={legalLocale} />
         <ScrollLockCleanup />
         <DeferredNavBoot />
         <Script

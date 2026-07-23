@@ -17,7 +17,7 @@ export const metadata: Metadata = buildPageMetadata({
   twitterDescription:
     "Un cadre indépendant d'analyse immobilière dont OFF MARKET respecte et applique les principes.",
   canonicalPath: "/about/",
-  ogImage: "https://offmarketofficial.com/assets/mavericks/hero/mavericks-hero-villa.webp",
+  ogImage: "https://offmarketofficial.com/assets/images/hero/notre-histoire-hero.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

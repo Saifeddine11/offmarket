@@ -23,9 +23,15 @@ export function BusinessRouteContent({ content }: BusinessRouteContentProps) {
   const isOffPlanRoute =
     content.canonical.endsWith("/off-plan/") ||
     content.canonical.endsWith("/nieuwbouw/") ||
-    content.canonical.endsWith("/progetti-su-piano/");
+    content.canonical.endsWith("/progetti-su-piano/") ||
+    content.canonical.endsWith("/sobre-plano/") ||
+    content.canonical.endsWith("/nybygg/");
   const localizedOffPlanLocale: Exclude<SiteLocale, "fr"> | null =
-    content.htmlLang === "en" || content.htmlLang === "it" || content.htmlLang === "nl"
+    content.htmlLang === "en" ||
+    content.htmlLang === "es" ||
+    content.htmlLang === "it" ||
+    content.htmlLang === "nl" ||
+    content.htmlLang === "no"
       ? content.htmlLang
       : null;
   const bodySegments = isFrenchSurPlan

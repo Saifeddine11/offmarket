@@ -100,6 +100,46 @@ const TIMELINE_ENTRIES = {
       ],
     },
   ],
+  es: [
+    {
+      index: "01",
+      title: "Estudiar el proyecto",
+      content:
+        "Analizamos la ubicación, el promotor, los documentos, el precio, los materiales, las prestaciones y el calendario.",
+      details: [
+        "Ubicación",
+        "Promotor",
+        "Documentos",
+        "Precio",
+        "Materiales",
+        "Entrega",
+      ],
+    },
+    {
+      index: "02",
+      title: "Revisión S.A.F.E.",
+      content:
+        "OFF MARKET aplica los principios S.A.F.E. para identificar los puntos sensibles antes de la presentación.",
+      details: [
+        "Seguridad del proyecto",
+        "Análisis de inversión",
+        "Fiabilidad de ejecución",
+        "Acompañamiento del comprador",
+      ],
+    },
+    {
+      index: "03",
+      title: "Presentar con exigencia",
+      content:
+        "Un proyecto solo se presenta si merece realmente ser estudiado por un comprador.",
+      details: [
+        "Oportunidad cualificada",
+        "Lectura clara",
+        "Riesgos identificados",
+        "Decisión más serena",
+      ],
+    },
+  ],
   it: [
     {
       index: "01",
@@ -177,6 +217,46 @@ const TIMELINE_ENTRIES = {
         "Heldere analyse",
         "Risico's benoemd",
         "Rustigere beslissing",
+      ],
+    },
+  ],
+  no: [
+    {
+      index: "01",
+      title: "Vurdere prosjektet",
+      content:
+        "Vi analyserer beliggenhet, utvikler, dokumenter, pris, materialer, kvaliteter og tidsplan.",
+      details: [
+        "Beliggenhet",
+        "Utvikler",
+        "Dokumenter",
+        "Pris",
+        "Materialer",
+        "Levering",
+      ],
+    },
+    {
+      index: "02",
+      title: "S.A.F.E.-gjennomgang",
+      content:
+        "OFF MARKET anvender S.A.F.E.-prinsippene for å identifisere sensitive punkter før presentasjon.",
+      details: [
+        "Prosjektsikring",
+        "Investeringsanalyse",
+        "Gjennomføringsevne",
+        "Kjøperveiledning",
+      ],
+    },
+    {
+      index: "03",
+      title: "Presentere med presisjon",
+      content:
+        "Et prosjekt presenteres bare dersom det virkelig fortjener å bli vurdert av en kjøper.",
+      details: [
+        "Kvalifisert mulighet",
+        "Tydelig vurdering",
+        "Risiko identifisert",
+        "Roligere beslutning",
       ],
     },
   ],

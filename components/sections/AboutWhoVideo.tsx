@@ -42,6 +42,11 @@ const VIDEO_COPY = {
     close: "Close the OFF MARKET presentation video",
     dialog: "OFF MARKET presentation video",
   },
+  es: {
+    open: "Abrir el video de presentación de OFF MARKET",
+    close: "Cerrar el video de presentación de OFF MARKET",
+    dialog: "Video de presentación de OFF MARKET",
+  },
   it: {
     open: "Apri il video di presentazione OFF MARKET",
     close: "Chiudi il video di presentazione OFF MARKET",
@@ -51,6 +56,11 @@ const VIDEO_COPY = {
     open: "Open de OFF MARKET-presentatievideo",
     close: "Sluit de OFF MARKET-presentatievideo",
     dialog: "OFF MARKET-presentatievideo",
+  },
+  no: {
+    open: "Åpne presentasjonsvideoen til OFF MARKET",
+    close: "Lukk presentasjonsvideoen til OFF MARKET",
+    dialog: "OFF MARKET-presentasjonsvideo",
   },
 } satisfies Record<SiteLocale, { open: string; close: string; dialog: string }>;
 

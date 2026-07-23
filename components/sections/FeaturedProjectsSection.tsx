@@ -1,6 +1,7 @@
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { TextMaskReveal } from "@/components/motion/TextMaskReveal";
 import { PropertyModalSlides } from "@/components/property/PropertyModalSlides";
+import { FeaturedProjectsBoot } from "@/components/sections/FeaturedProjectsBoot";
 import { serializeProjectCardCopy } from "@/lib/i18n/projectCardCopy";
 import type { SiteLocale } from "@/lib/i18n/types";
 
@@ -29,6 +30,8 @@ export type FeaturedProjectsSectionProps = {
   ctaProof?: string;
   motion?: boolean;
   locale?: string;
+  /** Projects-page legacy scripts — loaded by FeaturedProjectsBoot after hydration. */
+  legacyScripts?: readonly string[] | null;
 };
 
 const FEATURED_COPY: Record<SiteLocale, {
@@ -93,6 +96,27 @@ const FEATURED_COPY: Record<SiteLocale, {
     tabsAria: "Property sheet navigation",
     tabs: ["General", "About", "Features", "Exterior", "Interior", "Plans"],
   },
+  es: {
+    ariaLabel: "Propiedades accesibles mediante expediente privado",
+    eyebrow: "DIRECCIONES CONFIDENCIALES",
+    title: "Oportunidades poco comunes en Marrakech",
+    lead: "Propiedades seleccionadas fuera de los canales habituales, con información esencial visible y un expediente completo transmitido previa solicitud.",
+    note: "Selección actualizada regularmente.",
+    ctaLabel: "Solicitar acceso",
+    ctaHref: "/es/off-market/",
+    ctaProof: "15+ proyectos privados seguidos en Marrakech",
+    popupClose: "Cerrar",
+    popupBadge: "ACCESO PRIVADO",
+    popupTitle:
+      "Terrenos, casas, hoteles y restaurantes le esperan en off-market.",
+    popupText: "Regístrese para acceder a la selección privada.",
+    popupButton: "Desbloquear el acceso",
+    closeModal: "Cerrar la ficha",
+    prev: "Diapositiva anterior",
+    next: "Diapositiva siguiente",
+    tabsAria: "Navegación de la ficha de propiedad",
+    tabs: ["General", "Sobre el proyecto", "Características", "Exterior", "Interior", "Planos"],
+  },
   it: {
     ariaLabel: "Immobili disponibili su dossier",
     eyebrow: "INDIRIZZI RISERVATI",
@@ -135,10 +159,31 @@ const FEATURED_COPY: Record<SiteLocale, {
     tabsAria: "Navigatie vastgoedfiche",
     tabs: ["Algemeen", "Over dit project", "Kenmerken", "Exterieur", "Interieur", "Plattegronden"],
   },
+  no: {
+    ariaLabel: "Eiendommer tilgjengelige via privat dokumentasjon",
+    eyebrow: "KONFIDENSIELLE ADRESSER",
+    title: "Sjeldne muligheter i Marrakech",
+    lead: "Eiendommer valgt utenfor de vanlige kanalene, med vesentlig informasjon synlig og full dokumentasjon delt på forespørsel.",
+    note: "Utvalget oppdateres jevnlig.",
+    ctaLabel: "Be om tilgang",
+    ctaHref: "/no/off-market/",
+    ctaProof: "15+ private prosjekter fulgt i Marrakech",
+    popupClose: "Lukk",
+    popupBadge: "PRIVAT TILGANG",
+    popupTitle:
+      "Tomter, hus, hoteller og restauranter er tilgjengelige off-market.",
+    popupText: "Registrer deg for å få tilgang til det private utvalget.",
+    popupButton: "Åpne tilgang",
+    closeModal: "Lukk eiendomsfiche",
+    prev: "Forrige lysbilde",
+    next: "Neste lysbilde",
+    tabsAria: "Navigasjon for eiendomsfiche",
+    tabs: ["Generelt", "Om prosjektet", "Kjennetegn", "Eksteriør", "Interiør", "Planer"],
+  },
 };
 
 function resolveLocale(locale?: string): SiteLocale {
-  if (locale === "en" || locale === "it" || locale === "nl") return locale;
+  if (locale === "en" || locale === "es" || locale === "it" || locale === "nl" || locale === "no") return locale;
   return "fr";
 }
 
@@ -160,6 +205,7 @@ export function FeaturedProjectsSection({
   ctaProof = "15+ projets privés suivis à Marrakech",
   motion = false,
   locale,
+  legacyScripts,
 }: FeaturedProjectsSectionProps) {
   const resolvedLocale = resolveLocale(locale);
   const copy = FEATURED_COPY[resolvedLocale];
@@ -181,12 +227,13 @@ export function FeaturedProjectsSection({
       : ctaProof;
 
   return (
-    <section
-      id={id}
-      className="om-featured-projects"
-      aria-label={copy.ariaLabel}
-      data-scroll-section
-    >
+    <>
+      <section
+        id={id}
+        className="om-featured-projects"
+        aria-label={copy.ariaLabel}
+        data-scroll-section
+      >
       <div className="om-featured-projects__container">
         <header className="om-featured-projects__intro">
           <div className="om-featured-projects__intro-copy">
@@ -237,19 +284,14 @@ export function FeaturedProjectsSection({
           </div>
         </header>
 
-        {/* Cards are injected by om-featured-projects.js, sometimes before
-            hydration — dangerouslySetInnerHTML keeps hydration from diffing. */}
-        <ScrollReveal
+        {/* The legacy bundle owns the card children. Keep this mount stable so
+            React never clears injected cards during a soft locale navigation. */}
+        <div
           className="om-featured-projects__grid"
           data-om-property-cards=""
           data-om-project-card-copy={serializeProjectCardCopy(resolvedLocale)}
-          delay={0.12}
-          disabled={!motion}
           suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: "" }}
-        >
-          {null}
-        </ScrollReveal>
+        />
 
         <div className="om-private-access-popup" aria-hidden="true">
           <button
@@ -269,7 +311,9 @@ export function FeaturedProjectsSection({
       </div>
 
       <PropertyModalShell locale={resolvedLocale} />
-    </section>
+      </section>
+      <FeaturedProjectsBoot srcs={legacyScripts} />
+    </>
   );
 }
 

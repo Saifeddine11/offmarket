@@ -209,6 +209,118 @@ export const quartierDetailsNl: QuartierDetail[] = [
   },
 ];
 
+export const quartierDetailsEs: QuartierDetail[] = [
+  {
+    ...quartierDetails[0],
+    valueLabel: "CENTRALIDAD DE ALQUILER",
+    title: "Hipercentro de Guéliz / Hivernage",
+    description:
+      "Un sector central muy buscado para apartamentos, pied-à-terre, comercios, restaurantes y una demanda de alquiler regular.",
+    imageAlt: "Apartamento contemporáneo en Guéliz Marrakech",
+    ctaLabel: "Ver apartamentos",
+    ctaHref: "/es/proyectos/",
+    points: [
+      { label: "Comercios y restaurantes", icon: "restaurant" },
+      { label: "Cafés y vida urbana", icon: "cup" },
+      { label: "Centros comerciales", icon: "shopping" },
+      { label: "Hoteles y servicios", icon: "building" },
+      { label: "Fuerte demanda de alquiler", icon: "chart", accent: "green" },
+      { label: "Apartamentos nuevos", icon: "building" },
+    ],
+  },
+  {
+    ...quartierDetails[1],
+    valueLabel: "DIRECCIONES RESIDENCIALES",
+    description:
+      "Un sector residencial premium, impulsado por el espacio, la calma, las villas, los accesos principales y la escasez de suelo.",
+    imageAlt: "Villa contemporánea en un sector residencial de Marrakech",
+    ctaLabel: "Ver Villa Jaz",
+    ctaHref: "/es/sobre-plano/villa-jaz/",
+    points: [
+      { label: "Villas y residencias privadas", icon: "villa" },
+      { label: "Jardín y piscina", icon: "pool" },
+      { label: "Acceso a vías principales", icon: "road" },
+      { label: "Calma residencial", icon: "leaf" },
+      { label: "Potencial patrimonial", icon: "chart" },
+      { label: "Escasez de suelo", icon: "lock" },
+    ],
+  },
+  {
+    ...quartierDetails[2],
+    valueLabel: "RENDIMIENTO TURÍSTICO",
+    title: "Medina",
+    description:
+      "Un mercado patrimonial y confidencial, buscado por riads, casas de huéspedes, turismo y propiedades con carácter.",
+    imageAlt: "Riad con carácter en la Medina de Marrakech",
+    ctaLabel: "Acceso privado",
+    ctaHref: "/es/off-market/",
+    points: [
+      { label: "Riads con carácter", icon: "arch" },
+      { label: "Casas de huéspedes", icon: "house" },
+      { label: "Patrimonio y zocos", icon: "heritage" },
+      { label: "Cerca de Jemaa el-Fna", icon: "pin" },
+      { label: "Turismo", icon: "suitcase" },
+      { label: "Selección confidencial", icon: "lock" },
+    ],
+  },
+];
+
+export const quartierDetailsNo: QuartierDetail[] = [
+  {
+    ...quartierDetails[0],
+    valueLabel: "SENTRAL UTLEIEETTERSPØRSEL",
+    title: "Guéliz hyper-sentrum / Hivernage",
+    description:
+      "Et etterspurt sentralt område for leiligheter, pied-à-terre-boliger, butikker, restauranter og jevn utleieetterspørsel.",
+    imageAlt: "Moderne leilighet i Guéliz Marrakech",
+    ctaLabel: "Se leiligheter",
+    ctaHref: "/no/prosjekter/",
+    points: [
+      { label: "Butikker og restauranter", icon: "restaurant" },
+      { label: "Kafeer og byliv", icon: "cup" },
+      { label: "Kjøpesentre", icon: "shopping" },
+      { label: "Hoteller og tjenester", icon: "building" },
+      { label: "Sterk utleieetterspørsel", icon: "chart", accent: "green" },
+      { label: "Nye leiligheter", icon: "building" },
+    ],
+  },
+  {
+    ...quartierDetails[1],
+    valueLabel: "BOLIGADRESSER",
+    description:
+      "Et premium boligområde drevet av plass, ro, villaer, hovedadkomster og knapphet på tomter.",
+    imageAlt: "Moderne villa i et boligområde i Marrakech",
+    ctaLabel: "Se Villa Jaz",
+    ctaHref: "/no/nybygg/villa-jaz/",
+    points: [
+      { label: "Villaer og private residenser", icon: "villa" },
+      { label: "Hage og basseng", icon: "pool" },
+      { label: "Tilgang til hovedveier", icon: "road" },
+      { label: "Rolig boligmiljø", icon: "leaf" },
+      { label: "Langsiktig verdipotensial", icon: "chart" },
+      { label: "Tomteknapphet", icon: "lock" },
+    ],
+  },
+  {
+    ...quartierDetails[2],
+    valueLabel: "TURISTISK AVKASTNING",
+    title: "Medina",
+    description:
+      "Et kulturarvspreget og konfidensielt marked, etterspurt for riader, gjestehus, turisme og eiendommer med særpreg.",
+    imageAlt: "Riad med særpreg i Medina i Marrakech",
+    ctaLabel: "Privat tilgang",
+    ctaHref: "/no/off-market/",
+    points: [
+      { label: "Riader med særpreg", icon: "arch" },
+      { label: "Gjestehus", icon: "house" },
+      { label: "Kulturarv og souker", icon: "heritage" },
+      { label: "Nær Jemaa el-Fna", icon: "pin" },
+      { label: "Turisme", icon: "suitcase" },
+      { label: "Konfidensielt utvalg", icon: "lock" },
+    ],
+  },
+];
+
 export const quartierDetailsIt: QuartierDetail[] = [
   {
     ...quartierDetails[0],

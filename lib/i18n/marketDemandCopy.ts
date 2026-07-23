@@ -172,4 +172,78 @@ export const MARKET_DEMAND_COPY: Record<SiteLocale, MarketDemandCopy> = {
       },
     ],
   },
+  es: {
+    eyebrow: "TRANSACCIONES EN MARRAKECH",
+    title: "Una progresión que se acumula.",
+    lead:
+      "Desde 2022, el nivel estimado de transacciones inmobiliarias en Marrakech aumenta. Cada porcentaje indica la diferencia acumulada respecto a 2022.",
+    graphLabel: "PROGRESIÓN ACUMULADA DE LAS TRANSACCIONES · DESDE 2022",
+    svgTitle:
+      "Progresión acumulada de las transacciones inmobiliarias en Marrakech desde 2022",
+    svgDesc:
+      "Nivel acumulado vs 2022: 2022 base, 2023 +16,5 %, 2024 +21,4 %, 2025 +50,6 %. Proyecciones internas de 2026 a 2030 como prolongación de la tendencia.",
+    summary:
+      "En Marrakech, el nivel estimado de transacciones inmobiliarias supera en +16,5 % en 2023, +21,4 % en 2024 y +50,6 % en 2025 el nivel de 2022. Los años 2026 a 2030 son proyecciones internas.",
+    unitHint: "% vs 2022",
+    projectedCaption: "estimado",
+    baseLabel: "base",
+    sourcesTitle: "Fuentes y metodología",
+    sourcesBody:
+      "El gráfico muestra una progresión acumulada desde 2022 (base 100), no solo la variación anual, lo que evita que un año de crecimiento más lento haga bajar la curva. Tasas anuales oficiales utilizadas: 2023 +16,5 % vs 2022, 2024 +4,2 % vs 2023, 2025 +24,1 % vs 2024. Niveles acumulados observados: 2023 +16,5 %, 2024 +21,4 %, 2025 +50,6 % vs 2022. Los puntos 2026–2030 son proyecciones internas de OffMarket (tasas anuales decrecientes indicativas), distintas de las estadísticas oficiales. No se trata de un recuento exacto de propiedades vendidas.",
+    metrics: [
+      {
+        value: "+50,6 %",
+        label: "vs 2022",
+        detail: "nivel a finales de 2025",
+        accent: true,
+      },
+      {
+        value: "+24,1 %",
+        label: "en 2025",
+        detail: "vs 2024",
+      },
+      {
+        value: "2030",
+        label: "horizonte proyectado",
+        detail: "estimación interna",
+      },
+    ],
+  },
+  no: {
+    eyebrow: "TRANSAKSJONER I MARRAKECH",
+    title: "En utvikling som bygger seg opp.",
+    lead:
+      "Siden 2022 har det estimerte transaksjonsnivået i Marrakech økt. Hver prosent viser akkumulert avvik sammenlignet med 2022.",
+    graphLabel: "AKKUMULERT TRANSAKSJONSVEKST · SIDEN 2022",
+    svgTitle:
+      "Akkumulert utvikling i eiendomstransaksjoner i Marrakech siden 2022",
+    svgDesc:
+      "Akkumulert nivå vs 2022: 2022 base, 2023 +16,5 %, 2024 +21,4 %, 2025 +50,6 %. Interne prognoser fra 2026 til 2030 som videreføring av trenden.",
+    summary:
+      "I Marrakech er det estimerte nivået for eiendomstransaksjoner +16,5 % i 2023, +21,4 % i 2024 og +50,6 % i 2025 sammenlignet med 2022. Årene 2026 til 2030 er interne prognoser.",
+    unitHint: "% vs 2022",
+    projectedCaption: "estimert",
+    baseLabel: "base",
+    sourcesTitle: "Kilder og metode",
+    sourcesBody:
+      "Grafen viser akkumulert utvikling siden 2022 (base 100), ikke bare årlig endring. Dermed vil ikke et år med lavere vekst trekke kurven ned. Offisielle årlige satser brukt: 2023 +16,5 % vs 2022, 2024 +4,2 % vs 2023, 2025 +24,1 % vs 2024. Observerte akkumulerte nivåer: 2023 +16,5 %, 2024 +21,4 %, 2025 +50,6 % vs 2022. Punktene 2026–2030 er interne OffMarket-prognoser (indikative avtakende årlige satser), adskilt fra offisiell statistikk. Dette er ikke en nøyaktig opptelling av solgte eiendommer.",
+    metrics: [
+      {
+        value: "+50,6 %",
+        label: "vs 2022",
+        detail: "nivå ved utgangen av 2025",
+        accent: true,
+      },
+      {
+        value: "+24,1 %",
+        label: "i 2025",
+        detail: "vs 2024",
+      },
+      {
+        value: "2030",
+        label: "projisert horisont",
+        detail: "intern estimat",
+      },
+    ],
+  },
 };

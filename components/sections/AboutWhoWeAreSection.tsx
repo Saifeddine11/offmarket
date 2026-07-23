@@ -41,6 +41,17 @@ const ABOUT_WHO_COPY = {
     cta: "Discover our approach",
     href: "/en/off-market/",
   },
+  es: {
+    eyebrow: "QUIÉNES SOMOS",
+    title:
+      "Una casa privada para leer el mercado inmobiliario de Marrakech con exigencia.",
+    lead:
+      "OFF MARKET acompaña a compradores, inversores y propietarios con una selección específica, un análisis claro y un acceso discreto a oportunidades pertinentes.",
+    chipsLabel: "Nuestro enfoque",
+    chips: ["Selección específica", "Análisis claro", "Acompañamiento discreto"],
+    cta: "Descubrir nuestro enfoque",
+    href: "/es/off-market/",
+  },
   it: {
     eyebrow: "CHI SIAMO",
     title:
@@ -62,6 +73,17 @@ const ABOUT_WHO_COPY = {
     chips: ["Gerichte selectie", "Heldere analyse", "Discrete begeleiding"],
     cta: "Ontdek onze aanpak",
     href: "/nl/off-market/",
+  },
+  no: {
+    eyebrow: "HVEM VI ER",
+    title:
+      "Et privat miljø for å lese eiendomsmarkedet i Marrakech med grundighet.",
+    lead:
+      "OFF MARKET følger kjøpere, investorer og eiere med et målrettet utvalg, tydelig analyse og diskret tilgang til relevante muligheter.",
+    chipsLabel: "Vår tilnærming",
+    chips: ["Målrettet utvalg", "Tydelig analyse", "Diskret oppfølging"],
+    cta: "Oppdag vår tilnærming",
+    href: "/no/off-market/",
   },
 } satisfies Record<SiteLocale, {
   eyebrow: string;

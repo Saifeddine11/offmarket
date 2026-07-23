@@ -4,6 +4,7 @@ import { AnimatedInnerPageTemplate } from "@/components/templates/AnimatedInnerP
 import { FeaturedProjectsSection } from "@/components/sections/FeaturedProjectsSection";
 import { HomePrivateAccessLeadSection } from "@/components/sections/HomePrivateAccessLeadSection";
 import { PageFinalCtaMotion } from "@/components/motion/PageFinalCtaMotion";
+import { NOS_PROJETS_SCRIPTS } from "@/lib/assets";
 import type { SiteLocale } from "@/lib/i18n/types";
 
 const HERO_BUTTON_ICON = (
@@ -41,6 +42,16 @@ const PROJECTS_COPY = {
     secondary: "View off-plan projects",
     secondaryHref: "/en/off-plan/",
   },
+  es: {
+    breadcrumbs: ["Inicio", "Proyectos"],
+    title: "Proyectos",
+    subtitle:
+      "Una selección de villas, apartamentos, proyectos sobre plano y oportunidades confidenciales en Marrakech, estudiados antes de su presentación.",
+    primary: "Acceder al Off-market",
+    primaryHref: "/es/off-market/",
+    secondary: "Ver proyectos sobre plano",
+    secondaryHref: "/es/sobre-plano/",
+  },
   it: {
     breadcrumbs: ["Home", "Progetti"],
     title: "Progetti",
@@ -61,6 +72,16 @@ const PROJECTS_COPY = {
     secondary: "Nieuwbouwprojecten bekijken",
     secondaryHref: "/nl/nieuwbouw/",
   },
+  no: {
+    breadcrumbs: ["Hjem", "Våre prosjekter"],
+    title: "Våre prosjekter",
+    subtitle:
+      "Et utvalg av villaer, leiligheter, nybyggprosjekter og konfidensielle muligheter i Marrakech, vurdert før presentasjon.",
+    primary: "Se off-market-eiendommer",
+    primaryHref: "/no/off-market/",
+    secondary: "Se nybyggprosjekter",
+    secondaryHref: "/no/nybygg/",
+  },
 } satisfies Record<SiteLocale, {
   breadcrumbs: [string, string];
   title: string;
@@ -71,6 +92,15 @@ const PROJECTS_COPY = {
   secondaryHref: string;
 }>;
 
+const SKIP_LINK_LABELS: Record<SiteLocale, string> = {
+  fr: "Aller au contenu principal",
+  en: "Skip to main content",
+  es: "Ir al contenido principal",
+  it: "Vai al contenuto principale",
+  nl: "Naar hoofdinhoud",
+  no: "Gå til hovedinnholdet",
+};
+
 export function NosProjetsPageContent({ locale = "fr" }: { locale?: SiteLocale }) {
   const copy = PROJECTS_COPY[locale] ?? PROJECTS_COPY.fr;
   const breadcrumbAriaLabel =
@@ -78,12 +108,16 @@ export function NosProjetsPageContent({ locale = "fr" }: { locale?: SiteLocale }
       ? "Breadcrumb"
       : locale === "nl"
         ? "Broodkruimel"
+        : locale === "es"
+          ? "Miga de pan"
+          : locale === "no"
+            ? "Brødsmulesti"
         : locale === "it"
           ? "Percorso di navigazione"
           : "Fil d'Ariane";
   return (
     <AnimatedInnerPageTemplate
-      skipLinkLabel={locale === "fr" ? "Aller au contenu principal" : locale === "nl" ? "Naar hoofdinhoud" : locale === "it" ? "Vai al contenuto principale" : "Skip to main content"}
+      skipLinkLabel={SKIP_LINK_LABELS[locale]}
       finalCta={<PageFinalCtaMotion locale={locale} />}
       hero={{
         breadcrumbAriaLabel,
@@ -114,7 +148,7 @@ export function NosProjetsPageContent({ locale = "fr" }: { locale?: SiteLocale }
         ),
       }}
     >
-      <FeaturedProjectsSection locale={locale} />
+      <FeaturedProjectsSection locale={locale} legacyScripts={NOS_PROJETS_SCRIPTS} />
       <HomePrivateAccessLeadSection
         source="nos_projets_page"
         context="nos_projets"

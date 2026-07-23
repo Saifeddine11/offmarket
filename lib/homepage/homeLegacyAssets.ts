@@ -1,4 +1,4 @@
-export type HomepageLocale = "root" | "fr" | "en" | "it" | "nl";
+export type HomepageLocale = "root" | "fr" | "en" | "it" | "nl" | "es" | "no";
 export type HomepagePageId =
   | "home-root"
   | "home-fr"
@@ -17,9 +17,9 @@ const HOME_CRITICAL_SCRIPT_URLS = [
   "/assets/javascripts/om-cinematic-video.js?v=1765341000",
   "/assets/javascripts/om-text-reveal.js?v=1765317800",
   "/assets/javascripts/om-simulator.js?v=1765405800",
-  "/assets/javascripts/om-featured-projects.js?v=1769202001",
+  "/assets/javascripts/om-featured-projects.js?v=1769202007",
   "/assets/javascripts/om-private-access-popup.js?v=1765340000",
-  "/assets/javascripts/om-territories.js?v=1765303200",
+  "/assets/javascripts/om-territories.js?v=1784800800",
   "/assets/javascripts/mav-who-reveal.js?v=1765310300",
   "/assets/javascripts/om-testimonials.js?v=1765295700",
   "/assets/javascripts/om-private-access-form.js?v=1765600400",
@@ -58,6 +58,8 @@ export const HOMEPAGE_PAGE_ID_BY_LOCALE: Record<HomepageLocale, HomepagePageId> 
   en: "home-en",
   it: "home-it",
   nl: "home-nl",
+  es: "home-root",
+  no: "home-root",
 };
 
 export function getHomeLegacyScriptUrls(

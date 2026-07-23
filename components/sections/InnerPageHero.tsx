@@ -12,6 +12,13 @@ export type InnerPageHeroProps = {
   title: string;
   subtitle: string;
   imageSrc: string;
+  /** Optional responsive WebP/JPEG srcset for the LCP image. */
+  imageSrcSet?: string;
+  /** Optional AVIF srcset — rendered via <picture> when provided. */
+  imageAvifSrcSet?: string;
+  imageSizes?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   scrollTarget?: string;
   scrollLabel?: string;
   breadcrumbAriaLabel?: string;
@@ -20,12 +27,43 @@ export type InnerPageHeroProps = {
   actions?: ReactNode;
 };
 
+function HeroMediaImage({
+  imageSrc,
+  imageSrcSet,
+  imageSizes,
+  imageWidth = 1920,
+  imageHeight = 1080,
+}: Pick<
+  InnerPageHeroProps,
+  "imageSrc" | "imageSrcSet" | "imageSizes" | "imageWidth" | "imageHeight"
+>) {
+  return (
+    <img
+      className="inner-hero__image"
+      src={imageSrc}
+      srcSet={imageSrcSet}
+      sizes={imageSizes}
+      alt=""
+      width={imageWidth}
+      height={imageHeight}
+      decoding="async"
+      loading="eager"
+      fetchPriority="high"
+    />
+  );
+}
+
 /** Reusable inner-page hero — same structure as /about/. */
 export function InnerPageHero({
   breadcrumbs,
   title,
   subtitle,
   imageSrc,
+  imageSrcSet,
+  imageAvifSrcSet,
+  imageSizes = "100vw",
+  imageWidth = 1920,
+  imageHeight = 1080,
   scrollTarget,
   scrollLabel = "Scroll to explore ↓",
   breadcrumbAriaLabel = "Fil d'Ariane",
@@ -40,15 +78,37 @@ export function InnerPageHero({
     >
       <div className="inner-hero__card">
         <div className="inner-hero__media" aria-hidden="true">
-          <img
-            className="inner-hero__image"
-            src={imageSrc}
-            alt=""
-            width={1920}
-            height={1080}
-            decoding="async"
-            fetchPriority="high"
-          />
+          {imageAvifSrcSet || imageSrcSet ? (
+            <picture>
+              {imageAvifSrcSet ? (
+                <source
+                  type="image/avif"
+                  srcSet={imageAvifSrcSet}
+                  sizes={imageSizes}
+                />
+              ) : null}
+              {imageSrcSet ? (
+                <source
+                  type="image/webp"
+                  srcSet={imageSrcSet}
+                  sizes={imageSizes}
+                />
+              ) : null}
+              <HeroMediaImage
+                imageSrc={imageSrc}
+                imageWidth={imageWidth}
+                imageHeight={imageHeight}
+              />
+            </picture>
+          ) : (
+            <HeroMediaImage
+              imageSrc={imageSrc}
+              imageSrcSet={imageSrcSet}
+              imageSizes={imageSizes}
+              imageWidth={imageWidth}
+              imageHeight={imageHeight}
+            />
+          )}
         </div>
 
         <div className="inner-hero__content">

@@ -1,7 +1,9 @@
 import {
   BLOG_ARTICLES,
   BLOG_ARTICLES_EN,
+  BLOG_ARTICLES_ES,
   BLOG_ARTICLES_NL,
+  BLOG_ARTICLES_NO,
   BLOG_ARTICLES_IT,
   type BlogArticleSlug,
 } from "@/lib/blog/articles";
@@ -177,8 +179,16 @@ function resolveCurrentSlug(locale: SiteLocale, pageId: PageId | null, hub: Blog
     const entry = Object.entries(BLOG_ARTICLES_EN).find(([, id]) => id === pageId);
     return entry?.[0] ?? null;
   }
+  if (locale === "es") {
+    const entry = Object.entries(BLOG_ARTICLES_ES).find(([, id]) => id === pageId);
+    return entry?.[0] ?? null;
+  }
   if (locale === "nl") {
     const entry = Object.entries(BLOG_ARTICLES_NL).find(([, id]) => id === pageId);
+    return entry?.[0] ?? null;
+  }
+  if (locale === "no") {
+    const entry = Object.entries(BLOG_ARTICLES_NO).find(([, id]) => id === pageId);
     return entry?.[0] ?? null;
   }
   if (locale === "it") {
@@ -190,15 +200,19 @@ function resolveCurrentSlug(locale: SiteLocale, pageId: PageId | null, hub: Blog
 
 function blogIndexHref(locale: SiteLocale): string {
   if (locale === "en") return "/en/blog/";
+  if (locale === "es") return "/es/blog/";
   if (locale === "nl") return "/nl/blog/";
   if (locale === "it") return "/it/blog/";
+  if (locale === "no") return "/no/blogg/";
   return "/blog/";
 }
 
 function aboutHref(locale: SiteLocale): string {
   if (locale === "en") return "/en/about/";
+  if (locale === "es") return "/es/sobre-nosotros/";
   if (locale === "nl") return "/nl/over-ons/";
   if (locale === "it") return "/it/chi-siamo/";
+  if (locale === "no") return "/no/om-oss/";
   return "/about/";
 }
 
@@ -317,6 +331,63 @@ function getCopy(locale: SiteLocale) {
     };
   }
 
+  if (locale === "es") {
+    return {
+      home: "Inicio",
+      blog: "Blog",
+      toc: "En este artículo",
+      takeaways: "Puntos clave",
+      related: "Leer también",
+      published: "Publicado",
+      updated: "Actualizado",
+      breadcrumbNav: "Miga de pan",
+      editorial: "Redacción OFF MARKET",
+      backLabel: "Volver al blog",
+      readingTime: (minutes: number) =>
+        minutes <= 1 ? "1 min de lectura" : `${minutes} min de lectura`,
+      trustTitle: "Nota informativa",
+      trustText:
+        "Este artículo tiene carácter informativo. No sustituye asesoramiento jurídico, notarial, técnico, fiscal o financiero cualificado para su proyecto específico.",
+      cta: {
+        surPlan: {
+          eyebrow: "Sobre plano",
+          title: "Consultar proyectos seleccionados",
+          text: "Compare programas con una lectura clara de la ubicación, el calendario y el uso práctico.",
+          href: "/es/sobre-plano/",
+          label: "Ver proyectos sobre plano",
+        },
+        investissement: {
+          eyebrow: "Inversión",
+          title: "Modelar su escenario de adquisición",
+          text: "Use el simulador para estructurar presupuesto, uso y próximas preguntas antes de una conversación privada.",
+          href: "/es/simulador/",
+          label: "Abrir el simulador",
+        },
+        marrakech: {
+          eyebrow: "Barrios",
+          title: "Explorar los barrios de Marrakech",
+          text: "Lea las zonas que estructuran la demanda, el estilo de vida y la deseabilidad a largo plazo.",
+          href: "/es/barrios/",
+          label: "Descubrir barrios",
+        },
+        offMarket: {
+          eyebrow: "Off-market",
+          title: "Solicitar acceso privado",
+          text: "Acceda a oportunidades confidenciales mediante un proceso discreto y cualificado.",
+          href: "/es/off-market/",
+          label: "Solicitar acceso privado",
+        },
+        contact: {
+          eyebrow: "Contacto",
+          title: "Hablar con un asesor",
+          text: "Cuéntenos qué está buscando. Respondemos con una selección privada precisa.",
+          href: "/es/contacto/",
+          label: "Contactar con un asesor",
+        },
+      },
+    };
+  }
+
   if (locale === "it") {
     return {
       home: "Home",
@@ -369,6 +440,63 @@ function getCopy(locale: SiteLocale) {
           text: "Raccontaci cosa cerchi. Risponderemo con una selezione privata mirata.",
           href: "/it/contatto/",
           label: "Contatta un consulente",
+        },
+      },
+    };
+  }
+
+  if (locale === "no") {
+    return {
+      home: "Hjem",
+      blog: "Blogg",
+      toc: "I denne artikkelen",
+      takeaways: "Viktige punkter",
+      related: "Les videre",
+      published: "Publisert",
+      updated: "Oppdatert",
+      breadcrumbNav: "Brødsmulesti",
+      editorial: "OFF MARKET-redaksjonen",
+      backLabel: "Tilbake til bloggen",
+      readingTime: (minutes: number) =>
+        minutes <= 1 ? "1 min lesing" : `${minutes} min lesing`,
+      trustTitle: "Informasjonsnotat",
+      trustText:
+        "Denne artikkelen er kun til generell informasjon. Den erstatter ikke kvalifisert juridisk, notarial, teknisk, skattemessig eller finansiell rådgivning for ditt konkrete prosjekt.",
+      cta: {
+        surPlan: {
+          eyebrow: "Nybygg",
+          title: "Se utvalgte nybyggprosjekter",
+          text: "Sammenlign prosjekter med en tydelig vurdering av beliggenhet, fremdrift og praktisk bruk.",
+          href: "/no/nybygg/",
+          label: "Se nybyggprosjekter",
+        },
+        investissement: {
+          eyebrow: "Investering",
+          title: "Modeller kjøpsscenarioet ditt",
+          text: "Bruk kalkulatoren til å ramme inn budsjett, bruk og videre spørsmål før en privat samtale.",
+          href: "/no/kalkulator/",
+          label: "Åpne kalkulatoren",
+        },
+        marrakech: {
+          eyebrow: "Områder",
+          title: "Utforsk områdene i Marrakech",
+          text: "Les områdene som former etterspørsel, livsstil og langsiktig attraktivitet.",
+          href: "/no/omrader/",
+          label: "Oppdag områdene",
+        },
+        offMarket: {
+          eyebrow: "Off-market",
+          title: "Be om privat tilgang",
+          text: "Få tilgang til konfidensielle muligheter gjennom en diskret og kvalifiseringsbasert prosess.",
+          href: "/no/off-market/",
+          label: "Be om privat tilgang",
+        },
+        contact: {
+          eyebrow: "Kontakt",
+          title: "Snakk med en rådgiver",
+          text: "Fortell oss hva du leter etter. Vi svarer med et målrettet privat utvalg.",
+          href: "/no/kontakt/",
+          label: "Kontakt en rådgiver",
         },
       },
     };
@@ -539,11 +667,15 @@ export function buildBlogArticleViewModel(options: {
       inLanguage:
         locale === "en"
           ? "en-US"
+          : locale === "es"
+            ? "es-ES"
           : locale === "nl"
             ? "nl-NL"
             : locale === "it"
               ? "it-IT"
-              : "fr-FR",
+              : locale === "no"
+                ? "nb-NO"
+                : "fr-FR",
       publisher: {
         "@type": "Organization",
         name: "OFF MARKET",

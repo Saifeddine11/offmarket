@@ -169,11 +169,83 @@ const NL: PrivateAccessFormCopy = {
     "Vertrouwelijke projecten worden niet online gepubliceerd. Ons team neemt contact met u op met beschikbare kansen.",
 };
 
+const ES: PrivateAccessFormCopy = {
+  eyebrow: "ACCESO PRIVADO",
+  title: "Recibir mi selección privada",
+  subtitle:
+    "Déjenos sus datos. Le responderemos con una selección adaptada a su presupuesto, su objetivo y el tipo de propiedad que busca.",
+  success:
+    "Su solicitud se ha preparado correctamente. Le responderemos con una primera lectura privada adaptada a su proyecto.",
+  fullName: "Nombre completo",
+  fullNamePlaceholder: "Su nombre completo",
+  email: "Correo electrónico",
+  emailPlaceholder: "su@email.com",
+  phoneLegend: "Número de teléfono",
+  countryCodeAria: "Prefijo del país",
+  phoneNumberAria: "Número",
+  phonePlaceholder: "6 00 00 00 00",
+  budget: "Presupuesto",
+  budgetHint: "Seleccione su presupuesto",
+  message: "Mensaje",
+  messageOptional: "(opcional)",
+  messagePlaceholder:
+    "Su mensaje, su proyecto o sus criterios específicos",
+  submit: "Enviar mi solicitud",
+  back: "Atrás",
+  searchSummaryPrefix: "Su búsqueda",
+  privacyPrefix:
+    "Al hacer clic en el botón, acepta que OFF MARKET contacte con usted sobre su solicitud.",
+  privacyLink: "Privacidad",
+  contactHeaderEyebrow: "ACCESO PRIVADO",
+  contactHeaderTitle: "Acceder a los proyectos off-market",
+  contactHeaderSubtitle:
+    "Complete el formulario para recibir una selección privada adaptada a su presupuesto y a su proyecto.",
+  contactHeaderHelper:
+    "Los proyectos confidenciales no se publican en línea. Nuestro equipo le contactará con las oportunidades disponibles.",
+};
+
+const NO: PrivateAccessFormCopy = {
+  eyebrow: "PRIVAT TILGANG",
+  title: "Motta min private utvelgelse",
+  subtitle:
+    "Legg igjen kontaktopplysningene dine. Vi svarer med et utvalg tilpasset budsjettet, målet og boligtypen du ser etter.",
+  success:
+    "Forespørselen din er klargjort. Vi svarer med en første privat vurdering tilpasset prosjektet ditt.",
+  fullName: "Fullt navn",
+  fullNamePlaceholder: "Ditt fulle navn",
+  email: "E-post",
+  emailPlaceholder: "din@email.com",
+  phoneLegend: "Telefonnummer",
+  countryCodeAria: "Landskode",
+  phoneNumberAria: "Nummer",
+  phonePlaceholder: "6 00 00 00 00",
+  budget: "Budsjett",
+  budgetHint: "Velg budsjett",
+  message: "Melding",
+  messageOptional: "(valgfritt)",
+  messagePlaceholder:
+    "Meldingen din, prosjektet ditt eller spesifikke kriterier",
+  submit: "Send forespørselen",
+  back: "Tilbake",
+  searchSummaryPrefix: "Ditt søk",
+  privacyPrefix:
+    "Ved å klikke på knappen godtar du at OFF MARKET kontakter deg om forespørselen din.",
+  privacyLink: "Personvern",
+  contactHeaderEyebrow: "PRIVAT TILGANG",
+  contactHeaderTitle: "Få tilgang til off-market-prosjekter",
+  contactHeaderSubtitle:
+    "Fyll ut skjemaet for å motta et privat utvalg tilpasset budsjettet og prosjektet ditt.",
+  contactHeaderHelper:
+    "Konfidensielle prosjekter publiseres ikke på nett. Teamet vårt kontakter deg med tilgjengelige muligheter.",
+};
+
 const COPY: Record<SiteLocale, PrivateAccessFormCopy> = {
   fr: FR,
   en: EN,
+  es: ES,
   it: IT,
   nl: NL,
+  no: NO,
 };
 
 export function getFormCopy(locale?: SiteLocale): PrivateAccessFormCopy {

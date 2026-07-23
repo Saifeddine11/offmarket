@@ -8,9 +8,11 @@ export type { LangCode };
 
 type LangLinks = {
   en: string;
+  es: string;
   fr: string;
   it: string;
   nl: string;
+  no: string;
 };
 
 type MavericksChromeProps = {
@@ -25,17 +27,21 @@ type MavericksChromeProps = {
 
 const DEFAULT_LANG_LINKS: LangLinks = {
   en: "/en/",
+  es: "/es/",
   fr: "/",
   it: "/it/",
   nl: "/nl/",
+  no: "/no/",
 };
 
 const ENABLE_LANGUAGE_SWITCHER = true;
 
 function localeToLangCode(locale: SiteLocale): LangCode {
   if (locale === "en") return "EN";
+  if (locale === "es") return "ES";
   if (locale === "it") return "IT";
   if (locale === "nl") return "NL";
+  if (locale === "no") return "NO";
   return "FR";
 }
 
@@ -207,6 +213,15 @@ export function MavericksChrome({
                     EN
                   </Link>
                   <Link
+                    href={langLinks.es}
+                    className={`om-language-dropdown__option${resolvedActiveLang === "ES" ? " is-active" : ""}`}
+                    role="option"
+                    aria-selected={resolvedActiveLang === "ES"}
+                    data-lang="ES"
+                  >
+                    ES
+                  </Link>
+                  <Link
                     href={langLinks.fr}
                     className={`om-language-dropdown__option${resolvedActiveLang === "FR" ? " is-active" : ""}`}
                     role="option"
@@ -232,6 +247,15 @@ export function MavericksChrome({
                     data-lang="NL"
                   >
                     NL
+                  </Link>
+                  <Link
+                    href={langLinks.no}
+                    className={`om-language-dropdown__option${resolvedActiveLang === "NO" ? " is-active" : ""}`}
+                    role="option"
+                    aria-selected={resolvedActiveLang === "NO"}
+                    data-lang="NO"
+                  >
+                    NO
                   </Link>
                 </div>
               </div>
@@ -282,6 +306,12 @@ export function MavericksChrome({
               <span className="mv-lang-switcher__sep" aria-hidden="true">
                 /
               </span>
+              <Link href={langLinks.es} className="mv-lang-switcher__btn" data-lang="ES">
+                ES
+              </Link>
+              <span className="mv-lang-switcher__sep" aria-hidden="true">
+                /
+              </span>
               <Link
                 href={langLinks.fr}
                 className={`mv-lang-switcher__btn${resolvedActiveLang === "FR" ? " is-active" : ""}`}
@@ -301,6 +331,12 @@ export function MavericksChrome({
               </span>
               <Link href={langLinks.nl} className="mv-lang-switcher__btn" data-lang="NL">
                 NL
+              </Link>
+              <span className="mv-lang-switcher__sep" aria-hidden="true">
+                /
+              </span>
+              <Link href={langLinks.no} className="mv-lang-switcher__btn" data-lang="NO">
+                NO
               </Link>
             </nav>
           ) : null}

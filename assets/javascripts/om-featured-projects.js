@@ -5,24 +5,36 @@
 (function () {
   'use strict';
 
+  function isLocalePath(path, locale) {
+    return path === '/' + locale || path.indexOf('/' + locale + '/') === 0;
+  }
+
   function detectLocale() {
     var path = window.location.pathname || '/';
-    if (path.indexOf('/en') === 0) return 'en';
-    if (path.indexOf('/it') === 0) return 'it';
-    if (path.indexOf('/nl') === 0) return 'nl';
+    if (isLocalePath(path, 'en')) return 'en';
+    if (isLocalePath(path, 'es')) return 'es';
+    if (isLocalePath(path, 'it')) return 'it';
+    if (isLocalePath(path, 'nl')) return 'nl';
+    if (isLocalePath(path, 'no')) return 'no';
     return 'fr';
   }
 
   var projectCardCopyCache = null;
+  var projectCardCopySourceValue = null;
 
   function readProjectCardCopy() {
-    if (projectCardCopyCache) return projectCardCopyCache;
     var source = document.querySelector('[data-om-project-card-copy]');
+    var sourceValue = source ? source.getAttribute('data-om-project-card-copy') || '' : null;
+    if (projectCardCopySourceValue !== sourceValue) {
+      projectCardCopyCache = null;
+      projectCardCopySourceValue = sourceValue;
+    }
+    if (projectCardCopyCache) return projectCardCopyCache;
     if (!source) return null;
 
     try {
       projectCardCopyCache = JSON.parse(
-        decodeURIComponent(source.getAttribute('data-om-project-card-copy') || '')
+        decodeURIComponent(sourceValue || '')
       );
     } catch (error) {
       projectCardCopyCache = null;
@@ -40,8 +52,17 @@
     if (detectLocale() === 'en') {
       return { selectionPrefix: 'Selection:', defaultAction: 'View property' };
     }
+    if (detectLocale() === 'es') {
+      return { selectionPrefix: 'Selección:', defaultAction: 'Ver propiedad' };
+    }
     if (detectLocale() === 'it') {
       return { selectionPrefix: 'Selezione:', defaultAction: 'Vedi scheda' };
+    }
+    if (detectLocale() === 'nl') {
+      return { selectionPrefix: 'Selectie:', defaultAction: 'Vastgoedfiche bekijken' };
+    }
+    if (detectLocale() === 'no') {
+      return { selectionPrefix: 'Utvalg:', defaultAction: 'Se eiendom' };
     }
     return { selectionPrefix: 'Sélection :', defaultAction: 'Voir la fiche' };
   }
@@ -229,6 +250,128 @@
     },
   ];
 
+  var propertyCardsEs = [
+    {
+      id: 'villa-jaz',
+      index: '01',
+      location: 'MARRAKECH',
+      type: 'Villa sobre plano',
+      price: 'Desde 351 000 €',
+      priceCase: 'normal',
+      selection: 'Sobre plano',
+      title: 'Villa Jaz',
+      meta: '7 villas restantes · Marrakech · Proyecto sobre plano',
+      image: '/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp',
+      alt: 'Villa Jaz — villas sobre plano en Marrakech',
+      href: '/es/contacto/?intent=villa-jaz',
+      overlayLine: 'Sobre plano',
+      overlayTitle: 'Villa Jaz',
+      actionLabel: 'Ver ficha',
+      imageBadge: 'Sobre plano',
+    },
+    {
+      id: 'appartement-gueliz',
+      index: '02',
+      location: 'MARRAKECH',
+      type: 'Apartamento',
+      price: 'Desde 1,05 M MAD',
+      priceCase: 'normal',
+      selection: 'Programa nuevo sobre plano',
+      title: 'Apartamento premium en Guéliz',
+      meta: '39–140 m² · Hipercentro de Guéliz · Entrega 2028',
+      image:
+        '/assets/images/properties/appartement-sur-plan-gueliz/b666e486-f6f8-4f32-b709-b89099173502.JPG',
+      alt: 'Apartamento premium en Guéliz — hipercentro de Guéliz, Marrakech',
+      href: '/es/contacto/?intent=appartement-gueliz',
+      overlayLine: 'Apartamento',
+      overlayTitle: 'Apartamento premium en Guéliz',
+      actionLabel: 'Ver ficha',
+      imageBadge: 'Sobre plano',
+    },
+    {
+      id: 'restaurant-jemaa-el-fna',
+      index: '03',
+      location: 'MARRAKECH',
+      type: 'Restaurante',
+      price: 'Precio en privado',
+      selection: 'Oportunidad confidencial',
+      title: 'Restaurante en el corazón de Jemaa el-Fna',
+      meta: 'Plaza Jemaa el-Fna, Marrakech',
+      image: '/assets/mavericks/projects/jemaa-el-fna-restaurant.webp',
+      alt: 'Restaurante off-market en el corazón de Jemaa el-Fna, Marrakech',
+      overlayLine: 'Restaurante',
+      overlayTitle: 'Restaurante en el corazón de Jemaa el-Fna',
+      directHref: '/es/off-market/?intent=restaurant-jemaa-el-fna',
+      actionLabel: 'Ver detalles',
+      priceCase: 'normal',
+      extraArticleClass: 'om-project-card om-project-card--restaurant',
+      lockedPreview: true,
+      imageBadge: 'En venta',
+      imageBadgeClass: 'om-reveal-card__image-badge--sale',
+    },
+  ];
+
+  var propertyCardsNo = [
+    {
+      id: 'villa-jaz',
+      index: '01',
+      location: 'MARRAKECH',
+      type: 'Nybyggvilla',
+      price: 'Fra 351 000 €',
+      priceCase: 'normal',
+      selection: 'Nybygg',
+      title: 'Villa Jaz',
+      meta: '7 villaer igjen · Marrakech · Nybyggprosjekt',
+      image: '/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp',
+      alt: 'Villa Jaz — nybyggvillaer i Marrakech',
+      href: '/no/kontakt/?intent=villa-jaz',
+      overlayLine: 'Nybygg',
+      overlayTitle: 'Villa Jaz',
+      actionLabel: 'Se eiendom',
+      imageBadge: 'Nybygg',
+    },
+    {
+      id: 'appartement-gueliz',
+      index: '02',
+      location: 'MARRAKECH',
+      type: 'Leilighet',
+      price: 'Fra 1,05 M MAD',
+      priceCase: 'normal',
+      selection: 'Nytt prosjekt på plan',
+      title: 'Premiumleilighet i Guéliz',
+      meta: '39–140 m² · Guéliz hyper-sentrum · Levering 2028',
+      image:
+        '/assets/images/properties/appartement-sur-plan-gueliz/b666e486-f6f8-4f32-b709-b89099173502.JPG',
+      alt: 'Premiumleilighet i Guéliz — Guéliz hyper-sentrum, Marrakech',
+      href: '/no/kontakt/?intent=appartement-gueliz',
+      overlayLine: 'Leilighet',
+      overlayTitle: 'Premiumleilighet i Guéliz',
+      actionLabel: 'Se eiendom',
+      imageBadge: 'Nybygg',
+    },
+    {
+      id: 'restaurant-jemaa-el-fna',
+      index: '03',
+      location: 'MARRAKECH',
+      type: 'Restaurant',
+      price: 'Pris privat',
+      selection: 'Konfidensiell mulighet',
+      title: 'Restaurant i hjertet av Jemaa el-Fna',
+      meta: 'Jemaa el-Fna-plassen, Marrakech',
+      image: '/assets/mavericks/projects/jemaa-el-fna-restaurant.webp',
+      alt: 'Off-market restaurant i hjertet av Jemaa el-Fna, Marrakech',
+      overlayLine: 'Restaurant',
+      overlayTitle: 'Restaurant i hjertet av Jemaa el-Fna',
+      directHref: '/no/off-market/?intent=restaurant-jemaa-el-fna',
+      actionLabel: 'Se detaljer',
+      priceCase: 'normal',
+      extraArticleClass: 'om-project-card om-project-card--restaurant',
+      lockedPreview: true,
+      imageBadge: 'Til salgs',
+      imageBadgeClass: 'om-reveal-card__image-badge--sale',
+    },
+  ];
+
   function getPropertyCards() {
     var localizedCopy = readProjectCardCopy();
     if (localizedCopy && localizedCopy.cards && localizedCopy.cards.length) {
@@ -237,7 +380,9 @@
 
     var locale = detectLocale();
     if (locale === 'en') return propertyCardsEn;
+    if (locale === 'es') return propertyCardsEs;
     if (locale === 'it') return propertyCardsIt;
+    if (locale === 'no') return propertyCardsNo;
     return propertyCards;
   }
 
@@ -375,6 +520,8 @@
       '<div class="om-featured-projects__private-row">' +
         renderPropertyCard(restaurantCard) +
       '</div>';
+    grid.setAttribute('data-om-rendered-locale', detectLocale());
+    grid.setAttribute('data-om-rendered-copy', projectCardCopySourceValue || '');
     document.dispatchEvent(new CustomEvent('om-property-cards-rendered'));
   }
 
@@ -449,11 +596,36 @@
   function boot() {
     var section = document.querySelector('.om-featured-projects');
     if (!section) return;
+    var grid = section.querySelector('[data-om-property-cards]');
+    var locale = detectLocale();
+    var source = document.querySelector('[data-om-project-card-copy]');
+    var sourceValue = source ? source.getAttribute('data-om-project-card-copy') || '' : '';
+    if (
+      grid &&
+      grid.getAttribute('data-om-rendered-locale') === locale &&
+      grid.getAttribute('data-om-rendered-copy') === sourceValue &&
+      grid.querySelector('.om-reveal-card, .om-featured-projects__card')
+    ) {
+      return;
+    }
+
     projectCardCopyCache = null;
     renderPropertyCards(section);
     initPropertyCards(section);
     initPhotoFallback(section);
   }
+
+  window.__omFeaturedProjectsBoot = boot;
+  window.__omFeaturedProjectsHasCards = function () {
+    var grid = document.querySelector(
+      '.om-featured-projects [data-om-property-cards]'
+    );
+    return !!(
+      grid &&
+      grid.querySelector('.om-reveal-card, .om-featured-projects__card')
+    );
+  };
+  document.dispatchEvent(new CustomEvent('om-featured-projects-ready'));
 
   function handleReactReady() {
     boot();

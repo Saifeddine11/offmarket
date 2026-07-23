@@ -9,11 +9,17 @@
 
   var EUR_RATE = 10.8;
 
+  function isLocalePath(path, locale) {
+    return path === '/' + locale || path.indexOf('/' + locale + '/') === 0;
+  }
+
   function detectLocale() {
     var path = window.location.pathname || '/';
-    if (path.indexOf('/en') === 0) return 'en';
-    if (path.indexOf('/it') === 0) return 'it';
-    if (path.indexOf('/nl') === 0) return 'nl';
+    if (isLocalePath(path, 'en')) return 'en';
+    if (isLocalePath(path, 'es')) return 'es';
+    if (isLocalePath(path, 'it')) return 'it';
+    if (isLocalePath(path, 'nl')) return 'nl';
+    if (isLocalePath(path, 'no')) return 'no';
     return 'fr';
   }
 
@@ -247,6 +253,122 @@
           exitValue: 'Geschatte uitstapwaarde',
           capitalGain: 'Bruto meerwaarde',
           horizon: 'Horizon',
+        },
+      },
+    },
+    es: {
+      noteText:
+        'Estimación orientativa. OFF MARKET afina esta simulación con la dirección exacta, los gastos reales y los inmuebles disponibles.',
+      modes: {
+        short: {
+          resultSection: 'RESULTADO',
+          resultLabel: 'RENTABILIDAD BRUTA ANUAL',
+          resultCaption: 'antes de gastos, fiscalidad y costes reales',
+          mainIsPercent: true,
+        },
+        long: {
+          resultSection: 'RESULTADO',
+          resultLabel: 'RENTABILIDAD BRUTA ANUAL',
+          resultCaption: 'antes de gastos, fiscalidad y costes reales',
+          mainIsPercent: true,
+        },
+        resale: {
+          resultSection: 'RESULTADO',
+          resultLabel: 'PLUSVALÍA BRUTA ESTIMADA',
+          resultCaption: '',
+          mainIsPercent: false,
+        },
+      },
+      longTermVacancy: '~1 mes / año',
+      longTermManagement: 'Sí',
+      annualisedAppreciation: 'Revalorización anualizada ',
+      yearsSuffix: ' años',
+      weeksSuffix: ' sem.',
+      perYearSuffix: ' / año',
+      metricIcons: {
+        'Ingresos brutos / año': 'wallet',
+        'Noches alquiladas': 'calendar',
+        'Tasa de ocupación seleccionada': 'gauge',
+        'Alquiler bruto / año': 'wallet',
+        'Vacancia estimada': 'calendar',
+        'Gestión OFF MARKET incluida': 'check',
+        'Valor estimado de salida': 'trend',
+        'Plusvalía bruta': 'trend',
+        Horizonte: 'clock',
+      },
+      metrics: {
+        short: {
+          grossRevenue: 'Ingresos brutos / año',
+          nightsRented: 'Noches alquiladas',
+          occupancy: 'Tasa de ocupación seleccionada',
+        },
+        long: {
+          grossRent: 'Alquiler bruto / año',
+          vacancy: 'Vacancia estimada',
+          management: 'Gestión OFF MARKET incluida',
+        },
+        resale: {
+          exitValue: 'Valor estimado de salida',
+          capitalGain: 'Plusvalía bruta',
+          horizon: 'Horizonte',
+        },
+      },
+    },
+    no: {
+      noteText:
+        'Veiledende estimat. OFF MARKET finjusterer denne simuleringen med eksakt adresse, faktiske kostnader og tilgjengelige eiendommer.',
+      modes: {
+        short: {
+          resultSection: 'RESULTAT',
+          resultLabel: 'BRUTTO ÅRLIG AVKASTNING',
+          resultCaption: 'før kostnader, skatt og reelle driftskostnader',
+          mainIsPercent: true,
+        },
+        long: {
+          resultSection: 'RESULTAT',
+          resultLabel: 'BRUTTO ÅRLIG AVKASTNING',
+          resultCaption: 'før kostnader, skatt og reelle driftskostnader',
+          mainIsPercent: true,
+        },
+        resale: {
+          resultSection: 'RESULTAT',
+          resultLabel: 'ESTIMERT BRUTTO GEVINST',
+          resultCaption: '',
+          mainIsPercent: false,
+        },
+      },
+      longTermVacancy: '~1 måned / år',
+      longTermManagement: 'Ja',
+      annualisedAppreciation: 'Årlig verdistigning ',
+      yearsSuffix: ' år',
+      weeksSuffix: ' uker',
+      perYearSuffix: ' / år',
+      metricIcons: {
+        'Brutto inntekt / år': 'wallet',
+        'Utleide netter': 'calendar',
+        'Valgt beleggsgrad': 'gauge',
+        'Brutto leie / år': 'wallet',
+        'Estimert ledighet': 'calendar',
+        'OFF MARKET-forvaltning inkludert': 'check',
+        'Estimert verdi ved salg': 'trend',
+        'Brutto gevinst': 'trend',
+        Horisont: 'clock',
+      },
+      metrics: {
+        short: {
+          grossRevenue: 'Brutto inntekt / år',
+          nightsRented: 'Utleide netter',
+          occupancy: 'Valgt beleggsgrad',
+        },
+        long: {
+          grossRent: 'Brutto leie / år',
+          vacancy: 'Estimert ledighet',
+          management: 'OFF MARKET-forvaltning inkludert',
+        },
+        resale: {
+          exitValue: 'Estimert verdi ved salg',
+          capitalGain: 'Brutto gevinst',
+          horizon: 'Horisont',
         },
       },
     },

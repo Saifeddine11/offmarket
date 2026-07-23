@@ -38,6 +38,23 @@
     { id: 'contact', label: 'Contact', href: '/en/contact/' },
   ];
 
+  var MENU_ES = [
+    { id: 'home', label: 'Inicio', href: '/es/' },
+    { id: 'histoire', label: 'Nuestra historia', href: '/es/sobre-nosotros/' },
+    { id: 'localisations', label: 'Barrios', href: '/es/barrios/' },
+    {
+      id: 'projets',
+      label: 'Proyectos',
+      href: '/es/proyectos/',
+      children: [
+        { label: 'Todos los proyectos', href: '/es/proyectos/' },
+        { label: 'Off-market', href: '/es/off-market/' },
+      ],
+    },
+    { id: 'simulateur', label: 'Simulador', href: '/es/simulador/' },
+    { id: 'contact', label: 'Contacto', href: '/es/contacto/' },
+  ];
+
   var MENU_IT = [
     { id: 'home', label: 'Home', href: '/it/' },
     { id: 'histoire', label: 'La nostra storia', href: '/it/chi-siamo/' },
@@ -72,27 +89,54 @@
     { id: 'contact', label: 'Contact', href: '/nl/contact/' },
   ];
 
+  var MENU_NO = [
+    { id: 'home', label: 'Hjem', href: '/no/' },
+    { id: 'histoire', label: 'Vår historie', href: '/no/om-oss/' },
+    { id: 'localisations', label: 'Områder', href: '/no/omrader/' },
+    {
+      id: 'projets',
+      label: 'Prosjekter',
+      href: '/no/prosjekter/',
+      children: [
+        { label: 'Alle prosjekter', href: '/no/prosjekter/' },
+        { label: 'Off-market', href: '/no/off-market/' },
+      ],
+    },
+    { id: 'simulateur', label: 'Kalkulator', href: '/no/kalkulator/' },
+    { id: 'contact', label: 'Kontakt', href: '/no/kontakt/' },
+  ];
+
+  function isLocalePath(path, locale) {
+    return path === '/' + locale || path.indexOf('/' + locale + '/') === 0;
+  }
+
   function detectMenuLocale() {
     var path = window.location.pathname || '/';
-    if (path.indexOf('/en') === 0) return 'en';
-    if (path.indexOf('/it') === 0) return 'it';
-    if (path.indexOf('/nl') === 0) return 'nl';
+    if (isLocalePath(path, 'en')) return 'en';
+    if (isLocalePath(path, 'es')) return 'es';
+    if (isLocalePath(path, 'it')) return 'it';
+    if (isLocalePath(path, 'nl')) return 'nl';
+    if (isLocalePath(path, 'no')) return 'no';
     return 'fr';
   }
 
   function getMenu() {
     var locale = detectMenuLocale();
     if (locale === 'en') return MENU_EN;
+    if (locale === 'es') return MENU_ES;
     if (locale === 'it') return MENU_IT;
     if (locale === 'nl') return MENU_NL;
+    if (locale === 'no') return MENU_NO;
     return MENU_FR;
   }
 
   function getUiLabels() {
     var locale = detectMenuLocale();
     if (locale === 'en') return { openMenu: 'Open menu ', show: 'Show ' };
+    if (locale === 'es') return { openMenu: 'Abrir menú ', show: 'Mostrar ' };
     if (locale === 'it') return { openMenu: 'Apri menu ', show: 'Mostra ' };
     if (locale === 'nl') return { openMenu: 'Menu openen ', show: 'Toon ' };
+    if (locale === 'no') return { openMenu: 'Åpne meny ', show: 'Vis ' };
     return { openMenu: 'Ouvrir le menu ', show: 'Afficher ' };
   }
 
@@ -127,32 +171,44 @@
       if (locale === 'en') {
         return current === '/en' && !window.location.hash;
       }
+      if (locale === 'es') {
+        return current === '/es' && !window.location.hash;
+      }
       if (locale === 'it') {
         return current === '/it' && !window.location.hash;
       }
       if (locale === 'nl') {
         return current === '/nl' && !window.location.hash;
       }
+      if (locale === 'no') {
+        return current === '/no' && !window.location.hash;
+      }
       return current === '/' && !window.location.hash;
     }
 
     if (item.id === 'contact') {
+      if (locale === 'es') return current === '/es/contacto';
       if (locale === 'nl') return current === '/nl/contact';
       if (locale === 'it') return current === '/it/contatto';
+      if (locale === 'no') return current === '/no/kontakt';
       return locale === 'en' ? current === '/en/contact' : current === '/contact';
     }
 
     if (item.id === 'histoire') {
       if (locale === 'en') return current === '/en/about';
+      if (locale === 'es') return current === '/es/sobre-nosotros';
       if (locale === 'nl') return current === '/nl/over-ons';
       if (locale === 'it') return current === '/it/chi-siamo';
+      if (locale === 'no') return current === '/no/om-oss';
       return current === '/about' || current === '/fr/about';
     }
 
     if (item.id === 'localisations') {
       if (locale === 'en') return current === '/en/neighbourhoods';
+      if (locale === 'es') return current === '/es/barrios';
       if (locale === 'nl') return current === '/nl/wijken';
       if (locale === 'it') return current === '/it/quartieri';
+      if (locale === 'no') return current === '/no/omrader';
       return current === '/quartiers';
     }
 
@@ -174,12 +230,28 @@
           current === '/it/progetti-su-piano/villa-jaz'
         );
       }
+      if (locale === 'es') {
+        return (
+          current === '/es/proyectos' ||
+          current === '/es/sobre-plano' ||
+          current === '/es/sobre-plano/villa-jaz' ||
+          current === '/es/off-market'
+        );
+      }
       if (locale === 'nl') {
         return (
           current === '/nl/projecten' ||
           current === '/nl/nieuwbouw' ||
           current === '/nl/nieuwbouw/villa-jaz' ||
           current === '/nl/off-market'
+        );
+      }
+      if (locale === 'no') {
+        return (
+          current === '/no/prosjekter' ||
+          current === '/no/nybygg' ||
+          current === '/no/nybygg/villa-jaz' ||
+          current === '/no/off-market'
         );
       }
       return (
@@ -525,11 +597,15 @@
     var accessHref =
       locale === 'en'
         ? '/en/contact/'
-        : locale === 'it'
-          ? '/it/contatto/'
-          : locale === 'nl'
-            ? '/nl/contact/'
-            : '/contact/';
+        : locale === 'es'
+          ? '/es/contacto/'
+          : locale === 'it'
+            ? '/it/contatto/'
+            : locale === 'nl'
+              ? '/nl/contact/'
+              : locale === 'no'
+                ? '/no/kontakt/'
+                : '/contact/';
     var selectors = [
       '.om-header__access-btn',
       '.mav-hero__button--primary',

@@ -38,6 +38,16 @@
       IT: 'Italië', NL: 'Nederland', GB: 'Verenigd Koninkrijk', US: 'Verenigde Staten',
       AE: 'Verenigde Arabische Emiraten', SA: 'Saudi-Arabië', QA: 'Qatar',
     },
+    es: {
+      MA: 'Marruecos', FR: 'Francia', BE: 'Bélgica', CH: 'Suiza', DE: 'Alemania', ES: 'España',
+      IT: 'Italia', NL: 'Países Bajos', GB: 'Reino Unido', US: 'Estados Unidos',
+      AE: 'Emiratos Árabes Unidos', SA: 'Arabia Saudí', QA: 'Qatar',
+    },
+    no: {
+      MA: 'Marokko', FR: 'Frankrike', BE: 'Belgia', CH: 'Sveits', DE: 'Tyskland', ES: 'Spania',
+      IT: 'Italia', NL: 'Nederland', GB: 'Storbritannia', US: 'USA',
+      AE: 'De forente arabiske emirater', SA: 'Saudi-Arabia', QA: 'Qatar',
+    },
   };
 
   var COPY_FR = {
@@ -69,6 +79,22 @@
     error:
       'Controleer de verplichte velden voordat u uw aanvraag verstuurt.',
     mailSubject: 'OFF MARKET toegangsaanvraag',
+  };
+
+  var COPY_ES = {
+    success:
+      'Su solicitud está lista en su aplicación de correo. Envíe el email para compartir su proyecto con OFF MARKET.',
+    error:
+      'Revise los campos obligatorios antes de enviar su solicitud.',
+    mailSubject: 'Solicitud de acceso OFF MARKET',
+  };
+
+  var COPY_NO = {
+    success:
+      'Forespørselen er klar i e-postprogrammet ditt. Send e-posten for å dele prosjektet ditt med OFF MARKET.',
+    error:
+      'Kontroller de obligatoriske feltene før du sender forespørselen.',
+    mailSubject: 'OFF MARKET tilgangsforespørsel',
   };
 
   var LEGACY_FORM_COPY = {
@@ -104,32 +130,60 @@
       submit: 'Toegang aanvragen', privacyPrefix: 'Door op de knop te klikken, stemt u ermee in dat OFF MARKET contact met u opneemt over uw aanvraag.',
       privacyLink: 'Privacy', privacyHref: '/nl/privacybeleid/',
     },
+    es: {
+      fullName: 'Nombre completo', fullNamePlaceholder: 'Su nombre completo',
+      phoneLegend: 'Número de teléfono', countryCode: 'Indicativo del país',
+      phoneNumber: 'Número', message: 'Mensaje (opcional)',
+      messagePlaceholder: 'Su mensaje, proyecto o criterios específicos',
+      submit: 'Solicitar acceso', privacyPrefix: 'Al hacer clic en el botón, acepta que OFF MARKET pueda contactarle sobre su solicitud.',
+      privacyLink: 'Privacidad', privacyHref: '/es/politica-de-privacidad/',
+    },
+    no: {
+      fullName: 'Fullt navn', fullNamePlaceholder: 'Ditt fulle navn',
+      phoneLegend: 'Telefonnummer', countryCode: 'Landskode',
+      phoneNumber: 'Nummer', message: 'Melding (valgfritt)',
+      messagePlaceholder: 'Din melding, prosjektet ditt eller spesifikke kriterier',
+      submit: 'Be om tilgang', privacyPrefix: 'Ved å klikke på knappen godtar du at OFF MARKET kan kontakte deg om forespørselen din.',
+      privacyLink: 'Personvern', privacyHref: '/no/personvernerklaering/',
+    },
   };
+
+  function isLocalePath(path, locale) {
+    return path === '/' + locale || path.indexOf('/' + locale + '/') === 0;
+  }
 
   function detectFormLocale() {
     var path = window.location.pathname || '/';
-    if (path.indexOf('/en') === 0) return 'en';
-    if (path.indexOf('/it') === 0) return 'it';
-    if (path.indexOf('/nl') === 0) return 'nl';
+    if (isLocalePath(path, 'en')) return 'en';
+    if (isLocalePath(path, 'es')) return 'es';
+    if (isLocalePath(path, 'it')) return 'it';
+    if (isLocalePath(path, 'nl')) return 'nl';
+    if (isLocalePath(path, 'no')) return 'no';
     var attr = document.documentElement.getAttribute('lang');
     if (attr && attr.indexOf('en') === 0) return 'en';
+    if (attr && attr.indexOf('es') === 0) return 'es';
     if (attr && attr.indexOf('it') === 0) return 'it';
     if (attr && attr.indexOf('nl') === 0) return 'nl';
+    if (attr && (attr.indexOf('no') === 0 || attr.indexOf('nb') === 0)) return 'no';
     return 'fr';
   }
 
   function resolveFormLocale(form) {
     if (form && form.getAttribute('data-form-locale') === 'en') return 'en';
+    if (form && form.getAttribute('data-form-locale') === 'es') return 'es';
     if (form && form.getAttribute('data-form-locale') === 'it') return 'it';
     if (form && form.getAttribute('data-form-locale') === 'nl') return 'nl';
+    if (form && form.getAttribute('data-form-locale') === 'no') return 'no';
     return detectFormLocale();
   }
 
   function getCopy(form) {
     var locale = resolveFormLocale(form);
     if (locale === 'en') return COPY_EN;
+    if (locale === 'es') return COPY_ES;
     if (locale === 'it') return COPY_IT;
     if (locale === 'nl') return COPY_NL;
+    if (locale === 'no') return COPY_NO;
     return COPY_FR;
   }
 
@@ -265,17 +319,23 @@
   function buildMailBody(data, form) {
     var payload = buildLeadPayload(data, form);
     var isEn = payload.locale === 'en';
+    var isEs = payload.locale === 'es';
     var isNl = payload.locale === 'nl';
+    var isNo = payload.locale === 'no';
     var lines = [
-      isNl
+      isNo
+        ? 'Hei, jeg ønsker tilgang til OFF MARKET prosjekter.'
+        : isEs
+          ? 'Hola, quiero solicitar acceso a los proyectos OFF MARKET.'
+          : isNl
         ? 'Hallo, ik wil toegang aanvragen tot de OFF MARKET projecten.'
         : isEn
           ? 'Hello, I would like to request access to OFF MARKET projects.'
           : 'Bonjour, je souhaite demander l’accès aux projets OFF MARKET.',
       '',
-      (isNl ? 'Volledige naam : ' : isEn ? 'Full name : ' : 'Nom complet : ') + payload.fullName,
+      (isNo ? 'Fullt navn : ' : isEs ? 'Nombre completo : ' : isNl ? 'Volledige naam : ' : isEn ? 'Full name : ' : 'Nom complet : ') + payload.fullName,
       'Email : ' + payload.email,
-      (isNl ? 'Telefoon : ' : isEn ? 'Phone : ' : 'Téléphone : ') +
+      (isNo ? 'Telefon : ' : isEs ? 'Teléfono : ' : isNl ? 'Telefoon : ' : isEn ? 'Phone : ' : 'Téléphone : ') +
         payload.phoneCountry +
         ' ' +
         payload.phone,
@@ -287,34 +347,38 @@
       lines.push('');
       if (payload.propertyType) {
         lines.push(
-          (isNl ? 'Type vastgoed : ' : isEn ? 'Property type : ' : 'Type de bien : ') +
+          (isNo ? 'Eiendomstype : ' : isEs ? 'Tipo de propiedad : ' : isNl ? 'Type vastgoed : ' : isEn ? 'Property type : ' : 'Type de bien : ') +
             payload.propertyType
         );
       }
       if (payload.budget) {
         lines.push(
-          (isNl ? 'Budget : ' : isEn ? 'Budget reviewed : ' : 'Budget étudié : ') +
+          (isNo ? 'Vurdert budsjett : ' : isEs ? 'Presupuesto estudiado : ' : isNl ? 'Budget : ' : isEn ? 'Budget reviewed : ' : 'Budget étudié : ') +
             payload.budget
         );
       }
       if (payload.objective) {
         lines.push(
-          (isNl ? 'Doelstelling : ' : isEn ? 'Objective : ' : 'Objectif : ') +
+          (isNo ? 'Mål : ' : isEs ? 'Objetivo : ' : isNl ? 'Doelstelling : ' : isEn ? 'Objective : ' : 'Objectif : ') +
             payload.objective
         );
       }
       if (payload.source) lines.push('Source : ' + payload.source);
       if (payload.context) {
-        lines.push((isNl ? 'Context : ' : isEn ? 'Context : ' : 'Contexte : ') + payload.context);
+        lines.push((isNo ? 'Kontekst : ' : isEs ? 'Contexto : ' : isNl ? 'Context : ' : isEn ? 'Context : ' : 'Contexte : ') + payload.context);
       }
     }
 
     lines.push('');
     lines.push('Locale : ' + payload.locale);
-    lines.push((isNl ? 'Tijdstempel : ' : isEn ? 'Timestamp : ' : 'Horodatage : ') + payload.createdAt);
+    lines.push((isNo ? 'Tidspunkt : ' : isEs ? 'Fecha y hora : ' : isNl ? 'Tijdstempel : ' : isEn ? 'Timestamp : ' : 'Horodatage : ') + payload.createdAt);
     lines.push('');
     lines.push(
-      isNl
+      isNo
+        ? 'Ta kontakt med meg med et privat utvalg tilpasset prosjektet mitt.'
+        : isEs
+          ? 'Por favor, contacten conmigo con una selección privada adaptada a mi proyecto.'
+          : isNl
         ? 'Dank u om contact met mij op te nemen met een private selectie die past bij mijn project.'
         : isEn
           ? 'Please contact me with a private selection tailored to my project.'
@@ -452,8 +516,11 @@
 
   window.OM_OFF_MARKET_ACCESS_HREF = (function () {
     var path = window.location.pathname || '/';
-    if (path.indexOf('/en') === 0) return '/en/off-market/';
-    if (path.indexOf('/it') === 0) return '/it/off-market/';
+    if (isLocalePath(path, 'en')) return '/en/off-market/';
+    if (isLocalePath(path, 'es')) return '/es/off-market/';
+    if (isLocalePath(path, 'it')) return '/it/off-market/';
+    if (isLocalePath(path, 'nl')) return '/nl/off-market/';
+    if (isLocalePath(path, 'no')) return '/no/off-market/';
     return '/off-market/';
   })();
 

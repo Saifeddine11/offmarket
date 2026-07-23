@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
     "Een private, selectieve en vertrouwelijke benadering van vastgoed in Marrakech.",
   canonicalPath: "/nl/over-ons/",
   ogLocale: "nl_NL",
-  ogImage: "https://offmarketofficial.com/assets/mavericks/hero/mavericks-hero-villa.webp",
+  ogImage: "https://offmarketofficial.com/assets/images/hero/notre-histoire-hero.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

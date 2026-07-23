@@ -1,7 +1,7 @@
 import type { BodySegment } from "@/lib/static-html/parsePage";
 
 export const HERO_POSTER_PRELOAD =
-  "/assets/images/hero/mavericks-hero-poster.webp";
+  "/assets/images/hero/herophoto2-1280.webp";
 
 const HERO_SCRIPTS = [
   "mav-navbar-hero-visibility.js",

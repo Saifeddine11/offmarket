@@ -15,14 +15,15 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # HTTP -> HTTPS (works behind a proxy via X-Forwarded-Proto too)
+  # Canonicalize www in one hop, including HTTP requests.
+  RewriteCond %{HTTP_HOST} ^www\.offmarketofficial\.com$ [NC]
+  RewriteRule ^ https://offmarketofficial.com%{REQUEST_URI} [R=301,L,NE]
+
+  # Upgrade the canonical host only when the request was not already HTTPS.
+  RewriteCond %{HTTP_HOST} ^offmarketofficial\.com$ [NC]
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
-  # www -> non-www
-  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+  RewriteRule ^ https://offmarketofficial.com%{REQUEST_URI} [R=301,L,NE]
 </IfModule>
 
 # --- Compression -----------------------------------------------------------

@@ -107,6 +107,20 @@ const FINAL_CTA_COPY: Record<SiteLocale, PageFinalCtaCopy> = {
     advisorHref: "/en/contact/",
     advisorLabel: "Speak to an adviser",
   },
+  es: {
+    eyebrow: "HABLEMOS",
+    title: "Su proyecto merece una lectura privada.",
+    text:
+      "Cuéntenos lo que busca. Le responderemos con una selección específica, un análisis claro y un acompañamiento discreto.",
+    trust:
+      "Cualificamos su solicitud antes de orientarle hacia los proyectos más coherentes con su perfil.",
+    primaryHref: "/es/contacto/",
+    primaryLabel: "Solicitar acceso privado",
+    simulatorHref: "/es/simulador/",
+    simulatorLabel: "Simulador",
+    advisorHref: "/es/contacto/",
+    advisorLabel: "Hablar con un asesor",
+  },
   it: {
     eyebrow: "PARLIAMONE",
     title: "Il tuo progetto merita una lettura privata.",
@@ -134,6 +148,20 @@ const FINAL_CTA_COPY: Record<SiteLocale, PageFinalCtaCopy> = {
     simulatorLabel: "Simulator",
     advisorHref: "/nl/contact/",
     advisorLabel: "Met een adviseur spreken",
+  },
+  no: {
+    eyebrow: "LA OSS SNAKKE",
+    title: "Prosjektet ditt fortjener en privat vurdering.",
+    text:
+      "Fortell oss hva du ser etter. Vi svarer med et målrettet utvalg, tydelig analyse og diskret oppfølging.",
+    trust:
+      "Vi kvalifiserer forespørselen din før vi veileder deg mot prosjektene som passer best til profilen din.",
+    primaryHref: "/no/kontakt/",
+    primaryLabel: "Be om privat tilgang",
+    simulatorHref: "/no/kalkulator/",
+    simulatorLabel: "Kalkulator",
+    advisorHref: "/no/kontakt/",
+    advisorLabel: "Snakk med en rådgiver",
   },
 };
 

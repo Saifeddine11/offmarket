@@ -45,7 +45,9 @@ export function detectPageLocale(): SiteLocale {
   if (typeof document === "undefined") return "fr";
   const lang = document.documentElement.lang || "fr";
   if (lang.startsWith("en")) return "en";
+  if (lang.startsWith("es")) return "es";
   if (lang.startsWith("it")) return "it";
   if (lang.startsWith("nl")) return "nl";
+  if (lang.startsWith("no") || lang.startsWith("nb")) return "no";
   return "fr";
 }
