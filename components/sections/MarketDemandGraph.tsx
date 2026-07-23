@@ -13,7 +13,6 @@ import {
 
 import { useOnceInView } from "@/hooks/useOnceInView";
 import {
-  TRANSACTION_ANCHOR_YEAR,
   TRANSACTION_TIMELINE,
   formatCumulativePercent,
   type TimelinePoint,
@@ -45,20 +44,20 @@ type ChartLayout = {
   yHeadroom: number;
 };
 
-/** Desktop / tablet — unchanged proportions, slightly roomier plot. */
+/** Desktop / tablet — roomier markers for the 4 key years. */
 const LAYOUT_DESKTOP: ChartLayout = {
   viewW: 780,
   viewH: 340,
-  padL: 28,
-  padR: 32,
-  padT: 44,
-  padB: 52,
-  dotR: 4,
-  hitR: 26,
-  valueOffset: 12,
-  yearY: 14,
+  padL: 36,
+  padR: 40,
+  padT: 48,
+  padB: 54,
+  dotR: 5,
+  hitR: 28,
+  valueOffset: 14,
+  yearY: 15,
   captionLift: 18,
-  yHeadroom: 0,
+  yHeadroom: 0.06,
 };
 
 /**
@@ -68,23 +67,26 @@ const LAYOUT_DESKTOP: ChartLayout = {
 const LAYOUT_MOBILE: ChartLayout = {
   viewW: 780,
   viewH: 620,
-  padL: 32,
-  padR: 32,
-  padT: 40,
-  padB: 50,
-  dotR: 10,
-  hitR: 32,
-  valueOffset: 15,
-  yearY: 17,
-  captionLift: 17,
+  padL: 36,
+  padR: 36,
+  padT: 42,
+  padB: 52,
+  dotR: 11,
+  hitR: 36,
+  valueOffset: 16,
+  yearY: 18,
+  captionLift: 18,
   yHeadroom: 0.1,
 };
 
-/** Permanent % labels on narrow screens; others via touch/focus. */
-const MOBILE_PINNED_VALUE_YEARS = new Set([2022, 2025, 2028, 2030]);
+/**
+ * Visible markers / labels only — denser years stay in the line path
+ * for an accurate cumulative curve, but are not drawn as points.
+ */
+const DISPLAY_YEARS = new Set([2022, 2024, 2026, 2030]);
 
-/** Permanent year axis labels on narrow screens; others via touch/focus. */
-const MOBILE_PINNED_YEAR_LABELS = new Set([2022, 2024, 2026, 2030]);
+/** Green accent on the last observed year among visible markers. */
+const DISPLAY_ANCHOR_YEAR = 2024;
 
 const MOBILE_MQ = "(max-width: 759px)";
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -152,9 +154,11 @@ function buildGeometry(
         : formatCumulativePercent(d.cumulativeGrowth, locale),
       index,
       projected: d.status === "projected",
-      isAnchor: d.year === TRANSACTION_ANCHOR_YEAR && d.status === "observed",
+      isAnchor: d.year === DISPLAY_ANCHOR_YEAR && d.status === "observed",
     };
   });
+
+  const markers = points.filter((p) => DISPLAY_YEARS.has(p.year));
 
   const lastObservedIdx = points.reduce(
     (acc, p, i) => (!p.projected ? i : acc),
@@ -188,6 +192,7 @@ function buildGeometry(
 
   return {
     points,
+    markers,
     baselineY,
     lastObservedIdx,
     observedLine: toLine(observedPoints),
@@ -215,6 +220,7 @@ function nearestPointIndex(
   layout: ChartLayout,
   baselineY: number,
 ): number | null {
+  if (points.length === 0) return null;
   const { padT, hitR } = layout;
   const inBand = svgY >= padT - hitR && svgY <= baselineY + hitR;
   if (inBand) {
@@ -227,7 +233,7 @@ function nearestPointIndex(
         best = i;
       }
     }
-    if (bestDx <= hitR * 1.35) return best;
+    if (bestDx <= hitR * 1.35) return points[best].index;
   }
   let best = -1;
   let bestDist = Number.POSITIVE_INFINITY;
@@ -238,7 +244,7 @@ function nearestPointIndex(
       best = i;
     }
   }
-  return best >= 0 ? best : null;
+  return best >= 0 ? points[best].index : null;
 }
 
 /**
@@ -271,6 +277,7 @@ export function MarketDemandGraph({
   );
   const {
     points,
+    markers,
     baselineY,
     observedLine,
     projectedLine,
@@ -321,9 +328,11 @@ export function MarketDemandGraph({
       if (rect.width === 0 || rect.height === 0) return;
       const svgX = ((event.clientX - rect.left) / rect.width) * layout.viewW;
       const svgY = ((event.clientY - rect.top) / rect.height) * layout.viewH;
-      setActiveIndex(nearestPointIndex(points, svgX, svgY, layout, baselineY));
+      setActiveIndex(
+        nearestPointIndex(markers, svgX, svgY, layout, baselineY),
+      );
     },
-    [points, layout, baselineY],
+    [markers, layout, baselineY],
   );
 
   const clearActive = useCallback(() => setActiveIndex(null), []);
@@ -337,6 +346,11 @@ export function MarketDemandGraph({
   ]
     .filter(Boolean)
     .join(" ");
+
+  const activePoint =
+    activeIndex !== null
+      ? (markers.find((p) => p.index === activeIndex) ?? null)
+      : null;
 
   return (
     <div
@@ -361,7 +375,9 @@ export function MarketDemandGraph({
         onPointerDown={handlePointerMove}
       >
         {[0.25, 0.5, 0.75, 1].map((t) => {
-          const y = layout.padT + (layout.viewH - layout.padT - layout.padB) * (1 - t);
+          const y =
+            layout.padT +
+            (layout.viewH - layout.padT - layout.padB) * (1 - t);
           return (
             <line
               key={t}
@@ -402,16 +418,16 @@ export function MarketDemandGraph({
             }
           />
 
-          {activeIndex !== null ? (
+          {activePoint ? (
             <line
               className={
-                points[activeIndex].projected
+                activePoint.projected
                   ? "om-market-demand__guide om-market-demand__guide--projected"
                   : "om-market-demand__guide"
               }
-              x1={points[activeIndex].x}
-              x2={points[activeIndex].x}
-              y1={points[activeIndex].y}
+              x1={activePoint.x}
+              x2={activePoint.x}
+              y1={activePoint.y}
               y2={baselineY}
             />
           ) : null}
@@ -425,16 +441,10 @@ export function MarketDemandGraph({
             {projectedCaption}
           </text>
 
-          {points.map((point) => {
+          {markers.map((point, markerIndex) => {
             const isActive = activeIndex === point.index;
             const isDimmed =
               activeIndex !== null && activeIndex !== point.index;
-            const pinValue =
-              !isMobile || MOBILE_PINNED_VALUE_YEARS.has(point.year);
-            const valueCollapsed = isMobile && !pinValue;
-            const pinYear =
-              !isMobile || MOBILE_PINNED_YEAR_LABELS.has(point.year);
-            const yearCollapsed = isMobile && !pinYear;
 
             return (
               <g
@@ -451,7 +461,9 @@ export function MarketDemandGraph({
                   .filter(Boolean)
                   .join(" ")}
                 style={
-                  { ["--om-md-point-index"]: point.index } as CSSProperties
+                  {
+                    ["--om-md-point-index"]: markerIndex,
+                  } as CSSProperties
                 }
               >
                 {point.isAnchor ? (
@@ -490,7 +502,6 @@ export function MarketDemandGraph({
                     "om-market-demand__value",
                     point.projected ? "om-market-demand__value--projected" : "",
                     point.isAnchor ? "om-market-demand__value--anchor" : "",
-                    valueCollapsed ? "is-collapsed" : "",
                   ]
                     .filter(Boolean)
                     .join(" ")}
@@ -502,7 +513,6 @@ export function MarketDemandGraph({
                       : layout.valueOffset)
                   }
                   textAnchor="middle"
-                  aria-hidden={valueCollapsed && !isActive ? true : undefined}
                 >
                   {point.label}
                 </text>
@@ -511,14 +521,12 @@ export function MarketDemandGraph({
                     "om-market-demand__year",
                     point.projected ? "om-market-demand__year--projected" : "",
                     point.isAnchor ? "om-market-demand__year--anchor" : "",
-                    yearCollapsed ? "is-collapsed" : "",
                   ]
                     .filter(Boolean)
                     .join(" ")}
                   x={point.x}
                   y={layout.viewH - layout.yearY}
                   textAnchor="middle"
-                  aria-hidden={yearCollapsed && !isActive ? true : undefined}
                 >
                   {point.year}
                 </text>

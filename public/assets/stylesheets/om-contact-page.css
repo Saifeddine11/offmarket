@@ -45,11 +45,16 @@
   box-sizing: border-box;
 }
 
-.om-contact-lead-page > .om-final-cta {
-  flex-shrink: 0;
+/* Final CTA is rendered as a sibling of main (not a padded child) — keep it edge-to-edge. */
+.om-contact-lead-body .om-final-cta,
+.om-contact-lead-body .om-final-cta__media {
   width: 100%;
   max-width: none;
-  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  box-sizing: border-box;
+  border-radius: 0;
 }
 
 .om-contact-lead-page__columns {

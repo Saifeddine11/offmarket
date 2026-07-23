@@ -7,12 +7,25 @@
   z-index: 2;
   overflow: hidden;
   width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-inline: 0;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  border-radius: 0;
+  border-top: 1px solid rgba(245, 242, 235, 0.06);
   background: #11120d;
   color: rgba(245, 242, 235, 0.88);
   font-family: var(--om-font-body, Inter, Helvetica, Arial, sans-serif);
+  box-sizing: border-box;
+}
+
+footer.om-footer {
+  width: 100%;
+  max-width: none;
   margin: 0;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-  border-top: 1px solid rgba(245, 242, 235, 0.06);
+  padding-inline: 0;
+  border-radius: 0;
+  background: #11120d;
 }
 
 .om-footer a {
@@ -21,8 +34,14 @@
   transition: color 220ms ease;
 }
 
-.om-footer a:hover {
-  color: rgba(255, 251, 244, 0.96);
+/* Beat global `.has-hover a:hover { color: var(--t-heading) }` (black) on dark footer */
+.om-footer a:hover,
+.om-footer a:focus-visible,
+.om-footer a:hover:active,
+.has-hover .om-footer a:hover,
+.has-hover .om-footer a:hover:active,
+.has-hover .om-footer a:focus-visible {
+  color: rgba(255, 251, 244, 0.96) !important;
 }
 
 .om-footer__transition {
@@ -37,6 +56,15 @@
   );
 }
 
+/* Never leave a transparent band over an ivory/cream page behind the footer */
+body:has(.om-final-cta) .om-footer__transition,
+body:has(.om-final-cta) footer .om-footer__transition {
+  display: none;
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
 .om-final-cta + .om-footer,
 .om-final-cta + footer.om-footer,
 .om-final-cta + footer,
@@ -46,7 +74,9 @@
 /* GlobalSiteFooter is a direct body child, not adjacent to .om-final-cta */
 body:has(.om-final-cta) > .om-footer,
 body:has(.om-final-cta) > footer.om-footer,
-body:has(.om-final-cta) > footer {
+body:has(.om-final-cta) > footer,
+body:has(.om-footer) > .om-footer,
+body:has(.om-footer) > footer.om-footer {
   z-index: 1;
   width: 100%;
   max-width: none;
@@ -56,6 +86,7 @@ body:has(.om-final-cta) > footer {
   border-top: 0;
   padding-top: 0;
   padding-inline: 0;
+  border-radius: 0;
   background-color: #11120d;
 }
 
@@ -66,6 +97,7 @@ body:has(.om-final-cta) > footer {
 body:has(.om-final-cta) > .om-footer .om-footer__transition,
 body:has(.om-final-cta) > footer.om-footer .om-footer__transition,
 body:has(.om-final-cta) > footer .om-footer__transition {
+  display: none;
   height: 0;
   min-height: 0;
   overflow: hidden;
@@ -239,8 +271,12 @@ body:has(.om-final-cta) > footer .om-footer__transition {
 }
 
 .om-footer__links a:hover,
-.om-footer__links a[aria-current='page'] {
-  color: rgba(255, 251, 244, 0.95);
+.om-footer__links a:focus-visible,
+.om-footer__links a[aria-current='page'],
+.has-hover .om-footer__links a:hover,
+.has-hover .om-footer__links a:hover:active,
+.has-hover .om-footer__links a:focus-visible {
+  color: rgba(255, 251, 244, 0.95) !important;
 }
 
 .om-footer__newsletter {
@@ -479,8 +515,11 @@ body:has(.om-final-cta) > footer .om-footer__transition {
 }
 
 .om-footer__legal a:hover,
-.om-footer__legal a[aria-current='page'] {
-  color: rgba(255, 251, 244, 0.9);
+.om-footer__legal a:focus-visible,
+.om-footer__legal a[aria-current='page'],
+.has-hover .om-footer__legal a:hover,
+.has-hover .om-footer__legal a:hover:active {
+  color: rgba(255, 251, 244, 0.9) !important;
 }
 
 .om-footer__sr-only {

@@ -93,10 +93,11 @@ export function ContactPageContent({
               </section>
             </div>
           </div>
-
-          <PageFinalCtaMotion locale={locale} />
         </main>
       </PageEntranceMotion>
+
+      {/* Outside the padded contact main so the CTA stays full-bleed (no side gutters). */}
+      <PageFinalCtaMotion locale={locale} />
     </>
   );
 }

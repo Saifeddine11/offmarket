@@ -1,6 +1,6 @@
 /**
  * OFF MARKET — Homepage final CTA
- * Integrated with footer: full-bleed header, no bottom gap.
+ * Integrated with footer: full-bleed header, no bottom gap, no cream gutters.
  */
 
 .om-final-cta {
@@ -10,10 +10,11 @@
   max-width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  background: var(--om-black);
+  background: #11120d;
   padding: 0;
   margin-bottom: 0;
   box-sizing: border-box;
+  border-radius: 0;
 }
 
 /* Avoid white side gutters when 100vw breakout is clipped by body overflow-x */
@@ -22,6 +23,13 @@ body:has(.om-final-cta) .om-final-cta {
   max-width: none;
   margin-left: 0;
   margin-right: 0;
+  border-radius: 0;
+}
+
+/* Keep the dark CTA→footer stack edge-to-edge on every route */
+body:has(.om-footer) .om-final-cta,
+body:has(.om-footer) .om-final-cta__media {
+  border-radius: 0;
 }
 
 .om-final-cta + .om-footer,
@@ -37,7 +45,8 @@ body:has(.om-final-cta) .om-final-cta {
   margin: 0;
   overflow: hidden;
   background: var(--om-black);
-  border-radius: var(--om-radius-lg) var(--om-radius-lg) 0 0;
+  /* Square edges — rounded corners left cream/white gutters on ivory pages */
+  border-radius: 0;
   border-bottom: 0;
   box-shadow: none;
 }
@@ -192,7 +201,7 @@ body:has(.om-final-cta) .om-final-cta {
   .om-final-cta__media.om-final-cta__reveal,
   .om-final-cta.is-visible .om-final-cta__media {
     min-height: 34rem;
-    border-radius: 2.25rem 2.25rem 0 0;
+    border-radius: 0;
   }
 
   .om-final-cta__overlay::after {
