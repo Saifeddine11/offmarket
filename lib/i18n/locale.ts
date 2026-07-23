@@ -71,6 +71,12 @@ export function languageLinksForPathname(pathname: string | null | undefined): L
   if (path === "/privacy-policy" || path === "/en/privacy-policy" || path === "/es/politica-de-privacidad" || path === "/it/privacy-policy" || path === "/nl/privacybeleid" || path === "/no/personvernerklaering") {
     return { en: "/en/privacy-policy/", es: "/es/politica-de-privacidad/", fr: "/privacy-policy/", it: "/it/privacy-policy/", nl: "/nl/privacybeleid/", no: "/no/personvernerklaering/" };
   }
+  if (path === "/conditions-generales" || path === "/en/terms-of-use" || path === "/es/condiciones-de-uso" || path === "/it/condizioni-d-uso" || path === "/nl/gebruiksvoorwaarden" || path === "/no/bruksvilkaar") {
+    return { en: "/en/terms-of-use/", es: "/es/condiciones-de-uso/", fr: "/conditions-generales/", it: "/it/condizioni-d-uso/", nl: "/nl/gebruiksvoorwaarden/", no: "/no/bruksvilkaar/" };
+  }
+  if (path === "/mentions-legales" || path === "/en/legal-notice" || path === "/es/aviso-legal" || path === "/it/note-legali" || path === "/nl/wettelijke-vermeldingen" || path === "/no/juridisk-merknad") {
+    return { en: "/en/legal-notice/", es: "/es/aviso-legal/", fr: "/mentions-legales/", it: "/it/note-legali/", nl: "/nl/wettelijke-vermeldingen/", no: "/no/juridisk-merknad/" };
+  }
 
   return { en: "/en/", es: "/es/", fr: "/", it: "/it/", nl: "/nl/", no: "/no/" };
 }

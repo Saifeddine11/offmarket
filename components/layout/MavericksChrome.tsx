@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { getChromeCopy } from "@/lib/i18n/chromeCopy";
+import { LANGUAGE_NATIVE_NAMES } from "@/lib/i18n/languageLabels";
 import { langCodeToLocale, type LangCode } from "@/lib/i18n/types";
 import type { SiteLocale } from "@/lib/i18n/types";
 
@@ -35,6 +36,16 @@ const DEFAULT_LANG_LINKS: LangLinks = {
 };
 
 const ENABLE_LANGUAGE_SWITCHER = true;
+
+/** Shared, ordered locale list for the language switchers (matches desktop order). */
+const LANGUAGE_OPTIONS: { locale: SiteLocale; code: LangCode; key: keyof LangLinks }[] = [
+  { locale: "en", code: "EN", key: "en" },
+  { locale: "es", code: "ES", key: "es" },
+  { locale: "fr", code: "FR", key: "fr" },
+  { locale: "it", code: "IT", key: "it" },
+  { locale: "nl", code: "NL", key: "nl" },
+  { locale: "no", code: "NO", key: "no" },
+];
 
 function localeToLangCode(locale: SiteLocale): LangCode {
   if (locale === "en") return "EN";
@@ -135,6 +146,55 @@ export function MavericksChrome({
             />
           </Link>
           <div className="om-header__actions">
+            {ENABLE_LANGUAGE_SWITCHER ? (
+              <div
+                className="om-language-dropdown om-language-dropdown--mobile"
+                data-language-dropdown
+                suppressHydrationWarning
+              >
+                <button
+                  className="om-language-dropdown__trigger"
+                  type="button"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-label={copy.chooseLanguageAria}
+                  suppressHydrationWarning
+                >
+                  <span className="om-language-dropdown__current">
+                    {resolvedActiveLang}
+                  </span>
+                  <span className="om-language-dropdown__chevron" aria-hidden="true">
+                    ▾
+                  </span>
+                </button>
+                <div
+                  className="om-language-dropdown__menu om-language-dropdown__menu--mobile"
+                  role="listbox"
+                  aria-label={copy.chooseLanguageAria}
+                >
+                  {LANGUAGE_OPTIONS.map((option) => {
+                    const isActive = resolvedActiveLang === option.code;
+                    return (
+                      <Link
+                        key={option.code}
+                        href={langLinks[option.key]}
+                        className={`om-language-dropdown__option${isActive ? " is-active" : ""}`}
+                        role="option"
+                        aria-selected={isActive}
+                        data-lang={option.code}
+                      >
+                        <span className="om-language-dropdown__option-name">
+                          {LANGUAGE_NATIVE_NAMES[option.locale]}
+                        </span>
+                        <span className="om-language-dropdown__option-code" aria-hidden="true">
+                          {option.code}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
             <button
               type="button"
               className="om-header__icon-btn om-header__icon-btn--ghost om-header__icon-btn--menu"

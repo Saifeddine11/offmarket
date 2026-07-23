@@ -1297,6 +1297,45 @@ body.menu-open {
   outline-offset: 2px;
 }
 
+/* ── Language dropdown — mobile navbar variant ── */
+
+.om-language-dropdown--mobile {
+  display: inline-flex;
+}
+
+.om-language-dropdown--mobile .om-language-dropdown__trigger {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 10px;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.om-language-dropdown__menu--mobile {
+  top: calc(100% + 12px);
+  right: 0;
+  min-width: 184px;
+  max-width: min(72vw, 240px);
+}
+
+.om-language-dropdown__menu--mobile .om-language-dropdown__option {
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 44px;
+  font-size: 15px;
+}
+
+.om-language-dropdown__option-name {
+  white-space: nowrap;
+}
+
+.om-language-dropdown__option-code {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0.6;
+}
+
 .mv-lang-switcher--glass {
   display: none;
 }

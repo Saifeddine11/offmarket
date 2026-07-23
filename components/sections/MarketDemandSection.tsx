@@ -13,7 +13,8 @@ function resolveLocale(locale?: string): SiteLocale {
 }
 
 /**
- * Homepage market section — cumulative transaction progress since 2022.
+ * Homepage market section — verified 2025 Marrakech real-estate figures.
+ * Transactions +24.1% and asset prices +1.0% vs 2024 (Bank Al-Maghrib / ANCFCC).
  * Inserted once after featured property listings.
  */
 export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
@@ -34,12 +35,10 @@ export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
             <MarketDemandEditorial copy={copy} titleId={titleId} />
             <div className="om-market-demand__divider" aria-hidden="true" />
             <MarketDemandGraph
-              graphLabel={copy.graphLabel}
-              svgTitle={copy.svgTitle}
-              svgDesc={copy.svgDesc}
-              unitHint={copy.unitHint}
-              projectedCaption={copy.projectedCaption}
-              baseLabel={copy.baseLabel}
+              graphTitle={copy.graphTitle}
+              graphBaseline={copy.graphBaseline}
+              highlight={copy.highlight}
+              chartAria={copy.chartAria}
               locale={resolved}
             />
           </div>
@@ -48,11 +47,12 @@ export function MarketDemandSection({ locale }: MarketDemandSectionProps) {
             <summary className="om-market-demand__sources-summary">
               {copy.sourcesTitle}
             </summary>
-            <p className="om-market-demand__sources-body">{copy.sourcesBody}</p>
+            <p className="om-market-demand__sources-body">{copy.source}</p>
+            <p className="om-market-demand__sources-body">{copy.methodology}</p>
           </details>
         </div>
       </div>
-      <p className="om-market-demand__sr-only">{copy.summary}</p>
+      <p className="om-market-demand__sr-only">{copy.chartSummary}</p>
     </section>
   );
 }

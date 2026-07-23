@@ -326,10 +326,42 @@
 })();
 
 /**
- * OFF MARKET — compact language dropdown (desktop navbar).
+ * OFF MARKET — compact language dropdown (desktop + mobile navbar).
  */
 (function () {
   'use strict';
+
+  var LOCALE_COOKIE = 'offmarket_locale';
+  var LOCALE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 12 months
+  var CODE_TO_LOCALE = { FR: 'fr', EN: 'en', NL: 'nl', IT: 'it', ES: 'es', NO: 'no' };
+
+  /**
+   * Persists a manual language choice so automatic detection never overrides it
+   * on later visits. Written to both a long-lived cookie (read by middleware)
+   * and localStorage (secondary client fallback).
+   */
+  function persistLocaleChoice(code) {
+    var locale = CODE_TO_LOCALE[(code || '').trim().toUpperCase()];
+    if (!locale) return;
+    try {
+      var secure = window.location.protocol === 'https:' ? '; Secure' : '';
+      document.cookie =
+        LOCALE_COOKIE +
+        '=' +
+        locale +
+        '; path=/; max-age=' +
+        LOCALE_COOKIE_MAX_AGE +
+        '; SameSite=Lax' +
+        secure;
+    } catch (e) {
+      /* cookies unavailable */
+    }
+    try {
+      window.localStorage.setItem(LOCALE_COOKIE, locale);
+    } catch (e) {
+      /* storage unavailable */
+    }
+  }
 
   function setActiveLanguage(lang) {
     if (!lang) return;
@@ -394,6 +426,7 @@
       dropdown.querySelectorAll('.om-language-dropdown__option').forEach(function (option) {
         option.addEventListener('click', function () {
           var lang = option.getAttribute('data-lang') || option.textContent.trim();
+          persistLocaleChoice(lang);
           setActiveLanguage(lang);
           close();
         });
@@ -425,7 +458,9 @@
 
     document.querySelectorAll('.mv-lang-switcher__btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        setActiveLanguage(btn.textContent.trim());
+        var lang = btn.getAttribute('data-lang') || btn.textContent.trim();
+        persistLocaleChoice(lang);
+        setActiveLanguage(lang);
       });
     });
   }

@@ -4,7 +4,7 @@ import type { SiteLocale } from "@/lib/i18n/types";
 /** Styles loaded once from app/layout.tsx for the global navbar. */
 export const GLOBAL_NAV_STYLES = [
   "/assets/stylesheets/offmarket-logo.css?v=1765317600",
-  "/assets/stylesheets/mavericks-chrome.css?v=1768512000",
+  "/assets/stylesheets/mavericks-chrome.css?v=1784800000",
   "/assets/stylesheets/om-nav-menu.css?v=1767581000",
   "/assets/stylesheets/om-buttons.css?v=1765338000",
 ] as const;
@@ -21,7 +21,7 @@ export const GLOBAL_NAV_SCRIPTS = [
   "/assets/javascripts/gsap.min.js?v=1765268700",
   "/assets/javascripts/om-gsap-config.js?v=1767582000",
   "/assets/javascripts/om-nav-menu.js?v=1769203000",
-  "/assets/javascripts/mavericks-chrome.js?v=1765406000",
+  "/assets/javascripts/mavericks-chrome.js?v=1784800000",
   "/assets/javascripts/om-nav-scroll.js?v=1767562700",
   "/assets/javascripts/mav-navbar-hero-visibility.js?v=1765287000",
 ] as const;
