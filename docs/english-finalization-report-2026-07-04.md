@@ -36,7 +36,7 @@ Focused pass before hreflang readiness. No hreflang added. Italian/Dutch untouch
 ## 2. Files inspected but not modified
 
 - `components/sections/ContactPageContent.tsx`, `ContactLeadQuestionnaire.tsx`, `PrivateAccessForm.tsx` — already locale-aware from prior pass
-- `components/forms/HomePrivateAccessSection.tsx`, `MavericksChrome.tsx`, `SiteFooter.tsx`
+- `components/forms/HomePrivateAccessSection.tsx`, `SiteChrome.tsx`, `SiteFooter.tsx`
 - `lib/i18n/contactCopy.ts`, `formCopy.ts`, `footerCopy.ts`, `types.ts`
 - `app/en/page.tsx`, `app/en/off-plan/page.tsx`, `app/en/contact/page.tsx`
 - `app/off-market/page.tsx` — French route preserved

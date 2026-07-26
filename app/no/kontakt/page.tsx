@@ -17,7 +17,7 @@ export const metadata: Metadata = buildPageMetadata({
     "Kontakt OFF MARKET Marrakech for å drøfte eiendomsprosjektet ditt og få tilgang til et privat utvalg.",
   canonicalPath: "/no/kontakt/",
   ogLocale: "nb_NO",
-  ogImage: "https://offmarketofficial.com/assets/mavericks/location/mavericks-gueliz-hypercentre.webp",
+  ogImage: "https://offmarketofficial.com/assets/offmarket/location/offmarket-gueliz-hypercentre.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

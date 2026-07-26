@@ -189,7 +189,7 @@ export function PageFinalCtaSection({
     >
       <div className="om-final-cta__media om-final-cta__reveal">
         <img
-          src="/assets/mavericks/villa/mavericks-image00004-scaled.webp"
+          src="/assets/offmarket/villa/offmarket-image00004-scaled.webp"
           alt=""
           loading="lazy"
           decoding="async"

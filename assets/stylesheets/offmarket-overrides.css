@@ -1,5 +1,5 @@
 /**
- * OffMarket — Mavericks color overrides (components)
+ * OFF MARKET — color overrides (components)
  * Color values only — no layout, animation, or structure changes.
  */
 
@@ -477,7 +477,7 @@ footer#contact,
     will-change: auto !important;
   }
 
-  /* Mavericks reveal items that stay hidden when Locomotive Scroll in-view never fires */
+  /* OFF MARKET reveal items that stay hidden when Locomotive Scroll in-view never fires */
   #qui-sommes-nous .mav-reveal-item,
   #qui-sommes-nous .mav-who__phrase,
   #qui-sommes-nous .mav-who__eyebrow,

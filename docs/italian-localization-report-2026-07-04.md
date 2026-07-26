@@ -83,7 +83,7 @@ Each route: Italian description, self-referencing canonical (`https://offmarketo
 | `getChromeCopy('it')` | Italian nav placeholders, Richiedi accesso, `/it/*` hrefs |
 | `getFooterCopy('it')` | Italian footer + localized routes |
 | `PrivateAccessForm` | `locale="it"` on `/it/off-market/` and contact step 4 |
-| `MavericksChrome` / `SiteFooter` | Consume Italian copy when `locale="it"` |
+| `SiteChrome` / `SiteFooter` | Consume Italian copy when `locale="it"` |
 
 ---
 

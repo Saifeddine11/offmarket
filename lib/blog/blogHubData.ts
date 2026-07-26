@@ -78,7 +78,7 @@ const ARTICLES_FR: BlogHubArticle[] = [
     title:
       "Investir dans l’immobilier de prestige à Marrakech : les zones à surveiller",
     date: "2026",
-    image: "/assets/mavericks/hero/mavericks-hero-villa.webp",
+    image: "/assets/offmarket/hero/offmarket-hero-villa.webp",
     imageAlt: "Immobilier de prestige à Marrakech",
     featured: false,
     excerpt:
@@ -90,7 +90,7 @@ const ARTICLES_FR: BlogHubArticle[] = [
     title:
       "Guéliz, Hivernage, Amelkis : comprendre les adresses qui prennent de la valeur",
     date: "2026",
-    image: "/assets/mavericks/gallery/mavericks-the-passage.webp",
+    image: "/assets/offmarket/gallery/offmarket-the-passage.webp",
     imageAlt: "Architecture et adresses à Marrakech",
     featured: true,
     excerpt:
@@ -101,7 +101,7 @@ const ARTICLES_FR: BlogHubArticle[] = [
     category: "off-market",
     title: "Pourquoi certains biens à Marrakech ne sont jamais publiés en ligne",
     date: "2026",
-    image: "/assets/mavericks/gallery/mavericks-collection-estates.jpg",
+    image: "/assets/offmarket/gallery/offmarket-collection-estates.jpg",
     imageAlt: "Sélection immobilière privée à Marrakech",
     featured: false,
     excerpt:
@@ -113,7 +113,7 @@ const ARTICLES_FR: BlogHubArticle[] = [
     title:
       "Appartement en hypercentre : pourquoi la localisation reste le premier filtre",
     date: "2026",
-    image: "/assets/mavericks/villa/mavericks-image00006-scaled.webp",
+    image: "/assets/offmarket/villa/offmarket-image00006-scaled.webp",
     imageAlt: "Appartement en hypercentre à Marrakech",
     featured: false,
     excerpt:

@@ -7,8 +7,8 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { MOTION_EASE } from "@/lib/motion/config";
 import type { SiteLocale } from "@/lib/i18n/types";
 
-const VIDEO_SRC = "/assets/mavericks/video/fayssal_offmarket.mp4";
-const VIDEO_POSTER = "/assets/mavericks/video/fayssal_offmarket-poster.jpg";
+const VIDEO_SRC = "/assets/offmarket/video/fayssal_offmarket.mp4";
+const VIDEO_POSTER = "/assets/offmarket/video/fayssal_offmarket-poster.jpg";
 
 const PLAY_ICON = (
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">

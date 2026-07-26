@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply OffMarket/Mavericks French content to static HTML pages."""
+"""Apply OFF MARKET French content to static HTML pages (legacy migration tooling)."""
 import os
 import re
 
@@ -228,8 +228,8 @@ PAGE_FILES = [
 ]
 
 CHROME_FILES = [
-    "assets/chrome/mavericks-chrome.html",
-    "assets/chrome/mavericks-footer.html",
+    "assets/chrome/offmarket-chrome.html",
+    "assets/chrome/offmarket-footer.html",
 ]
 
 

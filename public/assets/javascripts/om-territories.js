@@ -1,7 +1,7 @@
 /**
  * OffMarket — Adresses / Territories gallery (vanilla port)
- * Source: mavericks/src/components/lightswind/3d-hover-gallery.tsx
- *         mavericks/src/components/cinematic/sections/TerritoriesMobileGallery.jsx
+ * Source: offmarket/src/components/lightswind/3d-hover-gallery.tsx
+ *         offmarket/src/components/cinematic/sections/TerritoriesMobileGallery.jsx
  */
 (function () {
   'use strict';
@@ -20,7 +20,7 @@
     return 'fr';
   }
 
-  var IMG_BASE = '/assets/mavericks/territories/investment/';
+  var IMG_BASE = '/assets/offmarket/territories/investment/';
   var ITEMS_HOME = [
     {
       number: '01',
@@ -40,7 +40,7 @@
     },
     {
       number: '03',
-      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      image: '/assets/offmarket/gallery/offmarket-collection-riads.webp',
       label: 'Médina',
       subtitle: 'Riads de caractère · maisons d\u2019hôtes · patrimoine',
       tag: 'RENDEMENT TOURISTIQUE',
@@ -66,7 +66,7 @@
     },
     {
       number: '03',
-      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      image: '/assets/offmarket/gallery/offmarket-collection-riads.webp',
       label: 'Medina',
       subtitle: 'Character riads · guest houses · heritage',
       tag: 'TOURIST YIELD',
@@ -92,7 +92,7 @@
     },
     {
       number: '03',
-      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      image: '/assets/offmarket/gallery/offmarket-collection-riads.webp',
       label: 'Medina',
       subtitle: 'Riads con carácter · casas de huéspedes · patrimonio',
       tag: 'RENTABILIDAD TURÍSTICA',
@@ -118,7 +118,7 @@
     },
     {
       number: '03',
-      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      image: '/assets/offmarket/gallery/offmarket-collection-riads.webp',
       label: 'Medina',
       subtitle: 'Riad di carattere · case per ospiti · patrimonio',
       tag: 'RENDIMENTO TURISTICO',
@@ -144,7 +144,7 @@
     },
     {
       number: '03',
-      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      image: '/assets/offmarket/gallery/offmarket-collection-riads.webp',
       label: 'Medina',
       subtitle: 'Riads met karakter · pensions · erfgoed',
       tag: 'TOERISTISCH RENDEMENT',
@@ -170,7 +170,7 @@
     },
     {
       number: '03',
-      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      image: '/assets/offmarket/gallery/offmarket-collection-riads.webp',
       label: 'Medina',
       subtitle: 'Riader med særpreg · gjestehus · kulturarv',
       tag: 'TURISTISK AVKASTNING',
@@ -180,21 +180,21 @@
   var ITEMS_PAGE = ITEMS_HOME.concat([
     {
       number: '04',
-      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      image: '/assets/offmarket/location/offmarket-route-ourika.webp',
       label: "Route de l\u2019Ourika",
       subtitle: 'Villas · terrains · résidences privées',
       tag: 'VILLAS & EXTÉRIEUR',
     },
     {
       number: '05',
-      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      image: '/assets/offmarket/location/offmarket-palmeraie.webp',
       label: 'Palmeraie',
       subtitle: 'Grandes propriétés · calme · confidentialité',
       tag: 'GRANDES PROPRIÉTÉS',
     },
     {
       number: '06',
-      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      image: '/assets/offmarket/hero/offmarket-hero-villa.webp',
       label: "Route d\u2019Amizmiz",
       subtitle: 'Villas sur plan · terrains · projets résidentiels',
       tag: 'PROJETS RÉSIDENTIELS',
@@ -204,21 +204,21 @@
   var ITEMS_PAGE_ES = ITEMS_HOME_ES.concat([
     {
       number: '04',
-      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      image: '/assets/offmarket/location/offmarket-route-ourika.webp',
       label: 'Carretera de Ourika',
       subtitle: 'Villas · terrenos · residencias privadas',
       tag: 'VILLAS Y EXTERIOR',
     },
     {
       number: '05',
-      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      image: '/assets/offmarket/location/offmarket-palmeraie.webp',
       label: 'Palmeraie',
       subtitle: 'Grandes propiedades · calma · confidencialidad',
       tag: 'GRANDES PROPIEDADES',
     },
     {
       number: '06',
-      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      image: '/assets/offmarket/hero/offmarket-hero-villa.webp',
       label: 'Carretera de Amizmiz',
       subtitle: 'Villas sobre plano · terrenos · proyectos residenciales',
       tag: 'PROYECTOS RESIDENCIALES',
@@ -228,21 +228,21 @@
   var ITEMS_PAGE_EN = ITEMS_HOME_EN.concat([
     {
       number: '04',
-      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      image: '/assets/offmarket/location/offmarket-route-ourika.webp',
       label: 'Ourika Road',
       subtitle: 'Villas · plots · private residences',
       tag: 'VILLAS & OUTDOOR LIVING',
     },
     {
       number: '05',
-      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      image: '/assets/offmarket/location/offmarket-palmeraie.webp',
       label: 'Palmeraie',
       subtitle: 'Large estates · tranquillity · privacy',
       tag: 'LARGE ESTATES',
     },
     {
       number: '06',
-      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      image: '/assets/offmarket/hero/offmarket-hero-villa.webp',
       label: 'Amizmiz Road',
       subtitle: 'Off-plan villas · plots · residential developments',
       tag: 'RESIDENTIAL DEVELOPMENTS',
@@ -252,21 +252,21 @@
   var ITEMS_PAGE_IT = ITEMS_HOME_IT.concat([
     {
       number: '04',
-      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      image: '/assets/offmarket/location/offmarket-route-ourika.webp',
       label: "Strada dell\u2019Ourika",
       subtitle: 'Ville · terreni · residenze private',
       tag: 'VILLE E SPAZI ESTERNI',
     },
     {
       number: '05',
-      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      image: '/assets/offmarket/location/offmarket-palmeraie.webp',
       label: 'Palmeraie',
       subtitle: 'Grandi proprietà · tranquillità · riservatezza',
       tag: 'GRANDI PROPRIETÀ',
     },
     {
       number: '06',
-      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      image: '/assets/offmarket/hero/offmarket-hero-villa.webp',
       label: 'Strada di Amizmiz',
       subtitle: 'Ville su progetto · terreni · progetti residenziali',
       tag: 'PROGETTI RESIDENZIALI',
@@ -276,21 +276,21 @@
   var ITEMS_PAGE_NL = ITEMS_HOME_NL.concat([
     {
       number: '04',
-      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      image: '/assets/offmarket/location/offmarket-route-ourika.webp',
       label: 'Ourikaweg',
       subtitle: "Villa's · percelen · privéresidenties",
       tag: "VILLA'S EN BUITENLEVEN",
     },
     {
       number: '05',
-      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      image: '/assets/offmarket/location/offmarket-palmeraie.webp',
       label: 'Palmeraie',
       subtitle: 'Grote eigendommen · rust · privacy',
       tag: 'GROTE EIGENDOMMEN',
     },
     {
       number: '06',
-      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      image: '/assets/offmarket/hero/offmarket-hero-villa.webp',
       label: 'Amizmizweg',
       subtitle: "Nieuwbouwvilla's · percelen · woonprojecten",
       tag: 'WOONPROJECTEN',
@@ -300,21 +300,21 @@
   var ITEMS_PAGE_NO = ITEMS_HOME_NO.concat([
     {
       number: '04',
-      image: '/assets/mavericks/location/mavericks-route-ourika.webp',
+      image: '/assets/offmarket/location/offmarket-route-ourika.webp',
       label: 'Ourika-veien',
       subtitle: 'Villaer · tomter · private residenser',
       tag: 'VILLAER OG UTEOMRÅDER',
     },
     {
       number: '05',
-      image: '/assets/mavericks/location/mavericks-palmeraie.webp',
+      image: '/assets/offmarket/location/offmarket-palmeraie.webp',
       label: 'Palmeraie',
       subtitle: 'Store eiendommer · ro · konfidensialitet',
       tag: 'STORE EIENDOMMER',
     },
     {
       number: '06',
-      image: '/assets/mavericks/hero/mavericks-hero-villa.webp',
+      image: '/assets/offmarket/hero/offmarket-hero-villa.webp',
       label: 'Amizmiz-veien',
       subtitle: 'Nybyggvillaer · tomter · boligprosjekter',
       tag: 'BOLIGPROSJEKTER',

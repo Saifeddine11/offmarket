@@ -59,7 +59,7 @@ Routes checked:
 
 Fixed clear user-facing navigation/CTA links in:
 
-- `components/layout/MavericksChrome.tsx`
+- `components/layout/SiteChrome.tsx`
 - `components/sections/FeaturedProjectsSection.tsx`
 - `components/sections/SimulatorSection.tsx`
 - `content/pages/location.json`
@@ -111,9 +111,9 @@ Shared recommendation: do not remove legacy CSS/JS globally yet. The route bundl
 
 | Route/profile | CSS files | JS files | Recommendation |
 |---|---|---|---|
-| `/`, `/fr/`, `/en/`, `/it/`, `/nl/` | 26: `om-scroll-layout.css`, `global.css`, `offmarket-tokens.css`, `offmarket-overrides.css`, `offmarket-logo.css`, `mavericks-chrome.css`, `mav-hero.css`, `om-buttons.css`, `om-nav-menu.css`, `om-territories.css`, `om-footer.css`, `om-final-cta.css`, `om-testimonials.css`, `om-contact.css`, `mav-who.css`, `om-featured-projects.css`, `om-private-access-popup.css`, `om-text-reveal.css`, `om-cinematic-video.css`, `om-simulator.css`, `om-simulator-home.css`, `om-property-modal.css`, `om-blog.css`, `landing.css`, `om-mobile-desktop-parity.css`, `om-typography.css` | 8 Next chunks | Largest legacy surface. Candidate for future section-by-section pruning only after visual coverage. |
-| `/about/` | 17: inner editorial CSS plus `mav-who.css`, `om-testimonials.css`, `om-text-reveal.css`, `about-who.css`, `about-verified.css`, `about-timeline.css` | 19: Next chunks plus `om-no-preloader.js`, `gsap.min.js`, `om-nav-menu.js`, `mavericks-chrome.js`, `om-language-switcher.js`, `om-inner-hero.js` | Keep. |
-| `/fr/about/` | Same CSS as `/about/` | 23: `/about/` scripts plus `scrolltrigger.min.js`, `mav-who-reveal.js`, `om-testimonials.js`, `om-mobile-reveal.js` | Compare with `/about/` before removing extra animation scripts. |
+| `/`, `/fr/`, `/en/`, `/it/`, `/nl/` | 26: `om-scroll-layout.css`, `global.css`, `offmarket-tokens.css`, `offmarket-overrides.css`, `offmarket-logo.css`, `offmarket-chrome.css`, `om-hero.css`, `om-buttons.css`, `om-nav-menu.css`, `om-territories.css`, `om-footer.css`, `om-final-cta.css`, `om-testimonials.css`, `om-contact.css`, `om-who.css`, `om-featured-projects.css`, `om-private-access-popup.css`, `om-text-reveal.css`, `om-cinematic-video.css`, `om-simulator.css`, `om-simulator-home.css`, `om-property-modal.css`, `om-blog.css`, `landing.css`, `om-mobile-desktop-parity.css`, `om-typography.css` | 8 Next chunks | Largest legacy surface. Candidate for future section-by-section pruning only after visual coverage. |
+| `/about/` | 17: inner editorial CSS plus `om-who.css`, `om-testimonials.css`, `om-text-reveal.css`, `about-who.css`, `about-verified.css`, `about-timeline.css` | 19: Next chunks plus `om-no-preloader.js`, `gsap.min.js`, `om-nav-menu.js`, `offmarket-chrome.js`, `om-language-switcher.js`, `om-inner-hero.js` | Keep. |
+| `/fr/about/` | Same CSS as `/about/` | 23: `/about/` scripts plus `scrolltrigger.min.js`, `om-who-reveal.js`, `om-testimonials.js`, `om-mobile-reveal.js` | Compare with `/about/` before removing extra animation scripts. |
 | `/quartiers/` | 17: inner editorial CSS plus `om-territories.css`, `om-quartier-details.css`, `om-quartiers-motion.css`, `om-simulator.css`, `om-simulator-home.css`, `om-blog.css` | 13 Next chunks; legacy scripts are loaded post-hydration by `DeferredLegacyScripts` | Keep route-local delayed loading. Do not restore native defer scripts. |
 | `/nos-projets/` | 16: inner editorial CSS plus `om-page-motion.css`, `om-featured-projects.css`, `om-private-access-popup.css`, `om-property-modal.css`, `om-nos-projets.css` | 21: Next chunks plus feature/modal/private-access legacy scripts | Keep until project modal and private access flows receive visual QA. |
 | `/sur-plan/`, `/fr/sur-plan/`, `/en/off-plan/`, `/it/progetti-su-piano/`, `/nl/nieuwbouw/` | 12: `om-scroll-layout.css`, `global.css`, tokens/overrides/logo/chrome/nav/type/footer, `sur-plan.css`, `om-legacy-type.css`, `om-buttons.css` | 8 Next chunks | Keep. These routes still depend on static page CSS. |

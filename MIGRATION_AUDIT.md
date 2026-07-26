@@ -24,7 +24,7 @@ offmarket-website/
 │   ├── javascripts/
 │   ├── logos/
 │   ├── manifest/
-│   ├── mavericks/
+│   ├── offmarket/
 │   ├── pano/
 │   ├── snippets/
 │   ├── stylesheets/
@@ -128,9 +128,9 @@ assets/stylesheets/browser-message.css
 assets/stylesheets/global.css
 assets/stylesheets/landing.css
 assets/stylesheets/location.css
-assets/stylesheets/mav-hero.css
-assets/stylesheets/mav-who.css
-assets/stylesheets/mavericks-chrome.css
+assets/stylesheets/om-hero.css
+assets/stylesheets/om-who.css
+assets/stylesheets/offmarket-chrome.css
 assets/stylesheets/offmarket-logo.css
 assets/stylesheets/offmarket-overrides.css
 assets/stylesheets/offmarket-tokens.css
@@ -167,13 +167,13 @@ assets/javascripts/browser-message/browser-message.js
 assets/javascripts/gsap.min.js
 assets/javascripts/landing.js
 assets/javascripts/location.js
-assets/javascripts/mav-editorial-text-reveal.js
-assets/javascripts/mav-hero-blur-text.js
-assets/javascripts/mav-hero-counter.js
-assets/javascripts/mav-lazy-videos.js
-assets/javascripts/mav-navbar-hero-visibility.js
-assets/javascripts/mav-who-reveal.js
-assets/javascripts/mavericks-chrome.js
+assets/javascripts/om-editorial-text-reveal.js
+assets/javascripts/om-hero-blur-text.js
+assets/javascripts/om-hero-counter.js
+assets/javascripts/om-lazy-videos.js
+assets/javascripts/om-navbar-hero-visibility.js
+assets/javascripts/om-who-reveal.js
+assets/javascripts/offmarket-chrome.js
 assets/javascripts/om-blog-data.js
 assets/javascripts/om-blog.js
 assets/javascripts/om-cinematic-video.js
@@ -307,7 +307,7 @@ Sitemap: https://offmarketofficial.com/sitemap.xml
 | `/privacy-policy/` | Mentions légales \| OFF MARKET | `https://offmarketofficial.com/privacy-policy/` |
 | `/blog/` | Blog immobilier Marrakech — OFF MARKET | `https://offmarketofficial.com/blog/` |
 
-**Open Graph / Twitter:** Present on all production pages. Standard pattern: `og:type=website`, locale-specific `og:locale`, hero image `mavericks-hero-poster.jpg` or `mavericks-hero-villa.webp` on about/blog.
+**Open Graph / Twitter:** Present on all production pages. Standard pattern: `og:type=website`, locale-specific `og:locale`, hero image `offmarket-hero-poster.jpg` or `offmarket-hero-villa.webp` on about/blog.
 
 ---
 
@@ -350,7 +350,7 @@ Sitemap: https://offmarketofficial.com/sitemap.xml
 - [x] Do not recompress or rename images
 
 ### Phase 4 — Layout migration (in progress)
-- [x] Shared chrome: `components/chrome/MavericksChrome.tsx`
+- [x] Shared chrome: `components/chrome/SiteChrome.tsx`
 - [x] Shared footer: `components/chrome/SiteFooter.tsx`
 - [x] Shared form: `components/forms/PrivateAccessForm.tsx`
 - [ ] Full homepage chrome integration (pending)

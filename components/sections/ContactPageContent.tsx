@@ -7,7 +7,7 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { getContactCopy } from "@/lib/i18n/contactCopy";
 import type { SiteLocale } from "@/lib/i18n/types";
 
-const VISUAL_IMAGE = "/assets/mavericks/location/mavericks-gueliz-hypercentre.webp";
+const VISUAL_IMAGE = "/assets/offmarket/location/offmarket-gueliz-hypercentre.webp";
 
 type ContactPageContentProps = {
   homeHref?: string;

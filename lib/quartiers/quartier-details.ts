@@ -44,7 +44,7 @@ export const quartierDetails: QuartierDetail[] = [
     description:
       "Un secteur central recherché pour les appartements, les pied-à-terre, les commerces, les restaurants et la demande locative régulière.",
     seoDescription: "",
-    image: "/assets/mavericks/territories/investment/gueliz-hypercentre.webp",
+    image: "/assets/offmarket/territories/investment/gueliz-hypercentre.webp",
     imageAlt: "Appartement contemporain à Guéliz Marrakech",
     ctaLabel: "Voir les appartements",
     ctaHref: "/nos-projets/",
@@ -65,7 +65,7 @@ export const quartierDetails: QuartierDetail[] = [
     description:
       "Un secteur résidentiel premium, porté par l’espace, le calme, les villas, les accès principaux et la rareté foncière.",
     seoDescription: "",
-    image: "/assets/mavericks/territories/investment/triangle-or-hivernage.webp",
+    image: "/assets/offmarket/territories/investment/triangle-or-hivernage.webp",
     imageAlt: "Villa contemporaine dans un secteur résidentiel à Marrakech",
     ctaLabel: "Voir Villa Jaz",
     ctaHref: "/sur-plan/villa-jaz/",
@@ -86,7 +86,7 @@ export const quartierDetails: QuartierDetail[] = [
     description:
       "Un marché patrimonial et confidentiel, recherché pour les riads, les maisons d’hôtes, le tourisme et les biens de caractère.",
     seoDescription: "",
-    image: "/assets/mavericks/gallery/mavericks-collection-riads.webp",
+    image: "/assets/offmarket/gallery/offmarket-collection-riads.webp",
     imageAlt: "Riad de caractère dans la Médina de Marrakech",
     ctaLabel: "Accès privé",
     ctaHref: "/off-market/",

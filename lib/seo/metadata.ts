@@ -2,6 +2,40 @@ import type { Metadata, Viewport } from "next";
 import type { ParsedStaticPage } from "@/lib/static-html/parsePage";
 import { SITE_URL } from "@/lib/legacy/routes";
 
+/**
+ * Single source of truth for the site favicon / touch icons.
+ * All variants are rendered from the official OFF MARKET "OM" monogram
+ * (favicon-offmarket.svg). The `?v=` token busts the immutable /assets cache
+ * so browsers/CDN drop the previous icon bytes.
+ */
+export const ICON_VERSION = "1785100000";
+
+export const SITE_ICONS: NonNullable<Metadata["icons"]> = {
+  icon: [
+    {
+      url: `/assets/manifest/favicon-offmarket.svg?v=${ICON_VERSION}`,
+      type: "image/svg+xml",
+    },
+    {
+      url: `/assets/manifest/favicon-96x96.png?v=${ICON_VERSION}`,
+      type: "image/png",
+      sizes: "96x96",
+    },
+    {
+      url: `/assets/manifest/favicon-32x32.png?v=${ICON_VERSION}`,
+      type: "image/png",
+      sizes: "32x32",
+    },
+  ],
+  apple: [
+    {
+      url: `/assets/manifest/apple-touch-icon.png?v=${ICON_VERSION}`,
+      sizes: "180x180",
+      type: "image/png",
+    },
+  ],
+};
+
 export type PageSeo = {
   title: string;
   description: string;
@@ -140,10 +174,7 @@ export function buildMetadataFromParsed(parsed: ParsedStaticPage): Metadata {
       languages: getLanguageAlternates(canonical),
     },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
-    icons: {
-      icon: "/assets/manifest/favicon-offmarket.svg?v=1765297300",
-      apple: "/assets/manifest/apple-touch-icon.png",
-    },
+    icons: SITE_ICONS,
     openGraph: {
       type: (parsed.ogType === "article" ? "article" : "website") as
         | "website"
@@ -172,7 +203,7 @@ export function buildPageMetadata(seo: PageSeo): Metadata {
   const noindex = isTemporarilyNoindexedPath(seo.canonicalPath);
   const ogImage =
     seo.ogImage ??
-    `${SITE_URL}/assets/mavericks/hero/mavericks-hero-poster.jpg`;
+    `${SITE_URL}/assets/offmarket/hero/offmarket-hero-poster.jpg`;
 
   return {
     title: seo.title,
@@ -182,10 +213,7 @@ export function buildPageMetadata(seo: PageSeo): Metadata {
       languages: getLanguageAlternates(seo.canonicalPath),
     },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
-    icons: {
-      icon: "/assets/manifest/favicon-offmarket.svg?v=1765297300",
-      apple: "/assets/manifest/apple-touch-icon.png",
-    },
+    icons: SITE_ICONS,
     openGraph: {
       type: "website",
       url: canonical,

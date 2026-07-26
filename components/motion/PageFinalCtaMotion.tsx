@@ -76,7 +76,7 @@ const CALCULATOR_ICON = (
   </span>
 );
 
-const DEFAULT_IMAGE_SRC = "/assets/mavericks/villa/mavericks-image00004-scaled.webp";
+const DEFAULT_IMAGE_SRC = "/assets/offmarket/villa/offmarket-image00004-scaled.webp";
 
 export type PageFinalCtaSecondaryButton = {
   href: string;

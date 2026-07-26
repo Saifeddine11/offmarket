@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
     "En privat, selektiv og konfidensiell tilnærming til eiendom i Marrakech.",
   canonicalPath: "/no/om-oss/",
   ogLocale: "nb_NO",
-  ogImage: "https://offmarketofficial.com/assets/mavericks/hero/mavericks-hero-villa.webp",
+  ogImage: "https://offmarketofficial.com/assets/offmarket/hero/offmarket-hero-villa.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

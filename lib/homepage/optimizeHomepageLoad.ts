@@ -4,13 +4,13 @@ export const HERO_POSTER_PRELOAD =
   "/assets/images/hero/herophoto2-1280.webp";
 
 const HERO_SCRIPTS = [
-  "mav-navbar-hero-visibility.js",
-  "mav-hero-blur-text.js",
-  "mav-lazy-videos.js",
+  "om-navbar-hero-visibility.js",
+  "om-hero-blur-text.js",
+  "om-lazy-videos.js",
 ] as const;
 
 const EARLY_NAV_SCRIPTS = [
-  "mavericks-chrome.js",
+  "offmarket-chrome.js",
   "om-nav-menu.js",
   "om-nav-scroll.js",
 ] as const;
@@ -67,7 +67,7 @@ export function reorderHomepageScripts(segments: BodySegment[]): BodySegment[] {
     take((script) => matchesFile(script.src, filename));
   }
 
-  // mavericks-chrome.js requires GSAP for menu animations; mount still runs without it.
+  // offmarket-chrome.js requires GSAP for menu animations; mount still runs without it.
   take((script) => matchesFile(script.src, "gsap.min.js"));
 
   for (const filename of EARLY_NAV_SCRIPTS) {
@@ -126,8 +126,8 @@ export function prioritizeHomepageStylesheets(
     list.splice(after + 1, 0, item);
   }
 
-  moveAfter("mav-hero.css", "mavericks-chrome.css");
-  moveAfter("om-buttons.css", "mav-hero.css");
+  moveAfter("om-hero.css", "offmarket-chrome.css");
+  moveAfter("om-buttons.css", "om-hero.css");
   moveAfter("om-contact-page.css", "om-contact.css");
 
   return list;

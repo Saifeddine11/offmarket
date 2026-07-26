@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
     "A clear reading of Marrakech neighbourhoods by centrality, standing, rarity, rental potential and long-term value.",
   canonicalPath: "/en/neighbourhoods/",
   ogLocale: "en_US",
-  ogImage: "https://offmarketofficial.com/assets/mavericks/gallery/mavericks-the-passage.webp",
+  ogImage: "https://offmarketofficial.com/assets/offmarket/gallery/offmarket-the-passage.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

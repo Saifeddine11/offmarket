@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
     "Un enfoque privado, selectivo y confidencial del mercado inmobiliario en Marrakech.",
   canonicalPath: "/es/sobre-nosotros/",
   ogLocale: "es_ES",
-  ogImage: "https://offmarketofficial.com/assets/mavericks/hero/mavericks-hero-villa.webp",
+  ogImage: "https://offmarketofficial.com/assets/offmarket/hero/offmarket-hero-villa.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

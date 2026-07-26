@@ -7,14 +7,26 @@
     "orientation": "any",
     "icons": [
         {
-            "src": "/assets/manifest/favicon-offmarket.svg",
+            "src": "/assets/manifest/favicon-offmarket.svg?v=1785100000",
             "sizes": "any",
             "type": "image/svg+xml",
             "purpose": "any"
         },
         {
-            "src": "/assets/manifest/android-chrome-192x192.png",
+            "src": "/assets/manifest/favicon-96x96.png?v=1785100000",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/assets/manifest/android-chrome-192x192.png?v=1785100000",
             "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/assets/manifest/android-chrome-512x512.png?v=1785100000",
+            "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"
         }

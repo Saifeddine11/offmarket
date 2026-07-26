@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-import { MavericksChrome } from "@/components/layout/MavericksChrome";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import type { SiteLocale } from "@/lib/i18n/types";
 import { languageLinksForPathname, localeFromPathname } from "@/lib/i18n/locale";
 import { getSiteStructuredData } from "@/lib/seo/structuredData";
@@ -29,5 +29,5 @@ export function GlobalSiteNavbar({ locale = "fr" }: GlobalSiteNavbarProps) {
     }
   }, [pathname]);
 
-  return <MavericksChrome variant="hero" locale={resolvedLocale} langLinks={langLinks} />;
+  return <SiteChrome variant="hero" locale={resolvedLocale} langLinks={langLinks} />;
 }

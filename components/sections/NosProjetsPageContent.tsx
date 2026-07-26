@@ -127,7 +127,7 @@ export function NosProjetsPageContent({ locale = "fr" }: { locale?: SiteLocale }
         ],
         title: copy.title,
         subtitle: copy.subtitle,
-        imageSrc: "/assets/mavericks/gallery/mavericks-collection-estates.jpg",
+        imageSrc: "/assets/offmarket/gallery/offmarket-collection-estates.jpg",
         actions: (
           <>
             <Link

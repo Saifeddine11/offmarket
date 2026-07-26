@@ -14,7 +14,7 @@
 - `components/contact/ContactLeadQuestionnaire.tsx`
 - `components/forms/HomePrivateAccessSection.tsx`
 - `components/forms/PrivateAccessForm.tsx`
-- `components/layout/MavericksChrome.tsx`
+- `components/layout/SiteChrome.tsx`
 - `components/layout/SiteFooter.tsx`
 - `lib/contact/LocaleContactPage.tsx`
 
@@ -65,7 +65,7 @@ Each route has English meta description, self-referencing canonical (`https://of
 | `ContactLeadQuestionnaire` | `locale` prop → questionnaire + step labels |
 | `HomePrivateAccessSection` | `locale` prop → header copy |
 | `PrivateAccessForm` | `locale` prop + `data-form-locale` for legacy JS |
-| `MavericksChrome` | `locale` prop / `activeLang` → nav labels, hrefs, CTA |
+| `SiteChrome` | `locale` prop / `activeLang` → nav labels, hrefs, CTA |
 | `SiteFooter` | `locale` prop → labels, hrefs, legal copy |
 | `LocaleContactPage` | passes `locale: "en"` for `/en/contact/` |
 

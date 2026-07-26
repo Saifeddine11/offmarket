@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { PageContent } from "@/lib/content/types";
 import { SITE_URL } from "@/lib/legacy/routes";
-import { getLanguageAlternates } from "@/lib/seo/metadata";
+import { getLanguageAlternates, SITE_ICONS } from "@/lib/seo/metadata";
 
 /**
  * Blog article metadata — matches static HTML heads.
@@ -33,9 +33,7 @@ export function buildBlogArticleMetadata(content: PageContent): Metadata {
       canonical,
       languages: getLanguageAlternates(canonical),
     },
-    icons: {
-      icon: "/assets/manifest/favicon-offmarket.svg?v=1765297300",
-    },
+    icons: SITE_ICONS,
     openGraph,
   };
 }

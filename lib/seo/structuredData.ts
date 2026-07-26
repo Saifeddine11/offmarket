@@ -39,7 +39,7 @@ export function getSiteStructuredData(locale: "fr" | "en" | "nl" | "it" | "es" |
         "@type": "ImageObject",
         url: `${SITE_URL}/assets/logos/logoblack.webp`,
       },
-      image: `${SITE_URL}/assets/mavericks/hero/mavericks-hero-poster.jpg`,
+      image: `${SITE_URL}/assets/offmarket/hero/offmarket-hero-poster.jpg`,
       description: descriptions[locale],
       email: "contact@offmarketofficial.com",
       areaServed: {

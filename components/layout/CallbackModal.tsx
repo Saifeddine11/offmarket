@@ -89,7 +89,7 @@ export function CallbackModal({
         role="dialog"
         aria-hidden="true"
         aria-label={copy.dialog}
-        // mavericks-chrome.js stamps data-om-callback-init, possibly pre-hydration
+        // offmarket-chrome.js stamps data-om-callback-init, possibly pre-hydration
         suppressHydrationWarning
       >
         <div className="modal__background" />

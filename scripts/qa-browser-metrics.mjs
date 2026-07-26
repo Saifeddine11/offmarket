@@ -15,9 +15,9 @@ const WRITE_JSON = process.argv.includes("--json");
 const JS_INJECTED_ASSET_IMAGES = [
   "/assets/images/properties/villa-sur-plan-marrakech/Oasis-exterieur-face.webp",
   "/assets/images/properties/appartement-sur-plan-gueliz/b666e486-f6f8-4f32-b709-b89099173502.JPG",
-  "/assets/mavericks/projects/jemaa-el-fna-restaurant.webp",
-  "/assets/mavericks/hero/mavericks-hero-villa.webp",
-  "/assets/mavericks/gallery/mavericks-collection-estates.jpg",
+  "/assets/offmarket/projects/jemaa-el-fna-restaurant.webp",
+  "/assets/offmarket/hero/offmarket-hero-villa.webp",
+  "/assets/offmarket/gallery/offmarket-collection-estates.jpg",
 ];
 
 const ROUTES = [

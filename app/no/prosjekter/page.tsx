@@ -15,7 +15,7 @@ export const metadata: Metadata = buildPageMetadata({
     "Et utvalg villaer, leiligheter og konfidensielle muligheter i Marrakech, analysert før presentasjon.",
   canonicalPath: "/no/prosjekter/",
   ogLocale: "nb_NO",
-  ogImage: "https://offmarketofficial.com/assets/mavericks/gallery/mavericks-collection-estates.jpg",
+  ogImage: "https://offmarketofficial.com/assets/offmarket/gallery/offmarket-collection-estates.jpg",
 });
 
 export const viewport = buildPageViewport("#565449");

@@ -111,13 +111,13 @@ No localized route is ready for `hreflang` yet.
 |---|---|
 | `/en/` | `content/pages/home-en.json`, `components/home/homeFaqContent.ts` if FAQ is later enabled on localized homepages, shared homepage legacy sections embedded in JSON |
 | `/en/off-plan/` | `content/pages/off-plan-en.json` |
-| `/en/contact/` | `content/pages/contact-en.json`, `components/sections/ContactPageContent.tsx`, `components/contact/ContactLeadQuestionnaire.tsx`, `components/forms/HomePrivateAccessSection.tsx`, `components/forms/PrivateAccessForm.tsx`, `components/layout/MavericksChrome.tsx`, `components/layout/SiteFooter.tsx` |
+| `/en/contact/` | `content/pages/contact-en.json`, `components/sections/ContactPageContent.tsx`, `components/contact/ContactLeadQuestionnaire.tsx`, `components/forms/HomePrivateAccessSection.tsx`, `components/forms/PrivateAccessForm.tsx`, `components/layout/SiteChrome.tsx`, `components/layout/SiteFooter.tsx` |
 | `/it/` | `content/pages/home-it.json`, shared homepage legacy sections embedded in JSON |
 | `/it/progetti-su-piano/` | `content/pages/progetti-it.json` |
-| `/it/contatto/` | `content/pages/contact-it.json`, `components/sections/ContactPageContent.tsx`, `components/contact/ContactLeadQuestionnaire.tsx`, `components/forms/HomePrivateAccessSection.tsx`, `components/forms/PrivateAccessForm.tsx`, `components/layout/MavericksChrome.tsx`, `components/layout/SiteFooter.tsx` |
+| `/it/contatto/` | `content/pages/contact-it.json`, `components/sections/ContactPageContent.tsx`, `components/contact/ContactLeadQuestionnaire.tsx`, `components/forms/HomePrivateAccessSection.tsx`, `components/forms/PrivateAccessForm.tsx`, `components/layout/SiteChrome.tsx`, `components/layout/SiteFooter.tsx` |
 | `/nl/` | `content/pages/home-nl.json`, shared homepage legacy sections embedded in JSON |
 | `/nl/nieuwbouw/` | `content/pages/nieuwbouw-nl.json` |
-| `/nl/contact/` | `content/pages/contact-nl.json`, `components/sections/ContactPageContent.tsx`, `components/contact/ContactLeadQuestionnaire.tsx`, `components/forms/HomePrivateAccessSection.tsx`, `components/forms/PrivateAccessForm.tsx`, `components/layout/MavericksChrome.tsx`, `components/layout/SiteFooter.tsx` |
+| `/nl/contact/` | `content/pages/contact-nl.json`, `components/sections/ContactPageContent.tsx`, `components/contact/ContactLeadQuestionnaire.tsx`, `components/forms/HomePrivateAccessSection.tsx`, `components/forms/PrivateAccessForm.tsx`, `components/layout/SiteChrome.tsx`, `components/layout/SiteFooter.tsx` |
 
 ## 7. Hreflang Readiness Status
 

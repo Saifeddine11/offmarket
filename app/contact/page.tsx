@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
   twitterDescription:
     "Contactez OFF MARKET pour étudier un projet immobilier à Marrakech : villa, appartement, terrain, riad, achat sur plan ou sélection privée selon votre budget.",
   canonicalPath: "/contact/",
-  ogImage: "https://offmarketofficial.com/assets/mavericks/location/mavericks-gueliz-hypercentre.webp",
+  ogImage: "https://offmarketofficial.com/assets/offmarket/location/offmarket-gueliz-hypercentre.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

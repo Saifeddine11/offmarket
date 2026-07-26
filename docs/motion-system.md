@@ -33,7 +33,7 @@ Tokens: `lib/motion/config.ts` (`MOTION_EASE`, `MOTION_VIEWPORT`).
     breadcrumbs: [{ label: "Accueil", href: "/" }, { label: "Page", current: true }],
     title: "Page title",
     subtitle: "Subtitle copy.",
-    imageSrc: "/assets/mavericks/gallery/example.webp",
+    imageSrc: "/assets/offmarket/gallery/example.webp",
   }}
 >
   <MyServerSection />

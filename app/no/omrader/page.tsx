@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
     "En tydelig analyse av Marrakech-områder etter sentralitet, nivå, sjeldenhet, utleiepotensial og langsiktig verdi.",
   canonicalPath: "/no/omrader/",
   ogLocale: "nb_NO",
-  ogImage: "https://offmarketofficial.com/assets/mavericks/gallery/mavericks-the-passage.webp",
+  ogImage: "https://offmarketofficial.com/assets/offmarket/gallery/offmarket-the-passage.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

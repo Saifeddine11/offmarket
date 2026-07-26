@@ -1,7 +1,7 @@
 /**
  * OffMarket — Global design tokens
- * Source: docs/offmarket-brand-audit/04-mavericks-color-source.md
- * Loaded after global.css — remaps legacy --c-* primitives to Mavericks palette.
+ * Source: docs/offmarket-brand-audit/04-offmarket-color-source.md
+ * Loaded after global.css — remaps legacy --c-* primitives to OFF MARKET palette.
  *
  * OFF MARKET DESIGN SYSTEM
  * All new sections, pages, buttons, forms, cards and simulator UI must use these tokens.
@@ -61,7 +61,7 @@
   --om-green-border: rgba(79, 208, 138, 0.28);
   --om-focus-ring: rgba(79, 208, 138, 0.55);
 
-  /* ── Semantic Mavericks tokens (legacy aliases) ── */
+  /* ── Semantic OFF MARKET tokens (legacy aliases) ── */
   --color-bg-primary: var(--om-ruby-950);
   --color-bg-secondary: var(--om-cream);
   --color-text-primary: var(--om-cream);
@@ -128,7 +128,7 @@
   --om-btn-padding-x: 30px;
   --om-btn-font-size: 17px;
 
-  /* ── Remap legacy template --c-* (previous brand: Springs) → Mavericks (names kept for compatibility) ── */
+  /* ── Remap legacy template --c-* → OFF MARKET palette (names kept for compatibility) ── */
   --c-beige-background: #f1ebeb;
   --c-beige-background-rgb: 241, 235, 235;
   --c-beige: #f1ebeb;
@@ -152,7 +152,7 @@
   --c-error: #c49a6c;
   --c-error-rgb: 196, 154, 108;
 
-  /* Button hover gradients — Mavericks warm accents */
+  /* Button hover gradients — OFF MARKET warm accents */
   --c-button-hover-gradient-light: linear-gradient(
     101.51deg,
     rgba(86, 84, 73, 0) 37.02%,

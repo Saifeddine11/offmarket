@@ -215,7 +215,7 @@ export function QuartiersPageContent({ locale = "fr" }: { locale?: SiteLocale })
             title={copy.title}
             subtitle={copy.subtitle}
             secondary={copy.secondary}
-            imageSrc="/assets/mavericks/gallery/mavericks-the-passage.webp"
+            imageSrc="/assets/offmarket/gallery/offmarket-the-passage.webp"
             actions={
               <>
                 <Link

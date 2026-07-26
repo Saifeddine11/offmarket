@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
     "Een heldere lezing van de wijken van Marrakech volgens centraliteit, standing, schaarste, huurpotentieel en vermogenswaarde.",
   canonicalPath: "/nl/wijken/",
   ogLocale: "nl_NL",
-  ogImage: "https://offmarketofficial.com/assets/mavericks/gallery/mavericks-the-passage.webp",
+  ogImage: "https://offmarketofficial.com/assets/offmarket/gallery/offmarket-the-passage.webp",
 });
 
 export const viewport = buildPageViewport("#565449");

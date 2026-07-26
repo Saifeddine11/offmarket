@@ -139,8 +139,8 @@ Build output:
 | `components/home/HomeFaqBoot.tsx` | KEEP - ACTIVE | Tiny client behavior layer for FAQ accordion. | Keep. |
 | `components/home/homeFaqContent.ts` | KEEP - ACTIVE | FAQ content, styles, and FAQPage schema. | Keep. |
 | `components/blog/BlogIndexContent.tsx` | KEEP - ACTIVE | Blog route content shell and fixed H1. | Keep. |
-| `components/layout/MavericksChrome.tsx` | KEEP - ACTIVE | Imported by about/contact/quartiers/nos-projets/simulateur/privacy pages. | Keep; fix placeholder hrefs deliberately. |
-| `components/chrome/MavericksChrome.tsx` | NEEDS CONFIRMATION | No imports found from `app`, `components`, or `lib`; appears duplicate/older chrome path. | Confirm no dynamic import/story usage, then remove or consolidate. |
+| `components/layout/SiteChrome.tsx` | KEEP - ACTIVE | Imported by about/contact/quartiers/nos-projets/simulateur/privacy pages. | Keep; fix placeholder hrefs deliberately. |
+| `components/chrome/SiteChrome.tsx` | NEEDS CONFIRMATION | No imports found from `app`, `components`, or `lib`; appears duplicate/older chrome path. | Confirm no dynamic import/story usage, then remove or consolidate. |
 | `components/motion/*` | KEEP - ACTIVE | Motion components are imported by active pages and templates. | Keep; page-split or defer where possible. |
 | `components/sections/FeaturedProjectsSection.tsx` | KEEP - ACTIVE | Imported by `NosProjetsPageContent`. | Keep; fix placeholder CTAs. |
 | `components/sections/SimulatorSection.tsx` | KEEP - ACTIVE | Imported by `/simulateur/`. | Keep; fix placeholder CTAs. |
@@ -244,7 +244,7 @@ Navigation:
 
 - Saved route fetches confirm direct hard-load access for all listed routes before build instability.
 - Browser navigation/back-forward regression could not be completed after the final build blocker.
-- Shared chrome has multiple empty `href=""` links in `components/layout/MavericksChrome.tsx`.
+- Shared chrome has multiple empty `href=""` links in `components/layout/SiteChrome.tsx`.
 
 Header:
 

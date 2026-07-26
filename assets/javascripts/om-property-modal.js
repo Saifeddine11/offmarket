@@ -316,7 +316,7 @@
       VILLA_JAZ_IMAGE_BASE + 'Villa-peninsula-ensemble-10.webp',
     ],
     interior: [
-      '/assets/mavericks/villa/mavericks-Villa-J-Salon_Cam04.webp',
+      '/assets/offmarket/villa/offmarket-Villa-J-Salon_Cam04.webp',
       VILLA_JAZ_IMAGE_BASE + 'Oasis-interieur-salon-europeen.webp',
       VILLA_JAZ_IMAGE_BASE + 'O_Villa-B-Ch.1_Cam04.webp',
       VILLA_JAZ_IMAGE_BASE + 'Oasis-interieur-hall.webp',
@@ -343,18 +343,18 @@
 
   var GALLERY_POOL = {
     exterior: [
-      '/assets/mavericks/hero/mavericks-hero-villa.webp',
-      '/assets/mavericks/gallery/mavericks-collection-estates.jpg',
-      '/assets/mavericks/villa/mavericks-image00006-scaled.webp',
-      '/assets/mavericks/gallery/mavericks-collection-riads.webp',
-      '/assets/mavericks/gallery/mavericks-the-passage.webp',
+      '/assets/offmarket/hero/offmarket-hero-villa.webp',
+      '/assets/offmarket/gallery/offmarket-collection-estates.jpg',
+      '/assets/offmarket/villa/offmarket-image00006-scaled.webp',
+      '/assets/offmarket/gallery/offmarket-collection-riads.webp',
+      '/assets/offmarket/gallery/offmarket-the-passage.webp',
     ],
     interior: [
-      '/assets/mavericks/gallery/mavericks-lower-hall.webp',
-      '/assets/mavericks/gallery/mavericks-inner-chamber.webp',
-      '/assets/mavericks/gallery/mavericks-silent-room.webp',
-      '/assets/mavericks/gallery/mavericks-back-space.webp',
-      '/assets/mavericks/gallery/mavericks-the-vault.webp',
+      '/assets/offmarket/gallery/offmarket-lower-hall.webp',
+      '/assets/offmarket/gallery/offmarket-inner-chamber.webp',
+      '/assets/offmarket/gallery/offmarket-silent-room.webp',
+      '/assets/offmarket/gallery/offmarket-back-space.webp',
+      '/assets/offmarket/gallery/offmarket-the-vault.webp',
     ],
   };
 
@@ -643,7 +643,7 @@
       selection: 'Riad privé',
       title: 'Riad de caractère à la Médina',
       subtitle: 'Médina · architecture · emplacement rare',
-      image: '/assets/mavericks/gallery/mavericks-collection-riads.webp',
+      image: '/assets/offmarket/gallery/offmarket-collection-riads.webp',
       alt: 'Riad de caractère à la Médina',
       formHref: '/off-market/?intent=riad-medina',
       facts: [
@@ -678,18 +678,18 @@
       ],
       galleries: {
         exterior: [
-          '/assets/mavericks/gallery/mavericks-collection-riads.webp',
-          '/assets/mavericks/gallery/mavericks-the-passage.webp',
-          '/assets/mavericks/gallery/mavericks-collection-estates.jpg',
-          '/assets/mavericks/hero/mavericks-hero-villa.webp',
-          '/assets/mavericks/gallery/mavericks-the-threshold.webp',
+          '/assets/offmarket/gallery/offmarket-collection-riads.webp',
+          '/assets/offmarket/gallery/offmarket-the-passage.webp',
+          '/assets/offmarket/gallery/offmarket-collection-estates.jpg',
+          '/assets/offmarket/hero/offmarket-hero-villa.webp',
+          '/assets/offmarket/gallery/offmarket-the-threshold.webp',
         ],
         interior: [
-          '/assets/mavericks/gallery/mavericks-inner-chamber.webp',
-          '/assets/mavericks/gallery/mavericks-lower-hall.webp',
-          '/assets/mavericks/gallery/mavericks-silent-room.webp',
-          '/assets/mavericks/gallery/mavericks-back-space.webp',
-          '/assets/mavericks/gallery/mavericks-the-vault.webp',
+          '/assets/offmarket/gallery/offmarket-inner-chamber.webp',
+          '/assets/offmarket/gallery/offmarket-lower-hall.webp',
+          '/assets/offmarket/gallery/offmarket-silent-room.webp',
+          '/assets/offmarket/gallery/offmarket-back-space.webp',
+          '/assets/offmarket/gallery/offmarket-the-vault.webp',
         ],
       },
       layout: {
@@ -708,7 +708,7 @@
       selection: 'Pré-lancement',
       title: 'Opportunité sur plan à Marrakech',
       subtitle: 'Pré-lancement · investissement · disponibilité limitée',
-      image: '/assets/mavericks/gallery/mavericks-collection-estates.jpg',
+      image: '/assets/offmarket/gallery/offmarket-collection-estates.jpg',
       alt: 'Opportunité sur plan à Marrakech',
       formHref: '/contact/?intent=opportunite-sur-plan',
       facts: [

@@ -8,6 +8,7 @@ import { GlobalSiteNavbar } from "@/components/layout/GlobalSiteNavbar";
 import { ScrollLockCleanup } from "@/components/layout/ScrollLockCleanup";
 import { DeferredNavBoot } from "@/components/layout/DeferredNavBoot";
 import { getSiteStructuredData } from "@/lib/seo/structuredData";
+import { ICON_VERSION, SITE_ICONS } from "@/lib/seo/metadata";
 import { localeFromPathname } from "@/lib/i18n/locale";
 import { legalLocaleFromPathname } from "@/lib/legal/legalContent";
 import { headers } from "next/headers";
@@ -31,11 +32,8 @@ function requestPathname(headerList: Headers): string {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://offmarketofficial.com"),
-  manifest: "/assets/manifest/manifest.webmanifest?v=1765268659",
-  icons: {
-    icon: "/assets/manifest/favicon-offmarket.svg?v=1765297300",
-    apple: "/assets/manifest/apple-touch-icon.png",
-  },
+  manifest: `/assets/manifest/manifest.webmanifest?v=${ICON_VERSION}`,
+  icons: SITE_ICONS,
   verification: {
     google: "_NdQPaXlSnkC3js_-xW-1XLA2M1qC1RkOOHCpCWUOx8",
   },

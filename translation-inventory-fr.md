@@ -755,9 +755,9 @@ Disponibilité limitée — 7 villas restantes sur un total de 32 villas.
 - "Articles suivants" References: assets/javascripts/om-blog.js:97 (js; aria-label in generated HTML string)
 - " articles</span>" References: assets/javascripts/om-blog.js:115 (js; JS-generated category count suffix)
 
-#### Source file: `assets/javascripts/mavericks-chrome.js`
-- "Close" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
-- "Menu" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
+#### Source file: `assets/javascripts/offmarket-chrome.js`
+- "Close" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
+- "Menu" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
 
 #### Source file: `assets/javascripts/om-language-switcher.js`
 - "FR" References: assets/javascripts/om-language-switcher.js:10 (js; generated language label)
@@ -1511,9 +1511,9 @@ Disponibilité limitée — 7 villas restantes sur un total de 32 villas.
 - "Articles suivants" References: assets/javascripts/om-blog.js:97 (js; aria-label in generated HTML string)
 - " articles</span>" References: assets/javascripts/om-blog.js:115 (js; JS-generated category count suffix)
 
-#### Source file: `assets/javascripts/mavericks-chrome.js`
-- "Close" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
-- "Menu" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
+#### Source file: `assets/javascripts/offmarket-chrome.js`
+- "Close" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
+- "Menu" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
 
 #### Source file: `assets/javascripts/om-language-switcher.js`
 - "FR" References: assets/javascripts/om-language-switcher.js:10 (js; generated language label)
@@ -1862,9 +1862,9 @@ to mail
 - "Biens Existants" References: assets/javascripts/om-nav-menu.js:34 (js; generated navigation label)
 - "Contact" References: assets/javascripts/om-nav-menu.js:37 (js; generated navigation label)
 - "Afficher " Repeated occurrences: 2. References: assets/javascripts/om-nav-menu.js:179 (js; generated aria-label prefix); assets/javascripts/om-nav-menu.js:238 (js; generated aria-label prefix)
-#### Source file: `assets/javascripts/mavericks-chrome.js`
-- "Close" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
-- "Menu" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
+#### Source file: `assets/javascripts/offmarket-chrome.js`
+- "Close" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
+- "Menu" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
 
 #### Source file: `assets/javascripts/om-language-switcher.js`
 - "FR" References: assets/javascripts/om-language-switcher.js:10 (js; generated language label)
@@ -2213,9 +2213,9 @@ to mail
 - "Biens Existants" References: assets/javascripts/om-nav-menu.js:34 (js; generated navigation label)
 - "Contact" References: assets/javascripts/om-nav-menu.js:37 (js; generated navigation label)
 - "Afficher " Repeated occurrences: 2. References: assets/javascripts/om-nav-menu.js:179 (js; generated aria-label prefix); assets/javascripts/om-nav-menu.js:238 (js; generated aria-label prefix)
-#### Source file: `assets/javascripts/mavericks-chrome.js`
-- "Close" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
-- "Menu" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
+#### Source file: `assets/javascripts/offmarket-chrome.js`
+- "Close" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
+- "Menu" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
 
 #### Source file: `assets/javascripts/om-language-switcher.js`
 - "FR" References: assets/javascripts/om-language-switcher.js:10 (js; generated language label)
@@ -2415,9 +2415,9 @@ Confidentialité
 - "—" References: assets/javascripts/om-contact.js:240 (js; generated empty-message fallback)
 - "Merci de me recontacter avec une sélection privée adaptée à mon projet." References: assets/javascripts/om-contact.js:242 (js; generated private mail body)
 - "Merci. Votre demande a bien été prise en compte. OFF MARKET vous contactera rapidement." References: assets/javascripts/om-contact.js:321 (js; standard form success message)
-#### Source file: `assets/javascripts/mavericks-chrome.js`
-- "Close" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
-- "Menu" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
+#### Source file: `assets/javascripts/offmarket-chrome.js`
+- "Close" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
+- "Menu" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
 
 #### Source file: `assets/javascripts/om-language-switcher.js`
 - "FR" References: assets/javascripts/om-language-switcher.js:10 (js; generated language label)
@@ -2617,9 +2617,9 @@ Confidentialité
 - "—" References: assets/javascripts/om-contact.js:240 (js; generated empty-message fallback)
 - "Merci de me recontacter avec une sélection privée adaptée à mon projet." References: assets/javascripts/om-contact.js:242 (js; generated private mail body)
 - "Merci. Votre demande a bien été prise en compte. OFF MARKET vous contactera rapidement." References: assets/javascripts/om-contact.js:321 (js; standard form success message)
-#### Source file: `assets/javascripts/mavericks-chrome.js`
-- "Close" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
-- "Menu" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
+#### Source file: `assets/javascripts/offmarket-chrome.js`
+- "Close" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
+- "Menu" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
 
 #### Source file: `assets/javascripts/om-language-switcher.js`
 - "FR" References: assets/javascripts/om-language-switcher.js:10 (js; generated language label)
@@ -2784,9 +2784,9 @@ OFF MARKET affine ensuite les chiffres avec des comparables réels et des opport
 - "Horizon" Repeated occurrences: 2. References: assets/javascripts/om-simulator.js:69 (js; JS string literal); assets/javascripts/om-simulator.js:410 (js; JS string literal)
 - "Rendement annualisé" References: assets/javascripts/om-simulator.js:344 (js; JS string literal)
 
-#### Source file: `assets/javascripts/mavericks-chrome.js`
-- "Close" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
-- "Menu" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
+#### Source file: `assets/javascripts/offmarket-chrome.js`
+- "Close" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
+- "Menu" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
 
 #### Source file: `assets/javascripts/om-language-switcher.js`
 - "FR" References: assets/javascripts/om-language-switcher.js:10 (js; generated language label)
@@ -2911,9 +2911,9 @@ OFF MARKET affine ensuite les chiffres avec des comparables réels et des opport
 - "Biens Existants" References: assets/javascripts/om-nav-menu.js:34 (js; generated navigation label)
 - "Contact" References: assets/javascripts/om-nav-menu.js:37 (js; generated navigation label)
 - "Afficher " Repeated occurrences: 2. References: assets/javascripts/om-nav-menu.js:179 (js; generated aria-label prefix); assets/javascripts/om-nav-menu.js:238 (js; generated aria-label prefix)
-#### Source file: `assets/javascripts/mavericks-chrome.js`
-- "Close" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
-- "Menu" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
+#### Source file: `assets/javascripts/offmarket-chrome.js`
+- "Close" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
+- "Menu" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
 
 #### Source file: `assets/javascripts/om-language-switcher.js`
 - "FR" References: assets/javascripts/om-language-switcher.js:10 (js; generated language label)
@@ -3205,7 +3205,7 @@ to mail
 - "Investirir" Repeated occurrences: 2. References: location/index.html:2921 (visible; .mv-footer__links)
 - "Contact" References: location/index.html:2926 (visible; .mv-footer__eyebrow)
 - "Marrakech, Maroc" References: location/index.html:2928 (visible; .mv-footer__links)
-- "contact@mavericks.ma" Repeated occurrences: 2. References: location/index.html:2929 (visible; .mv-footer__links)
+- "contact@offmarket.ma" Repeated occurrences: 2. References: location/index.html:2929 (visible; .mv-footer__links)
 - "+212 (0) 000 000 000" Repeated occurrences: 2. References: location/index.html:2930 (visible; .mv-footer__links)
 - "Suivre" References: location/index.html:2934 (visible; .mv-footer__eyebrow)
 - "Instagram" Repeated occurrences: 2. References: location/index.html:2936 (visible; .mv-footer__links)
@@ -3262,9 +3262,9 @@ to mail
 - "Biens Existants" References: assets/javascripts/om-nav-menu.js:34 (js; generated navigation label)
 - "Contact" References: assets/javascripts/om-nav-menu.js:37 (js; generated navigation label)
 - "Afficher " Repeated occurrences: 2. References: assets/javascripts/om-nav-menu.js:179 (js; generated aria-label prefix); assets/javascripts/om-nav-menu.js:238 (js; generated aria-label prefix)
-#### Source file: `assets/javascripts/mavericks-chrome.js`
-- "Close" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
-- "Menu" References: assets/javascripts/mavericks-chrome.js:43 (js; generated menu button aria-label)
+#### Source file: `assets/javascripts/offmarket-chrome.js`
+- "Close" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
+- "Menu" References: assets/javascripts/offmarket-chrome.js:43 (js; generated menu button aria-label)
 
 #### Source file: `assets/javascripts/om-language-switcher.js`
 - "FR" References: assets/javascripts/om-language-switcher.js:10 (js; generated language label)
@@ -3836,7 +3836,7 @@ Confidentialité
 ### Active custom JavaScript sources with extracted UI strings
 - `assets/javascripts/om-blog-data.js`
 - `assets/javascripts/om-blog.js`
-- `assets/javascripts/mavericks-chrome.js`
+- `assets/javascripts/offmarket-chrome.js`
 - `assets/javascripts/om-contact.js`
 - `assets/javascripts/om-featured-projects.js`
 - `assets/javascripts/om-language-switcher.js`
@@ -3850,12 +3850,12 @@ Confidentialité
 ### Active custom JavaScript sources checked with no additional translation strings
 - `assets/javascripts/landing.js`
 - `assets/javascripts/location.js`
-- `assets/javascripts/mav-editorial-text-reveal.js`
-- `assets/javascripts/mav-hero-blur-text.js`
-- `assets/javascripts/mav-hero-counter.js`
-- `assets/javascripts/mav-lazy-videos.js`
-- `assets/javascripts/mav-navbar-hero-visibility.js`
-- `assets/javascripts/mav-who-reveal.js`
+- `assets/javascripts/om-editorial-text-reveal.js`
+- `assets/javascripts/om-hero-blur-text.js`
+- `assets/javascripts/om-hero-counter.js`
+- `assets/javascripts/om-lazy-videos.js`
+- `assets/javascripts/om-navbar-hero-visibility.js`
+- `assets/javascripts/om-who-reveal.js`
 - `assets/javascripts/om-cinematic-video.js`
 - `assets/javascripts/om-location-boot.js`
 - `assets/javascripts/om-mobile-reveal.js`

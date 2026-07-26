@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { LangCode } from "@/components/layout/MavericksChrome";
+import type { LangCode } from "@/components/layout/SiteChrome";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { AboutHomeSectionsBoot } from "@/components/sections/AboutHomeSectionsBoot";
 import { AboutFinalCtaSection } from "@/components/sections/AboutFinalCtaSection";

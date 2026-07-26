@@ -25,7 +25,7 @@ export const STYLES = {
   ],
   about: [
     ...INNER_EDITORIAL_STYLES,
-    "/assets/stylesheets/mav-who.css?v=1768600000",
+    "/assets/stylesheets/om-who.css?v=1768600000",
     "/assets/stylesheets/om-testimonials.css?v=1765342000",
     "/assets/stylesheets/om-text-reveal.css?v=1765317800",
     "/assets/stylesheets/about-who.css?v=1767533000",
@@ -153,7 +153,7 @@ export const SCRIPTS = {
   /** Loaded post-hydration on About — Qui sommes-nous + testimonials animations. */
   aboutHomeSections: [
     "/assets/javascripts/scrolltrigger.min.js?v=1765268700",
-    "/assets/javascripts/mav-who-reveal.js?v=1765404900",
+    "/assets/javascripts/om-who-reveal.js?v=1765404900",
     "/assets/javascripts/om-testimonials.js?v=1765295700",
     "/assets/javascripts/om-mobile-reveal.js?v=1765307200",
   ],
