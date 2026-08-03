@@ -28,7 +28,8 @@
 }
 
 .mav-hero__media-wrap,
-.mav-hero__media {
+.mav-hero__media,
+.mav-hero__video {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -38,9 +39,36 @@
   pointer-events: none;
 }
 
-.mav-hero__media {
+.mav-hero__media,
+.mav-hero__video {
   object-fit: cover;
   object-position: 58% center;
+}
+
+.mav-hero__video {
+  opacity: 1;
+  -webkit-appearance: none;
+}
+
+.mav-hero__video::-webkit-media-controls,
+.mav-hero__video::-webkit-media-controls-start-playback-button,
+.mav-hero__video::-webkit-media-controls-panel,
+.mav-hero video::-webkit-media-controls,
+.mav-hero video::-webkit-media-controls-start-playback-button,
+.mav-hero video::-webkit-media-controls-panel {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+html.hero-video-autoplay-blocked .mav-hero__video {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html.hero-video-autoplay-blocked .mav-hero__background {
+  opacity: 0.35;
 }
 
 .mav-hero__overlay {
@@ -725,7 +753,8 @@
 
 @media (max-width: 979px) {
   .mav-hero__media-wrap,
-  .mav-hero__media {
+  .mav-hero__media,
+  .mav-hero__video {
     z-index: 0;
   }
 
