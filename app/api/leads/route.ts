@@ -145,6 +145,9 @@ export async function POST(request: NextRequest) {
       type: lead.type,
       locale: lead.locale,
     });
+    if (result.category === "not_configured") {
+      return genericError(503, "email_not_configured");
+    }
     return genericError(502, "send_failed");
   }
 

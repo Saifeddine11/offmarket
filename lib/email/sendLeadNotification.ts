@@ -1,3 +1,5 @@
+import { Resend } from "resend";
+
 import { buildLeadNotificationEmail } from "@/lib/email/leadNotificationTemplate";
 import type { NormalizedLead } from "@/lib/email/leadTypes";
 
@@ -15,38 +17,6 @@ function resolveRecipient(): string {
 export type SendLeadResult =
   | { ok: true; id: string }
   | { ok: false; category: "not_configured" | "provider_error" };
-
-type ResendClient = {
-  emails: {
-    send: (payload: {
-      from: string;
-      to: string[];
-      replyTo: string;
-      subject: string;
-      html: string;
-      text: string;
-    }) => Promise<{ data?: { id?: string } | null; error?: unknown }>;
-  };
-};
-
-function getResendClient(): ResendClient | null {
-  const key = process.env.RESEND_API_KEY?.trim();
-  if (!key) return null;
-  try {
-    // Lazy load so a missing local install does not break Next.js builds
-    // before `npm install`. Package remains listed in package.json.
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { Resend } = require(/* webpackIgnore: true */ "resend") as {
-      Resend: new (apiKey: string) => ResendClient;
-    };
-    return new Resend(key);
-  } catch {
-    console.warn(
-      "[leads] resend is not installed. Run `npm install`, then restart.",
-    );
-    return null;
-  }
-}
 
 /**
  * Sends one internal notification to the fixed OFF MARKET inbox.
@@ -83,12 +53,18 @@ export async function sendLeadNotification(
     return { ok: true, id: `dry-run-${Date.now()}` };
   }
 
-  const client = getResendClient();
-  if (!client) {
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  if (!apiKey) {
+    console.error("[leads] RESEND_API_KEY missing", {
+      category: "not_configured",
+      type: lead.type,
+      locale: lead.locale,
+    });
     return { ok: false, category: "not_configured" };
   }
 
   try {
+    const client = new Resend(apiKey);
     const result = await client.emails.send({
       from,
       to: [to],
@@ -99,20 +75,31 @@ export async function sendLeadNotification(
     });
 
     if (result.error) {
+      const message =
+        typeof result.error === "object" &&
+        result.error &&
+        "message" in result.error
+          ? String((result.error as { message?: unknown }).message || "")
+          : "";
       console.error("[leads] provider_error", {
         category: "provider_error",
         type: lead.type,
         locale: lead.locale,
+        // Safe short provider hint only — never log API keys or full payloads.
+        hint: message.slice(0, 160),
       });
       return { ok: false, category: "provider_error" };
     }
 
     return { ok: true, id: result.data?.id || "sent" };
-  } catch {
+  } catch (error) {
+    const hint =
+      error instanceof Error ? error.message.slice(0, 160) : "unknown_error";
     console.error("[leads] provider_error", {
       category: "provider_error",
       type: lead.type,
       locale: lead.locale,
+      hint,
     });
     return { ok: false, category: "provider_error" };
   }
