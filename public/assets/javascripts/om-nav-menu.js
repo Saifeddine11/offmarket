@@ -443,12 +443,24 @@
     );
   }
 
+  function hasServerNav(node) {
+    return (
+      node &&
+      node.getAttribute('data-om-nav-ssr') === 'true' &&
+      node.children &&
+      node.children.length > 0
+    );
+  }
+
   function renderDesktopNav(nav) {
+    // Keep SSR markup — rewriting here caused a visible wipe after React hydration.
+    if (hasServerNav(nav)) return;
     MENU = getMenu();
     nav.innerHTML = MENU.map(renderDesktopItem).join('');
   }
 
   function renderMobileNav(list) {
+    if (hasServerNav(list)) return;
     MENU = getMenu();
     list.innerHTML = MENU.map(renderMobileItem).join('');
   }

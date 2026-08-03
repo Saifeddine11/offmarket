@@ -29,5 +29,12 @@ export function GlobalSiteNavbar({ locale = "fr" }: GlobalSiteNavbarProps) {
     }
   }, [pathname]);
 
-  return <SiteChrome variant="hero" locale={resolvedLocale} langLinks={langLinks} />;
+  return (
+    <SiteChrome
+      variant="hero"
+      locale={resolvedLocale}
+      langLinks={langLinks}
+      pathname={pathname || "/"}
+    />
+  );
 }

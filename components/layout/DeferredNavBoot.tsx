@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 
 declare global {
   interface Window {
-    __staticHtmlScriptQueue?: Promise<void>;
     __omNavMenuRender?: () => void;
   }
 }
@@ -19,20 +18,12 @@ function dispatchNavBoot() {
   }
 }
 
-/** Re-renders primary nav after React hydration / static HTML remount. */
+/**
+ * Bind dropdown / expand behaviour after hydration.
+ * Nav markup is SSR'd — avoid multi-timeout refill that caused flicker.
+ */
 export function DeferredNavBoot() {
   const pathname = usePathname();
-
-  useEffect(() => {
-    dispatchNavBoot();
-
-    (window.__staticHtmlScriptQueue ?? Promise.resolve()).then(() => {
-      const delays = [0, 120, 400, 1200];
-      for (const delay of delays) {
-        window.setTimeout(dispatchNavBoot, delay);
-      }
-    });
-  }, []);
 
   useEffect(() => {
     dispatchNavBoot();

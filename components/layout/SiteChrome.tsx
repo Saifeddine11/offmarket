@@ -4,6 +4,10 @@ import { getChromeCopy } from "@/lib/i18n/chromeCopy";
 import { LANGUAGE_NATIVE_NAMES } from "@/lib/i18n/languageLabels";
 import { langCodeToLocale, type LangCode } from "@/lib/i18n/types";
 import type { SiteLocale } from "@/lib/i18n/types";
+import {
+  renderPrimaryDesktopNavHtml,
+  renderPrimaryMobileNavHtml,
+} from "@/lib/navigation/primaryMenu";
 
 export type { LangCode };
 
@@ -21,8 +25,8 @@ type SiteChromeProps = {
   activeLang?: LangCode;
   langLinks?: LangLinks;
   locale?: SiteLocale;
-  /** Desktop placeholder nav active item (filled by om-nav-menu.js at runtime). */
-  activeDesktopNav?: "simulateur";
+  /** Current path for SSR active nav state (avoids empty→filled flash). */
+  pathname?: string;
   showMobileLangSwitcher?: boolean;
 };
 
@@ -75,7 +79,7 @@ export function SiteChrome({
   activeLang,
   langLinks = DEFAULT_LANG_LINKS,
   locale,
-  activeDesktopNav,
+  pathname = "/",
   showMobileLangSwitcher = true,
 }: SiteChromeProps) {
   const resolvedLocale = locale ?? langCodeToLocale(activeLang ?? "FR");
@@ -91,34 +95,14 @@ export function SiteChrome({
           ? "mv-chrome mv-chrome--page-light"
           : "mv-chrome";
 
-  const usePlaceholderNav = variant === "page-light";
   const showAccessIcon = variant === "page-light" || variant === "hero";
 
-  const desktopNavHtml = usePlaceholderNav
-    ? copy.placeholderNav
-        .map((item) => {
-          const isActive =
-            activeDesktopNav === "simulateur" && item.href.includes("simulateur");
-          return (
-            `<a href="${item.href}"` +
-            (isActive ? ' class="is-active" aria-current="page"' : "") +
-            `>${item.label}</a>`
-          );
-        })
-        .join("")
-    : "";
-
-  const mobileNavItemsHtml = usePlaceholderNav
-    ? copy.placeholderNav
-        .map(
-          (item) =>
-            '<li class="cinematic-menu-item mv-chrome__menu-item">' +
-            `<a href="${item.href}" class="cinematic-menu-link">` +
-            item.label +
-            "</a></li>",
-        )
-        .join("")
-    : "";
+  // Always SSR the real menu so React hydration cannot wipe client-injected links.
+  const desktopNavHtml = renderPrimaryDesktopNavHtml(
+    resolvedLocale,
+    pathname,
+  );
+  const mobileNavItemsHtml = renderPrimaryMobileNavHtml(resolvedLocale);
 
   return (
     <div className={chromeClass} id="mv-chrome" data-mv-chrome suppressHydrationWarning>
@@ -237,6 +221,7 @@ export function SiteChrome({
           <nav
             className="om-header__nav"
             aria-label={copy.mainNavAria}
+            data-om-nav-ssr="true"
             suppressHydrationWarning
             dangerouslySetInnerHTML={{ __html: desktopNavHtml }}
           />
@@ -345,6 +330,7 @@ export function SiteChrome({
           <ul
             className="mv-chrome__menu-list"
             data-mv-menu-items
+            data-om-nav-ssr="true"
             suppressHydrationWarning
             dangerouslySetInnerHTML={{ __html: mobileNavItemsHtml }}
           />
