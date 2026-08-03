@@ -29,9 +29,7 @@ export type ClientIpResult = {
 
 function hashSecret(): string {
   return (
-    process.env.RATE_LIMIT_HASH_SECRET?.trim() ||
-    process.env.RESEND_API_KEY?.trim() ||
-    "offmarket-local-rate-limit"
+    process.env.RATE_LIMIT_HASH_SECRET?.trim() || "offmarket-local-rate-limit"
   );
 }
 

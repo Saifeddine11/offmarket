@@ -178,6 +178,6 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({
     ...payload,
     success: true,
-    mode: result.mode,
+    transport: result.transport,
   });
 }
