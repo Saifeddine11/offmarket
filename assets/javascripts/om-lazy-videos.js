@@ -7,19 +7,6 @@
 
   var BLOCKED_CLASS = 'hero-video-autoplay-blocked';
 
-  function activateDeferredSources(video) {
-    var sources = video.querySelectorAll('source[data-src]');
-    if (!sources.length) return false;
-
-    sources.forEach(function (source) {
-      if (source.getAttribute('src')) return;
-      source.setAttribute('src', source.getAttribute('data-src'));
-      source.removeAttribute('data-src');
-    });
-
-    return true;
-  }
-
   function initHeroVideo() {
     var video = document.querySelector('.mav-hero__video, [data-hero-video]');
     if (!video || video.dataset.heroVideoBound === 'true') return;
@@ -105,17 +92,9 @@
       }
     });
 
-    function loadAndPlay(video) {
-      var changed = activateDeferredSources(video);
-      if (changed || video.readyState < 1) {
-        video.load();
-      }
-      video.play().catch(function () {});
-    }
-
     if (!('IntersectionObserver' in window)) {
       videos.forEach(function (video) {
-        loadAndPlay(video);
+        video.play().catch(function () {});
       });
       return;
     }
@@ -126,7 +105,11 @@
           var video = entry.target;
 
           if (entry.isIntersecting) {
-            loadAndPlay(video);
+            if (video.readyState < 1) {
+              video.load();
+            }
+
+            video.play().catch(function () {});
             return;
           }
 

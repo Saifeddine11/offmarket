@@ -15,12 +15,10 @@ export function boostAboveFoldImages(segments: BodySegment[]): BodySegment[] {
       return segment;
     }
 
-    let html = segment.html.replace(
+    const html = segment.html.replace(
       /<section class="mav-hero"[\s\S]*?<\/section>/,
       (heroBlock) => boostHeroBlock(heroBlock),
     );
-
-    html = deferCinematicVideoSources(html);
 
     return { ...segment, html };
   });
@@ -66,39 +64,4 @@ function boostHeroBlock(heroBlock: string): string {
   });
 
   return block;
-}
-
-/**
- * Keep the cinematic poster as the initial paint; move the MP4 off the critical
- * path until om-lazy-videos attaches the real source near the viewport.
- */
-function deferCinematicVideoSources(html: string): string {
-  return html.replace(
-    /<video(\s+[^>]*\bclass="[^"]*om-cinematic-video__media[^"]*"[^>]*)>([\s\S]*?)<\/video>/gi,
-    (_match, attrs: string, children: string) => {
-      let nextAttrs = attrs;
-      if (/\bpreload=/i.test(nextAttrs)) {
-        nextAttrs = nextAttrs.replace(/\bpreload="[^"]*"/i, 'preload="none"');
-      } else {
-        nextAttrs += ' preload="none"';
-      }
-
-      if (!/\bposter=/i.test(nextAttrs)) {
-        nextAttrs +=
-          ' poster="/assets/offmarket/hero/offmarket-hero-poster.webp"';
-      } else {
-        nextAttrs = nextAttrs.replace(
-          /poster="\/assets\/offmarket\/hero\/offmarket-hero-poster\.jpg"/i,
-          'poster="/assets/offmarket/hero/offmarket-hero-poster.webp"',
-        );
-      }
-
-      const nextChildren = children.replace(
-        /<source(\s+[^>]*?)\bsrc="([^"]+)"([^>]*)>/gi,
-        '<source$1data-src="$2"$3>',
-      );
-
-      return `<video${nextAttrs}>${nextChildren}</video>`;
-    },
-  );
 }

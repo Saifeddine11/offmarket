@@ -15,6 +15,7 @@ const HOMEPAGE_CRITICAL_STYLES = [
   "om-hero.css",
   "om-typography.css",
   "om-scroll-layout.css",
+  "om-cinematic-video.css",
 ] as const;
 
 function styleFile(href: string): string {
