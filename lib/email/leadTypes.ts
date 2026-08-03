@@ -94,6 +94,22 @@ function sanitizeHeaderish(value: string): string {
   return value.replace(/[\r\n]+/g, " ").trim();
 }
 
+/** Keep API dial codes stable across locales: "+212", never "Marokko" / truncated values. */
+function normalizeDialCode(raw: string): string | null {
+  const cleaned = sanitizeHeaderish(raw).replace(/[^\d+]/g, "");
+  if (!cleaned) return null;
+  const withPlus = cleaned.startsWith("+") ? cleaned : `+${cleaned}`;
+  // Reject obviously truncated country codes (+2, +21, etc.)
+  if (!/^\+\d{1,4}$/.test(withPlus)) return null;
+  return withPlus.slice(0, MAX.phoneCountry);
+}
+
+function normalizePhoneDigits(raw: string): string | null {
+  const digits = sanitizeHeaderish(raw).replace(/\D/g, "");
+  if (digits.length < 6) return null;
+  return digits.slice(0, MAX.phone);
+}
+
 export function classifyLeadType(input: {
   type?: string;
   intent?: string;
@@ -196,8 +212,10 @@ export function normalizeLeadPayload(
   });
 
   const fullName = sanitizeHeaderish(trimTo(body.fullName ?? body.name, MAX.fullName)) || null;
-  const phoneCountry = sanitizeHeaderish(trimTo(body.phoneCountry ?? body.dialCode, MAX.phoneCountry)) || null;
-  const phone = sanitizeHeaderish(trimTo(body.phone, MAX.phone)) || null;
+  const phoneCountry = normalizeDialCode(
+    trimTo(body.phoneCountry ?? body.dialCode ?? body.countryCode, MAX.phoneCountry),
+  );
+  const phone = normalizePhoneDigits(trimTo(body.phone, MAX.phone));
 
   if (classified !== "newsletter") {
     if (!fullName) return { ok: false, error: "missing_name" };
@@ -222,7 +240,7 @@ export function normalizeLeadPayload(
 
   const locale = sanitizeHeaderish(trimTo(body.locale, 8).toLowerCase()) || "fr";
   const phoneFull =
-    phoneCountry && phone ? `${phoneCountry} ${phone}`.trim() : phone;
+    phoneCountry && phone ? `${phoneCountry}${phone}` : phone;
 
   return {
     ok: true,

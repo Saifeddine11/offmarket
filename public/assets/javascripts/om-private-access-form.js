@@ -786,14 +786,30 @@
             });
         })
         .then(function (result) {
+          var json = result.json || {};
           var ok =
             result.response &&
             result.response.ok &&
-            result.json &&
-            result.json.ok !== false;
+            json.ok === true &&
+            json.success !== false;
 
           if (!ok) {
-            throw new Error('submit_failed');
+            var code =
+              json.code ||
+              json.error ||
+              (result.response ? 'HTTP_' + result.response.status : 'EMPTY_RESPONSE');
+            if (
+              window.location.hostname === 'localhost' ||
+              window.location.hostname === '127.0.0.1'
+            ) {
+              console.error('[OFF MARKET] lead submit failed', {
+                code: code,
+                status: result.response ? result.response.status : null,
+              });
+            }
+            var err = new Error('submit_failed');
+            err.code = code;
+            throw err;
           }
 
           setSubmitState(form, 'success', copy);
@@ -810,10 +826,18 @@
             setSubmitState(form, 'default', copy);
           }, 1200);
         })
-        .catch(function () {
+        .catch(function (err) {
           form._omSubmitting = false;
           setSubmitState(form, 'error', copy);
           setStatus(statusEl, copy.sendError, true);
+          if (
+            (window.location.hostname === 'localhost' ||
+              window.location.hostname === '127.0.0.1') &&
+            err &&
+            err.code
+          ) {
+            console.error('[OFF MARKET] lead submit error code', err.code);
+          }
         });
     });
   }

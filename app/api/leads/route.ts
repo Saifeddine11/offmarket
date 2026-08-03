@@ -21,8 +21,16 @@ import { sendLeadNotification } from "@/lib/email/sendLeadNotification";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-function genericError(status: number, error: string) {
-  return NextResponse.json({ ok: false, error }, { status });
+function genericError(status: number, error: string, code?: string) {
+  return NextResponse.json(
+    {
+      ok: false,
+      success: false,
+      error,
+      code: code || error,
+    },
+    { status },
+  );
 }
 
 function rateLimitedResponse(locale: string, retryAfterSec: number) {
@@ -43,7 +51,7 @@ function rateLimitedResponse(locale: string, retryAfterSec: number) {
 }
 
 function successResponse(result: IdempotencyRecord) {
-  return NextResponse.json(result);
+  return NextResponse.json({ ...result, success: true });
 }
 
 export async function POST(request: NextRequest) {
@@ -80,7 +88,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true, id: "ignored" });
     }
     return NextResponse.json(
-      { ok: false, error: "validation_failed" },
+      {
+        ok: false,
+        success: false,
+        error: "validation_failed",
+        code: "VALIDATION_FAILED",
+      },
       { status: 400 },
     );
   }
@@ -142,13 +155,15 @@ export async function POST(request: NextRequest) {
   if (!result.ok) {
     console.error("[api/leads] send failed", {
       category: result.category,
+      code: result.code,
       type: lead.type,
       locale: lead.locale,
+      hint: result.hint,
     });
     if (result.category === "not_configured") {
-      return genericError(503, "email_not_configured");
+      return genericError(503, result.code, result.code);
     }
-    return genericError(502, "send_failed");
+    return genericError(502, result.code, result.code);
   }
 
   const payload: IdempotencyRecord = {
@@ -160,5 +175,9 @@ export async function POST(request: NextRequest) {
   await writeDuplicatePayloadResult(fingerprint, payload);
   await writeIdempotentResult(idempotencyKey, payload);
 
-  return successResponse(payload);
+  return NextResponse.json({
+    ...payload,
+    success: true,
+    mode: result.mode,
+  });
 }
