@@ -193,13 +193,16 @@ function createUpstashStore(redis: UpstashRedis): RateLimitStore {
 }
 
 /**
- * Resolves the rate-limit store. Production requires shared Upstash Redis;
- * filesystem and memory stores are local-development fallbacks only.
+ * Resolves the rate-limit store.
+ *
+ * Priority:
+ * 1. Upstash Redis when URL + token are set (best for multi-instance)
+ * 2. Explicit memory store (local/dev only — RATE_LIMIT_ALLOW_MEMORY=1)
+ * 3. Filesystem store (default for single-node Hostinger production)
  */
 export function getRateLimitStore(): RateLimitStore {
   if (storeSingleton) return storeSingleton;
 
-  const isProduction = process.env.NODE_ENV === "production";
   const allowMemory = process.env.RATE_LIMIT_ALLOW_MEMORY === "1";
   const mode = (process.env.RATE_LIMIT_STORE || "").trim().toLowerCase();
   const url = process.env.UPSTASH_REDIS_REST_URL?.trim();
@@ -211,13 +214,8 @@ export function getRateLimitStore(): RateLimitStore {
       storeSingleton = createUpstashStore(redis);
       return storeSingleton;
     }
-
-    if (isProduction && !allowMemory && mode !== "filesystem") {
-      throw new Error("[rate-limit] Upstash Redis is unavailable in production");
-    }
-  } else if (isProduction && !allowMemory && mode !== "filesystem") {
-    throw new Error(
-      "[rate-limit] UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are required in production",
+    console.warn(
+      "[rate-limit] Upstash credentials present but client failed to load; falling back",
     );
   }
 
@@ -226,7 +224,14 @@ export function getRateLimitStore(): RateLimitStore {
     return storeSingleton;
   }
 
-  // Default for Hostinger single Node instance: filesystem-backed counters.
+  // Hostinger / single Node: durable local counters without Redis.
+  if (!warnedMissingUpstash && process.env.NODE_ENV === "production" && !url) {
+    warnedMissingUpstash = true;
+    console.warn(
+      "[rate-limit] Upstash unset — using filesystem store. Add UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN for multi-instance deployments.",
+    );
+  }
+
   storeSingleton = createFilesystemStore();
   return storeSingleton;
 }
