@@ -21,10 +21,10 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url('/assets/images/hero/herophoto2-bg.webp');
-  background-size: cover;
-  background-position: 58% center;
-  background-repeat: no-repeat;
+  /* Solid fallback only — the <picture> LCP image covers this layer.
+     Avoid downloading a second hero bitmap on the critical path. */
+  background-color: #070505;
+  background-image: none;
 }
 
 .mav-hero__media-wrap,
@@ -379,10 +379,11 @@
 
 .mav-hero [data-blur-text].is-blur-ready .mav-blur-word {
   display: inline-block;
-  opacity: 0;
+  /* Keep words visible for LCP — animate blur/transform only. */
+  opacity: 1;
   filter: blur(10px);
   transform: translate3d(0, 28px, 0);
-  will-change: transform, filter, opacity;
+  will-change: transform, filter;
 }
 
 .mav-hero [data-blur-text].is-blur-visible .mav-blur-word {
@@ -392,13 +393,13 @@
 
 @keyframes mavHeroBlurWordIn {
   0% {
-    opacity: 0;
+    opacity: 1;
     filter: blur(10px);
     transform: translate3d(0, 28px, 0);
   }
 
   55% {
-    opacity: 0.62;
+    opacity: 1;
     filter: blur(4px);
     transform: translate3d(0, -2px, 0);
   }
@@ -411,19 +412,17 @@
 }
 
 .mav-hero [data-blur-fade] {
-  opacity: 0;
-  filter: blur(8px);
-  transform: translate3d(0, 18px, 0);
-  will-change: transform, filter, opacity;
+  /* First paint must be LCP-visible — do not rest at opacity 0 waiting for JS. */
+  opacity: 1;
+  filter: none;
+  transform: none;
 }
 
 .mav-hero [data-blur-fade].is-blur-fade-visible {
   animation: mavHeroBlurFadeIn 780ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Pure-CSS time failsafe: reveal hero content even if the blur-fade script is
-   blocked or slow to boot. The JS entrance still wins when it arrives in time
-   (adding .is-blur-fade-visible removes this selector match cleanly). */
+/* Pure-CSS time failsafe retained for reduced-motion / incomplete boots. */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes omHeroBlurFadeFailsafe {
     to {
@@ -433,8 +432,7 @@
     }
   }
   .mav-hero [data-blur-fade]:not(.is-blur-fade-visible) {
-    animation: omHeroBlurFadeFailsafe 700ms cubic-bezier(0.22, 1, 0.36, 1) 1800ms
-      forwards;
+    animation: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -480,7 +478,7 @@
 
 @keyframes mavHeroBlurFadeIn {
   0% {
-    opacity: 0;
+    opacity: 1;
     filter: blur(8px);
     transform: translate3d(0, 18px, 0);
   }

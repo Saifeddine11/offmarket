@@ -3,7 +3,7 @@ import type { SiteLocale } from "@/lib/i18n/types";
 
 /** Styles loaded once from app/layout.tsx for the global navbar. */
 export const GLOBAL_NAV_STYLES = [
-  "/assets/stylesheets/offmarket-logo.css?v=1765317600",
+  "/assets/stylesheets/offmarket-logo.css?v=1785100200",
   "/assets/stylesheets/offmarket-chrome.css?v=1784800000",
   "/assets/stylesheets/om-nav-menu.css?v=1767581000",
   "/assets/stylesheets/om-buttons.css?v=1765338000",
@@ -316,6 +316,30 @@ export function fixStaticInteractiveTargets(html: string, locale: SiteLocale = "
     .replace(/aria-label="Projet précédent"/g, `aria-label="${interactiveLabels.carouselPrev}"`)
     .replace(/aria-label="Projet suivant"/g, `aria-label="${interactiveLabels.carouselNext}"`)
     .replace(/aria-label="Découvrir les quartiers"/g, `aria-label="${interactiveLabels.neighbourhoods}"`)
+    .replace(
+      /\saria-label="Afficher le témoignage suivant"/g,
+      "",
+    )
+    .replace(
+      /\saria-label="Show the next testimonial"/g,
+      "",
+    )
+    .replace(
+      /\saria-label="Mostra la testimonianza successiva"/g,
+      "",
+    )
+    .replace(
+      /\saria-label="Toon de volgende getuigenis"/g,
+      "",
+    )
+    .replace(
+      /\saria-label="Mostrar el testimonio siguiente"/g,
+      "",
+    )
+    .replace(
+      /\saria-label="Vis neste anbefaling"/g,
+      "",
+    )
     .replace(
       /<section class="section ui-dark-background"/,
       '<section id="sur-plan-details" class="section ui-dark-background"',

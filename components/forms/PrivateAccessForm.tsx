@@ -252,7 +252,11 @@ export function PrivateAccessForm({
           ) : (
             <span aria-hidden="true" />
           )}
-          <button className="om-private-access-form__submit" type="submit">
+          <button
+            className="om-private-access-form__submit"
+            type="submit"
+            aria-busy="false"
+          >
             <span>{copy.submit}</span>
             {onBack ? (
               <span className="om-private-access-form__submit-icon">{SUBMIT_ARROW_ICON}</span>

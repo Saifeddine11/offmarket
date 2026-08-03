@@ -95,7 +95,7 @@
   line-height: 1.32;
   font-weight: 400;
   letter-spacing: -0.025em;
-  color: rgba(44, 41, 41, 0.62);
+  color: #5c5b57;
 }
 
 .om-featured-projects__note {
@@ -105,7 +105,7 @@
   font-size: var(--om-small-readable);
   line-height: 1.45;
   font-weight: 400;
-  color: rgba(17, 18, 13, 0.52);
+  color: #5c5b57;
 }
 
 .om-featured-projects__intro-action {
@@ -123,7 +123,7 @@
   line-height: 1.45;
   font-weight: 500;
   letter-spacing: -0.015em;
-  color: rgba(17, 18, 13, 0.58);
+  color: #5c5b57;
 }
 
 .om-featured-projects__intro-action .om-cta {
@@ -197,7 +197,7 @@
   line-height: 1;
   font-weight: 400;
   letter-spacing: -0.04em;
-  color: rgba(44, 41, 41, 0.46);
+  color: #6a6964;
 }
 
 .om-reveal-card__pill {
@@ -882,7 +882,7 @@ html.js.not-ready .om-featured-projects .om-reveal-card__image-overlay {
     line-height: 1;
     font-weight: 400;
     letter-spacing: -0.06em;
-    color: rgba(17, 18, 13, 0.34);
+    color: #6a6964;
   }
 
   .om-reveal-card__pill {

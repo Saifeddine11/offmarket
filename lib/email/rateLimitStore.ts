@@ -200,8 +200,11 @@ export function getRateLimitStore(): RateLimitStore {
   if (storeSingleton) return storeSingleton;
 
   const isProduction = process.env.NODE_ENV === "production";
+  const allowMemory = process.env.RATE_LIMIT_ALLOW_MEMORY === "1";
+  const mode = (process.env.RATE_LIMIT_STORE || "").trim().toLowerCase();
   const url = process.env.UPSTASH_REDIS_REST_URL?.trim();
   const token = process.env.UPSTASH_REDIS_REST_TOKEN?.trim();
+
   if (url && token) {
     const redis = loadUpstashRedis(url, token);
     if (redis) {
@@ -209,17 +212,16 @@ export function getRateLimitStore(): RateLimitStore {
       return storeSingleton;
     }
 
-    if (isProduction) {
+    if (isProduction && !allowMemory && mode !== "filesystem") {
       throw new Error("[rate-limit] Upstash Redis is unavailable in production");
     }
-  } else if (isProduction) {
+  } else if (isProduction && !allowMemory && mode !== "filesystem") {
     throw new Error(
       "[rate-limit] UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are required in production",
     );
   }
 
-  const mode = (process.env.RATE_LIMIT_STORE || "").trim().toLowerCase();
-  if (mode === "memory" || process.env.RATE_LIMIT_ALLOW_MEMORY === "1") {
+  if (mode === "memory" || allowMemory) {
     storeSingleton = createMemoryStore();
     return storeSingleton;
   }

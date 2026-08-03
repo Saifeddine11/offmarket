@@ -24,7 +24,7 @@
 /* Legacy text logo fallback (unused when image is present) */
 .offmarket-logo {
   display: block;
-  font-family: "TT Commons Pro", system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;

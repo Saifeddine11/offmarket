@@ -51,50 +51,105 @@
   };
 
   var COPY_FR = {
-    success:
-      'Votre demande est prête dans votre messagerie. Envoyez l’email pour transmettre votre projet à OFF MARKET.',
-    error:
+    validationError:
       'Merci de vérifier les champs obligatoires avant d’envoyer votre demande.',
-    mailSubject: 'Demande accès OFF MARKET',
+    sendError:
+      'Nous n’avons pas pu envoyer votre demande. Vos informations ont été conservées. Veuillez réessayer dans quelques instants.',
+    sending: 'Envoi de votre demande…',
+    sent: 'Demande envoyée',
+    tryAgain: 'Réessayer',
+    modalEyebrow: 'DEMANDE REÇUE',
+    modalTitle: 'Votre demande privée a bien été envoyée',
+    modalText:
+      'Notre équipe a reçu votre demande et étudiera vos critères. Un conseiller OFF MARKET vous contactera prochainement avec une sélection adaptée à votre projet.',
+    modalClose: 'Fermer',
+    modalHome: 'Retour à l’accueil',
+    homeHref: '/',
   };
 
   var COPY_EN = {
-    success:
-      'Your request is ready in your email app. Send the email to share your project with OFF MARKET.',
-    error: 'Please check the required fields before sending your request.',
-    mailSubject: 'OFF MARKET access request',
+    validationError:
+      'Please check the required fields before sending your request.',
+    sendError:
+      'We couldn’t send your request. Your information has been preserved. Please try again in a moment.',
+    sending: 'Sending your request…',
+    sent: 'Request sent',
+    tryAgain: 'Try again',
+    modalEyebrow: 'REQUEST RECEIVED',
+    modalTitle: 'Your private request has been sent',
+    modalText:
+      'Our team has received your request and will review your criteria. An OFF MARKET advisor will contact you shortly with a selection aligned with your project.',
+    modalClose: 'Close',
+    modalHome: 'Return to homepage',
+    homeHref: '/en/',
   };
 
   var COPY_IT = {
-    success:
-      'La tua richiesta è pronta nella tua email. Invia l’email per condividere il tuo progetto con OFF MARKET.',
-    error:
+    validationError:
       'Verifica i campi obbligatori prima di inviare la richiesta.',
-    mailSubject: 'Richiesta accesso OFF MARKET',
+    sendError:
+      'Non siamo riusciti a inviare la richiesta. I tuoi dati sono stati conservati. Riprova tra poco.',
+    sending: 'Invio della richiesta…',
+    sent: 'Richiesta inviata',
+    tryAgain: 'Riprova',
+    modalEyebrow: 'RICHIESTA RICEVUTA',
+    modalTitle: 'La tua richiesta privata è stata inviata',
+    modalText:
+      'Il nostro team ha ricevuto la tua richiesta e valuterà i tuoi criteri. Un advisor OFF MARKET ti contatterà a breve con una selezione in linea con il tuo progetto.',
+    modalClose: 'Chiudi',
+    modalHome: 'Torna alla homepage',
+    homeHref: '/it/',
   };
 
   var COPY_NL = {
-    success:
-      'Uw aanvraag staat klaar in uw e-mailprogramma. Verstuur de e-mail om uw project met OFF MARKET te delen.',
-    error:
+    validationError:
       'Controleer de verplichte velden voordat u uw aanvraag verstuurt.',
-    mailSubject: 'OFF MARKET toegangsaanvraag',
+    sendError:
+      'We konden uw aanvraag niet verzenden. Uw gegevens zijn bewaard. Probeer het zo opnieuw.',
+    sending: 'Uw aanvraag wordt verzonden…',
+    sent: 'Aanvraag verzonden',
+    tryAgain: 'Opnieuw proberen',
+    modalEyebrow: 'AANVRAAG ONTVANGEN',
+    modalTitle: 'Uw private aanvraag is verzonden',
+    modalText:
+      'Ons team heeft uw aanvraag ontvangen en bestudeert uw criteria. Een OFF MARKET-adviseur neemt binnenkort contact met u op met een selectie die past bij uw project.',
+    modalClose: 'Sluiten',
+    modalHome: 'Terug naar homepage',
+    homeHref: '/nl/',
   };
 
   var COPY_ES = {
-    success:
-      'Su solicitud está lista en su aplicación de correo. Envíe el email para compartir su proyecto con OFF MARKET.',
-    error:
+    validationError:
       'Revise los campos obligatorios antes de enviar su solicitud.',
-    mailSubject: 'Solicitud de acceso OFF MARKET',
+    sendError:
+      'No pudimos enviar su solicitud. Su información se ha conservado. Inténtelo de nuevo en unos momentos.',
+    sending: 'Enviando su solicitud…',
+    sent: 'Solicitud enviada',
+    tryAgain: 'Reintentar',
+    modalEyebrow: 'SOLICITUD RECIBIDA',
+    modalTitle: 'Su solicitud privada ha sido enviada',
+    modalText:
+      'Nuestro equipo ha recibido su solicitud y revisará sus criterios. Un asesor OFF MARKET le contactará en breve con una selección adaptada a su proyecto.',
+    modalClose: 'Cerrar',
+    modalHome: 'Volver al inicio',
+    homeHref: '/es/',
   };
 
   var COPY_NO = {
-    success:
-      'Forespørselen er klar i e-postprogrammet ditt. Send e-posten for å dele prosjektet ditt med OFF MARKET.',
-    error:
+    validationError:
       'Kontroller de obligatoriske feltene før du sender forespørselen.',
-    mailSubject: 'OFF MARKET tilgangsforespørsel',
+    sendError:
+      'Vi kunne ikke sende forespørselen. Opplysningene dine er bevart. Prøv igjen om litt.',
+    sending: 'Sender forespørselen…',
+    sent: 'Forespørsel sendt',
+    tryAgain: 'Prøv igjen',
+    modalEyebrow: 'FORESPØRSEL MOTTATT',
+    modalTitle: 'Din private forespørsel er sendt',
+    modalText:
+      'Teamet vårt har mottatt forespørselen din og vil vurdere kriteriene dine. En OFF MARKET-rådgiver kontakter deg snart med et utvalg tilpasset prosjektet ditt.',
+    modalClose: 'Lukk',
+    modalHome: 'Tilbake til forsiden',
+    homeHref: '/no/',
   };
 
   var LEGACY_FORM_COPY = {
@@ -285,6 +340,38 @@
     return attr ? String(attr).trim() : '';
   }
 
+  function readUtmParams() {
+    try {
+      var params = new URLSearchParams(window.location.search || '');
+      return {
+        utmSource: params.get('utm_source') || '',
+        utmMedium: params.get('utm_medium') || '',
+        utmCampaign: params.get('utm_campaign') || '',
+        utmContent: params.get('utm_content') || '',
+        utmTerm: params.get('utm_term') || '',
+      };
+    } catch (err) {
+      return {
+        utmSource: '',
+        utmMedium: '',
+        utmCampaign: '',
+        utmContent: '',
+        utmTerm: '',
+      };
+    }
+  }
+
+  function createIdempotencyKey() {
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return window.crypto.randomUUID();
+      }
+    } catch (err) {
+      /* ignore */
+    }
+    return 'om-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+  }
+
   function buildLeadPayload(data, form) {
     var locale = resolveFormLocale(form);
     var propertyType = getContextField(form, 'contextPropertyType');
@@ -299,93 +386,258 @@
       getLeadField(form, 'leadContext') ||
       (form ? form.getAttribute('data-lead-context') : '') ||
       '';
+    var honeypotField = form ? form.querySelector('[name="companyWebsite"]') : null;
+    var utm = readUtmParams();
 
     return {
+      type: 'private_access',
       fullName: data.name,
       phoneCountry: data.dialCode,
       phone: data.phone,
       email: data.email,
       message: data.message || '',
+      intent: data.intent || '',
       propertyType: propertyType,
       budget: contextBudget,
       objective: objective,
       source: source,
       context: context,
       locale: locale,
-      createdAt: new Date().toISOString(),
+      pagePath: window.location.pathname || '',
+      pageUrl: window.location.href || '',
+      companyWebsite: honeypotField ? String(honeypotField.value || '') : '',
+      contactConsent: true,
+      utmSource: utm.utmSource,
+      utmMedium: utm.utmMedium,
+      utmCampaign: utm.utmCampaign,
+      formStartedAt: data.formStartedAt || null,
+      idempotencyKey: data.idempotencyKey || createIdempotencyKey(),
     };
   }
 
-  function buildMailBody(data, form) {
-    var payload = buildLeadPayload(data, form);
-    var isEn = payload.locale === 'en';
-    var isEs = payload.locale === 'es';
-    var isNl = payload.locale === 'nl';
-    var isNo = payload.locale === 'no';
-    var lines = [
-      isNo
-        ? 'Hei, jeg ønsker tilgang til OFF MARKET prosjekter.'
-        : isEs
-          ? 'Hola, quiero solicitar acceso a los proyectos OFF MARKET.'
-          : isNl
-        ? 'Hallo, ik wil toegang aanvragen tot de OFF MARKET projecten.'
-        : isEn
-          ? 'Hello, I would like to request access to OFF MARKET projects.'
-          : 'Bonjour, je souhaite demander l’accès aux projets OFF MARKET.',
-      '',
-      (isNo ? 'Fullt navn : ' : isEs ? 'Nombre completo : ' : isNl ? 'Volledige naam : ' : isEn ? 'Full name : ' : 'Nom complet : ') + payload.fullName,
-      'Email : ' + payload.email,
-      (isNo ? 'Telefon : ' : isEs ? 'Teléfono : ' : isNl ? 'Telefoon : ' : isEn ? 'Phone : ' : 'Téléphone : ') +
-        payload.phoneCountry +
-        ' ' +
-        payload.phone,
-      'Message : ' + (payload.message || '—'),
-      'Intent : ' + data.intent,
-    ];
+  function getSubmitButton(form) {
+    return form.querySelector('.om-private-access-form__submit');
+  }
 
-    if (payload.propertyType || payload.budget || payload.objective || payload.source || payload.context) {
-      lines.push('');
-      if (payload.propertyType) {
-        lines.push(
-          (isNo ? 'Eiendomstype : ' : isEs ? 'Tipo de propiedad : ' : isNl ? 'Type vastgoed : ' : isEn ? 'Property type : ' : 'Type de bien : ') +
-            payload.propertyType
-        );
+  function getSubmitLabel(button) {
+    if (!button) return null;
+    return button.querySelector('span') || button;
+  }
+
+  function setSubmitState(form, state, copy) {
+    var button = getSubmitButton(form);
+    if (!button) return;
+
+    var label = getSubmitLabel(button);
+    var defaultLabel =
+      button.getAttribute('data-default-label') ||
+      (label ? label.textContent : '') ||
+      '';
+
+    if (!button.getAttribute('data-default-label') && defaultLabel) {
+      button.setAttribute('data-default-label', defaultLabel.trim());
+    }
+
+    button.classList.remove(
+      'is-loading',
+      'is-success',
+      'is-error',
+    );
+
+    if (state === 'loading') {
+      button.disabled = true;
+      button.setAttribute('aria-busy', 'true');
+      button.classList.add('is-loading');
+      if (label) label.textContent = copy.sending;
+      return;
+    }
+
+    if (state === 'success') {
+      button.disabled = true;
+      button.setAttribute('aria-busy', 'false');
+      button.classList.add('is-success');
+      if (label) label.textContent = copy.sent;
+      return;
+    }
+
+    if (state === 'error') {
+      button.disabled = false;
+      button.setAttribute('aria-busy', 'false');
+      button.classList.add('is-error');
+      if (label) label.textContent = copy.tryAgain;
+      return;
+    }
+
+    button.disabled = false;
+    button.setAttribute('aria-busy', 'false');
+    if (label) {
+      label.textContent =
+        button.getAttribute('data-default-label') || defaultLabel;
+    }
+  }
+
+  function trackPrivateAccessSuccess(payload) {
+    try {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', 'private_access_request_submitted', {
+        locale: payload.locale || '',
+        page: payload.pagePath || '',
+        form_type: 'private_access',
+        acquisition_objective: payload.objective || '',
+        property_category: payload.propertyType || '',
+      });
+    } catch (err) {
+      /* analytics must never break submission UX */
+    }
+  }
+
+  function getFocusable(container) {
+    return Array.prototype.slice.call(
+      container.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter(function (el) {
+      return !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true';
+    });
+  }
+
+  function closeSuccessModal(modal, returnFocusEl) {
+    if (!modal || modal.getAttribute('data-open') !== 'true') return;
+    modal.setAttribute('data-open', 'false');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.hidden = true;
+    document.documentElement.classList.remove('om-private-access-modal-open');
+    document.body.classList.remove('om-private-access-modal-open');
+    if (modal._omKeyHandler) {
+      document.removeEventListener('keydown', modal._omKeyHandler, true);
+      modal._omKeyHandler = null;
+    }
+    if (returnFocusEl && typeof returnFocusEl.focus === 'function') {
+      window.setTimeout(function () {
+        returnFocusEl.focus();
+      }, 0);
+    }
+  }
+
+  function ensureSuccessModal(copy) {
+    var existing = document.getElementById('om-private-access-success-modal');
+    if (existing) {
+      existing.querySelector('[data-om-success-eyebrow]').textContent = copy.modalEyebrow;
+      existing.querySelector('[data-om-success-title]').textContent = copy.modalTitle;
+      existing.querySelector('[data-om-success-text]').textContent = copy.modalText;
+      existing.querySelector('[data-om-success-close]').textContent = copy.modalClose;
+      var homeLink = existing.querySelector('[data-om-success-home]');
+      if (homeLink) {
+        homeLink.textContent = copy.modalHome;
+        homeLink.setAttribute('href', copy.homeHref || '/');
       }
-      if (payload.budget) {
-        lines.push(
-          (isNo ? 'Vurdert budsjett : ' : isEs ? 'Presupuesto estudiado : ' : isNl ? 'Budget : ' : isEn ? 'Budget reviewed : ' : 'Budget étudié : ') +
-            payload.budget
-        );
+      return existing;
+    }
+
+    var modal = document.createElement('div');
+    modal.id = 'om-private-access-success-modal';
+    modal.className = 'om-private-access-success';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('data-open', 'false');
+    modal.hidden = true;
+    modal.innerHTML =
+      '<div class="om-private-access-success__overlay" data-om-success-overlay></div>' +
+      '<div class="om-private-access-success__card" role="document">' +
+      '<div class="om-private-access-success__icon" aria-hidden="true">' +
+      '<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>' +
+      '<path d="M14 24.5 21 31.5 34 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      '</div>' +
+      '<p class="om-private-access-success__eyebrow" data-om-success-eyebrow></p>' +
+      '<h2 class="om-private-access-success__title" id="om-private-access-success-title" data-om-success-title></h2>' +
+      '<p class="om-private-access-success__text" data-om-success-text></p>' +
+      '<div class="om-private-access-success__actions">' +
+      '<button type="button" class="om-private-access-success__close" data-om-success-close></button>' +
+      '<a class="om-private-access-success__home" data-om-success-home href="/"></a>' +
+      '</div>' +
+      '</div>';
+
+    modal.setAttribute('aria-labelledby', 'om-private-access-success-title');
+    document.body.appendChild(modal);
+
+    modal.querySelector('[data-om-success-eyebrow]').textContent = copy.modalEyebrow;
+    modal.querySelector('[data-om-success-title]').textContent = copy.modalTitle;
+    modal.querySelector('[data-om-success-text]').textContent = copy.modalText;
+    modal.querySelector('[data-om-success-close]').textContent = copy.modalClose;
+    var home = modal.querySelector('[data-om-success-home]');
+    home.textContent = copy.modalHome;
+    home.setAttribute('href', copy.homeHref || '/');
+
+    return modal;
+  }
+
+  function openSuccessModal(form, copy) {
+    var modal = ensureSuccessModal(copy);
+    var returnFocus = getSubmitButton(form);
+    var closeBtn = modal.querySelector('[data-om-success-close]');
+    var overlay = modal.querySelector('[data-om-success-overlay]');
+
+    modal._omReturnFocus = returnFocus;
+    modal._omClose = function () {
+      closeSuccessModal(modal, modal._omReturnFocus || null);
+    };
+
+    modal.hidden = false;
+    modal.setAttribute('data-open', 'true');
+    modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('om-private-access-modal-open');
+    document.body.classList.add('om-private-access-modal-open');
+
+    if (!modal._omBound) {
+      modal._omBound = true;
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+          if (typeof modal._omClose === 'function') modal._omClose();
+        });
       }
-      if (payload.objective) {
-        lines.push(
-          (isNo ? 'Mål : ' : isEs ? 'Objetivo : ' : isNl ? 'Doelstelling : ' : isEn ? 'Objective : ' : 'Objectif : ') +
-            payload.objective
-        );
+      if (overlay) {
+        overlay.addEventListener('click', function () {
+          if (typeof modal._omClose === 'function') modal._omClose();
+        });
       }
-      if (payload.source) lines.push('Source : ' + payload.source);
-      if (payload.context) {
-        lines.push((isNo ? 'Kontekst : ' : isEs ? 'Contexto : ' : isNl ? 'Context : ' : isEn ? 'Context : ' : 'Contexte : ') + payload.context);
+      var homeLink = modal.querySelector('[data-om-success-home]');
+      if (homeLink) {
+        homeLink.addEventListener('click', function () {
+          closeSuccessModal(modal, null);
+        });
       }
     }
 
-    lines.push('');
-    lines.push('Locale : ' + payload.locale);
-    lines.push((isNo ? 'Tidspunkt : ' : isEs ? 'Fecha y hora : ' : isNl ? 'Tijdstempel : ' : isEn ? 'Timestamp : ' : 'Horodatage : ') + payload.createdAt);
-    lines.push('');
-    lines.push(
-      isNo
-        ? 'Ta kontakt med meg med et privat utvalg tilpasset prosjektet mitt.'
-        : isEs
-          ? 'Por favor, contacten conmigo con una selección privada adaptada a mi proyecto.'
-          : isNl
-        ? 'Dank u om contact met mij op te nemen met een private selectie die past bij mijn project.'
-        : isEn
-          ? 'Please contact me with a private selection tailored to my project.'
-          : 'Merci de me recontacter avec une sélection privée adaptée à mon projet.'
-    );
+    if (modal._omKeyHandler) {
+      document.removeEventListener('keydown', modal._omKeyHandler, true);
+    }
 
-    return lines.join('\n');
+    modal._omKeyHandler = function (event) {
+      if (modal.getAttribute('data-open') !== 'true') return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        if (typeof modal._omClose === 'function') modal._omClose();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      var focusable = getFocusable(modal);
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', modal._omKeyHandler, true);
+
+    window.setTimeout(function () {
+      if (closeBtn) closeBtn.focus();
+    }, 0);
   }
 
   function resolveIntent(form) {
@@ -434,12 +686,27 @@
   function bindForm(form) {
     if (form.dataset.privateAccessBound === 'true') return;
     form.dataset.privateAccessBound = 'true';
+    form._omFormStartedAt = Date.now();
+    form._omSubmitting = false;
 
     localizeLegacyForm(form);
     populateSelects(form);
 
+    var submitBtn = getSubmitButton(form);
+    if (submitBtn) {
+      var labelEl = getSubmitLabel(submitBtn);
+      if (labelEl && !submitBtn.getAttribute('data-default-label')) {
+        submitBtn.setAttribute(
+          'data-default-label',
+          String(labelEl.textContent || '').trim(),
+        );
+      }
+    }
+
     form.addEventListener('submit', function (event) {
       event.preventDefault();
+      if (form._omSubmitting) return;
+
       clearFieldErrors(form);
       var copy = getCopy(form);
 
@@ -462,43 +729,92 @@
 
       if (!name) {
         markInvalid(nameField);
-        setStatus(statusEl, copy.error, true);
+        setStatus(statusEl, copy.validationError, true);
         return;
       }
       if (!email || !isValidEmail(email)) {
         markInvalid(emailField);
-        setStatus(statusEl, copy.error, true);
+        setStatus(statusEl, copy.validationError, true);
         return;
       }
       if (!dialCode) {
         markInvalid(countrySelect);
-        setStatus(statusEl, copy.error, true);
+        setStatus(statusEl, copy.validationError, true);
         return;
       }
-      if (!phone) {
+      if (!phone || phone.replace(/\D/g, '').length < 6) {
         markInvalid(phoneField);
-        setStatus(statusEl, copy.error, true);
+        setStatus(statusEl, copy.validationError, true);
         return;
       }
 
-      var payload = {
-        name: name,
-        email: email,
-        dialCode: dialCode,
-        phone: phone,
-        phoneFull: dialCode + ' ' + phone,
-        message: note,
-        intent: intent,
-      };
+      var apiPayload = buildLeadPayload(
+        {
+          name: name,
+          email: email,
+          dialCode: dialCode,
+          phone: phone,
+          message: note,
+          intent: intent,
+          formStartedAt: form._omFormStartedAt || Date.now(),
+          idempotencyKey: createIdempotencyKey(),
+        },
+        form,
+      );
 
-      var body = encodeURIComponent(buildMailBody(payload, form));
-      var subject = encodeURIComponent(copy.mailSubject);
+      form._omSubmitting = true;
+      setSubmitState(form, 'loading', copy);
+      setStatus(statusEl, copy.sending, false);
 
-      setStatus(statusEl, copy.success, false);
-      window.setTimeout(function () {
-        window.location.href =
-          'mailto:contact@offmarketofficial.com?subject=' + subject + '&body=' + body;
-      }, 120);
+      fetch('/api/leads/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify(apiPayload),
+      })
+        .then(function (response) {
+          return response
+            .json()
+            .catch(function () {
+              return { ok: false };
+            })
+            .then(function (json) {
+              return { response: response, json: json };
+            });
+        })
+        .then(function (result) {
+          var ok =
+            result.response &&
+            result.response.ok &&
+            result.json &&
+            result.json.ok !== false;
+
+          if (!ok) {
+            throw new Error('submit_failed');
+          }
+
+          setSubmitState(form, 'success', copy);
+          setStatus(statusEl, '', false);
+          trackPrivateAccessSuccess(apiPayload);
+          openSuccessModal(form, copy);
+
+          form.reset();
+          populateSelects(form);
+          form._omFormStartedAt = Date.now();
+          form._omSubmitting = false;
+
+          window.setTimeout(function () {
+            setSubmitState(form, 'default', copy);
+          }, 1200);
+        })
+        .catch(function () {
+          form._omSubmitting = false;
+          setSubmitState(form, 'error', copy);
+          setStatus(statusEl, copy.sendError, true);
+        });
     });
   }
 

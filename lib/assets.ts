@@ -11,7 +11,7 @@ const INNER_EDITORIAL_STYLES = withoutGlobalFooterStyles(
   withoutGlobalNavStyles([
     "/assets/stylesheets/offmarket-tokens.css?v=1765402900",
     "/assets/stylesheets/offmarket-overrides.css?v=1765338000",
-    "/assets/stylesheets/om-typography.css?v=1765311000",
+    "/assets/stylesheets/om-typography.css?v=1785100300",
     "/assets/stylesheets/om-final-cta.css?v=1767581200",
     "/assets/stylesheets/om-inner-hero.css?v=1784751000",
   ]),
@@ -20,14 +20,14 @@ const INNER_EDITORIAL_STYLES = withoutGlobalFooterStyles(
 export const STYLES = {
   offMarket: [
     "/assets/stylesheets/offmarket-tokens.css?v=1765402900",
-    "/assets/stylesheets/om-typography.css?v=1765311000",
-    "/assets/stylesheets/om-contact.css?v=1765405100",
+    "/assets/stylesheets/om-typography.css?v=1785100300",
+    "/assets/stylesheets/om-contact.css?v=1765601200",
   ],
   about: [
     ...INNER_EDITORIAL_STYLES,
     "/assets/stylesheets/om-who.css?v=1768600000",
     "/assets/stylesheets/om-testimonials.css?v=1765342000",
-    "/assets/stylesheets/om-text-reveal.css?v=1765317800",
+    "/assets/stylesheets/om-text-reveal.css?v=1785100100",
     "/assets/stylesheets/about-who.css?v=1767533000",
     "/assets/stylesheets/about-verified.css?v=1768600000",
     "/assets/stylesheets/about-timeline.css?v=1765446000",
@@ -42,8 +42,8 @@ export const STYLES = {
     "/assets/stylesheets/om-territories.css?v=1765417000",
     "/assets/stylesheets/om-quartier-details.css?v=1765422700",
     "/assets/stylesheets/om-quartiers-motion.css?v=1765440000",
-    "/assets/stylesheets/om-simulator.css?v=1768513200",
-    "/assets/stylesheets/om-simulator-home.css?v=1768513800",
+    "/assets/stylesheets/om-simulator.css?v=1785100300",
+    "/assets/stylesheets/om-simulator-home.css?v=1785100300",
     "/assets/stylesheets/om-blog.css?v=1765405000",
   ],
   /** /nos-projets/ — inner hero + reused homepage featured-projects section. */
@@ -53,7 +53,7 @@ export const STYLES = {
     "/assets/stylesheets/om-featured-projects.css?v=1767546000",
     "/assets/stylesheets/om-private-access-popup.css?v=1765340000",
     "/assets/stylesheets/om-property-modal.css?v=1768512600",
-    "/assets/stylesheets/om-contact.css?v=1765405100",
+    "/assets/stylesheets/om-contact.css?v=1765601200",
     "/assets/stylesheets/om-contact-page.css?v=1784754000",
     "/assets/stylesheets/om-nos-projets.css?v=1767547000",
   ],
@@ -69,7 +69,7 @@ export const STYLES = {
       "/assets/stylesheets/global.css?v=1765297300",
       "/assets/stylesheets/offmarket-tokens.css?v=1765402900",
       "/assets/stylesheets/offmarket-overrides.css?v=1765311000",
-      "/assets/stylesheets/om-typography.css?v=1765311000",
+      "/assets/stylesheets/om-typography.css?v=1785100300",
       "/assets/stylesheets/om-legal.css?v=1765311000",
       "/assets/stylesheets/om-final-cta.css?v=1767581200",
       "/assets/stylesheets/om-page-motion.css?v=1765422400",
@@ -79,10 +79,10 @@ export const STYLES = {
     withoutGlobalNavStyles([
       "/assets/stylesheets/offmarket-tokens.css?v=1765402900",
       "/assets/stylesheets/offmarket-overrides.css?v=1765338000",
-      "/assets/stylesheets/om-typography.css?v=1765311000",
+      "/assets/stylesheets/om-typography.css?v=1785100300",
       "/assets/stylesheets/om-final-cta.css?v=1767581200",
       "/assets/stylesheets/om-page-motion.css?v=1765422400",
-      "/assets/stylesheets/om-contact.css?v=1765405100",
+      "/assets/stylesheets/om-contact.css?v=1765601200",
       "/assets/stylesheets/om-contact-page.css?v=1784754000",
     ]),
   ),
@@ -91,11 +91,11 @@ export const STYLES = {
       "/assets/stylesheets/global.css?v=1765268659",
       "/assets/stylesheets/offmarket-tokens.css?v=1765402900",
       "/assets/stylesheets/offmarket-overrides.css?v=1765338000",
-      "/assets/stylesheets/om-typography.css?v=1765311000",
+      "/assets/stylesheets/om-typography.css?v=1785100300",
       "/assets/stylesheets/om-final-cta.css?v=1767581200",
       "/assets/stylesheets/om-page-motion.css?v=1765422400",
-      "/assets/stylesheets/om-simulator.css?v=1768513200",
-      "/assets/stylesheets/om-simulator-home.css?v=1768513800",
+      "/assets/stylesheets/om-simulator.css?v=1785100300",
+      "/assets/stylesheets/om-simulator-home.css?v=1785100300",
     ]),
   ),
 } as const;
@@ -118,11 +118,11 @@ export const NOS_PROJETS_SCRIPTS = withoutGlobalNavScripts([
   "/assets/javascripts/om-featured-projects.js?v=1769202007",
   "/assets/javascripts/om-property-modal.js?v=1769202006",
   "/assets/javascripts/om-private-access-popup.js?v=1765340000",
-  "/assets/javascripts/om-private-access-form.js?v=1765600400",
+  "/assets/javascripts/om-private-access-form.js?v=1765601200",
 ]) as string[];
 
 export const SCRIPTS = {
-  offMarket: ["/assets/javascripts/om-private-access-form.js?v=1765600400"],
+  offMarket: ["/assets/javascripts/om-private-access-form.js?v=1765601200"],
   /** Inner editorial pages — page-specific boot (navbar scripts are global). */
   innerEditorial: withoutGlobalNavScripts([
     "/assets/javascripts/gsap.min.js?v=1765268700",
@@ -162,7 +162,7 @@ export const SCRIPTS = {
   ]),
   contact: withoutGlobalNavScripts([
     "/assets/javascripts/om-language-switcher.js?v=1769200000",
-    "/assets/javascripts/om-private-access-form.js?v=1765600400",
+    "/assets/javascripts/om-private-access-form.js?v=1765601200",
   ]),
   simulateur: withoutGlobalNavScripts([
     "/assets/javascripts/om-simulator.js?v=1765405800",

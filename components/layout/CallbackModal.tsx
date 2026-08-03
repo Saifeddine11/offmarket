@@ -68,16 +68,37 @@ const CALLBACK_COPY = {
   secondary: string;
 }>;
 
+const PRIMARY_HREF: Record<SiteLocale, string> = {
+  fr: "/off-market/",
+  en: "/en/off-market/",
+  es: "/es/off-market/",
+  it: "/it/off-market/",
+  nl: "/nl/off-market/",
+  no: "/no/off-market/",
+};
+
+const PRIMARY_LABEL: Record<SiteLocale, string> = {
+  fr: "Demander l’accès privé",
+  en: "Request private access",
+  es: "Solicitar acceso privado",
+  it: "Richiedi accesso privato",
+  nl: "Privétoegang aanvragen",
+  no: "Be om privat tilgang",
+};
+
 export function CallbackModal({
-  primaryHref = "mailto:contact@offmarketofficial.com",
+  primaryHref,
   secondaryHref = "/contact/",
-  primaryLabel = "contact@offmarketofficial.com",
+  primaryLabel,
   secondaryLabel,
   primaryClassName = "om-button om-button--primary",
   secondaryClassName = "om-button om-button--secondary",
   locale = "fr",
 }: CallbackModalProps) {
   const copy = CALLBACK_COPY[locale] ?? CALLBACK_COPY.fr;
+  const resolvedPrimaryHref = primaryHref ?? PRIMARY_HREF[locale] ?? PRIMARY_HREF.fr;
+  const resolvedPrimaryLabel =
+    primaryLabel ?? PRIMARY_LABEL[locale] ?? PRIMARY_LABEL.fr;
   const resolvedSecondaryLabel = secondaryLabel ?? copy.secondary;
   return (
     <div className="js-modal">
@@ -114,8 +135,11 @@ export function CallbackModal({
                         {copy.text}
                       </p>
                       <div className="mt-2">
-                        <Link href={primaryHref} className={primaryClassName}>
-                          {primaryLabel}
+                        <Link
+                          href={resolvedPrimaryHref}
+                          className={primaryClassName}
+                        >
+                          {resolvedPrimaryLabel}
                         </Link>
                       </div>
                       <div className="mt-1">

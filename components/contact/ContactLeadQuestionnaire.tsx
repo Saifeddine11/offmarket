@@ -49,6 +49,7 @@ function OptionGrid({ options, selected, onSelect, name }: OptionGridProps) {
               checked={active}
               readOnly
               tabIndex={-1}
+              aria-label={option}
               className="om-contact-lead__option-input"
             />
             <span>{option}</span>

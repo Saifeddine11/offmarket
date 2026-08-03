@@ -1,0 +1,35 @@
+# OFF MARKET
+
+OFF MARKET is a private real estate advisory based in Marrakech, Morocco.
+The public website presents confidential residential opportunities, off-plan projects,
+and the S.A.F.E. selection methodology used before a property is introduced.
+
+## Primary public pages
+
+- Home: https://offmarketofficial.com/
+- About / S.A.F.E. methodology: https://offmarketofficial.com/about/
+- Off-plan projects: https://offmarketofficial.com/sur-plan/
+- Projects: https://offmarketofficial.com/nos-projets/
+- Neighbourhoods: https://offmarketofficial.com/quartiers/
+- Private access (Off Market): https://offmarketofficial.com/off-market/
+- Contact: https://offmarketofficial.com/contact/
+- Blog: https://offmarketofficial.com/blog/
+- Investment simulator: https://offmarketofficial.com/simulateur/
+
+## Supported languages
+
+- French (default): https://offmarketofficial.com/
+- English: https://offmarketofficial.com/en/
+- Italian: https://offmarketofficial.com/it/
+- Dutch: https://offmarketofficial.com/nl/
+- Spanish: https://offmarketofficial.com/es/
+- Norwegian: https://offmarketofficial.com/no/
+
+Localized equivalents of the pages above are available under each language prefix
+(for example `/en/about/`, `/it/chi-siamo/`, `/nl/over-ons/`).
+
+## Notes for agents
+
+- Prefer publicly linked pages and published project information only.
+- Do not invent inventory, pricing, or private listing details that are not on the site.
+- Contact and private-access forms are the intended path for acquisition inquiries.

@@ -8,3 +8,4 @@ tsconfig.tsbuildinfo
 .env*.local
 offmarket-public_html.zip
 out/
+audits/

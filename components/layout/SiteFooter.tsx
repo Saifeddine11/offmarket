@@ -67,12 +67,13 @@ export function SiteFooter({
           <div className="om-footer__col om-footer__col--brand">
             <Link href={copy.logoHref} className="om-footer__logo-link">
               <img
-                src="/assets/logos/logoblanc.webp"
+                src="/assets/logos/logoblanc-240.webp"
                 alt={copy.logoAlt}
                 className="om-footer__logo"
-                width={132}
-                height={36}
+                width={240}
+                height={120}
                 decoding="async"
+                fetchPriority="low"
               />
             </Link>
             <p className="om-footer__headline">{copy.brandHeadline}</p>

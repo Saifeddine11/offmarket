@@ -158,7 +158,7 @@ function renderCard(article: BlogHubArticle, locale: SiteLocale): string {
 
   return (
     `<article class="om-blog-card${wideClass}" data-category="${escapeHtml(article.category)}">` +
-    `<a class="om-blog-card__link" href="${href}" aria-label="${title}">` +
+    `<a class="om-blog-card__link" href="${href}">` +
     `<img src="${escapeHtml(article.image)}" alt="${escapeHtml(article.imageAlt)}" loading="lazy" decoding="async">` +
     `<span class="om-blog-card__arrow" aria-hidden="true">${ARROW_SVG}</span>` +
     `<div class="om-blog-card__content">` +

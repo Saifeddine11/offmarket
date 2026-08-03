@@ -66,10 +66,16 @@
     if (!originalText) return;
 
     el.dataset.wordRevealReady = 'true';
-    el.setAttribute('aria-label', originalText);
+    el.removeAttribute('aria-label');
 
     var words = originalText.split(/\s+/);
-    el.innerHTML = buildWordMarkup(words);
+    el.innerHTML =
+      '<span class="om-word-reveal__accessible">' +
+      escapeHtml(originalText) +
+      '</span>' +
+      '<span class="om-word-reveal__visual" aria-hidden="true">' +
+      buildWordMarkup(words) +
+      '</span>';
     el.classList.add('om-word-reveal');
 
     if (prefersReducedMotion()) {

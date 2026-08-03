@@ -363,9 +363,6 @@
   var HEIGHT_TRANSITION_MS = 650;
   var SCROLL_DELAY_MS = 90;
 
-  function ariaLabel(item) {
-    return item.label + ' — ' + item.subtitle + ' — ' + item.tag;
-  }
 
   function inactiveHeight() {
     return 'calc(' + DESKTOP.itemHeight + 'vw + ' + DESKTOP.itemHeight + 'vh)';
@@ -661,7 +658,6 @@
       card.setAttribute('data-index', String(index));
       card.setAttribute('role', 'button');
       card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', ariaLabel(item));
       card.setAttribute('aria-pressed', 'false');
 
       var inner = document.createElement('div');
@@ -691,7 +687,6 @@
       card.className = 'om-territories__mobile-card';
       card.setAttribute('data-om-territory-mobile-card', '');
       card.setAttribute('data-index', String(index));
-      card.setAttribute('aria-label', ariaLabel(item));
       card.setAttribute('aria-pressed', 'false');
 
       var media = document.createElement('div');

@@ -19,6 +19,7 @@ import { replaceFeaturedProjectsSection } from "@/lib/homepage/replaceFeaturedPr
 import { withServerRenderedBlogHub } from "@/lib/blog/buildBlogHubHtml";
 import {
   deprioritizeLegacyBundles,
+  partitionHomepageStylesheets,
   prioritizeHomepageStylesheets,
   reorderHomepageScripts,
   stripDuplicateHeadInit,
@@ -42,7 +43,7 @@ type HomePageContentProps = {
 const HOME_LEAD_QUESTIONNAIRE_STYLES =
   "/assets/stylesheets/om-contact-page.css?v=1767552000";
 const HOME_MARKET_DEMAND_STYLES =
-  "/assets/stylesheets/om-market-demand.css?v=1784900000";
+  "/assets/stylesheets/om-market-demand.css?v=1785100300";
 
 function resolveContentLocale(content: PageContent): SiteLocale {
   return content.htmlLang === "en" ||
@@ -82,10 +83,18 @@ export function HomePageContent({
   const contentWithLeadStyles = withMarketDemandStyles(
     withLeadQuestionnaireStyles(content),
   );
+  const prioritizedStyles = prioritizeHomepageStylesheets(
+    contentWithLeadStyles.stylesheets,
+  );
+  const { critical, deferred } = partitionHomepageStylesheets(prioritizedStyles);
   const optimizedContent = stripDuplicateHeadInit({
     ...contentWithLeadStyles,
-    stylesheets: prioritizeHomepageStylesheets(
-      contentWithLeadStyles.stylesheets,
+    stylesheets: critical,
+    // Drop google fonts preconnect — Inter is self-hosted.
+    preconnects: (contentWithLeadStyles.preconnects ?? []).filter(
+      (href) =>
+        !href.includes("fonts.googleapis.com") &&
+        !href.includes("fonts.gstatic.com"),
     ),
     headInlineStyles: includeFaqSection
       ? [...content.headInlineStyles, HOME_FAQ_STYLES]
@@ -127,6 +136,7 @@ export function HomePageContent({
       <PageContentShell
         content={{ ...optimizedContent, bodySegments: shellBodySegments }}
         bodySegments={shellBodySegments}
+        deferredStylesheets={deferred}
       />
       <LeadFormStaticBridge />
       {includeFaqSection ? <HomeFaqBoot sectionId={HOME_FAQ_SECTION_ID} /> : null}

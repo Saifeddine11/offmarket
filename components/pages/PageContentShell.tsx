@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { BodyClass } from "@/components/layout/BodyClass";
+import { DeferredStylesheetLinks } from "@/components/layout/DeferredStylesheetLinks";
 import { StaticHtmlBody } from "@/components/layout/StaticHtmlBody";
 import { StylesheetLinks } from "@/components/layout/StylesheetLinks";
 import type { PageContent } from "@/lib/content/types";
@@ -15,6 +16,8 @@ import type { ParsedStaticPage } from "@/lib/static-html/parsePage";
 type PageContentShellProps = {
   content: PageContent;
   bodySegments?: BodySegment[];
+  /** Below-the-fold stylesheets loaded without blocking first paint. */
+  deferredStylesheets?: readonly string[];
 };
 
 function asParsed(content: PageContent): ParsedStaticPage {
@@ -32,6 +35,7 @@ export function buildPageContentViewport(content: PageContent): Viewport {
 export function PageContentShell({
   content,
   bodySegments = content.bodySegments,
+  deferredStylesheets = [],
 }: PageContentShellProps) {
   const locale =
     content.htmlLang === "en" ||
@@ -43,6 +47,9 @@ export function PageContentShell({
     : "fr";
   const stylesheets = withoutGlobalFooterStyles(
     withoutGlobalNavStyles(content.stylesheets),
+  );
+  const deferred = withoutGlobalFooterStyles(
+    withoutGlobalNavStyles(deferredStylesheets),
   );
   const segments = prepareStaticPageSegments(bodySegments, locale);
 
@@ -59,6 +66,7 @@ export function PageContentShell({
         <link key={href} rel="preconnect" href={href} />
       ))}
       <StylesheetLinks hrefs={stylesheets} />
+      {deferred.length > 0 ? <DeferredStylesheetLinks hrefs={deferred} /> : null}
       {content.headInlineStyles.map((css, index) => (
         <style key={index} suppressHydrationWarning>
           {css}

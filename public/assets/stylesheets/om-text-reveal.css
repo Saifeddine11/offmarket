@@ -9,6 +9,22 @@
   justify-content: center;
 }
 
+.om-word-reveal__accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.om-word-reveal__visual {
+  display: contents;
+}
+
 .om-word-reveal__word {
   position: relative;
   display: inline-block;
@@ -30,7 +46,8 @@
 }
 
 #qui-sommes-nous [data-word-reveal] .om-word-reveal__ghost {
-  color: rgba(17, 18, 13, 0.22);
+  /* Soft ghost that still meets AA contrast for body-sized text on #f5f4f2. */
+  color: #6f6e6a;
 }
 
 #qui-sommes-nous .mav-who__title[data-word-reveal] {
@@ -46,7 +63,8 @@
 }
 
 .om-cinematic-video [data-word-reveal] .om-word-reveal__ghost {
-  color: rgba(255, 255, 255, 0.42);
+  /* Soft ghost on dark cinematic background (~AA for large/body text). */
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .om-cinematic-video__headline[data-word-reveal] {

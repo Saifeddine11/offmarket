@@ -2,7 +2,15 @@ import { buildLeadNotificationEmail } from "@/lib/email/leadNotificationTemplate
 import type { NormalizedLead } from "@/lib/email/leadTypes";
 
 const DEFAULT_TO = "contact@offmarketofficial.com";
-const DEFAULT_FROM = "OFF MARKET Website <notifications@offmarketofficial.com>";
+const DEFAULT_FROM = "OFF MARKET <noreply@offmarketofficial.com>";
+
+function resolveRecipient(): string {
+  return (
+    process.env.EMAIL_TO?.trim() ||
+    process.env.CONTACT_EMAIL?.trim() ||
+    DEFAULT_TO
+  );
+}
 
 export type SendLeadResult =
   | { ok: true; id: string }
@@ -47,7 +55,7 @@ function getResendClient(): ResendClient | null {
 export async function sendLeadNotification(
   lead: NormalizedLead,
 ): Promise<SendLeadResult> {
-  const to = DEFAULT_TO;
+  const to = resolveRecipient();
   const from = process.env.EMAIL_FROM?.trim() || DEFAULT_FROM;
   const { subject, html, text } = buildLeadNotificationEmail(lead);
 

@@ -1,7 +1,45 @@
 import type { BodySegment } from "@/lib/static-html/parsePage";
 
 export const HERO_POSTER_PRELOAD =
-  "/assets/images/hero/herophoto2-1280.webp";
+  "/assets/images/hero/herophoto2-640.avif";
+
+/** Styles required for first paint: tokens/chrome/hero/type. */
+const HOMEPAGE_CRITICAL_STYLES = [
+  "global.css",
+  "offmarket-tokens.css",
+  "offmarket-overrides.css",
+  "offmarket-logo.css",
+  "offmarket-chrome.css",
+  "om-nav-menu.css",
+  "om-buttons.css",
+  "om-hero.css",
+  "om-typography.css",
+  "om-scroll-layout.css",
+] as const;
+
+function styleFile(href: string): string {
+  return href.split("/").pop()?.split("?")[0] ?? "";
+}
+
+/** Splits homepage CSS into render-critical vs deferred below-the-fold. */
+export function partitionHomepageStylesheets(stylesheets: readonly string[]): {
+  critical: string[];
+  deferred: string[];
+} {
+  const criticalSet = new Set<string>(HOMEPAGE_CRITICAL_STYLES);
+  const critical: string[] = [];
+  const deferred: string[] = [];
+
+  for (const href of stylesheets) {
+    if (criticalSet.has(styleFile(href))) {
+      critical.push(href);
+    } else {
+      deferred.push(href);
+    }
+  }
+
+  return { critical, deferred };
+}
 
 const HERO_SCRIPTS = [
   "om-navbar-hero-visibility.js",

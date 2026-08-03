@@ -193,7 +193,7 @@
   font-weight: 650;
   letter-spacing: var(--om-letter-label);
   text-transform: uppercase;
-  color: rgba(86, 84, 73, 0.58);
+  color: #5c5b57;
 }
 
 .om-simulator__panel-title {

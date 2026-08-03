@@ -137,12 +137,13 @@ export function SiteChrome({
             aria-label="OFF MARKET"
           >
             <img
-              src="/assets/logos/logoblack.webp"
+              src="/assets/logos/logoblack-240.webp"
               alt=""
               className="mv-chrome__logo mv-chrome__logo--dark"
-              width={120}
-              height={36}
+              width={240}
+              height={120}
               decoding="async"
+              fetchPriority="low"
             />
           </Link>
           <div className="om-header__actions">
@@ -157,7 +158,7 @@ export function SiteChrome({
                   type="button"
                   aria-haspopup="listbox"
                   aria-expanded="false"
-                  aria-label={copy.chooseLanguageAria}
+                  aria-label={`${copy.chooseLanguageAria}: ${resolvedActiveLang}`}
                   suppressHydrationWarning
                 >
                   <span className="om-language-dropdown__current">
@@ -224,12 +225,13 @@ export function SiteChrome({
             aria-label="OFF MARKET"
           >
             <img
-              src="/assets/logos/logoblack.webp"
+              src="/assets/logos/logoblack-240.webp"
               alt=""
               className="mv-chrome__logo mv-chrome__logo--dark"
-              width={140}
-              height={42}
+              width={240}
+              height={120}
               decoding="async"
+              fetchPriority="low"
             />
           </Link>
           <nav
@@ -250,7 +252,7 @@ export function SiteChrome({
                   type="button"
                   aria-haspopup="listbox"
                   aria-expanded="false"
-                  aria-label={copy.chooseLanguageAria}
+                  aria-label={`${copy.chooseLanguageAria}: ${resolvedActiveLang}`}
                   suppressHydrationWarning
                 >
                   <span className="om-language-dropdown__current">{resolvedActiveLang}</span>

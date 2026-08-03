@@ -35,7 +35,7 @@ const FR: PrivateAccessFormCopy = {
   subtitle:
     "Laissez vos coordonnées. Nous vous répondons avec une sélection adaptée à votre budget, votre objectif et le type de bien recherché.",
   success:
-    "Votre demande a bien été préparée. Nous vous répondrons avec une première lecture privée adaptée à votre projet.",
+    "Votre demande privée a bien été envoyée. Un conseiller OFF MARKET vous contactera prochainement.",
   fullName: "Nom complet",
   fullNamePlaceholder: "Votre nom complet",
   email: "Email",
@@ -70,7 +70,7 @@ const EN: PrivateAccessFormCopy = {
   subtitle:
     "Leave your details. We will respond with a selection aligned with your budget, objective and property type.",
   success:
-    "Your request has been prepared. We will respond with an initial private review tailored to your project.",
+    "Your private request has been sent. An OFF MARKET advisor will contact you shortly.",
   fullName: "Full name",
   fullNamePlaceholder: "Your full name",
   email: "Email",
@@ -105,7 +105,7 @@ const IT: PrivateAccessFormCopy = {
   subtitle:
     "Lascia i tuoi dati. Ti rispondiamo con una selezione in linea con budget, obiettivo e tipo di immobile.",
   success:
-    "La tua richiesta è stata preparata. Ti risponderemo con una prima lettura privata in linea con il tuo progetto.",
+    "La tua richiesta privata è stata inviata. Un advisor OFF MARKET ti contatterà a breve.",
   fullName: "Nome completo",
   fullNamePlaceholder: "Il tuo nome completo",
   email: "Indirizzo email",
@@ -140,7 +140,7 @@ const NL: PrivateAccessFormCopy = {
   subtitle:
     "Laat uw gegevens achter. Wij antwoorden met een selectie die aansluit bij uw budget, doelstelling en het type vastgoed dat u zoekt.",
   success:
-    "Uw aanvraag is voorbereid. Wij antwoorden met een eerste private analyse die past bij uw project.",
+    "Uw private aanvraag is verzonden. Een OFF MARKET-adviseur neemt binnenkort contact met u op.",
   fullName: "Volledige naam",
   fullNamePlaceholder: "Uw volledige naam",
   email: "E-mail",
@@ -175,7 +175,7 @@ const ES: PrivateAccessFormCopy = {
   subtitle:
     "Déjenos sus datos. Le responderemos con una selección adaptada a su presupuesto, su objetivo y el tipo de propiedad que busca.",
   success:
-    "Su solicitud se ha preparado correctamente. Le responderemos con una primera lectura privada adaptada a su proyecto.",
+    "Su solicitud privada ha sido enviada. Un asesor OFF MARKET le contactará en breve.",
   fullName: "Nombre completo",
   fullNamePlaceholder: "Su nombre completo",
   email: "Correo electrónico",
@@ -210,7 +210,7 @@ const NO: PrivateAccessFormCopy = {
   subtitle:
     "Legg igjen kontaktopplysningene dine. Vi svarer med et utvalg tilpasset budsjettet, målet og boligtypen du ser etter.",
   success:
-    "Forespørselen din er klargjort. Vi svarer med en første privat vurdering tilpasset prosjektet ditt.",
+    "Din private forespørsel er sendt. En OFF MARKET-rådgiver kontakter deg snart.",
   fullName: "Fullt navn",
   fullNamePlaceholder: "Ditt fulle navn",
   email: "E-post",

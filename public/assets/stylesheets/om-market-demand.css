@@ -8,7 +8,7 @@
 .om-market-demand {
   --om-md-ink: var(--om-black, #111111);
   --om-md-muted: rgba(17, 17, 17, 0.58);
-  --om-md-soft: rgba(17, 17, 17, 0.44);
+  --om-md-soft: #5c5b57;
   --om-md-line: rgba(17, 17, 17, 0.1);
   --om-md-panel: var(--om-white, #ffffff);
   --om-md-page: var(--om-ivory, #f5f4f2);

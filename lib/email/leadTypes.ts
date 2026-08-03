@@ -143,20 +143,31 @@ export function subjectForLead(
   locale: string,
   fullName?: string | null,
 ): string {
-  const subjects: Record<LeadSubmissionType, string> = {
-    contact: "[OFF MARKET] Nouvelle demande de contact",
-    private_access: "[OFF MARKET] Nouvelle demande d’accès privé",
-    off_market: "[OFF MARKET] Nouvelle demande d’accès privé",
-    villa_jaz: "[OFF MARKET] Nouvelle demande Villa Jaz",
-    project: "[OFF MARKET] Nouveau prospect immobilier",
-    simulator: "[OFF MARKET] Nouveau prospect immobilier",
-    newsletter: "[OFF MARKET] Nouvelle inscription newsletter",
-    lead: "[OFF MARKET] Nouveau prospect immobilier",
-  };
   void locale;
-  const base = subjects[type];
   const name = fullName ? sanitizeHeaderish(fullName).slice(0, 80) : "";
-  return name ? `${base} — ${name}` : base;
+
+  if (type === "newsletter") {
+    return name
+      ? `Nouvelle inscription newsletter — ${name} — OFF MARKET`
+      : "Nouvelle inscription newsletter — OFF MARKET";
+  }
+
+  if (type === "villa_jaz") {
+    return name
+      ? `Nouvelle demande Villa Jaz — ${name} — OFF MARKET`
+      : "Nouvelle demande Villa Jaz — OFF MARKET";
+  }
+
+  if (type === "contact") {
+    return name
+      ? `Nouvelle demande de contact — ${name} — OFF MARKET`
+      : "Nouvelle demande de contact — OFF MARKET";
+  }
+
+  // Private-access / off-market / project / simulator / generic lead
+  return name
+    ? `Nouvelle demande privée — ${name} — OFF MARKET`
+    : "Nouvelle demande privée — OFF MARKET";
 }
 
 export function normalizeLeadPayload(
