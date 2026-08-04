@@ -1,5 +1,7 @@
 /**
  * OffMarket — TextRevealByWord-style scroll reveal (vanilla JS + GSAP ScrollTrigger)
+ *
+ * Idempotent: never re-split already wrapped markup (refresh / Strict Mode safe).
  */
 (function () {
   'use strict';
@@ -58,26 +60,20 @@
     el.classList.add('is-word-reveal-complete');
   }
 
-  function initElement(el) {
-    if (el.dataset.wordRevealReady === 'true') return;
-    if (el.closest('.about-who') || el.closest('[data-no-word-reveal]')) return;
+  function readOriginalText(el) {
+    if (el.dataset.wordRevealText) {
+      return el.dataset.wordRevealText.trim();
+    }
 
-    var originalText = el.textContent.trim();
-    if (!originalText) return;
+    var accessible = el.querySelector('.om-word-reveal__accessible');
+    if (accessible) {
+      return accessible.textContent.trim();
+    }
 
-    el.dataset.wordRevealReady = 'true';
-    el.removeAttribute('aria-label');
+    return el.textContent.trim();
+  }
 
-    var words = originalText.split(/\s+/);
-    el.innerHTML =
-      '<span class="om-word-reveal__accessible">' +
-      escapeHtml(originalText) +
-      '</span>' +
-      '<span class="om-word-reveal__visual" aria-hidden="true">' +
-      buildWordMarkup(words) +
-      '</span>';
-    el.classList.add('om-word-reveal');
-
+  function bindScrollReveal(el) {
     if (prefersReducedMotion()) {
       markComplete(el);
       return;
@@ -131,6 +127,44 @@
       );
   }
 
+  function initElement(el) {
+    if (el.closest('.about-who') || el.closest('[data-no-word-reveal]')) return;
+
+    // Already wrapped — do not re-read textContent (ghost+fill would duplicate words).
+    if (
+      el.dataset.wordRevealReady === 'true' ||
+      el.classList.contains('om-word-reveal') ||
+      el.querySelector('.om-word-reveal__accessible')
+    ) {
+      el.dataset.wordRevealReady = 'true';
+      el.classList.add('om-word-reveal');
+      if (!el._omWordRevealBound) {
+        el._omWordRevealBound = true;
+        bindScrollReveal(el);
+      }
+      return;
+    }
+
+    var originalText = readOriginalText(el);
+    if (!originalText) return;
+
+    el.dataset.wordRevealReady = 'true';
+    el.dataset.wordRevealText = originalText;
+    el.removeAttribute('aria-label');
+
+    var words = originalText.split(/\s+/).filter(Boolean);
+    el.innerHTML =
+      '<span class="om-word-reveal__accessible">' +
+      escapeHtml(originalText) +
+      '</span>' +
+      '<span class="om-word-reveal__visual" aria-hidden="true">' +
+      buildWordMarkup(words) +
+      '</span>';
+    el.classList.add('om-word-reveal');
+    el._omWordRevealBound = true;
+    bindScrollReveal(el);
+  }
+
   function init() {
     if (prefersReducedMotion()) {
       document.documentElement.classList.add('om-reduced-motion');
@@ -138,6 +172,8 @@
 
     document.querySelectorAll('[data-word-reveal]').forEach(initElement);
   }
+
+  window.__omTextRevealBoot = init;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

@@ -65,6 +65,37 @@ const nextConfig: NextConfig = {
         destination: "/quartiers/",
         permanent: true,
       },
+      // Locale contact aliases — prevent 404 on refresh / typed English "contact" paths.
+      {
+        source: "/it/contact",
+        destination: "/it/contatto/",
+        permanent: true,
+      },
+      {
+        source: "/it/contact/",
+        destination: "/it/contatto/",
+        permanent: true,
+      },
+      {
+        source: "/es/contact",
+        destination: "/es/contacto/",
+        permanent: true,
+      },
+      {
+        source: "/es/contact/",
+        destination: "/es/contacto/",
+        permanent: true,
+      },
+      {
+        source: "/no/contact",
+        destination: "/no/kontakt/",
+        permanent: true,
+      },
+      {
+        source: "/no/contact/",
+        destination: "/no/kontakt/",
+        permanent: true,
+      },
     ];
   },
   async headers() {

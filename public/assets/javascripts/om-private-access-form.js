@@ -61,7 +61,7 @@
     modalEyebrow: 'DEMANDE REÇUE',
     modalTitle: 'Votre demande privée a bien été envoyée',
     modalText:
-      'Notre équipe a reçu votre demande et étudiera vos critères. Un conseiller OFF MARKET vous contactera prochainement avec une sélection adaptée à votre projet.',
+      'Notre équipe a reçu votre demande. Un conseiller OFF MARKET vous contactera prochainement avec une sélection adaptée à votre projet.',
     modalClose: 'Fermer',
     modalHome: 'Retour à l’accueil',
     homeHref: '/',
@@ -78,7 +78,7 @@
     modalEyebrow: 'REQUEST RECEIVED',
     modalTitle: 'Your private request has been sent',
     modalText:
-      'Our team has received your request and will review your criteria. An OFF MARKET advisor will contact you shortly with a selection aligned with your project.',
+      'Our team has received your request. An OFF MARKET advisor will contact you shortly with a selection aligned with your project.',
     modalClose: 'Close',
     modalHome: 'Return to homepage',
     homeHref: '/en/',
@@ -95,9 +95,9 @@
     modalEyebrow: 'RICHIESTA RICEVUTA',
     modalTitle: 'La tua richiesta privata è stata inviata',
     modalText:
-      'Il nostro team ha ricevuto la tua richiesta e valuterà i tuoi criteri. Un advisor OFF MARKET ti contatterà a breve con una selezione in linea con il tuo progetto.',
+      'Il nostro team ha ricevuto la tua richiesta. Un consulente OFF MARKET ti contatterà a breve con una selezione in linea con il tuo progetto.',
     modalClose: 'Chiudi',
-    modalHome: 'Torna alla homepage',
+    modalHome: 'Torna alla home',
     homeHref: '/it/',
   };
 
@@ -105,16 +105,16 @@
     validationError:
       'Controleer de verplichte velden voordat u uw aanvraag verstuurt.',
     sendError:
-      'We konden uw aanvraag niet verzenden. Uw gegevens zijn bewaard. Probeer het zo opnieuw.',
+      'We konden uw aanvraag niet verzenden. Uw gegevens zijn bewaard. Probeer het opnieuw.',
     sending: 'Uw aanvraag wordt verzonden…',
     sent: 'Aanvraag verzonden',
     tryAgain: 'Opnieuw proberen',
     modalEyebrow: 'AANVRAAG ONTVANGEN',
-    modalTitle: 'Uw private aanvraag is verzonden',
+    modalTitle: 'Uw privéaanvraag is verzonden',
     modalText:
-      'Ons team heeft uw aanvraag ontvangen en bestudeert uw criteria. Een OFF MARKET-adviseur neemt binnenkort contact met u op met een selectie die past bij uw project.',
+      'Ons team heeft uw aanvraag ontvangen. Een OFF MARKET-adviseur neemt binnenkort contact met u op met een selectie die past bij uw project.',
     modalClose: 'Sluiten',
-    modalHome: 'Terug naar homepage',
+    modalHome: 'Terug naar de startpagina',
     homeHref: '/nl/',
   };
 
@@ -129,7 +129,7 @@
     modalEyebrow: 'SOLICITUD RECIBIDA',
     modalTitle: 'Su solicitud privada ha sido enviada',
     modalText:
-      'Nuestro equipo ha recibido su solicitud y revisará sus criterios. Un asesor OFF MARKET le contactará en breve con una selección adaptada a su proyecto.',
+      'Nuestro equipo ha recibido su solicitud. Un asesor OFF MARKET le contactará en breve con una selección adaptada a su proyecto.',
     modalClose: 'Cerrar',
     modalHome: 'Volver al inicio',
     homeHref: '/es/',
@@ -146,7 +146,7 @@
     modalEyebrow: 'FORESPØRSEL MOTTATT',
     modalTitle: 'Din private forespørsel er sendt',
     modalText:
-      'Teamet vårt har mottatt forespørselen din og vil vurdere kriteriene dine. En OFF MARKET-rådgiver kontakter deg snart med et utvalg tilpasset prosjektet ditt.',
+      'Teamet vårt har mottatt forespørselen din. En OFF MARKET-rådgiver kontakter deg snart med et utvalg tilpasset prosjektet ditt.',
     modalClose: 'Lukk',
     modalHome: 'Tilbake til forsiden',
     homeHref: '/no/',

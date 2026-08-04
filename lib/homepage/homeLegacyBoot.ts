@@ -48,19 +48,15 @@ export function resetHomeSectionState() {
     section.classList.remove("is-visible");
   });
 
+  // Re-bind scroll observers only. Do NOT clear word-reveal / private-access
+  // split flags — wiping those caused duplicated headings and opacity:0 stuck
+  // content on hard refresh / Strict Mode remount.
   document
     .querySelectorAll(
-      [
-        "[data-om-territories-init]",
-        "[data-word-reveal-ready]",
-        "[data-pa-reveal-bound]",
-        "[data-reveal-observer-bound]",
-      ].join(","),
+      ["[data-om-territories-init]", "[data-reveal-observer-bound]"].join(","),
     )
     .forEach((node) => {
       node.removeAttribute("data-om-territories-init");
-      node.removeAttribute("data-word-reveal-ready");
-      node.removeAttribute("data-pa-reveal-bound");
       node.removeAttribute("data-reveal-observer-bound");
     });
 
@@ -215,6 +211,8 @@ export function dispatchHomeBootEvents() {
   window.__omNavMenuRender?.();
   window.__omTerritoriesBoot?.();
   window.__omFeaturedProjectsBoot?.();
+  window.__omTextRevealBoot?.();
+  window.__omPrivateAccessRevealBoot?.();
   window.OM_SIMULATOR_boot?.();
   window.OM_BLOG_boot?.();
   window.omScrollGuard?.run();
@@ -236,6 +234,21 @@ export function forceHomeRevealFallback() {
     .forEach((node) => {
       node.classList.add("is-visible", "is-word-reveal-complete", "om-m-inview");
     });
+
+  document.querySelectorAll(".om-home-private-access").forEach((section) => {
+    section.classList.add("is-animated-fallback");
+    section.classList.remove("is-animating");
+    section
+      .querySelectorAll(
+        ".om-home-private-access__eyebrow, .om-home-private-access__subtitle, .om-private-access-form--embedded, .om-pa-word__inner",
+      )
+      .forEach((node) => {
+        const el = node as HTMLElement;
+        el.style.removeProperty("opacity");
+        el.style.removeProperty("transform");
+        el.style.removeProperty("filter");
+      });
+  });
 }
 
 export function homeSectionsDiagnostic() {
@@ -278,6 +291,8 @@ declare global {
     __omNavMenuRender?: () => void;
     __omTerritoriesBoot?: () => void;
     __omFeaturedProjectsBoot?: () => void;
+    __omTextRevealBoot?: () => void;
+    __omPrivateAccessRevealBoot?: () => void;
     OM_SIMULATOR_boot?: () => void;
     OM_BLOG_boot?: () => void;
     omScrollGuard?: { run: () => void; clearScrollLocks: () => void };

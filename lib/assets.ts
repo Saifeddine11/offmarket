@@ -118,11 +118,11 @@ export const NOS_PROJETS_SCRIPTS = withoutGlobalNavScripts([
   "/assets/javascripts/om-featured-projects.js?v=1769202007",
   "/assets/javascripts/om-property-modal.js?v=1769202006",
   "/assets/javascripts/om-private-access-popup.js?v=1765340000",
-  "/assets/javascripts/om-private-access-form.js?v=1765604000",
+  "/assets/javascripts/om-private-access-form.js?v=1785800100",
 ]) as string[];
 
 export const SCRIPTS = {
-  offMarket: ["/assets/javascripts/om-private-access-form.js?v=1765604000"],
+  offMarket: ["/assets/javascripts/om-private-access-form.js?v=1785800100"],
   /** Inner editorial pages — page-specific boot (navbar scripts are global). */
   innerEditorial: withoutGlobalNavScripts([
     "/assets/javascripts/gsap.min.js?v=1765268700",
@@ -162,7 +162,7 @@ export const SCRIPTS = {
   ]),
   contact: withoutGlobalNavScripts([
     "/assets/javascripts/om-language-switcher.js?v=1769200000",
-    "/assets/javascripts/om-private-access-form.js?v=1765604000",
+    "/assets/javascripts/om-private-access-form.js?v=1785800100",
   ]),
   simulateur: withoutGlobalNavScripts([
     "/assets/javascripts/om-simulator.js?v=1765405800",

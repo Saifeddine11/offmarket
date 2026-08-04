@@ -1,12 +1,15 @@
 /**
  * OFF MARKET — Homepage private access section entrance reveal
  * Framer Motion–style stagger: text split + fade/blur/slide (GSAP, no React).
+ *
+ * Idempotent + fail-safe: never leave the section stuck at opacity: 0 after refresh.
  */
 (function () {
   'use strict';
 
   var SECTION_SELECTOR = '.om-home-private-access';
   var VISIBILITY_THRESHOLD = 0.18;
+  var FAILSAFE_MS = 2200;
 
   function prefersReducedMotion() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -20,21 +23,42 @@
       .replace(/"/g, '&quot;');
   }
 
+  function clearInlineMotion(section) {
+    if (typeof gsap !== 'undefined') {
+      var nodes = section.querySelectorAll(
+        '.om-home-private-access__eyebrow, .om-home-private-access__subtitle, .om-private-access-form--embedded, .om-pa-word__inner'
+      );
+      gsap.set(nodes, { clearProps: 'opacity,transform,filter,y,yPercent,scale' });
+    } else {
+      section
+        .querySelectorAll(
+          '.om-home-private-access__eyebrow, .om-home-private-access__subtitle, .om-private-access-form--embedded, .om-pa-word__inner'
+        )
+        .forEach(function (node) {
+          node.style.removeProperty('opacity');
+          node.style.removeProperty('transform');
+          node.style.removeProperty('filter');
+        });
+    }
+  }
+
   function splitTitle(titleEl) {
-    if (!titleEl || titleEl.dataset.paSplit === 'true') {
-      return titleEl
-        ? titleEl.querySelectorAll('.om-pa-word__inner')
-        : [];
+    if (!titleEl) return [];
+
+    if (titleEl.dataset.paSplit === 'true') {
+      return titleEl.querySelectorAll('.om-pa-word__inner');
     }
 
     var text = titleEl.textContent.trim();
     if (!text) return [];
 
     titleEl.dataset.paSplit = 'true';
+    titleEl.dataset.paOriginalText = text;
     titleEl.setAttribute('aria-label', text);
 
     titleEl.innerHTML = text
       .split(/\s+/)
+      .filter(Boolean)
       .map(function (word) {
         var safe = escapeHtml(word);
         return (
@@ -52,6 +76,8 @@
 
   function markAnimated(section, className) {
     section.classList.add(className || 'is-animated');
+    section.classList.remove('is-animating');
+    clearInlineMotion(section);
   }
 
   function prepareSection(section) {
@@ -60,6 +86,15 @@
     var subtitle = section.querySelector('.om-home-private-access__subtitle');
     var form = section.querySelector('.om-private-access-form--embedded');
     var words = splitTitle(title);
+
+    if (
+      section.classList.contains('is-animated') ||
+      section.classList.contains('is-animated-reduced') ||
+      section.classList.contains('is-animated-fallback')
+    ) {
+      clearInlineMotion(section);
+      return null;
+    }
 
     if (prefersReducedMotion()) {
       markAnimated(section, 'is-animated-reduced');
@@ -90,7 +125,6 @@
       gsap.set(words, {
         yPercent: 112,
         opacity: 0,
-        clearProps: 'transform',
       });
     }
 
@@ -101,7 +135,9 @@
     if (
       !targets ||
       section.classList.contains('is-animated') ||
-      section.classList.contains('is-animating')
+      section.classList.contains('is-animating') ||
+      section.classList.contains('is-animated-fallback') ||
+      section.classList.contains('is-animated-reduced')
     ) {
       return;
     }
@@ -112,16 +148,6 @@
       defaults: { ease: 'power3.out' },
       onComplete: function () {
         markAnimated(section);
-        section.classList.remove('is-animating');
-        if (targets.words && targets.words.length) {
-          gsap.set(targets.words, { clearProps: 'transform,opacity' });
-        }
-        if (targets.form) {
-          gsap.set(targets.form, { clearProps: 'filter,transform' });
-        }
-        if (targets.subtitle) {
-          gsap.set(targets.subtitle, { clearProps: 'filter' });
-        }
       },
     });
 
@@ -177,10 +203,19 @@
   }
 
   function tryReveal(section, targets) {
-    if (section.classList.contains('is-animated')) return true;
+    if (
+      section.classList.contains('is-animated') ||
+      section.classList.contains('is-animated-fallback') ||
+      section.classList.contains('is-animated-reduced')
+    ) {
+      return true;
+    }
     if (!targets || !isVisibleEnough(section)) return false;
     animateSection(section, targets);
-    return section.classList.contains('is-animating') || section.classList.contains('is-animated');
+    return (
+      section.classList.contains('is-animating') ||
+      section.classList.contains('is-animated')
+    );
   }
 
   function isVisibleEnough(el) {
@@ -193,9 +228,30 @@
     return visible >= rect.height * VISIBILITY_THRESHOLD;
   }
 
+  function armFailsafe(section) {
+    if (section.dataset.paFailsafe === 'true') return;
+    section.dataset.paFailsafe = 'true';
+
+    window.setTimeout(function () {
+      if (
+        section.classList.contains('is-animated') ||
+        section.classList.contains('is-animating') ||
+        section.classList.contains('is-animated-reduced') ||
+        section.classList.contains('is-animated-fallback')
+      ) {
+        return;
+      }
+      markAnimated(section, 'is-animated-fallback');
+    }, FAILSAFE_MS);
+  }
+
   function watchSection(section, targets) {
-    if (section.dataset.paRevealBound === 'true') return;
+    if (section.dataset.paRevealBound === 'true') {
+      armFailsafe(section);
+      return;
+    }
     section.dataset.paRevealBound = 'true';
+    armFailsafe(section);
 
     if (!targets) return;
 
@@ -250,7 +306,8 @@
       onScroll();
       if (
         !section.classList.contains('is-animated') &&
-        !section.classList.contains('is-animating')
+        !section.classList.contains('is-animating') &&
+        !section.classList.contains('is-animated-fallback')
       ) {
         rafId = requestAnimationFrame(rafLoop);
       }
@@ -264,6 +321,8 @@
       watchSection(section, targets);
     });
   }
+
+  window.__omPrivateAccessRevealBoot = init;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
